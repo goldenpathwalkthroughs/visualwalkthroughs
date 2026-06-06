@@ -29,6 +29,7 @@ const cssVars = Object.entries(themeVars)
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} — VisualWalkthroughs</title>
   <meta name="description" content={description} />
+  {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />}
   <!-- Cloudflare Web Analytics — cookieless, no consent required -->
   <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
 </head>

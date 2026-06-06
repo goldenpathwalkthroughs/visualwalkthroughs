@@ -138,7 +138,7 @@ const rows = gridDef?.rows ?? 0;
   <details class="world-map-section" open>
     <summary class="map-summary">
       <span class="map-summary-label">World overview</span>
-      <span class="map-summary-hint">click to collapse</span>
+      <span class="map-summary-hint" aria-hidden="true">click to collapse</span>
     </summary>
 
     <div class="map-inner">
@@ -146,7 +146,7 @@ const rows = gridDef?.rows ?? 0;
       <div
         class="world-map-grid"
         style={`--map-cols:${cols};--map-rows:${rows}`}
-        role="grid"
+        role="region"
         aria-label="World map"
         id="world-map-grid"
       >
@@ -187,7 +187,7 @@ const rows = gridDef?.rows ?? 0;
               style={`grid-column:${cell.coord!.col + 1};grid-row:${cell.coord!.row + 1}`}
               role="button"
               tabindex="0"
-              aria-label={`${cell.name} (${ref})${loc ? ' — click for details' : ''}`}
+              aria-label={`${ref}: ${cell.name}${loc ? ' — click for details' : ''}`}
               data-location-id={loc?.id ?? ''}
               data-cell-ref={ref}
               data-requires={JSON.stringify(cell.requires)}
@@ -245,6 +245,9 @@ const rows = gridDef?.rows ?? 0;
 )}
 
 <script define:vars={{ locationsJson, sectionIndexJson }}>
+  // Defer map initialisation until the browser is idle — keeps the main thread
+  // free during the critical rendering path and reduces Lighthouse TBT.
+  function _initMap() {
   const LOCATIONS = JSON.parse(locationsJson);
   const LOC_BY_ID = {};
   LOCATIONS.forEach(l => { LOC_BY_ID[l.id] = l; });
@@ -332,6 +335,13 @@ const rows = gridDef?.rows ?? 0;
       if (panel && panel.classList.contains('open')) closeMapPanel();
     }
   });
+  } // end _initMap
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(_initMap, { timeout: 3000 });
+  } else {
+    setTimeout(_initMap, 0);
+  }
 </script>
 
 <style>
@@ -362,8 +372,8 @@ const rows = gridDef?.rows ?? 0;
   }
   .map-summary-hint {
     font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--muted-2);
+    font-size: 12px;
+    color: var(--muted);
     transition: opacity .2s;
   }
   .world-map-section:not([open]) .map-summary-hint {
@@ -376,16 +386,15 @@ const rows = gridDef?.rows ?? 0;
     display: grid;
     /* first column = row labels (20px); remaining = map cells (equal) */
     grid-template-columns: 20px repeat(var(--map-cols), 1fr);
-    /* first row = column labels (18px); remaining = map cells (equal, square) */
-    grid-template-rows: 18px repeat(var(--map-rows), 1fr);
+    /* first row = column labels (20px); remaining = map cells (54px fixed — prevents CLS) */
+    grid-template-rows: 20px repeat(var(--map-rows), 54px);
     gap: 2px;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--line);
     background: var(--ink-2);
-    /* Keep cells roughly square and cap total width */
+    /* Cap total width; height is intrinsic from row sizes */
     width: min(100%, calc(20px + var(--map-cols) * 72px));
-    aspect-ratio: calc(var(--map-cols) + 0.28) / calc(var(--map-rows) + 0.25);
   }
   @media (max-width: 540px) {
     .world-map-grid { width: 100%; }
@@ -400,8 +409,8 @@ const rows = gridDef?.rows ?? 0;
     align-items: center;
     justify-content: center;
     font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--muted-2);
+    font-size: 12px;
+    color: var(--muted);
     font-weight: 600;
     user-select: none;
   }
@@ -415,7 +424,7 @@ const rows = gridDef?.rows ?? 0;
     justify-content: center;
     padding: 3px 2px 2px;
     font-family: var(--font-display);
-    font-size: 7px;
+    font-size: 12px;
     font-weight: 600;
     line-height: 1.2;
     text-align: center;
@@ -452,7 +461,7 @@ const rows = gridDef?.rows ?? 0;
 
   .cell-ref {
     font-family: var(--font-mono);
-    font-size: 6px;
+    font-size: 10px;
     color: var(--muted-2);
     line-height: 1;
     margin-bottom: 2px;
@@ -460,15 +469,17 @@ const rows = gridDef?.rows ?? 0;
   .map-cell.rel-required .cell-ref { color: var(--muted); }
 
   .cell-name {
-    font-size: 6.5px;
-    line-height: 1.25;
+    font-size: 12px;
+    line-height: 1.2;
     word-break: break-word;
     hyphens: auto;
+    overflow: hidden;
+    max-height: 2.5em;
   }
-  .map-cell.rel-required .cell-name { font-size: 7.5px; }
+  .map-cell.rel-required .cell-name { font-size: 12px; }
 
   .cell-lock {
-    font-size: 7px;
+    font-size: 10px;
     position: absolute;
     top: 2px;
     right: 2px;
@@ -476,7 +487,7 @@ const rows = gridDef?.rows ?? 0;
     line-height: 1;
   }
   .cell-secrets {
-    font-size: 7px;
+    font-size: 10px;
     font-family: var(--font-mono);
     color: var(--gold);
     position: absolute;
@@ -488,8 +499,8 @@ const rows = gridDef?.rows ?? 0;
   /* ── Legend ──────────────────────────────────────────────────────────────── */
   .map-note {
     font-family: var(--font-mono);
-    font-size: 10.5px;
-    color: var(--muted-2);
+    font-size: 12px;
+    color: var(--muted);
     margin-top: 8px;
     display: flex;
     align-items: center;
@@ -572,14 +583,14 @@ const rows = gridDef?.rows ?? 0;
 
   .panel-close {
     position: absolute;
-    top: 12px;
-    right: 14px;
-    width: 28px; height: 28px;
+    top: 8px;
+    right: 10px;
+    width: 44px; height: 44px;
     background: transparent;
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -598,7 +609,7 @@ const rows = gridDef?.rows ?? 0;
 
   .panel-ref {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .18em;
     text-transform: uppercase;
@@ -651,7 +662,7 @@ const rows = gridDef?.rows ?? 0;
     display: inline-block;
     margin-top: 3px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 12px;
     color: var(--accent);
     text-decoration: none;
     letter-spacing: .04em;

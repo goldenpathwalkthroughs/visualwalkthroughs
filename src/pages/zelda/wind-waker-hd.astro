@@ -175,7 +175,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
               >✓</button>
               <div class="htext">
                 <div class="stage">{sec.stage}</div>
-                <h3>{sec.title}</h3>
+                <h2>{sec.title}</h2>
                 <div class="chips">
                   {sec.chips.map((c: string) => <span class="chip">{c}</span>)}
                 </div>
@@ -212,7 +212,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
                       </div>
                     )}
 
-                    <h4>Golden path</h4>
+                    <h3>Golden path</h3>
                     <ol>
                       {sec.steps.map((step: unknown) => (
                         <li>
@@ -329,7 +329,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
 
                     {sec.collectibles.length > 0 && (
                       <div class="comp-block comp-only">
-                        <h4>Completionist · this area</h4>
+                        <h3>Completionist · this area</h3>
                         <div class="cc" id={`cc-${i}`}>0 / {sec.collectibles.length} collected</div>
                         {sec.collectibles.map((c: any, j: number) => (
                           <div class="coll" id={`coll-${i}-${j}`} onclick={`toggleColl(${i},${j})`} role="checkbox" aria-checked="false" tabindex="0">
@@ -346,7 +346,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
 
                   <!-- Right: video -->
                   <div class="aside">
-                    <h4>Watch it instead</h4>
+                    <h3>Watch it instead</h3>
                     <div class="vid" id={`vid-${i}`} data-id={sec.video.id}>
                       <div
                         class="thumb"
