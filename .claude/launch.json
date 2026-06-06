@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "visualwalkthroughs",
+      "runtimeExecutable": "/usr/local/bin/npm",
+      "runtimeArgs": ["run", "dev", "--", "--host"],
+      "port": 4321,
+      "autoPort": false
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisualWalkthroughs — explore games by progress, not by page-load</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0e13;--ink-2:#13161f;--panel:#181c27;--panel-2:#1f2433;
+  --line:rgba(255,255,255,.09);--text:#eef0f6;--muted:#9aa1b4;--muted-2:#6b7186;
+  --gold:#f2b34b;--gold-deep:#c98a1f;--signal:#ff6a4d;
+  --accent:#f2b34b;--accent-soft:rgba(242,179,75,.14);
+  --radius:18px;--maxw:1240px;--shadow:0 24px 60px -22px rgba(0,0,0,.7);
+  --font-display:'Syne',sans-serif;--font-body:'Fraunces',Georgia,serif;--font-mono:'Space Mono',monospace;
+}
+body.theme-zelda{--accent:#e9c46a;--accent-soft:rgba(233,196,106,.14)}
+body.theme-ww{
+  --ink:#071117;--ink-2:#0a1820;--panel:#0e2029;--panel-2:#123040;
+  --accent:#36c6c0;--accent-soft:rgba(54,198,192,.16);
+  --gold:#f3c969;--signal:#ff8a5b;--line:rgba(150,230,225,.12);--muted:#8fb4b7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .6s ease}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:var(--accent);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+.topbar{position:sticky;top:0;z-index:500;display:flex;align-items:center;gap:24px;padding:16px clamp(18px,4vw,46px);background:linear-gradient(180deg,var(--ink) 35%,transparent);backdrop-filter:blur(2px)}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:-.02em;cursor:pointer}
+.brand .mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--gold-deep));color:#1a1305;font-weight:800;box-shadow:0 6px 18px -6px var(--accent);transform:rotate(-6deg);font-size:15px}
+.brand b{color:var(--accent)}
+.nav-links{display:flex;gap:26px;margin-left:8px;font-family:var(--font-display);font-size:14px;color:var(--muted);font-weight:600}
+.nav-links span{cursor:pointer;transition:color .2s}.nav-links span:hover{color:var(--text)}
+.spotlight-trigger{margin-left:auto;display:flex;align-items:center;gap:12px;padding:9px 14px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);font-size:13.5px;min-width:230px;transition:.2s;font-family:var(--font-display);font-weight:600}
+.spotlight-trigger:hover{border-color:var(--accent);color:var(--text)}
+.spotlight-trigger .kbd{margin-left:auto;font-family:var(--font-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--muted-2)}
+@media(max-width:760px){.nav-links{display:none}.spotlight-trigger{min-width:0}.spotlight-trigger .lbl{display:none}}
+
+.view{display:none;animation:fade .5s ease both}.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,46px)}
+
+.hero{position:relative;padding:30px clamp(18px,4vw,46px) 8px;max-width:var(--maxw);margin:0 auto}
+.hero-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,6.4vw,76px);line-height:.96;letter-spacing:-.035em;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:22px;max-width:54ch;font-size:clamp(16px,2vw,20px);color:var(--muted);line-height:1.5}
+.hero p .x{color:var(--text);font-style:italic}
+
+.row{margin-top:46px}
+.row-head{display:flex;align-items:baseline;gap:14px;margin:0 0 16px}
+.row-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,2.4vw,24px);letter-spacing:-.02em}
+.row-head .pill{font-family:var(--font-mono);font-size:11px;color:var(--accent);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+.row-head .more{margin-left:auto;font-family:var(--font-display);font-size:13px;color:var(--muted);font-weight:600}
+.rail{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--panel-2) transparent}
+.rail::-webkit-scrollbar{height:8px}.rail::-webkit-scrollbar-thumb{background:var(--panel-2);border-radius:99px}
+.card{position:relative;flex:0 0 auto;width:228px;height:320px;border-radius:var(--radius);overflow:hidden;cursor:pointer;scroll-snap-align:start;border:1px solid var(--line);background:var(--panel);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;isolation:isolate}
+.card:hover{transform:translateY(-8px) scale(1.015);box-shadow:var(--shadow);border-color:var(--accent)}
+.card .art{position:absolute;inset:0;z-index:-1}
+.card .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.86))}
+.card .meta{position:absolute;left:0;right:0;bottom:0;padding:18px 16px}
+.card .franchise{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.card .title{font-family:var(--font-display);font-weight:800;font-size:21px;line-height:1.02;letter-spacing:-.02em}
+.card .sub{font-size:13px;color:var(--muted);margin-top:6px;font-style:italic}
+.card .badge{position:absolute;top:13px;left:13px;font-family:var(--font-mono);font-size:10px;padding:4px 9px;border-radius:7px;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);border:1px solid var(--line)}
+.ncard{flex:0 0 auto;width:380px;height:200px;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;scroll-snap-align:start;border:1px solid var(--line);transition:transform .35s,border-color .35s,box-shadow .35s}
+.ncard:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:var(--shadow)}
+.ncard .art{position:absolute;inset:0;z-index:-1}
+.ncard .art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 30%,transparent)}
+.ncard .body{position:absolute;inset:0;padding:22px 24px;display:flex;flex-direction:column;justify-content:flex-end;max-width:80%}
+.ncard .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.ncard h3{font-family:var(--font-display);font-weight:700;font-size:19px;line-height:1.12;letter-spacing:-.02em}
+.ncard p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.4}
+
+.fr-hero{position:relative;min-height:340px;display:flex;align-items:flex-end;overflow:hidden}
+.fr-hero .bg{position:absolute;inset:0;z-index:-2}
+.fr-hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,8,.45),var(--ink) 96%)}
+.fr-hero .inner{max-width:var(--maxw);margin:0 auto;width:100%;padding:0 clamp(18px,4vw,46px) 38px}
+.crumb{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;gap:8px;align-items:center}
+.crumb b{color:var(--accent);cursor:pointer}.crumb b:hover{text-decoration:underline}
+.fr-hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,6vw,68px);letter-spacing:-.03em;line-height:.95}
+.fr-hero p{color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;line-height:1.5}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:38px 0 80px}
+.gtile{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:3/4;border:1px solid var(--line);background:var(--panel);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.gtile:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:var(--accent)}
+.gtile .art{position:absolute;inset:0;z-index:-1}
+.gtile .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.88))}
+.gtile .meta{position:absolute;left:0;right:0;bottom:0;padding:18px}
+.gtile .yr{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.1em}
+.gtile .title{font-family:var(--font-display);font-weight:800;font-size:20px;line-height:1.04;margin-top:6px;letter-spacing:-.02em}
+.gtile .console{font-size:12.5px;color:var(--muted);margin-top:5px}
+.gtile.soon{opacity:.5;pointer-events:none}
+.gtile.soon::before{content:"Walkthrough coming soon";position:absolute;inset:0;z-index:2;display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--muted);background:rgba(0,0,0,.35)}
+.gtile .ready{position:absolute;top:12px;right:12px;z-index:2;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;background:var(--accent);color:#0a0a0a;padding:4px 8px;border-radius:6px;font-weight:700}
+
+.ww-hero{position:relative;overflow:hidden;padding-bottom:30px}
+.ww-hero .sea{position:absolute;inset:0;z-index:-2;background:radial-gradient(120% 80% at 70% -10%,#1d4f5e 0%,transparent 55%),linear-gradient(180deg,#0c2b34,#071117 92%)}
+.ww-hero .sea::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(120,220,215,.04) 22px 23px)}
+.ww-hero .inner{max-width:var(--maxw);margin:0 auto;padding:8px clamp(18px,4vw,46px) 0}
+.ww-top{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-end;padding:14px 0 26px}
+.ww-cover{width:150px;aspect-ratio:3/4;border-radius:14px;flex:0 0 auto;background:linear-gradient(160deg,#2bb4ad,#0a5b63 55%,#063b46);border:1px solid rgba(150,230,225,.2);box-shadow:var(--shadow);position:relative;overflow:hidden;display:grid;place-items:center;text-align:center}
+.ww-cover .tri{width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:46px solid var(--gold);filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+.ww-cover small{position:absolute;bottom:12px;left:0;right:0;font-family:var(--font-display);font-weight:800;font-size:13px;letter-spacing:.04em}
+.ww-info{flex:1;min-width:280px}
+.ww-info .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.b{font-family:var(--font-mono);font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);color:var(--muted)}
+.b.hot{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.ww-info h1{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5vw,56px);letter-spacing:-.03em;line-height:.95}
+.ww-info .lede{color:var(--muted);max-width:62ch;margin-top:14px;font-size:16px;line-height:1.55}
+
+.ctrls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0 26px;padding:16px 18px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
+.progress-wrap{flex:1;min-width:200px}
+.progress-wrap .lab{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.progress-wrap .lab b{color:var(--accent)}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.toggle{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:600;font-size:13px;padding:9px 13px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);transition:.2s}
+.toggle:hover{color:var(--text);border-color:var(--accent)}
+.toggle.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.toggle .dot{width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.5}
+.toggle.on .dot{opacity:1}
+
+.sections{padding-bottom:90px}
+.path-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:8px 0 18px;display:flex;align-items:center;gap:12px}
+.path-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec{border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;background:linear-gradient(180deg,var(--panel),var(--ink-2));transition:border-color .3s}
+.sec.open{border-color:var(--accent)}
+.sec.done .sec-head .num{background:var(--accent);color:#06141a;border-color:var(--accent)}
+.sec-head{display:flex;align-items:center;gap:16px;padding:20px 22px;cursor:pointer;user-select:none}
+.sec-head .num{width:42px;height:42px;flex:0 0 auto;border-radius:11px;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);transition:.3s}
+.sec-head .check{flex:0 0 auto;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);display:grid;place-items:center;transition:.25s;color:transparent;font-size:14px}
+.sec-head .check:hover{border-color:var(--accent)}
+.sec.done .sec-head .check{background:var(--accent);border-color:var(--accent);color:#06141a}
+.sec-head .htext{flex:1;min-width:0}
+.sec-head .htext .stage{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+.sec-head .htext h3{font-family:var(--font-display);font-weight:700;font-size:clamp(17px,2.4vw,22px);letter-spacing:-.02em;margin-top:3px}
+.sec-head .htext .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chip{font-family:var(--font-mono);font-size:10px;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line)}
+.sec-head .chev{flex:0 0 auto;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);transition:.3s;color:var(--muted)}
+.sec.open .sec-head .chev{transform:rotate(180deg);color:var(--accent);border-color:var(--accent)}
+
+.sec-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.sec.open .sec-body{grid-template-rows:1fr}
+.sec-body>.inner{overflow:hidden}
+.sec-content{padding:4px 24px 28px;display:grid;grid-template-columns:1fr 340px;gap:34px}
+@media(max-width:860px){.sec-content{grid-template-columns:1fr;padding:4px 18px 24px}}
+
+.prose{font-size:16.5px;line-height:1.72;color:#dfe3ee}
+.prose h4{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--accent);margin:22px 0 8px}
+.prose h4:first-of-type{margin-top:6px}
+.prose p{margin-bottom:14px}.prose strong{color:#fff;font-weight:600}
+.prose ol{margin:0 0 16px 0;padding-left:0;counter-reset:step;list-style:none}
+.prose ol li{position:relative;padding:9px 0 9px 44px;border-bottom:1px dashed var(--line)}
+.prose ol li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:var(--font-mono);font-size:13px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line)}
+.tts{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;font-family:var(--font-display);font-weight:600;font-size:13px;padding:9px 15px;border-radius:10px;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);transition:.2s}
+.tts:hover,.tts.playing{background:var(--accent);color:#06141a}
+
+/* advisories */
+.adv{border-radius:12px;padding:14px 16px 14px 46px;margin:16px 0;position:relative;font-size:15px;line-height:1.55;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.adv .ico{position:absolute;left:15px;top:15px;font-size:17px;line-height:1}
+.adv .at{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:5px}
+.adv strong{color:#fff}
+.adv[data-t="do-now"]{border-left:3px solid var(--gold);background:rgba(243,201,105,.08)}
+.adv[data-t="do-now"] .at{color:var(--gold)}
+.adv[data-t="upgrade"]{border-left:3px solid var(--accent);background:var(--accent-soft)}
+.adv[data-t="upgrade"] .at{color:var(--accent)}
+.adv[data-t="missable"]{border-left:3px solid var(--signal);background:rgba(255,106,77,.08)}
+.adv[data-t="missable"] .at{color:var(--signal)}
+.adv[data-t="warning"]{border-left:3px solid var(--signal);background:rgba(255,106,77,.06)}
+.adv[data-t="warning"] .at{color:var(--signal)}
+.adv[data-t="tip"]{border-left:3px solid var(--muted)}
+.adv[data-t="tip"] .at{color:var(--muted)}
+
+/* completionist gating */
+.comp-only{display:none}
+body.comp-on .comp-only{display:block}
+.comp-block{margin-top:22px;border:1px dashed var(--accent);border-radius:14px;padding:18px;background:var(--accent-soft)}
+.comp-block h4{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.comp-block .cc{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:14px}
+.coll{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.coll:last-child{border-bottom:none}
+.coll .box{flex:0 0 auto;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--accent);display:grid;place-items:center;color:transparent;font-size:13px;transition:.2s;margin-top:2px}
+.coll.got .box{background:var(--accent);color:#06141a}
+.coll.got .ct b{text-decoration:line-through;opacity:.6}
+.coll .ct b{font-family:var(--font-display);font-weight:600;font-size:14.5px;display:block;color:var(--text)}
+.coll .ct span{font-size:13px;color:var(--muted);line-height:1.45}
+
+.spoiler{transition:filter .3s;cursor:pointer}
+body.spoilers-safe .spoiler{filter:blur(6px);background:rgba(255,255,255,.04);border-radius:5px}
+body.spoilers-safe .spoiler.revealed{filter:none;background:none}
+body.spoilers-safe .spoiler::after{content:" (tap to reveal)";font-style:italic;color:var(--muted);font-size:.8em}
+body.spoilers-safe .spoiler.revealed::after{content:""}
+
+.aside h4{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.vid{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;margin-bottom:8px;position:relative}
+.vid .thumb{aspect-ratio:16/9;position:relative;display:grid;place-items:center;background-size:cover;background-position:center;cursor:pointer}
+.vid .thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,transparent,rgba(0,0,0,.55))}
+.vid .play{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.4);z-index:2;transition:.25s}
+.vid .thumb:hover .play{background:var(--accent);border-color:var(--accent);transform:scale(1.08)}
+.vid .thumb:hover .play svg{fill:#06141a}
+.vid .play svg{fill:#fff;margin-left:3px}
+.vid .dur{position:absolute;bottom:8px;right:8px;z-index:2;font-family:var(--font-mono);font-size:11px;background:rgba(0,0,0,.78);padding:2px 7px;border-radius:5px}
+.vmeta{padding:11px 4px 0}
+.vmeta .creator{font-family:var(--font-mono);font-size:11px;color:var(--accent)}
+.vmeta .vt{font-family:var(--font-display);font-weight:600;font-size:14px;margin-top:4px;line-height:1.25}
+.lazy-note{font-family:var(--font-mono);font-size:10.5px;color:var(--muted-2);margin-top:10px}
+
+.spot{position:fixed;inset:0;z-index:1000;display:none;align-items:flex-start;justify-content:center;padding-top:14vh;background:rgba(4,6,10,.6);backdrop-filter:blur(8px)}
+.spot.open{display:flex;animation:fade .25s ease}
+.spot-box{width:min(620px,92vw);background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.spot-in{display:flex;align-items:center;gap:14px;padding:20px 22px;border-bottom:1px solid var(--line)}
+.spot-in svg{flex:0 0 auto;fill:var(--muted)}
+.spot-in input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--font-display);font-size:20px;font-weight:600}
+.spot-in input::placeholder{color:var(--muted-2)}
+.spot-in .esc{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.spot-results{max-height:50vh;overflow-y:auto;padding:8px}
+.sr{display:flex;align-items:center;gap:14px;padding:13px 15px;border-radius:11px;cursor:pointer;transition:.15s}
+.sr:hover,.sr.sel{background:var(--accent-soft)}
+.sr .ic{width:38px;height:38px;border-radius:9px;flex:0 0 auto;display:grid;place-items:center;background:rgba(255,255,255,.05);font-size:18px}
+.sr .srt{flex:1;min-width:0}.sr .srt b{font-family:var(--font-display);font-weight:600;font-size:15px;display:block}.sr .srt span{font-size:12.5px;color:var(--muted)}
+.sr .kind{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line);padding:3px 8px;border-radius:6px}
+.spot-empty{padding:34px;text-align:center;color:var(--muted);font-style:italic}
+.footer{border-top:1px solid var(--line);padding:40px clamp(18px,4vw,46px);color:var(--muted-2);font-size:13px;text-align:center;font-family:var(--font-mono);letter-spacing:.04em}
+.footer b{color:var(--accent)}
+</style>
+</head>
+<body class="spoilers-safe">
+
+<div class="topbar">
+  <div class="brand" onclick="go('home')"><span class="mark">V</span><span>Visual<b>Walkthroughs</b></span></div>
+  <nav class="nav-links"><span onclick="go('home')">Browse</span><span onclick="go('franchise')">Franchises</span><span>Latest</span><span>Creators</span></nav>
+  <button class="spotlight-trigger" onclick="openSpot()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
+    <span class="lbl">Search any game or section…</span><span class="kbd">⌘K</span>
+  </button>
+</div>
+
+<!-- HOME -->
+<section class="view active" id="view-home">
+  <div class="hero">
+    <div class="hero-tag">A fan-built guide engine · 2026</div>
+    <h1>Stop scrolling broken pages. <em>Explore the game.</em></h1>
+    <p>Every walkthrough lives on <span class="x">one page you open by progress</span> — clear written steps, smart "do this now" advice, a completionist layer, and the best creator video embedded right where you're stuck.</p>
+  </div>
+  <div class="wrap">
+    <div class="row">
+      <div class="row-head"><h2>Featured franchises</h2><span class="pill">curated</span><span class="more">see all →</span></div>
+      <div class="rail">
+        <div class="card" onclick="go('franchise')"><div class="art" style="background:linear-gradient(160deg,#1b5e52,#0a3b3f 60%,#06222a)"></div><span class="badge">12 guides</span><div class="meta"><div class="franchise">Nintendo</div><div class="title">The Legend of&nbsp;Zelda</div><div class="sub">Hyrule, one shrine at a time</div></div></div>
+        <div class="card" onclick="toast('Demo: only Zelda is wired up')"><div class="art" style="background:linear-gradient(160deg,#3a2a5e,#1a1030 70%)"></div><span class="badge">8 guides</span><div class="meta"><div class="franchise">FromSoftware</div><div class="title">Elden Ring</div><div class="sub">The Lands Between</div></div></div>
+        <div class="card" onclick="toast('Demo: only Zelda is wired up')"><div class="art" style="background:linear-gradient(160deg,#5e2f1b,#301508 70%)"></div><span class="badge">5 guides</span><div class="meta"><div class="franchise">Rockstar</div><div class="title">Red Dead</div><div class="sub">An honest day's outlawing</div></div></div>
+        <div class="card" onclick="toast('Demo: only Zelda is wired up')"><div class="art" style="background:linear-gradient(160deg,#1b3a5e,#0a1a30 70%)"></div><span class="badge">9 guides</span><div class="meta"><div class="franchise">Capcom</div><div class="title">Monster Hunter</div><div class="sub">Bring a whetstone</div></div></div>
+        <div class="card" onclick="toast('Demo: only Zelda is wired up')"><div class="art" style="background:linear-gradient(160deg,#4a4a1b,#26260a 70%)"></div><span class="badge">6 guides</span><div class="meta"><div class="franchise">Game Freak</div><div class="title">Pokémon</div><div class="sub">Gotta document 'em all</div></div></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-head"><h2>Freshly published</h2><span class="pill">this week</span><span class="more">all updates →</span></div>
+      <div class="rail">
+        <div class="ncard" onclick="go('game')"><div class="art" style="background:linear-gradient(120deg,#0a5b63,#123c44)"></div><div class="body"><div class="tag">New · Zelda</div><h3>The Wind Waker HD — full golden-path guide</h3><p>Outset to Ganondorf, with timing tips & a completionist layer.</p></div></div>
+        <div class="ncard" onclick="toast('Demo article')"><div class="art" style="background:linear-gradient(120deg,#3a2a5e,#1a1030)"></div><div class="body"><div class="tag">Updated · Elden Ring</div><h3>Shadow of the Erdtree — boss order rework</h3><p>Re-sequenced for the latest balance patch.</p></div></div>
+        <div class="ncard" onclick="toast('Demo article')"><div class="art" style="background:linear-gradient(120deg,#5e2f1b,#301508)"></div><div class="body"><div class="tag">Guide · Metroid</div><h3>Prime 4 — 100% scan checklist</h3><p>Every log entry, region by region.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRANCHISE -->
+<section class="view" id="view-franchise">
+  <div class="fr-hero">
+    <div class="bg" style="background:radial-gradient(120% 90% at 75% -10%,#1f6b5b 0%,transparent 55%),linear-gradient(160deg,#0d3a33,#06140f)"></div>
+    <div class="inner">
+      <div class="crumb"><b onclick="go('home')">Browse</b> <span>/</span> <span style="color:var(--text)">The Legend of Zelda</span></div>
+      <h1>The Legend of Zelda</h1>
+      <p>Thirty-nine years, one boy in a green tunic, and a great deal of getting lost in dungeons. Pick a game — its guide opens as one living page.</p>
+    </div>
+  </div>
+  <div class="wrap"><div class="game-grid">
+    <div class="gtile" onclick="go('game')"><div class="art" style="background:linear-gradient(160deg,#2bb4ad,#0a5b63 60%,#063b46)"></div><span class="ready">Guide ready</span><div class="meta"><div class="yr">2013 · 2003</div><div class="title">The Wind Waker HD</div><div class="console">Wii&nbsp;U · GameCube</div></div></div>
+    <div class="gtile soon"><div class="art" style="background:linear-gradient(160deg,#7a9a3a,#2f4012)"></div><div class="meta"><div class="yr">2017</div><div class="title">Breath of the Wild</div><div class="console">Switch · Wii&nbsp;U</div></div></div>
+    <div class="gtile soon"><div class="art" style="background:linear-gradient(160deg,#c98a3a,#5e3a12)"></div><div class="meta"><div class="yr">2023</div><div class="title">Tears of the Kingdom</div><div class="console">Switch</div></div></div>
+    <div class="gtile soon"><div class="art" style="background:linear-gradient(160deg,#3a6a9a,#122f50)"></div><div class="meta"><div class="yr">1998</div><div class="title">Ocarina of Time</div><div class="console">N64</div></div></div>
+    <div class="gtile soon"><div class="art" style="background:linear-gradient(160deg,#7a3a9a,#3a1250)"></div><div class="meta"><div class="yr">2000</div><div class="title">Majora's Mask</div><div class="console">N64</div></div></div>
+    <div class="gtile soon"><div class="art" style="background:linear-gradient(160deg,#9a7a3a,#503a12)"></div><div class="meta"><div class="yr">2019</div><div class="title">Link's Awakening</div><div class="console">Switch</div></div></div>
+  </div></div>
+</section>
+
+<!-- GAME -->
+<section class="view" id="view-game">
+  <div class="ww-hero">
+    <div class="sea"></div>
+    <div class="inner">
+      <div class="crumb" style="padding-top:6px"><b onclick="go('home')">Browse</b> <span>/</span> <b onclick="go('franchise')">Zelda</b> <span>/</span> <span style="color:var(--text)">The Wind Waker HD</span></div>
+      <div class="ww-top">
+        <div class="ww-cover"><div class="tri"></div><small>THE WIND WAKER</small></div>
+        <div class="ww-info">
+          <div class="badges"><span class="b hot">Fan guide</span><span class="b">Wii U / GameCube</span><span class="b">Golden path + completionist</span><span class="b">Spoiler-safe</span></div>
+          <h1>The Wind Waker HD</h1>
+          <p class="lede">The whole adventure on one page. Open a section as you reach it — and flip on <strong>Completionist mode</strong> to layer in upgrade timing, easy Pieces of Heart, and 100% checklists.</p>
+        </div>
+      </div>
+      <div class="ctrls">
+        <div class="progress-wrap"><div class="lab"><span>Golden-path progress</span><b id="prog-txt">0 / 8 sections</b></div><div class="bar"><i id="prog-bar"></i></div></div>
+        <button class="toggle on" id="spoiler-toggle" onclick="toggleSpoilers()"><span class="dot"></span><span id="spoiler-label">Spoiler-safe: ON</span></button>
+        <button class="toggle" id="comp-toggle" onclick="toggleComp()"><span class="dot"></span><span id="comp-label">Completionist: OFF</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="sections"><div class="path-label">The Great Sea · main story</div><div id="sec-list"></div></div></div>
+</section>
+
+<div class="footer">A concept by you, prototyped with <b>Claude</b> · videos embed real creators via YouTube's player · written content is original</div>
+
+<div class="spot" id="spot" onclick="if(event.target===this)closeSpot()">
+  <div class="spot-box">
+    <div class="spot-in"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg><input id="spot-input" placeholder="Jump to a game or section…" autocomplete="off"><span class="esc">esc</span></div>
+    <div class="spot-results" id="spot-results"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- content model: golden-path steps + typed advisories + completionist collectibles + real video ---------- */
+const SECTIONS=[
+{
+ stage:"Prologue", title:"Outset Island", chips:["Telescope","First sail"],
+ video:{id:"YAa9XNZotXM",creator:"IGN Guides",vt:"Intro & Outset Island — full walkthrough",dur:"18:42"},
+ steps:[
+  `Talk to <strong>Aryll</strong> for your telescope, then watch a giant bird drop a girl into the forest.`,
+  `Visit <strong>Orca</strong> below for a sword lesson, head up the forest path, and rescue <strong>Tetra</strong>.`,
+  `The bird snatches Aryll instead — board Tetra's pirate ship to give chase.`
+ ],
+ advisories:[
+  {t:"do-now",title:"Bank Orca's 500-hit reward early",body:`Land <strong>500 cumulative sword hits</strong> on Orca across visits for a <strong>Piece of Heart</strong>. Chip away now while it's free — it doubles as combat practice you'll want anyway.`},
+  {t:"tip",title:"Telescope the bird",body:`Watching through the telescope triggers the cutscene that starts the game. If nothing happens, you haven't zoomed in on it yet.`}
+ ],
+ collectibles:[
+  {b:"Piece of Heart — Orca (500 hits)",s:"Spar with Orca over multiple visits. Easiest very-early heart in the game."},
+  {b:"Piece of Heart — Outset cliff cave",s:"Reachable later once you can return with the right tools. Note it now."}
+ ]
+},
+{
+ stage:"Chapter 1", title:"The Forsaken Fortress", chips:["Stealth","No sword"],
+ video:{id:"9l-J2fCK6Sg",creator:"ZeldaMaster",vt:"Forsaken Fortress & Windfall — Part 2",dur:"24:05"},
+ steps:[
+  `You're flung in <strong>weaponless</strong>. Grab a <strong>barrel</strong> and wear it — guards ignore a barrel that holds still when searchlights sweep.`,
+  `Move only in the dark gaps between rotating lights. Caught = back to the start cell.`,
+  `Free the captured girls, reach Aryll up top — then <span class="spoiler">the giant bird hurls you out to sea and the talking boat, the King of Red Lions, rescues you</span>.`
+ ],
+ advisories:[
+  {t:"warning",title:"There is no sword to find here",body:`Don't waste time hunting for a weapon — the whole chapter is built around <strong>avoidance</strong>, not combat. Patience beats speed.`},
+  {t:"tip",title:"This is a 'watch it' section",body:`Searchlight timing is much easier to copy than to read. If you're getting caught, the embedded video shows the exact safe route.`}
+ ],
+ collectibles:[]
+},
+{
+ stage:"Chapter 2", title:"Dragon Roost — Din's Pearl", chips:["Grappling Hook","Boss: Gohma"],
+ video:{id:"HR74mK9fuVU",creator:"ZeldaMaster",vt:"Dragon Roost Cavern + Gohma — Part 4",dur:"27:31"},
+ steps:[
+  `Deliver the letter, help <strong>Prince Komali</strong> find his courage, and grab the <strong>Grappling Hook</strong> inside the cavern.`,
+  `Use bomb-flowers and the hook to climb the lava chambers to Valoo's tail.`,
+  `Boss — <span class="spoiler"><strong>Gohma</strong></span>: grapple the ceiling support to drop rock on its head, then strike the eye. Repeat ×3.`
+ ],
+ advisories:[
+  {t:"missable",title:"Photograph Gohma if you have the Deluxe Picto Box",body:`If you've already picked up the camera, snap Gohma here for the <strong>Nintendo Gallery</strong>. It's far more convenient than the late-game alternative. No camera yet? Skip it — you can return.`},
+  {t:"tip",title:"The Grappling Hook also steals",body:`It pulls rupees and items off enemies all game. Worth remembering when you're short on cash for chart deciphering later.`}
+ ],
+ collectibles:[
+  {b:"Heart Container — Gohma",s:"Automatic on boss clear."},
+  {b:"Piece of Heart — Dragon Roost paths",s:"A couple are tucked around the island's cliffs and the postman's route."}
+ ]
+},
+{
+ stage:"Chapter 3", title:"Forbidden Woods — Farore's Pearl", chips:["Boomerang","Boss: Kalle Demos"],
+ video:{id:"thiS_DScEG8",creator:"100% Walkthrough",vt:"Forbidden Woods & Kalle Demos — Part 7",dur:"29:18"},
+ steps:[
+  `The dungeon item is the <strong>Boomerang</strong> — it locks onto multiple targets at once, which several puzzles demand.`,
+  `Ride Deku flowers across gaps to reach high platforms and escort the seedling sage <strong>Makar</strong>.`,
+  `Boss — <span class="spoiler"><strong>Kalle Demos</strong></span>: boomerang the six vines holding it up, then slash the exposed bulb.`
+ ],
+ advisories:[
+  {t:"missable",title:"Grab the mailbox Piece of Heart on the way out",body:`After the dungeon, the King of Red Lions' <strong>postbox is shaking</strong> — a letter delivers a free <strong>Piece of Heart</strong>. Easy to sail straight past forever.`}
+ ],
+ collectibles:[
+  {b:"Heart Container — Kalle Demos",s:"Automatic on boss clear."},
+  {b:"Piece of Heart — Forest Haven letter",s:"Check the shaking postbox after the dungeon."}
+ ]
+},
+{
+ stage:"Chapter 4", title:"Greatfish, Jabun & Nayru's Pearl", chips:["Bombs unlocked","Free sailing"],
+ video:{id:"KB9Vq4iGtPM",creator:"IGN Guides",vt:"Pearls, Jabun & the road onward",dur:"21:50"},
+ steps:[
+  `The story turns hard: <span class="spoiler">Greatfish Isle is destroyed and Ganondorf is now hunting you directly</span>.`,
+  `Return to the pirates, gain <strong>Bombs</strong>, and blast open Jabun's cave behind Outset for <strong>Nayru's Pearl</strong>.`,
+  `Place all three Pearls on their statues to raise the <strong>Tower of the Gods</strong> from the sea.`
+ ],
+ advisories:[
+  {t:"do-now",title:"This is the upgrade window — you can finally sail freely AND you have Bombs",body:`Several permanent upgrades open up the moment you have bombs and a cannon. Detouring now makes the entire back half of the game easier. Flip on <strong>Completionist mode</strong> for the exact list.`},
+  {t:"upgrade",title:"Great Fairy upgrades (spread across the map's corners)",body:`The corner <strong>Great Fairies</strong> permanently upgrade your <strong>Bomb Bag</strong> (30→60→99) and your <strong>Wallet</strong> (1,000→5,000 rupees). Some of their caves must be <strong>bombed open</strong>, which is why you couldn't reach them earlier. The <strong>Quiver</strong> upgrade needs the Bow — that arrives next chapter.`},
+  {t:"tip",title:"Why the bigger wallet matters",body:`Late game you'll pay <strong>Tingle</strong> to decipher Triforce charts — that costs serious rupees. Grabbing the wallet upgrade now saves a painful grind later.`}
+ ],
+ collectibles:[
+  {b:"Bomb Bag upgrade ×2",s:"From Great Fairies once you can bomb their caves open. Capacity 30→60→99."},
+  {b:"Wallet upgrade (→5,000 rupees)",s:"Critical for Tingle's chart-deciphering fees endgame."},
+  {b:"Easy Pieces of Heart while sailing",s:"Lookout platforms, submarines, and Windfall minigames are the lowest-effort hearts. Bolster your health before the temples."}
+ ]
+},
+{
+ stage:"Chapter 5", title:"Tower of the Gods", chips:["Bow","Boss: Gohdan"],
+ video:{id:"8bYW2R_ZqC8",creator:"ZeldaMaster",vt:"Tower of the Gods walkthrough",dur:"30:12"},
+ steps:[
+  `The dungeon item is the <strong>Bow</strong>. Many rooms use a statue you command with the <strong>Command Melody</strong>.`,
+  `Boss — <span class="spoiler"><strong>Gohdan</strong></span>: arrow both hands to stun it, arrow the nose, then drop a bomb in its mouth to end each phase.`
+ ],
+ advisories:[
+  {t:"do-now",title:"Now you have the Bow — go claim the Quiver upgrades",body:`With the Bow in hand, the remaining <strong>Great Fairies</strong> will upgrade your <strong>Quiver</strong> (arrows 30→60→99). Worth a short sailing detour before the endgame ramps up.`}
+ ],
+ collectibles:[
+  {b:"Heart Container — Gohdan",s:"Automatic on boss clear."},
+  {b:"Quiver upgrade ×2",s:"From Great Fairies, now reachable with bombs + the Bow."}
+ ]
+},
+{
+ stage:"Chapter 6", title:"Hyrule & the Master Sword", chips:["Master Sword","Big reveal"],
+ video:{id:"p71I8slrgrI",creator:"GameXplain",vt:"The Hyrule reveal & story beats",dur:"19:27"},
+ steps:[
+  `<span class="spoiler">The sea hides drowned <strong>Hyrule</strong>. You draw the Master Sword — and Tetra is revealed as <strong>Princess Zelda</strong>.</span>`,
+  `<span class="spoiler">Ganondorf attacks; you must return to the Forsaken Fortress to rescue Zelda and Aryll.</span>`
+ ],
+ advisories:[
+  {t:"warning",title:"Your Master Sword starts powerless",body:`Restoring its power — by awakening two new sages — is the spine of the back half of the game. Don't expect it to one-shot anything yet.`},
+  {t:"tip",title:"Stock up before you commit",body:`Top off arrows, bombs, potions and Fairies in bottles now. The next stretch is long and you won't want to sail back mid-temple.`}
+ ],
+ collectibles:[]
+},
+{
+ stage:"Endgame", title:"Forsaken Fortress II, the Temples & Ganon", chips:["Triforce hunt","Final boss"],
+ video:{id:"8P6PkHwU-p4",creator:"GameXplain",vt:"All Ganon forms + ending",dur:"15:09"},
+ steps:[
+  `Return to the Fortress and beat the <span class="spoiler"><strong>Helmaroc King</strong></span> (Skull Hammer cracks the mask).`,
+  `Awaken the sages <strong>Medli</strong> (Earth Temple) and <strong>Makar</strong> (Wind Temple) to restore the Master Sword.`,
+  `Gather the eight <strong>Triforce of Courage</strong> shards using deciphered charts, then storm <span class="spoiler"><strong>Ganon's Tower</strong></span> for the finale: parry + Light Arrows, ending with the sword to the forehead.`
+ ],
+ advisories:[
+  {t:"do-now",title:"Decipher charts in bulk with the rupees you saved",body:`This is where the early <strong>wallet upgrade</strong> pays off — Tingle's fees for the Triforce charts add up fast. Batch them so you're not sailing back and forth.`},
+  {t:"missable",title:"Last call for the Nintendo Gallery",body:`If you're chasing 100%, photograph any remaining figures with the <strong>Deluxe Picto Box</strong> before the point of no return — several enemies and bosses don't reappear.`}
+ ],
+ collectibles:[
+  {b:"8 × Triforce of Courage shards",s:"Charts → Tingle deciphers → salvage from the sea floor."},
+  {b:"Heart Containers — Jalhalla & Molgera",s:"Earth and Wind Temple bosses."},
+  {b:"Nintendo Gallery figurines",s:"The true completionist grind — every character and enemy photographed."}
+ ]
+}
+];
+
+/* ---------- render ---------- */
+const done=new Set();
+function chip(t){return `<span class="chip">${t}</span>`}
+function renderSections(){
+  document.getElementById('sec-list').innerHTML=SECTIONS.map((s,i)=>{
+    const adv=s.advisories.map(a=>`<div class="adv" data-t="${a.t}"><span class="ico">${({'do-now':'★','upgrade':'⬆','missable':'⚠','warning':'⚠','tip':'💡'})[a.t]}</span><span class="at">${({'do-now':'Do this now','upgrade':'Permanent upgrade','missable':'Missable','warning':'Heads up','tip':'Tip'})[a.t]}</span><strong>${a.title}.</strong> ${a.body}</div>`).join('');
+    const coll=s.collectibles.length?`<div class="comp-block comp-only"><h4>Completionist · this area</h4><div class="cc" id="cc-${i}">0 / ${s.collectibles.length} collected</div>${s.collectibles.map((c,j)=>`<div class="coll" onclick="toggleColl(${i},${j})" id="coll-${i}-${j}"><div class="box">✓</div><div class="ct"><b>${c.b}</b><span>${c.s}</span></div></div>`).join('')}</div>`:'';
+    return `<div class="sec" id="sec-${i}">
+      <div class="sec-head" onclick="toggleSec(${i})">
+        <div class="num">${i+1}</div>
+        <div class="check" title="Mark section complete" onclick="event.stopPropagation();markDone(${i})">✓</div>
+        <div class="htext"><div class="stage">${s.stage}</div><h3>${s.title}</h3><div class="chips">${s.chips.map(chip).join('')}</div></div>
+        <div class="chev">▾</div>
+      </div>
+      <div class="sec-body"><div class="inner"><div class="sec-content">
+        <div class="prose" id="prose-${i}">
+          <button class="tts" onclick="speak(${i},event)">▶ Listen to this section</button>
+          <h4>Golden path</h4>
+          <ol>${s.steps.map(x=>`<li>${x}</li>`).join('')}</ol>
+          ${adv}
+          ${coll}
+        </div>
+        <div class="aside">
+          <h4>Watch it instead</h4>
+          <div class="vid" data-id="${s.video.id}">
+            <div class="thumb" onclick="playVid(this)" style="background-image:url(https://i.ytimg.com/vi/${s.video.id}/hqdefault.jpg)">
+              <span class="dur">${s.video.dur}</span>
+              <div class="play"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+            <div class="vmeta"><div class="creator">▶ ${s.video.creator}</div><div class="vt">${s.video.vt}</div></div>
+          </div>
+          <div class="lazy-note">▲ thumbnail from YouTube's CDN · the player loads only when you press play</div>
+        </div>
+      </div></div></div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSec(i){
+  const el=document.getElementById('sec-'+i);el.classList.toggle('open');
+  el.querySelectorAll('.spoiler').forEach(sp=>{if(!sp.dataset.bound){sp.dataset.bound=1;sp.onclick=e=>{e.stopPropagation();sp.classList.add('revealed')}}});
+}
+function markDone(i){
+  const el=document.getElementById('sec-'+i);
+  done.has(i)?(done.delete(i),el.classList.remove('done')):(done.add(i),el.classList.add('done'));
+  const n=done.size,t=SECTIONS.length;
+  document.getElementById('prog-txt').textContent=`${n} / ${t} sections`;
+  document.getElementById('prog-bar').style.width=(n/t*100)+'%';
+}
+const collGot={};
+function toggleColl(i,j){
+  const el=document.getElementById(`coll-${i}-${j}`);el.classList.toggle('got');
+  collGot[i]=collGot[i]||new Set();el.classList.contains('got')?collGot[i].add(j):collGot[i].delete(j);
+  document.getElementById('cc-'+i).textContent=`${collGot[i].size} / ${SECTIONS[i].collectibles.length} collected`;
+}
+
+/* real lazy YouTube embed — iframe created only on click */
+function playVid(thumb){
+  const card=thumb.closest('.vid'),id=card.dataset.id;
+  const f=document.createElement('iframe');
+  f.src=`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+  f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.setAttribute('allowfullscreen','');
+  f.style.cssText='width:100%;aspect-ratio:16/9;border:0;display:block;border-radius:14px';
+  thumb.replaceWith(f);
+}
+
+/* TTS with best available voice */
+let voices=[],speaking=null;
+function loadVoices(){voices=speechSynthesis.getVoices()}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
+function pickVoice(){
+  const pref=['Google UK English Female','Google US English','Samantha','Microsoft Aria','Daniel','Natural'];
+  for(const p of pref){const v=voices.find(v=>v.name.includes(p));if(v)return v}
+  return voices.find(v=>v.lang&&v.lang.startsWith('en'))||voices[0];
+}
+function speak(i,e){
+  e.stopPropagation();const btn=e.currentTarget;
+  if(!('speechSynthesis'in window)){toast('Your browser has no speech engine');return}
+  if(speaking===i){speechSynthesis.cancel();speaking=null;resetTTS();return}
+  speechSynthesis.cancel();resetTTS();
+  const text=document.getElementById('prose-'+i).innerText.replace('▶ Listen to this section','').replace(/\(tap to reveal\)/g,'');
+  const u=new SpeechSynthesisUtterance(text);const v=pickVoice();if(v)u.voice=v;
+  u.rate=.97;u.pitch=1.02;u.onend=()=>{speaking=null;resetTTS()};
+  speaking=i;btn.classList.add('playing');btn.textContent='■ Stop';speechSynthesis.speak(u);
+}
+function resetTTS(){document.querySelectorAll('.tts').forEach(b=>{b.classList.remove('playing');b.textContent='▶ Listen to this section'})}
+
+function toggleSpoilers(){
+  document.body.classList.toggle('spoilers-safe');
+  const on=document.body.classList.contains('spoilers-safe');
+  document.getElementById('spoiler-toggle').classList.toggle('on',on);
+  document.getElementById('spoiler-label').textContent='Spoiler-safe: '+(on?'ON':'OFF');
+}
+function toggleComp(){
+  document.body.classList.toggle('comp-on');
+  const on=document.body.classList.contains('comp-on');
+  document.getElementById('comp-toggle').classList.toggle('on',on);
+  document.getElementById('comp-label').textContent='Completionist: '+(on?'ON':'OFF');
+  if(on)toast('Completionist layer on — upgrade timing & 100% checklists now showing');
+}
+
+function go(view){
+  if('speechSynthesis'in window)speechSynthesis.cancel();speaking=null;resetTTS();
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.body.classList.remove('theme-zelda','theme-ww');
+  if(view==='franchise')document.body.classList.add('theme-zelda');
+  if(view==='game')document.body.classList.add('theme-ww');
+  window.scrollTo({top:0,behavior:'instant'});closeSpot();
+}
+
+/* spotlight */
+const INDEX=[
+  {t:'The Legend of Zelda',s:'Franchise · 12 guides',k:'franchise',ic:'🗡️',go:'franchise'},
+  {t:'The Wind Waker HD',s:'Wii U / GameCube · full guide',k:'game',ic:'⛵',go:'game'},
+  ...SECTIONS.map((s,i)=>({t:s.title,s:'Wind Waker · '+s.stage,k:'section',ic:'📍',go:'game',sec:i}))
+];
+let spotSel=0,spotMatches=[];
+function openSpot(){document.getElementById('spot').classList.add('open');const inp=document.getElementById('spot-input');inp.value='';inp.focus();renderSpot('')}
+function closeSpot(){document.getElementById('spot').classList.remove('open')}
+function renderSpot(q){
+  q=q.toLowerCase().trim();
+  spotMatches=q?INDEX.filter(x=>(x.t+' '+x.s).toLowerCase().includes(q)):INDEX;spotSel=0;
+  const box=document.getElementById('spot-results');
+  if(!spotMatches.length){box.innerHTML='<div class="spot-empty">No matches. Try “fortress”, “upgrade”, or “pearl”.</div>';return}
+  box.innerHTML=spotMatches.map((m,i)=>`<div class="sr ${i===0?'sel':''}" data-i="${i}" onclick="pickSpot(${i})"><div class="ic">${m.ic}</div><div class="srt"><b>${m.t}</b><span>${m.s}</span></div><div class="kind">${m.k}</div></div>`).join('');
+}
+function pickSpot(i){const m=spotMatches[i];if(!m)return;go(m.go);if(m.sec!==undefined){closeSpot();setTimeout(()=>{const el=document.getElementById('sec-'+m.sec);if(!el.classList.contains('open'))toggleSec(m.sec);el.scrollIntoView({behavior:'smooth',block:'center'})},120)}}
+document.getElementById('spot-input').addEventListener('input',e=>renderSpot(e.target.value));
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSpot()}
+  if(e.key==='Escape')closeSpot();
+  if(document.getElementById('spot').classList.contains('open')){
+    if(e.key==='ArrowDown'){e.preventDefault();spotSel=Math.min(spotSel+1,spotMatches.length-1);hiSpot()}
+    if(e.key==='ArrowUp'){e.preventDefault();spotSel=Math.max(spotSel-1,0);hiSpot()}
+    if(e.key==='Enter')pickSpot(spotSel);
+  }
+});
+function hiSpot(){document.querySelectorAll('.sr').forEach((el,i)=>el.classList.toggle('sel',i===spotSel));const s=document.querySelector('.sr.sel');s&&s.scrollIntoView({block:'nearest'})}
+
+function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:2000;background:var(--panel);border:1px solid var(--accent);color:var(--text);padding:13px 20px;border-radius:12px;font-family:var(--font-display);font-weight:600;font-size:14px;box-shadow:var(--shadow);transition:opacity .3s;max-width:90vw;text-align:center';document.body.appendChild(t)}t.textContent=msg;t.style.opacity='1';clearTimeout(t._x);t._x=setTimeout(()=>t.style.opacity='0',2600)}
+
+renderSections();
+</script>
+</body>
+</html>

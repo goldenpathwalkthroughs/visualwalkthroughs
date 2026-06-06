@@ -1,0 +1,339 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const game = (await getCollection('games')).find(g => g.data.slug === 'wind-waker-hd');
+if (!game) throw new Error('Game not found');
+
+const { title, lede, platforms, sections, theme, franchiseSlug } = game.data;
+
+const advLabel: Record<string, string> = {
+  'do-now': 'Do this now',
+  upgrade: 'Permanent upgrade',
+  missable: 'Missable',
+  warning: 'Heads up',
+  tip: 'Tip',
+};
+const advIcon: Record<string, string> = {
+  'do-now': '★',
+  upgrade: '⬆',
+  missable: '⚠',
+  warning: '⚠',
+  tip: '💡',
+};
+
+const searchIndex = [
+  {
+    t: title,
+    s: `${platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '⛵',
+    href: `/zelda/wind-waker-hd/`,
+  },
+  ...sections.map((s, i) => ({
+    t: s.title,
+    s: `Wind Waker · ${s.stage}`,
+    k: 'section',
+    ic: '📍',
+    href: `/zelda/wind-waker-hd/`,
+    sec: i,
+  })),
+];
+
+// Serialise sections for client-side JS (progress/collectibles/TTS)
+const sectionsJson = JSON.stringify(sections.map((s, i) => ({
+  i,
+  collectCount: s.collectibles.length,
+})));
+---
+
+<Base
+  title={title}
+  description={lede}
+  bodyClass={theme?.bodyClass}
+  searchIndex={searchIndex}
+>
+  <div class="ww-hero">
+    <div class="sea"></div>
+    <div class="inner">
+      <div class="crumb" style="padding-top:6px">
+        <a href="/">Browse</a>
+        <span>/</span>
+        <a href="/zelda/">Zelda</a>
+        <span>/</span>
+        <span style="color:var(--text)">{title}</span>
+      </div>
+      <div class="ww-top">
+        <div class="ww-cover">
+          <div class="tri"></div>
+          <small>THE WIND WAKER</small>
+        </div>
+        <div class="ww-info">
+          <div class="badges">
+            <span class="b hot">Fan guide</span>
+            <span class="b">{platforms.join(' / ')}</span>
+            <span class="b">Golden path + completionist</span>
+            <span class="b">Spoiler-safe</span>
+          </div>
+          <h1>{title}</h1>
+          <p class="lede">{lede}</p>
+        </div>
+      </div>
+      <div class="ctrls">
+        <div class="progress-wrap">
+          <div class="lab">
+            <span>Golden-path progress</span>
+            <b id="prog-txt">0 / {sections.length} sections</b>
+          </div>
+          <div class="bar"><i id="prog-bar"></i></div>
+        </div>
+        <button class="toggle on" id="spoiler-toggle" onclick="toggleSpoilers()">
+          <span class="dot"></span>
+          <span id="spoiler-label">Spoiler-safe: ON</span>
+        </button>
+        <button class="toggle" id="comp-toggle" onclick="toggleComp()">
+          <span class="dot"></span>
+          <span id="comp-label">Completionist: OFF</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="sections">
+      <div class="path-label">The Great Sea · main story</div>
+
+      {sections.map((sec, i) => (
+        <div class="sec" id={`sec-${i}`}>
+          <div class="sec-head" onclick={`toggleSec(${i})`}>
+            <div class="num">{i + 1}</div>
+            <button
+              class="check"
+              title="Mark section complete"
+              onclick={`event.stopPropagation();markDone(${i})`}
+              aria-label={`Mark "${sec.title}" complete`}
+            >✓</button>
+            <div class="htext">
+              <div class="stage">{sec.stage}</div>
+              <h3>{sec.title}</h3>
+              <div class="chips">
+                {sec.chips.map(c => <span class="chip">{c}</span>)}
+              </div>
+            </div>
+            <div class="chev" aria-hidden="true">▾</div>
+          </div>
+
+          <div class="sec-body">
+            <div class="inner">
+              <div class="sec-content">
+                <!-- Left: prose -->
+                <div class="prose" id={`prose-${i}`}>
+                  <button class="tts" onclick={`speak(${i},event)`} aria-label="Listen to this section">▶ Listen to this section</button>
+                  <h4>Golden path</h4>
+                  <ol>
+                    {sec.steps.map(step => (
+                      <li set:html={step} />
+                    ))}
+                  </ol>
+
+                  {sec.advisories.filter(a => !a.completionistOnly).map(a => (
+                    <div class="adv" data-t={a.type}>
+                      <span class="ico" aria-hidden="true">{advIcon[a.type]}</span>
+                      <span class="at">{advLabel[a.type]}</span>
+                      <strong>{a.title}.</strong> <span set:html={a.body} />
+                    </div>
+                  ))}
+
+                  {sec.advisories.filter(a => a.completionistOnly).map(a => (
+                    <div class="adv comp-only" data-t={a.type}>
+                      <span class="ico" aria-hidden="true">{advIcon[a.type]}</span>
+                      <span class="at">{advLabel[a.type]}</span>
+                      <strong>{a.title}.</strong> <span set:html={a.body} />
+                    </div>
+                  ))}
+
+                  {sec.collectibles.length > 0 && (
+                    <div class="comp-block comp-only">
+                      <h4>Completionist · this area</h4>
+                      <div class="cc" id={`cc-${i}`}>0 / {sec.collectibles.length} collected</div>
+                      {sec.collectibles.map((c, j) => (
+                        <div class="coll" id={`coll-${i}-${j}`} onclick={`toggleColl(${i},${j})`} role="checkbox" aria-checked="false" tabindex="0">
+                          <div class="box" aria-hidden="true">✓</div>
+                          <div class="ct">
+                            <b>{c.label}</b>
+                            <span>{c.note}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <!-- Right: video -->
+                <div class="aside">
+                  <h4>Watch it instead</h4>
+                  <div class="vid" data-id={sec.video.id}>
+                    <div
+                      class="thumb"
+                      onclick="playVid(this)"
+                      style={`background-image:url(https://i.ytimg.com/vi/${sec.video.id}/hqdefault.jpg)`}
+                      role="button"
+                      aria-label={`Play: ${sec.video.title}`}
+                      tabindex="0"
+                    >
+                      <span class="dur">{sec.video.durationLabel}</span>
+                      <div class="play" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="vmeta">
+                      <div class="creator">▶ {sec.video.creator}</div>
+                      <div class="vt">{sec.video.title}</div>
+                    </div>
+                  </div>
+                  <p class="lazy-note">▲ thumbnail from YouTube's CDN · the player loads only when you press play</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<script define:vars={{ sectionsJson, totalSections: sections.length }}>
+/* ── Section data (progress + collectibles) ── */
+const SECS = JSON.parse(sectionsJson);
+const done = new Set();
+const collGot = {};
+
+/* Expose interactive functions globally so inline onclick attributes work */
+window.toggleSec = toggleSec;
+window.markDone = markDone;
+window.toggleColl = toggleColl;
+window.playVid = playVid;
+window.speak = speak;
+window.toggleSpoilers = toggleSpoilers;
+window.toggleComp = toggleComp;
+
+/* ── Section expand/collapse ── */
+function toggleSec(i) {
+  const el = document.getElementById('sec-' + i);
+  el.classList.toggle('open');
+  // Bind spoiler reveals on first open
+  el.querySelectorAll('.spoiler').forEach(sp => {
+    if (!sp.dataset.bound) {
+      sp.dataset.bound = '1';
+      sp.addEventListener('click', e => { e.stopPropagation(); sp.classList.add('revealed'); });
+    }
+  });
+}
+
+/* ── Mark section done ── */
+function markDone(i) {
+  const el = document.getElementById('sec-' + i);
+  if (done.has(i)) { done.delete(i); el.classList.remove('done'); }
+  else { done.add(i); el.classList.add('done'); }
+  const n = done.size;
+  document.getElementById('prog-txt').textContent = `${n} / ${totalSections} sections`;
+  document.getElementById('prog-bar').style.width = (n / totalSections * 100) + '%';
+}
+
+/* ── Collectible toggle ── */
+function toggleColl(i, j) {
+  const el = document.getElementById(`coll-${i}-${j}`);
+  el.classList.toggle('got');
+  el.setAttribute('aria-checked', String(el.classList.contains('got')));
+  collGot[i] = collGot[i] || new Set();
+  if (el.classList.contains('got')) collGot[i].add(j); else collGot[i].delete(j);
+  document.getElementById('cc-' + i).textContent =
+    `${collGot[i].size} / ${SECS[i].collectCount} collected`;
+}
+// Keyboard support for collectibles
+document.querySelectorAll('.coll').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); el.click(); }
+  });
+});
+
+/* ── Lazy YouTube embed ── */
+function playVid(thumb) {
+  const card = thumb.closest('.vid'), id = card.dataset.id;
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.setAttribute('allowfullscreen', '');
+  f.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block;border-radius:14px';
+  thumb.replaceWith(f);
+}
+// Keyboard support for video thumbnails
+document.querySelectorAll('.thumb').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); playVid(el); }
+  });
+});
+
+/* ── Browser TTS ── */
+let voices = [], speaking = null;
+function loadVoices() { voices = speechSynthesis.getVoices(); }
+if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function pickVoice() {
+  const pref = ['Google UK English Female', 'Google US English', 'Samantha', 'Microsoft Aria', 'Daniel'];
+  for (const p of pref) { const v = voices.find(v => v.name.includes(p)); if (v) return v; }
+  return voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0];
+}
+function speak(i, e) {
+  e.stopPropagation();
+  const btn = e.currentTarget;
+  if (!('speechSynthesis' in window)) { toast('Your browser has no speech engine'); return; }
+  if (speaking === i) { speechSynthesis.cancel(); speaking = null; resetTTS(); return; }
+  speechSynthesis.cancel(); resetTTS();
+  const text = document.getElementById('prose-' + i).innerText
+    .replace('▶ Listen to this section', '')
+    .replace(/\(tap to reveal\)/g, '');
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice(); if (v) u.voice = v;
+  u.rate = 0.97; u.pitch = 1.02;
+  u.onend = () => { speaking = null; resetTTS(); };
+  speaking = i;
+  btn.classList.add('playing');
+  btn.textContent = '■ Stop';
+  speechSynthesis.speak(u);
+}
+function resetTTS() {
+  document.querySelectorAll('.tts').forEach(b => {
+    b.classList.remove('playing');
+    b.textContent = '▶ Listen to this section';
+  });
+}
+
+/* ── Toggles ── */
+function toggleSpoilers() {
+  document.body.classList.toggle('spoilers-safe');
+  const on = document.body.classList.contains('spoilers-safe');
+  document.getElementById('spoiler-toggle').classList.toggle('on', on);
+  document.getElementById('spoiler-label').textContent = 'Spoiler-safe: ' + (on ? 'ON' : 'OFF');
+}
+function toggleComp() {
+  document.body.classList.toggle('comp-on');
+  const on = document.body.classList.contains('comp-on');
+  document.getElementById('comp-toggle').classList.toggle('on', on);
+  document.getElementById('comp-label').textContent = 'Completionist: ' + (on ? 'ON' : 'OFF');
+  if (on) toast('Completionist layer on — upgrade timing & 100% checklists now showing');
+}
+
+/* ── Deep-link to section (from Spotlight) ── */
+if (window.location.hash) {
+  const m = window.location.hash.match(/^#sec-(\d+)$/);
+  if (m) {
+    const el = document.getElementById('sec-' + m[1]);
+    if (el) {
+      toggleSec(Number(m[1]));
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+    }
+  }
+}
+</script>

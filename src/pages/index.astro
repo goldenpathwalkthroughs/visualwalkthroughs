@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const franchises = (await getCollection('franchises'))
+  .sort((a, b) => a.data.featureRank - b.data.featureRank);
+
+const games = (await getCollection('games'))
+  .filter(g => g.data.status === 'published')
+  .sort((a, b) => b.data.year.localeCompare(a.data.year));
+
+// Build search index for spotlight
+const searchIndex = [
+  ...franchises.map(f => ({
+    t: f.data.name,
+    s: `Franchise · ${f.data.guideCount} guide${f.data.guideCount === 1 ? '' : 's'}`,
+    k: 'franchise',
+    ic: '🗡️',
+    href: `/${f.data.slug}/`,
+  })),
+  ...games.map(g => ({
+    t: g.data.title,
+    s: `${g.data.platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '⛵',
+    href: `/${g.data.franchiseSlug}/${g.data.slug}/`,
+  })),
+  ...games.flatMap(g =>
+    g.data.sections.map((s, i) => ({
+      t: s.title,
+      s: `${g.data.title} · ${s.stage}`,
+      k: 'section',
+      ic: '📍',
+      href: `/${g.data.franchiseSlug}/${g.data.slug}/`,
+      sec: i,
+    }))
+  ),
+];
+---
+
+<Base title="Browse" searchIndex={searchIndex}>
+  <div class="hero">
+    <div class="hero-tag">A fan-built guide engine · 2026</div>
+    <h1>Stop scrolling broken pages. <em>Explore the game.</em></h1>
+    <p>Every walkthrough lives on <span class="x">one page you open by progress</span> — clear written steps, smart "do this now" advice, a completionist layer, and the best creator video embedded right where you're stuck.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="row">
+      <div class="row-head">
+        <h2>Featured franchises</h2>
+        <span class="pill">curated</span>
+      </div>
+      <div class="rail">
+        {franchises.map(f => (
+          <a href={`/${f.data.slug}/`} class="card">
+            <div class="art" style={`background:${f.data.theme.cardGradient}`}></div>
+            <span class="badge">{f.data.guideCount} guide{f.data.guideCount === 1 ? '' : 's'}</span>
+            <div class="meta">
+              <div class="franchise">{f.data.developer}</div>
+              <div class="title">{f.data.name}</div>
+              <div class="sub">{f.data.description.split('.')[0]}.</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="row" style="padding-bottom:80px">
+      <div class="row-head">
+        <h2>Freshly published</h2>
+        <span class="pill">this week</span>
+      </div>
+      <div class="rail">
+        {games.map(g => {
+          const franchise = franchises.find(f => f.data.slug === g.data.franchiseSlug);
+          return (
+            <a href={`/${g.data.franchiseSlug}/${g.data.slug}/`} class="ncard">
+              <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}></div>
+              <div class="body">
+                <div class="tag">New · {franchise?.data.name ?? g.data.franchiseSlug}</div>
+                <h3>{g.data.title} — full golden-path guide</h3>
+                <p>{g.data.lede.split('.')[0]}.</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</Base>

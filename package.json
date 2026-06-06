@@ -1,0 +1,26 @@
+{
+  "name": "visualwalkthroughs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "validate": "node scripts/validate.js",
+    "qa": "node scripts/qa.js",
+    "deploy:preview": "wrangler pages deploy dist --project-name=visualwalkthroughs",
+    "promote": "node scripts/promote.js",
+    "rollback": "node scripts/rollback.js",
+    "pipeline": "node scripts/pipeline.js"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.6.0",
+    "wrangler": "^3.93.0"
+  }
+}

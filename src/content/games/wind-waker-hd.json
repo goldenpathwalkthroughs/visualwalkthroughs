@@ -1,0 +1,372 @@
+{
+  "franchiseSlug": "zelda",
+  "title": "The Wind Waker HD",
+  "slug": "wind-waker-hd",
+  "year": "2013",
+  "platforms": ["Wii U", "GameCube"],
+  "status": "published",
+  "lede": "The whole adventure on one page. Open a section as you reach it — and flip on Completionist mode to layer in upgrade timing, easy Pieces of Heart, and 100% checklists.",
+  "theme": {
+    "ink": "#071117",
+    "ink2": "#0a1820",
+    "panel": "#0e2029",
+    "panel2": "#123040",
+    "accent": "#36c6c0",
+    "accentSoft": "rgba(54,198,192,.16)",
+    "gold": "#f3c969",
+    "signal": "#ff8a5b",
+    "line": "rgba(150,230,225,.12)",
+    "muted": "#8fb4b7",
+    "bodyClass": "theme-ww",
+    "cardGradient": "linear-gradient(160deg,#2bb4ad,#0a5b63 60%,#063b46)"
+  },
+  "coverGradient": "linear-gradient(160deg,#2bb4ad,#0a5b63 55%,#063b46)",
+  "sections": [
+    {
+      "stage": "Prologue",
+      "title": "Outset Island",
+      "order": 1,
+      "chips": ["Telescope", "First sail"],
+      "video": {
+        "provider": "youtube",
+        "id": "YAa9XNZotXM",
+        "creator": "IGN Guides",
+        "title": "Intro & Outset Island — full walkthrough",
+        "durationLabel": "18:42"
+      },
+      "steps": [
+        "Talk to <strong>Aryll</strong> for your telescope, then watch a giant bird drop a girl into the forest.",
+        "Visit <strong>Orca</strong> below for a sword lesson, head up the forest path, and rescue <strong>Tetra</strong>.",
+        "The bird snatches Aryll instead — board Tetra's pirate ship to give chase."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Bank Orca's 500-hit reward early",
+          "body": "Land <strong>500 cumulative sword hits</strong> on Orca across visits for a <strong>Piece of Heart</strong>. Chip away now while it's free — it doubles as combat practice you'll want anyway.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Telescope the bird",
+          "body": "Watching through the telescope triggers the cutscene that starts the game. If nothing happens, you haven't zoomed in on it yet.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Piece of Heart — Orca (500 hits)",
+          "note": "Spar with Orca over multiple visits. Easiest very-early heart in the game.",
+          "type": "heart",
+          "completionistOnly": true
+        },
+        {
+          "label": "Piece of Heart — Outset cliff cave",
+          "note": "Reachable later once you can return with the right tools. Note it now.",
+          "type": "heart",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "stage": "Chapter 1",
+      "title": "The Forsaken Fortress",
+      "order": 2,
+      "chips": ["Stealth", "No sword"],
+      "video": {
+        "provider": "youtube",
+        "id": "9l-J2fCK6Sg",
+        "creator": "ZeldaMaster",
+        "title": "Forsaken Fortress & Windfall — Part 2",
+        "durationLabel": "24:05"
+      },
+      "steps": [
+        "You're flung in <strong>weaponless</strong>. Grab a <strong>barrel</strong> and wear it — guards ignore a barrel that holds still when searchlights sweep.",
+        "Move only in the dark gaps between rotating lights. Caught = back to the start cell.",
+        "Free the captured girls, reach Aryll up top — then <span class=\"spoiler\">the giant bird hurls you out to sea and the talking boat, the King of Red Lions, rescues you</span>."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "There is no sword to find here",
+          "body": "Don't waste time hunting for a weapon — the whole chapter is built around <strong>avoidance</strong>, not combat. Patience beats speed.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "This is a 'watch it' section",
+          "body": "Searchlight timing is much easier to copy than to read. If you're getting caught, the embedded video shows the exact safe route.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": []
+    },
+    {
+      "stage": "Chapter 2",
+      "title": "Dragon Roost — Din's Pearl",
+      "order": 3,
+      "chips": ["Grappling Hook", "Boss: Gohma"],
+      "video": {
+        "provider": "youtube",
+        "id": "HR74mK9fuVU",
+        "creator": "ZeldaMaster",
+        "title": "Dragon Roost Cavern + Gohma — Part 4",
+        "durationLabel": "27:31"
+      },
+      "steps": [
+        "Deliver the letter, help <strong>Prince Komali</strong> find his courage, and grab the <strong>Grappling Hook</strong> inside the cavern.",
+        "Use bomb-flowers and the hook to climb the lava chambers to Valoo's tail.",
+        "Boss — <span class=\"spoiler\"><strong>Gohma</strong></span>: grapple the ceiling support to drop rock on its head, then strike the eye. Repeat ×3."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "Photograph Gohma if you have the Deluxe Picto Box",
+          "body": "If you've already picked up the camera, snap Gohma here for the <strong>Nintendo Gallery</strong>. It's far more convenient than the late-game alternative. No camera yet? Skip it — you can return.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "The Grappling Hook also steals",
+          "body": "It pulls rupees and items off enemies all game. Worth remembering when you're short on cash for chart deciphering later.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Container — Gohma",
+          "note": "Automatic on boss clear.",
+          "type": "heart",
+          "completionistOnly": true
+        },
+        {
+          "label": "Piece of Heart — Dragon Roost paths",
+          "note": "A couple are tucked around the island's cliffs and the postman's route.",
+          "type": "heart",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "stage": "Chapter 3",
+      "title": "Forbidden Woods — Farore's Pearl",
+      "order": 4,
+      "chips": ["Boomerang", "Boss: Kalle Demos"],
+      "video": {
+        "provider": "youtube",
+        "id": "thiS_DScEG8",
+        "creator": "100% Walkthrough",
+        "title": "Forbidden Woods & Kalle Demos — Part 7",
+        "durationLabel": "29:18"
+      },
+      "steps": [
+        "The dungeon item is the <strong>Boomerang</strong> — it locks onto multiple targets at once, which several puzzles demand.",
+        "Ride Deku flowers across gaps to reach high platforms and escort the seedling sage <strong>Makar</strong>.",
+        "Boss — <span class=\"spoiler\"><strong>Kalle Demos</strong></span>: boomerang the six vines holding it up, then slash the exposed bulb."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "Grab the mailbox Piece of Heart on the way out",
+          "body": "After the dungeon, the King of Red Lions' <strong>postbox is shaking</strong> — a letter delivers a free <strong>Piece of Heart</strong>. Easy to sail straight past forever.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Container — Kalle Demos",
+          "note": "Automatic on boss clear.",
+          "type": "heart",
+          "completionistOnly": true
+        },
+        {
+          "label": "Piece of Heart — Forest Haven letter",
+          "note": "Check the shaking postbox after the dungeon.",
+          "type": "heart",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "stage": "Chapter 4",
+      "title": "Greatfish, Jabun & Nayru's Pearl",
+      "order": 5,
+      "chips": ["Bombs unlocked", "Free sailing"],
+      "video": {
+        "provider": "youtube",
+        "id": "KB9Vq4iGtPM",
+        "creator": "IGN Guides",
+        "title": "Pearls, Jabun & the road onward",
+        "durationLabel": "21:50"
+      },
+      "steps": [
+        "The story turns hard: <span class=\"spoiler\">Greatfish Isle is destroyed and Ganondorf is now hunting you directly</span>.",
+        "Return to the pirates, gain <strong>Bombs</strong>, and blast open Jabun's cave behind Outset for <strong>Nayru's Pearl</strong>.",
+        "Place all three Pearls on their statues to raise the <strong>Tower of the Gods</strong> from the sea."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "This is the upgrade window — you can finally sail freely AND you have Bombs",
+          "body": "Several permanent upgrades open up the moment you have bombs and a cannon. Detouring now makes the entire back half of the game easier. Flip on <strong>Completionist mode</strong> for the exact list.",
+          "completionistOnly": false
+        },
+        {
+          "type": "upgrade",
+          "title": "Great Fairy upgrades (spread across the map's corners)",
+          "body": "The corner <strong>Great Fairies</strong> permanently upgrade your <strong>Bomb Bag</strong> (30→60→99) and your <strong>Wallet</strong> (1,000→5,000 rupees). Some of their caves must be <strong>bombed open</strong>, which is why you couldn't reach them earlier. The <strong>Quiver</strong> upgrade needs the Bow — that arrives next chapter.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Why the bigger wallet matters",
+          "body": "Late game you'll pay <strong>Tingle</strong> to decipher Triforce charts — that costs serious rupees. Grabbing the wallet upgrade now saves a painful grind later.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Bomb Bag upgrade ×2",
+          "note": "From Great Fairies once you can bomb their caves open. Capacity 30→60→99.",
+          "type": "upgrade",
+          "completionistOnly": true
+        },
+        {
+          "label": "Wallet upgrade (→5,000 rupees)",
+          "note": "Critical for Tingle's chart-deciphering fees endgame.",
+          "type": "upgrade",
+          "completionistOnly": true
+        },
+        {
+          "label": "Easy Pieces of Heart while sailing",
+          "note": "Lookout platforms, submarines, and Windfall minigames are the lowest-effort hearts. Bolster your health before the temples.",
+          "type": "heart",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "stage": "Chapter 5",
+      "title": "Tower of the Gods",
+      "order": 6,
+      "chips": ["Bow", "Boss: Gohdan"],
+      "video": {
+        "provider": "youtube",
+        "id": "8bYW2R_ZqC8",
+        "creator": "ZeldaMaster",
+        "title": "Tower of the Gods walkthrough",
+        "durationLabel": "30:12"
+      },
+      "steps": [
+        "The dungeon item is the <strong>Bow</strong>. Many rooms use a statue you command with the <strong>Command Melody</strong>.",
+        "Boss — <span class=\"spoiler\"><strong>Gohdan</strong></span>: arrow both hands to stun it, arrow the nose, then drop a bomb in its mouth to end each phase."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Now you have the Bow — go claim the Quiver upgrades",
+          "body": "With the Bow in hand, the remaining <strong>Great Fairies</strong> will upgrade your <strong>Quiver</strong> (arrows 30→60→99). Worth a short sailing detour before the endgame ramps up.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Container — Gohdan",
+          "note": "Automatic on boss clear.",
+          "type": "heart",
+          "completionistOnly": true
+        },
+        {
+          "label": "Quiver upgrade ×2",
+          "note": "From Great Fairies, now reachable with bombs + the Bow.",
+          "type": "upgrade",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "stage": "Chapter 6",
+      "title": "Hyrule & the Master Sword",
+      "order": 7,
+      "chips": ["Master Sword", "Big reveal"],
+      "video": {
+        "provider": "youtube",
+        "id": "p71I8slrgrI",
+        "creator": "GameXplain",
+        "title": "The Hyrule reveal & story beats",
+        "durationLabel": "19:27"
+      },
+      "steps": [
+        "<span class=\"spoiler\">The sea hides drowned <strong>Hyrule</strong>. You draw the Master Sword — and Tetra is revealed as <strong>Princess Zelda</strong>.</span>",
+        "<span class=\"spoiler\">Ganondorf attacks; you must return to the Forsaken Fortress to rescue Zelda and Aryll.</span>"
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Your Master Sword starts powerless",
+          "body": "Restoring its power — by awakening two new sages — is the spine of the back half of the game. Don't expect it to one-shot anything yet.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Stock up before you commit",
+          "body": "Top off arrows, bombs, potions and Fairies in bottles now. The next stretch is long and you won't want to sail back mid-temple.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": []
+    },
+    {
+      "stage": "Endgame",
+      "title": "Forsaken Fortress II, the Temples & Ganon",
+      "order": 8,
+      "chips": ["Triforce hunt", "Final boss"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "GameXplain",
+        "title": "All Ganon forms + ending",
+        "durationLabel": "15:09"
+      },
+      "steps": [
+        "Return to the Fortress and beat the <span class=\"spoiler\"><strong>Helmaroc King</strong></span> (Skull Hammer cracks the mask).",
+        "Awaken the sages <strong>Medli</strong> (Earth Temple) and <strong>Makar</strong> (Wind Temple) to restore the Master Sword.",
+        "Gather the eight <strong>Triforce of Courage</strong> shards using deciphered charts, then storm <span class=\"spoiler\"><strong>Ganon's Tower</strong></span> for the finale: parry + Light Arrows, ending with the sword to the forehead."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Decipher charts in bulk with the rupees you saved",
+          "body": "This is where the early <strong>wallet upgrade</strong> pays off — Tingle's fees for the Triforce charts add up fast. Batch them so you're not sailing back and forth.",
+          "completionistOnly": false
+        },
+        {
+          "type": "missable",
+          "title": "Last call for the Nintendo Gallery",
+          "body": "If you're chasing 100%, photograph any remaining figures with the <strong>Deluxe Picto Box</strong> before the point of no return — several enemies and bosses don't reappear.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "8 × Triforce of Courage shards",
+          "note": "Charts → Tingle deciphers → salvage from the sea floor.",
+          "type": "shard",
+          "completionistOnly": true
+        },
+        {
+          "label": "Heart Containers — Jalhalla & Molgera",
+          "note": "Earth and Wind Temple bosses.",
+          "type": "heart",
+          "completionistOnly": true
+        },
+        {
+          "label": "Nintendo Gallery figurines",
+          "note": "The true completionist grind — every character and enemy photographed.",
+          "type": "figurine",
+          "completionistOnly": true
+        }
+      ]
+    }
+  ]
+}

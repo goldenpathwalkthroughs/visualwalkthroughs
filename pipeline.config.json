@@ -1,0 +1,33 @@
+{
+  "gamesPerNight": 1,
+  "maxFixAttempts": 3,
+  "spendCapGBP": 15,
+  "timeCapMinutes": 180,
+  "subscriptionOverflow": false,
+  "model": {
+    "draft": "claude-haiku-4-5-20251001",
+    "research": "claude-haiku-4-5-20251001",
+    "qa": "claude-haiku-4-5-20251001",
+    "advisor": "claude-haiku-4-5-20251001"
+  },
+  "promptCaching": true,
+  "originality": {
+    "ngramSize": 8,
+    "similarityThreshold": 0.35
+  },
+  "lighthouse": {
+    "performance": 80,
+    "accessibility": 90,
+    "seo": 90,
+    "bestPractices": 80
+  },
+  "protectedPaths": [
+    "CLAUDE.md",
+    ".env",
+    ".env.*",
+    ".github/workflows/deploy*",
+    "scripts/rollback.js",
+    "scripts/promote.js",
+    "pipeline.config.json"
+  ]
+}

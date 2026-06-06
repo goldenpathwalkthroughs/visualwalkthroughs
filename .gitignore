@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build output
+dist/
+.astro/
+
+# environment files — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Claude Code local settings (machine-specific, not for the repo)
+.claude/settings.local.json
+
+# Cloudflare / Wrangler
+.wrangler/

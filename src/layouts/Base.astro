@@ -1,0 +1,165 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  bodyClass?: string;
+  themeVars?: Record<string, string>;
+  searchIndex?: Array<{ t: string; s: string; k: string; ic: string; href: string; sec?: number }>;
+}
+
+const {
+  title,
+  description = 'Fan-built video-game walkthroughs — clear steps, timing tips, completionist checklists, and embedded creator videos on one page.',
+  bodyClass = '',
+  themeVars = {},
+  searchIndex = [],
+} = Astro.props;
+
+const cssVars = Object.entries(themeVars)
+  .map(([k, v]) => `--${k}:${v}`)
+  .join(';');
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — VisualWalkthroughs</title>
+  <meta name="description" content={description} />
+  <!-- Cloudflare Web Analytics — cookieless, no consent required -->
+  <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
+</head>
+<body class={`spoilers-safe${bodyClass ? ' ' + bodyClass : ''}`} style={cssVars || undefined}>
+
+<div class="topbar">
+  <a href="/" class="brand">
+    <span class="mark">V</span>
+    <span>Visual<b>Walkthroughs</b></span>
+  </a>
+  <nav class="nav-links">
+    <a href="/">Browse</a>
+    <a href="/zelda/">Franchises</a>
+  </nav>
+  <button class="spotlight-trigger" id="spot-btn" aria-label="Search">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+    </svg>
+    <span class="lbl">Search any game or section…</span>
+    <span class="kbd">⌘K</span>
+  </button>
+</div>
+
+<slot />
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>A fan guide engine · <b>VisualWalkthroughs</b> · 2026</span>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="/legal/privacy">Privacy</a>
+      <a href="/legal/cookies">Cookies</a>
+      <a href="/legal/terms">Terms</a>
+      <a href="/legal/attribution">Attribution</a>
+      <a href="/legal/takedown">Takedowns</a>
+      <a href="/legal/complaints">Complaints</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Spotlight modal -->
+<div class="spot" id="spot" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="spot-box">
+    <div class="spot-in">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+      </svg>
+      <input id="spot-input" placeholder="Jump to a game or section…" autocomplete="off" aria-label="Search" />
+      <span class="esc">esc</span>
+    </div>
+    <div class="spot-results" id="spot-results" role="listbox"></div>
+  </div>
+</div>
+
+<div id="toast" style="opacity:0" aria-live="polite"></div>
+
+<script define:vars={{ searchIndex }}>
+/* ── Spotlight search ── */
+const INDEX = searchIndex;
+let sel = 0, matches = [];
+
+function openSpot() {
+  document.getElementById('spot').classList.add('open');
+  const inp = document.getElementById('spot-input');
+  inp.value = '';
+  inp.focus();
+  renderSpot('');
+}
+function closeSpot() {
+  document.getElementById('spot').classList.remove('open');
+}
+function renderSpot(q) {
+  q = q.toLowerCase().trim();
+  matches = q ? INDEX.filter(x => (x.t + ' ' + x.s).toLowerCase().includes(q)) : INDEX;
+  sel = 0;
+  const box = document.getElementById('spot-results');
+  if (!matches.length) {
+    box.innerHTML = '<div class="spot-empty">No matches. Try "fortress", "upgrade", or "pearl".</div>';
+    return;
+  }
+  box.innerHTML = matches.map((m, i) =>
+    `<div class="sr${i === 0 ? ' sel' : ''}" role="option" aria-selected="${i === 0}" data-i="${i}" tabindex="-1">
+      <div class="ic">${m.ic}</div>
+      <div class="srt"><b>${m.t}</b><span>${m.s}</span></div>
+      <div class="kind">${m.k}</div>
+    </div>`
+  ).join('');
+  box.querySelectorAll('.sr').forEach((el, i) => el.addEventListener('click', () => pickSpot(i)));
+}
+function pickSpot(i) {
+  const m = matches[i];
+  if (!m) return;
+  closeSpot();
+  if (m.sec !== undefined) {
+    window.location.href = m.href + '#sec-' + m.sec;
+  } else {
+    window.location.href = m.href;
+  }
+}
+function hiSpot() {
+  document.querySelectorAll('.sr').forEach((el, i) => {
+    el.classList.toggle('sel', i === sel);
+    el.setAttribute('aria-selected', String(i === sel));
+  });
+  const s = document.querySelector('.sr.sel');
+  s && s.scrollIntoView({ block: 'nearest' });
+}
+
+document.getElementById('spot-btn').addEventListener('click', openSpot);
+document.getElementById('spot').addEventListener('click', e => { if (e.target === e.currentTarget) closeSpot(); });
+document.getElementById('spot-input').addEventListener('input', e => renderSpot(e.target.value));
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openSpot(); }
+  if (e.key === 'Escape') closeSpot();
+  const isOpen = document.getElementById('spot').classList.contains('open');
+  if (isOpen) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); sel = Math.min(sel + 1, matches.length - 1); hiSpot(); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(sel - 1, 0); hiSpot(); }
+    if (e.key === 'Enter') pickSpot(sel);
+  }
+});
+
+/* ── Toast ── */
+window.toast = function(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._x);
+  t._x = setTimeout(() => t.style.opacity = '0', 2600);
+};
+</script>
+
+</body>
+</html>
