@@ -53,7 +53,9 @@ const searchIndex = [
           href={g.data.status === 'published' ? `/zelda/${g.data.slug}/` : undefined}
           class={`gtile${g.data.status === 'coming-soon' ? ' soon' : ''}`}
         >
-          <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}></div>
+          <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}>
+            {g.data.cover && <img src={g.data.cover} alt={g.data.title} class="cover-img" loading="lazy" decoding="async" />}
+          </div>
           {g.data.status === 'published' && <span class="ready">Guide ready</span>}
           <div class="meta">
             <div class="yr">{g.data.year} · {g.data.platforms[1] ?? g.data.platforms[0]}</div>

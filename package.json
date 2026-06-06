@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "validate": "node scripts/validate.js",
+    "validate": "node scripts/validate.js && node scripts/test-sequencer.js",
     "qa": "node scripts/qa.js",
     "deploy:preview": "wrangler pages deploy dist --project-name=visualwalkthroughs",
     "promote": "node scripts/promote.js",
@@ -25,6 +25,6 @@
     "lighthouse": "^13.3.0",
     "playwright": "^1.60.0",
     "typescript": "^5.6.0",
-    "wrangler": "^3.93.0"
+    "wrangler": "^4.98.0"
   }
 }

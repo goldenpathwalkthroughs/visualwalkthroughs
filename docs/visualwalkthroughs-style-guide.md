@@ -17,8 +17,8 @@ This is the writing standard every walkthrough must hit. It also **is** the syst
 ## 2. The five rules that matter most
 
 1. **Lead with the action.** Every step opens with the verb the player must do. *"Grapple the chandelier"* — not *"There's a chandelier you can grapple."*
-2. **Be specific, always.** Name the exact item, room, NPC, direction, count. *"Bomb the cracked wall on the east side of the second floor"* — not *"find a way through the wall."*
-3. **Cut every word that isn't working.** No throat-clearing, no "basically", no "as you'd expect".
+2. **Assume the reader knows nothing — locate everything.** They have never played this game. Every instruction must answer *where* (a place the reader can actually find — a grid reference like "F2", or "the east cliff of Forest Haven", or "the room past the throne") and *how* (the exact action). If a step names a place, NPC, or object to find, it says where it is. *"Deliver the letter to Komali"* is broken until it says where Komali is; *"climb the ivy"* is broken until it says which wall; *"head to the cyclone"* is broken until it gives the reference. The test: could someone who has never played do this without guessing? If not, it fails.
+3. **Brevity never costs usability.** Cut filler — "basically", "as you'd expect", throat-clearing — but *never* cut the locating detail to look tidy. A short line the reader can't act on is worse than a longer line they can. Specific and complete first; tight second.
 4. **Write from facts, never from someone else's sentences.** Research from multiple sources, then explain it cold, in your own words and structure. If a phrasing mirrors a source, rewrite it. Non-negotiable — legal *and* quality.
 5. **Tell them *why* and *when*, not just *what*.** Timing and judgement are what beat IGN. *"Grab this now — you can't return until the back half of the game."*
 
@@ -44,6 +44,7 @@ This is the writing standard every walkthrough must hit. It also **is** the syst
 - **`warning`** — a short, calm heads-up: a trap, an unwinnable state, a tool that's still powerless.
 - **`tip`** — optional polish. The nice-to-know that makes the player feel clever.
 - **`collectible` (completionist)** — label + precise location + any prerequisite. Terse and scannable; this is a checklist, not prose.
+- **`bossFight`** — never one sentence; these are the moments players quit. Write: how to *prepare* (recommended items, top up hearts/potions, and where to do so beforehand); then each *phase* — what the boss does (its tell), the concrete *counter*, and the damage window; then an *if you struggle* line (where to grab extra hearts or fairies, an easier tactic, whether you can retreat). Enough that someone who keeps dying can diagnose *why* and fix it.
 
 ---
 
@@ -105,8 +106,9 @@ Never write any of these:
 ## 9. Self-check before output (the model runs this on its own draft)
 
 - [ ] Does every golden-path step start with the action verb?
-- [ ] Is every location, item, NPC, and count named exactly?
-- [ ] Can any sentence be cut or shortened without losing meaning?
+- [ ] **Could a reader who has never played this game follow every step without guessing?** Does each named place/NPC/object say *where it is and how to reach it* (grid ref or precise location)?
+- [ ] Is any locating detail missing for the sake of brevity? Put it back.
+- [ ] Does every boss have prep, per-phase tells + counters, and an "if you struggle" line?
 - [ ] Is any phrasing mirroring a source? Rewrite it.
 - [ ] Are all plot reveals spoiler-tagged, and is the section's first sentence spoiler-free?
 - [ ] British English throughout?
