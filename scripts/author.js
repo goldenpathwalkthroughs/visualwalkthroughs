@@ -6,14 +6,26 @@
  * Claude API. Runs research first (one call), then drafts each section
  * individually (one call per section), then assembles and validates.
  *
+ * Engine/content separation (spec §2):
+ *   Output goes to /content/games/<slug>.json — outside /src/ so the nightly
+ *   pipeline writes new data files without touching engine code.
+ *   The genre pack for the game's primary genre is loaded and injected into
+ *   the research and draft prompts so only relevant rules are loaded per run.
+ *
+ * Token efficiency (spec §3):
+ *   - Fixed system-prompt content (style guide, schema rules, research checklist)
+ *     is marked with cache_control so it is cached after the first call.
+ *   - Token usage is tracked per phase: loading / research / drafting / QA.
+ *   - Model-per-step: research + draft use claude-sonnet; schemaFill uses haiku.
+ *
  * Usage:
  *   node scripts/author.js --game "Ocarina of Time" --franchise zelda --slug ocarina-of-time
- *   node scripts/author.js --game "Hollow Knight" --franchise hollow-knight --slug hollow-knight
+ *   node scripts/author.js --game "Hollow Knight" --franchise hollow-knight --slug hollow-knight [--genre action-adventure]
  *
  * Required env:
  *   ANTHROPIC_API_KEY=sk-ant-...
  *
- * Exit 0 = game JSON written to src/content/games/<slug>.json
+ * Exit 0 = game JSON written to content/games/<slug>.json
  * Exit 1 = failure (no file written)
  */
 
@@ -39,14 +51,16 @@ const franchiseSlug = arg('--franchise');
 const slug = arg('--slug');
 const year = arg('--year') || '';
 const platforms = arg('--platforms') || '';
+const genreArg = arg('--genre') || 'action-adventure';  // default to action-adventure
 
 if (!gameTitle || !franchiseSlug || !slug) {
-  console.error('Usage: node scripts/author.js --game "Title" --franchise slug --slug game-slug [--year YYYY] [--platforms "PS5, PC"]');
+  console.error('Usage: node scripts/author.js --game "Title" --franchise slug --slug game-slug [--year YYYY] [--platforms "PS5, PC"] [--genre action-adventure]');
   process.exit(1);
 }
 
 // ── Safety checks ─────────────────────────────────────────────────────────────
-const outPath = join(ROOT, 'src/content/games', `${slug}.json`);
+// Output path: /content/games/ (spec §2 — outside /src/, no engine code touched)
+const outPath = join(ROOT, 'content/games', `${slug}.json`);
 if (existsSync(outPath)) {
   console.error(`\n❌  STOP: ${outPath} already exists.`);
   console.error('    The pipeline is additive-only. To replace, add --allow-replace flag.');
@@ -62,15 +76,58 @@ if (!apiKey) {
 
 const claude = new Anthropic({ apiKey });
 
-const RESEARCH_MODEL = CONFIG.model.research;
-const DRAFT_MODEL = CONFIG.model.draft;
+// Model-per-step (spec §3.b): research+draft → sonnet, schemaFill → haiku
+const RESEARCH_MODEL  = CONFIG.model.research;
+const DRAFT_MODEL     = CONFIG.model.draft;
+const SCHEMA_FILL_MODEL = CONFIG.model.schemaFill;
+
+// ── Token tracking (spec §3.b) ────────────────────────────────────────────────
+const tokens = { loading: 0, research: 0, drafting: 0, qa: 0 };
+
+function trackTokens(phase, usage) {
+  if (!usage) return;
+  tokens[phase] += (usage.input_tokens || 0) + (usage.output_tokens || 0);
+  // cache_read_input_tokens and cache_creation_input_tokens are informational
+}
 
 // ── Load prompts ──────────────────────────────────────────────────────────────
 const researchPromptTemplate = readFileSync(join(ROOT, 'prompts/research.md'), 'utf8');
-const draftPromptTemplate = readFileSync(join(ROOT, 'prompts/draft.md'), 'utf8');
+const draftPromptTemplate    = readFileSync(join(ROOT, 'prompts/draft.md'),    'utf8');
 
-// Extract the system prompt portion of the draft prompt (everything up to "## User message template")
-const draftSystemPrompt = draftPromptTemplate.split('## User message template')[0].trim();
+// The draft system prompt is everything up to "## User message template"
+const draftSystemPromptText = draftPromptTemplate.split('## User message template')[0].trim();
+
+// ── Genre pack loading (spec §2.c) ────────────────────────────────────────────
+// Load tonight's genre pack; inject its QA gates and research additions into
+// the prompts. Never load engine code — only the data pack for this game's genre.
+let genrePack = null;
+const genrePackPath = join(ROOT, 'genre-packs', `${genreArg}.json`);
+if (existsSync(genrePackPath)) {
+  genrePack = JSON.parse(readFileSync(genrePackPath, 'utf8'));
+  // Count tokens for loading phase (approximation: pack size / 4 chars per token)
+  tokens.loading += Math.round(readFileSync(genrePackPath, 'utf8').length / 4);
+  console.log(`  📦  Genre pack loaded: ${genrePack.name} (${genreArg})`);
+} else {
+  console.log(`  ⚠   No genre pack found for "${genreArg}" — proceeding without genre-specific rules`);
+}
+
+// Append genre-specific research checklist items to research prompt
+function buildResearchPrompt() {
+  if (!genrePack?.researchChecklistAdditions?.length) return researchPromptTemplate;
+  const additions = genrePack.researchChecklistAdditions
+    .map(item => `- ${item}`)
+    .join('\n');
+  return `${researchPromptTemplate}\n\n## Genre-specific research requirements (${genrePack.name})\n${additions}`;
+}
+
+// Append genre QA gates to draft system prompt
+function buildDraftSystemPrompt() {
+  if (!genrePack?.qaGates?.length) return draftSystemPromptText;
+  const gates = genrePack.qaGates
+    .map(g => `- [${g.flag}] ${g.test}`)
+    .join('\n');
+  return `${draftSystemPromptText}\n\n## Genre QA gates (${genrePack.name} — ${genrePack.stuckPointThesis})\n${gates}`;
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -82,7 +139,6 @@ function toSlug(str) {
 }
 
 function extractJson(text) {
-  // Find the first { ... } block in the response
   const start = text.indexOf('{');
   const end = text.lastIndexOf('}');
   if (start === -1 || end === -1) return null;
@@ -93,10 +149,7 @@ function extractJson(text) {
   }
 }
 
-// Rough n-gram originality check (mirrors validate.js logic)
 function originalityCheck(text, threshold = CONFIG.originality.similarityThreshold) {
-  // We can't compare against real sources here, but we check for long verbatim
-  // runs of common "wiki voice" phrases that suggest copy-paste.
   const wikiPhrases = [
     'the player must', 'the player can', 'this area contains', 'this room contains',
     'the player will need to', 'in order to progress', 'the player is able to',
@@ -111,11 +164,15 @@ function originalityCheck(text, threshold = CONFIG.originality.similarityThresho
 }
 
 // ── Stage 1: Research ─────────────────────────────────────────────────────────
+// Prompt caching (spec §3.a): the research system prompt (fixed rules) is
+// marked ephemeral so it is cached after the first API call in this session.
 
 async function research() {
   section('Research');
   log(`Game: ${gameTitle}`);
   log(`Model: ${RESEARCH_MODEL}`);
+
+  const researchPrompt = buildResearchPrompt();
 
   const userMessage = `Research the following game for the VisualWalkthroughs pipeline.
 
@@ -131,14 +188,23 @@ Output only the completed fact sheet — no preamble.`;
   const response = await claude.messages.create({
     model: RESEARCH_MODEL,
     max_tokens: 4096,
-    system: researchPromptTemplate,
+    system: [
+      // Mark the fixed system prompt as cacheable (spec §3.a)
+      { type: 'text', text: researchPrompt, cache_control: { type: 'ephemeral' } },
+    ],
     messages: [{ role: 'user', content: userMessage }],
   });
 
-  const factSheet = response.content[0].text;
-  log(`Research complete — ${factSheet.length} chars, ${response.usage.input_tokens} in / ${response.usage.output_tokens} out`);
+  trackTokens('research', response.usage);
 
-  // Check for LOW CONFIDENCE flags
+  const factSheet = response.content[0].text;
+  const cacheNote = response.usage?.cache_read_input_tokens
+    ? ` (${response.usage.cache_read_input_tokens} cached)`
+    : response.usage?.cache_creation_input_tokens
+    ? ` (cache primed: ${response.usage.cache_creation_input_tokens} tokens)`
+    : '';
+  log(`Research complete — ${factSheet.length} chars, ${response.usage.input_tokens} in / ${response.usage.output_tokens} out${cacheNote}`);
+
   const lowConfidenceCount = (factSheet.match(/\[LOW CONFIDENCE/gi) || []).length;
   if (lowConfidenceCount > 0) {
     log(`⚠   ${lowConfidenceCount} low-confidence flag(s) — review before publishing`);
@@ -148,8 +214,11 @@ Output only the completed fact sheet — no preamble.`;
 }
 
 // ── Stage 2: Draft sections ───────────────────────────────────────────────────
+// Prompt caching: the draft system prompt (fixed rules + genre gates) is cached.
+// Each section is drafted with just the variable user message — the large fixed
+// context is loaded from cache on sections 2+.
 
-async function draftSection(factSheet, sectionIndex, sectionFacts, gameContext) {
+async function draftSection(factSheet, sectionIndex, sectionFacts, draftSystemPrompt) {
   const userMessage = `GAME: ${gameTitle}
 SECTION ${sectionIndex + 1}: ${sectionFacts.stage || ''} — ${sectionFacts.title || ''}
 
@@ -165,9 +234,14 @@ Output only the JSON object — no markdown fences, no commentary.`;
   const response = await claude.messages.create({
     model: DRAFT_MODEL,
     max_tokens: 2048,
-    system: draftSystemPrompt,
+    system: [
+      // Fixed draft rules cached after first section
+      { type: 'text', text: draftSystemPrompt, cache_control: { type: 'ephemeral' } },
+    ],
     messages: [{ role: 'user', content: userMessage }],
   });
+
+  trackTokens('drafting', response.usage);
 
   const raw = response.content[0].text;
   const parsed = extractJson(raw);
@@ -176,10 +250,8 @@ Output only the JSON object — no markdown fences, no commentary.`;
     throw new Error(`Section ${sectionIndex + 1}: could not extract JSON from response.\nRaw:\n${raw.slice(0, 500)}`);
   }
 
-  // Enforce order
   parsed.order = sectionIndex + 1;
 
-  // Originality check on all text content
   const allText = [
     ...(parsed.steps || []),
     ...(parsed.advisories || []).map(a => a.body || ''),
@@ -189,11 +261,14 @@ Output only the JSON object — no markdown fences, no commentary.`;
     log(`  ⚠   Section ${sectionIndex + 1} originality warning: ${orig.reason}`);
   }
 
-  log(`  ✅  Section ${sectionIndex + 1}: "${parsed.title}" — ${(parsed.steps || []).length} steps, ${(parsed.advisories || []).length} advisories`);
+  const cacheNote = response.usage?.cache_read_input_tokens
+    ? ` [${response.usage.cache_read_input_tokens} cached]`
+    : '';
+  log(`  ✅  Section ${sectionIndex + 1}: "${parsed.title}" — ${(parsed.steps || []).length} steps, ${(parsed.advisories || []).length} advisories${cacheNote}`);
   return parsed;
 }
 
-// ── Parse section count from fact sheet ──────────────────────────────────────
+// ── Parse section stubs from fact sheet ──────────────────────────────────────
 
 function parseSectionCount(factSheet) {
   const matches = factSheet.match(/^--- Section \d+ ---/gm);
@@ -201,7 +276,6 @@ function parseSectionCount(factSheet) {
 }
 
 function parseSectionStubs(factSheet) {
-  // Extract stage + title for each section to give the draft model context
   const stubs = [];
   const lines = factSheet.split('\n');
   let current = null;
@@ -223,7 +297,6 @@ function parseSectionStubs(factSheet) {
 // ── Stage 3: Assemble game JSON ───────────────────────────────────────────────
 
 function assembleGame(sections, factSheet) {
-  // Extract top-level metadata from fact sheet
   function extractField(label) {
     const re = new RegExp(`^${label}:\\s*(.+)`, 'm');
     const m = factSheet.match(re);
@@ -240,7 +313,6 @@ function assembleGame(sections, factSheet) {
     return raw ? raw.split(',').map(s => s.trim()).filter(Boolean) : [];
   }
 
-  // Build a minimal theme (the pipeline uses defaults; owner can customise)
   const theme = {
     ink: '#0a0a0f',
     ink2: '#10101a',
@@ -266,6 +338,7 @@ function assembleGame(sections, factSheet) {
     lede: extractLede(factSheet),
     theme,
     coverGradient: theme.cardGradient,
+    genre: genreArg,  // links to taxonomy/genres.json
     sections,
   };
 
@@ -276,8 +349,9 @@ function assembleGame(sections, factSheet) {
 
 console.log('\n══════════════════════════════════════════');
 console.log(' VisualWalkthroughs — AI Author');
-console.log(`  Game: ${gameTitle}`);
-console.log(`  Slug: ${slug}`);
+console.log(`  Game:  ${gameTitle}`);
+console.log(`  Slug:  ${slug}`);
+console.log(`  Genre: ${genreArg}`);
 console.log('══════════════════════════════════════════');
 
 // Stage 1: research
@@ -295,10 +369,13 @@ if (!sectionCount || sectionCount === 0) {
 log(`Detected ${sectionCount} section(s) in fact sheet`);
 const sectionStubs = parseSectionStubs(factSheet);
 
+// Build draft system prompt once — cached on sections 2+
+const draftSystemPromptBuilt = buildDraftSystemPrompt();
+
 const draftedSections = [];
 for (let i = 0; i < sectionCount; i++) {
   try {
-    const sec = await draftSection(factSheet, i, sectionStubs[i] || {}, {});
+    const sec = await draftSection(factSheet, i, sectionStubs[i] || {}, draftSystemPromptBuilt);
     draftedSections.push(sec);
   } catch (err) {
     console.error(`\n❌  Failed drafting section ${i + 1}: ${err.message}`);
@@ -326,8 +403,22 @@ try {
   process.exit(1);
 }
 
+// ── Token breakdown (spec §3.b) ───────────────────────────────────────────────
+const totalTokens = Object.values(tokens).reduce((a, b) => a + b, 0);
+console.log('\n── Token breakdown ──────────────────────────────');
+console.log(`  Loading (genre pack):  ${tokens.loading.toLocaleString()}`);
+console.log(`  Research:              ${tokens.research.toLocaleString()}`);
+console.log(`  Drafting (${sectionCount} sections): ${tokens.drafting.toLocaleString()}`);
+console.log(`  QA/validation:         ${tokens.qa.toLocaleString()}`);
+console.log(`  ─────────────────────────────────────────`);
+console.log(`  Total:                 ${totalTokens.toLocaleString()}`);
+
+// Write token summary to a side-car file for pipeline.js to include in reports
+const tokenSummaryPath = join(ROOT, 'content/games', `.${slug}.tokens.json`);
+writeFileSync(tokenSummaryPath, JSON.stringify({ slug, tokens, totalTokens, sectionCount }, null, 2), 'utf8');
+
 console.log('\n══════════════════════════════════════════');
 console.log(`✅  ${gameTitle} drafted and validated`);
-console.log(`    File: src/content/games/${slug}.json`);
+console.log(`    File: content/games/${slug}.json`);
 console.log(`    Status: draft — review before promoting to published`);
 console.log('══════════════════════════════════════════\n');

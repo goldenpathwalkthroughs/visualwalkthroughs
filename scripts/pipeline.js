@@ -51,6 +51,7 @@ const report = {
   flags: [],        // things needing owner attention
   spendNote: '',
   advisorShortlist: '',
+  tokenBreakdown: null,  // populated from author.js sidecar after authoring
 };
 
 function flag(msg) {
@@ -176,7 +177,7 @@ async function runAdvisor(publishedSlug) {
     const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const alreadyCovered = [];
-    const gamesDir = join(ROOT, 'src/content/games');
+    const gamesDir = join(ROOT, 'content/games');
     if (existsSync(gamesDir)) {
       const { readdirSync } = await import('fs');
       alreadyCovered.push(...readdirSync(gamesDir).filter(f => f.endsWith('.json')).map(f => f.replace('.json', '')));
@@ -250,6 +251,20 @@ function writeReport(outcome) {
     lines.push('');
   }
 
+  if (report.tokenBreakdown) {
+    const tb = report.tokenBreakdown;
+    lines.push('## Token usage breakdown');
+    lines.push('');
+    lines.push(`| Phase | Tokens |`);
+    lines.push(`|-------|--------|`);
+    lines.push(`| Loading (genre pack) | ${(tb.tokens.loading || 0).toLocaleString()} |`);
+    lines.push(`| Research | ${(tb.tokens.research || 0).toLocaleString()} |`);
+    lines.push(`| Drafting (${tb.sectionCount} sections) | ${(tb.tokens.drafting || 0).toLocaleString()} |`);
+    lines.push(`| QA / validation | ${(tb.tokens.qa || 0).toLocaleString()} |`);
+    lines.push(`| **Total** | **${(tb.totalTokens || 0).toLocaleString()}** |`);
+    lines.push('');
+  }
+
   if (report.advisorShortlist) {
     lines.push('## Content Advisor — build-next shortlist');
     lines.push('');
@@ -310,7 +325,8 @@ if (!slug || !franchiseSlug) {
 console.log(`  Tonight: ${gameTitle}  (${franchiseSlug}/${slug})`);
 
 // 2. Check additive-only rule
-const outPath = join(ROOT, 'src/content/games', `${slug}.json`);
+// Output lives in /content/games/ (spec §2 — engine/content separation)
+const outPath = join(ROOT, 'content/games', `${slug}.json`);
 if (existsSync(outPath) && !allowReplace) {
   flag(`${slug}.json already exists and allowReplace is not set — skipping to protect published content`);
   report.skipped.push(gameTitle);
@@ -334,6 +350,13 @@ const authorCmd = [
 ].filter(Boolean).join(' ');
 
 const authorResult = run(authorCmd, { stdio: 'inherit' });
+
+// Load token sidecar written by author.js (spec §3.b)
+const tokenSidecarPath = join(ROOT, 'content/games', `.${slug}.tokens.json`);
+if (existsSync(tokenSidecarPath)) {
+  try { report.tokenBreakdown = JSON.parse(readFileSync(tokenSidecarPath, 'utf8')); } catch { /* ignore */ }
+}
+
 if (!authorResult.ok) {
   report.errors.push(`Authoring failed for ${gameTitle}`);
   flag(`Authoring failed — check API key and network`);
@@ -485,7 +508,7 @@ console.log('  ✅  Production smoke test passed');
 // 10. Commit the new game file
 logSection('Commit');
 try {
-  execSync(`git add src/content/games/${slug}.json queue.md`, { cwd: ROOT });
+  execSync(`git add content/games/${slug}.json queue.md`, { cwd: ROOT });
   execSync(`git commit -m "content: add ${gameTitle}"`, { cwd: ROOT });
   execSync('git push', { cwd: ROOT });
   console.log(`  ✅  Committed and pushed: ${slug}.json`);

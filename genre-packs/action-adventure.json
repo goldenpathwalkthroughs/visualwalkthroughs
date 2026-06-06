@@ -1,0 +1,59 @@
+{
+  "id": "action-adventure",
+  "name": "Action-Adventure",
+  "version": "1.0.0",
+
+  "_comment": "Stuck-point thesis: players get blocked because they can't find the way forward, can't solve a puzzle, or can't beat a boss. The guide fixes this with a clear route + granular locations + boss breakdowns.",
+
+  "stuckPointThesis": "Players get stuck because they can't find the next location, can't work out a puzzle mechanic, or hit a boss wall. Route clarity and boss depth are the primary levers. Build detail beats breadth.",
+
+  "schemaExtensions": {
+    "required": ["locations", "bossFights", "worldMap"],
+    "optional": ["collectionQuests", "detours"],
+    "notes": "Every location the guide references must be in the locations registry. Every boss must have a BossFight entry with prep + phases + ifYouStruggle."
+  },
+
+  "researchChecklistAdditions": [
+    "Build the full Location registry before writing any steps — every place the guide names must have a canonical ref",
+    "Every boss needs: phase-by-phase tells + counters, recommended prep, a struggle-recovery option",
+    "Verify all puzzle solutions cross-checked across ≥2 sources",
+    "Note any missable items or one-way doors with the exact section window",
+    "Collect Triforce / collectible chart and salvage locations separately — these are high-confusion areas"
+  ],
+
+  "guideShape": "sequential",
+  "hybridLayers": ["location-registry", "boss-compendium"],
+
+  "uiAffordances": [
+    "world-map",
+    "boss-fight-card",
+    "location-ref-badge",
+    "spoiler-toggle",
+    "completionist-toggle"
+  ],
+
+  "qaGates": [
+    {
+      "id": "gp-no-assumed-knowledge",
+      "test": "Every golden-path step that names a place or NPC states where it is and how to reach it. 'Go to the Temple' fails; 'Head south from the village to reach the Temple entrance at grid ref C4' passes.",
+      "flag": "SPEC-NO-LOCATION"
+    },
+    {
+      "id": "gp-location-ref-completeness",
+      "test": "Every actionable step that names a location includes a locationRef badge. Every location mentioned in any step exists in the game's locations[] registry.",
+      "flag": "LOCREF-MISSING"
+    },
+    {
+      "id": "boss-fight-depth",
+      "test": "Every section with a boss has a BossFight entry with: prep (recommendedItems, healthAdvice), ≥1 phase with tells+counter+damageWindow, ifYouStruggle, reward.",
+      "flag": "BOSS-NO-ENTRY"
+    }
+  ],
+
+  "modelRecommendations": {
+    "research": "sonnet",
+    "draft": "sonnet",
+    "schemaFill": "haiku",
+    "editorQA": "sonnet"
+  }
+}

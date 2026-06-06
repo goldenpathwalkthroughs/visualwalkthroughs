@@ -1,0 +1,1133 @@
+{
+  "franchiseSlug": "zelda",
+  "title": "The Legend of Zelda: The Wind Waker HD",
+  "slug": "wind-waker-hd",
+  "year": "2013",
+  "platforms": ["Wii U"],
+  "status": "published",
+  "lede": "Cross the Great Sea, master the winds, and restore the Master Sword — a complete golden-path and 100% guide for the HD remaster.",
+  "theme": {
+    "bodyClass": "ww-theme"
+  },
+
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "prologue-outset-island",
+      "chapter-1-forsaken-fortress",
+      "chapter-2-dragon-roost-cavern",
+      "chapter-3-forest-haven-forbidden-woods",
+      "chapter-4-nayrus-pearl",
+      "chapter-5-tower-of-gods",
+      "chapter-6-hyrule-master-sword",
+      "chapter-7-forsaken-fortress-2",
+      "chapter-8-earth-temple",
+      "chapter-9-wind-temple",
+      "chapter-10-triforce-hunt",
+      "chapter-11-ganons-tower"
+    ],
+    "criticalPath": [
+      "prologue-outset-island",
+      "chapter-1-forsaken-fortress",
+      "chapter-2-dragon-roost-cavern",
+      "chapter-3-forest-haven-forbidden-woods",
+      "chapter-4-nayrus-pearl",
+      "chapter-5-tower-of-gods",
+      "chapter-6-hyrule-master-sword",
+      "chapter-7-forsaken-fortress-2",
+      "chapter-8-earth-temple",
+      "chapter-9-wind-temple",
+      "chapter-10-triforce-hunt",
+      "chapter-11-ganons-tower"
+    ],
+    "anyOrderGroups": [
+      {
+        "groupId": "sacred-temples",
+        "label": "Sacred Temples (either order)",
+        "sectionIds": ["chapter-8-earth-temple", "chapter-9-wind-temple"]
+      }
+    ]
+  },
+
+  "items": [
+    { "id": "telescope",        "name": "Telescope",         "type": "item",    "class": "optional",    "acquiredAtSectionId": "prologue-outset-island" },
+    { "id": "heros-sword",      "name": "Hero's Sword",      "type": "item",    "class": "progression", "acquiredAtSectionId": "prologue-outset-island" },
+    { "id": "heros-shield",     "name": "Hero's Shield",     "type": "item",    "class": "progression", "acquiredAtSectionId": "prologue-outset-island" },
+    { "id": "sail",             "name": "Sail",              "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-1-forsaken-fortress" },
+    { "id": "pirate-charm",     "name": "Pirate's Charm",    "type": "item",    "class": "optional",    "acquiredAtSectionId": "chapter-1-forsaken-fortress" },
+    { "id": "song-of-passing",  "name": "Song of Passing",   "type": "song",    "class": "optional",    "acquiredAtSectionId": "chapter-1-forsaken-fortress" },
+    { "id": "grappling-hook",   "name": "Grappling Hook",    "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-2-dragon-roost-cavern" },
+    { "id": "dins-pearl",       "name": "Din's Pearl",       "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-2-dragon-roost-cavern" },
+    { "id": "deku-leaf",        "name": "Deku Leaf",         "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-3-forest-haven-forbidden-woods" },
+    { "id": "boomerang",        "name": "Boomerang",         "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-3-forest-haven-forbidden-woods" },
+    { "id": "farores-pearl",    "name": "Farore's Pearl",    "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-3-forest-haven-forbidden-woods" },
+    { "id": "bombs",            "name": "Bombs",             "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-4-nayrus-pearl" },
+    { "id": "nayrus-pearl",     "name": "Nayru's Pearl",     "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-4-nayrus-pearl" },
+    { "id": "heros-bow",        "name": "Hero's Bow",        "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-5-tower-of-gods" },
+    { "id": "command-melody",   "name": "Command Melody",    "type": "song",    "class": "progression", "acquiredAtSectionId": "chapter-5-tower-of-gods" },
+    { "id": "master-sword",     "name": "Master Sword",      "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-6-hyrule-master-sword" },
+    { "id": "earth-gods-lyric", "name": "Earth God's Lyric", "type": "song",    "class": "progression", "acquiredAtSectionId": "chapter-6-hyrule-master-sword" },
+    { "id": "wind-gods-aria",   "name": "Wind God's Aria",   "type": "song",    "class": "progression", "acquiredAtSectionId": "chapter-6-hyrule-master-sword" },
+    { "id": "skull-hammer",     "name": "Skull Hammer",      "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-7-forsaken-fortress-2" },
+    { "id": "mirror-shield",    "name": "Mirror Shield",     "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-8-earth-temple" },
+    { "id": "hookshot",         "name": "Hookshot",          "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-9-wind-temple" },
+    { "id": "light-arrows",     "name": "Light Arrows",      "type": "item",    "class": "progression", "acquiredAtSectionId": "chapter-11-ganons-tower" }
+  ],
+
+  "detours": [
+    {
+      "id": "orca-sparring",
+      "location": "Orca's dojo, Outset Island (F2) — ground floor of the house on the right as you cross the bridge into the village",
+      "type": "heart",
+      "requires": [],
+      "benefit": "+1 Heart Container",
+      "method": "Talk to Orca (the swordsman in the dojo) and request a sparring match. Survive 300 consecutive sword hits without missing — he awards a Heart Container at 300.",
+      "earliestSectionId": "prologue-outset-island",
+      "recommendedSectionId": "prologue-outset-island",
+      "mandatory": false
+    },
+    {
+      "id": "bomb-bag-upgrades",
+      "location": "Bomb Island (F4) and Pawprint Isle (F5) — south-central Great Sea",
+      "type": "upgrade",
+      "requires": ["bombs"],
+      "benefit": "Bomb bag capacity 30 → 60 → 99",
+      "method": "Bomb Island (F4): defeat the Wizzrobe on the boulder summit for the Big Bomb Bag (30→60). Pawprint Isle (F5): bomb the cracked wall inside the westernmost cave to reach the chest for the Biggest Bomb Bag (60→99).",
+      "earliestSectionId": "chapter-4-nayrus-pearl",
+      "recommendedSectionId": "chapter-4-nayrus-pearl",
+      "mandatory": false
+    },
+    {
+      "id": "wallet-upgrade",
+      "location": "Windfall Island (B2) — Zunari's merchant stall in the centre square",
+      "type": "upgrade",
+      "requires": ["bombs"],
+      "benefit": "Wallet capacity 200 → 1,000 → 5,000 rupees",
+      "method": "On Windfall Island (B2), buy the Town Flower from Zunari's stall and begin his trading-quest chain. Trade with island merchants at Rock Spire Isle (D7) and others; return goods to Zunari. Final reward is the Biggest Wallet (5,000 rupees).",
+      "earliestSectionId": "chapter-4-nayrus-pearl",
+      "recommendedSectionId": "chapter-4-nayrus-pearl",
+      "mandatory": false
+    },
+    {
+      "id": "ballad-of-gales",
+      "location": "Mother & Child Isles (B4) — through the rainbow portal, inside the inner isle",
+      "type": "convenience",
+      "requires": ["heros-bow"],
+      "benefit": "Ballad of Gales warp-song — teleport to any cyclone on the Great Sea, eliminating hours of sailing",
+      "method": "Sail to the rainbow portal just south of Mother & Child Isles (B4). It transports you inside, where the Great Fairy teaches the Ballad of Gales. Play it with the Wind Waker to summon a cyclone and warp to any of eight islands across the sea.",
+      "earliestSectionId": "chapter-5-tower-of-gods",
+      "recommendedSectionId": "chapter-5-tower-of-gods",
+      "mandatory": false
+    },
+    {
+      "id": "quiver-upgrades",
+      "location": "Star Belt Archipelago (C6) and Windfall Island (B2)",
+      "type": "upgrade",
+      "requires": ["heros-bow", "bombs"],
+      "benefit": "Quiver capacity 30 → 60 → 99 arrows",
+      "method": "Big Quiver (30→60): inside the cave on Star Belt Archipelago (C6), fire a Bomb Arrow at the distant target. Biggest Quiver (60→99): target-shooting minigame inside the large building on Windfall Island's east cliff (B2) — score 2,500 or more in one run.",
+      "earliestSectionId": "chapter-5-tower-of-gods",
+      "recommendedSectionId": "chapter-5-tower-of-gods",
+      "mandatory": false
+    }
+  ],
+
+  "collectionQuests": [
+    {
+      "id": "triforce-of-courage",
+      "name": "Triforce of Courage",
+      "totalCount": 8,
+      "pieces": [
+        {
+          "label": "Shard 1 — Outset Island south cliff",
+          "salvageLocation": "Forest labyrinth on the south cliff of Outset Island (F2); chest at the maze's heart after clearing the path",
+          "requires": ["skull-hammer"],
+          "decipherStep": "In HD, the Triforce Chart for Shard 1 is found inside Ganon's Tower — no Tingle deciphering required for this shard"
+        },
+        {
+          "label": "Shard 2 — Gale Isle upper cavern",
+          "salvageLocation": "Inside the upper cavern on Gale Isle (B3) — upper ledge of the east face, accessible after unsealing the island",
+          "requires": ["wind-gods-aria", "command-melody"]
+        },
+        {
+          "label": "Shard 3 — Overlook Island (C6)",
+          "chartLocation": "Overlook Island (C6) — chart inside the cave at the island's base; Hookshot to reach",
+          "salvageLocation": "Salvage point south-west of Overlook Island as marked on the chart",
+          "requires": ["hookshot"]
+        },
+        {
+          "label": "Shard 4 — Four-Eye Reef (B5)",
+          "chartLocation": "Sunken ship at Four-Eye Reef (B5) — chart inside the hull",
+          "decipherStep": "Take chart to Tingle on Tingle Island (C4); costs 398 rupees to decipher [LOW CONFIDENCE — verify HD vs GCN]",
+          "salvageLocation": "Salvage spot as marked on deciphered chart",
+          "requires": ["bombs"]
+        },
+        {
+          "label": "Shard 5 — Mother & Child Isles (B4)",
+          "chartLocation": "Chest inside the inner isle of Mother & Child Isles (B4)",
+          "decipherStep": "Take chart to Tingle on Tingle Island (C4); costs 398 rupees [LOW CONFIDENCE — verify HD]",
+          "salvageLocation": "Salvage spot north-east of Tingle Island per deciphered chart",
+          "requires": []
+        },
+        {
+          "label": "Shard 6 — Cliff Plateau Isles (D6)",
+          "chartLocation": "Highest platform of Cliff Plateau Isles (D6) — Hookshot up from ledge to ledge",
+          "salvageLocation": "Salvage point east of Cliff Plateau Isles per chart; no Tingle deciphering needed",
+          "requires": ["hookshot"]
+        },
+        {
+          "label": "Shard 7 — Stone Watcher Island (E7)",
+          "chartLocation": "Stone Watcher Island (E7) — defeat two Darknuts inside the cave to open the chest",
+          "decipherStep": "Take chart to Tingle on Tingle Island (C4); costs 398 rupees [LOW CONFIDENCE — verify HD]",
+          "salvageLocation": "Salvage spot south of Stone Watcher Island per deciphered chart",
+          "requires": []
+        },
+        {
+          "label": "Shard 8 — Outset Island maze (F2)",
+          "chartLocation": "Chest inside the south-cliff labyrinth on Outset Island (F2) — Skull Hammer clears the petrified stumps",
+          "salvageLocation": "The chest in the labyrinth contains the shard directly — no salvaging",
+          "requires": ["skull-hammer"]
+        }
+      ]
+    }
+  ],
+
+  "locations": [
+    {
+      "id": "outset-island",
+      "name": "Outset Island",
+      "ref": "F2",
+      "coord": { "col": 2, "row": 6 },
+      "reachableBy": "Starting island — always accessible on foot. Use the Ballad of Gales warp after learning it at B4 for fast return trips.",
+      "whereWithin": "Village on the north shore; forest labyrinth on the south cliff; Jabun's cave on the south-west sea face (bomb the boulder to enter).",
+      "isHub": true,
+      "contains": [
+        { "label": "Telescope from Aryll — wooden observation platform at the island's north tip", "kind": "beat", "sectionId": "prologue-outset-island" },
+        { "label": "Hero's Sword from Orca — dojo on the ground floor of the right-hand house at the village bridge", "kind": "beat", "sectionId": "prologue-outset-island" },
+        { "label": "Hero's Shield from Grandma — house at the top of the village stairs, before the forest path", "kind": "beat", "sectionId": "prologue-outset-island" },
+        { "label": "Nayru's Pearl from Jabun — flooded cave on the south-west sea face; bomb the boulder to enter", "kind": "beat", "sectionId": "chapter-4-nayrus-pearl", "requires": ["bombs"] },
+        { "label": "Triforce Shard 8 — deep in the forest labyrinth on the south cliff; Skull Hammer clears the petrified stumps", "kind": "secret", "requires": ["skull-hammer"], "completionistOnly": true },
+        { "label": "Heart Container — Orca's 300-hit sparring test", "kind": "secret", "completionistOnly": true },
+        { "label": "Piece of Heart — upper ledge inside Jabun's cave on the south-west shore", "kind": "secret", "requires": ["bombs"], "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "forsaken-fortress",
+      "name": "Forsaken Fortress",
+      "ref": "A1",
+      "coord": { "col": 1, "row": 1 },
+      "reachableBy": "Sail north-west, or Ballad of Gales to the nearby cyclone. On the first visit, Tetra's pirates launch you via cannon.",
+      "isHub": false,
+      "contains": [
+        { "label": "First infiltration — sneak past searchlights in a barrel, free four captive girls, reach Aryll", "kind": "beat", "sectionId": "chapter-1-forsaken-fortress" },
+        { "label": "Skull Hammer — locked chest on the second floor of the interior (second assault only)", "kind": "beat", "sectionId": "chapter-7-forsaken-fortress-2", "requires": ["master-sword"] },
+        { "label": "Helmaroc King boss fight — summit of the fortress tower", "kind": "beat", "sectionId": "chapter-7-forsaken-fortress-2" }
+      ]
+    },
+    {
+      "id": "windfall-island",
+      "name": "Windfall Island",
+      "ref": "B2",
+      "coord": { "col": 2, "row": 2 },
+      "reachableBy": "Sail north-west from the centre sea or Ballad of Gales warp. The island has a recognisable clocktower.",
+      "whereWithin": "Town square in the centre; large school building on the east cliff; Zunari's stall at the south end of the square; bomb shop at the north end.",
+      "isHub": true,
+      "contains": [
+        { "label": "Song of Passing from Tott — dancing man by the gravestone outside the town gate; mimic his four-beat routine", "kind": "beat", "sectionId": "chapter-1-forsaken-fortress" },
+        { "label": "Pirate's Charm from Tetra — aboard her ship in the harbour", "kind": "beat", "sectionId": "chapter-1-forsaken-fortress" },
+        { "label": "Sail from the north-end shop — 80 rupees", "kind": "shop", "sectionId": "chapter-1-forsaken-fortress" },
+        { "label": "Bombs — steal from the pirate ship's hold when it docks in the harbour (chapter 4)", "kind": "beat", "sectionId": "chapter-4-nayrus-pearl" },
+        { "label": "Zunari trading quest — buy Town Flower from his stall in the centre square; trade up for bigger wallets", "kind": "npc", "requires": ["bombs"], "completionistOnly": true },
+        { "label": "Biggest Quiver (60→99) — target-shooting in the large building on the east cliff; score 2,500+", "kind": "secret", "requires": ["heros-bow"], "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "dragon-roost-island",
+      "name": "Dragon Roost Island",
+      "ref": "B6",
+      "coord": { "col": 6, "row": 2 },
+      "reachableBy": "Sail north-east or Ballad of Gales warp. Large volcano island — unmistakable on the horizon.",
+      "whereWithin": "Village on the south-east shore. Dungeon entrance is through the volcanic passage on the north side, up two rope-bridge flights.",
+      "isHub": true,
+      "contains": [
+        { "label": "Medli with Komali's letter — cave passage just before the dungeon entrance on the north side", "kind": "npc", "sectionId": "chapter-2-dragon-roost-cavern" },
+        { "label": "Dragon Roost Cavern — Grappling Hook and Din's Pearl inside", "kind": "beat", "sectionId": "chapter-2-dragon-roost-cavern" },
+        { "label": "Earth Sage awakening — play Earth God's Lyric to Medli in the village after chapter 6", "kind": "beat", "sectionId": "chapter-6-hyrule-master-sword" }
+      ]
+    },
+    {
+      "id": "forest-haven",
+      "name": "Forest Haven",
+      "ref": "E3",
+      "coord": { "col": 3, "row": 5 },
+      "reachableBy": "Sail south-west or Ballad of Gales warp. The giant tree is visible from a distance.",
+      "whereWithin": "Great Deku Tree at the canopy — climb the ivy on the south-facing cliff face. Forbidden Woods entrance at island ground level. Makar (Wind Sage successor) near the waterfall on the island's north side.",
+      "isHub": true,
+      "contains": [
+        { "label": "Deku Leaf — spiral up interior branch platforms to the crown of the Great Deku Tree", "kind": "beat", "sectionId": "chapter-3-forest-haven-forbidden-woods" },
+        { "label": "Forbidden Woods dungeon — Boomerang and Farore's Pearl inside", "kind": "beat", "sectionId": "chapter-3-forest-haven-forbidden-woods" },
+        { "label": "Wind Sage awakening — play Wind God's Aria to Makar at the waterfall on the north side (reach via Grappling Hook swing)", "kind": "beat", "sectionId": "chapter-6-hyrule-master-sword" }
+      ]
+    },
+    {
+      "id": "tower-of-gods",
+      "name": "Tower of the Gods",
+      "ref": "D4",
+      "coord": { "col": 4, "row": 4 },
+      "reachableBy": "The tower rises automatically from the centre sea after all three Pearls are placed on their pedestals.",
+      "isHub": false,
+      "contains": [
+        { "label": "Command Melody — stone tablet near the dungeon entrance on the ground floor", "kind": "beat", "sectionId": "chapter-5-tower-of-gods" },
+        { "label": "Hero's Bow — locked chest on the second floor", "kind": "beat", "sectionId": "chapter-5-tower-of-gods" },
+        { "label": "Entrance to drowned Hyrule — submerged gate below the tower, opened after defeating Gohdan", "kind": "beat", "sectionId": "chapter-5-tower-of-gods" }
+      ]
+    },
+    {
+      "id": "hyrule-castle",
+      "name": "Drowned Hyrule",
+      "ref": "D4 (below)",
+      "reachableBy": "Dive through the gate on the sea floor below Tower of the Gods (D4), opened after Gohdan's defeat.",
+      "isHub": false,
+      "contains": [
+        { "label": "Master Sword — pedestal in the throne room at the castle's heart", "kind": "beat", "sectionId": "chapter-6-hyrule-master-sword" },
+        { "label": "Earth God's Lyric — ghost of former Earth Sage in the chamber east of the throne room", "kind": "beat", "sectionId": "chapter-6-hyrule-master-sword" },
+        { "label": "Wind God's Aria — ghost of former Wind Sage in the chamber west of the throne room", "kind": "beat", "sectionId": "chapter-6-hyrule-master-sword" }
+      ]
+    },
+    {
+      "id": "headstone-island",
+      "name": "Headstone Island",
+      "ref": "D5",
+      "coord": { "col": 5, "row": 4 },
+      "reachableBy": "Sail east of centre sea. Stone tablet on the beach unseals the dungeon entrance.",
+      "whereWithin": "Stone tablet on the beach at the base. Earth Temple entrance behind the opened stone door.",
+      "isHub": false,
+      "contains": [
+        { "label": "Earth Temple — Mirror Shield inside; requires Earth God's Lyric and Command Melody to enter", "kind": "beat", "sectionId": "chapter-8-earth-temple", "requires": ["earth-gods-lyric", "command-melody"] }
+      ]
+    },
+    {
+      "id": "gale-isle",
+      "name": "Gale Isle",
+      "ref": "B3",
+      "coord": { "col": 3, "row": 2 },
+      "reachableBy": "Sail north of centre sea, slightly west. Carved stone face on the east cliff unseals when you play Wind God's Aria.",
+      "whereWithin": "Stone face on the east cliff. Wind Temple behind it. Upper cavern for Triforce Shard 2 on the upper ledge.",
+      "isHub": false,
+      "contains": [
+        { "label": "Wind Temple — Hookshot inside; requires Wind God's Aria and Command Melody to enter", "kind": "beat", "sectionId": "chapter-9-wind-temple", "requires": ["wind-gods-aria", "command-melody"] },
+        { "label": "Triforce Shard 2 — upper cavern on the east face's upper ledge, after the island is unsealed", "kind": "secret", "requires": ["wind-gods-aria", "command-melody"], "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "tingle-island",
+      "name": "Tingle Island",
+      "ref": "C4",
+      "coord": { "col": 4, "row": 3 },
+      "reachableBy": "Sail just north of the centre sea. The island is marked by a large balloon tethered overhead.",
+      "isHub": true,
+      "contains": [
+        { "label": "Tingle's prison — pay 398 rupees on first visit to free him and unlock his deciphering service", "kind": "beat" },
+        { "label": "Tingle's chart-deciphering — 398 rupees per encoded Triforce or treasure chart", "kind": "shop" }
+      ]
+    },
+    {
+      "id": "mother-child-isles",
+      "name": "Mother & Child Isles",
+      "ref": "B4",
+      "coord": { "col": 4, "row": 2 },
+      "reachableBy": "Sail north of the centre sea, directly above the Tower of Gods. Rainbow portal leads inside; requires Hero's Bow for the final chamber.",
+      "isHub": false,
+      "contains": [
+        { "label": "Ballad of Gales — Great Fairy inside teaches it after you enter via the rainbow portal", "kind": "beat", "sectionId": "chapter-5-tower-of-gods", "requires": ["heros-bow"] }
+      ]
+    },
+    {
+      "id": "northern-triangle",
+      "name": "Northern Triangle Island",
+      "ref": "A4",
+      "coord": { "col": 4, "row": 1 },
+      "reachableBy": "Sail to the far north of the sea, directly north of Tingle Island (C4). Stone pedestal on the beach.",
+      "isHub": false,
+      "contains": [
+        { "label": "Din's Pearl pedestal — place Din's Pearl to progress toward raising the Tower of Gods", "kind": "beat", "sectionId": "chapter-2-dragon-roost-cavern" }
+      ]
+    },
+    {
+      "id": "eastern-triangle",
+      "name": "Eastern Triangle Island",
+      "ref": "D7",
+      "coord": { "col": 7, "row": 4 },
+      "reachableBy": "Sail to the far east of the sea. Stone pedestal on the small plateau at the island's peak.",
+      "isHub": false,
+      "contains": [
+        { "label": "Farore's Pearl pedestal — place Farore's Pearl here", "kind": "beat", "sectionId": "chapter-3-forest-haven-forbidden-woods" }
+      ]
+    },
+    {
+      "id": "southern-triangle",
+      "name": "Southern Triangle Island",
+      "ref": "G5",
+      "coord": { "col": 5, "row": 7 },
+      "reachableBy": "Sail south-east to the edge of the sea. Stone pedestal on the island's crest.",
+      "isHub": false,
+      "contains": [
+        { "label": "Nayru's Pearl pedestal — placing it here completes the three-pearl sequence and raises the Tower of Gods", "kind": "beat", "sectionId": "chapter-4-nayrus-pearl" }
+      ]
+    },
+    {
+      "id": "greatfish-isle",
+      "name": "Greatfish Isle",
+      "ref": "D1",
+      "coord": { "col": 1, "row": 4 },
+      "reachableBy": "Sail west from the centre sea.",
+      "isHub": false,
+      "contains": [
+        { "label": "Razed isle — scripted encounter revealing Ganondorf's pursuit; leads you toward Jabun on Outset Island (F2)", "kind": "beat", "sectionId": "chapter-4-nayrus-pearl" }
+      ]
+    },
+    {
+      "id": "star-island",
+      "name": "Star Island",
+      "ref": "B1",
+      "coord": { "col": 1, "row": 2 },
+      "reachableBy": "Sail north-west. Small island with a single cave entrance.",
+      "isHub": false,
+      "contains": [
+        { "label": "Piece of Heart — light all four torches in the cave with Fire Arrows before they extinguish; chest appears in the centre", "kind": "secret", "requires": ["heros-bow"], "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "ganons-tower",
+      "name": "Ganon's Tower",
+      "ref": "D4 (above)",
+      "reachableBy": "Rises from the centre sea when all eight Triforce shards are assembled. Sail directly to it at D4.",
+      "isHub": false,
+      "contains": [
+        { "label": "Six dungeon-themed floors — full item arsenal required", "kind": "beat", "sectionId": "chapter-11-ganons-tower" },
+        { "label": "Phantom Ganon gauntlet — three sequential encounters before receiving Light Arrows", "kind": "beat", "sectionId": "chapter-11-ganons-tower" },
+        { "label": "Puppet Ganon — final dungeon boss before the rooftop", "kind": "beat", "sectionId": "chapter-11-ganons-tower" },
+        { "label": "Ganondorf — rooftop final battle", "kind": "beat", "sectionId": "chapter-11-ganons-tower" }
+      ]
+    }
+  ],
+
+  "bossFights": [
+    {
+      "id": "gohma",
+      "name": "Gohma",
+      "sectionId": "chapter-2-dragon-roost-cavern",
+      "locationRef": "B6",
+      "prep": {
+        "recommendedItems": ["grappling-hook"],
+        "healthAdvice": "Bring at least 5 Heart Containers. There are no fairies inside Dragon Roost Cavern — top up with the Blue Chu Jelly on the floor just before the boss door.",
+        "topUpBefore": "Kill the Blue ChuChu in the corridor immediately before the boss door to collect its jelly."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Dragging the claw",
+          "tells": "Gohma raises one of its armoured forelegs high before swiping. Its eye is visible but shielded.",
+          "counter": "Fire the Grappling Hook at the tip of the raised claw — it yanks the claw and Gohma's head down to ground level, exposing the eye.",
+          "damageWindow": "The moment Gohma's head is forced down, the eye opens. Run in and slash it four times with the sword. Back off before the claw retracts."
+        },
+        {
+          "name": "Phase 2 — Lava-ball barrage",
+          "tells": "Gohma retreats to the far wall and its maw glows red-orange before spitting.",
+          "counter": "Run to either side wall immediately — the lava boulders land centre-left and centre-right. Once the barrage ends, wait for the next claw raise and repeat the Grappling Hook step.",
+          "damageWindow": "Same as Phase 1. Gohma dies after approximately four eye hits total."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit the boss room via the sealed door (opens if you are revived after dying) and return to the Blue ChuChu corridor — the jelly respawns.",
+        "easierTactic": "Z-target Gohma to keep the camera centred. The hook only connects on a fully raised claw — don't fire early.",
+        "retreatOption": "Dying restarts you outside the boss door with Gohma's health fully reset."
+      },
+      "reward": "Heart Container + Din's Pearl (given by Prince Komali outside in a cutscene)"
+    },
+    {
+      "id": "kalle-demos",
+      "name": "Kalle Demos",
+      "sectionId": "chapter-3-forest-haven-forbidden-woods",
+      "locationRef": "E3",
+      "prep": {
+        "recommendedItems": ["boomerang"],
+        "healthAdvice": "Bring at least 5 Heart Containers. Break the pots along the left wall in the corridor before the boss door — one contains a fairy.",
+        "topUpBefore": "Pots immediately before the boss door in the Forbidden Woods — left wall."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Cutting the vines",
+          "tells": "Kalle Demos hangs from the ceiling on six thick vines above a thorn pit. Tentacles lash at floor level as a warning.",
+          "counter": "Stand in the centre of the pit. Select the Boomerang and draw a throw arc that cuts all six vines in one toss — target them consecutively before releasing.",
+          "damageWindow": "When all six vines are severed, Kalle Demos crashes down and its fleshy core is exposed. Dash in and slash the core five to six times before it recovers."
+        },
+        {
+          "name": "Phase 2 — Closing petals",
+          "tells": "After taking damage, the petals begin closing around the core. Kalle Demos hisses before each closure.",
+          "counter": "Target the petal tips with the Boomerang to slice them off before they fully close. If the petals seal, step back and wait for the core to reopen.",
+          "damageWindow": "Four to five sword hits per opening. Three or four openings total end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to the pre-boss corridor — the fairy pot respawns on the left wall.",
+        "easierTactic": "Prioritise getting all six vines in a single Boomerang arc. If you only cut four or five, the boss stays airborne — reset and rethrow.",
+        "retreatOption": "Dying resets you to the boss-room entrance with Kalle Demos' health restored."
+      },
+      "reward": "Heart Container + Farore's Pearl (given by the Great Deku Tree outside)"
+    },
+    {
+      "id": "gohdan",
+      "name": "Gohdan",
+      "sectionId": "chapter-5-tower-of-gods",
+      "locationRef": "D4",
+      "prep": {
+        "recommendedItems": ["heros-bow", "bombs"],
+        "healthAdvice": "Bring at least 6 Heart Containers and 20 or more arrows. The Tower of Gods has no fairy spots late in the dungeon.",
+        "topUpBefore": "Break the pot in the antechamber before the boss door — it contains a fairy."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Disabling the hands",
+          "tells": "Two giant stone hands hover at mid-height and begin to clap together — a clear wind-up before impact.",
+          "counter": "Aim the Hero's Bow at the large eye embedded in each palm. One arrow per eye — the hand recoils when hit. Hit both hands.",
+          "damageWindow": "After both palms are struck, the hands slump and Gohdan's stone head descends to Link's height. Shoot both face eyes with arrows to stun the head."
+        },
+        {
+          "name": "Phase 2 — Open mouth",
+          "tells": "Once both face eyes are hit, Gohdan opens its mouth wide and smoke pours out.",
+          "counter": "Toss a Bomb directly into the open mouth — you have a four to five second window before it closes.",
+          "damageWindow": "Each bomb hit deals a quarter of the boss's remaining health. Two to three bombs end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "If arrows run low, the stunned hands drop arrows on the floor — collect them. Exit and re-enter to find the fairy pot.",
+        "easierTactic": "Z-target one hand, fire, then immediately Z-target the second and fire. The lock-on slows the reticle and makes both shots manageable.",
+        "retreatOption": "Dying restarts at the boss-room entrance with Gohdan fully healed."
+      },
+      "reward": "Heart Container. Defeating Gohdan opens the sea-floor gate leading to Hyrule."
+    },
+    {
+      "id": "helmaroc-king",
+      "name": "Helmaroc King",
+      "sectionId": "chapter-7-forsaken-fortress-2",
+      "locationRef": "A1",
+      "prep": {
+        "recommendedItems": ["skull-hammer", "heros-bow"],
+        "healthAdvice": "Bring at least 8 Heart Containers and two potions or a fairy. There are no healing spots on the boss platform.",
+        "topUpBefore": "Red and Blue Potions are sold at the shop on Windfall Island (B2). Buy two before sailing to Forsaken Fortress."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Iron mask",
+          "tells": "The Helmaroc King swoops in a straight diagonal line across the arena, beak first. It banks sharply before each dive as a tell.",
+          "counter": "Roll sideways (not backward) when the beak is two to three body-lengths away. The beak will drive into the platform floor and stick briefly.",
+          "damageWindow": "While the beak is stuck, run around behind it and swing the Skull Hammer onto the top of the iron mask. Three Skull Hammer hits shatter the mask."
+        },
+        {
+          "name": "Phase 2 — Exposed crest",
+          "tells": "With the mask gone, the King pecks more rapidly and also uses a spinning wing attack — it rotates 360° with wings outstretched as a warning.",
+          "counter": "For dive-pecks, dodge and counter as before. Use the Hero's Bow to shoot the exposed orange crest when the King hovers. For the spin attack, step back to the platform edge.",
+          "damageWindow": "Three arrows to the crest stun the King. During the stun, rush in for two or three sword hits on the crest. Repeat until dead."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Use a potion or invoke a fairy if you drop below 3 hearts — there is no exit during the fight.",
+        "easierTactic": "In Phase 2, ranged bow attacks are slower but much safer. Don't rush the stun — land three arrows first.",
+        "retreatOption": "There is no exit mid-fight. Prioritise potions."
+      },
+      "reward": "Heart Container + cutscene leading to the Phantom Ganon encounter and Zelda's rescue"
+    },
+    {
+      "id": "jalhalla",
+      "name": "Jalhalla",
+      "sectionId": "chapter-8-earth-temple",
+      "locationRef": "D5",
+      "prep": {
+        "recommendedItems": ["mirror-shield"],
+        "healthAdvice": "Bring at least 8 Heart Containers and a fairy if possible. The small Poes in Phase 2 each deal minor damage that adds up.",
+        "topUpBefore": "Fairy in a pot two rooms before the boss door in the Earth Temple."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Catching the moonbeam",
+          "tells": "Jalhalla floats toward Link slowly, emitting a purple glow. It pauses briefly before attempting a possession attack.",
+          "counter": "Face the shaft of moonlight coming through the window in the east wall. Equip the Mirror Shield and position yourself so the reflected beam points at Jalhalla's translucent body.",
+          "damageWindow": "When the beam hits Jalhalla it solidifies and falls. Press B to pick it up (like a barrel), then carry it to a spiked wall and press A to hurl. One throw deals roughly a quarter of its health. Repeat three to four times."
+        },
+        {
+          "name": "Phase 2 — Poe swarm",
+          "tells": "After a hard throw, Jalhalla splinters into twenty small Poes that scatter across the floor.",
+          "counter": "Target each small Poe with the sword (two hits each) or use a spin attack to catch several at once. Clear all twenty before they reform.",
+          "damageWindow": "After all small Poes are defeated, Jalhalla reconstitutes. Return to the Mirror Shield step — the timing is the same but slightly faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-fight healing — use the pre-boss fairy if you collected it.",
+        "easierTactic": "Stand with your back to the west wall for a clear angle on the moonlight shaft. Z-target Jalhalla to centre it before reflecting.",
+        "retreatOption": "Dying restarts the boss fight with Jalhalla fully healed."
+      },
+      "reward": "Heart Container + Master Sword partially restored (glows faintly; one temple remains)"
+    },
+    {
+      "id": "molgera",
+      "name": "Molgera",
+      "sectionId": "chapter-9-wind-temple",
+      "locationRef": "B3",
+      "prep": {
+        "recommendedItems": ["hookshot"],
+        "healthAdvice": "Bring at least 9 Heart Containers and a full quiver (30 arrows minimum). Fairy in a pot one room before the boss door.",
+        "topUpBefore": "Fairy pot in the corridor directly before the boss door — approach from the south-east side."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Hooking the tongue",
+          "tells": "Molgera circles the sand pit just below the surface, then rears up — its green tongue extends upward — before diving back under.",
+          "counter": "The instant the tongue extends above the sand, aim and fire the Hookshot at it. The hook yanks the tongue (and Molgera's head) toward Link.",
+          "damageWindow": "With Molgera yanked in close, slash the tongue six to eight times with the sword before it retreats. Between Molgera appearances, kill any larvae (small flying enemies) with the Hookshot."
+        },
+        {
+          "name": "Phase 2 — Accelerated swarm",
+          "tells": "Molgera circles faster and spawns more larvae per cycle. It also attempts a ground-swipe if you stand near the pit edge.",
+          "counter": "Step away from the pit edge. Keep the Hookshot equipped for larvae. The tongue-hook timing is the same — just more compressed.",
+          "damageWindow": "Same as Phase 1. Approximately six total tongue strikes end the boss."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-fight recovery. Use the fairy from the pre-boss corridor if you collected it; if not, dying and restarting gives access to it again.",
+        "easierTactic": "Kill larvae with the Hookshot whenever Molgera is submerged — this prevents chip damage and gives you clean focus when the tongue appears.",
+        "retreatOption": "Dying restarts the fight with Molgera fully healed."
+      },
+      "reward": "Heart Container + Master Sword fully restored (glows at full power from here onward)"
+    },
+    {
+      "id": "puppet-ganon-and-ganondorf",
+      "name": "Puppet Ganon & Ganondorf",
+      "sectionId": "chapter-11-ganons-tower",
+      "locationRef": "D4 (above)",
+      "prep": {
+        "recommendedItems": ["light-arrows", "master-sword", "heros-bow"],
+        "healthAdvice": "Bring maximum heart containers and two Blue Potions — there is no healing between Puppet Ganon and the rooftop final battle.",
+        "topUpBefore": "Great Fairy fountain on Outset Island (F2), inside the south-west shore cave. Visit before entering Ganon's Tower."
+      },
+      "phases": [
+        {
+          "name": "Puppet Ganon — Spider form",
+          "tells": "The giant marionette descends on strings in spider form and drops onto the platform.",
+          "counter": "Use the Hero's Bow to fire a standard arrow at the glowing blue orb on its tail to stun it. Then fire a Light Arrow at the stunned tail.",
+          "damageWindow": "One Light Arrow to the tail destroys this form. The puppet transforms immediately into Worm form — repeat: standard arrow to stun the tail, then Light Arrow."
+        },
+        {
+          "name": "Puppet Ganon — Boar (Ganon) form",
+          "tells": "The puppet takes on a large pig-beast form and charges across the arena.",
+          "counter": "Dodge the charge by rolling sideways. The tail drags on the floor as it charges. Fire a standard arrow at the tail to stun, then a Light Arrow while it glows.",
+          "damageWindow": "One Light Arrow to the tail ends Puppet Ganon. Ascend to the rooftop."
+        },
+        {
+          "name": "Ganondorf — rooftop final battle",
+          "tells": "Ganondorf deflects Zelda's Light Arrows back and forth. He charges Link with a sword strike — always a single overhead swing with a visible wind-up.",
+          "counter": "Dodge his sword swing by rolling through (not away from) it, then counter with the Master Sword. Position yourself between Ganondorf and Zelda — when she fires a Light Arrow, step aside so it hits Ganondorf in the back.",
+          "damageWindow": "Each Light Arrow hit stuns Ganondorf and prompts an A-button prompt. Press A to drive the Master Sword into his forehead. Two to three such strikes end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Use a potion or fairy if you drop below 3 hearts — there is no healing inside the tower or on the rooftop.",
+        "easierTactic": "For the rooftop, focus entirely on dodging Ganondorf's melee. Do not chase him — Zelda controls the pacing of the Light Arrow volleys. Let her fire; then position.",
+        "retreatOption": "Dying in Puppet Ganon sends you back to that encounter's start. Dying on the rooftop resets only the rooftop."
+      },
+      "reward": "The ending. Credits."
+    }
+  ],
+
+  "worldMap": {
+    "kind": "grid",
+    "grid": { "cols": 7, "rows": 7 },
+    "cells": [
+      { "coord": { "col": 1, "row": 1 }, "name": "Forsaken Fortress",  "locationId": "forsaken-fortress",  "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 2, "row": 2 }, "name": "Windfall Island",    "locationId": "windfall-island",    "routeRelevance": "passes-through", "isHub": true,  "secrets": [], "requires": [] },
+      { "coord": { "col": 4, "row": 1 }, "name": "Northern Triangle",  "locationId": "northern-triangle",  "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 7, "row": 4 }, "name": "Eastern Triangle",   "locationId": "eastern-triangle",   "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 5, "row": 7 }, "name": "Southern Triangle",  "locationId": "southern-triangle",  "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 6, "row": 2 }, "name": "Dragon Roost Island","locationId": "dragon-roost-island","routeRelevance": "required",      "isHub": true,  "secrets": [], "requires": [] },
+      { "coord": { "col": 3, "row": 5 }, "name": "Forest Haven",       "locationId": "forest-haven",       "routeRelevance": "required",      "isHub": true,  "secrets": [], "requires": [] },
+      { "coord": { "col": 4, "row": 4 }, "name": "Tower of Gods",      "locationId": "tower-of-gods",      "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 2, "row": 6 }, "name": "Outset Island",      "locationId": "outset-island",      "routeRelevance": "required",      "isHub": true,  "secrets": ["triforce-shard-8", "heart-outset"], "requires": [] },
+      { "coord": { "col": 1, "row": 4 }, "name": "Greatfish Isle",     "locationId": "greatfish-isle",     "routeRelevance": "passes-through", "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 5, "row": 4 }, "name": "Headstone Island",   "locationId": "headstone-island",   "routeRelevance": "required",      "isHub": false, "secrets": [], "requires": ["earth-gods-lyric", "command-melody"] },
+      { "coord": { "col": 3, "row": 2 }, "name": "Gale Isle",          "locationId": "gale-isle",          "routeRelevance": "required",      "isHub": false, "secrets": ["triforce-shard-2"], "requires": ["wind-gods-aria", "command-melody"] },
+      { "coord": { "col": 4, "row": 3 }, "name": "Tingle Island",      "locationId": "tingle-island",      "routeRelevance": "passes-through", "isHub": true,  "secrets": [], "requires": [] },
+      { "coord": { "col": 4, "row": 2 }, "name": "Mother & Child Isles","locationId": "mother-child-isles","routeRelevance": "none",          "isHub": false, "secrets": [], "requires": [] },
+      { "coord": { "col": 1, "row": 2 }, "name": "Star Island",        "locationId": "star-island",        "routeRelevance": "none",          "isHub": false, "secrets": ["heart-star-island"], "requires": ["heros-bow"] }
+    ]
+  },
+
+  "sections": [
+    {
+      "sectionId": "prologue-outset-island",
+      "stage": "Prologue",
+      "title": "Outset Island",
+      "order": 1,
+      "chips": ["Hero's Sword", "Hero's Shield", "First sail"],
+      "video": {
+        "provider": "youtube",
+        "id": "YAa9XNZotXM",
+        "creator": "IGN Guides",
+        "title": "Intro & Outset Island — full walkthrough",
+        "durationLabel": "18:42"
+      },
+      "unlocks": ["telescope", "heros-sword", "heros-shield"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Speak to <strong>Aryll</strong> on the wooden observation platform at the island's north tip to receive the <strong>Telescope</strong>. Aim it at the large bird circling the rocky northern peak — the cutscene triggers the moment you find it.", "locationRef": "F2" },
+        { "text": "Head to the dojo: it's on the ground floor of the house immediately to the right after crossing the village bridge. Speak to <strong>Orca</strong> — he awards you the <strong>Hero's Sword</strong> after the combat lesson. Learn the thrust (hold A then press B) and side-hop (hold Z and press left or right) — both are used in every boss fight.", "locationRef": "F2" },
+        { "text": "Before leaving the village, climb the stairs at the back to the house at the very top. <strong>Grandma</strong> gives you the <strong>Hero's Shield</strong>. This is the only time she gives it — collect it before you board the ship.", "locationRef": "F2" },
+        { "text": "Follow the forest path up the south cliff to the hanging net at the summit ridge. Defeat the Moblins blocking it — the thrust works best here — to cut <strong>Tetra</strong> free.", "locationRef": "F2" },
+        { "text": "Board <strong>Tetra's</strong> pirate ship in the north-shore harbour. <span class=\"spoiler\">The Helmaroc King has taken Aryll to the Forsaken Fortress in the north-west (A1).</span>", "locationRef": "F2" }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Orca's sparring challenge — Heart Container",
+          "body": "Speak to <strong>Orca</strong> again after receiving the sword and ask for a sparring bout. Survive 300 consecutive hits without missing — he awards a <strong>Heart Container</strong>. This is the earliest extra heart in the game and worth doing before heading to the fortress.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Orca's 300-hit sparring test", "note": "Survive without missing a single parry. Take your time — the pace is steady.", "type": "heart", "completionistOnly": true },
+        { "label": "Piece of Heart — south-west shore cave (requires Bombs, acquired in chapter 4)", "note": "Upper ledge inside the same cave as Jabun's chamber on the south-west sea face.", "type": "heart", "requires": ["bombs"], "completionistOnly": true }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-1-forsaken-fortress",
+      "stage": "Chapter 1",
+      "title": "Forsaken Fortress — First Assault",
+      "order": 2,
+      "chips": ["Stealth", "Searchlights", "Sail"],
+      "video": {
+        "provider": "youtube",
+        "id": "YAa9XNZotXM",
+        "creator": "IGN Guides",
+        "title": "Forsaken Fortress — full walkthrough",
+        "durationLabel": "12:18"
+      },
+      "unlocks": ["sail", "pirate-charm", "song-of-passing"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "You arrive at the <strong>Forsaken Fortress</strong> (A1) without your sword. Grab a <strong>barrel</strong> from the crate near the entrance and hold it over Link's head — searchlight patrols treat barrels as furniture.", "locationRef": "A1" },
+        { "text": "Move only during the dark gaps between the rotating searchlight sweeps. Getting caught sends you back to the sea-level holding cell — crawl out through the cracked wall on the right, then ride the moving platform back up to the main gate.", "locationRef": "A1" },
+        { "text": "Free the four <strong>captive girls</strong> in birdcage cells: two on the second level (left and right corridors), two on the third. Cell bars break with a single sword hit once you disarm a guard.", "locationRef": "A1" },
+        { "text": "Climb to the topmost platform and enter the summit chamber. <span class=\"spoiler\">The encounter here ends with the <strong>King of Red Lions</strong> pulling you out to sea.</span>", "locationRef": "A1" },
+        { "text": "Sail south-west to <strong>Windfall Island</strong> (B2). The dancing man near the gravestone outside the town gate is <strong>Tott</strong> — mimic his four-beat routine exactly with the Wind Waker to learn the <strong>Song of Passing</strong>, which toggles day and night at will.", "locationRef": "B2" },
+        { "text": "<strong>Tetra</strong> is aboard her ship in Windfall's harbour. She gives you the <strong>Pirate's Charm</strong> — equip it and check it after major events for mission updates.", "locationRef": "B2" },
+        { "text": "Buy the <strong>Sail</strong> from the shop at the north end of Windfall Island (80 rupees). Without it the King of Red Lions cannot move at speed. Not optional.", "locationRef": "B2" }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+
+    {
+      "sectionId": "chapter-2-dragon-roost-cavern",
+      "stage": "Chapter 2",
+      "title": "Dragon Roost Cavern",
+      "order": 3,
+      "chips": ["Grappling Hook", "Din's Pearl", "Dungeon"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Dragon Roost Cavern — full dungeon walkthrough",
+        "durationLabel": "22:15"
+      },
+      "unlocks": ["grappling-hook", "dins-pearl"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Sail north-east to <strong>Dragon Roost Island</strong> (B6) — the large volcano island on the north-east horizon. In the village on the south-east shore, find <strong>Medli</strong> waiting in the short cave passage just before the dungeon entrance on the island's north side. She gives you the letter for <strong>Prince Komali</strong>, who is in the aerie at the top of the village tower.", "locationRef": "B6" },
+        { "text": "Deliver the letter to Komali in the aerie. He grants access to the dungeon. Enter <strong>Dragon Roost Cavern</strong> through the volcanic passage — follow the rope-bridges on the island's north side up two flights.", "locationRef": "B6" },
+        { "text": "Collect the <strong>Grappling Hook</strong> from the first major chest inside — in the room immediately after the initial lava-crossing chamber, on the left-side platform. It swings you across gaps, grabs distant items, and yanks onto enemy weak points.", "locationRef": "B6" },
+        { "text": "Use bomb-flowers (hook onto the stem to carry one, then throw near cracked walls) to blast open sealed passages. Lava rooms cycle between safe and lethal — move during the cool-down windows.", "locationRef": "B6" },
+        { "text": "Climb to the topmost room to free <strong>Valoo</strong>'s tail from the tangle of rope-like roots blocking his perch.", "locationRef": "B6" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Gohma</strong></span>: see the Boss Fight section below for the full breakdown.", "locationRef": "B6" },
+        { "text": "<span class=\"spoiler\"><strong>Prince Komali</strong> gives you <strong>Din's Pearl</strong> outside the dungeon. Sail directly north to <strong>Northern Triangle Island</strong> (A4) — the stone pedestal is on the beach at the base — and place the Pearl there.</span>", "locationRef": "A4" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Place Din's Pearl immediately",
+          "body": "After Dragon Roost Island, sail north to <strong>Northern Triangle Island (A4)</strong> and place Din's Pearl on the pedestal. It's on your path to Forest Haven and completing two of the three pedestals early makes chapter 4 feel fast.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Gohma defeat reward", "note": "Dropped by Gohma.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-3-forest-haven-forbidden-woods",
+      "stage": "Chapter 3",
+      "title": "Forest Haven & Forbidden Woods",
+      "order": 4,
+      "chips": ["Deku Leaf", "Boomerang", "Farore's Pearl"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Forest Haven & Forbidden Woods — full walkthrough",
+        "durationLabel": "25:40"
+      },
+      "unlocks": ["deku-leaf", "boomerang", "farores-pearl"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Sail south-west to <strong>Forest Haven</strong> (E3) — the island dominated by a giant tree. Climb the ivy on the south-facing cliff face (the ivy grows in a long vertical stripe; approach by sea and look left of the waterfall) to reach the canopy and meet the <strong>Great Deku Tree</strong>.", "locationRef": "E3" },
+        { "text": "Spiral up the interior branch platforms, following the light shaft, to the crown of the tree. Collect the <strong>Deku Leaf</strong> from the golden bloom at the top. It generates a single air gust per use — magic recharges slowly, so use it sparingly outside of puzzles.", "locationRef": "E3" },
+        { "text": "Return to island ground level. The <strong>Forbidden Woods</strong> entrance is in the rock face at ground level, opened by a Deku Leaf gust aimed at the lily-pad platform over the water to the right of where you landed.", "locationRef": "E3" },
+        { "text": "Inside the Forbidden Woods, collect the <strong>Boomerang</strong> from the locked chest on the second floor of the main hall — climb the vines on the left wall to the left balcony, then cross to the chest.", "locationRef": "E3" },
+        { "text": "Use the Boomerang to cut vine barriers, hit distant switches, and stun enemies. Lock on to multiple targets in a single throw arc by drawing the arc across all of them before releasing.", "locationRef": "E3" },
+        { "text": "Ride <strong>Deku flowers</strong> by standing over the closed bloom and blasting a Deku Leaf gust downward into it — it shoots you upward. Glide on the updraft to higher ledges. This mechanic is essential in this dungeon.", "locationRef": "E3" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Kalle Demos</strong></span>: see the Boss Fight section below.", "locationRef": "E3" },
+        { "text": "Collect <span class=\"spoiler\"><strong>Farore's Pearl</strong></span> from the Great Deku Tree outside. Sail east to <strong>Eastern Triangle Island</strong> (D7) — the stone pedestal is on the plateau at the island's peak — and place it.", "locationRef": "D7" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Place Farore's Pearl at D7",
+          "body": "Eastern Triangle Island (D7) is at the far east edge of the sea — sail there now and place the Pearl. With Din's Pearl already placed (A4), you now have two of the three pedestals filled.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Kalle Demos defeat reward", "note": "Dropped by Kalle Demos.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-4-nayrus-pearl",
+      "stage": "Chapter 4",
+      "title": "The Third Pearl",
+      "order": 5,
+      "chips": ["Bombs", "Nayru's Pearl", "Jabun"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Nayru's Pearl — full walkthrough",
+        "durationLabel": "16:30"
+      },
+      "unlocks": ["bombs", "nayrus-pearl"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "<span class=\"spoiler\">Sail west to <strong>Greatfish Isle</strong> (D1) — it has been razed. The King of Red Lions reveals that the sea spirit <strong>Jabun</strong> has fled to a cave on the south-west sea face of Outset Island (F2), sealed by a boulder that requires Bombs to blast open.</span>", "locationRef": "D1" },
+        { "text": "Check the <strong>Pirate's Charm</strong> — Tetra confirms the Bombs are in the pirate ship's hold, currently docked at <strong>Windfall Island</strong> (B2). Sail there. Use the Song of Passing to make it night if the ship is absent (it's only docked at night).", "locationRef": "B2" },
+        { "text": "Board the docked pirate ship and navigate the hold, avoiding patrolling Darknuts. The <strong>Bombs</strong> are in the armory chest in the aft section — reach it by climbing the netting to the second level and crossing the walkway.", "locationRef": "B2" },
+        { "text": "Sail south to <strong>Outset Island</strong> (F2). The boulder blocking Jabun's cave is on the south-west sea face — approach by boat and fire a bomb at it. The explosion opens the cave entrance.", "locationRef": "F2" },
+        { "text": "Enter the cave. <strong>Jabun</strong> speaks in Ancient Hylian; the King of Red Lions translates. He grants <strong>Nayru's Pearl</strong>.", "locationRef": "F2" },
+        { "text": "Sail south-east to <strong>Southern Triangle Island</strong> (G5) — the stone pedestal is on the island's crest. Place Nayru's Pearl. <span class=\"spoiler\">A tower rises from the centre of the sea: the <strong>Tower of the Gods</strong> (D4).</span>", "locationRef": "G5" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Bomb-bag upgrades — do this now",
+          "body": "Now that you have Bombs: <strong>Bomb Island</strong> (roughly F4, south-central sea) has a Wizzrobe on a boulder summit — defeat it for the <strong>Big Bomb Bag</strong> (30→60). <strong>Pawprint Isle</strong> (F5) — bomb the cracked wall inside the westernmost cave for the <strong>Biggest Bomb Bag</strong> (60→99). Carrying 99 bombs removes a headache for the rest of the game.",
+          "completionistOnly": false
+        },
+        {
+          "type": "do-now",
+          "title": "Wallet upgrade via Zunari",
+          "body": "On <strong>Windfall Island</strong> (B2), buy the Town Flower from <strong>Zunari</strong>'s stall in the centre square. Begin his trading quest now — the bigger wallets are needed for the Triforce Hunt later.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": []
+    },
+
+    {
+      "sectionId": "chapter-5-tower-of-gods",
+      "stage": "Chapter 5",
+      "title": "Tower of the Gods",
+      "order": 6,
+      "chips": ["Hero's Bow", "Command Melody", "Stone statues"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Tower of the Gods — full walkthrough",
+        "durationLabel": "28:10"
+      },
+      "unlocks": ["heros-bow", "command-melody"],
+      "gates": ["dins-pearl", "farores-pearl", "nayrus-pearl"],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Enter the <strong>Tower of the Gods</strong> at the centre of the sea (D4) — it rose when all three Pearls were placed. On the ground floor, find the stone tablet near the entrance and collect the <strong>Command Melody</strong>.", "locationRef": "D4" },
+        { "text": "The <strong>Hero's Bow</strong> is in a locked chest on the second floor, in the main chamber. Push the stone statue onto the central pressure pad — the door on the left unlocks and leads to the chest.", "locationRef": "D4" },
+        { "text": "Use the <strong>Command Melody</strong> to take direct control of the stone statue: navigate it onto weight pads, ferry Link across rising-water sections, and fire arrows from it to hit switches out of your own reach.", "locationRef": "D4" },
+        { "text": "The rising-water mechanic floods several rooms to different levels. Route the statue to the lower platform first, then jump on top as it floats up to the next ledge.", "locationRef": "D4" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Gohdan</strong></span>: see the Boss Fight section below.", "locationRef": "D4" },
+        { "text": "<span class=\"spoiler\">Dive through the now-open gate on the sea floor below the tower to reach drowned <strong>Hyrule</strong>.</span>", "locationRef": "D4 (below)" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Ballad of Gales — get this immediately",
+          "body": "The rainbow portal at <strong>Mother & Child Isles</strong> (B4, directly north of Tower of Gods) teaches the <strong>Ballad of Gales</strong> — a warp-song that teleports you to any cyclone on the Great Sea. You need the Hero's Bow to enter. This saves hours of sailing for everything that follows. Get it before heading to Hyrule.",
+          "completionistOnly": false
+        },
+        {
+          "type": "do-now",
+          "title": "Quiver upgrades",
+          "body": "Now that you have the Bow: the <strong>Big Quiver</strong> (30→60) is at Star Belt Archipelago (C6) via a Bomb Arrow challenge. The <strong>Biggest Quiver</strong> (60→99) requires scoring 2,500 at the target-shooting game in the east-cliff building on Windfall Island (B2).",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Gohdan defeat reward", "note": "Dropped by Gohdan.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-6-hyrule-master-sword",
+      "stage": "Chapter 6",
+      "title": "Drowned Hyrule & the Master Sword",
+      "order": 7,
+      "chips": ["Master Sword", "Two sage songs", "Succession"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Hyrule & Master Sword — full walkthrough",
+        "durationLabel": "19:05"
+      },
+      "unlocks": ["master-sword", "earth-gods-lyric", "wind-gods-aria"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "<span class=\"spoiler\">Dive through the Tower of Gods sea-floor gate. The sea here is frozen in time — this is drowned <strong>Hyrule</strong>, preserved under the ocean. Sail the King of Red Lions across the still water to the castle entrance.</span>", "locationRef": "D4 (below)" },
+        { "text": "<span class=\"spoiler\">Pull the <strong>Master Sword</strong> from its pedestal in the throne room at the castle's heart. The blade is powerless — the two sages who maintained its light are gone. You must awaken their successors.</span>", "locationRef": "D4 (below)" },
+        { "text": "Learn the <strong>Earth God's Lyric</strong> from <span class=\"spoiler\">the ghost of the former Earth Sage in the chamber east of the throne room. She names her successor: Medli, who is in the village on Dragon Roost Island (B6).</span>", "locationRef": "D4 (below)" },
+        { "text": "Learn the <strong>Wind God's Aria</strong> from <span class=\"spoiler\">the ghost of the former Wind Sage in the chamber west of the throne room. His successor is Makar, a small Korok by the waterfall on the north side of Forest Haven (E3).</span>", "locationRef": "D4 (below)" },
+        { "text": "Sail to <strong>Dragon Roost Island</strong> (B6). Find Medli in the village — play the Earth God's Lyric with the Wind Waker. <span class=\"spoiler\">She awakens to her destiny and follows you to the Earth Temple.</span>", "locationRef": "B6" },
+        { "text": "Sail to <strong>Forest Haven</strong> (E3). Makar is beside the waterfall on the island's north shore — reach him by swinging across with the Grappling Hook from the west-side ledge. Play the Wind God's Aria. <span class=\"spoiler\">He follows you to the Wind Temple.</span>", "locationRef": "E3" },
+        { "text": "<span class=\"spoiler\">Tetra is revealed to be <strong>Princess Zelda</strong>. Ganondorf attacks — she is taken to the Forsaken Fortress (A1). Return there next with the Master Sword and Skull Hammer.</span>", "locationRef": "A1" }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Master Sword is currently half-powered",
+          "body": "The sword deals reduced damage from this point until both Sacred Temples are completed. Compensate with Bombs and the Hero's Bow for heavy enemies.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": []
+    },
+
+    {
+      "sectionId": "chapter-7-forsaken-fortress-2",
+      "stage": "Chapter 7",
+      "title": "Forsaken Fortress — Second Assault",
+      "order": 8,
+      "chips": ["Skull Hammer", "Helmaroc King", "Phantom Ganon"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Forsaken Fortress 2 & Helmaroc King — full walkthrough",
+        "durationLabel": "20:55"
+      },
+      "unlocks": ["skull-hammer"],
+      "gates": ["master-sword"],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Sail north-west to the <strong>Forsaken Fortress</strong> (A1). The main gate is sealed. Open the hatch on the King of Red Lions's deck, climb into the cannon, aim at the glowing window on the fortress tower, and fire to launch yourself inside.", "locationRef": "A1" },
+        { "text": "Fight through the interior — guards are now armed and alert. The <strong>Skull Hammer</strong> is inside a chest on the second floor, past the moving-spotlight room, on the left side of the corridor.", "locationRef": "A1" },
+        { "text": "Use the <strong>Skull Hammer</strong> on every mushroom-capped switch you encounter — they open doors sealed by anti-magic barriers throughout the fortress.", "locationRef": "A1" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Helmaroc King</strong></span>: see the Boss Fight section below.", "locationRef": "A1" },
+        { "text": "<span class=\"spoiler\"><strong>Phantom Ganon</strong> materialises after the boss fight. Bait his overhead sword strike, then deliver a charged spin-slash. Three cycles defeat him. He drops the Sword of Ganondorf — slightly stronger than the current Master Sword — which you can equip if you wish.</span>", "locationRef": "A1" },
+        { "text": "<span class=\"spoiler\">Rescue <strong>Zelda</strong> and Aryll. Head to the Sacred Temples next — either order.</span>", "locationRef": "A1" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Begin the Sacred Temples",
+          "body": "You now have the Earth God's Lyric, Wind God's Aria, and Command Melody. Sail to <strong>Headstone Island (D5)</strong> for the Earth Temple or <strong>Gale Isle (B3)</strong> for the Wind Temple — either order works. The guide recommends Earth Temple first for the Mirror Shield.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Helmaroc King defeat reward", "note": "Dropped by the Helmaroc King.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-8-earth-temple",
+      "stage": "Chapter 8",
+      "title": "Earth Temple",
+      "order": 9,
+      "chips": ["Mirror Shield", "Medli", "Light puzzles"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Earth Temple — full dungeon walkthrough",
+        "durationLabel": "33:15"
+      },
+      "unlocks": ["mirror-shield"],
+      "gates": ["earth-gods-lyric", "command-melody"],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Sail to <strong>Headstone Island</strong> (D5, east of centre sea). The stone tablet is on the beach at the island's base — stand before it and play the <strong>Earth God's Lyric</strong>. The stone door grinds open to reveal the Earth Temple entrance.", "locationRef": "D5" },
+        { "text": "Use the <strong>Command Melody</strong> to switch control to <strong>Medli</strong> when needed: she can fly to high ledges (face the direction, press A to launch her upward), and her harp reflects light horizontally. Control switches are mandatory throughout.", "locationRef": "D5" },
+        { "text": "Collect the <strong>Mirror Shield</strong> on the third-floor upper balcony — direct Medli to the high ledge first, have her hit the statue switch on the left to lower the chest platform, then switch back to Link to open it.", "locationRef": "D5" },
+        { "text": "The dungeon's mechanic: redirect beams of light using the Mirror Shield (Link, vertical) and Medli's harp (horizontal) to hit wall fixtures that activate doors and raise platforms.", "locationRef": "D5" },
+        { "text": "The Big Key is on the fourth floor: in the large circular room, use the Mirror Shield to redirect the sunbeam to all four floor fixtures in sequence. Each hit unlocks one latch on the central column.", "locationRef": "D5" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Jalhalla</strong></span>: see the Boss Fight section below.", "locationRef": "D5" }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "ReDeads — don't stand still",
+          "body": "The Earth Temple is full of ReDeads — zombie enemies that paralyse Link on eye contact. Strike once with the sword before they make eye contact to break their gaze. Never stand still in open rooms.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Jalhalla defeat reward", "note": "Dropped by Jalhalla.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-9-wind-temple",
+      "stage": "Chapter 9",
+      "title": "Wind Temple",
+      "order": 10,
+      "chips": ["Hookshot", "Makar", "Wind puzzles"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Wind Temple — full dungeon walkthrough",
+        "durationLabel": "28:50"
+      },
+      "unlocks": ["hookshot"],
+      "gates": ["wind-gods-aria", "command-melody"],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Sail to <strong>Gale Isle</strong> (B3, north of centre sea, slightly west). The carved stone face is on the island's east cliff face. Stand before it and play the <strong>Wind God's Aria</strong> — the sealed entrance behind it splits open.", "locationRef": "B3" },
+        { "text": "Use the <strong>Command Melody</strong> to control <strong>Makar</strong>: he plants seeds in soft soil patches to grow climbable trees, and his small size lets him fit through grates Link cannot pass.", "locationRef": "B3" },
+        { "text": "Collect the <strong>Hookshot</strong> in the first large windmill room, on the upper platform. Hookshot onto the wooden peg directly above to reach the upper walkway — the chest is straight ahead.", "locationRef": "B3" },
+        { "text": "The Hookshot latches onto wooden targets, hookshot pegs, and certain enemies. For the wind-fan puzzles: fire the Hookshot through the spinning fan blades to hit the switch behind — the hook passes through on the gap between blades.", "locationRef": "B3" },
+        { "text": "Most rooms require Makar to plant seeds in two or four soil patches to create wooden hooks for the Hookshot. Position Makar carefully — he walks only in the direction he currently faces.", "locationRef": "B3" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Molgera</strong></span>: see the Boss Fight section below.", "locationRef": "B3" }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Floormasters — two hits to kill",
+          "body": "The Wind Temple has Floormasters — hands that drag you back to the dungeon entrance if they grab you. Two sword hits or a Hookshot pull kill them instantly. Never let them close their fingers.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heart Container — Molgera defeat reward", "note": "Dropped by Molgera. Master Sword is now fully restored.", "type": "heart", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-10-triforce-hunt",
+      "stage": "Chapter 10",
+      "title": "The Triforce Hunt",
+      "order": 11,
+      "chips": ["8 Shards", "Tingle charts", "Salvage"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Triforce Hunt — all 8 shards",
+        "durationLabel": "44:20"
+      },
+      "unlocks": [],
+      "gates": ["hookshot", "mirror-shield"],
+      "gatingType": "soft",
+      "readinessNote": "Complete both Earth and Wind Temples before this chapter — you need the Mirror Shield and Hookshot to access several shard locations.",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Open your Sea Chart and mark the shard locations listed in the Completionist section below. In the HD version only three shards require <strong>Tingle</strong>'s chart-deciphering service. Visit <strong>Tingle Island</strong> (C4) first if any of your charts are still encoded — 398 rupees per chart.", "locationRef": "C4" },
+        { "text": "For chart-based shards: sail to the grid square marked with a column of light on your deciphered sea chart. Equip the Grappling Hook and dive to the salvage point — the treasure surfaces automatically when you reach it.", "locationRef": "C4" },
+        { "text": "Crack the petrified stumps on <strong>Outset Island</strong>'s south-cliff labyrinth (F2) with the <strong>Skull Hammer</strong> to find Shard 8 in the chest at the maze's heart.", "locationRef": "F2" },
+        { "text": "Shard 2 is in the upper cavern of <strong>Gale Isle</strong> (B3) — the upper ledge of the east face, accessible after the Wind Temple was unsealed. It's a direct chest, not a salvage point.", "locationRef": "B3" },
+        { "text": "<span class=\"spoiler\">With all eight shards collected, the <strong>Triforce of Courage</strong> assembles. Sail to the centre of the sea (D4) — <strong>Ganon's Tower</strong> now rises where the Tower of Gods stood.</span>", "locationRef": "D4 (above)" }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Ghost Ship shard — board it at night with the Hookshot",
+          "body": "One shard location involves the Ghost Ship. Its chart is on Diamond Steppe Island (C7) — collect it to reveal the ship's nightly patrol route. Board the ship during the night using the Hookshot to latch on. Bring 8+ Heart Containers.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Use Ballad of Gales to cluster your salvage runs",
+          "body": "The Ballad of Gales warps to eight islands. Plan your shard run so each warp-point covers the nearest two or three salvage sites — halves the sailing time.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Triforce Shard 1 — Ganon's Tower chart (no Tingle required)", "note": "Chart found inside Ganon's Tower. Shard chest on south cliff of Outset Island (F2) — Skull Hammer required.", "type": "shard", "requires": ["skull-hammer"] },
+        { "label": "Triforce Shard 2 — Gale Isle upper cavern (B3)", "note": "Direct chest on the upper ledge of Gale Isle's east face; no salvage needed.", "type": "shard", "requires": ["wind-gods-aria", "command-melody"] },
+        { "label": "Triforce Shard 3 — Overlook Island chart (C6)", "note": "Chart in cave at island base (Hookshot to reach); salvage south-west of island.", "type": "shard", "requires": ["hookshot"] },
+        { "label": "Triforce Shard 4 — Four-Eye Reef chart (B5)", "note": "Chart in sunken ship hull at B5; Tingle deciphering needed.", "type": "shard", "requires": ["bombs"] },
+        { "label": "Triforce Shard 5 — Mother & Child Isles chart (B4)", "note": "Chart inside inner isle chest; Tingle deciphering needed.", "type": "shard", "requires": [] },
+        { "label": "Triforce Shard 6 — Cliff Plateau Isles chart (D6)", "note": "Chart on highest platform (Hookshot to reach); salvage east of island; no Tingle needed.", "type": "shard", "requires": ["hookshot"] },
+        { "label": "Triforce Shard 7 — Stone Watcher Island chart (E7)", "note": "Defeat two Darknuts inside the island cave for the chart; Tingle deciphering needed.", "type": "shard", "requires": [] },
+        { "label": "Triforce Shard 8 — Outset Island labyrinth (F2)", "note": "Direct chest deep in the south-cliff maze — Skull Hammer clears the petrified stumps.", "type": "shard", "requires": ["skull-hammer"] }
+      ]
+    },
+
+    {
+      "sectionId": "chapter-11-ganons-tower",
+      "stage": "Chapter 11",
+      "title": "Ganon's Tower",
+      "order": 12,
+      "chips": ["Light Arrows", "Puppet Ganon", "Final battle"],
+      "video": {
+        "provider": "youtube",
+        "id": "8P6PkHwU-p4",
+        "creator": "IGN Guides",
+        "title": "Ganon's Tower & Final Boss — full walkthrough",
+        "durationLabel": "38:00"
+      },
+      "unlocks": ["light-arrows"],
+      "gates": ["master-sword", "hookshot", "mirror-shield"],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "steps": [
+        { "text": "Enter <strong>Ganon's Tower</strong> at the centre of the sea (D4) — it rose when you assembled the Triforce of Courage. Six floors, each themed on a dungeon you've cleared. The floor order is: Gohma, Kalle Demos, Gohdan, Helmaroc, Jalhalla, Molgera. Use the same tools and strategies as the originals.", "locationRef": "D4 (above)" },
+        { "text": "<span class=\"spoiler\">At the summit, face three <strong>Phantom Ganon</strong> copies sequentially. Each is defeated with the same technique: bait the overhead sword strike, then a charged spin-slash counters it. The third one drops the key to the next floor.</span>", "locationRef": "D4 (above)" },
+        { "text": "<span class=\"spoiler\"><strong>Zelda</strong> gives you the <strong>Light Arrows</strong> — the only weapon that can finish Ganondorf. They also stun Puppet Ganon's forms between phases.</span>", "locationRef": "D4 (above)" },
+        { "text": "Boss — <span class=\"spoiler\"><strong>Puppet Ganon</strong> (three forms) and <strong>Ganondorf</strong> (rooftop)</span>: see the Boss Fight section below.", "locationRef": "D4 (above)" }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Top up completely before entering",
+          "body": "Visit the Great Fairy fountain on <strong>Outset Island</strong> (F2, south-west shore cave — bomb the boulder). Stock two Blue Potions from Windfall Island (B2). There is no healing between Puppet Ganon and the rooftop final battle.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": []
+    }
+  ]
+}

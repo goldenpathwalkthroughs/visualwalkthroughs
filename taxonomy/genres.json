@@ -1,0 +1,39 @@
+{
+  "_version": "1.0.0",
+  "_comment": "Source of truth for genre vocabulary. Add rows when a new genre or tag is needed; never delete — games already published reference these IDs.",
+
+  "primaryGenres": [
+    { "id": "action-adventure",    "name": "Action-Adventure",            "packFile": "genre-packs/action-adventure.json" },
+    { "id": "open-world-arpg",     "name": "Open-World Action-RPG",       "packFile": null },
+    { "id": "crpg",                "name": "Party-Based CRPG",            "packFile": null },
+    { "id": "creature-collector",  "name": "Creature-Collector RPG",      "packFile": null },
+    { "id": "collectathon",        "name": "Collectathon Platformer",     "packFile": null },
+    { "id": "survival-crafting",   "name": "Survival / Crafting",         "packFile": null },
+    { "id": "roguelike",           "name": "Roguelike / Deckbuilder",     "packFile": null }
+  ],
+
+  "featureTags": [
+    "open-world",
+    "soulslike",
+    "branching-narrative",
+    "stealth",
+    "shooter",
+    "survival-resource",
+    "puzzle",
+    "horror",
+    "co-op",
+    "run-based",
+    "field-research",
+    "turn-based-tactics",
+    "party",
+    "collectathon",
+    "no-combat"
+  ],
+
+  "guideShapes": [
+    "sequential",
+    "reference-compendium",
+    "branching-narrative",
+    "hybrid"
+  ]
+}

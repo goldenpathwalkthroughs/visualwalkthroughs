@@ -5,11 +5,12 @@
   "timeCapMinutes": 180,
   "subscriptionOverflow": false,
   "model": {
-    "research": "claude-sonnet-4-5-20251022",
-    "draft":    "claude-sonnet-4-5-20251022",
-    "editor":   "claude-sonnet-4-5-20251022",
-    "qa":       "claude-haiku-4-5-20251001",
-    "advisor":  "claude-haiku-4-5-20251001"
+    "research":   "claude-sonnet-4-5-20251022",
+    "draft":      "claude-sonnet-4-5-20251022",
+    "schemaFill": "claude-haiku-4-5-20251001",
+    "editor":     "claude-sonnet-4-5-20251022",
+    "qa":         "claude-haiku-4-5-20251001",
+    "advisor":    "claude-haiku-4-5-20251001"
   },
   "promptCaching": true,
   "originality": {

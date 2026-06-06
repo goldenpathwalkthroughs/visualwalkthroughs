@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRINCIPLE §0: no game-specific proper noun in this file.
@@ -304,8 +305,17 @@ const section = z.object({
 
 // ── Collections ───────────────────────────────────────────────────────────────
 
+// ── Engine/content separation (spec §2) ──────────────────────────────────────
+//
+// Content files live under /content/ (outside /src/) so the nightly pipeline
+// can write new game files without touching engine code.
+// The glob loader reads them at build time; Astro type-checks against the schema.
+//
+// /content/games/       — one JSON file per game
+// /content/franchises/  — one JSON file per franchise
+
 const franchises = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '*.json', base: './content/franchises' }),
   schema: z.object({
     name: z.string(),
     slug: z.string(),
@@ -315,11 +325,12 @@ const franchises = defineCollection({
     featureRank: z.number().default(99),
     guideCount: z.number().default(0),
     theme,
+    cover: z.string().optional(),  // CDN-hosted cover URL (IGDB box art)
   }),
 });
 
 const games = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '*.json', base: './content/games' }),
   schema: z.object({
     // v1 fields — unchanged
     franchiseSlug: z.string(),
@@ -331,6 +342,8 @@ const games = defineCollection({
     lede: z.string(),
     theme: theme.optional(),
     coverGradient: z.string().optional(),
+    cover: z.string().optional(),  // CDN-hosted cover URL (IGDB box art)
+    genre: z.string().optional(),  // primary genre ID from taxonomy/genres.json
     sections: z.array(section),
 
     // v2 additions — all optional/defaulted; existing games stay valid

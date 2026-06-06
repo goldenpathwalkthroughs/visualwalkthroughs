@@ -18,7 +18,7 @@ import { fileURLToPath } from 'url';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dir, '..');
-const GAMES_DIR = join(ROOT, 'src/content/games');
+const GAMES_DIR = join(ROOT, 'content/games');
 
 // ── CLI args ──────────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
@@ -256,7 +256,7 @@ try {
 }
 
 if (files.length === 0) {
-  console.error(gameArg ? `No game file found for slug "${gameArg}"` : 'No game files found in src/content/games/');
+  console.error(gameArg ? `No game file found for slug "${gameArg}"` : 'No game files found in content/games/');
   process.exit(1);
 }
 

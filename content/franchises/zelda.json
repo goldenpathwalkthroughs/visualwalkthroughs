@@ -1,0 +1,15 @@
+{
+  "name": "The Legend of Zelda",
+  "slug": "zelda",
+  "developer": "Nintendo",
+  "description": "Thirty-nine years, one boy in a green tunic, and a great deal of getting lost in dungeons. Pick a game — its guide opens as one living page.",
+  "featured": true,
+  "featureRank": 1,
+  "guideCount": 1,
+  "theme": {
+    "bodyClass": "theme-zelda",
+    "accent": "#e9c46a",
+    "accentSoft": "rgba(233,196,106,.14)",
+    "cardGradient": "linear-gradient(160deg,#1b5e52,#0a3b3f 60%,#06222a)"
+  }
+}
