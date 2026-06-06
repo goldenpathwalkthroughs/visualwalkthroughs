@@ -21,15 +21,25 @@ How to keep it honest: prove the engine on Wind Waker (a game the owner knows de
 
 ---
 
-## 1. The architectural shift: a progression graph, not hand-written tips
+## 1. The architectural shift: a recommended route over a graph, not rails
 
-The biggest quality lever. Stop hand-writing "do this now" advice; **compute it** from a model of the game.
+The biggest quality lever. Stop hand-writing "do this now" advice; **compute it** from a model of the game. And — critically — **don't assume the game is linear.**
 
-Model two things explicitly:
-- **An item/ability timeline** — when, on the golden path, the player gains each key item, song, or ability.
-- **A dependency graph** — every optional activity declares what it *requires*.
+Model the game as a **graph of objectives/regions** with a **recommended route** laid over the top. A strictly linear game is just the degenerate case where that graph is a single chain. Most modern games aren't:
+- **Open (Breath of the Wild-class):** there's a recommended route that keeps the game palatable for an average player, but the *critical path* — what's strictly required to reach the ending — is tiny, and almost everything is skippable.
+- **Hub-and-regions / soft-gated (Mina the Hollower-class):** a hub connects regions you can tackle in many orders; progress is gated by *readiness and skill*, not hard locks.
+- **Metroidvania:** regions open as you gain abilities (hard gating), but in a branching order.
 
-Then the compiler walks the golden path and, at each checkpoint, automatically surfaces exactly the detours whose requirements are now met and not yet shown. This is what guarantees nothing is recommended too early, and nothing time-sensitive is forgotten.
+So model these explicitly per game:
+- **`structureType`** — linear | hub-and-spoke | open | metroidvania (extensible).
+- **Recommended route** — the curated order that makes the game palatable. *This is the editorial value* and what most readers follow.
+- **Critical (minimum) path** — what's strictly required to finish. Surface it for players who want to know what's skippable.
+- **Any-order clusters** — sets of objectives doable in any sequence; never present these as forced-linear.
+- **Gating type per step** — *hard* (item/ability lock) vs *soft* (you can go now, but it's tuned for later — expect a tough time).
+
+Then the compiler walks the **recommended route**, and at each point surfaces the detours/objectives now available — by hard prerequisite where gating is hard, and by *readiness* where gating is soft ("you can reach this now; recommended after X for an easier fight"). Each objective/region page also stands alone, so a reader who sequence-breaks can still navigate by where they actually are.
+
+> **Structure is a discovered fact, not an assumption.** A brand-new or obscure game (Mina released into a world where no model has training knowledge of it) must have its `structureType` and route **classified from live sources during research** — never pattern-matched from memory or from a similar-sounding title. This is the §0 principle extended: don't bake in facts, and don't bake in *shape* either. Flag low confidence when sources are thin.
 
 ---
 
@@ -38,8 +48,14 @@ Then the compiler walks the golden path and, at each checkpoint, automatically s
 Add to the content schema:
 
 ```
+Game.structure:                          // discovered per game, NEVER assumed
+  structureType: linear | hub-and-spoke | open | metroidvania
+  recommendedRoute: [objectiveId]        // the curated, palatable order most readers follow
+  criticalPath: [objectiveId]            // the minimum strictly required to finish (may be tiny)
+  anyOrderGroups: [[objectiveId]]        // clusters doable in any sequence — never forced linear
+
 Game.worldMap:
-  kind: "grid" | "regions"
+  kind: "grid" | "regions" | "metroidvania"
   grid?: { cols, rows }                 // e.g. 7×7 for the Great Sea
   cells: [{ coord, name, regionId,
             goldenPathRelevance,        // none | passes-through | required
@@ -52,7 +68,11 @@ Game.items: [                            // the registry that drives everything
     class: progression | optional } ]
 
 Section.unlocks: [itemId]                // items gained in this section
-Section.gates:   [itemId]                // items REQUIRED to progress here (mandatory)
+Section.gates:   [itemId]                // HARD prerequisites to progress here
+Section.gatingType: hard | soft          // soft = reachable now, but tuned for later
+Section.readinessNote?                   // for soft gates: "doable now; tough before X"
+Section.skippable: bool                  // not on the critical path
+Section.routeOrder?: number              // position in the recommended route
 Section.recommendedDetours: [detourId]   // COMPUTED, not written
 
 Detour: {                                // an optional, character-strengthening activity
@@ -73,10 +93,25 @@ CollectionQuest: {                       // for big multi-part hunts (Triforce)
   id, name, totalCount,
   items: [{ label, chartLocation, decipherStep, salvageLocation, requires: [itemId] }] }
 
-Location.isHub: bool                      // recurring places you return to (Windfall)
-Location.activities: [{ label, requires: [itemId], benefit }]
+Location: {                              // THE shared vocabulary for map AND text
+  id, name,
+  ref,                                   // canonical reference the text cites: grid coord ("F2")
+                                         //   for grid games, named region otherwise
+  coord?,                                // grid cell, if the game is grid-based
+  reachableBy,                           // how you get here ("sail from Outset", "warp via song")
+  whereWithin?,                          // sub-location detail ("the east cliff", "room past the throne")
+  isHub: bool,                           // recurring place you return to
+  contains: [{ label, kind, requires: [itemId], sectionId }] }  // beats, NPCs, secrets, shops here
+
+BossFight: {                             // a first-class type — never a single sentence
+  id, name, locationRef,
+  prep: { recommendedItems: [itemId], healthAdvice, topUpBefore },  // how to be ready
+  phases: [{ name, tells, counter, damageWindow }],                 // each phase: what it does + how to beat it
+  ifYouStruggle: { whereToHeal, easierTactic, retreatOption },      // the bounce-point safety net
+  reward }
 
 Step.videoTimestamp?: number             // seconds — deep-link the embed to this moment
+Step.locationRef?: string                // EVERY actionable step resolves to a Location.ref
 ```
 
 ---
@@ -85,16 +120,20 @@ Step.videoTimestamp?: number             // seconds — deep-link the embed to t
 
 For **every** game, the researcher must gather (and cite ≥2 sources for each load-bearing fact). This checklist is the antidote to "significant gaps":
 
-1. **Golden path** — ordered story objectives, start to credits, each with location, method, and boss strategy.
-2. **Item/ability timeline** — where each key item, song, and ability is obtained along that path.
-3. **Progression gates** — anything that *blocks* golden-path progress (e.g. fire/ice arrows needed to proceed): what's required, and where to get it. Flag these as mandatory, distinct from optional power-ups.
-4. **World map** — the grid or region layout, what's in each cell/region, and prerequisites to access each.
-5. **Optional power detours** — every upgrade, heart, rupee cache, and secret, with `requires`, `benefit`, `method`, and earliest-available point.
-6. **Hubs** — recurring locations (Windfall-class) and what becomes available there as the player gains items over time.
-7. **Major collection quests** — full enumeration of multi-part collectibles (Triforce-class): every piece, its chart, decipher step, and salvage location. Never a one-line summary of a multi-hour activity.
-8. **Convenience / efficiency unlocks** — fast-travel and big time-savers (Ballad of Gales-class): when they become available, the *correct* acquisition method, and why getting them early pays off.
-9. **Canonical counts** — the known total for each collectible category (Pieces of Heart, shards, etc.) so completeness can be verified.
-10. **Confidence** — flag any single-source or uncertain fact as low-confidence rather than stating it firmly.
+1. **Structure first** — classify the game from live sources: linear, hub-and-spoke, open, or metroidvania? Identify the **recommended route**, the **critical (minimum) path**, and any **any-order clusters**. Never assume linearity or pattern-match a similar game. For very new or obscure titles, rely entirely on current sources and flag confidence.
+2. **Recommended route** — the curated, palatable order from start to credits, each objective with location, method, and boss strategy. (For a linear game this is simply the one path.)
+3. **Item/ability timeline** — where each key item, song, and ability is obtained along the route.
+4. **Gating per step** — *hard* (item/ability lock) or *soft* (reachable early but tuned for later)? For soft gates, capture the readiness expectation ("doable now, brutal before X"). Flag mandatory progression gates distinctly from optional power-ups.
+5. **World map** — the grid/region/metroidvania layout, what's in each area, and prerequisites to access each.
+6. **Optional power detours** — every upgrade, heart, resource cache, and secret, with `requires`, `benefit`, `method`, and earliest-available point.
+7. **Hubs** — recurring locations and what becomes available there as the player gains items over time.
+8. **Major collection quests** — full enumeration of multi-part collectibles: every piece and how to get it. Never a one-line summary of a multi-hour activity.
+9. **Convenience / efficiency unlocks** — fast-travel and big time-savers: when they become available, the *correct* acquisition method, and why getting them early pays off.
+10. **Skippability** — for each objective, is it on the critical path or genuinely optional? Open games hinge on telling the player what they can skip.
+11. **Canonical counts** — the known total for each collectible category so completeness can be verified.
+12. **Confidence** — flag any single-source or uncertain fact as low-confidence rather than stating it firmly.
+13. **Boss fights — full breakdown.** For each boss: its phases, the tells/attacks in each, the concrete counter for each, the recommended prep/loadout, and where to recover (hearts, fairies, potions) if the player is struggling. A boss is never a one-line note.
+14. **Locations — build the registry.** Every place, NPC, and object the guide references gets a `Location`: a canonical reference (grid coord for grid games, named region otherwise), how to reach it, and what's there. If a place isn't in the registry, the guide may not reference it.
 
 > **Method accuracy is non-negotiable.** The "I wasted time bombing the frog when it needed arrows" failure is a research-accuracy bug. Every key method gets cross-checked across sources; if sources disagree, flag it, don't guess.
 
@@ -114,14 +153,20 @@ Two clearly separated categories in the UI: **must-do to progress** vs **recomme
 
 ---
 
-## 5. The world map (the feature you missed most)
+## 5. The world map — interactive, and built from the Location registry
 
-Build an original `WorldMap` component as a **layout abstraction**, not a grid. Most games aren't grids — they're connected regions, hub-and-spoke overworlds, or metroidvania maps — so the component takes a `kind` and renders accordingly behind one common interface:
-- `grid` — a coordinate grid (a sea/overworld divided into squares). **Implement this first**, because the first test case needs it.
-- `regions` — connected named areas with adjacency.
-- (extensible) metroidvania-style interconnected maps.
+The map is not decoration; it's the navigation layer, and it renders from `Game.locations` — the *same* registry the written steps cite. That shared vocabulary is what fixes "where is the ivy / where is Komali": if a place isn't in the registry, the writer can't reference it, and the map can't omit it.
 
-Whatever the layout, each node is clickable, shows its name, a marker for golden-path relevance, and — in Completionist mode — its secrets and the items required to reach them, and links to the section/detour that covers it. The data is original (built from researched facts, per game); the art is our own. This is the single highest-value visual addition, and it must not assume any particular game's shape.
+Requirements:
+- **Labelled.** For grid games, draw the coordinate labels (rows A–G, columns 1–7, or whatever the game uses) so a cell is unambiguously "F2". The written guide uses these exact refs.
+- **Complete.** Every `Location` in the registry appears on the map — no partial maps. A map-completeness QA check enforces this against the registry.
+- **Interactive — click to learn about a place.** Clicking a cell/pin opens a **detail panel** (a slide-in side panel on desktop, a bottom sheet on mobile — better than a small pop-up because it holds real content and works on touch). The panel shows: name + ref, how to reach it, what's here (golden-path beats, secrets, shops, NPCs — respecting the spoiler-safe and Completionist toggles), prerequisites to access, and a **"go to the walkthrough section"** button. Lazy-load the panel's detail on open.
+- **Expandable overview.** The world-overview section collapses/expands like the walkthrough sections.
+
+**Is this worth it for non-grid / open games?** Yes — but separate two things:
+- The **interactive click-to-detail map is universal**: it's the orientation layer for any game with a navigable space. Open and region games show named pins on a region map (same panel on click); the only thing that changes is the layout, not the value.
+- The **grid coordinate labels are grid-games only.** Region/open games reference places by name, not "F2".
+- The map is **optional and scaled to the game.** A linear corridor game with no overworld doesn't get a map — the research step (which already classifies `structureType`) decides whether a navigable space exists worth orienting in. Don't force a map where it adds nothing.
 
 ---
 
@@ -151,15 +196,20 @@ You want S-tier, and that won't come from Haiku alone. Recommended split:
 
 ## 8. Content QA — the stress tests (the editor's job)
 
-After drafting, the editor runs these gates and loops until they pass. This is the "stress test for golden-path, then completionist, then structure" you described:
+After drafting, the editor runs these gates and loops until they pass. This is the "stress test for the route, then completionist, then structure" you described:
 
-1. **Golden-path completion test.** Simulate a first-time player following only the golden-path steps to the credits. Flag any break: an item used before it's acquired, a location referenced but never reached, a boss with no strategy, a dead-end.
-2. **Completionist completion test.** For each collectible category, check the guide lists the full canonical count, and that every entry has a location, a method, and satisfied prerequisites. Flag anything missing or uncounted.
-3. **Sequencing / prerequisite audit.** Graph check: every detour's `recommendedSectionId` must be ≥ the acquisition point of all its `requires`. This is the automated catch for "recommended too early."
-4. **Coverage-weight check.** Major, time-heavy segments (the Triforce hunt) must have depth proportional to their size. Flag a multi-hour activity covered in one line.
-5. **Method-accuracy check.** Key methods cross-checked across ≥2 sources; disagreements flagged, not guessed.
+1. **Recommended-route completion test.** Simulate a first-time player following only the recommended route to the credits. Flag any break: an item used before it's acquired, a location referenced but never reached, a boss with no strategy, a dead-end.
+2. **Critical-path validity test.** Confirm the stated minimum path actually reaches the ending — important for open games where most content is skippable and players want to know what's truly required.
+3. **No-false-linearity check.** Any-order clusters must be presented as such, not as a forced sequence; skippable objectives must be marked skippable. Catch a linear write-up imposed on a non-linear game.
+4. **Completionist completion test.** For each collectible category, check the guide lists the full canonical count, and that every entry has a location, a method, and satisfied prerequisites. Flag anything missing or uncounted.
+5. **Sequencing / readiness audit.** Graph check: every hard-gated detour's `recommendedSectionId` must be ≥ the acquisition point of all its `requires` (the catch for "recommended too early"); every soft-gated one must carry a readiness note.
+6. **Coverage-weight check.** Major, time-heavy segments must have depth proportional to their size. Flag a multi-hour activity covered in one line.
+7. **Method-accuracy check.** Key methods cross-checked across ≥2 sources; disagreements flagged, not guessed.
+8. **No-assumed-knowledge / specificity test (the big one).** Read every step as a player who has never touched the game. Flag any instruction that names a place, NPC, or object to find without saying *where it is and how to reach it*, and any action without concrete inputs. "Deliver the letter to Komali" fails until it says where Komali is; "climb the ivy" fails until it says which wall; "head to the cyclone" fails until it gives the ref. If a human would have to already know the game to follow the line, it doesn't pass.
+9. **Location-reference completeness.** Every place the text mentions resolves to a `Location` in the registry (with a `ref`), and the map renders every registry location — no partial maps, no unreferenced places.
+10. **Boss-fight depth check.** Every `BossFight` has prep, at least one fully-described phase (tells + counter + damage window), and an "if you struggle" recovery note (where to heal, an easier tactic). Flag any boss reduced to a single sentence — these are the bounce points where players quit.
 
-Only when all five pass does the game proceed to the existing site-QA and publish stages.
+Only when all gates pass does the game proceed to the existing site-QA and publish stages.
 
 ---
 
