@@ -15,15 +15,15 @@ Each day, propose the games that will earn the most reader value per pound of wr
 
 ## 2. The eligibility gate (a game must pass this first)
 
-Before anything is scored, a candidate must have a **true storyline golden path** — a defined sequence of story missions a player progresses through from start to a finish. If it fails this, it is never recommended, no matter how popular.
+Before anything is scored, a candidate must have a **guidable route** — defined story objectives a walkthrough can guide a player through, whether the game is strictly linear or an open world with a recommended path. It does **not** have to be linear: an open game like Breath of the Wild qualifies, because it still has objectives and a route most players want guided, even though much is skippable. What disqualifies a game is the *absence of guidable objectives*, not the *freedom to skip them*. If it fails this, it is never recommended, no matter how popular.
 
-**Include (eligible):** story-driven and linear/semi-linear games — action-adventure, RPGs, story-led platformers, narrative shooters, survival-horror, Metroidvanias. *Examples of the shape:* The Legend of Zelda, Final Fantasy, God of War, Metroid, Resident Evil, Hollow Knight, story-mode-led titles.
+**Include (eligible):** any story/objective-driven game — linear, semi-linear, hub-based, open-world, or metroidvania: action-adventure, RPGs, story-led platformers, narrative shooters, survival-horror. *Examples of the shape:* The Legend of Zelda (linear *and* open entries), Final Fantasy, God of War, Metroid, Resident Evil, Hollow Knight, Elden Ring, Mina the Hollower.
 
-**Exclude (ineligible):** narrative-free or open-ended titles where a linear walkthrough makes no sense — competitive/multiplayer-only (battle royales, hero shooters, MOBAs), sports and racing sims, pure sandboxes and builders, abstract puzzle games, party games, and roguelikes/roguelites with no story spine.
+**Exclude (ineligible):** narrative-free titles where there's no objective to be stuck on — competitive/multiplayer-only (battle royales, hero shooters, MOBAs), sports and racing sims, pure sandboxes and builders, abstract puzzle games, party games, and roguelikes/roguelites with no story spine.
 
-**Borderline → flag for the human, don't auto-recommend:** games with *soft* progression but no firm golden path (life-sims, colony-sims, some survival-crafting). Surface them separately labelled "uncertain — has goals but no fixed story path; your call."
+**Borderline → flag for the human, don't auto-recommend:** games with goals but no real route to guide (life-sims, colony-sims, some survival-crafting). Surface them separately labelled "uncertain — has goals but little to guide; your call."
 
-> Rule of thumb the advisor applies: *"Could a player be 'stuck' on a specific next story objective that written steps would unblock?"* If yes, eligible. If the game has no 'next objective,' it's out.
+> Rule of thumb the advisor applies: *"Could a player be 'stuck' on a specific next objective that written steps would unblock?"* If yes, eligible — even if the game is wide open and that objective is one of many. If the game has no objectives to be stuck on, it's out.
 
 The advisor uses IGDB/game-metadata (genre, themes, "has a campaign/story" signals) plus a quick reasoning check to decide eligibility, and **flags low-confidence calls** rather than guessing.
 
