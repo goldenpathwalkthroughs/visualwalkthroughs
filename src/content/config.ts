@@ -1,17 +1,18 @@
 import { defineCollection, z } from 'astro:content';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PRINCIPLE §0: no game-specific proper noun in this file.
+// Names, counts, coordinates, and methods are facts discovered by the researcher
+// and live only in a game's content file.  Everything here is a capability shape.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Primitives (unchanged from v1) ───────────────────────────────────────────
+
 const advisory = z.object({
   type: z.enum(['do-now', 'upgrade', 'missable', 'warning', 'tip']),
   title: z.string(),
   body: z.string(),
   completionistOnly: z.boolean().default(false),
-});
-
-const collectible = z.object({
-  label: z.string(),
-  note: z.string(),
-  type: z.enum(['heart', 'upgrade', 'shard', 'figurine', 'misc']).default('misc'),
-  completionistOnly: z.boolean().default(true),
 });
 
 const video = z.object({
@@ -20,17 +21,6 @@ const video = z.object({
   creator: z.string(),
   title: z.string(),
   durationLabel: z.string(),
-});
-
-const section = z.object({
-  stage: z.string(),
-  title: z.string(),
-  order: z.number(),
-  chips: z.array(z.string()).default([]),
-  steps: z.array(z.string()),
-  advisories: z.array(advisory).default([]),
-  collectibles: z.array(collectible).default([]),
-  video,
 });
 
 const theme = z.object({
@@ -47,6 +37,199 @@ const theme = z.object({
   bodyClass: z.string().optional(),
   cardGradient: z.string().optional(),
 });
+
+// ── v2: Step (union — v1 plain strings stay valid) ────────────────────────────
+//
+// A step is either:
+//   v1  "Do the thing with <strong>the item</strong>."    — plain HTML string
+//   v2  { text: "...", videoTimestamp: 142 }              — with a video deep-link
+//
+// videoTimestamp is seconds into the section's embedded video.
+// The UI renders it as a clickable time-marker that jumps the embed to that moment.
+
+const step = z.union([
+  z.string(),
+  z.object({
+    text: z.string(),
+    videoTimestamp: z.number().optional(),
+  }),
+]);
+
+// ── v2: Collectible (v1 fields kept; new fields all optional) ─────────────────
+
+const collectible = z.object({
+  label: z.string(),
+  note: z.string(),
+  // 'key' and 'other' added; existing values unchanged
+  type: z.enum(['heart', 'upgrade', 'shard', 'figurine', 'key', 'other', 'misc']).default('misc'),
+  completionistOnly: z.boolean().default(true),
+  // v2 additions
+  requires: z.array(z.string()).default([]),   // item IDs needed to reach/collect this
+  method: z.string().optional(),              // exact acquisition method (cross-checked)
+  locationDetail: z.string().optional(),      // precise location description
+  category: z.string().optional(),            // collectible category label (game-specific)
+  categoryTotalKnown: z.number().optional(),  // canonical count for this category
+});
+
+// ── v2: Items registry ────────────────────────────────────────────────────────
+//
+// Every key item, song, or ability in the game.  The sequencing engine uses this
+// to know what the player holds at each point on the route — which determines
+// which detours to surface and which gates to warn about.
+//
+// Names are discovered by the researcher; they are not hardcoded here.
+
+const item = z.object({
+  id: z.string(),                                         // stable slug, unique within the game
+  name: z.string(),                                       // display name (content-file fact)
+  type: z.enum(['item', 'song', 'ability', 'upgrade']),
+  acquiredAtSectionId: z.string().optional(),             // which section awards this
+  class: z.enum(['progression', 'optional']).default('optional'),
+});
+
+// ── v2: Detours ───────────────────────────────────────────────────────────────
+//
+// An optional activity that strengthens the player.
+// Writers fill in `requires`, `benefit`, `method`, and `earliestSectionId`.
+// The sequencing engine computes `recommendedSectionId` — writers do NOT set this.
+
+const detour = z.object({
+  id: z.string(),
+  location: z.string(),
+  coord: z.object({ col: z.number(), row: z.number() }).optional(),
+  type: z.enum(['upgrade', 'heart', 'rupee', 'secret', 'convenience']),
+  requires: z.array(z.string()).default([]),               // item IDs the player must hold
+  benefit: z.string(),                                    // one-line payoff description
+  method: z.string(),                                     // how to obtain (cross-checked)
+  earliestSectionId: z.string(),                          // first section at which this is possible
+  recommendedSectionId: z.string(),                       // engine-computed; when to surface it
+  mandatory: z.literal(false).default(false),             // detours are never mandatory
+});
+
+// ── v2: Collection quests ─────────────────────────────────────────────────────
+//
+// Multi-part hunts where enumeration matters.
+// Every piece must have its own entry — one-line summaries of multi-hour activities
+// are a coverage-weight failure.
+
+const collectionQuestPiece = z.object({
+  label: z.string(),
+  chartLocation: z.string().optional(),    // where the chart/clue is found
+  decipherStep: z.string().optional(),     // intermediate step before collection
+  salvageLocation: z.string().optional(),  // where the piece is actually collected
+  requires: z.array(z.string()).default([]),
+});
+
+const collectionQuest = z.object({
+  id: z.string(),
+  name: z.string(),
+  totalCount: z.number(),
+  pieces: z.array(collectionQuestPiece),
+});
+
+// ── v2: World map ─────────────────────────────────────────────────────────────
+//
+// Layout abstraction.  `kind` drives which renderer the UI uses.
+// Implement `grid` first (Phase C); `regions` follows.
+// Coordinates, counts, names — all game-specific facts in the content file.
+
+const hubActivity = z.object({
+  label: z.string(),
+  requires: z.array(z.string()).default([]),  // item IDs that unlock this activity
+  benefit: z.string(),
+});
+
+const worldMapCell = z.object({
+  coord: z.object({ col: z.number(), row: z.number() }).optional(),
+  name: z.string(),
+  regionId: z.string().optional(),
+  // How important is this cell to the story route?
+  routeRelevance: z.enum(['none', 'passes-through', 'required']).default('none'),
+  secrets: z.array(z.string()).default([]),   // collectible IDs discoverable here
+  requires: z.array(z.string()).default([]),  // item IDs needed to access/clear this cell
+  isHub: z.boolean().default(false),         // true for recurring locations
+  activities: z.array(hubActivity).default([]),
+});
+
+const worldMap = z.object({
+  kind: z.enum(['grid', 'regions']),
+  grid: z.object({ cols: z.number(), rows: z.number() }).optional(),
+  cells: z.array(worldMapCell).default([]),
+});
+
+// ── v2: Game structure ────────────────────────────────────────────────────────
+//
+// A game's structure is a discovered fact, classified by the researcher from
+// live research — never pattern-matched from memory.
+//
+// structureType describes the game's fundamental shape:
+//   linear        — one mandatory path from start to credits
+//   semi-linear   — some branching/optional areas but a clear main trunk
+//   hub-based     — a central hub unlocks multiple directions; revisited repeatedly
+//   open-world    — large free-roam area; objectives completable in many orders
+//   metroidvania  — interconnected map; earlier areas revisitable with new abilities
+//
+// recommendedRoute: the sectionIds in the order we guide players through them.
+//   For linear games this matches narrative order.
+//   For open/hub games this is the route the guide recommends, which may differ
+//   from any "critical path" the game itself imposes.
+//
+// criticalPath: sectionIds the player MUST complete to reach the credits
+//   (hard-gated by the game engine).  May be a subset of recommendedRoute.
+//
+// anyOrderGroups: clusters of objectives that are completable in any order.
+//   The sequencing engine uses these to know it can surface detours freely
+//   within the group rather than in strict sequence.
+
+const anyOrderGroup = z.object({
+  groupId: z.string(),
+  label: z.string(),           // human-readable, e.g. "Temples (any order)"
+  sectionIds: z.array(z.string()),
+});
+
+const gameStructure = z.object({
+  structureType: z.enum(['linear', 'semi-linear', 'hub-based', 'open-world', 'metroidvania']),
+  recommendedRoute: z.array(z.string()).default([]),   // sectionIds in recommended order
+  criticalPath: z.array(z.string()).default([]),        // sectionIds that must be completed
+  anyOrderGroups: z.array(anyOrderGroup).default([]),
+});
+
+// ── Section ───────────────────────────────────────────────────────────────────
+
+const section = z.object({
+  // v1 fields — unchanged
+  stage: z.string(),
+  title: z.string(),
+  order: z.number(),
+  chips: z.array(z.string()).default([]),
+  steps: z.array(step),   // now accepts v1 plain strings AND v2 {text, videoTimestamp?}
+  advisories: z.array(advisory).default([]),
+  collectibles: z.array(collectible).default([]),
+  video,
+
+  // v2 additions — all optional/defaulted so existing content stays valid
+  sectionId: z.string().optional(),     // stable ID for cross-references and route arrays
+
+  // Progression graph fields
+  unlocks: z.array(z.string()).default([]),   // item IDs gained by completing this section
+  gates: z.array(z.string()).default([]),     // item IDs needed to enter/proceed
+
+  // Gating type — how strictly the gate must be obeyed
+  //   hard   — player is literally blocked by the game; cannot proceed without these items
+  //   soft   — player CAN proceed but the readinessNote explains why they shouldn't
+  //   none   — no gate (default)
+  gatingType: z.enum(['hard', 'soft', 'none']).default('none'),
+  readinessNote: z.string().optional(),   // for soft gates: the "why now" explanation
+
+  // Route fields (for non-linear games)
+  skippable: z.boolean().default(false),    // true for optional objectives in open games
+  routeOrder: z.number().optional(),        // position in recommendedRoute (may differ from order)
+
+  // Computed by the sequencing engine — writers do NOT populate this
+  recommendedDetours: z.array(z.string()).default([]),
+});
+
+// ── Collections ───────────────────────────────────────────────────────────────
 
 const franchises = defineCollection({
   type: 'data',
@@ -65,6 +248,7 @@ const franchises = defineCollection({
 const games = defineCollection({
   type: 'data',
   schema: z.object({
+    // v1 fields — unchanged
     franchiseSlug: z.string(),
     title: z.string(),
     slug: z.string(),
@@ -75,6 +259,13 @@ const games = defineCollection({
     theme: theme.optional(),
     coverGradient: z.string().optional(),
     sections: z.array(section),
+
+    // v2 additions — all optional/defaulted; existing games stay valid
+    structure: gameStructure.optional(),
+    items: z.array(item).default([]),
+    detours: z.array(detour).default([]),
+    collectionQuests: z.array(collectionQuest).default([]),
+    worldMap: worldMap.optional(),
   }),
 });
 
