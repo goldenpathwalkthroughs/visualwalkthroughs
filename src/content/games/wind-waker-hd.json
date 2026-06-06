@@ -160,7 +160,7 @@
         "durationLabel": "29:18"
       },
       "steps": [
-        "The dungeon item is the <strong>Boomerang</strong> — it locks onto multiple targets at once, which several puzzles demand.",
+        "Pick up the <strong>Boomerang</strong> — this dungeon's key item, which locks onto multiple targets at once and drives most of the puzzles.",
         "Ride Deku flowers across gaps to reach high platforms and escort the seedling sage <strong>Makar</strong>.",
         "Boss — <span class=\"spoiler\"><strong>Kalle Demos</strong></span>: boomerang the six vines holding it up, then slash the exposed bulb."
       ],
@@ -258,7 +258,7 @@
         "durationLabel": "30:12"
       },
       "steps": [
-        "The dungeon item is the <strong>Bow</strong>. Many rooms use a statue you command with the <strong>Command Melody</strong>.",
+        "Collect the <strong>Bow</strong> — the dungeon's key item. Many rooms use a statue you command with the <strong>Command Melody</strong>.",
         "Boss — <span class=\"spoiler\"><strong>Gohdan</strong></span>: arrow both hands to stun it, arrow the nose, then drop a bomb in its mouth to end each phase."
       ],
       "advisories": [
@@ -337,7 +337,7 @@
         {
           "type": "do-now",
           "title": "Decipher charts in bulk with the rupees you saved",
-          "body": "This is where the early <strong>wallet upgrade</strong> pays off — Tingle's fees for the Triforce charts add up fast. Batch them so you're not sailing back and forth.",
+          "body": "Now is when the early <strong>wallet upgrade</strong> pays off — Tingle's fees for the Triforce charts add up fast. Batch all eight charts before you start salvaging so you're not sailing back and forth.",
           "completionistOnly": false
         },
         {

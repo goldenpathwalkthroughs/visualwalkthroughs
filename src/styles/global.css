@@ -42,7 +42,7 @@ body.theme-ww {
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   background: var(--ink);
   color: var(--text);
@@ -138,8 +138,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (max-width: 760px) {
   .nav-links { display: none; }
+  .topbar { gap: 12px; }
+  .brand { font-size: 16px; }
   .spotlight-trigger { min-width: 0; }
   .spotlight-trigger .lbl { display: none; }
+  .spotlight-trigger .kbd { display: none; }
 }
 
 /* ── Layout ── */
