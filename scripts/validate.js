@@ -148,7 +148,9 @@ function validateGame(filePath) {
     } else {
       for (let j = 0; j < sec.steps.length; j++) {
         const raw = sec.steps[j];
-        const text = stripHtml(raw);
+        // v2 steps may be objects {text, videoTimestamp?, locationRef?}
+        const rawText = typeof raw === 'object' && raw !== null && 'text' in raw ? raw.text : raw;
+        const text = stripHtml(rawText);
         const stepLoc = `${loc}, step ${j + 1}`;
 
         // Must start with action verb (imperative) — check for common non-verb openers
@@ -169,7 +171,9 @@ function validateGame(filePath) {
 
       // Spoiler lint: first step of first section should not be ALL spoiler
       if (i === 0) {
-        const firstStepText = stripHtml(sec.steps[0]);
+        const firstStep0 = sec.steps[0];
+        const firstStep0Text = typeof firstStep0 === 'object' && firstStep0 !== null && 'text' in firstStep0 ? firstStep0.text : firstStep0;
+        const firstStepText = stripHtml(firstStep0Text);
         if (firstStepText.length < 5) {
           errors.push(`${loc}, step 1: first step of first section is empty after stripping tags — check spoiler tagging`);
         }

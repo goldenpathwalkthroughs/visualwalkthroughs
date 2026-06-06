@@ -42,16 +42,20 @@ const theme = z.object({
 //
 // A step is either:
 //   v1  "Do the thing with <strong>the item</strong>."    — plain HTML string
-//   v2  { text: "...", videoTimestamp: 142 }              — with a video deep-link
+//   v2  { text: "...", videoTimestamp?: 142, locationRef?: "B6" }
 //
 // videoTimestamp is seconds into the section's embedded video.
-// The UI renders it as a clickable time-marker that jumps the embed to that moment.
+// locationRef is the canonical ref of the Location where this action takes place
+//   (grid coord like "B6" for grid games; named region for others).
+// The UI renders timestamp as a clickable seek button and locationRef as a
+// small badge that can link to the map panel for that cell.
 
 const step = z.union([
   z.string(),
   z.object({
     text: z.string(),
     videoTimestamp: z.number().optional(),
+    locationRef: z.string().optional(),  // e.g. "B6" for Dragon Roost Island
   }),
 ]);
 
@@ -127,6 +131,74 @@ const collectionQuest = z.object({
   pieces: z.array(collectionQuestPiece),
 });
 
+// ── v2: Location registry ─────────────────────────────────────────────────────
+//
+// THE shared vocabulary for both the world map and every written step.
+// If a place isn't in this registry the writer cannot reference it and the map
+// cannot omit it — enforced by content-QA gate #9.
+//
+// `ref` is the canonical short reference the text uses:
+//   - grid games: "B6" (row letter A-G + column number 1-7)
+//   - region/open games: a brief place name ("Northern Highlands")
+//
+// `contains` lists everything physically here — golden-path beats, NPCs,
+// secrets, shops — so the map detail panel can render real content and respect
+// spoiler-safe and Completionist toggles.
+
+const locationContains = z.object({
+  label: z.string(),
+  kind: z.enum(['beat', 'npc', 'secret', 'shop', 'other']),
+  requires: z.array(z.string()).default([]),  // item IDs needed to access this thing
+  sectionId: z.string().optional(),           // which section covers this beat
+  completionistOnly: z.boolean().default(false),
+});
+
+const location = z.object({
+  id: z.string(),               // stable slug, unique within the game
+  name: z.string(),             // display name
+  ref: z.string(),              // canonical reference — "B6" or "Windfall Island"
+  coord: z.object({ col: z.number(), row: z.number() }).optional(),
+  reachableBy: z.string(),      // how to get here from the player's perspective
+  whereWithin: z.string().optional(),  // sub-location detail if needed
+  isHub: z.boolean().default(false),
+  contains: z.array(locationContains).default([]),
+});
+
+// ── v2: Boss fights ───────────────────────────────────────────────────────────
+//
+// A first-class content type — never a single sentence.
+// `prep` tells the player how to be ready; `phases` describe each attack
+// pattern and its counter; `ifYouStruggle` gives the bounce-back safety net.
+//
+// `locationRef` links to the Location.ref where the fight takes place,
+// so the map panel can surface the fight and the fight card can link to the map.
+
+const bossPhase = z.object({
+  name: z.string(),          // e.g. "Phase 1 — Tentacles"
+  tells: z.string(),         // what the boss signals before attacking
+  counter: z.string(),       // the concrete thing the player must do
+  damageWindow: z.string(),  // when and how to deal damage
+});
+
+const bossFight = z.object({
+  id: z.string(),
+  name: z.string(),
+  sectionId: z.string(),     // which section this boss belongs to
+  locationRef: z.string(),   // Location.ref for the arena
+  prep: z.object({
+    recommendedItems: z.array(z.string()).default([]),  // item IDs
+    healthAdvice: z.string(),       // how many hearts / potions to bring
+    topUpBefore: z.string().optional(),  // where to top up nearby
+  }),
+  phases: z.array(bossPhase),
+  ifYouStruggle: z.object({
+    whereToHeal: z.string(),
+    easierTactic: z.string(),
+    retreatOption: z.string().optional(),
+  }),
+  reward: z.string(),  // what the player receives for winning
+});
+
 // ── v2: World map ─────────────────────────────────────────────────────────────
 //
 // Layout abstraction.  `kind` drives which renderer the UI uses.
@@ -142,6 +214,7 @@ const hubActivity = z.object({
 const worldMapCell = z.object({
   coord: z.object({ col: z.number(), row: z.number() }).optional(),
   name: z.string(),
+  locationId: z.string().optional(),  // links to Location.id in the registry
   regionId: z.string().optional(),
   // How important is this cell to the story route?
   routeRelevance: z.enum(['none', 'passes-through', 'required']).default('none'),
@@ -266,6 +339,8 @@ const games = defineCollection({
     detours: z.array(detour).default([]),
     collectionQuests: z.array(collectionQuest).default([]),
     worldMap: worldMap.optional(),
+    locations: z.array(location).default([]),      // shared vocab: map + written steps
+    bossFights: z.array(bossFight).default([]),    // first-class boss content type
   }),
 });
 

@@ -1,0 +1,674 @@
+---
+/**
+ * WorldMap.astro — interactive, labelled world-map renderer.
+ *
+ * §0: no game-specific fact lives here.  All names, coords, and descriptions
+ * are game content that arrive via props.
+ *
+ * Props:
+ *   worldMap  — grid/region layout + cells (from Game.worldMap)
+ *   locations — the Location registry (from Game.locations)
+ *   sections  — enriched sections array (for jump-to-section links)
+ *
+ * Grid layout:
+ *   Column labels: 1 … cols   (rendered in the top header row)
+ *   Row labels:    A … [cols] (rendered in the left header column)
+ *   Cell at coord {col, row} → CSS grid-column: col+1, grid-row: row+1
+ *   Canonical ref format: row-letter + col-number (e.g. "B6")
+ *
+ * Interactivity:
+ *   Clicking a cell opens a detail panel (side panel on desktop, bottom sheet
+ *   on mobile) populated from the Location registry.  The panel shows: name,
+ *   ref, how to reach it, prerequisites, and what's here — golden-path beats,
+ *   secrets, NPCs — with spoiler-safe and Completionist toggles applied.
+ *   A "Go to section" link deep-links the guide at build time.
+ *
+ * Expandability:
+ *   The map section uses a <details> element so the overview collapses/expands.
+ */
+
+interface LocationContains {
+  label: string;
+  kind: 'beat' | 'npc' | 'secret' | 'shop' | 'other';
+  requires: string[];
+  sectionId?: string;
+  completionistOnly: boolean;
+}
+
+interface Location {
+  id: string;
+  name: string;
+  ref: string;
+  coord?: { col: number; row: number };
+  reachableBy: string;
+  whereWithin?: string;
+  isHub: boolean;
+  contains: LocationContains[];
+}
+
+interface Cell {
+  coord?: { col: number; row: number };
+  name: string;
+  locationId?: string;
+  routeRelevance: 'none' | 'passes-through' | 'required';
+  secrets: string[];
+  requires: string[];
+  isHub: boolean;
+}
+
+interface Section {
+  sectionId?: string;
+  order: number;
+  title: string;
+}
+
+interface WorldMapData {
+  kind: 'grid' | 'regions';
+  grid?: { cols: number; rows: number };
+  cells: Cell[];
+}
+
+interface Props {
+  worldMap: WorldMapData;
+  locations?: Location[];
+  sections?: Section[];
+}
+
+const { worldMap, locations = [], sections = [] } = Astro.props;
+const isGrid = worldMap.kind === 'grid';
+const gridDef = worldMap.grid;
+
+// Build fast lookup maps
+const locationById = new Map(locations.map(l => [l.id, l]));
+
+// Cells that have coordinates for grid placement
+const positionedCells = worldMap.cells.filter(c => c.coord);
+
+// Section index lookup (section id / order → array index for deep-link)
+const sectionIndexBySid = new Map(
+  sections.map((s, i) => [s.sectionId ?? String(s.order), i])
+);
+
+// Row letter helper: 1→A, 2→B, …
+function rowLetter(row: number): string {
+  return String.fromCharCode(64 + row);
+}
+
+// Canonical ref for a cell based on its coord
+function cellRef(cell: Cell): string {
+  if (!cell.coord) return '';
+  return `${rowLetter(cell.coord.row)}${cell.coord.col}`;
+}
+
+// Resolve the location for a cell (by locationId or by matching name)
+function cellLocation(cell: Cell): Location | undefined {
+  if (cell.locationId) return locationById.get(cell.locationId);
+  return locations.find(l => l.name === cell.name);
+}
+
+// Serialize locations for client-side panel population
+const locationsJson = JSON.stringify(
+  locations.map(l => ({
+    id: l.id,
+    name: l.name,
+    ref: l.ref,
+    reachableBy: l.reachableBy,
+    whereWithin: l.whereWithin ?? null,
+    isHub: l.isHub,
+    requires: [],  // cell-level requires handled separately
+    contains: l.contains.map(c => ({
+      label: c.label,
+      kind: c.kind,
+      completionistOnly: c.completionistOnly,
+      sectionId: c.sectionId ?? null,
+    })),
+  }))
+);
+
+// Serialize section index for deep-link generation
+const sectionIndexJson = JSON.stringify(
+  Object.fromEntries(sectionIndexBySid)
+);
+
+const cols = gridDef?.cols ?? 0;
+const rows = gridDef?.rows ?? 0;
+---
+
+{isGrid && gridDef ? (
+  <details class="world-map-section" open>
+    <summary class="map-summary">
+      <span class="map-summary-label">World overview</span>
+      <span class="map-summary-hint">click to collapse</span>
+    </summary>
+
+    <div class="map-inner">
+      <!-- Grid: (cols+1) columns × (rows+1) rows — col 1 and row 1 are labels -->
+      <div
+        class="world-map-grid"
+        style={`--map-cols:${cols};--map-rows:${rows}`}
+        role="grid"
+        aria-label="World map"
+        id="world-map-grid"
+      >
+        <!-- Empty top-left corner -->
+        <div class="map-corner" style="grid-column:1;grid-row:1" aria-hidden="true"></div>
+
+        <!-- Column headers: 1 … cols -->
+        {Array.from({ length: cols }, (_, i) => (
+          <div
+            class="map-col-label"
+            style={`grid-column:${i + 2};grid-row:1`}
+            aria-hidden="true"
+          >{i + 1}</div>
+        ))}
+
+        <!-- Row headers: A … [rows] -->
+        {Array.from({ length: rows }, (_, i) => (
+          <div
+            class="map-row-label"
+            style={`grid-column:1;grid-row:${i + 2}`}
+            aria-hidden="true"
+          >{rowLetter(i + 1)}</div>
+        ))}
+
+        <!-- Map cells — placed at (col+1, row+1) to leave room for labels -->
+        {positionedCells.map(cell => {
+          const loc = cellLocation(cell);
+          const ref = cellRef(cell);
+          return (
+            <div
+              class:list={[
+                'map-cell',
+                `rel-${cell.routeRelevance}`,
+                cell.isHub && 'is-hub',
+                cell.requires.length > 0 && 'is-locked',
+                loc && 'has-detail',
+              ]}
+              style={`grid-column:${cell.coord!.col + 1};grid-row:${cell.coord!.row + 1}`}
+              role="button"
+              tabindex="0"
+              aria-label={`${cell.name} (${ref})${loc ? ' — click for details' : ''}`}
+              data-location-id={loc?.id ?? ''}
+              data-cell-ref={ref}
+              data-requires={JSON.stringify(cell.requires)}
+              onclick={loc ? `openMapPanel('${loc.id}', this)` : undefined}
+              onkeydown={loc ? `if(event.key==='Enter'||event.key===' '){event.preventDefault();openMapPanel('${loc.id}',this)}` : undefined}
+            >
+              <span class="cell-ref" aria-hidden="true">{ref}</span>
+              <span class="cell-name">{cell.name}</span>
+              {cell.requires.length > 0 && (
+                <span class="cell-lock" aria-hidden="true" title="Access requires an item">🔒</span>
+              )}
+              {cell.secrets.length > 0 && (
+                <span class="cell-secrets comp-only" aria-label={`${cell.secrets.length} secret${cell.secrets.length === 1 ? '' : 's'}`}>
+                  ✦{cell.secrets.length}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Legend -->
+      <p class="map-note">
+        <span class="key-dot req"></span> Required route &ensp;
+        <span class="key-dot pass"></span> Passes through &ensp;
+        <span class="key-hub"></span> Hub location &ensp;
+        <span class="key-lock">🔒</span> Requires item
+      </p>
+    </div>
+
+    <!-- Detail panel backdrop (desktop: fades map; mobile: bottom sheet overlay) -->
+    <div class="map-backdrop" id="map-backdrop" onclick="closeMapPanel()" aria-hidden="true"></div>
+
+    <!-- Detail panel — side panel on ≥800 px, bottom sheet on mobile -->
+    <aside
+      class="map-detail-panel"
+      id="map-panel"
+      aria-label="Location details"
+      aria-hidden="true"
+      role="complementary"
+    >
+      <button class="panel-close" onclick="closeMapPanel()" aria-label="Close location panel">✕</button>
+      <div class="panel-scroll">
+        <div class="panel-ref" id="panel-ref"></div>
+        <h3 class="panel-name" id="panel-name"></h3>
+        <div class="panel-reach" id="panel-reach"></div>
+        <div class="panel-body" id="panel-body"></div>
+      </div>
+    </aside>
+  </details>
+) : (
+  <section class="world-map-section" aria-label="World map">
+    <p class="map-placeholder">Interactive region map coming soon.</p>
+  </section>
+)}
+
+<script define:vars={{ locationsJson, sectionIndexJson }}>
+  const LOCATIONS = JSON.parse(locationsJson);
+  const LOC_BY_ID = {};
+  LOCATIONS.forEach(l => { LOC_BY_ID[l.id] = l; });
+  const SEC_INDEX = JSON.parse(sectionIndexJson);
+
+  let activeCell = null;
+
+  window.openMapPanel = function(locationId, cellEl) {
+    const loc = LOC_BY_ID[locationId];
+    if (!loc) return;
+
+    // Update active cell highlight
+    if (activeCell) activeCell.classList.remove('cell-active');
+    activeCell = cellEl;
+    cellEl.classList.add('cell-active');
+
+    // Populate panel
+    document.getElementById('panel-ref').textContent   = loc.ref;
+    document.getElementById('panel-name').textContent  = loc.name;
+    document.getElementById('panel-reach').innerHTML   =
+      `<strong>How to reach:</strong> ${loc.reachableBy}` +
+      (loc.whereWithin ? `<br><em>${loc.whereWithin}</em>` : '');
+
+    const spoilerSafe  = document.body.classList.contains('spoilers-safe');
+    const compOn       = document.body.classList.contains('comp-on');
+    const body         = document.getElementById('panel-body');
+
+    // Render contains items — filter by spoiler/comp toggles
+    const visible = (loc.contains || []).filter(c => {
+      if (c.completionistOnly && !compOn) return false;
+      return true;
+    });
+
+    if (visible.length === 0) {
+      body.innerHTML = '<p class="panel-empty">Nothing notable here — or it\'s hidden behind spoilers/completionist settings.</p>';
+    } else {
+      const kindLabel = { beat: '📍', npc: '🗣', secret: '✦', shop: '🛒', other: '·' };
+      const items = visible.map(c => {
+        const icon   = kindLabel[c.kind] || '·';
+        const secIdx = c.sectionId ? SEC_INDEX[c.sectionId] : null;
+        const link   = secIdx != null
+          ? `<a class="panel-sec-link" href="#sec-${secIdx}" onclick="closeMapPanel()">
+               Go to section ${secIdx + 1} ↗
+             </a>`
+          : '';
+        return `<div class="panel-item panel-item-${c.kind}${c.completionistOnly ? ' comp-only' : ''}">
+          <span class="pi-icon" aria-hidden="true">${icon}</span>
+          <div class="pi-text">
+            <span class="pi-label">${c.label}</span>
+            ${link}
+          </div>
+        </div>`;
+      }).join('');
+      body.innerHTML = items;
+    }
+
+    // Show panel + backdrop
+    const panel    = document.getElementById('map-panel');
+    const backdrop = document.getElementById('map-backdrop');
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    backdrop.classList.add('visible');
+
+    // Focus the close button
+    panel.querySelector('.panel-close').focus();
+  };
+
+  window.closeMapPanel = function() {
+    const panel    = document.getElementById('map-panel');
+    const backdrop = document.getElementById('map-backdrop');
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    backdrop.classList.remove('visible');
+    if (activeCell) {
+      activeCell.classList.remove('cell-active');
+      activeCell.focus();  // return focus to the cell that opened the panel
+      activeCell = null;
+    }
+  };
+
+  // Escape key to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const panel = document.getElementById('map-panel');
+      if (panel && panel.classList.contains('open')) closeMapPanel();
+    }
+  });
+</script>
+
+<style>
+  /* ── Expandable wrapper ──────────────────────────────────────────────────── */
+  .world-map-section {
+    margin: 0 0 2rem;
+    position: relative;
+  }
+
+  .map-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
+    padding: 0 0 0.6rem;
+    user-select: none;
+  }
+  .map-summary::-webkit-details-marker { display: none; }
+
+  .map-summary-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .map-summary-hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted-2);
+    transition: opacity .2s;
+  }
+  .world-map-section:not([open]) .map-summary-hint {
+    opacity: 0;
+  }
+  .map-inner { overflow: visible; }
+
+  /* ── Grid layout: (cols+1) × (rows+1) with label row/col ─────────────────── */
+  .world-map-grid {
+    display: grid;
+    /* first column = row labels (20px); remaining = map cells (equal) */
+    grid-template-columns: 20px repeat(var(--map-cols), 1fr);
+    /* first row = column labels (18px); remaining = map cells (equal, square) */
+    grid-template-rows: 18px repeat(var(--map-rows), 1fr);
+    gap: 2px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--ink-2);
+    /* Keep cells roughly square and cap total width */
+    width: min(100%, calc(20px + var(--map-cols) * 72px));
+    aspect-ratio: calc(var(--map-cols) + 0.28) / calc(var(--map-rows) + 0.25);
+  }
+  @media (max-width: 540px) {
+    .world-map-grid { width: 100%; }
+  }
+
+  /* ── Label cells ─────────────────────────────────────────────────────────── */
+  .map-corner,
+  .map-col-label,
+  .map-row-label {
+    background: var(--ink-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted-2);
+    font-weight: 600;
+    user-select: none;
+  }
+
+  /* ── Map cells ───────────────────────────────────────────────────────────── */
+  .map-cell {
+    background: var(--panel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 2px 2px;
+    font-family: var(--font-display);
+    font-size: 7px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--muted);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background .12s, outline .12s;
+  }
+
+  .map-cell.has-detail {
+    cursor: pointer;
+  }
+  .map-cell.has-detail:hover,
+  .map-cell.cell-active {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+    z-index: 2;
+  }
+  .map-cell.has-detail:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  /* Route-relevance tiers */
+  .map-cell.rel-required { background: var(--accent-soft); color: var(--text); }
+  .map-cell.rel-passes-through { background: rgba(255,255,255,.03); color: var(--muted); }
+  .map-cell.rel-none { opacity: .4; }
+
+  /* Hub outline */
+  .map-cell.is-hub {
+    box-shadow: inset 0 0 0 1.5px var(--gold);
+  }
+
+  .cell-ref {
+    font-family: var(--font-mono);
+    font-size: 6px;
+    color: var(--muted-2);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .map-cell.rel-required .cell-ref { color: var(--muted); }
+
+  .cell-name {
+    font-size: 6.5px;
+    line-height: 1.25;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .map-cell.rel-required .cell-name { font-size: 7.5px; }
+
+  .cell-lock {
+    font-size: 7px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    opacity: .75;
+    line-height: 1;
+  }
+  .cell-secrets {
+    font-size: 7px;
+    font-family: var(--font-mono);
+    color: var(--gold);
+    position: absolute;
+    bottom: 2px;
+    right: 3px;
+    line-height: 1;
+  }
+
+  /* ── Legend ──────────────────────────────────────────────────────────────── */
+  .map-note {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--muted-2);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .key-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+  .key-dot.req { background: var(--accent-soft); border: 1px solid var(--accent); }
+  .key-dot.pass { background: rgba(255,255,255,.07); border: 1px solid var(--line); }
+  .key-hub {
+    display: inline-block;
+    width: 12px; height: 12px;
+    box-shadow: inset 0 0 0 1.5px var(--gold);
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+  .key-lock { font-size: 11px; margin-right: 4px; line-height: 1; }
+
+  /* ── Detail panel backdrop ───────────────────────────────────────────────── */
+  .map-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 199;
+    opacity: 0;
+    transition: opacity .22s;
+  }
+  .map-backdrop.visible {
+    display: block;
+    opacity: 1;
+  }
+  @media (min-width: 800px) {
+    /* On desktop the panel slides in from the right; backdrop just dims slightly */
+    .map-backdrop { background: rgba(0,0,0,.18); }
+  }
+
+  /* ── Detail panel — base ─────────────────────────────────────────────────── */
+  .map-detail-panel {
+    position: fixed;
+    z-index: 200;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: transform .26s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* Desktop: slide in from the right */
+  @media (min-width: 800px) {
+    .map-detail-panel {
+      top: 60px;
+      right: 0;
+      bottom: 60px;
+      width: min(380px, 38vw);
+      border-radius: 16px 0 0 16px;
+      transform: translateX(110%);
+      box-shadow: -8px 0 32px rgba(0,0,0,.28);
+    }
+    .map-detail-panel.open { transform: translateX(0); }
+  }
+
+  /* Mobile: slide up from the bottom */
+  @media (max-width: 799px) {
+    .map-detail-panel {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: 68vh;
+      border-radius: 16px 16px 0 0;
+      transform: translateY(110%);
+      box-shadow: 0 -8px 32px rgba(0,0,0,.32);
+    }
+    .map-detail-panel.open { transform: translateY(0); }
+  }
+
+  .panel-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 28px; height: 28px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .14s, color .14s;
+    z-index: 1;
+  }
+  .panel-close:hover { background: var(--panel2); color: var(--text); }
+
+  .panel-scroll {
+    padding: 18px 18px 24px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .panel-ref {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .panel-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 10px;
+    line-height: 1.2;
+    padding-right: 36px;
+  }
+  .panel-reach {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+  .panel-reach strong { color: var(--muted-2); }
+
+  /* Content items in the panel */
+  .panel-item {
+    display: flex;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    align-items: flex-start;
+  }
+  .panel-item:last-child { border-bottom: none; }
+  .pi-icon {
+    font-size: 12px;
+    line-height: 1.6;
+    flex: 0 0 auto;
+    width: 20px;
+    text-align: center;
+  }
+  .pi-text { flex: 1; }
+  .pi-label {
+    display: block;
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .panel-sec-link {
+    display: inline-block;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: .04em;
+  }
+  .panel-sec-link:hover { text-decoration: underline; }
+
+  .panel-empty {
+    font-size: 12px;
+    color: var(--muted-2);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .map-placeholder {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted-2);
+    font-style: italic;
+  }
+</style>
