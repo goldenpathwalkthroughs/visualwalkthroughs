@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "validate": "node scripts/validate.js",
+    "validate": "node scripts/validate.js && node scripts/test-sequencer.js",
     "qa": "node scripts/qa.js",
     "deploy:preview": "wrangler pages deploy dist --project-name=visualwalkthroughs",
     "promote": "node scripts/promote.js",
