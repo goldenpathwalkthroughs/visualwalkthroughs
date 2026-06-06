@@ -1,0 +1,93 @@
+name: Nightly Pipeline
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 2 AM UTC every night
+  workflow_dispatch:        # manual trigger from the GitHub Actions tab
+    inputs:
+      game:
+        description: 'Game title — overrides queue.md (leave blank to use queue)'
+        required: false
+      franchise:
+        description: 'Franchise slug (e.g. zelda)'
+        required: false
+      slug:
+        description: 'Game slug (e.g. ocarina-of-time)'
+        required: false
+      year:
+        description: 'Release year'
+        required: false
+      platforms:
+        description: 'Platforms, comma-separated (e.g. N64, GameCube)'
+        required: false
+
+permissions:
+  contents: write   # needed so the pipeline can push game files and reports
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180   # matches pipeline.config.json → timeCapMinutes
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - uses: actions/checkout@v4
+        with:
+          # Use default GITHUB_TOKEN — has contents:write on this repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Fetch full history so git tag + rollback always have a target
+          fetch-depth: 0
+
+      # ── 2. Node setup ─────────────────────────────────────────────────────────
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── 3. Install deps ───────────────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Playwright browsers ────────────────────────────────────────────────
+      - name: Install Playwright (Chromium only)
+        run: npx playwright install chromium --with-deps
+
+      # ── 5. Configure git for pipeline commits ────────────────────────────────
+      - name: Configure git
+        run: |
+          git config user.name  "VisualWalkthroughs Bot"
+          git config user.email "bot@visualwalkthroughs.pages.dev"
+
+      # ── 6. Run the pipeline ───────────────────────────────────────────────────
+      - name: Run nightly pipeline
+        env:
+          ANTHROPIC_API_KEY:      ${{ secrets.ANTHROPIC_API_KEY }}
+          CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID:  ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # Build CLI args from manual-trigger inputs (empty strings are ignored)
+          ARGS=""
+          if [ -n "${{ inputs.game }}" ]; then
+            ARGS="--game \"${{ inputs.game }}\""
+            ARGS="$ARGS --franchise \"${{ inputs.franchise }}\""
+            ARGS="$ARGS --slug \"${{ inputs.slug }}\""
+            [ -n "${{ inputs.year }}"      ] && ARGS="$ARGS --year \"${{ inputs.year }}\""
+            [ -n "${{ inputs.platforms }}" ] && ARGS="$ARGS --platforms \"${{ inputs.platforms }}\""
+          fi
+          eval node scripts/pipeline.js $ARGS
+
+      # ── 7. Commit the nightly report (always, even on failure) ───────────────
+      - name: Commit nightly report
+        if: always()
+        run: |
+          # Pull any commits the pipeline itself pushed (game file + queue.md)
+          git pull --rebase origin main
+
+          git add reports/
+          # Only commit if the report file is new or changed
+          if git diff --cached --quiet; then
+            echo "No report changes to commit."
+          else
+            git commit -m "chore: nightly report $(date +%Y-%m-%d)"
+            git push
+          fi
