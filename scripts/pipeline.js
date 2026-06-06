@@ -1,0 +1,511 @@
+#!/usr/bin/env node
+/**
+ * pipeline.js — nightly pipeline orchestrator
+ *
+ * Sequence (per CLAUDE.md):
+ *   read queue → validate game → research → draft → Gate #1 (validate) →
+ *   build → deploy preview → Gate #2 (qa) → fix-loop → promote →
+ *   smoke test → rollback on failure → write report
+ *
+ * Usage:
+ *   node scripts/pipeline.js                      — reads queue.md
+ *   node scripts/pipeline.js --game "Title" --franchise slug --slug game-slug
+ *   node scripts/pipeline.js --watch              — attended mode (extra logging)
+ *   node scripts/pipeline.js --skip-qa            — skip Gate #2 (dev only)
+ *   node scripts/pipeline.js --dry-run            — stop after Gate #1, no deploy
+ *
+ * Required env:
+ *   ANTHROPIC_API_KEY
+ *   CLOUDFLARE_API_TOKEN
+ *   CLOUDFLARE_ACCOUNT_ID
+ *
+ * Exit 0 = published successfully (or idle night — no queue item)
+ * Exit 1 = failure (report written, production untouched)
+ */
+
+import { execSync, spawnSync } from 'child_process';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dir = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(__dir, '..');
+const CONFIG = JSON.parse(readFileSync(join(ROOT, 'pipeline.config.json'), 'utf8'));
+
+// ── CLI args ──────────────────────────────────────────────────────────────────
+const args = process.argv.slice(2);
+function arg(flag) { const i = args.indexOf(flag); return i !== -1 ? args[i + 1] : null; }
+const watchMode = args.includes('--watch');
+const skipQa = args.includes('--skip-qa');
+const dryRun = args.includes('--dry-run');
+
+// ── Report scaffolding ────────────────────────────────────────────────────────
+const runDate = new Date().toISOString().slice(0, 10);
+const runStart = Date.now();
+const report = {
+  date: runDate,
+  published: [],
+  skipped: [],
+  rolledBack: [],
+  errors: [],
+  flags: [],        // things needing owner attention
+  spendNote: '',
+  advisorShortlist: '',
+};
+
+function flag(msg) {
+  report.flags.push(msg);
+  console.log(`  🚩  FLAG: ${msg}`);
+}
+
+function logSection(title) {
+  console.log(`\n── ${title} ──────────────────────────────`);
+}
+
+// ── Spend / time cap enforcement ──────────────────────────────────────────────
+const timeCap = CONFIG.timeCapMinutes * 60 * 1000;
+function checkTimeCap(label) {
+  if (Date.now() - runStart > timeCap) {
+    flag(`Time cap (${CONFIG.timeCapMinutes} min) hit at: ${label}`);
+    writeReport('timeout');
+    process.exit(1);
+  }
+}
+
+// ── Protected path guard ──────────────────────────────────────────────────────
+function assertNotProtected(filePath) {
+  const rel = filePath.replace(ROOT + '/', '');
+  for (const pattern of CONFIG.protectedPaths) {
+    const re = new RegExp('^' + pattern.replace(/\*/g, '.*') + '$');
+    if (re.test(rel)) {
+      throw new Error(`Refused to touch protected path: ${rel}`);
+    }
+  }
+}
+
+// ── Run a command, capture output ─────────────────────────────────────────────
+function run(cmd, opts = {}) {
+  const result = spawnSync(cmd, { shell: true, cwd: ROOT, env: process.env, ...opts });
+  return {
+    ok: result.status === 0,
+    stdout: result.stdout?.toString() || '',
+    stderr: result.stderr?.toString() || '',
+    status: result.status,
+  };
+}
+
+function runOrThrow(cmd, label) {
+  const r = run(cmd, { stdio: 'inherit' });
+  if (!r.ok) throw new Error(`${label} failed (exit ${r.status})`);
+  return r;
+}
+
+// ── Parse queue.md ────────────────────────────────────────────────────────────
+function parseQueue() {
+  const queuePath = join(ROOT, 'queue.md');
+  if (!existsSync(queuePath)) return null;
+
+  const raw = readFileSync(queuePath, 'utf8');
+
+  // Extract the TONIGHT block
+  const blockMatch = raw.match(/##\s*TONIGHT[\s\S]*?```\n([\s\S]*?)```/);
+  if (!blockMatch) return null;
+
+  const block = blockMatch[1];
+  function field(name) {
+    const m = block.match(new RegExp(`^${name}:[ \\t]*(.*)`, 'm'));
+    return m ? m[1].trim() : '';
+  }
+
+  const game = field('game');
+  if (!game) return null; // empty queue
+
+  return {
+    game,
+    franchise: field('franchise'),
+    slug: field('slug'),
+    year: field('year'),
+    platforms: field('platforms'),
+    allowReplace: /allowReplace:\s*true/i.test(block),
+  };
+}
+
+// ── Append to queue DONE section ──────────────────────────────────────────────
+function markQueueDone(gameTitle) {
+  const queuePath = join(ROOT, 'queue.md');
+  let raw = readFileSync(queuePath, 'utf8');
+
+  // Clear tonight's fields
+  raw = raw.replace(/(##\s*TONIGHT[\s\S]*?```\n)([\s\S]*?)(```)/,
+    (_, open, _block, close) => `${open}game:      \nfranchise: \nslug:      \nyear:      \nplatforms: \n${close}`);
+
+  // Append to DONE
+  const doneLine = `- ${gameTitle} — published ${runDate}`;
+  raw = raw.replace(/(## DONE[\s\S]*?)(\n- Wind Waker)/, `$1\n${doneLine}$2`);
+  if (!raw.includes(doneLine)) {
+    raw = raw.replace(/## DONE[^\n]*\n/, `## DONE (the pipeline appends here after each successful publish)\n\n${doneLine}\n`);
+  }
+
+  writeFileSync(queuePath, raw, 'utf8');
+}
+
+// ── Smoke test (basic HTTP check against production) ─────────────────────────
+async function smokeTest(url) {
+  logSection('Production smoke test');
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(15_000) });
+    if (res.ok) {
+      console.log(`  ✅  ${url} → HTTP ${res.status}`);
+      return true;
+    }
+    console.log(`  ❌  ${url} → HTTP ${res.status}`);
+    return false;
+  } catch (e) {
+    console.log(`  ❌  Smoke test failed: ${e.message}`);
+    return false;
+  }
+}
+
+// ── Content Advisor shortlist (cheap reasoning call) ─────────────────────────
+async function runAdvisor(publishedSlug) {
+  if (!process.env.ANTHROPIC_API_KEY) return '(advisor skipped — no API key)';
+
+  logSection('Content Advisor shortlist');
+  try {
+    const { default: Anthropic } = await import('@anthropic-ai/sdk');
+    const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+    const alreadyCovered = [];
+    const gamesDir = join(ROOT, 'src/content/games');
+    if (existsSync(gamesDir)) {
+      const { readdirSync } = await import('fs');
+      alreadyCovered.push(...readdirSync(gamesDir).filter(f => f.endsWith('.json')).map(f => f.replace('.json', '')));
+    }
+
+    const response = await claude.messages.create({
+      model: CONFIG.model.advisor,
+      max_tokens: 800,
+      messages: [{
+        role: 'user',
+        content: `You are the VisualWalkthroughs Content Advisor. Today is ${runDate}.
+
+Already covered or in queue: ${alreadyCovered.join(', ') || 'none yet'}.
+
+Propose a ranked shortlist of the 5 most valuable walkthroughs to build next.
+Rules: only story-driven games with a true golden path; mix one new release + evergreen picks + one gap-fill;
+flag borderline cases; respect the "no duplicates" rule.
+Use the exact output format from your content-advisor document: numbered list, demand/gap/fit/confidence per entry, then a FLAGGED section.
+Keep it under 300 words.`,
+      }],
+    });
+
+    const shortlist = response.content[0].text;
+    console.log(shortlist);
+    return shortlist;
+  } catch (e) {
+    return `(advisor error: ${e.message})`;
+  }
+}
+
+// ── Write report ──────────────────────────────────────────────────────────────
+function writeReport(outcome) {
+  const reportsDir = join(ROOT, 'reports');
+  if (!existsSync(reportsDir)) mkdirSync(reportsDir);
+
+  const elapsed = Math.round((Date.now() - runStart) / 1000 / 60);
+  const lines = [
+    `# Pipeline Report — ${runDate}`,
+    '',
+    `**Outcome:** ${outcome}  |  **Runtime:** ${elapsed} min`,
+    '',
+  ];
+
+  if (report.published.length) {
+    lines.push('## Published');
+    for (const g of report.published) lines.push(`- ✅ ${g}`);
+    lines.push('');
+  }
+
+  if (report.skipped.length) {
+    lines.push('## Skipped');
+    for (const g of report.skipped) lines.push(`- ⏭ ${g}`);
+    lines.push('');
+  }
+
+  if (report.rolledBack.length) {
+    lines.push('## Rolled back');
+    for (const g of report.rolledBack) lines.push(`- ↩ ${g}`);
+    lines.push('');
+  }
+
+  if (report.flags.length) {
+    lines.push('## ⚠ Needs owner attention');
+    for (const f of report.flags) lines.push(`- ${f}`);
+    lines.push('');
+  }
+
+  if (report.errors.length) {
+    lines.push('## Errors');
+    for (const e of report.errors) lines.push(`- ${e}`);
+    lines.push('');
+  }
+
+  if (report.advisorShortlist) {
+    lines.push('## Content Advisor — build-next shortlist');
+    lines.push('');
+    lines.push(report.advisorShortlist);
+    lines.push('');
+  }
+
+  lines.push('---');
+  lines.push(`*Generated by pipeline.js at ${new Date().toISOString()}*`);
+
+  const reportPath = join(reportsDir, `${runDate}.md`);
+  writeFileSync(reportPath, lines.join('\n'), 'utf8');
+  console.log(`\n  📄  Report written: reports/${runDate}.md`);
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+console.log('\n══════════════════════════════════════════');
+console.log(' VisualWalkthroughs — Nightly Pipeline');
+console.log(`  Date: ${runDate}  |  Mode: ${watchMode ? 'attended' : 'unattended'}`);
+console.log('══════════════════════════════════════════');
+
+// 1. Read queue (or use CLI override)
+logSection('Queue');
+let queueItem;
+if (arg('--game')) {
+  queueItem = {
+    game: arg('--game'),
+    franchise: arg('--franchise') || '',
+    slug: arg('--slug') || '',
+    year: arg('--year') || '',
+    platforms: arg('--platforms') || '',
+    allowReplace: args.includes('--allow-replace'),
+  };
+  console.log(`  Using CLI override: ${queueItem.game}`);
+} else {
+  queueItem = parseQueue();
+}
+
+if (!queueItem || !queueItem.game) {
+  console.log('  No game queued for tonight. Idle run.');
+  report.skipped.push('(no queue item)');
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('idle');
+  process.exit(0);
+}
+
+const { game: gameTitle, franchise: franchiseSlug, slug, year, platforms, allowReplace } = queueItem;
+
+if (!slug || !franchiseSlug) {
+  flag(`Queue item "${gameTitle}" is missing franchise or slug — skipping`);
+  report.skipped.push(gameTitle);
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('skipped — incomplete queue item');
+  process.exit(1);
+}
+
+console.log(`  Tonight: ${gameTitle}  (${franchiseSlug}/${slug})`);
+
+// 2. Check additive-only rule
+const outPath = join(ROOT, 'src/content/games', `${slug}.json`);
+if (existsSync(outPath) && !allowReplace) {
+  flag(`${slug}.json already exists and allowReplace is not set — skipping to protect published content`);
+  report.skipped.push(gameTitle);
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('skipped — would overwrite published game');
+  process.exit(0);
+}
+
+// 3. Author (research + draft)
+logSection('AI authoring');
+checkTimeCap('authoring');
+
+const authorCmd = [
+  'node scripts/author.js',
+  `--game "${gameTitle}"`,
+  `--franchise "${franchiseSlug}"`,
+  `--slug "${slug}"`,
+  year ? `--year "${year}"` : '',
+  platforms ? `--platforms "${platforms}"` : '',
+  allowReplace ? '--allow-replace' : '',
+].filter(Boolean).join(' ');
+
+const authorResult = run(authorCmd, { stdio: 'inherit' });
+if (!authorResult.ok) {
+  report.errors.push(`Authoring failed for ${gameTitle}`);
+  flag(`Authoring failed — check API key and network`);
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — authoring error');
+  process.exit(1);
+}
+
+// 4. Gate #1: validate
+logSection('Gate #1 — content validation');
+checkTimeCap('validation');
+
+let fixAttempts = 0;
+let validateOk = false;
+
+while (fixAttempts <= CONFIG.maxFixAttempts) {
+  const r = run(`node scripts/validate.js --game ${slug}`, { stdio: 'inherit' });
+  if (r.ok) { validateOk = true; break; }
+
+  fixAttempts++;
+  if (fixAttempts > CONFIG.maxFixAttempts) break;
+
+  flag(`Validation failed (attempt ${fixAttempts}/${CONFIG.maxFixAttempts}) — pipeline cannot auto-fix content; review manually`);
+  // Content fixes require human review — do not auto-modify content in unattended mode
+  break;
+}
+
+if (!validateOk) {
+  report.errors.push(`Validation failed for ${slug} after ${fixAttempts} attempt(s)`);
+  report.skipped.push(gameTitle);
+  flag(`${slug}.json left on disk as draft — requires manual review before promoting`);
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — validation gate');
+  process.exit(1);
+}
+
+console.log('  ✅  Gate #1 passed');
+
+if (dryRun) {
+  console.log('\n  --dry-run: stopping before deploy');
+  report.skipped.push(`${gameTitle} (dry-run — not deployed)`);
+  writeReport('dry-run');
+  process.exit(0);
+}
+
+// 5. Build
+logSection('Build');
+checkTimeCap('build');
+
+const buildResult = run('npm run build', { stdio: 'inherit' });
+if (!buildResult.ok) {
+  report.errors.push('Build failed');
+  flag('Build error — check Astro output');
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — build error');
+  process.exit(1);
+}
+console.log('  ✅  Build complete');
+
+// 6. Deploy to preview
+logSection('Preview deploy');
+checkTimeCap('preview deploy');
+
+// Deploy to a named staging branch so it gets a stable preview URL
+const previewResult = run(
+  'npx wrangler pages deploy dist --project-name=visualwalkthroughs --branch=staging',
+  { stdio: 'inherit' },
+);
+
+if (!previewResult.ok) {
+  report.errors.push('Preview deploy failed');
+  flag('Wrangler preview deploy failed — check CLOUDFLARE_API_TOKEN');
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — preview deploy');
+  process.exit(1);
+}
+
+const previewUrl = 'https://staging.visualwalkthroughs.pages.dev';
+console.log(`  ✅  Preview live: ${previewUrl}`);
+
+// Wait briefly for Cloudflare edge propagation
+await new Promise(r => setTimeout(r, 8000));
+
+// 7. Gate #2: QA
+if (!skipQa) {
+  logSection('Gate #2 — QA harness');
+  checkTimeCap('QA');
+
+  const qaResult = run(
+    `node scripts/qa.js --url ${previewUrl} --game ${franchiseSlug}/${slug}`,
+    { stdio: 'inherit' },
+  );
+
+  if (!qaResult.ok) {
+    flag(`QA failed on preview — ${gameTitle} left on preview, production untouched`);
+    flag('Review QA output above, fix content or CSS, then re-run pipeline');
+    report.errors.push(`QA gate failed for ${gameTitle}`);
+    report.skipped.push(gameTitle);
+    report.advisorShortlist = await runAdvisor(null);
+    writeReport('failed — QA gate');
+    process.exit(1);
+  }
+
+  console.log('  ✅  Gate #2 passed');
+} else {
+  console.log('  ⚠   Gate #2 skipped (--skip-qa)');
+  flag('QA gate was skipped — production deploy is unverified');
+}
+
+// 8. Promote to production
+logSection('Promote to production');
+checkTimeCap('promote');
+
+const tag = `release-${runDate}-${slug}`;
+const promoteResult = run(`node scripts/promote.js --tag ${tag}`, { stdio: 'inherit' });
+
+if (!promoteResult.ok) {
+  report.errors.push('Promote failed');
+  flag('Wrangler production deploy failed — site unchanged, check Cloudflare');
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — promote');
+  process.exit(1);
+}
+
+// 9. Smoke test
+const productionUrl = 'https://visualwalkthroughs.pages.dev';
+const smokeOk = await smokeTest(`${productionUrl}/${franchiseSlug}/${slug}/`);
+
+if (!smokeOk) {
+  logSection('AUTO-ROLLBACK');
+  flag('Smoke test failed — triggering rollback');
+  report.rolledBack.push(gameTitle);
+
+  const rollbackResult = run('node scripts/rollback.js', { stdio: 'inherit' });
+  if (!rollbackResult.ok) {
+    flag('ROLLBACK ALSO FAILED — manual intervention required. Check Cloudflare dashboard.');
+    report.errors.push('Rollback failed');
+  } else {
+    console.log('  ✅  Rolled back to previous good deploy');
+  }
+
+  report.advisorShortlist = await runAdvisor(null);
+  writeReport('failed — smoke test + rollback');
+  process.exit(1);
+}
+
+console.log('  ✅  Production smoke test passed');
+
+// 10. Commit the new game file
+logSection('Commit');
+try {
+  execSync(`git add src/content/games/${slug}.json queue.md`, { cwd: ROOT });
+  execSync(`git commit -m "content: add ${gameTitle}"`, { cwd: ROOT });
+  execSync('git push', { cwd: ROOT });
+  console.log(`  ✅  Committed and pushed: ${slug}.json`);
+} catch (e) {
+  flag(`Git commit/push failed: ${e.message} — content is live but not in repo`);
+}
+
+// 11. Mark queue done
+markQueueDone(gameTitle);
+
+// 12. Content Advisor shortlist for tomorrow
+report.advisorShortlist = await runAdvisor(slug);
+
+// 13. Report
+report.published.push(`${gameTitle} (${productionUrl}/${franchiseSlug}/${slug}/)`);
+writeReport('published');
+
+const elapsed = Math.round((Date.now() - runStart) / 1000 / 60);
+console.log('\n══════════════════════════════════════════');
+console.log(`✅  Pipeline complete — ${gameTitle} is live`);
+console.log(`    ${productionUrl}/${franchiseSlug}/${slug}/`);
+console.log(`    Runtime: ${elapsed} min`);
+console.log('══════════════════════════════════════════\n');
