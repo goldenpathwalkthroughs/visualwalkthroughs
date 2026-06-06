@@ -22,6 +22,7 @@ const detourById = new Map(
 );
 
 const { title, lede, platforms, theme } = game.data;
+const cover = (game.data as any).cover as string | undefined;
 const sections = enriched.sections;
 
 // Boss fight lookup: sectionId → boss fight object
@@ -106,8 +107,10 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
       </div>
       <div class="ww-top">
         <div class="ww-cover">
-          <div class="tri"></div>
-          <small>THE WIND WAKER</small>
+          {cover
+            ? <img src={cover} alt={`${title} box art`} class="ww-cover-img" loading="eager" decoding="async" />
+            : <><div class="tri"></div><small>THE WIND WAKER</small></>
+          }
         </div>
         <div class="ww-info">
           <div class="badges">

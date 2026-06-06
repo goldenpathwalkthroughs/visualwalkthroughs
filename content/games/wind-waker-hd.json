@@ -6,6 +6,7 @@
   "platforms": ["Wii U"],
   "status": "published",
   "lede": "Cross the Great Sea, master the winds, and restore the Master Sword — a complete golden-path and 100% guide for the HD remaster.",
+  "cover": "/assets/covers/wind-waker-hd.webp",
   "theme": {
     "bodyClass": "ww-theme"
   },

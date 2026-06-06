@@ -179,11 +179,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border: 1px solid var(--line);
   background: var(--panel);
   transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
-  isolation: isolate;
+  isolation: isolate;  /* stacking context — keeps z-index:-1 art above card background */
 }
 .card:hover { transform: translateY(-8px) scale(1.015); box-shadow: var(--shadow); border-color: var(--accent); }
-.card .art { position: absolute; inset: 0; z-index: -1; }
-.card .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(0,0,0,.86)); }
+/* Cover image — sits inside .art, fills it, gradient ::after overlays on top.
+   Fallback: if image fails, the CSS background gradient shows through.
+   object-position: center top keeps the top of cover art (title/logo) visible. */
+.cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+.card .art { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+/* Gradient: subtle dark tint at top for badge legibility; heavy scrim at bottom for title text */
+.card .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, transparent 28%, transparent 35%, rgba(0,0,0,.72) 60%, rgba(0,0,0,.93) 80%, rgba(0,0,0,.97) 100%); }
 .card .meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px; }
 .card .franchise { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .card .title { font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.02; letter-spacing: -.02em; }
@@ -202,10 +208,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   scroll-snap-align: start;
   border: 1px solid var(--line);
   transition: transform .35s, border-color .35s, box-shadow .35s;
+  isolation: isolate;
 }
 .ncard:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow); }
-.ncard .art { position: absolute; inset: 0; z-index: -1; }
-.ncard .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.88) 30%, transparent); }
+.ncard .art { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+/* Left-to-right scrim: text lives on the left, art bleeds out to the right */
+.ncard .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 35%, rgba(0,0,0,.3) 60%, transparent 80%); }
 .ncard .body { position: absolute; inset: 0; padding: 22px 24px; display: flex; flex-direction: column; justify-content: flex-end; max-width: 80%; }
 .ncard .tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 9px; }
 .ncard h3 { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.12; letter-spacing: -.02em; }
@@ -233,10 +241,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border: 1px solid var(--line);
   background: var(--panel);
   transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+  isolation: isolate;  /* fix: without this, z-index:-1 on .art escapes the tile and hides behind background */
 }
 .gtile:hover { transform: translateY(-7px); box-shadow: var(--shadow); border-color: var(--accent); }
-.gtile .art { position: absolute; inset: 0; z-index: -1; }
-.gtile .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, rgba(0,0,0,.88)); }
+.gtile .art { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+/* Gradient: dark top tint for "Guide ready" badge; heavy scrim at bottom for text */
+.gtile .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.2) 0%, transparent 25%, transparent 40%, rgba(0,0,0,.7) 65%, rgba(0,0,0,.94) 85%, rgba(0,0,0,.98) 100%); }
 .gtile .meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
 .gtile .yr { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: .1em; }
 .gtile .title { font-family: var(--font-display); font-weight: 800; font-size: 20px; line-height: 1.04; margin-top: 6px; letter-spacing: -.02em; }
@@ -267,6 +277,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .ww-cover .tri { width: 0; height: 0; border-left: 26px solid transparent; border-right: 26px solid transparent; border-bottom: 46px solid var(--gold); filter: drop-shadow(0 3px 8px rgba(0,0,0,.4)); }
 .ww-cover small { position: absolute; bottom: 12px; left: 0; right: 0; font-family: var(--font-display); font-weight: 800; font-size: 13px; letter-spacing: .04em; }
+/* When real cover art is available, fill the .ww-cover thumbnail */
+.ww-cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: 14px; }
 .ww-info { flex: 1; min-width: 280px; }
 .ww-info .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
 .b { font-family: var(--font-mono); font-size: 11px; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--line); color: var(--muted); }
