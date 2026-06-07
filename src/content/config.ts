@@ -22,6 +22,7 @@ const video = z.object({
   creator: z.string(),
   title: z.string(),
   durationLabel: z.string(),
+  startSeconds: z.number().optional(),
 });
 
 const theme = z.object({
@@ -66,7 +67,7 @@ const collectible = z.object({
   label: z.string(),
   note: z.string(),
   // 'key' and 'other' added; existing values unchanged
-  type: z.enum(['heart', 'upgrade', 'shard', 'figurine', 'key', 'other', 'misc']).default('misc'),
+  type: z.enum(['heart', 'upgrade', 'shard', 'figurine', 'key', 'other', 'misc', 'flower', 'discovery', 'key-item']).default('misc'),
   completionistOnly: z.boolean().default(true),
   // v2 additions
   requires: z.array(z.string()).default([]),   // item IDs needed to reach/collect this
@@ -175,10 +176,11 @@ const location = z.object({
 // so the map panel can surface the fight and the fight card can link to the map.
 
 const bossPhase = z.object({
-  name: z.string(),          // e.g. "Phase 1 — Tentacles"
-  tells: z.string(),         // what the boss signals before attacking
-  counter: z.string(),       // the concrete thing the player must do
-  damageWindow: z.string(),  // when and how to deal damage
+  name: z.string(),                      // e.g. "Phase 1 — Tentacles" or "Brock's Onix (Lv 14)"
+  tells: z.string().optional(),          // what the boss signals before attacking (action-game bosses)
+  counter: z.string().optional(),        // the concrete thing the player must do
+  damageWindow: z.string().optional(),   // when and how to deal damage
+  summary: z.string().optional(),        // free-form description (used for turn-based RPGs)
 });
 
 const bossFight = z.object({
