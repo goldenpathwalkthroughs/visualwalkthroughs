@@ -67,7 +67,17 @@ async function checkPage(browser, url, label) {
 
   // 2. Crawl check — walkthrough text must be in server HTML (not JS-only)
   if (label === 'game') {
-    const textMarkers = ['Golden path', 'Outset Island', 'Forsaken Fortress'];
+    const textMarkers = url.includes('mina')
+      ? ['Golden path', 'Tenebrous Isle', 'Loner\'s Landing']
+      : url.includes('007')
+        ? ['Golden path', 'Château Miremonde', 'Aurora Station']
+        : url.includes('pokopia')
+          ? ['Golden path', 'Withered Wasteland', 'Sparkling Skylands']
+          : url.includes('firered') || url.includes('leafgreen')
+            ? ['Golden path', 'Pewter City', 'Indigo Plateau']
+            : url.includes('yoshi')
+              ? ['Golden path', 'Wildwoods', 'Remote Isle']
+              : ['Golden path', 'Outset Island', 'Forsaken Fortress'];
     for (const marker of textMarkers) {
       if (html.includes(marker)) pass(`Server HTML contains "${marker}" (indexable)`);
       else failures += fail(`Server HTML missing "${marker}" — content may not be indexed by Google`);

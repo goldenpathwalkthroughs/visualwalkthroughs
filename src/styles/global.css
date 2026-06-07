@@ -40,6 +40,70 @@ body.theme-ww {
   --line: rgba(150,230,225,.12);
   --muted: #8fb4b7;
 }
+body.theme-firered {
+  --ink: #060100;
+  --ink-2: #0a0200;
+  --panel: #120300;
+  --panel-2: #180500;
+  --accent: #e8320a;
+  --accent-soft: rgba(232,50,10,.14);
+  --gold: #f4a832;
+  --signal: #e8320a;
+  --line: rgba(232,50,10,.12);
+  --muted: #8a5a44;
+}
+
+body.theme-yoshi {
+  --ink: #020a01;
+  --ink-2: #041404;
+  --panel: #061a05;
+  --panel-2: #092208;
+  --accent: #5fd640;
+  --accent-soft: rgba(95,214,64,.14);
+  --gold: #a8e860;
+  --signal: #5fd640;
+  --line: rgba(95,214,64,.12);
+  --muted: #5a8050;
+}
+
+body.theme-pokopia {
+  --ink: #050d06;
+  --ink-2: #091210;
+  --panel: #0d1a0f;
+  --panel-2: #112015;
+  --accent: #4db87a;
+  --accent-soft: rgba(77,184,122,.14);
+  --gold: #7ed69a;
+  --signal: #b55a2a;
+  --line: rgba(77,184,122,.12);
+  --muted: #6a9a72;
+}
+
+body.theme-007 {
+  --ink: #060604;
+  --ink-2: #0a0900;
+  --panel: #111008;
+  --panel-2: #161410;
+  --accent: #c9a84c;
+  --accent-soft: rgba(201,168,76,.14);
+  --gold: #c9a84c;
+  --signal: #b52a2a;
+  --line: rgba(201,168,76,.12);
+  --muted: #88886a;
+}
+
+body.theme-mina, body.mina-theme {
+  --ink: #07070f;
+  --ink-2: #0d0b1c;
+  --panel: #110e21;
+  --panel-2: #151228;
+  --accent: #5ee7df;
+  --accent-soft: rgba(94,231,223,.15);
+  --gold: #5ee7df;
+  --signal: #c0392b;
+  --line: rgba(94,231,223,.12);
+  --muted: #7a7a9a;
+}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: clip; }

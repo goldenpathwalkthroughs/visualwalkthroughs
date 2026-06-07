@@ -1,0 +1,487 @@
+{
+  "franchiseSlug": "yoshi",
+  "title": "Yoshi and the Mysterious Book",
+  "slug": "yoshi-mysterious-book",
+  "year": "2026",
+  "platforms": ["Nintendo Switch 2"],
+  "status": "published",
+  "lede": "A living encyclopaedia named Mr. E has crash-landed on Yoshi's island — and Bowser Jr. has blundered inside it. Dive into Mr. E's pages across six vibrant chapters, study the peculiar creatures within, and piece together the discoveries needed to set everything right.",
+  "cover": "/assets/covers/yoshi-mysterious-book.webp",
+  "theme": {
+    "bodyClass": "theme-yoshi",
+    "accent": "#5fd640",
+    "accentSoft": "rgba(95,214,64,.14)",
+    "cardGradient": "linear-gradient(160deg,#051a02,#031000 60%,#020800)"
+  },
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "wildwoods",
+      "mountaintops",
+      "seaside",
+      "settled-valley",
+      "bug-country",
+      "remote-isle"
+    ],
+    "criticalPath": [
+      "wildwoods",
+      "mountaintops",
+      "seaside",
+      "settled-valley",
+      "bug-country",
+      "remote-isle"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "tip",
+      "title": "Stars gate every chapter — collect as you go",
+      "body": "Each chapter after Wildwoods requires a star total to unlock: 20 for Mountaintops, 65 for Seaside, 114 for Settled Valley, 167 for Bug Country, and 218 for Remote Isle. Every Discovery and Smiley Flower contributes. You should reach each gate naturally by completing all the discoveries in each chapter before moving on.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Interact with everything — creatures reward curiosity",
+      "body": "Licking, ground-pounding near, throwing eggs at, and standing on creatures all trigger different reactions. You cannot permanently miss a creature, but some discoveries only appear after triggering specific conditions — so explore thoroughly before exiting a page.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Smiley Flowers unlock exploration tools",
+      "body": "Every five Smiley Flowers you collect unlock one exploration tool (such as Poochy Nose, which sniffs out hidden creatures). Exploration tools are not required for the golden path but make finding optional discoveries substantially easier. Collect Smiley Flowers passively as you explore each chapter.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Post-game chapters unlock after Remote Isle",
+      "body": "Completing the six main chapters triggers the credits and unlocks four additional chapters (Underground, Tallest of Trees, Miniworld, and Moon) and two bonus chapters (Special Studies, Mr. E's Challenges). These require 285 to 999 stars. They are entirely optional for the golden path.",
+      "completionistOnly": true
+    }
+  ],
+  "items": [
+    { "id": "mr-e-monocle",        "name": "Mr. E's Monocle",        "type": "item",    "class": "progression", "acquiredAtSectionId": "wildwoods" },
+    { "id": "poochy",              "name": "Poochy",                  "type": "ability", "class": "progression", "acquiredAtSectionId": "wildwoods" },
+    { "id": "poochy-nose",         "name": "Poochy Nose (Tool 1)",    "type": "ability", "class": "optional",    "acquiredAtSectionId": "wildwoods" },
+    { "id": "ground-pound-wand",   "name": "Ground-Pound Wand (Tool 2)", "type": "ability", "class": "optional", "acquiredAtSectionId": "mountaintops" },
+    { "id": "craft-eye",           "name": "Craft Eye (Tool 3)",      "type": "ability", "class": "optional",    "acquiredAtSectionId": "seaside" },
+    { "id": "creature-call",       "name": "Creature Call (Tool 4)",  "type": "ability", "class": "optional",    "acquiredAtSectionId": "settled-valley" },
+    { "id": "bewilder-feather",    "name": "Bewilder Feather",        "type": "item",    "class": "progression", "acquiredAtSectionId": "bug-country" }
+  ],
+  "locations": [
+    {
+      "id": "wildwoods",
+      "name": "Wildwoods",
+      "ref": "Wildwoods",
+      "reachableBy": "Chapter 1 — available from the start, no stars required",
+      "isHub": false,
+      "contains": [
+        { "label": "Mr. E's first page — Crazee Dayzee habitat", "kind": "beat", "requires": [], "sectionId": "wildwoods" },
+        { "label": "Poochy — joins as your companion",            "kind": "beat", "requires": [], "sectionId": "wildwoods" },
+        { "label": "Bowser Jr.'s first appearance in the book",   "kind": "beat", "requires": [], "sectionId": "wildwoods", "spoiler": true }
+      ]
+    },
+    {
+      "id": "mountaintops",
+      "name": "Mountaintops",
+      "ref": "Mountaintops",
+      "reachableBy": "Chapter 2 — unlocked after collecting 20 stars",
+      "isHub": false,
+      "contains": [
+        { "label": "Rocky highland pages, climbing creatures",    "kind": "beat", "requires": [], "sectionId": "mountaintops" },
+        { "label": "Ground-Pound Wand tool unlock opportunity",   "kind": "beat", "requires": [], "sectionId": "mountaintops" }
+      ]
+    },
+    {
+      "id": "seaside",
+      "name": "Seaside",
+      "ref": "Seaside",
+      "reachableBy": "Chapter 3 — unlocked after collecting 65 stars",
+      "isHub": false,
+      "contains": [
+        { "label": "Coastal pages, water and shore creatures",    "kind": "beat", "requires": [], "sectionId": "seaside" },
+        { "label": "Craft Eye tool unlock opportunity",           "kind": "beat", "requires": [], "sectionId": "seaside" }
+      ]
+    },
+    {
+      "id": "settled-valley",
+      "name": "Settled Valley",
+      "ref": "Settled Valley",
+      "reachableBy": "Chapter 4 — unlocked after collecting 114 stars",
+      "isHub": false,
+      "contains": [
+        { "label": "Valley pages, ground-dwelling creatures",     "kind": "beat", "requires": [], "sectionId": "settled-valley" },
+        { "label": "Kamek's first serious interference",          "kind": "beat", "requires": [], "sectionId": "settled-valley", "spoiler": true }
+      ]
+    },
+    {
+      "id": "bug-country",
+      "name": "Bug Country",
+      "ref": "Bug Country",
+      "reachableBy": "Chapter 5 — unlocked after collecting 167 stars",
+      "isHub": false,
+      "contains": [
+        { "label": "Giant insect pages — Yoshi shrunk to pebble-size", "kind": "beat", "requires": [], "sectionId": "bug-country" },
+        { "label": "Bewilder Bird — first full encounter",             "kind": "beat", "requires": [], "sectionId": "bug-country" },
+        { "label": "Bewilder Feather — key item",                      "kind": "beat", "requires": [], "sectionId": "bug-country" }
+      ]
+    },
+    {
+      "id": "remote-isle",
+      "name": "Remote Isle",
+      "ref": "Remote Isle",
+      "reachableBy": "Chapter 6 — unlocked after collecting 218 stars",
+      "whereWithin": "Rugged coastal pages, Mr. E's hidden final section, the Giant Crazee Dayzee arena",
+      "isHub": false,
+      "contains": [
+        { "label": "Final confrontation with Bowser Jr. and Kamek",    "kind": "beat", "requires": [], "sectionId": "remote-isle", "spoiler": true },
+        { "label": "Bewilder Bird joins Yoshi — transformation fight", "kind": "beat", "requires": [], "sectionId": "remote-isle", "spoiler": true },
+        { "label": "Giant Crazee Dayzee — final boss",                 "kind": "beat", "requires": [], "sectionId": "remote-isle", "spoiler": true },
+        { "label": "End credits",                                      "kind": "beat", "requires": [], "sectionId": "remote-isle", "spoiler": true }
+      ]
+    }
+  ],
+  "bossFights": [
+    {
+      "id": "bowser-jr-book",
+      "name": "Bowser Jr. (Book Rampage)",
+      "sectionId": "remote-isle",
+      "locationRef": "Remote Isle",
+      "prep": {
+        "recommendedItems": ["Full egg supply (six eggs)", "Smiley Flower checkpoints fully cleared"],
+        "healthAdvice": "Bowser Jr. uses his paintbrush to coat pages in ink that blocks your movement. Keep moving and never stand still on coloured patches.",
+        "topUpBefore": "Complete all Remote Isle discoveries before triggering the final encounter — you cannot return mid-fight"
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Paintbrush Barrage",
+          "summary": "Bowser Jr. swoops on his Junior Clown Car and flings ink blobs across the page. Each blob creates a slippery black patch. Dodge the blobs and pelt him with eggs when he hovers low — three hits push him back. The ink patches clear after a few seconds."
+        },
+        {
+          "name": "Phase 2 — Mechakoopa Deployment",
+          "summary": "Bowser Jr. winds up and drops Mechakoopas that march in rows. Ground-pound the Mechakoopas to turn them into throwable shells, then use those shells to hit Bowser Jr. when he rises above egg range. Two shell hits end this phase."
+        },
+        {
+          "name": "Phase 3 — Kamek Joins",
+          "summary": "Kamek appears alongside Bowser Jr. and enchants the page borders so they crumble if Yoshi falls off. Kamek flies a random Z-pattern and fires magic bolts — dodge by moving towards him, not away. Hit Kamek three times with eggs to send him retreating, leaving Bowser Jr. alone. Then land two more egg hits on Bowser Jr. to trigger the transition."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "The fight checkpoints after Phase 2 completes — if you lose all health in Phase 3 you restart there, not from the beginning.",
+        "easierTactic": "Carry a full clutch of six eggs into the fight. The egg refill opportunities between Phase 1 and Phase 2 are generous — use them. Poochy runs alongside and barks to warn you when Kamek is charging a bolt in Phase 3.",
+        "retreatOption": "You can pause and quit to the chapter select — all prior star progress is saved."
+      },
+      "reward": "Bowser Jr. retreats; the final boss sequence begins"
+    },
+    {
+      "id": "giant-crazee-dayzee",
+      "name": "Giant Crazee Dayzee",
+      "sectionId": "remote-isle",
+      "locationRef": "Remote Isle",
+      "prep": {
+        "recommendedItems": ["Full egg supply", "Bewilder Feather (carried automatically from Bug Country)"],
+        "healthAdvice": "The Giant Crazee Dayzee's lullaby puts Yoshi to sleep instantly if you are in the sound cone. Always position yourself behind or to the side of its head.",
+        "topUpBefore": "The Bewilder Bird joins automatically — this fight immediately follows the Bowser Jr. encounter"
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Lullaby Stomp",
+          "summary": "The Giant Crazee Dayzee sings and stomps forward. Stand behind its legs and throw eggs at the glowing petal on the back of its head — three hits daze it. While it is dazed, ground-pound the top of its head (jump and press down) to deal real damage."
+        },
+        {
+          "name": "Phase 2 — Bewilder Bird Transformation",
+          "summary": "The Bewilder Bird transforms into a giant version of each creature from Mr. E's earlier chapters to distract the Dayzee. Use these distraction windows — about four seconds each — to hit the back-petal with eggs and follow up with a ground-pound. The transformation windows cycle; watch for the petal to glow orange before throwing."
+        },
+        {
+          "name": "Phase 3 — Final Charge",
+          "summary": "The Giant Crazee Dayzee fills the page with petals that float down and put Yoshi to sleep on contact. Dodge the petals by running constantly (never stand still) and focus egg throws on the now-exposed giant petal on the creature's chest. Four hits here — no ground-pound needed — end the fight and trigger the end credits."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-boss checkpoint in Phase 3, but you restart from Phase 3 if you reach it before running out of health.",
+        "easierTactic": "The sleeping petals in Phase 3 float slowly — run left then right in a wide arc and they will never catch you. Only stop moving to line up your egg throw, then run again immediately.",
+        "retreatOption": "Quitting saves your star progress but resets the boss to Phase 1."
+      },
+      "reward": "End credits — Yoshi restores Mr. E's knowledge and returns Bowser Jr. to the outside world"
+    }
+  ],
+  "sections": [
+    {
+      "id": "wildwoods",
+      "order": 1,
+      "stage": "Chapter 1",
+      "title": "Wildwoods",
+      "subtitle": "Mr. E arrives · Yoshi dives in · Crazee Dayzee discovered",
+      "locationRef": "Wildwoods",
+      "durationLabel": "35:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s1-01",
+          "text": "A large book named Mr. E falls from the sky onto Yoshi's island. The introduction sequence plays, and you take control of Yoshi on the opening page of Wildwoods. Run right and pick up the basics: Flutter Jump (hold jump mid-air), egg throw (aim with the right stick, release to throw), and licking up objects."
+        },
+        {
+          "id": "s1-02",
+          "text": "Poochy bounds onto the page early in Chapter 1. He joins you as a permanent companion — he runs alongside Yoshi and barks whenever a hidden creature is nearby. Pay attention to his direction when he sniffs at the ground or walls; he is pointing at something worth investigating."
+        },
+        {
+          "id": "s1-03",
+          "text": "The first creature you encounter is a Crazee Dayzee — a flower-faced critter wandering the forest floor. Lick it up, throw an egg at it, and stand on it to complete all three basic interactions for this creature. Each unique interaction you complete counts towards a Discovery entry in Mr. E."
+        },
+        {
+          "id": "s1-04",
+          "text": "Smiley Flowers are scattered throughout each page — some visible, others hidden in clouds, question blocks, or walls that light up when Yoshi licks them. Collect five to unlock your first exploration tool: Poochy Nose, which makes Poochy bark more insistently near undiscovered creatures.",
+          "itemRef": "poochy-nose"
+        },
+        {
+          "id": "s1-05",
+          "text": "Progress through the Wildwoods pages by completing the Discovery requirement for each page (shown in the bottom-left corner as a target number). When you reach the required number, the page end trigger activates — walk into it to advance."
+        },
+        {
+          "id": "s1-06",
+          "text": "The Big Discovery at the end of Wildwoods reveals the purpose of Mr. E: he was created by a professor to record and protect every creature from being forgotten. The scene plays automatically after you complete the final page and triggers a star tally. You receive around 25 stars for a full first run of Wildwoods.",
+          "spoiler": true
+        },
+        {
+          "id": "s1-07",
+          "text": "After the Big Discovery scene, Mr. E's Monocle is introduced — a magical lens that Bowser Jr. accidentally used to teleport himself into the book. This item is a plot device and carries itself; you do not need to manage it. The stage select returns to the world map with Mountaintops now visible, locked at 20 stars.",
+          "itemRef": "mr-e-monocle"
+        }
+      ]
+    },
+    {
+      "id": "mountaintops",
+      "order": 2,
+      "stage": "Chapter 2",
+      "title": "Mountaintops",
+      "subtitle": "Highland pages · climbing creatures · Bowser Jr. spotted",
+      "locationRef": "Mountaintops",
+      "durationLabel": "40:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "40:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s2-01",
+          "text": "Mountaintops requires 20 stars to enter. The pages here feature steep rocky terrain — many creatures cling to walls or nest in high ledges. Flutter Jump is critical here; time your double-jump carefully to reach upper platforms rather than throwing eggs upwards and hoping for a lucky hit."
+        },
+        {
+          "id": "s2-02",
+          "text": "New creatures in Mountaintops include cliff-dwellers that only appear when startled — run past them first, then double back to interact while they are in their revealed state. Standing still near their hiding spots will not work; you must trigger the movement response."
+        },
+        {
+          "id": "s2-03",
+          "text": "Ground-pounding the rock formations on the mountain pages shakes loose eggs and sometimes concealed creatures. The Ground-Pound Wand exploration tool (unlocked through collecting ten Smiley Flowers total) actively marks shake-points on the ground with a faint shimmer — very useful for finding hidden burrow creatures.",
+          "itemRef": "ground-pound-wand"
+        },
+        {
+          "id": "s2-04",
+          "text": "Bowser Jr. makes a mischievous appearance mid-chapter and scrambles a page, displacing creatures from their usual positions. Walk through the disrupted page as normal — the creatures are still there, just shuffled. Complete all interactions to restore the page to normal."
+        },
+        {
+          "id": "s2-05",
+          "text": "The Mountaintops Big Discovery reveals that some creatures in Mr. E migrate between habitats seasonally. This unlocks a small bonus mechanic: returning to an earlier chapter (Wildwoods) will occasionally show different creatures in the same pages. This is optional exploration for completionists."
+        },
+        {
+          "id": "s2-06",
+          "text": "Completing Mountaintops awards roughly 50 stars total, putting your cumulative count near or above 65 — enough to unlock Seaside immediately. If you are short, revisit Wildwoods and interact with any creatures you missed on earlier pages."
+        }
+      ]
+    },
+    {
+      "id": "seaside",
+      "order": 3,
+      "stage": "Chapter 3",
+      "title": "Seaside",
+      "subtitle": "Coastal pages · shore and water creatures · Craft Eye tool",
+      "locationRef": "Seaside",
+      "durationLabel": "40:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "40:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s3-01",
+          "text": "Seaside opens at 65 stars. The pages here split between sandy shore areas and shallow water pages where Yoshi paddles automatically. Water creatures react differently from land ones — licking them up requires approaching from the side rather than head-on, as frontal approaches cause them to dive."
+        },
+        {
+          "id": "s3-02",
+          "text": "Throwing eggs underwater behaves differently: eggs wobble in the current and travel in a slight arc. Aim slightly ahead of moving targets. Several Seaside Discoveries require landing three accurate egg hits on fast-moving fish — patience is more effective than frantic throwing."
+        },
+        {
+          "id": "s3-03",
+          "text": "The Craft Eye exploration tool (unlocked at fifteen total Smiley Flowers) adds a viewfinder overlay — tap the camera button to scan the environment and highlight creatures camouflaged as background decoration. Several Seaside pages have creatures disguised as sea-rocks or coral.",
+          "itemRef": "craft-eye"
+        },
+        {
+          "id": "s3-04",
+          "text": "Kamek appears for the first time in Seaside and attempts to turn some of the page's creatures invisible. The Craft Eye tool immediately reveals them, making this section much easier with it equipped. Without the Craft Eye, you can still find invisible creatures by walking into them and listening for a soft chime."
+        },
+        {
+          "id": "s3-05",
+          "text": "The Seaside Big Discovery ties into the overarching story: Mr. E explains that the professor who built him had been cataloguing sea creatures before disappearing. This adds urgency to helping Mr. E remember his pages — completing the Discovery awards a substantial star bonus."
+        },
+        {
+          "id": "s3-06",
+          "text": "After Seaside, your cumulative star count should sit around 110–120. Settled Valley requires 114 stars, so you may not need to revisit anything — but if you are slightly short, any Wildwoods or Mountaintops pages with uncompleted interactions will give you a few extra stars quickly."
+        }
+      ]
+    },
+    {
+      "id": "settled-valley",
+      "order": 4,
+      "stage": "Chapter 4",
+      "title": "Settled Valley",
+      "subtitle": "Valley pages · ground creatures · Kamek's interference escalates",
+      "locationRef": "Settled Valley",
+      "durationLabel": "45:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s4-01",
+          "text": "Settled Valley requires 114 stars. The environment is a sun-dappled rural valley with rolling terrain, long grass, and muddy patches. Many creatures here burrow underground and only surface when approached from a specific angle or after certain sounds — stomp near burrow mounds to coax them up."
+        },
+        {
+          "id": "s4-02",
+          "text": "The Creature Call exploration tool (unlocked at twenty Smiley Flowers total) plays a gentle sound that attracts nearby shy creatures. It is particularly useful in Settled Valley where burrowing creatures and grass-hiders are abundant.",
+          "itemRef": "creature-call"
+        },
+        {
+          "id": "s4-03",
+          "text": "Kamek makes a concerted attempt to tear pages out of Mr. E to prevent Yoshi from completing the encyclopaedia. Several pages in Settled Valley have a torn corner with missing creatures. Search the entire page including ledges above and behind the camera — Kamek hides the missing creatures on secret perches."
+        },
+        {
+          "id": "s4-04",
+          "text": "Bowser Jr. and Kamek have a falling-out mid-chapter (shown in a brief cut-scene) after Bowser Jr. refuses to leave the book. Bowser Jr. is beginning to enjoy exploring Mr. E's pages and is causing chaos purely for fun. This does not change gameplay but does add context to the final chapter."
+        },
+        {
+          "id": "s4-05",
+          "text": "The Settled Valley Big Discovery involves locating the Professor's old research notes within the pages — fragments of paper hidden in the level geometry. Poochy will sniff out each note location. All four notes must be found on the same page visit to trigger the Discovery scene.",
+          "spoiler": true
+        },
+        {
+          "id": "s4-06",
+          "text": "After completing Settled Valley your cumulative star count should reach around 160–165. Bug Country requires 167 stars — you are very close. Finishing any leftover Discoveries in earlier chapters will comfortably clear the gap."
+        }
+      ]
+    },
+    {
+      "id": "bug-country",
+      "order": 5,
+      "stage": "Chapter 5",
+      "title": "Bug Country",
+      "subtitle": "Yoshi shrunk to pebble-size · giant insect pages · Bewilder Bird",
+      "locationRef": "Bug Country",
+      "durationLabel": "45:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s5-01",
+          "text": "Bug Country requires 167 stars and is the most unique chapter in the game. The moment Yoshi enters these pages he is reduced to the size of a pebble — blades of grass tower overhead like ancient redwoods, rain puddles become swimming lakes, and even an ordinary ant is a formidable obstacle. The scale change affects navigation but not Yoshi's abilities."
+        },
+        {
+          "id": "s5-02",
+          "text": "Flutter Jump and egg throws remain functional but the scale means you are throwing at creatures many times your size. Eggs have an exaggerated arc at this scale — aim with a higher angle than normal to compensate. Many creatures here cannot be licked directly; you must throw eggs into their faces to get them to lower their heads to Yoshi's height."
+        },
+        {
+          "id": "s5-03",
+          "text": "Rain sequences in Bug Country fill low areas quickly — if you see ripples on the ground, head to higher ground immediately. The water does not damage Yoshi but it will carry you off-screen if you are swept away from the page. Poochy barks urgently at the start of each rain event."
+        },
+        {
+          "id": "s5-04",
+          "text": "The Bewilder Bird is first properly encountered here. It is a magnificent bird-like creature with shifting plumage that can transform to look exactly like any other creature in the book. When you first see it, it is mimicking a large beetle — approach from behind to observe it without triggering a flee response."
+        },
+        {
+          "id": "s5-05",
+          "text": "To complete the Bewilder Bird's Discovery, you must trigger all five of its transformations: lick the beetle form, throw an egg at the grasshopper form, ground-pound near the caterpillar form, approach the butterfly form slowly, and finally stand still while it approaches in its true bird form. The last transformation only happens if Yoshi is stationary for about ten seconds.",
+          "itemRef": "bewilder-feather"
+        },
+        {
+          "id": "s5-06",
+          "text": "Completing the Bewilder Bird Discovery earns the Bewilder Feather — a memento that the bird gives Yoshi willingly. This item is important for the events of Chapter 6. The chapter ends with an unusually warm cut-scene showing the Bewilder Bird and Yoshi as allies.",
+          "spoiler": true
+        }
+      ]
+    },
+    {
+      "id": "remote-isle",
+      "order": 6,
+      "stage": "Chapter 6",
+      "title": "Remote Isle",
+      "subtitle": "Final pages · Bowser Jr. confrontation · Giant Crazee Dayzee · Credits",
+      "locationRef": "Remote Isle",
+      "durationLabel": "55:00",
+      "video": {
+        "provider": "youtube",
+        "id": "iXuRQyz014k",
+        "creator": "NoCommentaryGameplays",
+        "title": "Yoshi and the Mysterious Book Walkthrough – Full Game (No Commentary)",
+        "durationLabel": "55:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "id": "s6-01",
+          "text": "Remote Isle requires 218 stars. The pages here are rugged coastal terrain — rough stone beaches, sea-caves, and clifftop habitats. The tone shifts slightly darker, reflecting the final chapter. Complete all Discoveries on the early pages as you have done in every chapter; the final encounter is gated by a specific story trigger, not a star count."
+        },
+        {
+          "id": "s6-02",
+          "text": "Bowser Jr. has barricaded himself inside the final few pages of Mr. E and is determined not to leave. His presence scrambles the page layout mid-way through Remote Isle — several creatures are displaced and the right path is temporarily blocked by ink walls. Work through each page systematically; the ink walls dissolve once you complete enough interactions on each page."
+        },
+        {
+          "id": "s6-03",
+          "text": "Near the end of Remote Isle you reach a locked page — Mr. E is distressed and cannot open it. The Bewilder Feather activates automatically here, calling the Bewilder Bird to return. This is the payoff for completing Bug Country's Bewilder Bird Discovery. If you did not collect the Bewilder Feather in Chapter 5, you must return there now.",
+          "itemRef": "bewilder-feather"
+        },
+        {
+          "id": "s6-04",
+          "text": "The unlocked final page triggers the Bowser Jr. boss encounter. Prepare a full clutch of six eggs before proceeding — egg refills are available inside the fight but only between phases. See the Bowser Jr. boss card for full strategy.",
+          "bossRef": "bowser-jr-book",
+          "spoiler": true
+        },
+        {
+          "id": "s6-05",
+          "text": "After defeating Bowser Jr. and Kamek, the book's final secret is revealed: the Giant Crazee Dayzee — the largest creature in the entire encyclopaedia, accidentally turned enormous by Bowser Jr.'s magical interference — is the true final challenge. The Bewilder Bird allies with Yoshi for this fight. See the Giant Crazee Dayzee boss card.",
+          "bossRef": "giant-crazee-dayzee",
+          "spoiler": true
+        },
+        {
+          "id": "s6-06",
+          "text": "After the Giant Crazee Dayzee is calmed (not defeated — the Discovery entry notes it was never truly hostile, only confused and frightened by Bowser Jr.'s magic), Mr. E's final pages are filled in. The encyclopaedia closes, Bowser Jr. is safely returned to the outside world, and the end credits roll over illustrations of every creature Yoshi discovered.",
+          "spoiler": true
+        }
+      ]
+    }
+  ]
+}

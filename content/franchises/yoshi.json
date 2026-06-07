@@ -1,0 +1,16 @@
+{
+  "name": "Yoshi",
+  "slug": "yoshi",
+  "developer": "Good-Feel",
+  "description": "Good-Feel's charming platformer series returns with Nintendo's favourite egg-throwing dinosaur. Dive into living pages, befriend peculiar creatures, and restore forgotten knowledge across handcrafted worlds full of colour and discovery.",
+  "featured": true,
+  "featureRank": 6,
+  "guideCount": 1,
+  "cover": "/assets/covers/yoshi-mysterious-book.webp",
+  "theme": {
+    "bodyClass": "theme-yoshi",
+    "accent": "#5fd640",
+    "accentSoft": "rgba(95,214,64,.14)",
+    "cardGradient": "linear-gradient(160deg,#051a02,#031000 60%,#020800)"
+  }
+}
