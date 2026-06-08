@@ -53,6 +53,19 @@ body.theme-firered {
   --muted: #8a5a44;
 }
 
+body.theme-oot {
+  --ink: #060b01;
+  --ink-2: #0a1203;
+  --panel: #0e1a04;
+  --panel-2: #132205;
+  --accent: #c8a840;
+  --accent-soft: rgba(200,168,64,.14);
+  --gold: #e2c860;
+  --signal: #c8a840;
+  --line: rgba(200,168,64,.12);
+  --muted: #887840;
+}
+
 body.theme-yoshi {
   --ink: #020a01;
   --ink-2: #041404;
