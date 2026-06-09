@@ -53,6 +53,18 @@ body.theme-firered {
   --muted: #8a5a44;
 }
 
+body.theme-legends-arceus {
+  --ink: #060402;
+  --ink-2: #0a0703;
+  --panel: #120a04;
+  --panel-2: #180e05;
+  --accent: #d4a052;
+  --accent-soft: rgba(212,160,82,.14);
+  --gold: #e8c070;
+  --signal: #d4a052;
+  --line: rgba(212,160,82,.12);
+  --muted: #886840;
+}
 body.theme-legends-za {
   --ink: #020810;
   --ink-2: #030c18;

@@ -1,0 +1,867 @@
+{
+  "franchiseSlug": "pokemon",
+  "title": "Pokémon Legends: Arceus",
+  "slug": "pokemon-legends-arceus",
+  "year": "2022",
+  "platforms": ["Nintendo Switch"],
+  "status": "published",
+  "lede": "Travel to ancient Hisui — the Sinnoh region before it had a name. Join the Galaxy Expedition Team's Survey Corps, build the very first Pokédex, and quell five frenzied Noble Pokémon before a rift in space and time tears the world apart.",
+  "cover": "/assets/covers/pokemon-legends-arceus.webp",
+  "theme": {
+    "bodyClass": "theme-legends-arceus",
+    "accent": "#d4a052",
+    "accentSoft": "rgba(212,160,82,.14)",
+    "cardGradient": "linear-gradient(160deg,#120a04,#0c0602 60%,#060300)"
+  },
+
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "jubilife-obsidian",
+      "crimson-mirelands",
+      "cobalt-coastlands",
+      "coronet-highlands",
+      "alabaster-icelands",
+      "lake-guardians",
+      "origin-of-hisui",
+      "postgame"
+    ],
+    "criticalPath": [
+      "jubilife-obsidian",
+      "crimson-mirelands",
+      "cobalt-coastlands",
+      "coronet-highlands",
+      "alabaster-icelands",
+      "lake-guardians",
+      "origin-of-hisui"
+    ],
+    "anyOrderGroups": []
+  },
+
+  "advisories": [
+    {
+      "type": "tip",
+      "title": "Approach Pokémon from behind or through tall grass for easier catches",
+      "body": "Throwing a Poké Ball at a Pokémon from behind — while it faces away — gives a significant capture-rate bonus. Crouching and crawling through tall grass keeps you in stealth. You can catch many Pokémon at full health without battling at all if you approach correctly.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Agile Style vs Strong Style changes the entire battle rhythm",
+      "body": "<strong>Agile Style</strong> (hold ZR) uses a move faster and may grant an extra turn, but reduces the move's power. <strong>Strong Style</strong> (hold ZL) hits harder but acts last and reduces PP faster. Use Agile Style to outpace slow enemies; use Strong Style when a Pokémon is dazed and you have a safe window to land a big hit.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Noble Pokémon fights use balms, not just Poké Balls",
+      "body": "Every <strong>Noble Pokémon</strong> boss encounter is a two-phase fight: dodge the Noble's attacks while throwing crafted <strong>Balms</strong> at it, then battle it directly when it is calmed. You cannot catch Noble Pokémon during these fights. Craft a full stack of Balms <em>before</em> entering each Noble's arena — you cannot restock mid-fight.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Research tasks level up your Star Rank — and unlock better gear",
+      "body": "Completing Pokédex <strong>Research Tasks</strong> for each Pokémon raises your Survey Corps Star Rank. Higher ranks unlock better Poké Ball types (Ultra Balls, Leaden Balls), access to new areas, and crafting recipes. Aim to get at least 10 Research Points for each Pokémon you catch.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Alpha Pokémon will charge you — do not run straight at glowing-eyed Pokémon",
+      "body": "<strong>Alpha Pokémon</strong> have red glowing eyes, are much larger than normal, and will charge at you aggressively if you approach carelessly. They can be caught (and make excellent team members) but require either battling them first to weaken them, or using Smoke Bombs and a Heavy Ball for a stealth capture. Do not attempt a front-on approach without preparation.",
+      "completionistOnly": false
+    }
+  ],
+
+  "items": [
+    { "id": "poke-ball",        "name": "Poké Ball",          "type": "item",    "class": "progression", "acquiredAtSectionId": "jubilife-obsidian" },
+    { "id": "craftsmanship-kit","name": "Craftsmanship Kit",  "type": "ability", "class": "progression", "acquiredAtSectionId": "jubilife-obsidian" },
+    { "id": "smoke-bomb",       "name": "Smoke Bomb",         "type": "item",    "class": "progression", "acquiredAtSectionId": "jubilife-obsidian" },
+    { "id": "scatter-bang",     "name": "Scatter Bang",       "type": "item",    "class": "progression", "acquiredAtSectionId": "jubilife-obsidian" },
+    { "id": "obscura-balm",     "name": "Balms (Noble-specific)", "type": "item","class": "progression", "acquiredAtSectionId": "jubilife-obsidian" },
+    { "id": "heavy-ball",       "name": "Heavy Ball",         "type": "item",    "class": "optional",    "acquiredAtSectionId": "crimson-mirelands" },
+    { "id": "wing-ball",        "name": "Wing Ball",          "type": "item",    "class": "optional",    "acquiredAtSectionId": "cobalt-coastlands" },
+    { "id": "jet-ball",         "name": "Jet Ball",           "type": "item",    "class": "optional",    "acquiredAtSectionId": "coronet-highlands" },
+    { "id": "ultra-ball",       "name": "Ultra Ball",         "type": "item",    "class": "progression", "acquiredAtSectionId": "coronet-highlands" },
+    { "id": "origin-ball",      "name": "Origin Ball",        "type": "item",    "class": "progression", "acquiredAtSectionId": "postgame" }
+  ],
+
+  "detours": [
+    {
+      "id": "alpha-pokemon",
+      "location": "Every region — Alpha Pokémon (large, glowing red eyes) spawn at fixed locations on the map",
+      "type": "upgrade",
+      "requires": [],
+      "benefit": "Alpha Pokémon have higher base stats than normal and often know moves they cannot normally have at that level. An Alpha caught early can anchor your team for several chapters.",
+      "method": "To catch an Alpha without battling: craft <strong>Heavy Balls</strong> and <strong>Smoke Bombs</strong>. Toss a Smoke Bomb near the Alpha to trigger stealth, then sneak behind it and throw a Heavy Ball. Heavy Balls have a bonus catch rate when used against resting or unaware targets. If the Alpha is too high level for stealth, weaken it to low HP in battle first then use an Ultra Ball.",
+      "earliestSectionId": "jubilife-obsidian",
+      "recommendedSectionId": "crimson-mirelands",
+      "mandatory": false
+    },
+    {
+      "id": "research-tasks",
+      "location": "Pokédex — accessed from the main menu; submit task completions at Galaxy Hall in Jubilife Village",
+      "type": "upgrade",
+      "requires": [],
+      "benefit": "Each Pokédex research level unlocks better gear: Star Rank 1→2 unlocks crafting, higher ranks unlock Ultra Balls, Leaden Balls, Gigaton Balls, and new areas. Star Rank 5 (requiring roughly 500 Research Points across all Pokémon) unlocks the post-game content.",
+      "method": "Each Pokémon has ~10 Research Tasks (catch 1, catch 3, use move X, defeat with move Y, see it use agile style, etc.). After completing tasks in the field, return to Galaxy Hall and speak to Professor Laventon to submit them. Do not wait until after every area — submit at the end of each Noble mission to stay ahead.",
+      "earliestSectionId": "jubilife-obsidian",
+      "recommendedSectionId": "jubilife-obsidian",
+      "mandatory": false
+    },
+    {
+      "id": "requests",
+      "location": "Jubilife Village notice board and NPCs throughout — 94 side requests in total",
+      "type": "convenience",
+      "requires": [],
+      "benefit": "Requests reward crafting materials, rare Poké Balls, Grit items (raise Effort Levels), and Pokémon not available in the main story. Some requests are the only way to obtain certain Pokémon.",
+      "method": "Check the notice board at Galaxy Hall after every main chapter. Requests flagged with a yellow star are story-relevant or unlock area access. Priority requests: Request 1 (Wurmple, unlocks early crafting), Request 37 (Abra, teleport convenience), and any request giving Grit Rock/Pebble (permanent stat boosts).",
+      "earliestSectionId": "jubilife-obsidian",
+      "recommendedSectionId": "jubilife-obsidian",
+      "mandatory": false
+    },
+    {
+      "id": "crafting-upgrades",
+      "location": "Craftsmanship Kit (anywhere in the field) — materials gathered in every area",
+      "type": "upgrade",
+      "requires": ["craftsmanship-kit"],
+      "benefit": "Higher-tier Poké Balls (Leaden, Gigaton) dramatically increase catch rate for strong Pokémon. Crafting your own balls costs far less than buying them — and the materials are everywhere.",
+      "method": "Leaden Balls require Iron Chunks (found in ore deposits throughout Coronet Highlands and Alabaster Icelands) and Apricorns. Gigaton Balls need Black Tumblestone (Alabaster Icelands ore). Always gather ore deposits when you pass them — you can never have too many crafting materials.",
+      "earliestSectionId": "coronet-highlands",
+      "recommendedSectionId": "coronet-highlands",
+      "mandatory": false
+    }
+  ],
+
+  "locations": [
+    {
+      "id": "jubilife-village",
+      "name": "Jubilife Village",
+      "ref": "Central hub — always accessible via camp fast-travel",
+      "reachableBy": "Starting location. Fast-travel back at any time from a Base Camp via the map.",
+      "whereWithin": "Galaxy Hall (missions + Pokédex submission), Craftworks (buy materials + recipes), Pastures (Pokémon storage beyond party of six), Training Grounds, notice board (requests), and shops.",
+      "isHub": true,
+      "contains": [
+        { "label": "Galaxy Hall — report to Commander Kamado, submit Pokédex research, receive main missions", "kind": "beat" },
+        { "label": "Professor Laventon — submit Research Tasks at his desk to earn Research Points", "kind": "npc" },
+        { "label": "Craftworks — buy crafting recipes and materials; unlock better Poké Ball types", "kind": "shop" },
+        { "label": "Pastures — store and swap Pokémon beyond your party of six", "kind": "npc" },
+        { "label": "Notice board — pick up side requests from villagers and visiting merchants", "kind": "npc" }
+      ]
+    },
+    {
+      "id": "obsidian-fieldlands",
+      "name": "Obsidian Fieldlands",
+      "ref": "Region 1 — gateway to Hisui",
+      "reachableBy": "Accessible from Jubilife Village via the map from Chapter 1.",
+      "whereWithin": "Rolling grasslands and forests. Grandtree Arena (Lord Kleavor's domain) is at the north-east end. The Fieldlands Camp is near the entrance gate.",
+      "isHub": false,
+      "contains": [
+        { "label": "Grandtree Arena — Lord Kleavor's frenzied grounds", "kind": "beat", "sectionId": "jubilife-obsidian" },
+        { "label": "Obsidian Falls — Gyarados Alpha", "kind": "secret", "completionistOnly": true },
+        { "label": "Nature's Pantry — high-density gathering area for Berries", "kind": "other" }
+      ]
+    },
+    {
+      "id": "crimson-mirelands",
+      "name": "Crimson Mirelands",
+      "ref": "Region 2 — wetlands and ruins",
+      "reachableBy": "Unlocks after completing Chapter 3 (first Noble mission).",
+      "whereWithin": "Marshland and ancient stone ruins. Brava Arena (Lady Lilligant's grounds) is in the south-east. Ursaring and Hippowdon Alphas spawn near the central wetlands.",
+      "isHub": false,
+      "contains": [
+        { "label": "Brava Arena — Lady Lilligant's frenzied grounds", "kind": "beat", "sectionId": "crimson-mirelands" },
+        { "label": "Diamond Heath — Ursaring Alpha (level 50+, formidable)", "kind": "secret", "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "cobalt-coastlands",
+      "name": "Cobalt Coastlands",
+      "ref": "Region 3 — sea cliffs and coves",
+      "reachableBy": "Unlocks after completing Chapter 5 (second Noble mission).",
+      "whereWithin": "Rocky coastline and island chains. Firespit Island (Lord Arcanine's arena) is accessed by riding <strong>Basculegion</strong> across the water — the first rideable Pokémon unlock.",
+      "isHub": false,
+      "contains": [
+        { "label": "Firespit Island — Lord Arcanine's frenzied grounds; requires Basculegion to reach", "kind": "beat", "sectionId": "cobalt-coastlands" },
+        { "label": "Veilstone Cape — Garchomp Alpha (level 68, hardest early Alpha)", "kind": "secret", "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "coronet-highlands",
+      "name": "Coronet Highlands",
+      "ref": "Region 4 — mountain passes and summit",
+      "reachableBy": "Unlocks after completing Chapter 7 (third Noble mission).",
+      "whereWithin": "High mountain terrain. Clamberclaw Cliffs (Lord Electrode's arena) is near the summit. <strong>Sneasler</strong> (cliffside riding) unlocks in this region, allowing vertical exploration.",
+      "isHub": false,
+      "contains": [
+        { "label": "Clamberclaw Cliffs — Lord Electrode's frenzied grounds", "kind": "beat", "sectionId": "coronet-highlands" },
+        { "label": "Sacred Plaza — Garchomp Alpha and Goodra Alpha", "kind": "secret", "completionistOnly": true },
+        { "label": "Temple of Sinnoh — story location for the final chapters", "kind": "beat", "sectionId": "origin-of-hisui" }
+      ]
+    },
+    {
+      "id": "alabaster-icelands",
+      "name": "Alabaster Icelands",
+      "ref": "Region 5 — frozen tundra",
+      "reachableBy": "Unlocks after completing Chapter 9 (fourth Noble mission).",
+      "whereWithin": "Vast snowfields and ice caves. Icepeak Arena (Lord Avalugg's domain) is at the north end. <strong>Braviary</strong> (flying ride) unlocks here, granting air travel across all regions.",
+      "isHub": false,
+      "contains": [
+        { "label": "Icepeak Arena — Lord Avalugg's frenzied grounds", "kind": "beat", "sectionId": "alabaster-icelands" },
+        { "label": "Snowpoint Temple — Regigigas encounter (post-game Request)", "kind": "secret", "completionistOnly": true }
+      ]
+    }
+  ],
+
+  "bossFights": [
+    {
+      "id": "lord-kleavor",
+      "name": "Lord Kleavor — Frenzied Noble",
+      "sectionId": "jubilife-obsidian",
+      "locationRef": "Grandtree Arena, Obsidian Fieldlands",
+      "prep": {
+        "recommendedItems": ["obscura-balm"],
+        "healthAdvice": "Craft at least 10 <strong>Kleavor Balms</strong> before entering the arena (recipe: Dazzling Honey × 1 + Hearty Grains × 1 + Hopo Berry × 1). Your battle Pokémon should be level 18–22. Bring a Rock-type or Fire-type for the battle phase.",
+        "topUpBefore": "Stock Potions from the Craftworks before leaving Jubilife Village. The arena has no supply point."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Balm throwing (dodge and throw)",
+          "tells": "Kleavor telegraphs its Stone Axe slash with a brief wind-up raising both blades. Its aerial dive is telegraphed by it leaping backward before launching.",
+          "counter": "For the Stone Axe slash — roll sideways. For the aerial dive — sprint perpendicular to the direction it faces before leaping. After each missed attack, Kleavor pauses for about 1.5 seconds — this is your Balm window.",
+          "damageWindow": "Throw a Balm during every 1.5-second recovery pause. You need roughly eight to ten Balm hits to trigger the battle phase. Aim for the glowing orange wound on its body — direct hits land faster."
+        },
+        {
+          "name": "Phase 2 — Standard battle (weaken to trigger phase transition)",
+          "tells": "After enough Balm hits, Lord Kleavor becomes momentarily vulnerable — the arena darkens briefly. Send out your Pokémon for a standard battle. Kleavor uses X-Scissor and Stone Edge.",
+          "counter": "Use a Rock-type or Fire-type move. Rock-type hits Kleavor for 2× (Bug-type weakness). Stone Edge from your own Pokémon, or Fire Fang from an early Shinx/Ponyta, is ideal.",
+          "damageWindow": "Win the battle phase and the fight returns to Balm throwing — Kleavor is easier to hit at this point. Repeat two or three cycles to fully calm the Noble."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit the arena back to the Base Camp and rest. Kleavor fully resets — but so does your Balm count. Craft more before re-entering.",
+        "easierTactic": "A Budew or Roselia (found in the northern part of Obsidian Fieldlands) with Absorb can heal your Pokémon between phases. If your Pokémon are getting knocked out, over-level to 25 before the arena.",
+        "retreatOption": "You can exit and retry with no penalty. Craft extra Balms each time."
+      },
+      "reward": "Kleavor calmed — Feather Ball recipe unlocked; Mission 6 complete; Crimson Mirelands access opens"
+    },
+    {
+      "id": "lady-lilligant",
+      "name": "Lady Lilligant — Frenzied Noble",
+      "sectionId": "crimson-mirelands",
+      "locationRef": "Brava Arena, Crimson Mirelands",
+      "prep": {
+        "recommendedItems": ["obscura-balm"],
+        "healthAdvice": "Craft at least 10 <strong>Lilligant Balms</strong> (recipe: Vivichoke × 1 + Dazzling Honey × 1 + King's Leaf × 1 — all found in the Mirelands). Battle Pokémon level 30–34. Bring a Fire, Flying, Ice, or Poison-type for the battle phase.",
+        "topUpBefore": "Gather Vivichoke from the ruins area of Crimson Mirelands — they are found near stone structures. Do not enter the arena without a full stack of Balms."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Petal storm and spinning charge",
+          "tells": "Lady Lilligant raises both arms to summon a petal vortex — this fires three rotating petal streams outward. Her spinning charge is telegraphed by her spinning in place for one second before shooting forward.",
+          "counter": "For the petal vortex — move to the gap between two petal streams (the streams are evenly spaced with safe corridors between them). For the spinning charge — sprint perpendicular immediately when she starts to spin.",
+          "damageWindow": "After each attack, Lady Lilligant has a 1–2 second recovery. Throw Balms continuously into the glowing pink flower on her head — direct hits to the flower count as enhanced hits."
+        },
+        {
+          "name": "Phase 2 — Pollen cloud (brief blindness window)",
+          "tells": "At about 50% Balm progress, Lady Lilligant releases an expanding pollen cloud that covers the arena floor. The cloud appears as a spreading gold mist.",
+          "counter": "The pollen cloud inflicts a brief stumble on your character — keep moving. You cannot stop the cloud but you can minimise exposure by staying near the arena edges where the cloud dissipates faster.",
+          "damageWindow": "Same Balm-throwing windows after each attack. In the battle phase, use Fire, Flying, Ice, or Poison moves — all super-effective against Grass. Hisuian Lilligant is pure Grass-type."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to Mirelands Base Camp, craft more Balms, rest, return.",
+        "easierTactic": "The petal vortex gaps are easier to spot if you hold the camera steady — rotating it during the vortex makes the safe corridors harder to identify. Keep the camera fixed to Lilligant and move the character, not the view.",
+        "retreatOption": "Exit and retry freely."
+      },
+      "reward": "Lilligant calmed — Basculegion ride mount unlocked; Mission 8 complete; Cobalt Coastlands access opens"
+    },
+    {
+      "id": "lord-arcanine",
+      "name": "Lord Arcanine — Frenzied Noble",
+      "sectionId": "cobalt-coastlands",
+      "locationRef": "Firespit Island, Cobalt Coastlands",
+      "prep": {
+        "recommendedItems": ["obscura-balm"],
+        "healthAdvice": "Craft at least 12 <strong>Arcanine Balms</strong> (recipe: Hearty Grains × 1 + Hopo Berry × 1 + Razz Berry × 1 — Razz Berries grow along the Cobalt cliffs). Battle Pokémon level 36–40. Bring a Water, Ground, or Rock-type for the battle phase.",
+        "topUpBefore": "Stock Hyper Potions at Craftworks before taking the Basculegion ride to Firespit Island. The island has no Base Camp — stock up before you cross."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Ember breath sweeps",
+          "tells": "Lord Arcanine opens its mouth and a visible heat shimmer appears for one second before the Ember stream fires. The stream sweeps left to right in a low arc.",
+          "counter": "Jump or roll over the Ember stream — it is ground-level and jumping clears it cleanly. After the sweep, Arcanine takes 1.5 seconds to close its mouth — throw Balms into the glowing wound on its chest.",
+          "damageWindow": "The post-Ember recovery window is the most reliable throw opportunity. Arcanine also has a tackle charge — dodge by rolling to the side, then throw during the 1-second stumble after the charge misses."
+        },
+        {
+          "name": "Phase 2 — Fire Spin ring",
+          "tells": "Lord Arcanine spins in place once and a Fire Spin ring erupts from the ground around it — a large-radius ring at mid-distance.",
+          "counter": "Stay either very close to Arcanine (inside the ring before it expands) or sprint to the arena edge (outside the ring). The ring occupies a mid-range band — do not stop in the middle distance.",
+          "damageWindow": "After the Fire Spin ring dissipates, Arcanine pauses for 2 seconds — the longest recovery window in the fight. Throw two to three Balms in rapid succession. In the battle phase, Water, Ground, or Rock moves are super-effective."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Return by Basculegion to the Coastlands camp. The island resets on re-entry.",
+        "easierTactic": "Stay very close to Arcanine for most of the fight — inside the Fire Spin ring avoids all ring damage, and close range makes Balm throws more accurate. Only retreat when the tackle charge comes.",
+        "retreatOption": "Exit via Basculegion — no penalty."
+      },
+      "reward": "Arcanine calmed — Sneasler ride mount unlocked; Mission 10 complete; Coronet Highlands access opens"
+    },
+    {
+      "id": "lord-electrode",
+      "name": "Lord Electrode — Frenzied Noble (Hisuian Form)",
+      "sectionId": "coronet-highlands",
+      "locationRef": "Clamberclaw Cliffs, Coronet Highlands",
+      "prep": {
+        "recommendedItems": ["obscura-balm"],
+        "healthAdvice": "Craft at least 12 <strong>Electrode Balms</strong> (recipe: Dazzling Honey × 1 + Hopo Berry × 1 + Medicinal Leek × 1 — Medicinal Leeks grow along the mountain path in Coronet Highlands). Battle Pokémon level 44–48. Bring a Ground-type or Fire-type — Hisuian Electrode is Grass/Electric.",
+        "topUpBefore": "Gather Medicinal Leeks along the Clamberclaw path before entering the arena. They appear as tall green plants near cliff edges."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Rollout and Thunder Wave scatter",
+          "tells": "Lord Electrode lowers itself to the ground before rolling — the roll path is a straight line toward your character's current position. Thunder Wave scatter is telegraphed by a visible electrical crackle spreading across its surface for 0.5 seconds.",
+          "counter": "For Rollout — sprint sideways to leave the roll path. For Thunder Wave scatter — the electric bolts fire in a random radial spread; keep moving in any direction and most bolts miss.",
+          "damageWindow": "After Rollout, Electrode wobbles in place for 1.5 seconds — throw Balms directly into its face (the centre of its body). After a Thunder Wave scatter, there is a 1-second gap before the next attack — another Balm window."
+        },
+        {
+          "name": "Phase 2 — Self-Destruct pulse",
+          "tells": "At roughly 60% Balm progress, Lord Electrode begins glowing white — this is a Self-Destruct wind-up. The glow intensifies for about 2 seconds before the blast fires.",
+          "counter": "Sprint to the arena edge the moment the white glow begins. The blast has a large central radius but dissipates quickly at the outer edge. Being at maximum distance from Electrode when it fires reduces damage to near zero.",
+          "damageWindow": "After the Self-Destruct, Lord Electrode is stunned for 3 seconds — the longest recovery in any Noble fight. Throw Balms aggressively during this window. In the battle phase, Ground-type moves do not affect Electric-types, but Hisuian Electrode is Grass/Electric — Ground is blocked; use Fire instead."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to the Highlands Base Camp at the mountain pass. Craft more Balms and return.",
+        "easierTactic": "The Self-Destruct wind-up is very readable. If you are caught in the blast radius repeatedly, practise watching for the initial white glow — it starts at least 2 seconds before detonation, which is enough time to reach the arena edge.",
+        "retreatOption": "Exit and retry freely."
+      },
+      "reward": "Electrode calmed — Braviary ride mount unlocked (aerial travel across all regions); Mission 12 complete; Alabaster Icelands access opens"
+    },
+    {
+      "id": "lord-avalugg",
+      "name": "Lord Avalugg — Frenzied Noble (Hisuian Form)",
+      "sectionId": "alabaster-icelands",
+      "locationRef": "Icepeak Arena, Alabaster Icelands",
+      "prep": {
+        "recommendedItems": ["obscura-balm"],
+        "healthAdvice": "Craft at least 15 <strong>Avalugg Balms</strong> (recipe: Crunchy Salt × 1 + Hearty Grains × 1 + Hopo Berry × 1 — Crunchy Salt is found in ore deposits throughout Alabaster Icelands). Battle Pokémon level 52–56. Bring a Fighting, Fire, Steel, or Water-type. Hisuian Avalugg is Ice/Rock.",
+        "topUpBefore": "This is the longest Noble fight. Craft 15+ Balms minimum. Stock Full Restores or Max Potions if you have them — the battle phases can be intense."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Ice Beam and Body Slam",
+          "tells": "Lord Avalugg opens its ice-plated jaws for 1 second before firing a sustained Ice Beam in a straight line. Body Slam is telegraphed by it rearing back on its rear legs — a very obvious 1.5-second animation.",
+          "counter": "For Ice Beam — step sideways immediately when the jaws open. For Body Slam — roll to either side the moment the rear-leg animation begins. Avalugg is large and slow — every attack has generous dodge windows.",
+          "damageWindow": "After each Ice Beam, there is a 2-second head-lowering recovery — throw Balms into the glowing wound on its back. After Body Slam, there is a 2.5-second floor-contact pause — the best Balm window in the fight."
+        },
+        {
+          "name": "Phase 2 — Avalanche rush",
+          "tells": "Lord Avalugg begins emitting a cold mist around its body — this signals an Avalanche rush where it charges forward leaving an ice trail. The mist appears 1 second before the charge launches.",
+          "counter": "Sprint perpendicular to the charge direction. The ice trail persists for about 3 seconds and slows movement — avoid stepping on it after the charge.",
+          "damageWindow": "After the Avalanche rush, Avalugg takes 3 seconds to turn around — the longest recovery in the fight. Throw multiple Balms rapidly. In the battle phase, Fighting, Fire, Steel, Water, or Rock moves are super-effective against Ice/Rock. Close-range Fighting moves (Close Combat, Brick Break) end the battle phase fastest."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to the Icelands Base Camp. Craft Balms, heal up, and return.",
+        "easierTactic": "Stay near Avalugg's flank rather than in front — the Ice Beam fires forward, so flanking avoids the most dangerous attack entirely. Body Slams and Avalanche rushes still hit from the flank but are more telegraphed and easier to dodge.",
+        "retreatOption": "Exit and retry. You need more Balms than any previous Noble — always leave the camp with 15+."
+      },
+      "reward": "Avalugg calmed — all five Noble Pokémon calmed; Mission 14 complete; lake trial sequence unlocks"
+    },
+    {
+      "id": "volo-giratina",
+      "name": "Volo & Giratina — Post-game True Finale",
+      "sectionId": "postgame",
+      "locationRef": "Spear Pillar, Coronet Highlands",
+      "prep": {
+        "recommendedItems": ["ultra-ball", "origin-ball"],
+        "healthAdvice": "This is arguably the hardest fight in Pokémon Legends: Arceus. Volo uses a full team of six, then Giratina (Origin Forme) immediately after with no heal break. Your full team must be level 65–70 minimum. Bring at minimum three Full Restores and a full party.",
+        "topUpBefore": "Visit the Craftworks in Jubilife Village, buy Full Restores, and ensure all six party members are at full HP with fresh PP. There is no recovery between Volo's team and Giratina."
+      },
+      "phases": [
+        {
+          "name": "Volo — Six Pokémon gauntlet",
+          "tells": "Volo uses: Spiritomb, Roserade, Hisuian Arcanine, Hisuian Goodra, Garchomp, and then reveals a second Togekiss after you think the fight is over — his Pokémon all carry full PP and held items.",
+          "counter": "Volo's team has no single type weakness to exploit across all six members. Prioritise his Garchomp (Dragon/Ground — Ice-type is 4× effective) and Hisuian Arcanine (Fire/Rock — Water or Ground moves). Spiritomb has no weaknesses — use your strongest neutral moves.",
+          "damageWindow": "Use Strong Style moves freely — Volo's AI does not use healing items, so aggressive offence wins. Keep at least two Pokémon healthy going into Giratina."
+        },
+        {
+          "name": "Giratina (Origin Forme) — immediately after Volo",
+          "tells": "Giratina Origin Forme is Ghost/Dragon. It uses Shadow Force (invulnerability for one turn then hits), Dragon Claw, and Ominous Wind. Shadow Force is telegraphed by Giratina fading from sight entirely for one turn.",
+          "counter": "When Giratina vanishes (Shadow Force), switch to a Pokémon you are willing to absorb the hit with. Ghost and Dragon-type moves hit it neutrally — use Dark, Ghost, Ice, Dragon, or Fairy for super-effective hits.",
+          "damageWindow": "After Giratina uses Shadow Force and re-appears, it is not invulnerable — it will take damage normally. Lead every turn after a Shadow Force with your strongest Ice or Dragon move. Icicle Crash or Blizzard from a Mamoswine or Glaceon ends the fight fastest."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "You must heal between attempts by visiting any Base Camp after the fight ends. The fight fully resets on each attempt.",
+        "easierTactic": "The single best preparation is having a level 65+ Lucario (Fighting/Steel) — it handles Volo's Spiritomb (Dark-type — Fighting hits neutrally, Steel is immune to Poison), Hisuian Goodra (Steel/Dragon — Fighting is super-effective), and contributes well to the Giratina fight. Bring a second Ice-type sweeper for Garchomp and Giratina.",
+        "retreatOption": "This fight has no escape during the battle. If your team is wiped, it fully resets for the next attempt."
+      },
+      "reward": "Giratina calmed — <span class=\"spoiler\">origin story revealed; Request 102 unlocks the path to Arceus itself</span>"
+    }
+  ],
+
+  "sections": [
+    {
+      "sectionId": "jubilife-obsidian",
+      "order": 1,
+      "stage": "Chapters 1–3",
+      "title": "Jubilife Village & Obsidian Fieldlands",
+      "subtitle": "Join the Galaxy Team · first Pokémon · crafting · Lord Kleavor",
+      "chips": ["Starter Pokémon", "Craftsmanship Kit", "Lord Kleavor"],
+      "unlocks": ["poke-ball", "craftsmanship-kit", "smoke-bomb", "scatter-bang", "obscura-balm"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["research-tasks", "requests"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "You arrive in ancient <strong>Hisui</strong> — the region that will one day become Sinnoh — summoned by a mysterious Pokémon. After a brief sequence you join the <strong>Galaxy Expedition Team's Survey Corps</strong>, tasked with building the very first Pokédex. <strong>Jubilife Village</strong> is your permanent base of operations."
+        },
+        {
+          "text": "Choose your <strong>starter Pokémon</strong> from Professor Laventon's three research subjects: <strong>Rowlet</strong> (Grass/Flying), <strong>Cyndaquil</strong> (Fire), or <strong>Oshawott</strong> (Water). All three eventually gain a Hisuian final evolution. <strong>Cyndaquil</strong> is the recommended choice — Hisuian Typhlosion's Ghost/Fire typing is broadly useful and it handles three of the five Noble fights well. Your choice is permanent."
+        },
+        {
+          "text": "Complete <strong>Chapters 1–2</strong> in Jubilife Village to unlock the <strong>Craftsmanship Kit</strong> — your portable crafting system. Open it with the down arrow key at any time in the field. Craft five <strong>Poké Balls</strong> (Apricorn × 1 + Tumblestone × 1 each) to test the system. You will rely on crafting throughout the entire game — always gather ore and Apricorns as you pass them."
+        },
+        {
+          "text": "In the <strong>Obsidian Fieldlands</strong>, learn the three core catching approaches: throw a Ball from behind a Pokémon for a catch-rate bonus; throw from tall grass using the stealth mechanic (crouch by pressing B); or weaken in battle first before throwing. The Fieldlands has the game's full tutorial population — take your time here before moving on."
+        },
+        {
+          "text": "Collect <strong>Starly, Shinx, Geodude, Ponyta, Wurmple</strong>, and <strong>Budew</strong> during your Fieldlands survey — all are useful team members for the early Noble fights. At least one Geodude or Ponyta is strongly recommended for the Kleavor battle phase (Rock-type and Fire-type respectively)."
+        },
+        {
+          "text": "After Chapter 2, talk to the <strong>Warden Lian</strong> to begin the Kleavor mission. Craft your Kleavor Balms (<strong>Dazzling Honey × 1 + Hearty Grains × 1 + Hopo Berry × 1</strong>) at the Craftworks before heading to Grandtree Arena. Craft at least 10. The arena is in the north-east of the Fieldlands."
+        },
+        {
+          "text": "Enter <strong>Grandtree Arena</strong> for the first Noble fight — Lord Kleavor. See the boss card below for the full strategy.",
+          "spoiler": false
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming Kleavor, return to Galaxy Hall in Jubilife Village. Commander Kamado promotes you and the <strong>Feather Ball</strong> recipe unlocks. Chapter 4 begins and the path to the <strong>Crimson Mirelands</strong> opens.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Submit Research Tasks at Galaxy Hall after every Noble mission",
+          "body": "Speaking to <strong>Professor Laventon</strong> at Galaxy Hall submits your Research Points and can raise your <strong>Star Rank</strong>. A higher Star Rank unlocks better Poké Ball recipes and area access. Do this after every major story beat — do not let Research Points build up unsubmitted.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Stealth catching saves Poké Balls — learn it early",
+          "body": "Crouch by pressing <strong>B</strong>, then crawl through tall grass toward any Pokémon. When the character crouches, a back-attack throw becomes available. A stealth back-throw uses one Ball and has a very high catch rate — even against strong Pokémon. This is the most efficient use of your Balls.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Starter Pokémon — Rowlet, Cyndaquil, or Oshawott", "note": "Permanent choice made during Chapter 1. The other two starters can be obtained post-game via Request.", "type": "other", "completionistOnly": false },
+        { "label": "Feather Ball recipe — reward for calming Kleavor", "note": "Unlocked automatically after the Noble fight. Feather Balls fly farther and higher than standard Poké Balls.", "type": "upgrade", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "crimson-mirelands",
+      "order": 2,
+      "stage": "Chapters 4–5",
+      "title": "Crimson Mirelands",
+      "subtitle": "Wetlands survey · Heavy Ball · Lady Lilligant",
+      "chips": ["Heavy Ball", "Lady Lilligant", "Alpha encounters"],
+      "unlocks": ["heavy-ball"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["alpha-pokemon", "research-tasks"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 7800
+      },
+      "steps": [
+        {
+          "text": "Travel to the <strong>Crimson Mirelands</strong> — a wetland region rich with ancient ruins. The <strong>Mirelands Camp</strong> is near the gate; unlock it immediately on arrival so you have a fast-travel point."
+        },
+        {
+          "text": "The <strong>Heavy Ball</strong> recipe becomes available from the Craftworks around this chapter (requires Iron Chunks × 1 + Tumblestone × 1). Heavy Balls have a higher catch rate than standard Balls when the target is resting, unaware, or weakened — ideal for Alpha Pokémon catches. Craft ten before exploring further."
+        },
+        {
+          "text": "Catch <strong>Petilil</strong> (southern flower fields), <strong>Hippopotas</strong> (sandy dry areas), <strong>Yanma</strong> (near water), and <strong>Spheal</strong> (northern marsh edge). Petilil evolves into Hisuian Lilligant — the Noble you are about to face — making catching several Petilil a Research Task worth completing now."
+        },
+        {
+          "text": "Gather the Lilligant Balm ingredients in the Mirelands: <strong>Vivichoke</strong> (near the stone ruins on the east side), <strong>Dazzling Honey</strong> (bee-related Pokémon drops or nodes near flowers), and <strong>King's Leaf</strong> (large-leaf plants near waterways). Craft at least 10 Balms before advancing the chapter."
+        },
+        {
+          "text": "The Mirelands also contains the first <strong>Alpha Pokémon</strong> you may want to deliberately catch: an Alpha Budew near Diamond Heath has above-average IVs and provides a strong team member for the next two Noble fights. Approach from behind at night with a Heavy Ball after crouching through tall grass."
+        },
+        {
+          "text": "Head to <strong>Brava Arena</strong> in the south-east of the Mirelands for the second Noble fight. See the boss card below for Lady Lilligant's full strategy.",
+          "spoiler": false
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming Lady Lilligant, return to Galaxy Hall. The <strong>Basculegion</strong> ride mount unlocks — the first of five rideable Pokémon in the game. Basculegion allows water travel. Chapter 6 begins and the <strong>Cobalt Coastlands</strong> open.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Gather Vivichoke near ruins — they are the hardest Balm ingredient to find",
+          "body": "<strong>Vivichoke</strong> for Lady Lilligant's Balms only grows near the ancient stone ruins on the eastern edge of the Crimson Mirelands. Walk the ruins perimeter before entering the arena — a single gather run yields enough for 12–15 Balms.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Heavy Ball recipe — available from Craftworks from Chapter 4", "note": "Requires Iron Chunks + Tumblestone. Essential for Alpha Pokémon stealth catches.", "type": "upgrade", "completionistOnly": false },
+        { "label": "Basculegion ride mount — reward for calming Lady Lilligant", "note": "Unlocked automatically after the Noble fight. Allows water travel across all regions.", "type": "other", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "cobalt-coastlands",
+      "order": 3,
+      "stage": "Chapters 6–7",
+      "title": "Cobalt Coastlands",
+      "subtitle": "Sea cliffs · Basculegion ride · Lord Arcanine",
+      "chips": ["Basculegion riding", "Wing Ball", "Lord Arcanine"],
+      "unlocks": ["wing-ball"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["alpha-pokemon"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 18000
+      },
+      "steps": [
+        {
+          "text": "Travel to the <strong>Cobalt Coastlands</strong> by boat from Jubilife Village. The region spans rocky sea cliffs, sandy coves, and island chains accessible only by <strong>Basculegion</strong>. Set up both the Crossing Slope Camp and the Beachside Camp on arrival — the region is large."
+        },
+        {
+          "text": "The <strong>Wing Ball</strong> recipe becomes available around Chapter 6 (Craftworks, requires Sky Tumblestone × 1 + Apricorn × 1). Wing Balls throw higher and farther in an arc — ideal for catching airborne Pokémon. Craft ten before exploring the island chains."
+        },
+        {
+          "text": "Catch <strong>Tentacool, Shellos (West Sea), Mantyke, Finneon</strong>, and <strong>Growlithe</strong>. Growlithe evolves into Hisuian Arcanine — the Noble you will face — and completing its Research Tasks now is efficient. An <strong>Alpha Gyarados</strong> patrols the central lake area — it is level 60 but catchable with Heavy Ball stealth from the water surface."
+        },
+        {
+          "text": "Gather the Arcanine Balm ingredients: <strong>Hearty Grains</strong> (common, scattered across rocky areas), <strong>Hopo Berry</strong> (pink berries on bushes throughout), and <strong>Razz Berry</strong> (found along clifftops and coastal path edges). Craft at least 12 Balms."
+        },
+        {
+          "text": "<strong>Firespit Island</strong> is reached by riding Basculegion north from the main coastline. Ride around the island perimeter until you find the beach landing — the island is the largest landmass in the region and the Arcanine arena is at its centre."
+        },
+        {
+          "text": "Face <strong>Lord Arcanine</strong> at Firespit Island. See the boss card below for the full strategy.",
+          "spoiler": false
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming Lord Arcanine, the <strong>Sneasler</strong> ride mount unlocks — a wall-climbing Pokémon that allows you to scale vertical cliff faces. This transforms exploration in the upcoming Coronet Highlands. Chapter 8 begins.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Firespit Island has no Base Camp — stock up before crossing",
+          "body": "Once you ride Basculegion to <strong>Firespit Island</strong>, there is no camp to fast-travel from or rest at. Bring full Balms, full Potions, and a healthy party before the ride. If you need to restock, ride back to the main coastline.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Wing Ball recipe — available from Craftworks, Chapter 6", "note": "Best ball for catching Pokémon while they are airborne or at height. Sky Tumblestone + Apricorn.", "type": "upgrade", "completionistOnly": false },
+        { "label": "Sneasler ride mount — reward for calming Lord Arcanine", "note": "Wall-climbing mount. Essential for Coronet Highlands exploration.", "type": "other", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "coronet-highlands",
+      "order": 4,
+      "stage": "Chapters 8–9",
+      "title": "Coronet Highlands",
+      "subtitle": "Mountain climbs · Sneasler ride · Ultra Ball · Lord Electrode",
+      "chips": ["Sneasler climbing", "Ultra Ball", "Lord Electrode"],
+      "unlocks": ["jet-ball", "ultra-ball"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["crafting-upgrades", "research-tasks"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 28800
+      },
+      "steps": [
+        {
+          "text": "The <strong>Coronet Highlands</strong> span the high mountain range of Hisui, including <strong>Mount Coronet</strong> — the sacred mountain at the continent's heart. <strong>Sneasler's</strong> wall-climbing ability opens all vertical surfaces: scale cliff faces to reach ledges, ore deposits, and Pokémon not accessible from the ground."
+        },
+        {
+          "text": "The <strong>Ultra Ball</strong> becomes available from the Craftworks in Chapter 8 (requires Tumblestone × 1 + Iron Chunks × 1 + Apricorn × 1). Ultra Balls have roughly double the catch rate of a standard Poké Ball. Craft 20 before continuing — you will use them for the rest of the game."
+        },
+        {
+          "text": "The <strong>Jet Ball</strong> recipe also unlocks around this chapter — a Ball that travels fast in a flat line, ideal for catching Pokémon that flee immediately. Craft ten and keep them in reserve."
+        },
+        {
+          "text": "Catch <strong>Clefairy, Rufflet, Snorunt, Gligar</strong>, and <strong>Bronzor</strong> in the Highlands. <strong>Rufflet</strong> is important — it evolves into <strong>Hisuian Braviary</strong>, the flying ride mount that unlocks after the fourth Noble fight. Catching several Rufflet now completes its Research Tasks in advance."
+        },
+        {
+          "text": "Gather Electrode Balm ingredients: <strong>Dazzling Honey</strong> (bee Pokémon or honey nodes), <strong>Hopo Berry</strong> (pink berry bushes), and <strong>Medicinal Leek</strong> (tall green plants along the Clamberclaw path). Medicinal Leeks specifically grow near the cliff edges — gather on the approach to the arena. Craft at least 12 Balms."
+        },
+        {
+          "text": "Face <strong>Lord Electrode</strong> at Clamberclaw Cliffs. Hisuian Electrode is Grass/Electric — bring a Fire-type for the battle phase (Ground-type is blocked by Levitate). See the boss card below.",
+          "spoiler": false
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming Lord Electrode, the <strong>Braviary</strong> ride mount unlocks — aerial travel across every region. This is the most transformative mount in the game; you can now glide over the entire map and reach any area quickly. Chapter 10 begins and the <strong>Alabaster Icelands</strong> open.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Craft Ultra Balls immediately — they change everything",
+          "body": "The moment <strong>Ultra Balls</strong> become available from the Craftworks, craft 20. Their catch rate is dramatically better than standard Balls. From Chapter 8 onward, you should be using Ultra Balls for all non-trivial catches.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Ultra Ball recipe — Craftworks, Chapter 8", "note": "Best general-purpose Ball in the main story. Craft 20 immediately.", "type": "upgrade", "completionistOnly": false },
+        { "label": "Braviary ride mount — reward for calming Lord Electrode", "note": "Flying mount. Enables aerial travel and gliding across all five regions.", "type": "other", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "alabaster-icelands",
+      "order": 5,
+      "stage": "Chapters 10–11",
+      "title": "Alabaster Icelands",
+      "subtitle": "Frozen tundra · Braviary flight · Lord Avalugg",
+      "chips": ["Braviary flying", "Lord Avalugg", "Ice/Rock weaknesses"],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["alpha-pokemon", "crafting-upgrades"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 39600
+      },
+      "steps": [
+        {
+          "text": "Travel to the <strong>Alabaster Icelands</strong> — a vast frozen tundra at Hisui's northern edge. Fly by Braviary to scout the area from above before landing. Set up the two Base Camps (Snowfields Camp and Glacier Terrace Camp) on arrival."
+        },
+        {
+          "text": "Gather Avalugg Balm ingredients immediately: <strong>Crunchy Salt</strong> (ore deposits throughout the Icelands — plentiful), <strong>Hearty Grains</strong> (common), <strong>Hopo Berry</strong> (berry bushes near camp). Craft at least 15 Balms — Lord Avalugg requires more than any previous Noble."
+        },
+        {
+          "text": "Catch <strong>Snover, Swinub, Bergmite, Glaceon</strong>, and <strong>Mamoswine</strong> (via Swinub → Piloswine evolution with Ancient Power). Mamoswine is one of the strongest Pokémon available for the late-game story fights and the post-game. Piloswine learns Ancient Power via a Move Tutor in Jubilife — teach it before evolving."
+        },
+        {
+          "text": "The Black Tumblestone ore found in this region crafts <strong>Gigaton Balls</strong> — the highest-tier crafting Ball, with very high catch rate on Pokémon not in battle. Mine the Black Tumblestone veins along the central glacier before leaving the area permanently."
+        },
+        {
+          "text": "Face <strong>Lord Avalugg</strong> at Icepeak Arena — the furthest north point of the Icelands. This is the longest Noble fight. Bring Fighting, Fire, Steel, or Water coverage for the battle phase. See the boss card below.",
+          "spoiler": false
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming Lord Avalugg, all five Noble Pokémon have been calmed. Return to Galaxy Hall — Commander Kamado calls an emergency meeting. Chapter 12 begins: the <strong>lake guardians</strong> must be found.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Mine Black Tumblestone here — it is this region only",
+          "body": "<strong>Black Tumblestone</strong> is only found in the Alabaster Icelands ore deposits. It crafts <strong>Gigaton Balls</strong>, the strongest crafting Ball in the game. Mine every Black Tumblestone vein you see before advancing the story — you cannot easily return to farm it later.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Black Tumblestone — Gigaton Ball material, Icelands only", "note": "Mine from ore deposits throughout the Alabaster Icelands. Craft Gigaton Balls at the Craftsmanship Kit.", "type": "upgrade", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "lake-guardians",
+      "order": 6,
+      "stage": "Chapter 12",
+      "title": "The Lake Guardians",
+      "subtitle": "Uxie · Mesprit · Azelf · answer their riddles",
+      "chips": ["Uxie riddle", "Mesprit riddle", "Azelf riddle"],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["requests"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 50400
+      },
+      "steps": [
+        {
+          "text": "Chapter 12 sends you to find the three <strong>lake guardians</strong> of Hisui: <strong>Uxie</strong> at Lake Acuity (Alabaster Icelands), <strong>Mesprit</strong> at Lake Verity (Obsidian Fieldlands), and <strong>Azelf</strong> at Lake Valor (Crimson Mirelands). Fly to each lake on Braviary — each guardian is on a small island at the lake's centre."
+        },
+        {
+          "text": "<strong>Uxie's riddle (Lake Acuity):</strong> Uxie asks how many eyes the Pokémon on its picture scroll have. The answer corresponds to a specific sequence of Pokémon names Uxie shows you — count the eyes on each Pokémon in order and enter the total as a number sequence using the in-game number symbols. The answer is fixed per playthrough and tied to the Pokémon shown."
+        },
+        {
+          "text": "<strong>Mesprit's trial (Lake Verity):</strong> Mesprit challenges your strength with a battle. It is level 50 — bring a Pokémon around level 45–50. You are not attempting to catch Mesprit here; you only need to survive and deal enough damage for the story beat. Mesprit uses Swift, Lucky Chant, and Charm."
+        },
+        {
+          "text": "<strong>Azelf's trial (Lake Valor):</strong> Azelf sets a strength trial in which you must strike Azelf with a precise throw — it moves unpredictably across the lake. Use a Poké Ball (not to catch — the throw is scripted to miss) aimed at Azelf while it is momentarily stationary. The timing window is about one second."
+        },
+        {
+          "text": "After completing all three lake trials, return to <strong>Galaxy Hall</strong> in Jubilife Village. The story's final arc begins: a massive space-time rift has opened above <strong>Mount Coronet</strong>. Chapter 13 begins."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Uxie's riddle answer is always the same — look at the Pokémon shown",
+          "body": "<strong>Uxie</strong> shows you a scroll of Pokémon. Count each Pokémon's eyes in the order shown and enter the digit sequence. The Pokémon shown are always: Combee (3 eyes shown), Zubat (0 — no visible eyes), Unown (1), Honchkrow (2), Alakazam (4). The answer to input is <strong>60131</strong> on the number pad. Use this rather than counting if you are stuck.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Uxie — catchable post-game (Request 77)", "note": "Not caught during Chapter 12. Returns to Lake Acuity as a catchable Pokémon in post-game.", "type": "other", "completionistOnly": true },
+        { "label": "Mesprit — catchable post-game (Request 78)", "note": "Returns to Lake Verity post-game.", "type": "other", "completionistOnly": true },
+        { "label": "Azelf — catchable post-game (Request 79)", "note": "Returns to Lake Valor post-game.", "type": "other", "completionistOnly": true }
+      ]
+    },
+
+    {
+      "sectionId": "origin-of-hisui",
+      "order": 7,
+      "stage": "Chapters 13–17",
+      "title": "The Origin of Hisui",
+      "subtitle": "Space-time rift · Dialga or Palkia · final story missions",
+      "chips": ["Dialga vs Palkia", "Space-time rift", "Origin Forme"],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 57600
+      },
+      "steps": [
+        {
+          "text": "A massive <strong>space-time rift</strong> has opened above Mount Coronet. Chapters 13–17 send you back through all five regions to gather offerings before climbing to the rift. Each offering requires a scene in one of the five Noble areas — fast-travel via Braviary makes this quick."
+        },
+        {
+          "text": "<strong>The Pokémon Company's final areas:</strong> Each offering chapter is brief — a story scene followed by a battle with a Pokémon guardian at level 50–55. Your team should be level 55+ by this point. Bring Full Restores and a strong Fighting-type for the Ice-type guardians."
+        },
+        {
+          "text": "After gathering all offerings, climb to the <strong>Temple of Sinnoh</strong> at Mount Coronet's summit. A cutscene leads to a choice: <span class=\"spoiler\">you must select whether to face the time-distortion deity or the space-distortion deity — corresponding to <strong>Dialga</strong> (Temporal Pokémon) or <strong>Palkia</strong> (Spatial Pokémon). This affects which Origin Forme you battle and catch, but the story outcome is the same either way.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">Battle the chosen deity at level 65. This is a standard Pokémon battle — no Balm throwing. Both Dialga and Palkia use Roar of Time or Spacial Rend respectively (very powerful STAB moves). Bring a Dark or Ghost-type to resist their attacks. Win the battle and you receive the <strong>Red Chain</strong> to calm the rift.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">After calming the rift, Dialga or Palkia is catchable in their <strong>Origin Forme</strong> — the most powerful version of each Pokémon in the game. Use Ultra Balls or Leaden Balls at low HP. Do not skip this catch — Origin Forme Dialga/Palkia cannot be obtained any other way.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">Credits roll. The story of Hisui is resolved. The post-game begins: return to Jubilife Village and speak to Professor Laventon to unlock <strong>post-game content</strong> — including the true final boss.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Catch Origin Forme Dialga or Palkia before the credits end",
+          "body": "After defeating the rift deity, you are given the chance to catch <strong>Origin Forme Dialga or Palkia</strong>. Do not skip it — they are catchable only at this specific moment. After the credits, only the Altered Forme versions return to the game. Use Ultra Balls and weaken to low HP before throwing.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Origin Forme Dialga OR Palkia — catchable at the rift (Chapter 17)", "note": "Your choice at the Temple of Sinnoh determines which you encounter. The other can be caught post-game via a specific Request.", "type": "other", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "postgame",
+      "order": 8,
+      "stage": "Post-game",
+      "title": "Volo, Giratina & Arceus",
+      "subtitle": "True finale · hardest fight in the game · catch Arceus",
+      "chips": ["Volo — 6 Pokémon + Giratina", "Request 102", "Arceus"],
+      "unlocks": ["origin-ball"],
+      "gates": [],
+      "gatingType": "soft",
+      "readinessNote": "Bring a team of level 65–70 Pokémon with diverse coverage and a full stock of Full Restores before speaking to Volo at Spear Pillar. There is no recovery between his six-Pokémon team and Giratina.",
+      "recommendedDetours": ["requests", "research-tasks"],
+      "video": {
+        "provider": "youtube",
+        "id": "BVaIH8VAOsU",
+        "creator": "Ninbanyan",
+        "title": "Pokemon Legends Arceus - Longplay Full Game Walkthrough No Commentary",
+        "durationLabel": "20:13:00",
+        "startSeconds": 64800
+      },
+      "steps": [
+        {
+          "text": "After the credits, speak to <strong>Professor Laventon</strong> at Galaxy Hall. He tells you to complete the Pokédex to its fullest — this unlocks the true post-game. To access <strong>Request 102</strong> (the Arceus quest), you must first: complete all 94 regular Requests, raise your Pokédex to a sufficient completion level (all Pokémon with at least Level 10 Research Points), and complete the main story. This takes several additional hours."
+        },
+        {
+          "text": "<strong>Volo</strong> appears at <strong>Spear Pillar</strong> on Mount Coronet once the above conditions are met. <span class=\"spoiler\">He reveals himself as an antagonist who has been manipulating events to obtain Arceus's power. He challenges you to a battle. This is the hardest trainer fight in the game — see the boss card below. His full team: Spiritomb, Roserade, Hisuian Arcanine, Hisuian Goodra, Garchomp, Togekiss. Then immediately Giratina (Origin Forme) without a break.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">After defeating Volo and calming <strong>Giratina</strong>, Giratina is available to catch. Use Ultra Balls at low HP. Giratina Origin Forme has high HP but is catchable without the Origin Ball at this point.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">Completing Request 102 (available after Volo's defeat and full Pokédex completion) leads you to the <strong>Crimson Mirelands</strong> for a final confrontation with <strong>Arceus</strong> itself. You receive the <strong>Origin Ball</strong> — a guaranteed-catch item — for this fight. The Arceus battle is a test of endurance at level 75.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "Beyond the main story and Volo, the post-game contains: catching the three lake guardians at their lakes (Requests 77–79), a Regigigas encounter at Snowpoint Temple, catching the other Origin Forme Dialga or Palkia via their request, and completing all remaining Pokédex Research Tasks for the final Star Rank."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Volo fights with six Pokémon then Giratina back-to-back — no healing",
+          "body": "<strong>Volo</strong> is followed immediately by <strong>Giratina (Origin Forme)</strong> with no break to heal. You must defeat seven Pokémon in a row starting at full. Prepare a party of six level 65–70 Pokémon with Full Restores — this is not a casual fight. It is considered one of the hardest battles in the entire Pokémon series.",
+          "completionistOnly": false
+        },
+        {
+          "type": "do-now",
+          "title": "Teach Piloswine Ancient Power before evolving it into Mamoswine",
+          "body": "<strong>Mamoswine</strong> (Ice/Ground) is one of the best Pokémon for the Volo and Giratina fights. But Piloswine only evolves into Mamoswine after learning <strong>Ancient Power</strong> — and Mamoswine cannot learn it. Visit the Move Tutor in Jubilife Village and teach Piloswine Ancient Power before evolving. A Mamoswine with Icicle Crash counter-picks Garchomp, both Hisuian Arcanine and Goodra, and Giratina.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Giratina (Origin Forme) — catchable after defeating Volo", "note": "Ghost/Dragon. Use Ultra Balls at low HP immediately after the Volo sequence ends.", "type": "other", "completionistOnly": false },
+        { "label": "Origin Ball — given for Request 102", "note": "Guaranteed catch. Used to catch Arceus.", "type": "key-item", "completionistOnly": false },
+        { "label": "Arceus — level 75, caught via Origin Ball in Request 102", "note": "The title legendary. Requires full Pokédex completion + all 94 Requests + Volo defeated.", "type": "other", "completionistOnly": false }
+      ]
+    }
+  ]
+}
