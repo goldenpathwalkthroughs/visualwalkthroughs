@@ -79,6 +79,8 @@ async function checkPage(browser, url, label) {
               ? ['Golden path', 'Wildwoods', 'Remote Isle']
               : url.includes('ocarina')
               ? ['Golden path', 'Kokiri Forest', "Ganon's Castle"]
+              : url.includes('legends-za')
+              ? ['Golden path', 'Lumiose City', 'Prism Tower']
               : ['Golden path', 'Outset Island', 'Forsaken Fortress'];
     for (const marker of textMarkers) {
       if (html.includes(marker)) pass(`Server HTML contains "${marker}" (indexable)`);

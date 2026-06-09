@@ -1,0 +1,16 @@
+{
+  "name": "Pokémon",
+  "slug": "pokemon",
+  "developer": "Game Freak",
+  "description": "Game Freak’s beloved monster-catching RPG series comes to Nintendo Switch. Explore Kanto’s iconic routes in the definitive remakes of the original adventures, then tend to a ruined Kanto region as a Ditto in the brand-new slow-life sandbox.",
+  "featured": true,
+  "featureRank": 5,
+  "guideCount": 3,
+  "cover": "/assets/covers/pokemon-firered-leafgreen.webp",
+  "theme": {
+    "bodyClass": "theme-firered",
+    "accent": "#e8320a",
+    "accentSoft": "rgba(232,50,10,.14)",
+    "cardGradient": "linear-gradient(160deg,#1a0400,#0f0200 60%,#060100)"
+  }
+}

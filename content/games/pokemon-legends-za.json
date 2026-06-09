@@ -1,0 +1,845 @@
+{
+  "franchiseSlug": "pokemon",
+  "title": "Pokémon Legends: Z-A",
+  "slug": "pokemon-legends-za",
+  "year": "2025",
+  "platforms": ["Nintendo Switch", "Nintendo Switch 2"],
+  "status": "published",
+  "lede": "Lumiose City is being rebuilt — and its wild Pokémon are caught in the chaos. Catch Pokémon in real time, master Mega Evolution, and climb the Z-A Royale to uncover the truth behind the city's mysterious transformation in Game Freak's action-RPG set in the heart of Kalos.",
+  "cover": "/assets/covers/pokemon-legends-za.webp",
+  "theme": {
+    "bodyClass": "theme-legends-za",
+    "accent": "#1ec8e8",
+    "accentSoft": "rgba(30,200,232,.14)",
+    "cardGradient": "linear-gradient(160deg,#020d18,#010810 60%,#000508)"
+  },
+
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "prologue",
+      "rank-v",
+      "ranks-f-e",
+      "rank-d",
+      "rank-c",
+      "rank-b",
+      "rank-a",
+      "postgame"
+    ],
+    "criticalPath": [
+      "prologue",
+      "rank-v",
+      "ranks-f-e",
+      "rank-d",
+      "rank-c",
+      "rank-b",
+      "rank-a"
+    ],
+    "anyOrderGroups": []
+  },
+
+  "advisories": [
+    {
+      "type": "warning",
+      "title": "Character name and appearance are permanent",
+      "body": "Your trainer name and physical appearance cannot be changed after the opening sequence. Take your time in the character creator — it is the only chance you get.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Royale Trainer battles only happen at night",
+      "body": "All eleven <strong>Royale Trainer</strong> battles are gated behind a nighttime condition. If you arrive at a Trainer's location during the day, sit on any bench and choose 'Pass the time until night'. Many players stall progress for hours before discovering this.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Fill the Mega Gauge before boss battles",
+      "body": "Your <strong>Mega Gauge</strong> carries over between battles. Before any Royale Trainer fight, spend a few minutes in a nearby Wild Zone dealing and taking hits to pre-fill it. Arriving with a full gauge lets you Mega Evolve immediately when the fight starts.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Side missions can gate main story missions",
+      "body": "Some main-story missions will not appear until specific side missions are completed first. If your next main mission has not unlocked despite meeting the rank requirement, check your side mission list at Hotel Z — there is almost always a side mission flagged as a prerequisite.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "The game is entirely set in Lumiose City",
+      "body": "Unlike other Pokémon games, <strong>Pokémon Legends: Z-A</strong> never leaves Lumiose City. All 20 Wild Zones are districts within or beneath the city. The map is smaller than a traditional Pokémon region but is dense with content — focus on mastering each district before moving on.",
+      "completionistOnly": false
+    }
+  ],
+
+  "items": [
+    { "id": "starter",         "name": "Starter Pokémon",   "type": "ability", "class": "progression", "acquiredAtSectionId": "prologue" },
+    { "id": "pokedex",         "name": "Pokédex",            "type": "ability", "class": "progression", "acquiredAtSectionId": "prologue" },
+    { "id": "poke-ball",       "name": "Poké Ball",          "type": "item",    "class": "progression", "acquiredAtSectionId": "prologue" },
+    { "id": "mega-ring",       "name": "Mega Ring",          "type": "item",    "class": "progression", "acquiredAtSectionId": "rank-v" },
+    { "id": "mega-stone",      "name": "Mega Stone (set)",   "type": "upgrade", "class": "optional",    "acquiredAtSectionId": "ranks-f-e" },
+    { "id": "colorful-screw",  "name": "Colorful Screws",    "type": "upgrade", "class": "optional",    "acquiredAtSectionId": "prologue" }
+  ],
+
+  "detours": [
+    {
+      "id": "colorful-screws",
+      "location": "All 20 Wild Zones across Lumiose City — small collectible screws hidden in the environment",
+      "type": "upgrade",
+      "requires": [],
+      "benefit": "Colorful Screws upgrade the Canari Plush — a passive bonus system that replaces the traditional Exp. Share. Collecting screws is the primary way to accelerate team levelling.",
+      "method": "There are 100 Colorful Screws total, one to three hidden in each Wild Zone. Screws glow faintly — look at the base of walls, behind market stalls, and on top of accessible ledges. Return completed sets to the Canari Plush upgrader at Hotel Z. Aim for at least 30 before Rank B.",
+      "earliestSectionId": "prologue",
+      "recommendedSectionId": "rank-v",
+      "mandatory": false
+    },
+    {
+      "id": "mega-stone-collection",
+      "location": "Mega Shard Exchange — unlocks after Mission 10, located in the central market district of Lumiose City",
+      "type": "upgrade",
+      "requires": ["mega-ring"],
+      "benefit": "Mega Stones for your team — each stone unlocks a specific Pokémon's Mega Evolution. Priority stones: Charizardite X (counters Grisham), Blastoisinite, Venusaurite, and your starter's Mega Stone.",
+      "method": "Bring Mega Shards (dropped by Rogue Mega Pokémon in Wild Zones) to the exchange vendor. Each stone costs several shards of the matching type. Farm Rogue Megas in Wild Zones near your current rank — they reliably drop shards when defeated or captured.",
+      "earliestSectionId": "ranks-f-e",
+      "recommendedSectionId": "ranks-f-e",
+      "mandatory": false
+    },
+    {
+      "id": "side-missions",
+      "location": "Hotel Z notice board — new side missions post regularly",
+      "type": "convenience",
+      "requires": [],
+      "benefit": "Exp., Mega Shards, Poké Balls, and story progression. Some side missions are prerequisites for main story missions — completing them avoids accidentally blocking yourself.",
+      "method": "Check the Hotel Z notice board after every main mission and complete the flagged side missions before continuing. Side missions that are main-story prerequisites are marked with a star icon. The game has 119+ side missions total — do not feel pressured to clear them all, but do clear starred ones on sight.",
+      "earliestSectionId": "prologue",
+      "recommendedSectionId": "prologue",
+      "mandatory": false
+    },
+    {
+      "id": "friendship-evolutions",
+      "location": "Anywhere — raise friendship via walking, battles, and treats",
+      "type": "upgrade",
+      "requires": [],
+      "benefit": "Several Pokémon (Sylveon, Espeon, Umbreon, Togekiss, Lucario, and others) evolve via friendship. These are among the strongest Pokémon for the late-game Royale fights.",
+      "method": "Walk with the target Pokémon in your party, feed it Berries and Poffins at Hotel Z, and win battles without it fainting. Use the Party Checker feature to monitor friendship progress. Note: the game does not flag friendship evolutions prominently — check which Pokémon you want to evolve early so you can start raising their bond before you need them.",
+      "earliestSectionId": "prologue",
+      "recommendedSectionId": "rank-v",
+      "mandatory": false
+    }
+  ],
+
+  "locations": [
+    {
+      "id": "hotel-z",
+      "name": "Hotel Z",
+      "ref": "Lumiose City — your base of operations",
+      "reachableBy": "Starting location. Fast-travel back here at any time from the map menu.",
+      "whereWithin": "Central district of Lumiose City. Contains the notice board (side missions), Canari Plush upgrader (Colorful Screw exchange), storage, and rest point.",
+      "isHub": true,
+      "contains": [
+        { "label": "Notice board — side missions and starred prerequisites", "kind": "npc" },
+        { "label": "Canari Plush upgrader — exchange Colorful Screws for passive bonuses", "kind": "npc" },
+        { "label": "Storage — deposit and withdraw Pokémon", "kind": "npc" },
+        { "label": "Rest point — advance time to day or night", "kind": "beat" }
+      ]
+    },
+    {
+      "id": "prism-tower",
+      "name": "Prism Tower",
+      "ref": "Lumiose City — city centre",
+      "reachableBy": "Follow the main boulevard north from Hotel Z. Accessible from Rank V onward; locked for the climax sequence.",
+      "whereWithin": "The iconic tower at the heart of Lumiose. The Royale's ranking board is posted here. The climax of Mission 36 takes place on the upper floors.",
+      "isHub": false,
+      "contains": [
+        { "label": "Z-A Royale ranking board — check your current rank and next Trainer", "kind": "npc" },
+        { "label": "Mission 36 climax — Prism Tower's Dark Turn", "kind": "beat", "sectionId": "rank-a", "completionistOnly": false }
+      ]
+    },
+    {
+      "id": "lumiose-sewers",
+      "name": "Lumiose Sewers",
+      "ref": "Beneath Lumiose City — accessed via marked grate entrances",
+      "reachableBy": "Unlocks automatically during Rank D progression (around Mission 20). Entrances are marked on the map.",
+      "whereWithin": "Underground network beneath the city. Several Wild Zones are located here, including high-density Rogue Mega spawns for Mega Shard farming.",
+      "isHub": false,
+      "contains": [
+        { "label": "Rogue Mega spawns — best mid-game Mega Shard farming area", "kind": "secret" },
+        { "label": "Several Wild Zones accessible only from below", "kind": "beat" }
+      ]
+    },
+    {
+      "id": "wild-zones",
+      "name": "Wild Zones (20 total)",
+      "ref": "Distributed across all city districts",
+      "reachableBy": "Each Wild Zone is a contained area within a city district. New Wild Zones unlock as you progress through ranks.",
+      "whereWithin": "Scattered across Lumiose's outer and inner districts, underground via the Sewers, and in rooftop areas accessible from Rank C. Each Zone has its own Pokémon pool, day/night cycles, and Rogue Mega spawn points.",
+      "isHub": false,
+      "contains": [
+        { "label": "Wild Pokémon — catch without battling or weaken first for higher capture rate", "kind": "beat" },
+        { "label": "Rogue Mega Pokémon — defeat or catch to earn Mega Shards", "kind": "beat" },
+        { "label": "Colorful Screws — one to three per zone, hidden in the environment", "kind": "secret", "completionistOnly": true }
+      ]
+    },
+    {
+      "id": "mega-shard-exchange",
+      "name": "Mega Shard Exchange",
+      "ref": "Central market district",
+      "reachableBy": "Unlocks after Mission 10. Marked on the map with a gem icon once available.",
+      "whereWithin": "Market stall in the central commercial district. Run by the same vendor who first appears after the Rank F Royale battle.",
+      "isHub": false,
+      "contains": [
+        { "label": "Mega Stone purchases — trade Mega Shards for specific Mega Stones", "kind": "shop", "requires": ["mega-ring"] }
+      ]
+    }
+  ],
+
+  "bossFights": [
+    {
+      "id": "vinnie-mega-drampa",
+      "name": "Vinnie — Rank V Royale (Mega Drampa)",
+      "sectionId": "rank-v",
+      "locationRef": "Lumiose City — first Royale arena",
+      "prep": {
+        "recommendedItems": ["mega-ring"],
+        "healthAdvice": "This is the first fight where your opponent uses Mega Evolution. Bring a full party of Pokémon in the mid-20s level range. Have at least two Potions or Super Potions.",
+        "topUpBefore": "Buy Potions from the market district vendor before heading to the night battle. Replenish Poké Balls while you are there."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Mega Drampa rushes",
+          "tells": "Vinnie activates Mega Drampa immediately at the start of battle. Mega Drampa rears back slightly before every charge attack.",
+          "counter": "Dodge the charge by side-rolling at the last moment. The charge has a recovery window of about two seconds after the animation completes.",
+          "damageWindow": "Attack Mega Drampa during the charge recovery. Its Special Defence is higher than its Defence — use physical moves where possible. Target Pokémon with Fairy, Dragon, or Ice moves."
+        },
+        {
+          "name": "Phase 2 — Dragon Breath burst",
+          "tells": "Mega Drampa draws in breath visibly — small motes of energy gather at its mouth for about one second before the burst fires.",
+          "counter": "Move perpendicular to Mega Drampa's facing direction. The Dragon Breath burst fires in a straight cone — sidestepping removes all risk.",
+          "damageWindow": "Same physical-move window during recovery. Three to four solid hits end the fight. Using your own Mega Evolution here extends the stagger windows and makes the recovery period longer."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to the city street and use Potions, then return. Vinnie will wait.",
+        "easierTactic": "Bring a Fairy-type Pokémon — Mega Drampa is part Dragon and Fairy moves hit for 2× damage. Even a low-level Ralts or Snubbull makes this fight straightforward.",
+        "retreatOption": "You can forfeit and retry with no penalty beyond the time loss."
+      },
+      "reward": "Rank V achieved — Mega Ring confirmed functional; access to Rank F Royale trainers"
+    },
+    {
+      "id": "canari-mega-eelektross",
+      "name": "Canari — Rank F Royale (Mega Eelektross)",
+      "sectionId": "ranks-f-e",
+      "locationRef": "Lumiose City — mid-city district arena",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Canari's Mega Eelektross has no type weaknesses in its base form. Bring diverse coverage — Ground-types are immune to its Electric moves but watch for the secondary Water and Fire coverage. Level 30–33 recommended.",
+        "topUpBefore": "Check the Mega Shard Exchange (it opens after Mission 10, one or two missions before this fight) — spend any Shards you have on a Mega Stone for your starter or a Fairy-type before this battle."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Suction Cup lock",
+          "tells": "Mega Eelektross attaches its suction-cup appendages to the ground before firing a radial electric burst. The attachment animation takes about one and a half seconds.",
+          "counter": "When you see the attachment stance, dodge away and wait for the burst to dissipate. The burst covers a 5-metre radius around Eelektross.",
+          "damageWindow": "After the burst, Eelektross is briefly tangled in its own appendages. This is the primary damage window — use your highest-damage moves in this 2-second gap."
+        },
+        {
+          "name": "Phase 2 — Drain Punch chain",
+          "tells": "Mega Eelektross closes range aggressively, glowing green — it is about to use a Drain Punch chain (three hits). The green glow appears about half a second before the first hit.",
+          "counter": "Back away quickly and use a ranged move to interrupt it if possible. If you cannot interrupt, guard with your shield button to reduce damage.",
+          "damageWindow": "After the Drain Punch chain completes, Eelektross takes a recovery pause. Hit it with your Mega-Evolved Pokémon's strongest move here. Ground-type or Psychic-type coverage does well despite Eelektross having no weakness — high base power matters most."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit the arena to the street and use items freely between attempts.",
+        "easierTactic": "Since Mega Eelektross has no type weakness, focus on high-power neutral coverage. A Pokémon with base Attack above 90 and a move with 90+ power will out-damage the Drain Punch healing. Tera... (no Tera in this game) — just use physical attackers and ignore type matchup entirely.",
+        "retreatOption": "No penalty for retreating and retrying."
+      },
+      "reward": "Rank F achieved; Mega Shard Exchange vendor expands stock"
+    },
+    {
+      "id": "ivor-mega-falinks",
+      "name": "Ivor — Rank E Royale (Mega Falinks)",
+      "sectionId": "ranks-f-e",
+      "locationRef": "Lumiose City — eastern district arena",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Falinks is a pure Fighting-type — bring Psychic, Flying, or Fairy-type Pokémon. Level 38–42 recommended. Ivor's Mega Falinks has increased Speed — have a faster lead or expect to take the first hit.",
+        "topUpBefore": "Stock up on Hyper Potions if available; Ivor is a significant step up from Canari."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Formation charge",
+          "tells": "Mega Falinks lines up its six members into a tight formation before executing a linear charge. The formation lock takes about one second.",
+          "counter": "Move laterally — the formation charge is a straight line. Once clear, you have two full seconds before the formation regroups.",
+          "damageWindow": "After the charge, the members are briefly scattered. Psychic-type moves that hit the main body while it is separated deal full damage. Two or three hits break the formation entirely and force a regrouping animation."
+        },
+        {
+          "name": "Phase 2 — Surround tactic",
+          "tells": "Mega Falinks splits its members into two flanking groups. The main body pulses white before the surround begins.",
+          "counter": "Identify the main body (the larger front unit) and attack it exclusively. Hitting flanking members does not reduce Ivor's health total.",
+          "damageWindow": "Striking the main body during the surround tactic staggers the entire formation. Use your Mega-Evolved Pokémon's strongest Psychic or Flying move at this moment for maximum damage."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Leave the arena, heal at Hotel Z (rest point), and return.",
+        "easierTactic": "A Psychic-type with Psychic or Psybeam is extremely efficient here. Gardevoir or its earlier form Kirlia, if available, trivialises the fight. Alternatively, any Flying-type with Wing Attack or Air Slash works well.",
+        "retreatOption": "Retry freely."
+      },
+      "reward": "Rank E achieved; new Wild Zones unlocked in the north district"
+    },
+    {
+      "id": "corbeau-mega-scolipede",
+      "name": "Corbeau — Rank D Royale (Mega Scolipede)",
+      "sectionId": "rank-d",
+      "locationRef": "Lumiose City — Sewers entrance arena",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Mega Scolipede is Bug/Poison — bring Ground, Fire, Flying, or Psychic-type Pokémon. Level 48–52 recommended. Corbeau's Scolipede is fast and hits hard; bring at least four Hyper Potions.",
+        "topUpBefore": "The Lumiose Sewers open around Mission 20 — explore the first level for a Colorful Screw before the Corbeau fight to upgrade your Canari Plush."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Poison rollout",
+          "tells": "Mega Scolipede curls into a ball before rolling. The curl animation lasts about one second and a faint purple trail appears before launch.",
+          "counter": "Side-roll at the last moment. The Poison rollout inflicts Badly Poisoned on contact — have Antidotes ready. The roll bounces off walls; watch the trajectory.",
+          "damageWindow": "Scolipede exits the roll facing away from you — 1.5-second recovery window. Ground-type moves (Earthquake, Earth Power) are super-effective. Rock Slide also works well."
+        },
+        {
+          "name": "Phase 2 — Megahorn rush",
+          "tells": "Mega Scolipede rears up on its back legs before a Megahorn lunge. The rear-up takes about half a second.",
+          "counter": "Dodge diagonally behind Scolipede. The Megahorn goes forward — moving behind it avoids all damage. If caught, the hit is Heavy but not a one-shot at level 50.",
+          "damageWindow": "Striking from behind during the Megahorn recovery is the safest window in the fight. Fire Blast or Fire Fang from a Fire-type deals 4× (double super-effective: Fire hits Bug and Poison both effectively). This is the fastest way to end Phase 2."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Fast-travel to Hotel Z and rest — full heal. Return and retry.",
+        "easierTactic": "A Fire-type with a strong Fire move makes this fight dramatically shorter. Arcanine or Typhlosion (if you started with Cyndaquil) can two-shot Mega Scolipede.",
+        "retreatOption": "Retry without penalty."
+      },
+      "reward": "Rank D achieved; Lumiose Sewers area expands"
+    },
+    {
+      "id": "jacinthe-mega-clefable",
+      "name": "Jacinthe — Rank C Royale (Mega Clefable)",
+      "sectionId": "rank-c",
+      "locationRef": "Lumiose City — southern plaza arena",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Mega Clefable is Fairy/Normal — bring Steel or Poison-type Pokémon (Fairy is weak to both). Level 53–57 recommended. Jacinthe's Clefable uses Heal Bell frequently — her health pool is effectively larger than it appears.",
+        "topUpBefore": "Stock at least five Hyper Potions and two Max Potions if available. This fight can run long due to the healing."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Moonblast barrage",
+          "tells": "Mega Clefable charges a crescent of lunar energy above its head — the charge glows bright pink for about one second before firing.",
+          "counter": "Sprint sideways during the charge and the Moonblast misses cleanly. The barrage fires three consecutive shots — dodge each individually.",
+          "damageWindow": "Between Moonblast shots, Clefable pauses for 0.8 seconds. Land one Steel or Poison move per pause. Steel Wing, Iron Head, Sludge Bomb, or Poison Jab are ideal."
+        },
+        {
+          "name": "Phase 2 — Heal Bell interruption",
+          "tells": "Mega Clefable closes its eyes and rings a bell visibly from its hand — this is Heal Bell, which removes status conditions and restores a portion of HP.",
+          "counter": "Interrupt Heal Bell by landing a hit before the animation completes. The animation has a half-second wind-up before it becomes active. Prioritise interruption over damage — letting Heal Bell complete negates several turns of chip damage.",
+          "damageWindow": "After a failed Heal Bell, Clefable staggers briefly. Use your Mega-Evolved Pokémon's strongest move immediately. Repeated Heal Bell interruptions allow you to win a war of attrition."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Fast-travel to Hotel Z, rest, and return.",
+        "easierTactic": "Bring a Poison-type with Poison Jab or Sludge Bomb. Mega Gengar or Mega Venusaur (if you started with Bulbasaur) makes this fight trivial. If you lack a Poison or Steel Pokémon, high-power neutral moves and aggressive interruption of Heal Bell still win.",
+        "retreatOption": "Retry freely."
+      },
+      "reward": "Rank C achieved; rooftop Wild Zones accessible from here"
+    },
+    {
+      "id": "grisham-mega-charizard-x",
+      "name": "Grisham — Rank B Royale (Mega Charizard X)",
+      "sectionId": "rank-b",
+      "locationRef": "Lumiose City — elevated arena, Rank B district",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Mega Charizard X is Fire/Dragon — bring Dragon, Ground, or Rock-type moves. This is the hardest Royale fight before the finale. Level 60–63 strongly recommended; bring five Max Potions.",
+        "topUpBefore": "Farm Rogue Megas in the Sewers for Mega Shards and ensure your own starter's Mega Stone is in hand. If you started with Bulbasaur, acquire Charizardite X from the Mega Shard Exchange to understand the threat. Rock-type coverage (Stone Edge, Rock Slide) is the safest answer since it does not require a Dragon-type matchup."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Outrage burst",
+          "tells": "Mega Charizard X flares both wing-flames to full size and lets out a roar before a Dragon-type burst. The wing flare is a one-second tell.",
+          "counter": "Put distance between you and Charizard the moment the wings flare. The Outrage burst has significant range but a blind spot directly below — if your Pokémon is small enough to be low to the ground, ducking below Charizard's chin avoids the hit.",
+          "damageWindow": "After Outrage, Charizard is briefly confused (the Outrage recoil effect) — this is a 2-second window. Rock-type moves here deal super-effective damage and the confusion extends your damage period. Keep distance to avoid the confusion-period random attacks."
+        },
+        {
+          "name": "Phase 2 — Flare Blitz dive",
+          "tells": "Mega Charizard X ascends to about 10 metres and locks eyes on your Pokémon before a near-vertical Flare Blitz dive. The ascent takes 1.5 seconds.",
+          "counter": "Sprint horizontally while Charizard is ascending — the dive targets your position at time of lock-on, not your position on impact. If you move far enough during the 1.5-second ascent, the dive misses entirely.",
+          "damageWindow": "The dive crater is the main damage window — Mega Charizard X is stunned on impact for 2.5 seconds. Land your heaviest Rock or Dragon attack. Grisham uses two to three Flare Blitz dives in Phase 2; consistent dodges and reliable craters end the fight efficiently."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Fast-travel to Hotel Z. Rest, restore items, return. Grisham does not pursue you outside the arena.",
+        "easierTactic": "Rock-type is the most reliable counter — Stone Edge at 80+ base power from a Golem, Tyranitar, or Rhyperior is devastating. If you lack a Rock-type, any Ground-type move also hits Mega Charizard X (Fire/Dragon, so Ground is neutral but reliable). Avoid Dragon-type attacks — Charizard X resists Dragon in this Mega form.",
+        "retreatOption": "Retry without penalty. This fight is designed to be the Rank B wall — expect a retry or two."
+      },
+      "reward": "Rank B achieved — Rank A challenge with Urbain unlocks; city-wide Rogue Mega frequency increases"
+    },
+    {
+      "id": "urbain-rank-a",
+      "name": "Urbain — Rank A Royale (Mega counter-pick)",
+      "sectionId": "rank-a",
+      "locationRef": "Prism Tower — summit arena",
+      "prep": {
+        "recommendedItems": ["mega-ring", "mega-stone"],
+        "healthAdvice": "Urbain uses a Mega Evolution that is specifically chosen to counter your starter. Bring a balanced team of five Pokémon that are not your starter, and reserve your starter with their Mega Stone for the final phase only. Level 64–65 recommended. Bring full Max Potion supply.",
+        "topUpBefore": "Spend all remaining Mega Shards at the Exchange before this fight. Ensure your full party is healed at Hotel Z immediately before climbing Prism Tower."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Counter-pick opener",
+          "tells": "Urbain reveals his Mega Pokémon at battle start — it is specifically typed to threaten your starter. The reveal cutscene shows the Mega Evolution immediately.",
+          "counter": "Do not lead with your starter. Open with your best coverage Pokémon and assess Urbain's Mega type. Adapt your move selection to hit Urbain's Mega for super-effective damage from your non-starter Pokémon.",
+          "damageWindow": "Urbain's AI is aggressive but predictable — it always fires the highest-power move available. After each of Urbain's moves there is a 1-second recovery pause. Punish that pause every time with your strongest available attack."
+        },
+        {
+          "name": "Phase 2 — Urbain Mega-evolves (if not yet done)",
+          "tells": "If Urbain's Pokémon has not already Mega Evolved by the halfway point of its health, Urbain triggers Mega Evolution manually. The gauge fills visibly — when it reaches full, the evolution is immediate.",
+          "counter": "Attempt to burst Urbain's Pokémon before the gauge fills. Alternatively, pre-fill your own Mega Gauge and trigger your starter's Mega Evolution to match — starter-vs-starter Mega battles in Phase 2 are even fights.",
+          "damageWindow": "After Urbain's Mega Evolution, the Pokémon briefly poses. This 1.5-second pose window is free damage — land your Mega-starter's strongest move here to immediately establish pressure."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Descend Prism Tower, fast-travel to Hotel Z, rest, return.",
+        "easierTactic": "Building a team around the three Pokémon that are strong against each starter's counter-type ensures you have a strong answer regardless of what Urbain brings. Consult the type chart before this fight specifically.",
+        "retreatOption": "Retry. After the Mission 36 story beat, the Prism Tower fight becomes accessible again."
+      },
+      "reward": "Rank A achieved — Mission 36 'Prism Tower's Dark Turn' triggers immediately after; Xerneas and Yveltal awaken"
+    }
+  ],
+
+  "sections": [
+    {
+      "sectionId": "prologue",
+      "order": 1,
+      "stage": "Prologue",
+      "title": "Lumiose City",
+      "subtitle": "Arrive in Kalos · choose your starter · Hotel Z · Missions 1–4",
+      "chips": ["Starter Pokémon", "Real-time battles", "Hotel Z base"],
+      "unlocks": ["starter", "pokedex", "poke-ball", "colorful-screw"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["side-missions", "friendship-evolutions"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "You arrive in <strong>Lumiose City</strong>, the famous circular city of the Kalos region, five years after the events of Pokémon X and Y. The city is under a sweeping urban redevelopment plan — buildings are being remade to coexist with wild Pokémon. <strong>Hotel Z</strong> is your base of operations for the entire game."
+        },
+        {
+          "text": "Choose your <strong>starter Pokémon</strong> during the opening sequence. <strong>Tepig</strong> (Fire-type) is the recommended choice for new players — it evolves into <strong>Emboar</strong>, which has a new <strong>Mega Evolution</strong> exclusive to this game and covers both Fire and Fighting matchups throughout the story. Your choice is permanent."
+        },
+        {
+          "text": "Complete <strong>Missions 1–4</strong> (the Prologue tier) to establish yourself at Hotel Z and learn the core systems. Missions 1–4 cover recovering your travel bag, your first Pokémon catch, and your first introduction to the Lumiose redevelopment plan's conflicts with <strong>Rogue Mega Pokémon</strong>."
+        },
+        {
+          "text": "The <strong>battle system is real-time</strong>, not turn-based. Your Pokémon and the opponent move freely in a 3D arena. Press the attack button to use your selected move; press dodge to side-roll. Z-target an enemy by holding the targeting button, which locks your Pokémon's facing. If you are new to the system, spend ten minutes in any Wild Zone before advancing the story."
+        },
+        {
+          "text": "Catching Pokémon works like <strong>Pokémon Legends: Arceus</strong> — throw a Poké Ball directly at a wild Pokémon to catch it without battling, or weaken it first for a higher capture rate. Hold the throw button to aim; release to throw. Buy Poké Balls from the market district and remember that buying in sets of 10 grants free <strong>Premier Balls</strong>."
+        },
+        {
+          "text": "At <strong>Hotel Z</strong>, check the <strong>notice board</strong> after every main mission. Side missions flagged with a star icon are prerequisites for future main missions — clear them on sight to avoid blocking yourself later. The <strong>Canari Plush</strong> upgrader is also here: bring any <strong>Colorful Screws</strong> you find in Wild Zones and exchange them for passive team bonuses."
+        },
+        {
+          "text": "Begin collecting <strong>Colorful Screws</strong> as early as Mission 1. They are hidden collectibles — one to three per Wild Zone — and upgrade the Canari Plush system that replaces the traditional Exp. Share. Early screw collection accelerates team levelling throughout the entire game."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Name and appearance cannot be changed later",
+          "body": "The character creator at the start of the game is the only opportunity to set your trainer's name and appearance. These cannot be changed at any point after you confirm.",
+          "completionistOnly": false
+        },
+        {
+          "type": "do-now",
+          "title": "Start collecting Colorful Screws immediately",
+          "body": "From your first Wild Zone visit, scan every corner for glowing collectibles — these are <strong>Colorful Screws</strong>. Collecting them early and exchanging at the Hotel Z Canari Plush upgrader gives passive Exp. bonuses that compound across the entire game. Do not wait until later ranks to start.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Colorful Screws (100 total) — hidden across all 20 Wild Zones", "note": "Glow faintly in the environment. Found at the base of walls, behind market stalls, and on accessible ledges. Exchange at Hotel Z Canari Plush upgrader.", "type": "discovery", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "rank-v",
+      "order": 2,
+      "stage": "Rank V",
+      "title": "The Royale Begins",
+      "subtitle": "Wild Zones 1–5 · five Royale Trainers · Mega Ring · Missions 5–9",
+      "chips": ["Mega Ring", "Royale battles at night", "Rogue Megas"],
+      "unlocks": ["mega-ring"],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": ["colorful-screws", "friendship-evolutions"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 3600
+      },
+      "steps": [
+        {
+          "text": "The <strong>Z-A Royale</strong> is a citywide ranked battle circuit — eleven trainers, each holding a rank from Z down to A. To climb the Royale you must defeat each trainer in order, starting with <strong>Zach (Rank Z)</strong>, the lowest-ranked trainer. Find each trainer's location posted on the <strong>Prism Tower ranking board</strong>."
+        },
+        {
+          "text": "<strong>Critical rule: Royale Trainer battles only happen at night.</strong> If you arrive at a trainer's location during daylight, sit on any bench in the area and select 'Pass the time until night'. Every trainer waits at their posted location after dark. This single piece of information unblocks what is the most commonly asked question in the game."
+        },
+        {
+          "text": "Defeat <strong>Zach (Z), Yvon (Y), Xavi (X), and Rintaro (W)</strong> in order — these four do not use Mega Evolution and serve as calibration fights for the real-time battle system. All four are in the level 10–20 range. Defeat them by dodging their strongest attacks and striking during recovery windows."
+        },
+        {
+          "text": "In parallel with the early Royale fights, complete <strong>Missions 5–9</strong>. Each mission opens new Wild Zones and introduces <strong>Rogue Mega Pokémon</strong> — wild Pokémon that have Mega Evolved without a trainer and are disrupting the city. Rogue Megas are tough but drop valuable <strong>Mega Shards</strong> when defeated or caught."
+        },
+        {
+          "text": "<strong>Mission 9 — Chase That Mysterious Pokémon</strong> is the key unlock. Completing it earns the <strong>Mega Ring</strong> — a Key Stone bracelet that allows you and your Pokémon to Mega Evolve in battle. The Mega Gauge (the bar below your health) fills as you deal and take damage. When full, press the Mega Evolution button to transform your Pokémon."
+        },
+        {
+          "text": "With the Mega Ring in hand, return to <strong>Vinnie (Rank V)</strong> — the first Royale Trainer who uses Mega Evolution. He is significantly stronger than the four before him. Ensure your Pokémon are level 23–25 and that you have at least one solid answer to Dragon-type moves. See the boss card below for the full strategy.",
+          "spoiler": false
+        },
+        {
+          "text": "After defeating Vinnie, check the map — new <strong>Wild Zones</strong> in the outer districts become accessible. Explore them before advancing to Rank F. Each new Zone adds Pokémon to your pool and has Colorful Screws to collect."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Royale Trainers only battle at night — use benches to advance time",
+          "body": "Every Royale Trainer fight requires nighttime. Find any bench in the area — there is always one near the trainer's marked location — and select 'Pass the time until night'. This is not explained prominently in-game.",
+          "completionistOnly": false
+        },
+        {
+          "type": "do-now",
+          "title": "Pre-fill your Mega Gauge before every Royale fight",
+          "body": "The Mega Gauge carries between battles. Before facing any Royale Trainer, spend 5–10 minutes in a nearby Wild Zone fighting Pokémon. Arrive at each Trainer battle with a full or near-full gauge — this lets you Mega Evolve at the start rather than waiting mid-fight.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Mega Ring — earned at Mission 9 completion", "note": "Mandatory story reward. Cannot be missed.", "type": "key-item", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "ranks-f-e",
+      "order": 3,
+      "stage": "Ranks F–E",
+      "title": "Mega Shards & New Threats",
+      "subtitle": "Mega Shard Exchange opens · Canari & Ivor · Missions 10–19 · Levels 25–47",
+      "chips": ["Mega Shard Exchange", "Mega Eelektross", "Mega Falinks"],
+      "unlocks": ["mega-stone"],
+      "gates": ["mega-ring"],
+      "gatingType": "hard",
+      "recommendedDetours": ["mega-stone-collection", "colorful-screws", "side-missions"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 7200
+      },
+      "steps": [
+        {
+          "text": "After Mission 10, a new vendor opens in the central market district — the <strong>Mega Shard Exchange</strong>. This is marked on the map with a gem icon. Bring the <strong>Mega Shards</strong> you have collected from Rogue Mega encounters and exchange them for <strong>Mega Stones</strong>. Prioritise your starter's Mega Stone and a coverage Mega Stone (Gengarite or Kangaskhanite are broadly useful)."
+        },
+        {
+          "text": "Missions 10–19 span Ranks F and E. Each rank requires defeating the corresponding Royale Trainer: <strong>Canari (Rank F)</strong> with <strong>Mega Eelektross</strong>, then <strong>Ivor (Rank E)</strong> with <strong>Mega Falinks</strong>. Both fights are at night. Check the boss cards below for full strategies."
+        },
+        {
+          "text": "Between Canari and Ivor, continue farming <strong>Rogue Mega Pokémon</strong> in Wild Zones. The Rogue Megas that appear at your current rank level are the best source of Shards for the Exchange. Catching rather than defeating Rogue Megas yields more Shards per encounter and adds the Mega form to your Pokédex."
+        },
+        {
+          "text": "Check the <strong>Hotel Z notice board</strong> regularly. Several Rank F and E side missions are prerequisites for Rank D main missions — if the Rank D missions do not appear after beating Ivor, a starred side mission is blocking them. Clear all starred side missions before assuming progress is blocked."
+        },
+        {
+          "text": "By Mission 19, your team should be solidly level 40–47. If you are underlevelled, spend time in the outer Wild Zones fighting Rogue Megas and collecting Colorful Screws — the Canari Plush Exp. bonuses compound significantly with screws collected in the 20–60 range."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Visit the Mega Shard Exchange immediately after Mission 10",
+          "body": "The <strong>Mega Shard Exchange</strong> opens after Mission 10 — a common miss. Exchange your Shards for your starter's Mega Stone first, then a secondary coverage Mega Stone. The Exchange vendor's stock expands after each Royale Trainer defeat, so return after Canari and Ivor.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Mega Stones — purchased from Mega Shard Exchange", "note": "Use Mega Shards dropped by Rogue Mega Pokémon to buy specific Mega Stones. Priority: starter Mega Stone first, then coverage types.", "type": "upgrade", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "rank-d",
+      "order": 4,
+      "stage": "Rank D",
+      "title": "Into the Sewers",
+      "subtitle": "Lumiose Sewers open · Corbeau battle · Missions 20–24 · Levels 47–52",
+      "chips": ["Lumiose Sewers", "Mega Scolipede", "Underground zones"],
+      "unlocks": [],
+      "gates": ["mega-ring"],
+      "gatingType": "hard",
+      "recommendedDetours": ["mega-stone-collection"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 10800
+      },
+      "steps": [
+        {
+          "text": "Rank D begins with the <strong>Lumiose Sewers</strong> becoming accessible — the underground network beneath the city opens around Mission 20. Sewer entrances are marked on the map (grate symbols). The Sewers contain several Wild Zones exclusive to this area and are the best mid-game location for <strong>Mega Shard farming</strong>."
+        },
+        {
+          "text": "Explore the first level of the Sewers before tackling <strong>Corbeau (Rank D)</strong>. You will find Colorful Screws in the Sewer's alcoves and several Pokémon species not found in the surface zones, including some with high base stats useful for the later Royale fights."
+        },
+        {
+          "text": "Corbeau's arena is near the Sewers entrance. His Mega Scolipede is <strong>Bug/Poison</strong> — bring Fire, Ground, Flying, or Psychic-type coverage. Level 48–52 recommended. The boss card below covers the full fight strategy."
+        },
+        {
+          "text": "After defeating Corbeau, Missions 21–24 expand the Sewers further and introduce a new category of <strong>large Rogue Mega</strong> encounters — bigger, harder-hitting versions of previously seen forms. These give the best Mega Shard drop rates in the game so far. Spend time farming them before moving to Rank C."
+        },
+        {
+          "text": "By Mission 24, ensure you have the <strong>Mega Stones</strong> for your two main battling Pokémon from the Exchange. The Rank C and B fights ahead make heavy use of Fairy and Dragon-type Megas — having counter Mega Stones equipped saves significant healing costs."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Sewers = best Mega Shard farm in the mid-game",
+          "body": "Once the <strong>Lumiose Sewers</strong> open, spend 20–30 minutes farming Rogue Mega encounters here before advancing Rank D missions. The underground zones have a significantly higher Rogue Mega spawn rate than surface zones at the same rank level.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Colorful Screws (several) — in Sewer alcoves", "note": "Check every alcove and dead-end in the Sewer network. These are easy to miss due to the darker lighting.", "type": "discovery", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "rank-c",
+      "order": 5,
+      "stage": "Rank C",
+      "title": "Rooftops and Royale",
+      "subtitle": "Rooftop zones accessible · Jacinthe battle · Missions 25–30 · Levels 52–59",
+      "chips": ["Rooftop Wild Zones", "Mega Clefable", "Heal Bell interruption"],
+      "unlocks": [],
+      "gates": ["mega-ring"],
+      "gatingType": "hard",
+      "recommendedDetours": ["colorful-screws"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 14400
+      },
+      "steps": [
+        {
+          "text": "After defeating Corbeau, <strong>rooftop Wild Zones</strong> become accessible across Lumiose City — areas on top of the redeveloped buildings that are unique to this rank tier. Access them via roof-hatch ladders marked on the map. Rooftop zones have Pokémon from the upper-end of the game's pool and good Colorful Screw density."
+        },
+        {
+          "text": "Complete <strong>Missions 25–30</strong>. This section is the most story-heavy phase of the game before the climax — the Lumiose Redevelopment Plan encounters its first major crisis as Rogue Mega appearances accelerate citywide. Story missions involve both investigation and combat."
+        },
+        {
+          "text": "Target <strong>Jacinthe (Rank C)</strong> midway through this section. Her <strong>Mega Clefable</strong> is Fairy/Normal and has a healing move — see the boss card below for how to interrupt it. Bring Steel or Poison-type coverage and plan for a longer fight than previous Royale battles."
+        },
+        {
+          "text": "By Mission 30 your team should be level 55–59. If you started with Bulbasaur, your <strong>Mega Venusaur</strong> is an excellent answer to both Jacinthe (Poison typing) and Grisham ahead (Grass-type resists water moves). If you started with Tepig, your <strong>Mega Emboar</strong> handles Jacinthe well but needs support for Grisham."
+        },
+        {
+          "text": "Check the Hotel Z notice board before moving to Rank B. Several Rank B prerequisites are side missions that start in this rank tier — clearing them now avoids a forced side-mission detour later when you are eager to face Grisham."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Interrupt Heal Bell or the fight becomes a war of attrition",
+          "body": "Jacinthe's Mega Clefable uses <strong>Heal Bell</strong> repeatedly. Landing any hit during the half-second wind-up animation before the bell rings cancels the heal entirely. Prioritise interruption over maximising damage output — each blocked Heal Bell is the equivalent of two extra attack turns.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Colorful Screws — rooftop Wild Zones", "note": "The newly opened rooftop areas have a concentrated screw density. Sweep each rooftop zone for screws before moving on.", "type": "discovery", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "rank-b",
+      "order": 6,
+      "stage": "Rank B",
+      "title": "The Hardest Fight",
+      "subtitle": "Grisham & Mega Charizard X · Missions 31–35 · Levels 59–63",
+      "chips": ["Mega Charizard X", "Rock-type counter", "Flare Blitz dive"],
+      "unlocks": [],
+      "gates": ["mega-ring"],
+      "gatingType": "hard",
+      "recommendedDetours": ["mega-stone-collection"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 18000
+      },
+      "steps": [
+        {
+          "text": "Rank B is the most difficult Royale tier before the finale. <strong>Grisham's Mega Charizard X</strong> is the hardest non-legendary fight in the game — it has high attack, speed, and two moves with large arenas of effect. Level 60–63 is the sweet spot. See the boss card below."
+        },
+        {
+          "text": "The most reliable counter to Mega Charizard X is a <strong>Rock-type Pokémon</strong> with Stone Edge or Rock Slide. Rock hits Fire/Dragon for 2× damage and is unaffected by Charizard's intimidation aura. Recommended Pokémon: Golem, Tyranitar (if available at this rank), Rhyperior, or Aerodactyl (also available by this point)."
+        },
+        {
+          "text": "Missions 31–35 run in parallel with the Grisham fight. These missions involve investigating the acceleration of Rogue Mega appearances and several scenes at Prism Tower that foreshadow the Rank A climax. <span class=\"spoiler\">The missions hint that the redevelopment plan itself is connected to the legendary Pokémon Xerneas and Yveltal.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "After defeating Grisham, <strong>Rogue Mega encounters across the city increase significantly</strong> in frequency and difficulty. This is the best time to farm Mega Shards for any final Mega Stones you need before Urbain. Spend time in the Sewers and rooftop zones to stock up."
+        },
+        {
+          "text": "Before moving to Rank A, ensure your full party of six is level 63–65, all have their best moves available, and your Mega Stone collection covers your two main Mega Pokémon. This is the last natural farming pause before the story accelerates dramatically toward the climax."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Expect to retry Grisham — this is the designed difficulty wall",
+          "body": "Grisham's <strong>Mega Charizard X</strong> is the acknowledged hardest mid-game fight in Pokémon Legends: Z-A. A retry or two is normal. The fight rewards preparation — a Rock-type Pokémon and a full Mega Gauge make a dramatic difference to the outcome.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Mega Shards (high drop rate) — Rogue Megas post-Grisham", "note": "The increased Rogue Mega frequency after Grisham's defeat is the best Shard farming window before the finale. Farm now if you still need Mega Stones.", "type": "upgrade", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "rank-a",
+      "order": 7,
+      "stage": "Rank A",
+      "title": "Prism Tower's Dark Turn",
+      "subtitle": "Urbain · Mission 36 climax · Xerneas & Yveltal awaken · Missions 36–37",
+      "chips": ["Urbain — counter-pick Mega", "Xerneas & Yveltal", "Prism Tower climax"],
+      "unlocks": [],
+      "gates": ["mega-ring"],
+      "gatingType": "hard",
+      "readinessNote": "Prepare your full party at Hotel Z and spend all remaining Mega Shards before climbing Prism Tower — there is no return between Urbain and the story climax sequence.",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 21600
+      },
+      "steps": [
+        {
+          "text": "Climb <strong>Prism Tower</strong> to face <strong>Urbain (Rank A)</strong> — the top-ranked trainer in the Z-A Royale. Urbain's team is built around a Mega Pokémon that is specifically typed to counter your starter. Lead with your non-starter coverage Pokémon and adapt once Urbain reveals his Mega. Full strategy in the boss card below."
+        },
+        {
+          "text": "After defeating Urbain, <strong>Mission 36 — Prism Tower's Dark Turn</strong> begins immediately. <span class=\"spoiler\">The legendary Pokémon <strong>Xerneas</strong> (Life Pokémon) and <strong>Yveltal</strong> (Destruction Pokémon) are awakened by the Lumiose Redevelopment Plan's deep construction work, and both begin threatening the city simultaneously.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">Mission 37 resolves the immediate crisis — you battle both legendary Pokémon during the sequence. These story-mandated encounters are scripted at appropriate difficulty for level 63–65 Pokémon; you cannot catch Xerneas or Yveltal here — that comes in post-game. Focus on surviving the encounters and completing the story beats.</span>",
+          "spoiler": true
+        },
+        {
+          "text": "<span class=\"spoiler\">After Mission 37, the Lumiose Redevelopment Plan is concluded. Prism Tower is restored. The credits roll. The post-game content unlocks when you continue your save file.</span>",
+          "spoiler": true
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Prepare everything before Prism Tower — no return during the climax",
+          "body": "Before climbing Prism Tower for Urbain, visit <strong>Hotel Z</strong>: heal your full party, use all remaining Mega Shards at the Exchange, and stock Max Potions. The Mission 36 story sequence begins immediately after the Urbain fight. There is no break between the Royale finale and the legendary encounters.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Story resolution — Lumiose City redevelopment plan concluded", "note": "After Mission 37, the main story ends and post-game begins.", "type": "other", "completionistOnly": false }
+      ]
+    },
+
+    {
+      "sectionId": "postgame",
+      "order": 8,
+      "stage": "Post-game",
+      "title": "Catch the Legendaries",
+      "subtitle": "Xerneas · Yveltal · Zygarde · Mewtwo · Missions 38–42 · Levels 70+",
+      "chips": ["Xerneas & Yveltal", "Zygarde cells", "Mewtwo"],
+      "unlocks": [],
+      "gates": ["mega-ring"],
+      "gatingType": "soft",
+      "readinessNote": "Post-game Pokémon are level 70+. Ensure your team is at minimum level 65 before attempting legendary encounters, and bring a large stock of Ultra Balls and Timer Balls.",
+      "recommendedDetours": ["colorful-screws", "side-missions"],
+      "video": {
+        "provider": "youtube",
+        "id": "7XBuIfww_l0",
+        "creator": "GamersPrey",
+        "title": "Pokemon Legends Z-A FULL Gameplay Walkthrough (FULL GAME) 4K No Commentary",
+        "durationLabel": "15:36:00",
+        "startSeconds": 25200
+      },
+      "steps": [
+        {
+          "text": "Post-game begins after completing Mission 37. <strong>Missions 38–42</strong> cover the four legendary Pokémon encounters: <strong>Xerneas</strong>, <strong>Yveltal</strong>, <strong>Zygarde</strong>, and <strong>Mewtwo</strong>. Each mission becomes available sequentially after the previous is completed."
+        },
+        {
+          "text": "<strong>Xerneas and Yveltal</strong> (Missions 38–39) are now catchable in their dedicated arenas, reachable from Prism Tower after the credits. Both are level 70. Weaken them to low health (use Pokémon with moves that cannot knock out in one hit — False Swipe is ideal if you have it), then use <strong>Ultra Balls</strong> or <strong>Timer Balls</strong> after several turns."
+        },
+        {
+          "text": "<strong>Zygarde</strong> (Mission 40) requires completing a Zygarde Cell collection quest. Zygarde Cells are scattered across all Wild Zones and become visible post-game. Collect 50 cells to summon Zygarde's 50% Forme, then catch it. Collecting 100 cells reveals the Complete Forme location."
+        },
+        {
+          "text": "<strong>Mewtwo</strong> (Missions 41–42) is the final post-game legendary. It is accessed after completing the three previous legendary catches. Mewtwo is level 80 — the hardest catch in the game. Bring your fully Mega-Evolved team, <strong>Timer Balls</strong> (effectiveness increases with battle length), and False Swipe to avoid accidental knockouts."
+        },
+        {
+          "text": "With all four legendaries caught, Missions 38–42 are complete. Continue exploring the remaining Wild Zones, finishing side missions, and completing the Pokédex at your own pace — there is no further story content after Mission 42."
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "False Swipe prevents accidental knockouts on legendaries",
+          "body": "False Swipe (a Normal-type move, available from the market) always leaves the target with at least 1 HP — it cannot knock out a Pokémon. Teach it to a fast Pokémon and use it to safely lower legendary health to the catch threshold. Essential for <strong>Mewtwo</strong> specifically.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Timer Balls are the best Poké Balls for legendaries",
+          "body": "Timer Balls become more effective the more turns a battle has lasted. Start battles with Ultra Balls for the first three turns, then switch to Timer Balls from turn four onward — by turn ten, a Timer Ball is one of the most effective balls in the game. Bring at least 30.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Xerneas — Level 70, post-game Mission 38", "note": "Fairy-type legendary. Appears in its dedicated arena near Prism Tower. Ultra Balls and Timer Balls recommended.", "type": "other", "completionistOnly": false },
+        { "label": "Yveltal — Level 70, post-game Mission 39", "note": "Dark/Flying-type legendary. Same arena approach as Xerneas. Bring Pokémon with Electric or Rock moves to weaken efficiently.", "type": "other", "completionistOnly": false },
+        { "label": "Zygarde (50%) — Level 70, Mission 40 after 50 Zygarde Cells", "note": "Dragon/Ground-type. Collect 50 Zygarde Cells from Wild Zones to unlock. Complete Forme available at 100 cells.", "type": "other", "completionistOnly": true },
+        { "label": "Mewtwo — Level 80, Mission 41–42", "note": "Psychic-type. Hardest catch in the game. False Swipe + Timer Balls essential.", "type": "other", "completionistOnly": false }
+      ]
+    }
+  ]
+}
