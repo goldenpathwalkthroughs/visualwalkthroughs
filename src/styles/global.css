@@ -91,6 +91,19 @@ body.theme-oot {
   --muted: #887840;
 }
 
+body.theme-majoras-mask {
+  --ink: #0a0512;
+  --ink-2: #0f0818;
+  --panel: #140a22;
+  --panel-2: #1b0f2e;
+  --accent: #b46cd8;
+  --accent-soft: rgba(180,108,216,.15);
+  --gold: #d8a0e8;
+  --signal: #e07ad0;
+  --line: rgba(180,108,216,.14);
+  --muted: #8a7aa0;
+}
+
 body.theme-yoshi {
   --ink: #020a01;
   --ink-2: #041404;

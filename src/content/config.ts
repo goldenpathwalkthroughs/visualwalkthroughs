@@ -411,7 +411,7 @@ const objective = z.object({
 
 const dungeonMarker = z.object({
   key: z.string(),                              // "1", "B2-3"
-  kind: z.enum(['room', 'chest', 'small-key', 'boss-key', 'switch', 'locked-door', 'boss', 'item', 'npc', 'collectible', 'secret']).default('room'),
+  kind: z.enum(['room', 'chest', 'small-key', 'boss-key', 'switch', 'locked-door', 'boss', 'item', 'npc', 'collectible', 'secret', 'shop']).default('room'),
   label: z.string(),
   requires: z.array(z.string()).default([]),    // item IDs needed to reach/clear
 });
@@ -480,6 +480,33 @@ const shopRef = z.object({
   name: z.string(),
   where: z.string(),
   items: z.array(z.object({ item: z.string(), price: z.string() })).default([]),
+});
+
+// ── v5: time-loop / scheduled-world module (feature tag) ──────────────────────
+//
+// For games built on a repeating, scheduled cycle (Majora's Mask). The wall is
+// "when to be where," so the guide needs the loop's rules and a timetable.
+
+const timeCycle = z.object({
+  cycleLength: z.string(),                       // "72 hours · three in-game days"
+  resetMechanic: z.string(),                     // how you reset the loop
+  persists: z.array(z.string()).default([]),     // what carries across a reset
+  lost: z.array(z.string()).default([]),         // what is wiped on a reset
+  controls: z.array(z.object({                   // songs/items that slow/skip/reset time
+    name: z.string(),
+    effect: z.string(),
+  })).default([]),
+  note: z.string().optional(),
+});
+
+const scheduledEvent = z.object({
+  name: z.string(),
+  days: z.string(),                              // "All", "Day 1", "Final Day"…
+  time: z.string().optional(),                   // clock-time window
+  location: z.string(),
+  prereq: z.string().optional(),
+  reward: z.string().optional(),
+  detail: z.string().optional(),
 });
 
 // ── Section ───────────────────────────────────────────────────────────────────
@@ -588,6 +615,10 @@ const games = defineCollection({
     collectibleCategories: z.array(collectibleCategory).default([]), // skulltulas, hearts, fairies
     sideQuestChains: z.array(sideQuestChain).default([]),        // trading sequence etc.
     shops: z.array(shopRef).default([]),
+
+    // v5: time-loop / scheduled-world module (all optional)
+    timeCycle: timeCycle.optional(),                             // the loop's rules
+    scheduledEvents: z.array(scheduledEvent).default([]),        // Bombers'-Notebook timetable
   }),
 });
 

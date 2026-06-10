@@ -188,7 +188,22 @@ Concise definitions — enough to build from when each is needed. Each leads wit
 
 ## 5. Feature-tag modules (stack onto any pack)
 
-Small, reusable. Examples: `open-world` (region routing + soft gating), `soulslike` (build + brutal-boss handling), `branching-narrative` (decisions/consequences/missables), `stealth` (detection, routes, non-lethal options), `survival-resource` (when to fight vs flee, save/resource management — RE-style), `co-op` (character-gated content, who-does-what), `run-based` (shifts guide shape toward reference + strategy), `field-research` (Legends-style catching). These map onto the taxonomy's "hybrid & taggable features."
+Small, reusable. Examples: `open-world` (region routing + soft gating), `soulslike` (build + brutal-boss handling), `branching-narrative` (decisions/consequences/missables), `stealth` (detection, routes, non-lethal options), `survival-resource` (when to fight vs flee, save/resource management — RE-style), `co-op` (character-gated content, who-does-what), `run-based` (shifts guide shape toward reference + strategy), `field-research` (Legends-style catching), `time-loop` (scheduled world — see below). These map onto the taxonomy's "hybrid & taggable features."
+
+### `time-loop` (scheduled world)
+
+> **Gold-standard reference:** the *Legend of Zelda: Majora's Mask* Prima and Nintendo Power guides (2000). Majora's Mask is Action-Adventure (pack A) **+ `time-loop`**, and the tag is what makes its guide work. The lesson: in a looping, scheduled world the wall is no longer *where to go* but ***when to be where*** — events fire at specific times across a repeating cycle, and a flat route can't express that.
+
+- **Stuck because:** an event only happens on a particular day at a particular hour, and the clock resets before you finish a chain. The player isn't lost on the map — they're lost in *time*. The fix is a timetable and a reset-aware plan, not a door.
+- **Adds:**
+  - `TimeCycle` — the loop's length, the songs/items that **reset, slow, or skip** time, and exactly **what persists vs is lost** across a reset (e.g. masks/hearts/keys kept, consumables/event-items lost). This is the single most important thing to state up front.
+  - `ScheduledEvent` timetable (the "Bombers' Notebook") — each tracked NPC event keyed by **day + clock-time window + location**, its **prerequisite chain**, and its **reward** (mask / Heart Piece). Multi-day chains (the Kafei & Anju line) list every timed handoff in order.
+  - A **master event flowchart** with **"earliest you can attempt this"** annotations — mandatory beats in required order, with each optional mask/Heart Piece slotted at the exact point in the loop it first becomes reachable.
+  - Masks/abilities tagged as **tools** (what they unlock) *and* **collectibles** (the checklist), since many are rewards from scheduled events.
+- **Research:** the cycle rules and persistence; every scheduled event's day/time window, location, prerequisite, and reward; which optional content is reachable in which loop; transformation/ability gating per region.
+- **UI:** a **timetable view** (day × hour grid, or per-event "be here at …" cards); a persistent **"what you keep on reset" note**; "earliest-attemptable" markers on optional content; a mask/ability checklist that doubles as a tool reference.
+- **QA:** every scheduled event states its **day + time window + location + reward**; every multi-step chain is ordered and names each prerequisite; the cycle's persistence rules are stated explicitly; no optional pickup is listed before the loop point it's reachable.
+- Shape: hybrid (region route + timetable + collectible/mask reference). Composes cleanly onto pack A's objectives / keyed dungeon maps / room-by-room layers.
 
 ---
 
@@ -209,8 +224,9 @@ How each resolves under the framework — primary pack, tags, and guide shape:
 | Elden Ring | Open-World Action-RPG | open-world, soulslike | hybrid |
 | Slay the Spire 2 *(new)* | Roguelike / Deckbuilder | run-based | reference/strategy |
 | Baldur's Gate 3 | Party CRPG | branching-narrative, turn-based-tactics, party | branching + hybrid |
+| Zelda: Majora's Mask | Action-Adventure | time-loop, puzzle | hybrid (route + timetable) |
 
-Seven packs and a handful of tags cover all eleven. That's the framework doing its job: no game on this list needs a bespoke system.
+Seven packs and a handful of tags cover all twelve. That's the framework doing its job: no game on this list needs a bespoke system — Majora's Mask, the most structurally unusual of them, is just pack A plus the `time-loop` tag.
 
 > Note the *(new)* titles. Brand-new and data-heavy releases (especially Pokémon and RE entries, whose precise data gets corrected for weeks post-launch) should be flagged low-confidence and *queued to wait* for reliable community sources — the Advisor treats them as "high demand now, build in a fortnight."
 

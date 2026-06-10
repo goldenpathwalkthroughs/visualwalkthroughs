@@ -27,7 +27,8 @@
     "turn-based-tactics",
     "party",
     "collectathon",
-    "no-combat"
+    "no-combat",
+    "time-loop"
   ],
 
   "guideShapes": [

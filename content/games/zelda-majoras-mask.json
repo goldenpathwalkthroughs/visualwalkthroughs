@@ -1,0 +1,2215 @@
+{
+  "franchiseSlug": "zelda",
+  "title": "The Legend of Zelda: Majora's Mask",
+  "slug": "zelda-majoras-mask",
+  "year": "2000",
+  "platforms": [
+    "Nintendo 64"
+  ],
+  "status": "published",
+  "genre": "action-adventure",
+  "lede": "Three days. One falling moon. Trapped in the cursed land of Termina, Link relives the same 72 hours over and over — wearing the souls of the fallen as masks — to free four Giants and stop the Skull Kid before the moon falls.",
+  "cover": "/assets/covers/zelda-majoras-mask.webp",
+  "theme": {
+    "bodyClass": "theme-majoras-mask",
+    "accent": "#b46cd8",
+    "accentSoft": "rgba(180,108,216,.15)",
+    "cardGradient": "linear-gradient(160deg,#170a22,#0f0618 60%,#080310)"
+  },
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "clock-town",
+      "woodfall",
+      "snowhead",
+      "great-bay",
+      "stone-tower",
+      "the-moon"
+    ],
+    "criticalPath": [
+      "clock-town",
+      "woodfall",
+      "snowhead",
+      "great-bay",
+      "stone-tower",
+      "the-moon"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "warning",
+      "title": "The Song of Time is your save — and your reset",
+      "body": "Playing the <strong>Song of Time</strong> returns you to dawn on the First Day and saves. You <em>keep</em> masks, Heart Containers, Heart Pieces, weapons, and your sword/wallet/bomb-bag upgrades, but you <em>lose</em> all consumables (rupees, bombs, arrows, Deku Sticks) and most one-cycle event items. Bank your rupees and finish item-chains before you reset.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Slow time, don't rush it",
+      "body": "Play the <strong>Inverted Song of Time</strong> (the Song of Time's notes reversed) the moment each cycle begins — it slows the clock to a third speed, turning 72 minutes of real dread into a manageable window. Use the <strong>Song of Double Time</strong> to skip straight to a dawn or dusk when an event needs a specific time.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Transformations are your toolkit",
+      "body": "<strong>Deku</strong> flies from flower pads and skips on water; <strong>Goron</strong> rolls fast and survives lava; <strong>Zora</strong> swims and throws fin boomerangs. Most puzzles are really asking 'which form?' — pause and switch before forcing a room.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "The Bombers' Notebook runs on a timetable",
+      "body": "Side quests fire at specific <strong>days and clock times</strong>. The marquee chain — Anju &amp; Kafei — spans all three days with timed handoffs. Use the schedule in the reference panel below and the Song of Double Time to be in the right place at the right hour.",
+      "completionistOnly": false
+    }
+  ],
+  "timeCycle": {
+    "cycleLength": "72 hours · three in-game days (about 54 real minutes at normal speed)",
+    "resetMechanic": "Play the Song of Time to rewind to dawn on the First Day. This also saves your game.",
+    "persists": [
+      "Masks",
+      "Heart Containers & Heart Pieces",
+      "Weapons & the sword you've forged",
+      "Wallet, Bomb Bag & quiver upgrades",
+      "Bottles (but not their contents)",
+      "Dungeon maps, compasses & learned songs",
+      "Owl Statue save points"
+    ],
+    "lost": [
+      "Rupees (bank them first)",
+      "Bombs, Bombchu, arrows, Deku Sticks & Nuts",
+      "Most one-cycle event items (deeds, letters, eggs, bottled potions)",
+      "Dungeon Small Keys & temporary progress inside a not-yet-cleared temple"
+    ],
+    "controls": [
+      {
+        "name": "Song of Time",
+        "effect": "Reset to the First Day and save."
+      },
+      {
+        "name": "Inverted Song of Time",
+        "effect": "Slow time to one-third speed for the rest of the cycle."
+      },
+      {
+        "name": "Song of Double Time",
+        "effect": "Skip forward to the next dawn or dusk."
+      },
+      {
+        "name": "Song of Soaring",
+        "effect": "Warp to any Owl Statue you've activated — your fastest travel."
+      }
+    ],
+    "note": "Defeating a temple boss is permanent across resets (the Giant stays freed), but the region's curse only lifts within a cycle you've cleared it in — so collect a region's time-sensitive pickups in the same loop you beat its temple."
+  },
+  "items": [
+    {
+      "id": "ocarina-of-time",
+      "name": "Ocarina of Time",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "clock-town"
+    },
+    {
+      "id": "song-of-time",
+      "name": "Song of Time",
+      "type": "song",
+      "class": "progression",
+      "acquiredAtSectionId": "clock-town"
+    },
+    {
+      "id": "deku-mask",
+      "name": "Deku Mask",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "clock-town"
+    },
+    {
+      "id": "bombers-notebook",
+      "name": "Bombers' Notebook",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "clock-town"
+    },
+    {
+      "id": "heros-bow",
+      "name": "Hero's Bow",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "woodfall"
+    },
+    {
+      "id": "lens-of-truth",
+      "name": "Lens of Truth",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "woodfall"
+    },
+    {
+      "id": "goron-mask",
+      "name": "Goron Mask",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "snowhead"
+    },
+    {
+      "id": "fire-arrows",
+      "name": "Fire Arrows",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "snowhead"
+    },
+    {
+      "id": "powder-keg",
+      "name": "Powder Keg",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "snowhead"
+    },
+    {
+      "id": "zora-mask",
+      "name": "Zora Mask",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "great-bay"
+    },
+    {
+      "id": "ice-arrows",
+      "name": "Ice Arrows",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-bay"
+    },
+    {
+      "id": "hookshot",
+      "name": "Hookshot",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-bay"
+    },
+    {
+      "id": "light-arrows",
+      "name": "Light Arrows",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "stone-tower"
+    },
+    {
+      "id": "elegy-of-emptiness",
+      "name": "Elegy of Emptiness",
+      "type": "song",
+      "class": "progression",
+      "acquiredAtSectionId": "stone-tower"
+    },
+    {
+      "id": "giants-mask",
+      "name": "Giant's Mask",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "stone-tower"
+    },
+    {
+      "id": "fierce-deity-mask",
+      "name": "Fierce Deity's Mask",
+      "type": "ability",
+      "class": "optional",
+      "acquiredAtSectionId": "the-moon"
+    }
+  ],
+  "songs": [
+    {
+      "name": "Song of Time",
+      "where": "Remembered once you recover the Ocarina of Time from the Skull Kid.",
+      "use": "Returns you to the dawn of the First Day — resets the three-day cycle and saves."
+    },
+    {
+      "name": "Inverted Song of Time",
+      "where": "Play the Song of Time's notes in reverse.",
+      "use": "Slows time to a third speed, stretching each cycle."
+    },
+    {
+      "name": "Song of Double Time",
+      "where": "Play each Song of Time note twice.",
+      "use": "Jumps time forward to the next dawn or dusk."
+    },
+    {
+      "name": "Song of Healing",
+      "where": "Taught by the Happy Mask Salesman after you regain the Ocarina.",
+      "use": "Soothes troubled spirits and lifts curses, often leaving a wearable mask behind."
+    },
+    {
+      "name": "Sonata of Awakening",
+      "where": "Taught by the imprisoned monkey in Deku Palace.",
+      "use": "Rouses sleeping things — raises Woodfall Temple and wakes certain characters."
+    },
+    {
+      "name": "Goron Lullaby",
+      "where": "Completed from the Goron Elder's baby in Goron Village (after the Elder's intro).",
+      "use": "Sends listeners to sleep — quiets Goron babies and the boulder blocking the Powder Keg, and Biggoron."
+    },
+    {
+      "name": "New Wave Bossa Nova",
+      "where": "Taught by the Zora egg larvae in the Marine Research Lab once all eggs are gathered.",
+      "use": "Summons the giant turtle to ferry you to the Great Bay Temple."
+    },
+    {
+      "name": "Elegy of Emptiness",
+      "where": "Taught by the King of Ikana after you defeat him in the Ancient Castle.",
+      "use": "Leaves a hollow statue of your current form to hold down switches in Stone Tower."
+    },
+    {
+      "name": "Oath to Order",
+      "where": "Learned by freeing the giant after each temple boss.",
+      "use": "Calls the four Giants; played atop the Clock Tower to catch the falling Moon."
+    },
+    {
+      "name": "Song of Soaring",
+      "where": "From a stone tablet near the Southern Swamp.",
+      "use": "Warps instantly to any Owl Statue you've activated."
+    },
+    {
+      "name": "Epona's Song",
+      "where": "Recalled with Romani at Romani Ranch.",
+      "use": "Calls Epona to your side and calms certain cows."
+    },
+    {
+      "name": "Song of Storms",
+      "where": "Taught by the ghost Flat beneath a grave in the Ikana Graveyard.",
+      "use": "Summons rain — fills dry wells and springs and reveals hidden grottoes."
+    }
+  ],
+  "scheduledEvents": [
+    {
+      "name": "Anju — Stock Pot Inn",
+      "days": "All",
+      "time": "Day 1 from ~1:40pm",
+      "location": "East Clock Town · Stock Pot Inn",
+      "prereq": "Claim a reservation, or wear Kafei's Mask after the postman delivers Kafei's letter",
+      "reward": "Begins the Couple's Mask chain; Room Key",
+      "detail": "Anju runs the inn and anchors the game's longest sidequest, spanning all three days."
+    },
+    {
+      "name": "Kafei's Mask — Madame Aroma",
+      "days": "Day 1",
+      "time": "~10:00am–6:00pm",
+      "location": "East Clock Town · Mayor's Residence",
+      "prereq": "Agree to search for Madame Aroma's missing son",
+      "reward": "Kafei's Mask",
+      "detail": "Madame Aroma lends the mask of her son Kafei to aid the search."
+    },
+    {
+      "name": "Letter to Kafei — Anju at midnight",
+      "days": "Night 1",
+      "time": "12:00am–6:00am",
+      "location": "East Clock Town · Stock Pot Inn kitchen",
+      "prereq": "Show Anju Kafei's Mask; the postman delivers Kafei's letter ~1:40pm Day 1",
+      "reward": "Letter to Kafei",
+      "detail": "Anju entrusts you with a letter for her missing fiancé."
+    },
+    {
+      "name": "Mail the Letter to Kafei",
+      "days": "Day 2",
+      "time": "Before the ~9:00am pickup",
+      "location": "Any Clock Town postbox",
+      "prereq": "Hold the Letter to Kafei",
+      "reward": "Triggers Kafei's reply",
+      "detail": "The postman collects the letter on his morning round and delivers it to Kafei."
+    },
+    {
+      "name": "Kafei — Curiosity Shop back room",
+      "days": "Day 2",
+      "time": "~3:00pm–6:00pm",
+      "location": "West Clock Town · Laundry Pool → Curiosity Shop hideout",
+      "prereq": "Mailed the letter; follow the masked child",
+      "reward": "Pendant of Memories",
+      "detail": "Kafei, shrunk to a child by the Skull Kid, explains his stolen wedding mask and gives the pendant."
+    },
+    {
+      "name": "Give Pendant to Anju",
+      "days": "Day 2 or 3",
+      "time": "~10:00am–7:00pm",
+      "location": "East Clock Town · Stock Pot Inn",
+      "prereq": "Hold the Pendant of Memories",
+      "reward": "Anju will wait rather than flee",
+      "detail": "Kafei's pendant convinces Anju to stay in town despite the moon."
+    },
+    {
+      "name": "Special Delivery to Mama",
+      "days": "Final Day",
+      "time": "~1:00pm–6:00pm",
+      "location": "West Clock Town · Curiosity Shop back room",
+      "prereq": "Anju & Kafei chain reached the Final Day",
+      "reward": "Keaton Mask + the delivery letter",
+      "detail": "The Curiosity Shop owner asks you to carry a letter to Kafei's mother."
+    },
+    {
+      "name": "Sakon's Hideout — recover the Sun's Mask",
+      "days": "Final Day",
+      "time": "From ~6:00pm",
+      "location": "Ikana Canyon · Sakon's Hideout",
+      "prereq": "On the Anju & Kafei chain with Kafei",
+      "reward": "Recovers the Sun's Mask",
+      "detail": "You and Kafei solve a switch-and-conveyor puzzle to grab the wedding mask before it is lost."
+    },
+    {
+      "name": "Couple's Mask — the reunion",
+      "days": "Final Night",
+      "time": "~from 6:00pm (late-countdown reunion)",
+      "location": "East Clock Town · Stock Pot Inn",
+      "prereq": "Completed the full chain including Sakon's Hideout",
+      "reward": "Couple's Mask",
+      "detail": "The reunited couple merge the Sun's and Moon's Masks into the Couple's Mask and give it to you."
+    },
+    {
+      "name": "Old Lady from the Bomb Shop",
+      "days": "Night 1",
+      "time": "~12:00am",
+      "location": "North Clock Town",
+      "prereq": "Strike the thief Sakon to make him drop the bombs (skip this if running the Anju & Kafei quest)",
+      "reward": "Blast Mask",
+      "detail": "Stopping Sakon from robbing the bomb-shop lady earns the Blast Mask."
+    },
+    {
+      "name": "Guru-Guru — Bremen Mask",
+      "days": "Night 1 or 2",
+      "time": "~6:00pm–6:00am",
+      "location": "West Clock Town · Laundry Pool",
+      "prereq": "Approach as Hylian Link and hear the musician's confession",
+      "reward": "Bremen Mask",
+      "detail": "The music-box man gives you his Bremen Mask after his late-night confession."
+    },
+    {
+      "name": "Grog's chicks (Bremen march)",
+      "days": "Any day",
+      "time": "~6:00am–8:00pm",
+      "location": "Romani Ranch · Cucco Shack",
+      "prereq": "Wear the Bremen Mask and march so every chick follows and grows up",
+      "reward": "Bunny Hood",
+      "detail": "Raising Grog's chicks to adulthood earns the speed-boosting Bunny Hood."
+    },
+    {
+      "name": "Romani — alien defence",
+      "days": "Night 1",
+      "time": "Aliens arrive ~2:30am; hold out to ~5:00am",
+      "location": "Romani Ranch · barn",
+      "prereq": "Agree to help Romani during the day; bring a bow",
+      "reward": "Bottle of milk; opens the Romani's Mask chain",
+      "detail": "Shoot the invading 'ghosts' before they reach the barn and take the cows."
+    },
+    {
+      "name": "Cremia — milk run",
+      "days": "Night 2",
+      "time": "Cart departs ~6:00pm",
+      "location": "Milk Road, Romani Ranch → Clock Town",
+      "prereq": "Defend the ranch on Night 1 first",
+      "reward": "Romani's Mask",
+      "detail": "Guard Cremia's wagon, shooting the masked riders who attack on the road."
+    },
+    {
+      "name": "Gorman Brothers — horse race",
+      "days": "Any day",
+      "time": "~6:00am–6:00pm",
+      "location": "Milk Road · Gorman Track",
+      "prereq": "Ride Epona and beat both brothers",
+      "reward": "Garo's Mask",
+      "detail": "Winning the racetrack on Epona earns Garo's Mask, needed to enter the Milk Bar."
+    },
+    {
+      "name": "Postman — Postman's Hat",
+      "days": "Final Day",
+      "time": "Daytime, before he flees",
+      "location": "West Clock Town · Post Office",
+      "prereq": "Deliver the Special Delivery to Mama so the Postman is freed from his schedule",
+      "reward": "Postman's Hat",
+      "detail": "Relieved of duty, the terrified Postman gives you his hat before fleeing the moon."
+    },
+    {
+      "name": "Swordsman — Expert Course",
+      "days": "Any day",
+      "time": "Daytime",
+      "location": "West Clock Town · Swordsman's School",
+      "prereq": "Cut all logs with jump attacks for a perfect 30",
+      "reward": "Piece of Heart",
+      "detail": "Acing the log-cutting course rewards a Heart Piece."
+    },
+    {
+      "name": "Kamaro — Kamaro's Mask",
+      "days": "Any night",
+      "time": "~12:00am–6:00am",
+      "location": "Termina Field · mushroom rock north of town",
+      "prereq": "Play the Song of Healing for the dancing ghost",
+      "reward": "Kamaro's Mask",
+      "detail": "Healing the spirit of the dancer Kamaro yields his mask and dance."
+    },
+    {
+      "name": "Rosa Sisters — the dance",
+      "days": "Night 1 or 2",
+      "time": "~6:00pm onward",
+      "location": "West Clock Town",
+      "prereq": "Wear Kamaro's Mask and perform the dance",
+      "reward": "Piece of Heart",
+      "detail": "Teaching the Rosa Sisters their routine earns a Heart Piece."
+    },
+    {
+      "name": "Shiro — Stone Mask",
+      "days": "Any",
+      "time": "Any time",
+      "location": "Road to Ikana · invisible soldier",
+      "prereq": "Find the invisible Shiro with the Lens of Truth and give him a potion",
+      "reward": "Stone Mask",
+      "detail": "Reviving the overlooked soldier grants the Stone Mask, which makes enemies ignore you."
+    },
+    {
+      "name": "Gorman Troupe — Circus Leader's Mask",
+      "days": "Night 1 or 2",
+      "time": "~10:00pm–5:00am",
+      "location": "East Clock Town · Milk Bar (Latte)",
+      "prereq": "Have Romani's Mask to enter; pass Toto's sound-check in all four forms",
+      "reward": "Circus Leader's Mask",
+      "detail": "After the band's rehearsal succeeds, troupe leader Gorman gives you his mask."
+    }
+  ],
+  "shops": [
+    {
+      "name": "Trading Post",
+      "where": "West Clock Town",
+      "items": [
+        {
+          "item": "Deku Shield",
+          "price": "30 R"
+        },
+        {
+          "item": "Hero's Shield",
+          "price": "80 R"
+        },
+        {
+          "item": "Bombs (5)",
+          "price": "25 R"
+        },
+        {
+          "item": "Deku Nuts (5)",
+          "price": "15 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "30 R"
+        }
+      ]
+    },
+    {
+      "name": "Bomb Shop",
+      "where": "West Clock Town",
+      "items": [
+        {
+          "item": "Bombs (5)",
+          "price": "25 R"
+        },
+        {
+          "item": "Bombchu (10)",
+          "price": "40 R"
+        },
+        {
+          "item": "Bigger Bomb Bag",
+          "price": "90 R"
+        }
+      ]
+    },
+    {
+      "name": "Curiosity Shop",
+      "where": "West Clock Town (back-alley, night)",
+      "items": [
+        {
+          "item": "Stolen goods / Blue Potion",
+          "price": "varies"
+        },
+        {
+          "item": "All-Night Mask",
+          "price": "500 R"
+        }
+      ]
+    },
+    {
+      "name": "Goron Shop",
+      "where": "Goron Village / Mountain Village",
+      "items": [
+        {
+          "item": "Bombs (5)",
+          "price": "25 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "40 R"
+        },
+        {
+          "item": "Rock Sirloin (Powder Keg)",
+          "price": "—"
+        }
+      ]
+    },
+    {
+      "name": "Zora Shop",
+      "where": "Zora Hall, Great Bay",
+      "items": [
+        {
+          "item": "Hero's Shield",
+          "price": "80 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "30 R"
+        },
+        {
+          "item": "Arrows (10)",
+          "price": "20 R"
+        }
+      ]
+    }
+  ],
+  "itemReference": [
+    {
+      "name": "Deku Mask",
+      "category": "Transformation",
+      "where": "Happy Mask Salesman, after the Song of Healing",
+      "when": "Deku",
+      "unlocks": "Hop on water, launch from flower pads, fire bubbles."
+    },
+    {
+      "name": "Goron Mask",
+      "category": "Transformation",
+      "where": "Song of Healing for Darmani's spirit, Goron Graveyard",
+      "when": "Goron",
+      "unlocks": "Roll at speed, punch, ground-pound, survive lava."
+    },
+    {
+      "name": "Zora Mask",
+      "category": "Transformation",
+      "where": "Song of Healing for the dying Mikau, Great Bay Coast",
+      "when": "Zora",
+      "unlocks": "Swim fast, dive, throw fin boomerangs, raise an electric shield."
+    },
+    {
+      "name": "Fierce Deity's Mask",
+      "category": "Transformation",
+      "where": "Trade all 20 ordinary masks to the Moon Children",
+      "when": "Boss only",
+      "unlocks": "Become the towering Fierce Deity and fire sword beams — usable on bosses."
+    },
+    {
+      "name": "Hero's Bow",
+      "category": "Weapon",
+      "where": "Woodfall Temple",
+      "unlocks": "Shoot eye-switches and distant enemies; base for the three elemental arrows."
+    },
+    {
+      "name": "Fire Arrows",
+      "category": "Weapon",
+      "where": "Snowhead Temple",
+      "unlocks": "Melt ice and light frozen torches."
+    },
+    {
+      "name": "Ice Arrows",
+      "category": "Weapon",
+      "where": "Great Bay Temple",
+      "unlocks": "Freeze water and enemies into solid platforms."
+    },
+    {
+      "name": "Light Arrows",
+      "category": "Weapon",
+      "where": "Stone Tower Temple",
+      "unlocks": "Flip Stone Tower, pierce Gomess's cloak, and stagger Majora."
+    },
+    {
+      "name": "Hookshot",
+      "category": "Item",
+      "where": "Pirates' Fortress, Great Bay",
+      "unlocks": "Grapple to targets and pull across gaps — opens far Heart Pieces."
+    },
+    {
+      "name": "Lens of Truth",
+      "category": "Item",
+      "where": "Hidden grotto near the Southern Swamp",
+      "unlocks": "Reveals invisible platforms, walls, and Shiro (drains magic)."
+    },
+    {
+      "name": "Powder Keg",
+      "category": "Item",
+      "where": "Pass the Goron's big-bomb test (Mountain Village)",
+      "unlocks": "Giant bombs that blow open the boulder to the Bomb Shop and Romani Ranch gate."
+    },
+    {
+      "name": "Pictograph Box",
+      "category": "Item",
+      "where": "Swamp Tourist Center",
+      "unlocks": "Photograph people and places for several side quests and Heart Pieces."
+    },
+    {
+      "name": "Great Fairy's Sword",
+      "category": "Upgrade",
+      "where": "Reunite the Great Fairy's stray fairies (Ikana)",
+      "unlocks": "The strongest two-handed blade — far above the forged Gilded Sword."
+    },
+    {
+      "name": "Gilded Sword",
+      "category": "Upgrade",
+      "where": "Give the Razor Sword + a Gold Dust to the Mountain Smithy",
+      "unlocks": "A permanent, unbreakable sword upgrade that survives resets."
+    }
+  ],
+  "collectibleCategories": [
+    {
+      "name": "Pieces of Heart",
+      "total": 52,
+      "note": "Four pieces make one Heart Container (bosses give a full container too). Many are gated behind a specific transformation, song, or mask, and several are tied to timed Bombers'-Notebook events — so plan which cycle you collect them in.",
+      "entries": [
+        {
+          "label": "Post Office timing game",
+          "location": "Clock Town Post Office",
+          "requires": "Stop the Postman's counter at exactly 10 seconds (Bunny Hood helps)",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Clock Tower ledge",
+          "location": "South Clock Town, upper ledge",
+          "requires": "Give the Business Scrub the Moon's Tear, then launch from its Deku Flower",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Bank reward",
+          "location": "West Clock Town bank",
+          "requires": "Deposit a running total of 5000 Rupees",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Stock Pot Inn toilet hand",
+          "location": "Stock Pot Inn restroom",
+          "requires": "Reach the inn at night and give the hand a piece of paper",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Deku platform jump",
+          "location": "North Clock Town, near the slide",
+          "requires": "As Deku Link, hop to the nearby tree",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Swordsman's School",
+          "location": "West Clock Town swordsman's school",
+          "requires": "Score a perfect 30 in the Expert Course",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Deku Scrub Playground",
+          "location": "North Clock Town playground",
+          "requires": "As Deku Link, win the float game all three days",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Honey & Darling's game",
+          "location": "West Clock Town Honey & Darling shop",
+          "requires": "Win the minigame on three consecutive days",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Town Shooting Gallery",
+          "location": "East Clock Town shooting gallery",
+          "requires": "Score a perfect 50 with the Hero's Bow",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Treasure-hunting game",
+          "location": "East Clock Town Treasure Chest Shop",
+          "requires": "Win the game as Goron Link",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Rosa Sisters' dance",
+          "location": "West Clock Town at night",
+          "requires": "Wear Kamaro's Mask and dance for the Rosa Sisters",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Grandma's long story",
+          "location": "Stock Pot Inn (Grandma's room)",
+          "requires": "Wear the All-Night Mask through her Carnival tale",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Grandma's second story",
+          "location": "Stock Pot Inn (Grandma's room)",
+          "requires": "Wear the All-Night Mask through her hide-and-seek tale",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Postman's postbox",
+          "location": "A Clock Town postbox",
+          "requires": "Wear the Postman's Hat and check a postbox",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Couple's Mask reward",
+          "location": "Mayor's residence, East Clock Town",
+          "requires": "Complete the Anju & Kafei quest, then wear the Couple's Mask in the office",
+          "era": "Clock Town"
+        },
+        {
+          "label": "Keaton's quiz",
+          "location": "Hidden grass circle, Termina Field",
+          "requires": "As Deku Link sink into the grass, wear the Keaton Mask, answer all five questions",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Peahat hole",
+          "location": "Termina Field (Milk Road hole)",
+          "requires": "As Deku Link, drop in and defeat the Peahat",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Dodongo hole",
+          "location": "Northwest Termina Field hidden hole",
+          "requires": "Defeat the two Dodongos inside",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Business Scrub cave",
+          "location": "Cave near the Astral Observatory path",
+          "requires": "As Deku Link, haggle the Business Scrub down and pay 100 Rupees",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Gossip Stone match",
+          "location": "Four holes with Gossip Stones, Termina Field",
+          "requires": "Play a learned area song until all four stones glow the same colour",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Beehive over water",
+          "location": "West Termina Field near Great Bay",
+          "requires": "Blast the boulder, destroy the beehives, then dive as Zora to grab it",
+          "era": "Termina Field"
+        },
+        {
+          "label": "Doggy Racetrack",
+          "location": "Romani Ranch dog racetrack",
+          "requires": "Pick a winning dog (Mask of Truth helps) and earn 150 Rupees",
+          "era": "Romani Ranch"
+        },
+        {
+          "label": "Southern Swamp vine tree",
+          "location": "Swamp path near Tingle",
+          "requires": "As Deku Link, climb the vines by the tree",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Tourist Center roof",
+          "location": "Roof of the Swamp Tourist Center",
+          "requires": "Advance the Title Deed chain, then float from a flower onto the roof",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Swamp Shooting Gallery",
+          "location": "Southern Swamp shooting gallery",
+          "requires": "Score 2000+ with the Hero's Bow",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Pictograph contest",
+          "location": "Swamp Tourist Center",
+          "requires": "Photograph the Deku King and show Koume",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Boat-cruise targets",
+          "location": "Swamp Tourist Center boat cruise",
+          "requires": "After Woodfall, shoot the targets 20 times while sparing Koume",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Deku Palace garden",
+          "location": "Deku Palace inner garden",
+          "requires": "As Deku Link reach the far end of the western monkey garden",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Woodfall flower chain",
+          "location": "Outside Woodfall Temple",
+          "requires": "As Deku Link, float flower-to-flower around the rim and open the chest",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Mountain Village ledge",
+          "location": "Goron/Mountain Village ledge",
+          "requires": "Advance the Title Deed chain, then float from a Deku Flower to the ledge",
+          "era": "Snowhead"
+        },
+        {
+          "label": "Don Gero's frog choir",
+          "location": "Mountain Village pond",
+          "requires": "As Goron, get Don Gero's Mask and gather all five frogs after spring returns",
+          "era": "Snowhead"
+        },
+        {
+          "label": "Mountain river bottom",
+          "location": "River between Mountain & Goron Village",
+          "requires": "After defeating Goht, dive to the riverbed as Zora",
+          "era": "Snowhead"
+        },
+        {
+          "label": "Scarecrow platform",
+          "location": "Path to Snowhead",
+          "requires": "Use the Scarecrow's Song and Hookshot to reach the high scarecrow",
+          "era": "Snowhead"
+        },
+        {
+          "label": "Giant fish aquarium",
+          "location": "Marine Research Laboratory, Great Bay",
+          "requires": "Bring four bottled fish to feed the tank until the big fish spits it out",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Zora Cape waterfall",
+          "location": "Easternmost Zora Cape",
+          "requires": "As Zora, defeat the Like Like at the waterfall base",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Zora Hall piano duet",
+          "location": "Zora Hall",
+          "requires": "As Zora, learn the bassist's part and play with the band",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Lulu's room ledge",
+          "location": "Zora Hall, above Lulu's room",
+          "requires": "Complete the Title Deed chain, then float up as Deku Link",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Pirates' Fortress cell",
+          "location": "Pirates' Fortress",
+          "requires": "As Goron hit the switch and roll into the closing cell",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Pinnacle Rock seahorse",
+          "location": "Pinnacle Rock, Great Bay",
+          "requires": "Photograph a pirate for the Seahorse, then as Zora beat the Deep Pythons",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Magic bean platform",
+          "location": "Northeast Great Bay Coast",
+          "requires": "Plant and water a Magic Bean, ride it up, then Hookshot across",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Beaver Brothers race",
+          "location": "Cave behind Zora Cape's waterfall",
+          "requires": "As Zora, beat both beavers' time on the second race",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Fisherman's jumping game",
+          "location": "Great Bay Coast",
+          "requires": "After defeating Gyorg, Hookshot ring-to-ring and score 20+",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Oceanside Skulltula reward",
+          "location": "Oceanside Spider House",
+          "requires": "Shoot the masks in the order the Stalchildren's clues give",
+          "era": "Great Bay"
+        },
+        {
+          "label": "Sakon's Hideout flower",
+          "location": "Ikana Canyon",
+          "requires": "Complete the final Title Deed chain, then float up as Deku Link",
+          "era": "Ikana"
+        },
+        {
+          "label": "Graveyard Iron Knuckle",
+          "location": "Ikana Graveyard (Night 3 grave)",
+          "requires": "Use the Captain's Hat and Lens of Truth, then defeat the Iron Knuckle",
+          "era": "Ikana"
+        },
+        {
+          "label": "Beneath the Graveyard",
+          "location": "Ikana Graveyard dig site",
+          "requires": "Use the Captain's Hat to command Stalchildren to dig",
+          "era": "Ikana"
+        },
+        {
+          "label": "Spirit House (Poe Sisters)",
+          "location": "Ikana Canyon Spirit House",
+          "requires": "Defeat the Poe Sisters with Ice Arrows without dropping below three hearts",
+          "era": "Ikana"
+        },
+        {
+          "label": "Ikana Castle roof",
+          "location": "Ancient Castle of Ikana",
+          "requires": "Shoot the crystal switch and float via Deku Flowers to the chest",
+          "era": "Ikana"
+        },
+        {
+          "label": "Secret Shrine",
+          "location": "Hidden grotto in Ikana",
+          "requires": "Clear the four hidden mini-boss rooms for the chest",
+          "era": "Ikana"
+        },
+        {
+          "label": "Moon Deku trial",
+          "location": "The Moon — Deku child's room",
+          "requires": "Trade masks to the Deku-mask child and clear his platforming trial",
+          "era": "Moon"
+        },
+        {
+          "label": "Moon Goron trial",
+          "location": "The Moon — Goron child's room",
+          "requires": "Trade masks to the Goron-mask child and clear his rolling trial",
+          "era": "Moon"
+        },
+        {
+          "label": "Moon Zora trial",
+          "location": "The Moon — Zora child's room",
+          "requires": "Trade masks to the Zora-mask child and clear his trial",
+          "era": "Moon"
+        }
+      ]
+    },
+    {
+      "name": "Masks",
+      "total": 24,
+      "note": "Twenty-four masks in all: four transformations (Deku, Goron, Zora, Fierce Deity) and twenty ordinary masks, most won from the souls and schedules of Termina's people. The twenty ordinary masks are the price of the Fierce Deity's Mask on the Moon.",
+      "entries": [
+        {
+          "label": "Deku Mask",
+          "location": "From the Happy Mask Salesman after you recover the Ocarina and learn the Song of Healing.",
+          "requires": "Become Deku Link — skip across water, launch from flower pads, fire bubbles."
+        },
+        {
+          "label": "Goron Mask",
+          "location": "Play the Song of Healing for Darmani's spirit at his grave in the Goron Graveyard.",
+          "requires": "Become Goron Link — roll at speed, punch, ground-pound, and shrug off lava."
+        },
+        {
+          "label": "Zora Mask",
+          "location": "Play the Song of Healing for the dying Zora Mikau on Great Bay Coast.",
+          "requires": "Become Zora Link — swim fast, dive, throw fin boomerangs, raise an electric shield."
+        },
+        {
+          "label": "Postman's Hat",
+          "location": "During the Anju & Kafei quest, hand the Postman the Special Delivery to Mama.",
+          "requires": "Loot Clock Town's postboxes (and a Heart Piece)."
+        },
+        {
+          "label": "All-Night Mask",
+          "location": "Buy from the Curiosity Shop late in the Anju & Kafei chain.",
+          "requires": "Stay awake through the Old Lady's long bedtime stories."
+        },
+        {
+          "label": "Blast Mask",
+          "location": "Stop Sakon robbing the Old Lady in North Clock Town on the first night.",
+          "requires": "Detonate a bomb blast on command without spending bombs (hurts you up close)."
+        },
+        {
+          "label": "Stone Mask",
+          "location": "Use the Lens of Truth to find the invisible soldier Shiro on the road to Ikana and give him a potion.",
+          "requires": "Turn invisible to most enemies, who simply ignore you."
+        },
+        {
+          "label": "Great Fairy's Mask",
+          "location": "Return the first Stray Fairy to the Great Fairy in North Clock Town.",
+          "requires": "Draws nearby Stray Fairies toward you — eases collecting them in temples."
+        },
+        {
+          "label": "Keaton Mask",
+          "location": "Given during the Curiosity Shop / Kafei chain.",
+          "requires": "Summons Keaton's rupee quiz from certain bushes; advances the Anju & Kafei quest."
+        },
+        {
+          "label": "Bremen Mask",
+          "location": "Talk to Guru-Guru at the Laundry Pool at night.",
+          "requires": "March a line of baby Cuccos to raise them into adults."
+        },
+        {
+          "label": "Bunny Hood",
+          "location": "Raise all the chicks at the Cucco Shack with the Bremen Mask; Grog gives the hood.",
+          "requires": "Greatly increases your running speed."
+        },
+        {
+          "label": "Don Gero's Mask",
+          "location": "As Goron Link, give Rock Sirloin to the hungry Goron in the Mountain Village.",
+          "requires": "Reunites the frog choir; gathering all five frogs earns a Heart Piece."
+        },
+        {
+          "label": "Mask of Scents",
+          "location": "After rescuing the Deku Princess, win the Deku Butler's underground race.",
+          "requires": "Sniff out hidden items and magic mushrooms."
+        },
+        {
+          "label": "Romani's Mask",
+          "location": "Defend Romani Ranch from the aliens (Day 1 night), then escort Cremia's milk wagon (Day 2 night).",
+          "requires": "Proves Milk Bar membership — opens the Latte Milk Bar."
+        },
+        {
+          "label": "Circus Leader's Mask",
+          "location": "Wearing Romani's Mask, play the Ballad of the Wind Fish for Toto in the Milk Bar in all four forms.",
+          "requires": "Calms Gorman; used in the Gorman troupe storyline."
+        },
+        {
+          "label": "Kamaro's Mask",
+          "location": "Play the Song of Healing for the ghost dancer Kamaro in northern Termina Field at night.",
+          "requires": "Perform Kamaro's dance — shown to the Rosa Sisters for a Heart Piece."
+        },
+        {
+          "label": "Gibdo Mask",
+          "location": "Cure the cursed father in the Music Box House at the foot of Ikana with the Song of Healing.",
+          "requires": "Gibdos and ReDeads beg for food instead of attacking, and will talk."
+        },
+        {
+          "label": "Garo's Mask",
+          "location": "As Goron Link, beat the Gorman Brothers in the Gorman Track horse race.",
+          "requires": "Summons Garo Masters for hints; needed to progress through Ikana Canyon."
+        },
+        {
+          "label": "Captain's Hat",
+          "location": "Best Captain Keeta, the giant skeleton in the Ikana Graveyard.",
+          "requires": "Commands Stalchildren, who obey you and open the way."
+        },
+        {
+          "label": "Giant's Mask",
+          "location": "In a chest revealed partway through the Twinmold boss arena, Stone Tower Temple.",
+          "requires": "Grows Link giant-sized to fight Twinmold (drains magic while worn)."
+        },
+        {
+          "label": "Mask of Truth",
+          "location": "Defeat every Gold Skulltula in the Swamp Spider House.",
+          "requires": "Read Gossip Stones and talk to animals for hints."
+        },
+        {
+          "label": "Kafei's Mask",
+          "location": "From Madame Aroma at the Mayor's Residence when asked to find the missing Kafei.",
+          "requires": "Shown around town to gather clues — starts the Anju & Kafei quest."
+        },
+        {
+          "label": "Couple's Mask",
+          "location": "Complete the Anju & Kafei quest and reunite them (the Pendant of Memories chain).",
+          "requires": "Shown to the Mayor to settle the evacuation argument for a Heart Piece."
+        },
+        {
+          "label": "Fierce Deity's Mask",
+          "location": "Inside the Moon, give all 20 ordinary masks to the Moon Children to clear their trials.",
+          "requires": "Become the towering Fierce Deity, firing sword beams — usable against the bosses."
+        }
+      ]
+    },
+    {
+      "name": "Gold Skulltula Houses",
+      "total": 2,
+      "note": "Two cursed Spider Houses, 30 Gold Skulltula tokens each. Clear a house in a single visit to lift its curse for the reward.",
+      "entries": [
+        {
+          "label": "Swamp Spider House (30 tokens)",
+          "location": "Mask of Truth (lifts the cursed man's curse)",
+          "requires": "Use the Deku Mask to float to high webs; Bombs and the Hero's Bow reach the hidden tokens",
+          "era": "Woodfall"
+        },
+        {
+          "label": "Oceanside Spider House (30 tokens)",
+          "location": "Giant's Wallet (5000-Rupee capacity) if cleared before the man closes up; otherwise a Gold Rupee",
+          "requires": "Needs the Hero's Bow and explosives; some tokens need the Hookshot and light puzzles",
+          "era": "Great Bay"
+        }
+      ]
+    }
+  ],
+  "sideQuestChains": [
+    {
+      "id": "anju-kafei",
+      "name": "The Anju & Kafei reunion",
+      "reward": "Couple's Mask — and the game's most moving sidequest",
+      "era": "All three days",
+      "steps": [
+        {
+          "label": "Anju — Stock Pot Inn",
+          "detail": "Anju runs the inn and anchors the game's longest sidequest, spanning all three days.",
+          "requires": "All · Day 1 from ~1:40pm · East Clock Town · Stock Pot Inn"
+        },
+        {
+          "label": "Kafei's Mask — Madame Aroma",
+          "detail": "Madame Aroma lends the mask of her son Kafei to aid the search.",
+          "requires": "Day 1 · ~10:00am–6:00pm · East Clock Town · Mayor's Residence"
+        },
+        {
+          "label": "Letter to Kafei — Anju at midnight",
+          "detail": "Anju entrusts you with a letter for her missing fiancé.",
+          "requires": "Night 1 · 12:00am–6:00am · East Clock Town · Stock Pot Inn kitchen"
+        },
+        {
+          "label": "Mail the Letter to Kafei",
+          "detail": "The postman collects the letter on his morning round and delivers it to Kafei.",
+          "requires": "Day 2 · Before the ~9:00am pickup · Any Clock Town postbox"
+        },
+        {
+          "label": "Kafei — Curiosity Shop back room",
+          "detail": "Kafei, shrunk to a child by the Skull Kid, explains his stolen wedding mask and gives the pendant.",
+          "requires": "Day 2 · ~3:00pm–6:00pm · West Clock Town · Laundry Pool → Curiosity Shop hideout"
+        },
+        {
+          "label": "Give Pendant to Anju",
+          "detail": "Kafei's pendant convinces Anju to stay in town despite the moon.",
+          "requires": "Day 2 or 3 · ~10:00am–7:00pm · East Clock Town · Stock Pot Inn"
+        },
+        {
+          "label": "Special Delivery to Mama",
+          "detail": "The Curiosity Shop owner asks you to carry a letter to Kafei's mother.",
+          "requires": "Final Day · ~1:00pm–6:00pm · West Clock Town · Curiosity Shop back room"
+        },
+        {
+          "label": "Sakon's Hideout — recover the Sun's Mask",
+          "detail": "You and Kafei solve a switch-and-conveyor puzzle to grab the wedding mask before it is lost.",
+          "requires": "Final Day · From ~6:00pm · Ikana Canyon · Sakon's Hideout"
+        },
+        {
+          "label": "Couple's Mask — the reunion",
+          "detail": "The reunited couple merge the Sun's and Moon's Masks into the Couple's Mask and give it to you.",
+          "requires": "Final Night · ~from 6:00pm (late-countdown reunion) · East Clock Town · Stock Pot Inn"
+        }
+      ]
+    }
+  ],
+  "bossFights": [
+    {
+      "id": "odolwa",
+      "name": "Odolwa",
+      "sectionId": "woodfall",
+      "locationRef": "Woodfall Temple",
+      "prep": {
+        "recommendedItems": [
+          "heros-bow"
+        ],
+        "healthAdvice": "Bring a full quiver and a few bottled fairies; Deku Nuts can stun the small adds.",
+        "topUpBefore": "Refill hearts and magic at a Fairy Fountain or with bottled fairies before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Odolwa",
+          "summary": "Odolwa guards behind his shield, so wait for him to drop his stance — while chanting, dancing, or winding up a swing — and fire an arrow to stun him, then rush in and slash. Shooting him mid-chant also cancels the moths and beetles he summons. Keep moving to dodge his jumping sword strikes."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Exit to the Woodfall Owl Statue and refill with the swamp's fairy fountain.",
+        "easierTactic": "Fire an arrow the instant he drops his guard to chant or dance — it both stuns him and cancels the bugs he summons."
+      },
+      "reward": "First Giant freed; a Heart Container and a step toward the Oath to Order."
+    },
+    {
+      "id": "goht",
+      "name": "Goht",
+      "sectionId": "snowhead",
+      "locationRef": "Snowhead Temple",
+      "prep": {
+        "recommendedItems": [
+          "heros-bow",
+          "fire-arrows",
+          "goron-mask"
+        ],
+        "healthAdvice": "Keep arrows and magic topped up — the Goron-roll spikes need magic, and you open with a Fire Arrow.",
+        "topUpBefore": "Refill hearts and magic at a Fairy Fountain or with bottled fairies before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Goht",
+          "summary": "Melt the frozen Goht with a Fire Arrow to start the fight, then put on the Goron Mask and roll after it around the circular arena, grabbing magic jars to keep your spikes out. Ram it or strike it mid-leap to knock it down, then pile on roll attacks. Dodge the falling stalactites and the rocks it hurls back."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Warp out to the Mountain Village fountain to refill magic and hearts.",
+        "easierTactic": "Grab the magic jars around the arena so your Goron spikes never run dry — a spiked roll knocks Goht down every time."
+      },
+      "reward": "Second Giant freed; the eternal winter lifts and spring returns to the mountains."
+    },
+    {
+      "id": "gyorg",
+      "name": "Gyorg",
+      "sectionId": "great-bay",
+      "locationRef": "Great Bay Temple",
+      "prep": {
+        "recommendedItems": [
+          "heros-bow",
+          "zora-mask"
+        ],
+        "healthAdvice": "Bring a full quiver — you stun Gyorg from the platform with arrows before diving as Zora.",
+        "topUpBefore": "Refill hearts and magic at a Fairy Fountain or with bottled fairies before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Gyorg",
+          "summary": "From the central platform, Z-target Gyorg as it surfaces and shoot it to stun it; it floats limp underwater for a moment. Quickly don the Zora Mask, dive, and hit it with the electric barrier or fin slashes for heavy damage before it recovers. Avoid being swallowed and shake off the small fish it spawns, refilling arrows from the platform jars between rounds."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Warp to the Great Bay Owl Statue and use the coast's fairy fountain.",
+        "easierTactic": "Never swim in open water while Gyorg is active — stun it from the platform first, then dive only to land the electric barrier."
+      },
+      "reward": "Third Giant freed; the poisoned bay clears."
+    },
+    {
+      "id": "twinmold",
+      "name": "Twinmold",
+      "sectionId": "stone-tower",
+      "locationRef": "Stone Tower Temple",
+      "prep": {
+        "recommendedItems": [
+          "giants-mask",
+          "light-arrows"
+        ],
+        "healthAdvice": "Stock magic to the brim — the Giant's Mask drains it constantly. Grab jars between grapples.",
+        "topUpBefore": "Refill hearts and magic at a Fairy Fountain or with bottled fairies before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Twinmold",
+          "summary": "Twinmold is a pair of colossal sand serpents, one red and one blue. Put on the Giant's Mask to grow to their scale, then grapple and punch their bodies or seize a passing tail and slam it. Manage the mask's magic drain by grabbing magic jars, and focus one worm down at a time until both are destroyed."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Warp to the Stone Tower / Ikana Owl Statue to refill before re-entering.",
+        "easierTactic": "Focus one serpent at a time: grab its tail and slam it, ignoring the other until the first is gone."
+      },
+      "reward": "Final Giant freed — all four can now be called with the Oath to Order."
+    },
+    {
+      "id": "majora",
+      "name": "Majora's Mask",
+      "sectionId": "the-moon",
+      "locationRef": "The Moon",
+      "prep": {
+        "recommendedItems": [
+          "fierce-deity-mask",
+          "light-arrows"
+        ],
+        "healthAdvice": "If you have the Fierce Deity's Mask, bring full magic. Otherwise bring full arrows, bottled fairies, and the Zora and Goron masks.",
+        "topUpBefore": "Refill hearts and magic at a Fairy Fountain or with bottled fairies before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Majora's Mask",
+          "summary": "Three forms in a row. Majora's Mask hovers and lashes cord-like tentacles — shoot or strike it. Majora's Incarnation sprouts limbs and sprints around the room — chase it with arrows or sword beams. Majora's Wrath flails whip-like tentacle arms — stun it with arrows, dodge the whips, and pound it down. The Fierce Deity's Mask trivialises every phase, ending each in seconds with sword beams."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no healing mid-fight beyond bottled fairies — stock three before entering.",
+        "easierTactic": "Trade all 20 ordinary masks to the Moon Children for the Fierce Deity's Mask; its sword beams shred every one of Majora's three forms in seconds."
+      },
+      "reward": "Majora is undone, the Giants halt the moon, and Termina is saved."
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "clock-town",
+      "order": 1,
+      "stage": "Prologue",
+      "title": "Clock Town & the Three-Day Cycle",
+      "subtitle": "Lose your form → recover the Ocarina → learn the Song of Time → become Hylian Link",
+      "chips": [
+        "Deku curse",
+        "Song of Time",
+        "Deku Mask",
+        "Bombers' Notebook"
+      ],
+      "unlocks": [
+        "ocarina-of-time",
+        "song-of-time",
+        "deku-mask",
+        "bombers-notebook"
+      ],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "Chase the Skull Kid down the forest chasm. He curses you into a <strong>Deku Scrub</strong> and steals the Ocarina, then flees into Clock Town. You arrive with the moon three days from falling."
+        },
+        {
+          "text": "Find the <strong>Happy Mask Salesman</strong> in the Clock Tower. He'll lift the curse — but only if you bring back the Ocarina before the cycle ends. He teaches you the <strong>Song of Healing</strong> on the spot."
+        },
+        {
+          "text": "Explore Clock Town's four quarters. Buy a <strong>Deku Flower</strong> route to the high ledges, join the <strong>Bombers' Secret Society</strong> (play hide-and-seek with the kids) to earn the <strong>Bombers' Notebook</strong>, and learn the town's rhythms."
+        },
+        {
+          "text": "Survive to <strong>midnight on the Final Day</strong>. The Clock Tower platform opens — climb it and confront the Skull Kid. Knock the <strong>Ocarina of Time</strong> from his hands."
+        },
+        {
+          "text": "Play the <strong>Song of Time</strong> (it returns in a flash of memory) to rewind to the First Day. Everything resets — but you keep the Ocarina."
+        },
+        {
+          "text": "Return to the Happy Mask Salesman and play the <strong>Song of Healing</strong>. The curse seals into the <strong>Deku Mask</strong>, restoring Hylian Link. You can now transform at will — and the real quest, the four temples, begins."
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Chase the Skull Kid through the underground passage and lose your form to the curse"
+        },
+        {
+          "label": "Reach Clock Town and meet the Happy Mask Salesman"
+        },
+        {
+          "label": "Climb the Clock Tower at midnight on the Final Day and take back the Ocarina"
+        },
+        {
+          "label": "Learn the Song of Time to reset the three-day cycle"
+        },
+        {
+          "label": "Play the Song of Healing for the Salesman to lift the curse and gain the Deku Mask"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Underground Passage",
+          "solution": "Follow the Skull Kid down the spiralling tunnel, crossing collapsing flower-lined platforms to the door where the curse takes hold."
+        },
+        {
+          "name": "Clock Tower Interior",
+          "solution": "Meet the Happy Mask Salesman; he teaches the Song of Healing and gives you three days to recover the Ocarina."
+        },
+        {
+          "name": "Clock Town (the cycle)",
+          "solution": "Explore the four quarters of Clock Town. The Clock Tower platform only opens at midnight on the Final Day, during the carnival countdown."
+        },
+        {
+          "name": "Clock Tower Rooftop",
+          "solution": "At midnight on the Final Day, confront the Skull Kid. Hit him to knock the Ocarina free, then play the Song of Time to rewind to the First Day."
+        },
+        {
+          "name": "Back to the Salesman",
+          "solution": "In human form again, replay the Song of Healing to seal the curse into the Deku Mask — now you can transform at will."
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Clock Town",
+            "markers": [
+              {
+                "key": "S",
+                "kind": "npc",
+                "label": "South — Clock Tower (opens midnight, Final Day)"
+              },
+              {
+                "key": "W",
+                "kind": "shop",
+                "label": "West — Trading Post, Bomb Shop, Curiosity Shop, Bank"
+              },
+              {
+                "key": "N",
+                "kind": "npc",
+                "label": "North — Great Fairy Fountain, playground, Sakon event"
+              },
+              {
+                "key": "E",
+                "kind": "npc",
+                "label": "East — Stock Pot Inn, Milk Bar, Mayor's Residence"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "woodfall",
+      "order": 2,
+      "stage": "Temple 1",
+      "title": "Woodfall — the Southern Swamp",
+      "subtitle": "Cure the swamp → Sonata of Awakening → Hero's Bow → Odolwa",
+      "chips": [
+        "Deku flight",
+        "Hero's Bow",
+        "Sonata of Awakening",
+        "Odolwa"
+      ],
+      "unlocks": [
+        "heros-bow",
+        "lens-of-truth"
+      ],
+      "gates": [
+        "deku-mask"
+      ],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "Head south to the <strong>Southern Swamp</strong>. The water is poisoned and the Deku King has jailed an innocent monkey. Take the <strong>boat cruise</strong> or Deku-hop upriver to <strong>Deku Palace</strong>."
+        },
+        {
+          "text": "Sneak through the palace garden as <strong>Deku Link</strong> and reach the imprisoned monkey, who teaches you the <strong>Sonata of Awakening</strong>."
+        },
+        {
+          "text": "Cross the swamp to the temple platform. Play the <strong>Sonata of Awakening</strong> before the great statue to raise <strong>Woodfall Temple</strong> from the marsh."
+        },
+        {
+          "text": "Inside, win the <strong>Hero's Bow</strong> and use Deku-flower flight and eye-switches to reach the Boss Key. See the dungeon map and room solutions below."
+        },
+        {
+          "text": "Defeat <strong>Odolwa</strong> to free the first Giant. The swamp's poison clears — collect the region's time-sensitive Heart Pieces this cycle."
+        },
+        {
+          "text": "<span class=\"spoiler\">With the Giant freed, the Skull Kid's hold on Woodfall breaks. Warp back to Clock Town and turn toward the frozen mountains.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Raise the temple from the swamp by playing the Sonata of Awakening before it"
+        },
+        {
+          "label": "Cleanse the poisoned water at its source"
+        },
+        {
+          "label": "Claim the Hero's Bow"
+        },
+        {
+          "label": "Collect the Boss Key and reach Odolwa"
+        },
+        {
+          "label": "Defeat Odolwa to free the first Giant"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Entrance Hall",
+          "solution": "Launch from the Deku Flowers to clear the poison pools and reach the side doors; light the torches to open the way.",
+          "treasure": "Dungeon Map"
+        },
+        {
+          "name": "Deku Flight Room",
+          "solution": "Spin into a Deku Flower, take off, and glide between platforms, popping distant eye-switches and enemies with bubble shots.",
+          "treasure": "Compass"
+        },
+        {
+          "name": "Bow Chamber",
+          "solution": "Cross the spinning blades and open the big chest for the Hero's Bow, then shoot the eye-switches to advance.",
+          "treasure": "Hero's Bow"
+        },
+        {
+          "name": "Torch Maze",
+          "solution": "Carry flame on a Deku Stick or fire arrows to light each torch in sequence, raising platforms and unbarring doors.",
+          "treasure": "Small Key"
+        },
+        {
+          "name": "Gekko Mini-Boss",
+          "solution": "Stun the Snapper that Gekko rides, then slash Gekko when he leaps off.",
+          "enemies": "Gekko & Snapper"
+        },
+        {
+          "name": "Boss Key Vault",
+          "solution": "Shoot the eye-switch above the door to drop the bars, then take the Boss Key.",
+          "treasure": "Boss Key"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "room",
+                "label": "Entrance — Deku Flowers over poison"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Dungeon Map"
+              },
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Hero's Bow",
+                "requires": []
+              },
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Eye-switches (shoot with the Bow)"
+              }
+            ]
+          },
+          {
+            "label": "Upper",
+            "markers": [
+              {
+                "key": "5",
+                "kind": "npc",
+                "label": "Gekko & Snapper mini-boss"
+              },
+              {
+                "key": "6",
+                "kind": "boss-key",
+                "label": "Boss Key vault"
+              },
+              {
+                "key": "7",
+                "kind": "boss",
+                "label": "Odolwa's lair",
+                "requires": [
+                  "heros-bow"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "snowhead",
+      "order": 3,
+      "stage": "Temple 2",
+      "title": "Snowhead — the Mountain Village",
+      "subtitle": "Goron Mask → thaw the mountain → Fire Arrows → Goht",
+      "chips": [
+        "Goron rolling",
+        "Fire Arrows",
+        "Goron Lullaby",
+        "Goht"
+      ],
+      "unlocks": [
+        "goron-mask",
+        "fire-arrows",
+        "powder-keg"
+      ],
+      "gates": [
+        "heros-bow"
+      ],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "Travel north into an unnatural winter. In the <strong>Goron Graveyard</strong>, play the <strong>Song of Healing</strong> for the hero <strong>Darmani's</strong> spirit to receive the <strong>Goron Mask</strong>."
+        },
+        {
+          "text": "As <strong>Goron Link</strong>, soothe the crying Goron baby with the <strong>Goron Lullaby</strong> (learn it from the Elder's son), and pass the Goron's big-bomb test for the <strong>Powder Keg</strong>."
+        },
+        {
+          "text": "Goron-roll up the ramp to <strong>Snowhead Temple</strong> at the mountain's peak, battling through the blizzard."
+        },
+        {
+          "text": "Inside, clear the ice from the central pillar, win the <strong>Fire Arrows</strong>, and raise the giant column to link the floors. See the room solutions below."
+        },
+        {
+          "text": "Defeat <strong>Goht</strong> to free the second Giant. <strong>Spring returns</strong> to the mountains — new paths, frogs, and Heart Pieces open up."
+        },
+        {
+          "text": "<span class=\"spoiler\">With the thaw, the river to Great Bay flows again. Head for the coast.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Clear the ice columns choking the central pillar"
+        },
+        {
+          "label": "Win the Fire Arrows to melt ice and light frozen torches"
+        },
+        {
+          "label": "Raise the giant pillar to link the upper floors"
+        },
+        {
+          "label": "Collect the Boss Key and climb to the top"
+        },
+        {
+          "label": "Defeat Goht to free the second Giant and end the winter"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Central Pillar Hub",
+          "solution": "Goron-punch the ice cylinders off the core pillar so you can later Goron-roll up its ramp to the higher floors.",
+          "treasure": "Dungeon Map"
+        },
+        {
+          "name": "Frozen Bridge",
+          "solution": "Boost off a ramp with a Goron-roll to leap the gaps, or freeze the flow into ice platforms to cross.",
+          "treasure": "Compass"
+        },
+        {
+          "name": "Fire Arrow Chamber",
+          "solution": "Clear the room's guardians and open the chest for the Fire Arrows, then thaw the nearby ice blocks.",
+          "treasure": "Fire Arrows"
+        },
+        {
+          "name": "Snowball Slope",
+          "solution": "Fire-arrow or roll through the snowball-spawning slope to reach the stairs upward.",
+          "treasure": "Small Key"
+        },
+        {
+          "name": "Wizzrobe Mini-Boss",
+          "solution": "Hit the teleporting Wizzrobe with an arrow each time it reappears until it falls.",
+          "enemies": "Wizzrobe"
+        },
+        {
+          "name": "Giant Pillar Mechanism",
+          "solution": "Light the frozen torches with Fire Arrows and hit the switch to raise the central column, linking the top floors.",
+          "treasure": "Boss Key"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Hub",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "room",
+                "label": "Central pillar — Goron-punch the ice"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Dungeon Map / Compass"
+              },
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Fire Arrows",
+                "requires": []
+              }
+            ]
+          },
+          {
+            "label": "Upper",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "npc",
+                "label": "Wizzrobe mini-boss"
+              },
+              {
+                "key": "5",
+                "kind": "switch",
+                "label": "Raise the giant column (Fire Arrow torches)"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "Goht's lair",
+                "requires": [
+                  "goron-mask",
+                  "fire-arrows"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "great-bay",
+      "order": 4,
+      "stage": "Temple 3",
+      "title": "Great Bay — the Coast",
+      "subtitle": "Zora Mask → gather the eggs → Ice Arrows → Gyorg",
+      "chips": [
+        "Zora swimming",
+        "Ice Arrows",
+        "New Wave Bossa Nova",
+        "Gyorg"
+      ],
+      "unlocks": [
+        "zora-mask",
+        "ice-arrows",
+        "hookshot"
+      ],
+      "gates": [
+        "fire-arrows"
+      ],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "At <strong>Great Bay Coast</strong>, play the <strong>Song of Healing</strong> for the dying Zora guitarist <strong>Mikau</strong> to gain the <strong>Zora Mask</strong>."
+        },
+        {
+          "text": "As <strong>Zora Link</strong>, recover the stolen <strong>Zora eggs</strong> from the <strong>Pirates' Fortress</strong> (grab the <strong>Hookshot</strong> there) and the sea. Bring them to the <strong>Marine Research Lab</strong>; the hatchlings teach you the <strong>New Wave Bossa Nova</strong>."
+        },
+        {
+          "text": "Play it on the coast to summon the <strong>giant turtle</strong>, who ferries you to <strong>Great Bay Temple</strong>."
+        },
+        {
+          "text": "Inside, turn the spigot valves to reroute the water, win the <strong>Ice Arrows</strong>, and freeze currents into platforms to turn the great waterwheel. See the room solutions below."
+        },
+        {
+          "text": "Defeat <strong>Gyorg</strong> to free the third Giant and clear the poisoned bay."
+        },
+        {
+          "text": "<span class=\"spoiler\">Three Giants freed. The last lies east, in the cursed kingdom of Ikana.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Redirect the temple's water with the central spigot valves"
+        },
+        {
+          "label": "Win the Ice Arrows to freeze water into platforms"
+        },
+        {
+          "label": "Route the coloured pipes so the great waterwheel turns"
+        },
+        {
+          "label": "Collect the Boss Key and reach the flooded arena"
+        },
+        {
+          "label": "Defeat Gyorg to free the third Giant"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Central Pipe Hub",
+          "solution": "Stand on the middle platform and turn the spigot a quarter-turn to switch which coloured pipeline carries the water.",
+          "treasure": "Dungeon Map"
+        },
+        {
+          "name": "Wart Mini-Boss",
+          "solution": "As Zora Link, destroy the floating eyeballs orbiting Wart, then attack the exposed core to win the Ice Arrows.",
+          "treasure": "Ice Arrows"
+        },
+        {
+          "name": "Red Pipe Room",
+          "solution": "Freeze an Octorok's water spout into an ice block, climb to the spigot, and turn it so water runs the red line to the wheel.",
+          "treasure": "Compass"
+        },
+        {
+          "name": "Green Valve Room",
+          "solution": "Fire Ice Arrows at the water jets to make platforms, then throw the green switch to send flow down the green pipes.",
+          "treasure": "Small Key"
+        },
+        {
+          "name": "Waterwheel Shaft",
+          "solution": "With the wheel turning, ride the moving platforms and currents up the vertical shaft to the higher doors.",
+          "enemies": "Desbreko"
+        },
+        {
+          "name": "Boss Key Chamber",
+          "solution": "Freeze the flowing water into a path of ice blocks to cross to the chest holding the Boss Key.",
+          "treasure": "Boss Key"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Hub",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "switch",
+                "label": "Central spigot — quarter-turn to reroute water"
+              },
+              {
+                "key": "2",
+                "kind": "npc",
+                "label": "Wart mini-boss → Ice Arrows"
+              },
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Dungeon Map / Compass"
+              }
+            ]
+          },
+          {
+            "label": "Pipes",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Red & green valve rooms (Ice Arrow platforms)"
+              },
+              {
+                "key": "5",
+                "kind": "boss-key",
+                "label": "Boss Key (ice-block path)"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "Gyorg's flooded arena",
+                "requires": [
+                  "zora-mask"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "stone-tower",
+      "order": 5,
+      "stage": "Temple 4",
+      "title": "Stone Tower — Ikana Canyon",
+      "subtitle": "Light Arrows → Elegy of Emptiness → flip the temple → Twinmold",
+      "chips": [
+        "Light Arrows",
+        "Elegy of Emptiness",
+        "Temple flipping",
+        "Twinmold"
+      ],
+      "unlocks": [
+        "light-arrows",
+        "elegy-of-emptiness",
+        "giants-mask"
+      ],
+      "gates": [
+        "zora-mask",
+        "ice-arrows"
+      ],
+      "gatingType": "hard",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "Enter the dead kingdom of <strong>Ikana</strong>. Restore the river with the <strong>Song of Storms</strong>, cure the Music Box House father (<strong>Gibdo Mask</strong>), and command the dead with the <strong>Captain's Hat</strong> and <strong>Garo's Mask</strong>."
+        },
+        {
+          "text": "In the <strong>Ancient Castle of Ikana</strong>, defeat the King to learn the <strong>Elegy of Emptiness</strong> — it leaves a statue of your current form to hold down switches."
+        },
+        {
+          "text": "Reach the <strong>Great Fairy</strong> nearby and reunite her stray fairies for the <strong>Great Fairy's Sword</strong>, then climb to <strong>Stone Tower Temple</strong>."
+        },
+        {
+          "text": "Inside, drop Deku/Goron/Zora/Link statues on switch puzzles, win the <strong>Light Arrows</strong>, and shoot the red sun-block to <strong>flip the entire temple upside-down</strong>. Win the <strong>Giant's Mask</strong> in the boss arena. See the room solutions below."
+        },
+        {
+          "text": "Defeat <strong>Twinmold</strong> with the Giant's Mask to free the fourth and final Giant."
+        },
+        {
+          "text": "<span class=\"spoiler\">All four Giants are freed. Return to Clock Town for the Final Day and the Carnival of Time.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Use the Elegy of Emptiness to leave statues on weighted switches"
+        },
+        {
+          "label": "Flip the temple upside-down with a Light Arrow on the sun-block"
+        },
+        {
+          "label": "Defeat Gomess for the Boss Key"
+        },
+        {
+          "label": "Win the Giant's Mask from an Eyegore"
+        },
+        {
+          "label": "Defeat Twinmold to free the final Giant"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Multi-Switch Halls",
+          "solution": "Play the Elegy of Emptiness to drop Deku, Goron, Zora and Link statues onto separate floor switches at once, opening the barred doors.",
+          "treasure": "Dungeon Map"
+        },
+        {
+          "name": "Sun-Block Entrance",
+          "solution": "Shoot the glowing red sun emblem above the doorway with a Light Arrow to invert the whole temple — ceilings become floors.",
+          "treasure": "Compass"
+        },
+        {
+          "name": "Inverted Spike Rooms",
+          "solution": "Navigate the flipped geometry, using Light Arrows on covered sun-switches to clear darkness and toggle sections.",
+          "treasure": "Small Key"
+        },
+        {
+          "name": "Gomess Chamber",
+          "solution": "Light the room and scatter Gomess's bat swarm; only Light Arrows pierce his cloak to stun him, then finish with the sword.",
+          "treasure": "Boss Key"
+        },
+        {
+          "name": "Eyegore Room",
+          "solution": "Shoot the Eyegore's eye to freeze it, then attack the body. Defeating it yields the Giant's Mask.",
+          "treasure": "Giant's Mask"
+        },
+        {
+          "name": "Final Ascent",
+          "solution": "Combine inversion flips and Elegy statues to reach the boss door, then enter the desert arena.",
+          "enemies": "Garo, Armos"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Normal",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "switch",
+                "label": "Elegy statue switch halls"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Dungeon Map / Compass"
+              },
+              {
+                "key": "3",
+                "kind": "switch",
+                "label": "Red sun-block — Light Arrow to flip the temple",
+                "requires": [
+                  "light-arrows"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Inverted",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "npc",
+                "label": "Gomess (Light Arrows pierce his cloak) → Boss Key"
+              },
+              {
+                "key": "5",
+                "kind": "item",
+                "label": "Eyegore → Giant's Mask"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "Twinmold's desert arena",
+                "requires": [
+                  "giants-mask"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "the-moon",
+      "order": 6,
+      "stage": "Finale",
+      "title": "The Moon & Majora",
+      "subtitle": "Oath to Order → optional Fierce Deity's Mask → the three faces of Majora",
+      "chips": [
+        "Oath to Order",
+        "Fierce Deity's Mask",
+        "Majora — 3 forms"
+      ],
+      "unlocks": [
+        "fierce-deity-mask"
+      ],
+      "gates": [
+        "light-arrows"
+      ],
+      "gatingType": "soft",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "VQyaJbzTFhg",
+        "creator": "LongplayArchive",
+        "title": "The Legend of Zelda: Majora's Mask — Full Longplay (N64)",
+        "durationLabel": "10:00:00",
+        "startSeconds": 0
+      },
+      "steps": [
+        {
+          "text": "On the <strong>Final Night</strong>, climb the Clock Tower and play the <strong>Oath to Order</strong>. The four Giants answer and catch the falling moon — and Majora's Mask abandons the Skull Kid, pulling Link inside the moon."
+        },
+        {
+          "text": "On the moon's quiet grassy field, four masked children offer hide-and-seek trials. <strong>Optional but worth it:</strong> trade all <strong>20 ordinary masks</strong> across the four children to earn the <strong>Fierce Deity's Mask</strong> from the lonely child by the tree."
+        },
+        {
+          "text": "Enter the final battle. <strong>Majora's Mask</strong> hovers and lashes tentacles — shoot or beam it."
+        },
+        {
+          "text": "<strong>Majora's Incarnation</strong> sprouts legs and sprints — chase it down with arrows or sword beams."
+        },
+        {
+          "text": "<strong>Majora's Wrath</strong> flails whip-like arms — stun it and pound it. With the Fierce Deity's Mask each form falls in seconds."
+        },
+        {
+          "text": "<span class=\"spoiler\">Majora is undone. The Giants set the moon back, the Skull Kid is freed, and dawn finally breaks over a saved Termina. The Happy Mask Salesman departs with his mask — and Link rides on.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": [],
+      "objectives": [
+        {
+          "label": "Free all four Giants and play the Oath to Order atop the Clock Tower"
+        },
+        {
+          "label": "Optional: trade all 20 ordinary masks to the Moon Children for the Fierce Deity's Mask"
+        },
+        {
+          "label": "Defeat Majora's Mask"
+        },
+        {
+          "label": "Defeat Majora's Incarnation"
+        },
+        {
+          "label": "Defeat Majora's Wrath"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Atop the Clock Tower",
+          "solution": "On the Final Night, play the Oath to Order to summon the four Giants, who catch the moon and force the mask to abandon the Skull Kid."
+        },
+        {
+          "name": "The Moon's Field",
+          "solution": "Speak to the four masked children to play their hide-and-seek mini-dungeons; trade all 20 ordinary masks for the Fierce Deity's Mask before facing the lone child."
+        }
+      ],
+      "readinessNote": "Free all four Giants first. The Fierce Deity's Mask is optional — but trading your 20 ordinary masks to the Moon Children makes the final fight trivial, so collect the masks before the last cycle."
+    }
+  ],
+  "locations": [
+    {
+      "id": "clock-town",
+      "name": "Clock Town",
+      "ref": "Clock Town",
+      "reachableBy": "The hub of Termina — central to every region; warp here with the Song of Soaring.",
+      "isHub": true,
+      "whereWithin": "South (Clock Tower), West (shops & bank), North (Great Fairy, playground), East (Stock Pot Inn, Milk Bar, Mayor)",
+      "contains": [
+        {
+          "label": "Clock Tower — opens midnight, Final Day",
+          "kind": "beat",
+          "sectionId": "clock-town"
+        },
+        {
+          "label": "Happy Mask Salesman",
+          "kind": "npc",
+          "sectionId": "clock-town"
+        }
+      ]
+    },
+    {
+      "id": "southern-swamp",
+      "name": "Southern Swamp & Woodfall",
+      "ref": "Woodfall",
+      "reachableBy": "South from Clock Town through the swamp.",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Woodfall Temple — Odolwa",
+          "kind": "beat",
+          "sectionId": "woodfall"
+        },
+        {
+          "label": "Swamp Spider House — Mask of Truth",
+          "kind": "secret",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "id": "mountain-village",
+      "name": "Mountain Village & Snowhead",
+      "ref": "Snowhead",
+      "reachableBy": "North from Clock Town into the frozen mountains.",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Snowhead Temple — Goht",
+          "kind": "beat",
+          "sectionId": "snowhead"
+        }
+      ]
+    },
+    {
+      "id": "great-bay",
+      "name": "Great Bay Coast",
+      "ref": "Great Bay",
+      "reachableBy": "West from Clock Town to the sea.",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Great Bay Temple — Gyorg",
+          "kind": "beat",
+          "sectionId": "great-bay"
+        },
+        {
+          "label": "Oceanside Spider House — Giant's Wallet",
+          "kind": "secret",
+          "completionistOnly": true
+        }
+      ]
+    },
+    {
+      "id": "ikana",
+      "name": "Ikana Canyon & Stone Tower",
+      "ref": "Ikana",
+      "reachableBy": "East from Clock Town to the dead kingdom.",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Stone Tower Temple — Twinmold",
+          "kind": "beat",
+          "sectionId": "stone-tower"
+        }
+      ]
+    },
+    {
+      "id": "the-moon",
+      "name": "The Moon",
+      "ref": "The Moon",
+      "reachableBy": "Play the Oath to Order on the Final Night.",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Majora — final battle",
+          "kind": "beat",
+          "sectionId": "the-moon",
+          "spoiler": true
+        }
+      ]
+    }
+  ]
+}
