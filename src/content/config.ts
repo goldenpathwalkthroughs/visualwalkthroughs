@@ -270,6 +270,218 @@ const gameStructure = z.object({
   anyOrderGroups: z.array(anyOrderGroup).default([]),
 });
 
+// ── v3: Creature-collector reference layers (genre pack D) ────────────────────
+//
+// These power the "Game Essentials", "Pokédex", and "Index" pillars that a
+// gold-standard creature-collector guide needs alongside the route. All are
+// optional/defaulted, so games without them stay valid (Principle §0: no proper
+// nouns here — every value is a discovered fact in the content file).
+
+// Standing mechanics reference (type chart, status, evolution taxonomy).
+const typeChartRow = z.object({
+  type: z.string(),                              // attacking type label
+  strongVs: z.array(z.string()).default([]),     // 2× damage to
+  weakVs: z.array(z.string()).default([]),       // ½× damage to
+  noEffectVs: z.array(z.string()).default([]),   // 0× damage to
+});
+
+const statusCondition = z.object({
+  name: z.string(),
+  effect: z.string(),
+  cure: z.string().optional(),
+});
+
+const evolutionMethod = z.object({
+  method: z.string(),                            // "Level up", "Trade", "Stone", …
+  detail: z.string(),
+  examples: z.string().optional(),
+});
+
+const mechanicsReference = z.object({
+  typeChart: z.array(typeChartRow).default([]),
+  statusConditions: z.array(statusCondition).default([]),
+  evolutionMethods: z.array(evolutionMethod).default([]),
+  notes: z.array(z.string()).default([]),
+});
+
+// TM/HM + key-item index (the "Index" pillar).
+const tmHmEntry = z.object({
+  id: z.string(),                                // "TM01", "HM03"
+  move: z.string(),
+  typeLabel: z.string().optional(),
+  location: z.string(),                          // where it's found / bought
+  notes: z.string().optional(),
+});
+
+const moveItemIndex = z.object({
+  tms: z.array(tmHmEntry).default([]),
+  hms: z.array(tmHmEntry).default([]),
+});
+
+// Curated creature reference (the "Pokédex" pillar). Not every species — the
+// team-relevant catchables, each with catch data, evolution, and notable moves.
+const creatureLearn = z.object({
+  level: z.string(),                             // "Lv 12", "TM", "Start"
+  move: z.string(),
+});
+
+const creatureCatch = z.object({
+  where: z.string(),
+  method: z.enum(['grass', 'surf', 'fishing', 'old-rod', 'good-rod', 'super-rod', 'gift', 'static', 'trade', 'fossil', 'game-corner', 'other']).default('grass'),
+  rarity: z.enum(['very-common', 'common', 'uncommon', 'rare', 'very-rare', 'one-time']).default('common'),
+  levelRange: z.string().optional(),
+  versionExclusive: z.enum(['firered', 'leafgreen', 'both']).default('both'),
+});
+
+const creature = z.object({
+  id: z.string(),
+  name: z.string(),
+  dexNo: z.number().optional(),
+  types: z.array(z.string()).default([]),
+  catchLocations: z.array(creatureCatch).default([]),
+  evolution: z.string().optional(),
+  notableMoves: z.array(creatureLearn).default([]),
+  role: z.string().optional(),                   // why it matters for a team
+});
+
+// Per-area reference data attached to a section (the annotated-walkthrough
+// pillar, in data form). Each area is a route/town/dungeon the section covers.
+const encounterRow = z.object({
+  species: z.string(),
+  method: z.enum(['grass', 'surf', 'old-rod', 'good-rod', 'super-rod', 'rock-smash', 'gift', 'static', 'other']).default('grass'),
+  rarity: z.enum(['very-common', 'common', 'uncommon', 'rare', 'very-rare', 'one-time']).default('common'),
+  levelRange: z.string().optional(),
+  versionExclusive: z.enum(['firered', 'leafgreen', 'both']).default('both'),
+  note: z.string().optional(),
+});
+
+const trainerEntry = z.object({
+  trainer: z.string(),                           // "Bug Catcher Rick"
+  team: z.string(),                              // "Caterpie Lv6, Weedle Lv6"
+  reward: z.string().optional(),
+  note: z.string().optional(),
+});
+
+const shopEntry = z.object({
+  item: z.string(),
+  price: z.string(),
+});
+
+const areaItem = z.object({
+  label: z.string(),
+  hidden: z.boolean().default(false),
+  requires: z.array(z.string()).default([]),     // item IDs needed to reach it
+});
+
+const backtrackEntry = z.object({
+  what: z.string(),                              // what's gated here
+  needs: z.string(),                             // HM / badge / item required
+  reward: z.string().optional(),
+});
+
+const areaEvent = z.object({
+  label: z.string(),
+  detail: z.string().optional(),
+  spoiler: z.boolean().default(false),
+});
+
+const areaReference = z.object({
+  name: z.string(),                              // "Route 3", "Mt Moon", "Pewter City"
+  kind: z.enum(['town', 'route', 'cave', 'dungeon', 'sea', 'building', 'other']).default('route'),
+  summary: z.string().optional(),
+  encounters: z.array(encounterRow).default([]),
+  trainers: z.array(trainerEntry).default([]),
+  items: z.array(areaItem).default([]),
+  shop: z.array(shopEntry).default([]),
+  events: z.array(areaEvent).default([]),
+  backtrack: z.array(backtrackEntry).default([]),
+});
+
+// ── v4: Action-adventure reference layers (genre pack A) ──────────────────────
+//
+// Powers the four layers a gold-standard action-adventure guide needs alongside
+// the route: per-area objectives, keyed multi-floor dungeon maps, room-by-room
+// puzzle solutions, and reference back-matter (items, songs, collectibles,
+// side-quest chains, shops). All optional/defaulted (Principle §0).
+
+const objective = z.object({
+  label: z.string(),
+  optional: z.boolean().default(false),
+});
+
+const dungeonMarker = z.object({
+  key: z.string(),                              // "1", "B2-3"
+  kind: z.enum(['room', 'chest', 'small-key', 'boss-key', 'switch', 'locked-door', 'boss', 'item', 'npc', 'collectible', 'secret']).default('room'),
+  label: z.string(),
+  requires: z.array(z.string()).default([]),    // item IDs needed to reach/clear
+});
+
+const dungeonFloor = z.object({
+  label: z.string(),                            // "1F", "B1", "B2"
+  markers: z.array(dungeonMarker).default([]),
+});
+
+const dungeonMap = z.object({
+  floors: z.array(dungeonFloor).default([]),
+});
+
+const roomBeat = z.object({
+  name: z.string(),                             // "Water Column Bridge Room"
+  solution: z.string(),                         // the explicit puzzle solution / what to do
+  enemies: z.string().optional(),
+  treasure: z.string().optional(),
+  requires: z.array(z.string()).default([]),
+});
+
+// Reference back-matter (game-level)
+const itemReferenceEntry = z.object({
+  name: z.string(),
+  category: z.string(),                         // "Sword","Shield","C-Item","Magic","Bottle","Upgrade"…
+  where: z.string(),                            // where obtained
+  when: z.string().optional(),                  // "Child","Adult","Either"
+  unlocks: z.string().optional(),               // what it lets you do / reopens
+});
+
+const songEntry = z.object({
+  name: z.string(),
+  where: z.string(),
+  use: z.string(),
+});
+
+const collectibleEntry = z.object({
+  label: z.string(),
+  location: z.string(),
+  requires: z.string().optional(),              // gating ability/item (free text)
+  era: z.string().optional(),                   // "Child","Adult","Either"
+});
+
+const collectibleCategory = z.object({
+  name: z.string(),                             // "Pieces of Heart","Gold Skulltulas","Great Fairies"
+  total: z.number().optional(),                 // canonical total
+  note: z.string().optional(),
+  entries: z.array(collectibleEntry).default([]),
+});
+
+const sideQuestStep = z.object({
+  label: z.string(),
+  detail: z.string().optional(),
+  requires: z.string().optional(),
+});
+
+const sideQuestChain = z.object({
+  id: z.string(),
+  name: z.string(),
+  reward: z.string(),
+  era: z.string().optional(),
+  steps: z.array(sideQuestStep).default([]),
+});
+
+const shopRef = z.object({
+  name: z.string(),
+  where: z.string(),
+  items: z.array(z.object({ item: z.string(), price: z.string() })).default([]),
+});
+
 // ── Section ───────────────────────────────────────────────────────────────────
 
 const section = z.object({
@@ -303,6 +515,14 @@ const section = z.object({
 
   // Computed by the sequencing engine — writers do NOT populate this
   recommendedDetours: z.array(z.string()).default([]),
+
+  // v3: per-area reference layers (encounters / trainers / items / shops / events)
+  areas: z.array(areaReference).default([]),
+
+  // v4: action-adventure per-section layers (objectives / dungeon map / rooms)
+  objectives: z.array(objective).default([]),
+  dungeonMap: dungeonMap.optional(),
+  rooms: z.array(roomBeat).default([]),
 });
 
 // ── Collections ───────────────────────────────────────────────────────────────
@@ -356,6 +576,18 @@ const games = defineCollection({
     worldMap: worldMap.optional(),
     locations: z.array(location).default([]),      // shared vocab: map + written steps
     bossFights: z.array(bossFight).default([]),    // first-class boss content type
+
+    // v3: creature-collector reference pillars (all optional)
+    mechanicsReference: mechanicsReference.optional(),  // type chart, status, evolution
+    moveItemIndex: moveItemIndex.optional(),            // TM/HM index
+    creatures: z.array(creature).default([]),           // curated Pokédex reference
+
+    // v4: action-adventure reference back-matter (all optional)
+    itemReference: z.array(itemReferenceEntry).default([]),       // equipment table
+    songs: z.array(songEntry).default([]),                       // ocarina songs / abilities
+    collectibleCategories: z.array(collectibleCategory).default([]), // skulltulas, hearts, fairies
+    sideQuestChains: z.array(sideQuestChain).default([]),        // trading sequence etc.
+    shops: z.array(shopRef).default([]),
   }),
 });
 

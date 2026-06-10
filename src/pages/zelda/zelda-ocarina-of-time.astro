@@ -32,6 +32,14 @@ for (const b of ((game.data as any).bossFights ?? [])) {
 
 const locations: any[] = (game.data as any).locations ?? [];
 
+// v4 action-adventure reference back-matter
+const itemReference: any[] = (game.data as any).itemReference ?? [];
+const songs: any[] = (game.data as any).songs ?? [];
+const collectibleCategories: any[] = (game.data as any).collectibleCategories ?? [];
+const sideQuestChains: any[] = (game.data as any).sideQuestChains ?? [];
+const shops: any[] = (game.data as any).shops ?? [];
+const hasReference = itemReference.length > 0 || songs.length > 0 || collectibleCategories.length > 0 || sideQuestChains.length > 0 || shops.length > 0;
+
 const advLabel: Record<string, string> = {
   'do-now': 'Do this now',
   upgrade: 'Permanent upgrade',
@@ -145,6 +153,115 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
       />
     )}
 
+    {hasReference && (
+      <div class="essentials">
+        <div class="essentials-head">
+          <h2>Adventurer's Reference</h2>
+          <p>The standing back-matter behind the route — every progression item, all twelve Ocarina songs, the collectibles and what each one needs, the Biggoron trade, and the shops.</p>
+        </div>
+
+        {itemReference.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">⚔️</span> Items &amp; equipment <span class="ref-sub">{itemReference.length} tools · where, when, what it unlocks</span></summary>
+            <div class="ref-panel-body">
+              <table class="ref-table">
+                <tbody>
+                  {itemReference.map((it: any) => (
+                    <tr>
+                      <td class="ir-name">{it.name}<span class="ir-cat">{it.category}</span></td>
+                      <td class="ir-when">{it.when && <span class={`era era-${(it.when||'').toLowerCase()}`}>{it.when}</span>}</td>
+                      <td class="ir-where">{it.where}{it.unlocks && <span class="ir-unlocks">{it.unlocks}</span>}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        )}
+
+        {songs.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🎵</span> Ocarina songs <span class="ref-sub">{songs.length} songs · where learned and what they do</span></summary>
+            <div class="ref-panel-body">
+              {songs.map((s: any) => (
+                <div class="song-row">
+                  <strong class="song-name">{s.name}</strong>
+                  <span class="song-where">{s.where}</span>
+                  <span class="song-use">{s.use}</span>
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+
+        {collectibleCategories.map((cat: any) => (
+          <details class="ref-panel">
+            <summary>
+              <span class="ref-ic" aria-hidden="true">✦</span> {cat.name}
+              <span class="ref-sub">{cat.total ? `${cat.entries.length} listed of ${cat.total}` : `${cat.entries.length} entries`}</span>
+            </summary>
+            <div class="ref-panel-body">
+              {cat.note && <p class="ref-note">{cat.note}</p>}
+              <table class="ref-table">
+                <tbody>
+                  {cat.entries.map((e: any) => (
+                    <tr>
+                      <td class="cc-label">{e.label}</td>
+                      <td class="cc-loc">{e.location}</td>
+                      <td class="cc-req">
+                        {e.requires && e.requires !== '—' && <span class="req-tag">{e.requires}</span>}
+                        {e.era && <span class={`era era-${(e.era||'').toLowerCase()}`}>{e.era}</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        ))}
+
+        {sideQuestChains.map((q: any) => (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🔗</span> {q.name} <span class="ref-sub">{q.steps.length}-step chain → {q.reward.split('—')[0].trim()}</span></summary>
+            <div class="ref-panel-body">
+              <p class="ref-note"><strong>Reward:</strong> {q.reward}{q.era ? ` · ${q.era} Link` : ''}</p>
+              <ol class="chain-list">
+                {q.steps.map((st: any) => (
+                  <li>
+                    <strong>{st.label}</strong>
+                    {st.requires && <span class="chain-req">{st.requires}</span>}
+                    {st.detail && <span class="chain-detail">{st.detail}</span>}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </details>
+        ))}
+
+        {shops.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🛒</span> Shops <span class="ref-sub">{shops.length} shops · stock and prices</span></summary>
+            <div class="ref-panel-body">
+              <div class="shop-grid">
+                {shops.map((sh: any) => (
+                  <div class="shop-card">
+                    <div class="shop-name">{sh.name}<span class="shop-where">{sh.where}</span></div>
+                    <table class="shop-mini">
+                      <tbody>
+                        {sh.items.map((it: any) => (
+                          <tr><td>{it.item}</td><td class="shop-price">{it.price}</td></tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        )}
+      </div>
+    )}
+
     <div class="sections">
       <div class="path-label">Hyrule · main story</div>
 
@@ -203,6 +320,17 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
                       </div>
                     )}
 
+                    {(sec.objectives ?? []).length > 0 && (
+                      <div class="objectives">
+                        <div class="objectives-label">Objectives</div>
+                        <ol class="objectives-list">
+                          {sec.objectives.map((o: any) => (
+                            <li class={o.optional ? 'obj-optional' : ''}>{o.label}{o.optional && <span class="obj-opt-tag">optional</span>}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
                     <h3>Golden path</h3>
                     <ol>
                       {sec.steps.map((step: unknown) => (
@@ -228,6 +356,44 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
                         </li>
                       ))}
                     </ol>
+
+                    {sec.dungeonMap?.floors?.length > 0 && (
+                      <details class="dmap">
+                        <summary><span class="dmap-ic" aria-hidden="true">🗺️</span> Dungeon map — keyed contents <span class="dmap-sub">{sec.dungeonMap.floors.length} floors</span></summary>
+                        <div class="dmap-body">
+                          {sec.dungeonMap.floors.map((fl: any) => (
+                            <div class="dmap-floor">
+                              <div class="dmap-floor-label">{fl.label}</div>
+                              <ul class="dmap-markers">
+                                {fl.markers.map((m: any) => (
+                                  <li class={`dmark dmark-${m.kind}`}>
+                                    <span class="dmark-key">{m.key}</span>
+                                    <span class="dmark-kind">{m.kind.replace('-', ' ')}</span>
+                                    <span class="dmark-label">{m.label}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+
+                    {(sec.rooms ?? []).length > 0 && (
+                      <details class="rooms">
+                        <summary><span class="dmap-ic" aria-hidden="true">🧩</span> Room-by-room &amp; puzzle solutions <span class="dmap-sub">{sec.rooms.length} rooms</span></summary>
+                        <div class="rooms-body">
+                          {sec.rooms.map((rm: any) => (
+                            <div class="room-card">
+                              <div class="room-name">{rm.name}</div>
+                              <p class="room-solution"><span class="room-sol-tag">Solve</span> {rm.solution}</p>
+                              {rm.enemies && <div class="room-meta"><span class="room-meta-lbl">Enemies</span> {rm.enemies}</div>}
+                              {rm.treasure && <div class="room-meta"><span class="room-meta-lbl room-treasure">Treasure</span> {rm.treasure}</div>}
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    )}
 
                     {sec.advisories.filter((a: any) => !a.completionistOnly).map((a: any) => (
                       <div class="adv" data-t={a.type}>
@@ -379,6 +545,138 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
   inset: 0;
   background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200,168,64,.08) 0%, transparent 70%);
   pointer-events: none;
+}
+
+/* ── Per-section objectives ───────────────────────────────────────────────── */
+.objectives {
+  border: 1px solid rgba(200,168,64,.22);
+  border-radius: 10px;
+  background: rgba(200,168,64,.05);
+  padding: .7rem .9rem;
+  margin: .25rem 0 1rem;
+}
+.objectives-label {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--accent, #c8a840); font-weight: 700; margin-bottom: .35rem;
+}
+.objectives-list { margin: 0; padding-left: 1.2rem; }
+.objectives-list li { color: var(--text, #e9dca8); font-size: .9rem; line-height: 1.6; }
+.obj-optional { color: var(--muted, #998a55); }
+.obj-opt-tag {
+  font-size: .6rem; text-transform: uppercase; letter-spacing: .05em;
+  background: rgba(200,168,64,.16); color: var(--accent, #c8a840);
+  padding: 1px 5px; border-radius: 4px; margin-left: .4rem;
+}
+
+/* ── Dungeon map + rooms (per section) ────────────────────────────────────── */
+.dmap, .rooms {
+  border: 1px solid rgba(200,168,64,.18);
+  border-radius: 10px;
+  background: rgba(255,255,255,.015);
+  margin: .8rem 0;
+}
+.dmap > summary, .rooms > summary {
+  list-style: none; cursor: pointer; padding: .7rem .9rem;
+  font-weight: 700; color: var(--text, #e9dca8); display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+}
+.dmap > summary::-webkit-details-marker, .rooms > summary::-webkit-details-marker { display: none; }
+.dmap > summary::after, .rooms > summary::after { content: '▾'; margin-left: auto; color: var(--accent, #c8a840); transition: transform .2s; }
+.dmap[open] > summary::after, .rooms[open] > summary::after { transform: rotate(180deg); }
+.dmap-sub { font-weight: 400; color: var(--muted-2, #7a6a40); font-size: .8rem; }
+.dmap-body, .rooms-body { padding: .2rem .9rem .9rem; border-top: 1px solid rgba(200,168,64,.12); }
+.dmap-floor { margin: .7rem 0; }
+.dmap-floor-label {
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--accent, #c8a840); font-weight: 700; margin-bottom: .35rem;
+}
+.dmap-markers { list-style: none; margin: 0; padding: 0; }
+.dmark { display: flex; align-items: baseline; gap: .5rem; padding: .25rem 0; font-size: .84rem; }
+.dmark-key {
+  flex-shrink: 0; width: 26px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(200,168,64,.16); color: var(--accent, #c8a840); border-radius: 5px;
+  font-family: var(--font-mono, monospace); font-size: .72rem; font-weight: 700;
+}
+.dmark-kind {
+  flex-shrink: 0; width: 78px; font-size: .62rem; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--muted-2, #7a6a40); padding-top: 2px;
+}
+.dmark-boss .dmark-kind, .dmark-boss .dmark-key { color: #e06a4a; background: rgba(224,106,74,.16); }
+.dmark-chest .dmark-key, .dmark-item .dmark-key { color: #e0b84a; }
+.dmark-label { color: var(--muted, #b3a373); }
+.room-card { padding: .6rem 0; border-bottom: 1px solid rgba(200,168,64,.1); }
+.room-card:last-child { border-bottom: 0; }
+.room-name { color: var(--text, #e9dca8); font-weight: 700; font-size: .92rem; margin-bottom: .25rem; }
+.room-solution { color: var(--muted, #b3a373); font-size: .85rem; line-height: 1.55; margin: 0; }
+.room-sol-tag, .room-meta-lbl {
+  font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+  background: rgba(200,168,64,.16); color: var(--accent, #c8a840); padding: 1px 6px; border-radius: 4px; margin-right: .4rem;
+}
+.room-meta { font-size: .78rem; color: var(--muted-2, #8a7a4a); margin-top: .3rem; }
+.room-treasure { background: rgba(224,184,74,.18); color: #e0b84a; }
+
+/* ── Adventurer's Reference accordion ─────────────────────────────────────── */
+.essentials { max-width: 1100px; margin: 0 auto 1.5rem; padding: 0 1.5rem; }
+.essentials-head h2 { font-family: var(--font-display, sans-serif); font-size: 1.3rem; color: var(--accent, #c8a840); margin: 0 0 .35rem; }
+.essentials-head p { color: var(--muted, #b3a373); font-size: .9rem; line-height: 1.55; margin: 0 0 1rem; max-width: 72ch; }
+.ref-panel {
+  border: 1px solid rgba(200,168,64,.18); border-radius: 12px;
+  background: rgba(255,255,255,.015); margin-bottom: .6rem; overflow: hidden;
+}
+.ref-panel > summary {
+  list-style: none; cursor: pointer; padding: .85rem 1rem; font-weight: 700;
+  color: var(--text, #e9dca8); display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; font-size: .98rem;
+}
+.ref-panel > summary::-webkit-details-marker { display: none; }
+.ref-panel > summary::after { content: '▾'; margin-left: auto; color: var(--accent, #c8a840); transition: transform .2s; }
+.ref-panel[open] > summary::after { transform: rotate(180deg); }
+.ref-ic { font-size: 1.05rem; }
+.ref-sub { font-weight: 400; color: var(--muted-2, #7a6a40); font-size: .8rem; }
+.ref-panel-body { padding: .5rem 1rem 1.1rem; border-top: 1px solid rgba(200,168,64,.12); }
+.ref-note { color: var(--muted, #b3a373); font-size: .82rem; line-height: 1.5; margin: .2rem 0 .8rem; }
+.ref-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+.ref-table td { padding: .4rem .5rem; border-bottom: 1px solid rgba(200,168,64,.1); vertical-align: top; }
+.ir-name { color: var(--text, #e9dca8); white-space: nowrap; font-weight: 600; }
+.ir-cat { display: block; font-size: .66rem; color: var(--muted-2, #7a6a40); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
+.ir-where { color: var(--muted, #b3a373); }
+.ir-unlocks { display: block; color: var(--muted-2, #8a7a4a); font-size: .78rem; margin-top: .15rem; }
+.era {
+  display: inline-block; font-size: .62rem; font-weight: 700; padding: 1px 6px; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: .03em; white-space: nowrap;
+}
+.era-child { background: rgba(110,170,90,.2); color: #8fcf6f; }
+.era-adult { background: rgba(120,140,232,.2); color: #9aa7e8; }
+.era-either { background: rgba(200,168,64,.18); color: #d8c060; }
+.song-row { display: grid; gap: .15rem; padding: .55rem 0; border-bottom: 1px solid rgba(200,168,64,.1); }
+.song-row:last-child { border-bottom: 0; }
+.song-name { color: var(--accent, #c8a840); font-size: .92rem; }
+.song-where { color: var(--muted-2, #8a7a4a); font-size: .78rem; }
+.song-use { color: var(--muted, #b3a373); font-size: .84rem; line-height: 1.5; }
+.cc-label { color: var(--text, #e9dca8); }
+.cc-loc { color: var(--muted, #b3a373); }
+.cc-req { white-space: nowrap; text-align: right; }
+.req-tag {
+  font-size: .66rem; font-weight: 700; background: rgba(200,168,64,.14); color: var(--accent, #c8a840);
+  padding: 1px 6px; border-radius: 4px; margin-left: .3rem; white-space: nowrap;
+}
+.chain-list { margin: 0; padding-left: 1.3rem; }
+.chain-list li { padding: .35rem 0; font-size: .85rem; color: var(--muted, #b3a373); line-height: 1.5; }
+.chain-list li strong { color: var(--text, #e9dca8); }
+.chain-req {
+  font-size: .62rem; font-weight: 700; background: rgba(224,106,74,.16); color: #e06a4a;
+  padding: 1px 6px; border-radius: 4px; margin-left: .4rem;
+}
+.chain-detail { display: block; color: var(--muted-2, #8a7a4a); font-size: .8rem; margin-top: .1rem; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .7rem; }
+.shop-card { border: 1px solid rgba(200,168,64,.12); border-radius: 9px; padding: .6rem .7rem; }
+.shop-name { color: var(--text, #e9dca8); font-weight: 700; font-size: .88rem; margin-bottom: .35rem; }
+.shop-where { display: block; font-size: .7rem; color: var(--muted-2, #7a6a40); font-weight: 400; }
+.shop-mini { width: 100%; border-collapse: collapse; font-size: .8rem; }
+.shop-mini td { padding: .2rem 0; color: var(--muted, #b3a373); border-bottom: 1px solid rgba(200,168,64,.07); }
+.shop-price { text-align: right; font-family: var(--font-mono, monospace); color: var(--accent, #c8a840); white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .essentials { padding: 0 1rem; }
+  .dmark-kind { width: 60px; }
 }
 </style>
 

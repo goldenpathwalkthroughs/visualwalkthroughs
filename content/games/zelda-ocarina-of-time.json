@@ -3,7 +3,9 @@
   "title": "The Legend of Zelda: Ocarina of Time",
   "slug": "zelda-ocarina-of-time",
   "year": "1998",
-  "platforms": ["Nintendo 64"],
+  "platforms": [
+    "Nintendo 64"
+  ],
   "status": "published",
   "lede": "Link grows from a child in Kokiri Forest to the Hero of Time — collect the three Spiritual Stones, draw the Master Sword, and reunite the shattered Triforce in Nintendo's landmark 3D adventure.",
   "cover": "/assets/covers/zelda-ocarina-of-time.webp",
@@ -13,7 +15,6 @@
     "accentSoft": "rgba(200,168,64,.14)",
     "cardGradient": "linear-gradient(160deg,#101a04,#080f02 60%,#040800)"
   },
-
   "structure": {
     "structureType": "linear",
     "recommendedRoute": [
@@ -44,11 +45,13 @@
       {
         "groupId": "adult-temples-middle",
         "label": "Shadow & Spirit Temples (either order)",
-        "sectionIds": ["shadow-temple", "spirit-temple"]
+        "sectionIds": [
+          "shadow-temple",
+          "spirit-temple"
+        ]
       }
     ]
   },
-
   "advisories": [
     {
       "type": "tip",
@@ -75,35 +78,149 @@
       "completionistOnly": false
     }
   ],
-
   "items": [
-    { "id": "kokiri-sword",       "name": "Kokiri Sword",       "type": "item",    "class": "progression", "acquiredAtSectionId": "great-deku-tree" },
-    { "id": "deku-shield",        "name": "Deku Shield",        "type": "item",    "class": "progression", "acquiredAtSectionId": "great-deku-tree" },
-    { "id": "fairy-ocarina",      "name": "Fairy Ocarina",      "type": "item",    "class": "progression", "acquiredAtSectionId": "great-deku-tree" },
-    { "id": "slingshot",          "name": "Fairy Slingshot",    "type": "item",    "class": "progression", "acquiredAtSectionId": "great-deku-tree" },
-    { "id": "bombs",              "name": "Bombs",              "type": "item",    "class": "progression", "acquiredAtSectionId": "dodongos-cavern" },
-    { "id": "bomb-bag",           "name": "Bomb Bag",           "type": "item",    "class": "progression", "acquiredAtSectionId": "dodongos-cavern" },
-    { "id": "boomerang",          "name": "Boomerang",          "type": "item",    "class": "progression", "acquiredAtSectionId": "inside-jabu-jabas-belly" },
-    { "id": "ocarina-of-time",    "name": "Ocarina of Time",    "type": "item",    "class": "progression", "acquiredAtSectionId": "temple-of-time" },
-    { "id": "master-sword",       "name": "Master Sword",       "type": "item",    "class": "progression", "acquiredAtSectionId": "temple-of-time" },
-    { "id": "hookshot",           "name": "Hookshot",           "type": "item",    "class": "progression", "acquiredAtSectionId": "forest-temple" },
-    { "id": "bow",                "name": "Hero's Bow",         "type": "item",    "class": "progression", "acquiredAtSectionId": "forest-temple" },
-    { "id": "megaton-hammer",     "name": "Megaton Hammer",     "type": "item",    "class": "progression", "acquiredAtSectionId": "fire-temple" },
-    { "id": "iron-boots",         "name": "Iron Boots",         "type": "item",    "class": "progression", "acquiredAtSectionId": "water-temple" },
-    { "id": "longshot",           "name": "Longshot",           "type": "item",    "class": "progression", "acquiredAtSectionId": "water-temple" },
-    { "id": "hover-boots",        "name": "Hover Boots",        "type": "item",    "class": "progression", "acquiredAtSectionId": "shadow-temple" },
-    { "id": "lens-of-truth",      "name": "Lens of Truth",      "type": "item",    "class": "progression", "acquiredAtSectionId": "shadow-temple" },
-    { "id": "silver-gauntlets",   "name": "Silver Gauntlets",   "type": "item",    "class": "progression", "acquiredAtSectionId": "spirit-temple" },
-    { "id": "mirror-shield",      "name": "Mirror Shield",      "type": "item",    "class": "progression", "acquiredAtSectionId": "spirit-temple" },
-    { "id": "light-arrows",       "name": "Light Arrows",       "type": "item",    "class": "progression", "acquiredAtSectionId": "ganons-castle" }
+    {
+      "id": "kokiri-sword",
+      "name": "Kokiri Sword",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-deku-tree"
+    },
+    {
+      "id": "deku-shield",
+      "name": "Deku Shield",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-deku-tree"
+    },
+    {
+      "id": "fairy-ocarina",
+      "name": "Fairy Ocarina",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-deku-tree"
+    },
+    {
+      "id": "slingshot",
+      "name": "Fairy Slingshot",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "great-deku-tree"
+    },
+    {
+      "id": "bombs",
+      "name": "Bombs",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "dodongos-cavern"
+    },
+    {
+      "id": "bomb-bag",
+      "name": "Bomb Bag",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "dodongos-cavern"
+    },
+    {
+      "id": "boomerang",
+      "name": "Boomerang",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "inside-jabu-jabas-belly"
+    },
+    {
+      "id": "ocarina-of-time",
+      "name": "Ocarina of Time",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "temple-of-time"
+    },
+    {
+      "id": "master-sword",
+      "name": "Master Sword",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "temple-of-time"
+    },
+    {
+      "id": "hookshot",
+      "name": "Hookshot",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "forest-temple"
+    },
+    {
+      "id": "bow",
+      "name": "Hero's Bow",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "forest-temple"
+    },
+    {
+      "id": "megaton-hammer",
+      "name": "Megaton Hammer",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "fire-temple"
+    },
+    {
+      "id": "iron-boots",
+      "name": "Iron Boots",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "water-temple"
+    },
+    {
+      "id": "longshot",
+      "name": "Longshot",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "water-temple"
+    },
+    {
+      "id": "hover-boots",
+      "name": "Hover Boots",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "shadow-temple"
+    },
+    {
+      "id": "lens-of-truth",
+      "name": "Lens of Truth",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "shadow-temple"
+    },
+    {
+      "id": "silver-gauntlets",
+      "name": "Silver Gauntlets",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "spirit-temple"
+    },
+    {
+      "id": "mirror-shield",
+      "name": "Mirror Shield",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "spirit-temple"
+    },
+    {
+      "id": "light-arrows",
+      "name": "Light Arrows",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "ganons-castle"
+    }
   ],
-
   "detours": [
     {
       "id": "biggoron-sword",
       "location": "Begins at Cucco Lady in Kakariko Village — then a ten-stage trading chain",
       "type": "upgrade",
-      "requires": ["master-sword"],
+      "requires": [
+        "master-sword"
+      ],
       "benefit": "Biggoron's Sword — two-handed blade dealing 4× Kokiri Sword damage; does not break",
       "method": "As Adult Link, trade: Pocket Egg (hatch → Cucco → wake Talon on Lon Lon Ranch) → Odd Mushroom (Granny in Kakariko, 3-minute timer) → Odd Potion → Poacher's Saw → Broken Goron Sword → Prescription → Eyeball Frog (2-minute timer) → World's Finest Eyedrops (4-minute timer) → Claim Check → Biggoron's Sword after 3 days (play Song of Sun repeatedly to pass time). Each timed trade requires immediate travel; use Epona and warp songs.",
       "earliestSectionId": "forest-temple",
@@ -114,7 +231,9 @@
       "id": "bigger-bomb-bag",
       "location": "Goron City (child) — spin the large urn with bombs; Hyrule Castle Town Bombchu Bowling",
       "type": "upgrade",
-      "requires": ["bombs"],
+      "requires": [
+        "bombs"
+      ],
       "benefit": "Bomb Bag capacity 20 → 30 → 40",
       "method": "Bigger Bomb Bag (20→30): as Child Link, place a bomb inside the spinning urn in Goron City — the lid pops open for a prize (bag upgrade or Piece of Heart). Biggest Bomb Bag (30→40): Bombchu Bowling in Castle Town, win on the bag-prize round.",
       "earliestSectionId": "dodongos-cavern",
@@ -136,7 +255,9 @@
       "id": "epona",
       "location": "Lon Lon Ranch — central Hyrule Field, large ranch south of the market",
       "type": "convenience",
-      "requires": ["master-sword"],
+      "requires": [
+        "master-sword"
+      ],
       "benefit": "Epona — fastest overworld travel; required to get across Gerudo Valley without the Longshot",
       "method": "As Adult Link, enter Lon Lon Ranch and talk to Malon. Play Epona's Song (learned from Malon as a child) on the Ocarina to call Epona. Pay Ingo 10 rupees to ride, then challenge him to two races. Win the second race to win Epona permanently — jump the fence to escape.",
       "earliestSectionId": "forest-temple",
@@ -147,7 +268,9 @@
       "id": "ice-cavern-iron-boots",
       "location": "Zora's Fountain — behind Jabu-Jabu's now-frozen form as Adult Link",
       "type": "upgrade",
-      "requires": ["master-sword"],
+      "requires": [
+        "master-sword"
+      ],
       "benefit": "Iron Boots (required for Water Temple) + Blue Fire (to thaw King Zora) + Serenade of Water warp song",
       "method": "As Adult Link, Zora's Fountain is frozen. Enter the Ice Cavern at the back wall (no key required). Navigate ice-block puzzles and collect Blue Fire (bottled from a wall flame) to thaw the Red Ice in King Zora's passage. Iron Boots are in a chest near the end. The Serenade of Water is taught by Sheik at the exit.",
       "earliestSectionId": "water-temple",
@@ -155,7 +278,6 @@
       "mandatory": false
     }
   ],
-
   "locations": [
     {
       "id": "kokiri-forest",
@@ -165,9 +287,21 @@
       "whereWithin": "Village of treehouse platforms. The Know-It-All Brothers' house on the right teaches sword controls. Mido blocks the path to the Deku Tree until you have sword and shield.",
       "isHub": true,
       "contains": [
-        { "label": "Kokiri Sword — crawl through the maze behind the village (round hole in the fence, north-east corner)", "kind": "beat", "sectionId": "great-deku-tree" },
-        { "label": "Deku Shield — buy from Kokiri Shop for 40 rupees", "kind": "shop", "sectionId": "great-deku-tree" },
-        { "label": "Great Deku Tree — follow the path behind Mido once you have sword and shield", "kind": "beat", "sectionId": "great-deku-tree" }
+        {
+          "label": "Kokiri Sword — crawl through the maze behind the village (round hole in the fence, north-east corner)",
+          "kind": "beat",
+          "sectionId": "great-deku-tree"
+        },
+        {
+          "label": "Deku Shield — buy from Kokiri Shop for 40 rupees",
+          "kind": "shop",
+          "sectionId": "great-deku-tree"
+        },
+        {
+          "label": "Great Deku Tree — follow the path behind Mido once you have sword and shield",
+          "kind": "beat",
+          "sectionId": "great-deku-tree"
+        }
       ]
     },
     {
@@ -178,9 +312,21 @@
       "whereWithin": "Market square with shops and the Bombchu Bowling alley. The drawbridge to Hyrule Castle is at the far north end.",
       "isHub": true,
       "contains": [
-        { "label": "Princess Zelda — peer through the castle courtyard window; she briefs you on Ganondorf", "kind": "beat", "sectionId": "dodongos-cavern" },
-        { "label": "Zelda's Letter — given by Zelda after the courtyard scene; required to pass the Death Mountain gate guard", "kind": "beat", "sectionId": "dodongos-cavern" },
-        { "label": "Bombchu Bowling — win Giant Bomb Bag or Piece of Heart (RNG prize rotation)", "kind": "secret", "completionistOnly": true }
+        {
+          "label": "Princess Zelda — peer through the castle courtyard window; she briefs you on Ganondorf",
+          "kind": "beat",
+          "sectionId": "dodongos-cavern"
+        },
+        {
+          "label": "Zelda's Letter — given by Zelda after the courtyard scene; required to pass the Death Mountain gate guard",
+          "kind": "beat",
+          "sectionId": "dodongos-cavern"
+        },
+        {
+          "label": "Bombchu Bowling — win Giant Bomb Bag or Piece of Heart (RNG prize rotation)",
+          "kind": "secret",
+          "completionistOnly": true
+        }
       ]
     },
     {
@@ -191,9 +337,24 @@
       "whereWithin": "Windmill on the left, graveyard to the north-east, House of Skulltula on the right. Death Mountain Trail gate is at the top of the main path.",
       "isHub": true,
       "contains": [
-        { "label": "Death Mountain Trail — show Zelda's Letter to the gate guard to pass", "kind": "beat", "sectionId": "dodongos-cavern" },
-        { "label": "House of Skulltula — Gold Skulltula token redemption centre; cursed family gives items at 10/20/30/40/50 tokens", "kind": "npc", "completionistOnly": true },
-        { "label": "Bottom of the Well — child Link, drain using Windmill's Song of Storms (Lens of Truth inside)", "kind": "beat", "sectionId": "shadow-temple", "requires": ["fairy-ocarina"] }
+        {
+          "label": "Death Mountain Trail — show Zelda's Letter to the gate guard to pass",
+          "kind": "beat",
+          "sectionId": "dodongos-cavern"
+        },
+        {
+          "label": "House of Skulltula — Gold Skulltula token redemption centre; cursed family gives items at 10/20/30/40/50 tokens",
+          "kind": "npc",
+          "completionistOnly": true
+        },
+        {
+          "label": "Bottom of the Well — child Link, drain using Windmill's Song of Storms (Lens of Truth inside)",
+          "kind": "beat",
+          "sectionId": "shadow-temple",
+          "requires": [
+            "fairy-ocarina"
+          ]
+        }
       ]
     },
     {
@@ -204,8 +365,16 @@
       "whereWithin": "Trail climbs past bomb-dropping Skulltulas to the crater rim. Goron City is carved into the mountain interior — drop down to the spinning urn room for prizes.",
       "isHub": false,
       "contains": [
-        { "label": "Darunia — play Saria's Song to cheer him up; he opens Dodongo's Cavern", "kind": "npc", "sectionId": "dodongos-cavern" },
-        { "label": "Dodongo's Cavern — entrance is on the lower face of Death Mountain, sealed with a giant boulder; bomb or use bomb flowers to open", "kind": "beat", "sectionId": "dodongos-cavern" }
+        {
+          "label": "Darunia — play Saria's Song to cheer him up; he opens Dodongo's Cavern",
+          "kind": "npc",
+          "sectionId": "dodongos-cavern"
+        },
+        {
+          "label": "Dodongo's Cavern — entrance is on the lower face of Death Mountain, sealed with a giant boulder; bomb or use bomb flowers to open",
+          "kind": "beat",
+          "sectionId": "dodongos-cavern"
+        }
       ]
     },
     {
@@ -216,9 +385,24 @@
       "whereWithin": "Zora's Domain: King Zora sits blocking the passage to Zora's Fountain. Zora's Fountain is behind him — Jabu-Jabu lives here as a child. As Adult Link, the Fountain is frozen; enter the Ice Cavern from the far wall.",
       "isHub": false,
       "contains": [
-        { "label": "Ruto's Letter — fish it out of a bottle in Zora's Fountain (the bottle becomes yours)", "kind": "beat", "sectionId": "inside-jabu-jabas-belly" },
-        { "label": "Inside Jabu-Jabu's Belly — throw a fish to Jabu-Jabu to open his mouth; dive inside", "kind": "beat", "sectionId": "inside-jabu-jabas-belly" },
-        { "label": "Ice Cavern — adult Link; obtain Iron Boots, Blue Fire, and Serenade of Water here before Water Temple", "kind": "beat", "sectionId": "water-temple", "requires": ["master-sword"] }
+        {
+          "label": "Ruto's Letter — fish it out of a bottle in Zora's Fountain (the bottle becomes yours)",
+          "kind": "beat",
+          "sectionId": "inside-jabu-jabas-belly"
+        },
+        {
+          "label": "Inside Jabu-Jabu's Belly — throw a fish to Jabu-Jabu to open his mouth; dive inside",
+          "kind": "beat",
+          "sectionId": "inside-jabu-jabas-belly"
+        },
+        {
+          "label": "Ice Cavern — adult Link; obtain Iron Boots, Blue Fire, and Serenade of Water here before Water Temple",
+          "kind": "beat",
+          "sectionId": "water-temple",
+          "requires": [
+            "master-sword"
+          ]
+        }
       ]
     },
     {
@@ -229,8 +413,16 @@
       "whereWithin": "A single long nave leads to the Door of Time. The Altar of Time holds the three Spiritual Stone pedestals. The Pedestal of Time (Sword in the Stone) is behind the Door of Time.",
       "isHub": false,
       "contains": [
-        { "label": "Door of Time — opens when all three Spiritual Stones are placed and the Song of Time is played", "kind": "beat", "sectionId": "temple-of-time" },
-        { "label": "Master Sword — draw it from the Pedestal of Time; triggers the 7-year time skip", "kind": "beat", "sectionId": "temple-of-time" }
+        {
+          "label": "Door of Time — opens when all three Spiritual Stones are placed and the Song of Time is played",
+          "kind": "beat",
+          "sectionId": "temple-of-time"
+        },
+        {
+          "label": "Master Sword — draw it from the Pedestal of Time; triggers the 7-year time skip",
+          "kind": "beat",
+          "sectionId": "temple-of-time"
+        }
       ]
     },
     {
@@ -241,9 +433,27 @@
       "whereWithin": "A raised platform at the back of the maze where Saria waits as a child. As Adult Link the pathway to the Forest Temple begins here.",
       "isHub": false,
       "contains": [
-        { "label": "Saria's Song — learned from Saria sitting on the stump in the meadow (child)", "kind": "beat", "sectionId": "great-deku-tree" },
-        { "label": "Minuet of Forest — Sheik teaches it here as Adult Link before the Forest Temple", "kind": "beat", "sectionId": "forest-temple", "requires": ["master-sword"] },
-        { "label": "Forest Temple entrance — climb the ivy wall at the end of the maze corridor", "kind": "beat", "sectionId": "forest-temple", "requires": ["master-sword"] }
+        {
+          "label": "Saria's Song — learned from Saria sitting on the stump in the meadow (child)",
+          "kind": "beat",
+          "sectionId": "great-deku-tree"
+        },
+        {
+          "label": "Minuet of Forest — Sheik teaches it here as Adult Link before the Forest Temple",
+          "kind": "beat",
+          "sectionId": "forest-temple",
+          "requires": [
+            "master-sword"
+          ]
+        },
+        {
+          "label": "Forest Temple entrance — climb the ivy wall at the end of the maze corridor",
+          "kind": "beat",
+          "sectionId": "forest-temple",
+          "requires": [
+            "master-sword"
+          ]
+        }
       ]
     },
     {
@@ -254,8 +464,22 @@
       "whereWithin": "Large lake with a laboratory on the south shore. The Water Temple entrance is on the platform in the centre — requires Iron Boots and Zora's Tunic to reach comfortably.",
       "isHub": false,
       "contains": [
-        { "label": "Water Temple — dive to the platform at the lake centre wearing Iron Boots", "kind": "beat", "sectionId": "water-temple", "requires": ["iron-boots"] },
-        { "label": "Fire Arrow upgrade — adult, play Song of Time on the sunrise stone at the lake shore to reveal a chest", "kind": "secret", "requires": ["master-sword"], "completionistOnly": true }
+        {
+          "label": "Water Temple — dive to the platform at the lake centre wearing Iron Boots",
+          "kind": "beat",
+          "sectionId": "water-temple",
+          "requires": [
+            "iron-boots"
+          ]
+        },
+        {
+          "label": "Fire Arrow upgrade — adult, play Song of Time on the sunrise stone at the lake shore to reveal a chest",
+          "kind": "secret",
+          "requires": [
+            "master-sword"
+          ],
+          "completionistOnly": true
+        }
       ]
     },
     {
@@ -266,8 +490,19 @@
       "whereWithin": "The wasteland has quicksand pits and a phantom Poe guide — follow the Poe's lantern to cross safely. The Desert Colossus oasis is at the far end; the Spirit Temple entrance is carved into the giant stone hand.",
       "isHub": false,
       "contains": [
-        { "label": "Requiem of Spirit — Sheik teaches it at the Desert Colossus as Adult Link", "kind": "beat", "sectionId": "spirit-temple", "requires": ["master-sword"] },
-        { "label": "Spirit Temple — child side requires travelling back in time via Temple of Time; adult side entered normally", "kind": "beat", "sectionId": "spirit-temple" }
+        {
+          "label": "Requiem of Spirit — Sheik teaches it at the Desert Colossus as Adult Link",
+          "kind": "beat",
+          "sectionId": "spirit-temple",
+          "requires": [
+            "master-sword"
+          ]
+        },
+        {
+          "label": "Spirit Temple — child side requires travelling back in time via Temple of Time; adult side entered normally",
+          "kind": "beat",
+          "sectionId": "spirit-temple"
+        }
       ]
     },
     {
@@ -277,13 +512,25 @@
       "reachableBy": "After all six medallions are collected, the Rainbow Bridge forms automatically across the moat. Cross it on foot.",
       "isHub": false,
       "contains": [
-        { "label": "Six barrier rooms — each keyed to one of the six dungeons' elements", "kind": "beat", "sectionId": "ganons-castle" },
-        { "label": "Ganondorf boss chamber — top of the tower", "kind": "beat", "sectionId": "ganons-castle" },
-        { "label": "Ganon — collapsed tower, final battle", "kind": "beat", "sectionId": "ganons-castle", "spoiler": true }
+        {
+          "label": "Six barrier rooms — each keyed to one of the six dungeons' elements",
+          "kind": "beat",
+          "sectionId": "ganons-castle"
+        },
+        {
+          "label": "Ganondorf boss chamber — top of the tower",
+          "kind": "beat",
+          "sectionId": "ganons-castle"
+        },
+        {
+          "label": "Ganon — collapsed tower, final battle",
+          "kind": "beat",
+          "sectionId": "ganons-castle",
+          "spoiler": true
+        }
       ]
     }
   ],
-
   "bossFights": [
     {
       "id": "queen-gohma",
@@ -291,7 +538,10 @@
       "sectionId": "great-deku-tree",
       "locationRef": "Great Deku Tree — basement",
       "prep": {
-        "recommendedItems": ["slingshot", "kokiri-sword"],
+        "recommendedItems": [
+          "slingshot",
+          "kokiri-sword"
+        ],
         "healthAdvice": "Bring a full set of Deku Nuts if you have them — they can stun Gohma briefly. At minimum you need the Slingshot and the Kokiri Sword.",
         "topUpBefore": "Green Deku Bubbles in the room before the boss door restore a half-heart each. Pop several before entering."
       },
@@ -322,7 +572,10 @@
       "sectionId": "dodongos-cavern",
       "locationRef": "Dodongo's Cavern — lava arena",
       "prep": {
-        "recommendedItems": ["bombs", "kokiri-sword"],
+        "recommendedItems": [
+          "bombs",
+          "kokiri-sword"
+        ],
         "healthAdvice": "Bring at least four heart containers. The lava ring around the arena is fatal — never back-step toward the edge.",
         "topUpBefore": "Break the small pots in the antechamber outside the boss door — one contains a fairy."
       },
@@ -353,7 +606,9 @@
       "sectionId": "inside-jabu-jabas-belly",
       "locationRef": "Inside Jabu-Jabu's Belly — electric chamber",
       "prep": {
-        "recommendedItems": ["boomerang"],
+        "recommendedItems": [
+          "boomerang"
+        ],
         "healthAdvice": "The Anemones (jellyfish) deal electric damage if they touch you. Keep moving at all times.",
         "topUpBefore": "Green jelly pods line the approach corridor — slash them for small hearts before entering the boss room."
       },
@@ -384,7 +639,10 @@
       "sectionId": "forest-temple",
       "locationRef": "Forest Temple — portrait gallery",
       "prep": {
-        "recommendedItems": ["bow", "master-sword"],
+        "recommendedItems": [
+          "bow",
+          "master-sword"
+        ],
         "healthAdvice": "Bring at least six heart containers. The energy-ball volley phase in Phase 2 can drain health quickly if you mistime the swing.",
         "topUpBefore": "Fairy in a pot two rooms before the boss door, on the left wall of the blue-lit corridor."
       },
@@ -415,7 +673,10 @@
       "sectionId": "fire-temple",
       "locationRef": "Fire Temple — summit arena",
       "prep": {
-        "recommendedItems": ["megaton-hammer", "bow"],
+        "recommendedItems": [
+          "megaton-hammer",
+          "bow"
+        ],
         "healthAdvice": "Bring at least seven heart containers and Goron's Tunic. The fire pillar rooms inside the temple drain health rapidly without the tunic.",
         "topUpBefore": "Break the pots along the left wall of the antechamber — one contains a fairy."
       },
@@ -446,7 +707,10 @@
       "sectionId": "water-temple",
       "locationRef": "Water Temple — central chamber",
       "prep": {
-        "recommendedItems": ["longshot", "master-sword"],
+        "recommendedItems": [
+          "longshot",
+          "master-sword"
+        ],
         "healthAdvice": "Bring at least eight heart containers. Morpha deals contact damage and the water environment restricts movement.",
         "topUpBefore": "Break the pots in the small room adjoining the boss chamber — one contains a fairy. Equip the Longshot before entering."
       },
@@ -477,7 +741,11 @@
       "sectionId": "shadow-temple",
       "locationRef": "Shadow Temple — drum platform",
       "prep": {
-        "recommendedItems": ["bow", "hover-boots", "lens-of-truth"],
+        "recommendedItems": [
+          "bow",
+          "hover-boots",
+          "lens-of-truth"
+        ],
         "healthAdvice": "Bring at least nine heart containers. The elastic drum platform affects movement — Hover Boots greatly stabilise your footing.",
         "topUpBefore": "Break the pot in the antechamber before the boss door — fairy inside."
       },
@@ -508,7 +776,11 @@
       "sectionId": "spirit-temple",
       "locationRef": "Spirit Temple — summit throne room",
       "prep": {
-        "recommendedItems": ["mirror-shield", "master-sword", "bow"],
+        "recommendedItems": [
+          "mirror-shield",
+          "master-sword",
+          "bow"
+        ],
         "healthAdvice": "Bring at least nine heart containers and a fairy in a bottle. The absorption system in Phase 2 punishes element-mixing mistakes and you may take several hits while learning the rhythm.",
         "topUpBefore": "Break pots in the hallway before the boss door — one contains a fairy."
       },
@@ -539,7 +811,11 @@
       "sectionId": "ganons-castle",
       "locationRef": "Ganon's Tower — summit organ chamber",
       "prep": {
-        "recommendedItems": ["light-arrows", "master-sword", "bow"],
+        "recommendedItems": [
+          "light-arrows",
+          "master-sword",
+          "bow"
+        ],
         "healthAdvice": "Bring maximum heart containers (20 if possible) and two fairies in bottles. There is no healing between Ganondorf and the subsequent Ganon fight.",
         "topUpBefore": "Great Fairy fountain on Death Mountain summit restores magic and health. Visit before entering Ganon's Castle."
       },
@@ -564,7 +840,10 @@
       "sectionId": "ganons-castle",
       "locationRef": "Collapsed tower exterior — Ganon's final arena",
       "prep": {
-        "recommendedItems": ["light-arrows", "master-sword"],
+        "recommendedItems": [
+          "light-arrows",
+          "master-sword"
+        ],
         "healthAdvice": "This fight follows directly after the tower escape — use any fairies or potions you have saved before the arena seals.",
         "topUpBefore": "You cannot return to heal between Ganondorf and Ganon. Save all remaining fairies for this fight."
       },
@@ -590,7 +869,6 @@
       "reward": "The ending. The Sacred Realm is restored. Zelda sends Link back to his childhood."
     }
   ],
-
   "sections": [
     {
       "sectionId": "great-deku-tree",
@@ -598,8 +876,17 @@
       "stage": "Dungeon 1",
       "title": "Great Deku Tree",
       "subtitle": "Kokiri Forest · Saria's Song · first dungeon · Spiritual Stone of the Forest",
-      "chips": ["Kokiri Sword", "Slingshot", "Saria's Song"],
-      "unlocks": ["kokiri-sword", "deku-shield", "fairy-ocarina", "slingshot"],
+      "chips": [
+        "Kokiri Sword",
+        "Slingshot",
+        "Saria's Song"
+      ],
+      "unlocks": [
+        "kokiri-sword",
+        "deku-shield",
+        "fairy-ocarina",
+        "slingshot"
+      ],
       "gates": [],
       "gatingType": "none",
       "recommendedDetours": [],
@@ -660,22 +947,156 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Queen Gohma reward", "note": "Dropped automatically after the boss fight.", "type": "heart", "completionistOnly": false },
-        { "label": "Gold Skulltula — inside the hollow tree near the dungeon entrance (nighttime only)", "note": "Use the Boomerang to collect the token once you unlock it later; the spider spawns at night on the right-hand tree.", "type": "other", "completionistOnly": true }
+        {
+          "label": "Heart Container — Queen Gohma reward",
+          "note": "Dropped automatically after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        },
+        {
+          "label": "Gold Skulltula — inside the hollow tree near the dungeon entrance (nighttime only)",
+          "note": "Use the Boomerang to collect the token once you unlock it later; the spider spawns at night on the right-hand tree.",
+          "type": "other",
+          "completionistOnly": true
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Find the Fairy Slingshot"
+        },
+        {
+          "label": "Burn through the web to the basement"
+        },
+        {
+          "label": "Defeat the three Deku Scrubs in the right order"
+        },
+        {
+          "label": "Defeat Queen Gohma"
+        },
+        {
+          "label": "Claim the Kokiri's Emerald"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "room",
+                "label": "Main hall — Deku Babas; ladder up the vines"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Dungeon Map chest",
+                "requires": []
+              },
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Fairy Slingshot (boss-key-style chest)",
+                "requires": []
+              },
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Ladder eye-switch — shoot to drop the climb"
+              }
+            ]
+          },
+          {
+            "label": "2F / 3F",
+            "markers": [
+              {
+                "key": "5",
+                "kind": "secret",
+                "label": "Central web — drop or burn through to B1"
+              },
+              {
+                "key": "6",
+                "kind": "item",
+                "label": "Wall torches for lighting Deku Sticks"
+              }
+            ]
+          },
+          {
+            "label": "B1",
+            "markers": [
+              {
+                "key": "7",
+                "kind": "npc",
+                "label": "Three Deku Scrubs — order puzzle"
+              },
+              {
+                "key": "8",
+                "kind": "boss",
+                "label": "Queen Gohma's lair",
+                "requires": [
+                  "slingshot"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Main Hall",
+          "solution": "Climb the vines to the upper ring. Watch for Deku Babas — Z-target and slash. A Skulltula clings to the back wall; hit it with a Deku Nut or the Slingshot once you have it.",
+          "enemies": "Deku Babas, Gold Skulltula",
+          "treasure": "Dungeon Map"
+        },
+        {
+          "name": "Slingshot Room",
+          "solution": "Shoot the eye-switch above the ladder with a Deku Seed to lower the climb, then open the chest for the Fairy Slingshot — your key tool for the rest of the dungeon.",
+          "treasure": "Fairy Slingshot"
+        },
+        {
+          "name": "The Web Floor",
+          "solution": "Light a Deku Stick at a wall torch and jump from the upper ledge onto the centre of the great web. The flame burns it away and drops you to the basement.",
+          "requires": [
+            "slingshot"
+          ]
+        },
+        {
+          "name": "Basement Ring",
+          "solution": "Cross the spiked-log moat by timing your run between the rolling logs, or hookshot-free by walking the thin ledges. Shoot the gold Skulltulas blocking the side alcoves.",
+          "enemies": "Deku Scrubs, Skulltulas"
+        },
+        {
+          "name": "Three Scrubs Room",
+          "solution": "Deflect each Deku Scrub's nut with your shield to stun it. The leftmost scrub tells you the order — hit them 2, then 3, then 1 — and the door ahead opens.",
+          "enemies": "Deku Scrubs ×3"
+        },
+        {
+          "name": "Gohma's Lair",
+          "solution": "When Queen Gohma's eye glows red, stun it with a Slingshot seed, then rush in with sword slashes. Drop her climbing gohma larvae fast before they hatch. See the boss card.",
+          "enemies": "Queen Gohma"
+        }
       ]
     },
-
     {
       "sectionId": "dodongos-cavern",
       "order": 2,
       "stage": "Dungeon 2",
       "title": "Dodongo's Cavern",
       "subtitle": "Hyrule Castle · meet Zelda · Death Mountain · Bomb Bag",
-      "chips": ["Meet Zelda", "Zelda's Letter", "Bomb Bag"],
-      "unlocks": ["bombs", "bomb-bag"],
+      "chips": [
+        "Meet Zelda",
+        "Zelda's Letter",
+        "Bomb Bag"
+      ],
+      "unlocks": [
+        "bombs",
+        "bomb-bag"
+      ],
       "gates": [],
       "gatingType": "none",
-      "recommendedDetours": ["bigger-bomb-bag"],
+      "recommendedDetours": [
+        "bigger-bomb-bag"
+      ],
       "video": {
         "provider": "youtube",
         "id": "EfUoDfnH9ew",
@@ -730,19 +1151,135 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — King Dodongo reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false },
-        { "label": "Piece of Heart — summit of Death Mountain", "note": "Climb to the very top of Death Mountain Trail (past the Goron City entrance) — the Piece of Heart is on a ledge near the crater rim.", "type": "heart", "completionistOnly": true }
+        {
+          "label": "Heart Container — King Dodongo reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        },
+        {
+          "label": "Piece of Heart — summit of Death Mountain",
+          "note": "Climb to the very top of Death Mountain Trail (past the Goron City entrance) — the Piece of Heart is on a ledge near the crater rim.",
+          "type": "heart",
+          "completionistOnly": true
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Acquire the Bomb Bag"
+        },
+        {
+          "label": "Open the giant Dodongo-skull door"
+        },
+        {
+          "label": "Light the eye torches to raise the stairs"
+        },
+        {
+          "label": "Defeat King Dodongo"
+        },
+        {
+          "label": "Earn the Goron's Ruby"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "switch",
+                "label": "Bomb the dust over the entrance bridge"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Bomb Bag (defeat the Lizalfos pair)"
+              },
+              {
+                "key": "3",
+                "kind": "switch",
+                "label": "Eye torches — light to raise the staircase"
+              }
+            ]
+          },
+          {
+            "label": "2F",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "room",
+                "label": "Bombable walls and Beamos statue"
+              },
+              {
+                "key": "5",
+                "kind": "switch",
+                "label": "Big skull door — light both eye torches"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "King Dodongo's lava chamber",
+                "requires": [
+                  "bombs"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Entrance Bridge",
+          "solution": "Bomb the cracked wall above the lobby (a bomb flower is nearby as a child) to drop the bridge and open the way in.",
+          "enemies": "Baby Dodongos"
+        },
+        {
+          "name": "Lizalfos Room",
+          "solution": "Z-target one Lizalfos at a time and back-slash after it lunges. Clearing both reveals the chest holding the Bomb Bag.",
+          "enemies": "Lizalfos ×2",
+          "treasure": "Bomb Bag"
+        },
+        {
+          "name": "Staircase Room",
+          "solution": "Two unlit torches flank the room. Light a Deku Stick and run to each, or use a single torch and the Slingshot-free dash — the giant staircase rises so you can reach the upper floor.",
+          "requires": [
+            "bombs"
+          ]
+        },
+        {
+          "name": "Beamos Corridor",
+          "solution": "The Beamos's eye is invulnerable to the sword. Drop a bomb at its base to destroy it, then bomb the cracked side wall for a shortcut.",
+          "enemies": "Beamos"
+        },
+        {
+          "name": "Skull Door Antechamber",
+          "solution": "The huge Dodongo-skull door is sealed until both its eye-torches burn. Light them and the mouth opens into the boss room.",
+          "requires": [
+            "bombs"
+          ]
+        },
+        {
+          "name": "King Dodongo's Chamber",
+          "solution": "When the King inhales to breathe fire, throw — or shield-deflect — a bomb into its open mouth. It curls up stunned; pile on sword hits. Repeat. See the boss card.",
+          "enemies": "King Dodongo"
+        }
       ]
     },
-
     {
       "sectionId": "inside-jabu-jabas-belly",
       "order": 3,
       "stage": "Dungeon 3",
       "title": "Inside Jabu-Jabu's Belly",
       "subtitle": "Zora's Domain · collect a fish · swallow entrance · Boomerang",
-      "chips": ["Zora's Domain", "Ruto's Letter", "Boomerang"],
-      "unlocks": ["boomerang"],
+      "chips": [
+        "Zora's Domain",
+        "Ruto's Letter",
+        "Boomerang"
+      ],
+      "unlocks": [
+        "boomerang"
+      ],
       "gates": [],
       "gatingType": "none",
       "recommendedDetours": [],
@@ -794,22 +1331,132 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Barinade reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false },
-        { "label": "Empty Bottle — Ruto's Message bottle", "note": "Fished out of Zora's Fountain automatically during the King Zora cutscene. Cannot be missed.", "type": "other", "completionistOnly": false }
+        {
+          "label": "Heart Container — Barinade reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        },
+        {
+          "label": "Empty Bottle — Ruto's Message bottle",
+          "note": "Fished out of Zora's Fountain automatically during the King Zora cutscene. Cannot be missed.",
+          "type": "other",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Escort Princess Ruto through the belly"
+        },
+        {
+          "label": "Find the Boomerang"
+        },
+        {
+          "label": "Destroy the electric tentacles"
+        },
+        {
+          "label": "Defeat Barinade"
+        },
+        {
+          "label": "Receive Zora's Sapphire"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "npc",
+                "label": "Ruto — carry and throw her onto switches"
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Boomerang",
+                "requires": []
+              },
+              {
+                "key": "3",
+                "kind": "switch",
+                "label": "Cow-mouth gates — Boomerang the eye-switches"
+              }
+            ]
+          },
+          {
+            "label": "B1",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "room",
+                "label": "Tentacle rooms — red, green, white"
+              },
+              {
+                "key": "5",
+                "kind": "boss",
+                "label": "Barinade's chamber",
+                "requires": [
+                  "boomerang"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Entry Pool",
+          "solution": "Pick up Princess Ruto and throw her onto the high platform's switch to open the way. You'll be carrying or fetching her for much of the dungeon.",
+          "enemies": "Stingers, Octoroks"
+        },
+        {
+          "name": "Boomerang Room",
+          "solution": "Drop down to the lower platform and open the chest for the Boomerang. From now on, Boomerang the cow-faced 'eye' switches to open the barred doors.",
+          "treasure": "Boomerang"
+        },
+        {
+          "name": "Red Tentacle Room",
+          "solution": "Boomerang the glowing tip of the red Biri tentacle, then run in and finish it with the sword. Each colour-coded tentacle you clear weakens Barinade.",
+          "enemies": "Biri, tentacle",
+          "requires": [
+            "boomerang"
+          ]
+        },
+        {
+          "name": "Green & White Tentacle Rooms",
+          "solution": "Repeat the Boomerang-then-sword pattern on the green and white tentacles. Use Ruto on the floor switches to reach the ones across gaps.",
+          "requires": [
+            "boomerang"
+          ]
+        },
+        {
+          "name": "Barinade's Chamber",
+          "solution": "Boomerang the stalk to cut Barinade free of the ceiling, sever its jellyfish ring with more throws, then slash the core. Keep moving to dodge its spin. See the boss card.",
+          "enemies": "Barinade"
+        }
       ]
     },
-
     {
       "sectionId": "temple-of-time",
       "order": 4,
       "stage": "Interlude",
       "title": "Temple of Time",
       "subtitle": "Songs gathered · Door of Time opened · Master Sword · seven-year skip",
-      "chips": ["Three Spiritual Stones", "Song of Time", "Seven years"],
-      "unlocks": ["ocarina-of-time", "master-sword"],
+      "chips": [
+        "Three Spiritual Stones",
+        "Song of Time",
+        "Seven years"
+      ],
+      "unlocks": [
+        "ocarina-of-time",
+        "master-sword"
+      ],
       "gates": [],
       "gatingType": "none",
-      "recommendedDetours": ["gold-skulltula-rewards"],
+      "recommendedDetours": [
+        "gold-skulltula-rewards"
+      ],
       "video": {
         "provider": "youtube",
         "id": "EfUoDfnH9ew",
@@ -858,21 +1505,65 @@
         }
       ],
       "collectibles": [
-        { "label": "Ocarina of Time — retrieved from the moat", "note": "Cannot be missed — story item dropped by Zelda during the cutscene.", "type": "other", "completionistOnly": false }
+        {
+          "label": "Ocarina of Time — retrieved from the moat",
+          "note": "Cannot be missed — story item dropped by Zelda during the cutscene.",
+          "type": "other",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Gather the three Spiritual Stones"
+        },
+        {
+          "label": "Learn the Song of Time"
+        },
+        {
+          "label": "Open the Door of Time"
+        },
+        {
+          "label": "Draw the Master Sword"
+        }
+      ],
+      "rooms": [
+        {
+          "name": "The Altar",
+          "solution": "Place the Kokiri's Emerald, Goron's Ruby and Zora's Sapphire on the altar and play the Song of Time. The Door of Time grinds open.",
+          "requires": [
+            "ocarina-of-time"
+          ]
+        },
+        {
+          "name": "Pedestal of Time",
+          "solution": "Pull the Master Sword from its pedestal. Link is sealed for seven years and wakes as an adult — the game's central time mechanic begins here.",
+          "treasure": "Master Sword"
+        }
       ]
     },
-
     {
       "sectionId": "forest-temple",
       "order": 5,
       "stage": "Dungeon 4",
       "title": "Forest Temple",
       "subtitle": "Sacred Forest Meadow · twisted hallways · Hookshot · Forest Medallion",
-      "chips": ["Hookshot", "Hero's Bow", "Twisted corridors"],
-      "unlocks": ["hookshot", "bow"],
-      "gates": ["master-sword"],
+      "chips": [
+        "Hookshot",
+        "Hero's Bow",
+        "Twisted corridors"
+      ],
+      "unlocks": [
+        "hookshot",
+        "bow"
+      ],
+      "gates": [
+        "master-sword"
+      ],
       "gatingType": "hard",
-      "recommendedDetours": ["epona", "biggoron-sword"],
+      "recommendedDetours": [
+        "epona",
+        "biggoron-sword"
+      ],
       "video": {
         "provider": "youtube",
         "id": "EfUoDfnH9ew",
@@ -918,19 +1609,135 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Phantom Ganon reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Phantom Ganon reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Reach the temple with the Hookshot"
+        },
+        {
+          "label": "Free the four Poe Sisters and restore the twisted hall"
+        },
+        {
+          "label": "Find the Fairy Bow"
+        },
+        {
+          "label": "Defeat Phantom Ganon"
+        },
+        {
+          "label": "Claim the Forest Medallion"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "room",
+                "label": "Central twisted corridor (untwist via the basement)"
+              },
+              {
+                "key": "2",
+                "kind": "npc",
+                "label": "Four Poe Sisters — paintings in side rooms"
+              },
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Fairy Bow",
+                "requires": []
+              }
+            ]
+          },
+          {
+            "label": "B1 / upper",
+            "markers": [
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Elevator well — raise/lower with the floor puzzle"
+              },
+              {
+                "key": "5",
+                "kind": "room",
+                "label": "Twisted-corridor controls (set the hall straight)"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "Phantom Ganon's room",
+                "requires": [
+                  "bow"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Courtyard Entrance",
+          "solution": "Hookshot the high branch or the vines to climb in. Inside, four wall torches with coloured flames hint at the Poe puzzle to come.",
+          "requires": [
+            "hookshot"
+          ]
+        },
+        {
+          "name": "Poe Sisters' Paintings",
+          "solution": "Each Poe hides in a painting and flits between frames. Watch which frame she settles in and strike it. Defeating all four refills the well and unlocks the elevator.",
+          "enemies": "Poe Sisters ×4"
+        },
+        {
+          "name": "Bow Room",
+          "solution": "Cross the floor-tile trap and open the big chest for the Fairy Bow. Shoot the eye-switches around the temple to spin doors and hit far targets.",
+          "treasure": "Fairy Bow"
+        },
+        {
+          "name": "Twisted Corridor",
+          "solution": "The hallway is wrenched 90°. Find the wall-switch in the basement and strike it to set the corridor straight, so the doors line up and you can walk through.",
+          "requires": [
+            "bow"
+          ]
+        },
+        {
+          "name": "Elevator Well",
+          "solution": "Once all four Poe torches burn the right colour, the central elevator descends. Ride it to the boss door — save at the blue warp first.",
+          "requires": [
+            "bow"
+          ]
+        },
+        {
+          "name": "Phantom Ganon's Room",
+          "solution": "Phantom Ganon rides out of the paintings. Watch which picture the real one charges from and shoot him with an arrow, then volley his energy ball back with sword strikes. See the boss card.",
+          "enemies": "Phantom Ganon"
+        }
       ]
     },
-
     {
       "sectionId": "fire-temple",
       "order": 6,
       "stage": "Dungeon 5",
       "title": "Fire Temple",
       "subtitle": "Death Mountain Crater · Goron rescue · Megaton Hammer · Fire Medallion",
-      "chips": ["Goron's Tunic", "Megaton Hammer", "Rescue Gorons"],
-      "unlocks": ["megaton-hammer"],
-      "gates": ["master-sword", "hookshot"],
+      "chips": [
+        "Goron's Tunic",
+        "Megaton Hammer",
+        "Rescue Gorons"
+      ],
+      "unlocks": [
+        "megaton-hammer"
+      ],
+      "gates": [
+        "master-sword",
+        "hookshot"
+      ],
       "gatingType": "hard",
       "video": {
         "provider": "youtube",
@@ -978,21 +1785,132 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Volvagia reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Volvagia reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Wear the Goron Tunic against the heat"
+        },
+        {
+          "label": "Free the trapped Gorons behind barred cells"
+        },
+        {
+          "label": "Find the Megaton Hammer"
+        },
+        {
+          "label": "Defeat Volvagia"
+        },
+        {
+          "label": "Claim the Fire Medallion"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "1F",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "npc",
+                "label": "Caged Gorons — free for hints and a Bomb-Bag upgrade"
+              },
+              {
+                "key": "2",
+                "kind": "small-key",
+                "label": "Locked cells — keys behind fire mazes"
+              }
+            ]
+          },
+          {
+            "label": "Upper",
+            "markers": [
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Megaton Hammer",
+                "requires": []
+              },
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Rusted switches — only the Hammer works"
+              },
+              {
+                "key": "5",
+                "kind": "boss",
+                "label": "Volvagia's lair",
+                "requires": [
+                  "megaton-hammer"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Heat Lobby",
+          "solution": "Without the Goron Tunic the heat drains hearts steadily — equip it before entering. Cross to the first locked door using the small key from the side maze.",
+          "requires": [
+            "iron-boots"
+          ]
+        },
+        {
+          "name": "Goron Cells",
+          "solution": "Each barred cell holds a captive Goron. Free them for hints and gratitude; one path's reward chain leads toward a Bomb-Bag upgrade. Several cells hide small keys.",
+          "enemies": "Fire Keese, Torch Slugs"
+        },
+        {
+          "name": "Fire Maze",
+          "solution": "Walls of flame block the corridors and drop on a timer. Dash through the gaps between bursts; light a Deku Stick is pointless here — speed and timing carry you.",
+          "enemies": "Flare Dancer"
+        },
+        {
+          "name": "Flare Dancer Room",
+          "solution": "Strike the Flare Dancer's exposed core to scatter it, then chase the fleeing flame and hit it again before it rebuilds. Winning lowers a barrier toward the Hammer.",
+          "enemies": "Flare Dancer"
+        },
+        {
+          "name": "Megaton Hammer Room",
+          "solution": "Open the big chest for the Megaton Hammer. From here, pound the rusted switches and black blocks that the sword can't touch.",
+          "treasure": "Megaton Hammer"
+        },
+        {
+          "name": "Volvagia's Lair",
+          "solution": "The dragon dives among the lava holes. Watch which hole its head pops from, Hammer it on the head, then slash while it's stunned. Dodge the falling rocks. See the boss card.",
+          "enemies": "Volvagia"
+        }
       ]
     },
-
     {
       "sectionId": "water-temple",
       "order": 7,
       "stage": "Dungeon 6",
       "title": "Water Temple",
       "subtitle": "Ice Cavern · Iron Boots · three water levels · Longshot",
-      "chips": ["Iron Boots", "Water levels", "Longshot"],
-      "unlocks": ["iron-boots", "longshot"],
-      "gates": ["master-sword", "hookshot"],
+      "chips": [
+        "Iron Boots",
+        "Water levels",
+        "Longshot"
+      ],
+      "unlocks": [
+        "iron-boots",
+        "longshot"
+      ],
+      "gates": [
+        "master-sword",
+        "hookshot"
+      ],
       "gatingType": "hard",
-      "recommendedDetours": ["ice-cavern-iron-boots", "gold-skulltula-rewards"],
+      "recommendedDetours": [
+        "ice-cavern-iron-boots",
+        "gold-skulltula-rewards"
+      ],
       "video": {
         "provider": "youtube",
         "id": "EfUoDfnH9ew",
@@ -1051,19 +1969,147 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Morpha reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Morpha reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Raise and lower the water with Serenade of Water at three levels"
+        },
+        {
+          "label": "Find the Longshot"
+        },
+        {
+          "label": "Defeat your shadow, Dark Link"
+        },
+        {
+          "label": "Defeat Morpha"
+        },
+        {
+          "label": "Claim the Water Medallion"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "3F (high water)",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "switch",
+                "label": "Triforce block — play Serenade to set water level"
+              },
+              {
+                "key": "2",
+                "kind": "room",
+                "label": "Central pillar — water level rotates access"
+              }
+            ]
+          },
+          {
+            "label": "2F (mid water)",
+            "markers": [
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Longshot",
+                "requires": []
+              },
+              {
+                "key": "4",
+                "kind": "npc",
+                "label": "Dark Link's illusory room",
+                "requires": [
+                  "longshot"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "1F / B1 (low water)",
+            "markers": [
+              {
+                "key": "5",
+                "kind": "switch",
+                "label": "Drained passages and currents"
+              },
+              {
+                "key": "6",
+                "kind": "boss",
+                "label": "Morpha's chamber",
+                "requires": [
+                  "longshot"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Central Pillar",
+          "solution": "The whole temple revolves around water height. Stand on a Triforce tile and play Serenade of Water to raise or lower the lake, opening different doors at each of the three levels.",
+          "requires": [
+            "iron-boots"
+          ]
+        },
+        {
+          "name": "Iron Boots Routine",
+          "solution": "Equip Iron Boots to sink to submerged switches and Hookshot targets, then unequip to float and swim. Pause the moment you enter each room to decide whether the boots go on.",
+          "requires": [
+            "iron-boots"
+          ]
+        },
+        {
+          "name": "Longshot Room",
+          "solution": "Lower the water, cross the central room and open the big chest for the Longshot — double-range Hookshot, needed to finish the temple and reach far Heart Pieces.",
+          "treasure": "Longshot"
+        },
+        {
+          "name": "Dark Link Arena",
+          "solution": "Your shadow mirrors your moves and parries spam attacks. Bait a jump attack and counter, or use Din's Fire / the Megaton Hammer (it can't be blocked) to break the mirror. See the boss card note.",
+          "enemies": "Dark Link",
+          "requires": [
+            "longshot"
+          ]
+        },
+        {
+          "name": "Whirlpool & Current Rooms",
+          "solution": "In the low-water basement, Longshot across the gaps and use Iron Boots to walk against the currents toward the boss key and the central tower.",
+          "requires": [
+            "longshot"
+          ]
+        },
+        {
+          "name": "Morpha's Chamber",
+          "solution": "Morpha's vulnerable nucleus darts between water cells. Longshot the red core to yank it onto dry tile, then slash it before it dissolves back into the water. See the boss card.",
+          "enemies": "Morpha"
+        }
       ]
     },
-
     {
       "sectionId": "shadow-temple",
       "order": 8,
       "stage": "Dungeon 7",
       "title": "Shadow Temple",
       "subtitle": "Kakariko Village · Bottom of the Well · Hover Boots · Shadow Medallion",
-      "chips": ["Lens of Truth", "Hover Boots", "Bongo Bongo"],
-      "unlocks": ["hover-boots", "lens-of-truth"],
-      "gates": ["master-sword", "longshot"],
+      "chips": [
+        "Lens of Truth",
+        "Hover Boots",
+        "Bongo Bongo"
+      ],
+      "unlocks": [
+        "hover-boots",
+        "lens-of-truth"
+      ],
+      "gates": [
+        "master-sword",
+        "longshot"
+      ],
       "gatingType": "hard",
       "recommendedDetours": [],
       "video": {
@@ -1116,22 +2162,132 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Bongo Bongo reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Bongo Bongo reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Equip the Lens of Truth to reveal the false walls"
+        },
+        {
+          "label": "Find the Hover Boots"
+        },
+        {
+          "label": "Ferry across the underground river"
+        },
+        {
+          "label": "Defeat Bongo Bongo"
+        },
+        {
+          "label": "Claim the Shadow Medallion"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Upper",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "secret",
+                "label": "Invisible paths — use the Lens of Truth",
+                "requires": [
+                  "lens-of-truth"
+                ]
+              },
+              {
+                "key": "2",
+                "kind": "chest",
+                "label": "Hover Boots",
+                "requires": []
+              }
+            ]
+          },
+          {
+            "label": "Lower",
+            "markers": [
+              {
+                "key": "3",
+                "kind": "switch",
+                "label": "Wind-blade traps and guillotines"
+              },
+              {
+                "key": "4",
+                "kind": "npc",
+                "label": "Ferry — play Zelda's Lullaby at the Triforce"
+              },
+              {
+                "key": "5",
+                "kind": "boss",
+                "label": "Bongo Bongo's drum pit",
+                "requires": [
+                  "bow"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "False Wall Corridor",
+          "solution": "Hold up the Lens of Truth to see invisible floors, fake walls and hidden chests. Magic drains while it's active, so flick it on to scout, then move with it off.",
+          "requires": [
+            "lens-of-truth"
+          ]
+        },
+        {
+          "name": "Hover Boots Room",
+          "solution": "Open the chest for the Hover Boots, then use them to drift across the gap to a switch you couldn't otherwise reach.",
+          "treasure": "Hover Boots"
+        },
+        {
+          "name": "Spinning Scythe Hall",
+          "solution": "Giant guillotines and spinning blades sweep the corridor. Time your dash past each, and use the Hover Boots to cross the bottomless stretches.",
+          "enemies": "Wallmasters, Gibdos"
+        },
+        {
+          "name": "The Ferry",
+          "solution": "Stand on the boat with the Triforce mark and play Zelda's Lullaby; the ferry carries you down the underground river. Shoot the eye-switches and torches en route to keep moving.",
+          "requires": [
+            "lens-of-truth"
+          ]
+        },
+        {
+          "name": "Bongo Bongo's Pit",
+          "solution": "Use the Lens to see the invisible drum surface and the boss's hands. Shoot each hand with an arrow to stun Bongo Bongo, then strike its glowing eye. See the boss card.",
+          "enemies": "Bongo Bongo"
+        }
       ]
     },
-
     {
       "sectionId": "spirit-temple",
       "order": 9,
       "stage": "Dungeon 8",
       "title": "Spirit Temple",
       "subtitle": "Gerudo Valley · child and adult sides · Silver Gauntlets · Mirror Shield",
-      "chips": ["Child AND adult sections", "Silver Gauntlets", "Mirror Shield"],
-      "unlocks": ["silver-gauntlets", "mirror-shield"],
-      "gates": ["master-sword", "longshot"],
+      "chips": [
+        "Child AND adult sections",
+        "Silver Gauntlets",
+        "Mirror Shield"
+      ],
+      "unlocks": [
+        "silver-gauntlets",
+        "mirror-shield"
+      ],
+      "gates": [
+        "master-sword",
+        "longshot"
+      ],
       "gatingType": "hard",
       "readinessNote": "The Spirit Temple has a child-Link section — bring the Fairy Ocarina and Boomerang for the child side before entering.",
-      "recommendedDetours": ["biggoron-sword"],
+      "recommendedDetours": [
+        "biggoron-sword"
+      ],
       "video": {
         "provider": "youtube",
         "id": "EfUoDfnH9ew",
@@ -1180,19 +2336,141 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Twinrova reward", "note": "Dropped after the boss fight.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Twinrova reward",
+          "note": "Dropped after the boss fight.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Use child and adult eras to clear both halves"
+        },
+        {
+          "label": "Lift the silver boulders with the Silver Gauntlets"
+        },
+        {
+          "label": "Find the Mirror Shield and aim sunlight"
+        },
+        {
+          "label": "Defeat Twinrova"
+        },
+        {
+          "label": "Claim the Spirit Medallion"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Child half",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "item",
+                "label": "Silver Gauntlets (child-only crawlspaces)"
+              },
+              {
+                "key": "2",
+                "kind": "switch",
+                "label": "Small Silver-Rupee and child-size routes"
+              }
+            ]
+          },
+          {
+            "label": "Adult half",
+            "markers": [
+              {
+                "key": "3",
+                "kind": "chest",
+                "label": "Mirror Shield",
+                "requires": [
+                  "silver-gauntlets"
+                ]
+              },
+              {
+                "key": "4",
+                "kind": "switch",
+                "label": "Sun statues — reflect light to open doors",
+                "requires": [
+                  "mirror-shield"
+                ]
+              },
+              {
+                "key": "5",
+                "kind": "boss",
+                "label": "Twinrova's chamber",
+                "requires": [
+                  "mirror-shield"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Colossus Entrance",
+          "solution": "Warp in with Requiem of Spirit. As a child, take the small crawlspaces to reach the Silver Gauntlets; as an adult, the Gauntlets let you shove the silver blocks blocking the main route.",
+          "requires": [
+            "silver-gauntlets"
+          ]
+        },
+        {
+          "name": "Silver Gauntlets Vault",
+          "solution": "Solve the child-side Silver-Rupee and statue puzzles to reach the Gauntlets chest. Then play the Prelude of Light and return as an adult.",
+          "treasure": "Silver Gauntlets"
+        },
+        {
+          "name": "Mirror Shield Room",
+          "solution": "As an adult, push the silver boulders aside and claim the Mirror Shield. Now you can bounce sunbeams and reflect magic attacks.",
+          "treasure": "Mirror Shield",
+          "requires": [
+            "silver-gauntlets"
+          ]
+        },
+        {
+          "name": "Sunlight Statues",
+          "solution": "Stand in a shaft of sunlight and angle the Mirror Shield onto the sun-faced statues to open sealed doors and burn away the giant face's seal.",
+          "requires": [
+            "mirror-shield"
+          ]
+        },
+        {
+          "name": "Iron Knuckle Guardians",
+          "solution": "Heavy Iron Knuckles guard the inner sanctum. Bait their wide axe swing, dodge behind, and land a few hits before they recover. They hit hard — keep your shield up.",
+          "enemies": "Iron Knuckles"
+        },
+        {
+          "name": "Twinrova's Chamber",
+          "solution": "Koume casts fire and Kotake casts ice. Absorb one element with the Mirror Shield, then unleash the stored opposite element back at the merged witch. See the boss card.",
+          "enemies": "Twinrova",
+          "requires": [
+            "mirror-shield"
+          ]
+        }
       ]
     },
-
     {
       "sectionId": "ganons-castle",
       "order": 10,
       "stage": "Final Dungeon",
       "title": "Ganon's Castle",
       "subtitle": "Six barrier rooms · Light Arrows · Ganondorf · Ganon · end credits",
-      "chips": ["Light Arrows", "Six barriers", "Ganon final form"],
-      "unlocks": ["light-arrows"],
-      "gates": ["master-sword", "mirror-shield", "hover-boots", "silver-gauntlets"],
+      "chips": [
+        "Light Arrows",
+        "Six barriers",
+        "Ganon final form"
+      ],
+      "unlocks": [
+        "light-arrows"
+      ],
+      "gates": [
+        "master-sword",
+        "mirror-shield",
+        "hover-boots",
+        "silver-gauntlets"
+      ],
       "gatingType": "hard",
       "recommendedDetours": [],
       "video": {
@@ -1245,7 +2523,895 @@
         }
       ],
       "collectibles": [
-        { "label": "Heart Container — Ganondorf reward", "note": "Dropped inside the tower after Ganondorf is defeated.", "type": "heart", "completionistOnly": false }
+        {
+          "label": "Heart Container — Ganondorf reward",
+          "note": "Dropped inside the tower after Ganondorf is defeated.",
+          "type": "heart",
+          "completionistOnly": false
+        }
+      ],
+      "objectives": [
+        {
+          "label": "Clear the six elemental barrier trials"
+        },
+        {
+          "label": "Recover the Golden Gauntlets"
+        },
+        {
+          "label": "Climb the tower and defeat Ganondorf"
+        },
+        {
+          "label": "Escape the collapsing castle"
+        },
+        {
+          "label": "Defeat Ganon"
+        }
+      ],
+      "dungeonMap": {
+        "floors": [
+          {
+            "label": "Barrier ring",
+            "markers": [
+              {
+                "key": "1",
+                "kind": "room",
+                "label": "Forest, Water, Shadow, Fire, Light, Spirit trials"
+              },
+              {
+                "key": "2",
+                "kind": "switch",
+                "label": "Each trial dispels one tower barrier"
+              }
+            ]
+          },
+          {
+            "label": "Tower",
+            "markers": [
+              {
+                "key": "3",
+                "kind": "item",
+                "label": "Golden Gauntlets (Spirit trial side)"
+              },
+              {
+                "key": "4",
+                "kind": "boss",
+                "label": "Ganondorf — organ chamber, top floor",
+                "requires": [
+                  "light-arrows"
+                ]
+              },
+              {
+                "key": "5",
+                "kind": "boss",
+                "label": "Ganon — rubble arena after the escape"
+              }
+            ]
+          }
+        ]
+      },
+      "rooms": [
+        {
+          "name": "Central Barrier",
+          "solution": "A glowing barrier seals the tower. Six elemental trials ring the chamber — clear all six (you may skip some, but each one you finish dispels part of the barrier).",
+          "requires": [
+            "light-arrows"
+          ]
+        },
+        {
+          "name": "Light Trial",
+          "solution": "Use the Lens of Truth to find invisible chests and the small keys, ending with a Light Arrow shot to open the way. The Forest, Fire, Water, Shadow and Spirit trials each test the matching item.",
+          "requires": [
+            "light-arrows"
+          ]
+        },
+        {
+          "name": "Spirit Trial / Golden Gauntlets",
+          "solution": "The Spirit trial hands you the Golden Gauntlets — lift the giant pillar to expose the switch and finish the trial.",
+          "treasure": "Golden Gauntlets"
+        },
+        {
+          "name": "Tower Climb",
+          "solution": "With the barrier gone, climb the tower past Stalfos and dodge the falling debris to reach Ganondorf's organ chamber. Save at the blue warp first.",
+          "requires": [
+            "light-arrows"
+          ]
+        },
+        {
+          "name": "Ganondorf's Chamber",
+          "solution": "Volley his energy orbs back with sword or Master Sword strikes (a tennis rally), stun him with a Light Arrow, then close in and slash. See the boss card.",
+          "enemies": "Ganondorf"
+        },
+        {
+          "name": "The Escape & Ganon",
+          "solution": "Guide Zelda out as the castle collapses on a timer, clearing Stalfos at each door. In the final arena, Ganon knocks away the Master Sword — target his tail with arrows and the recovered blade. See the boss card.",
+          "enemies": "Ganon"
+        }
+      ]
+    }
+  ],
+  "itemReference": [
+    {
+      "name": "Kokiri Sword",
+      "category": "Sword",
+      "where": "Training-centre maze behind the Hole of 'Z', Kokiri Forest",
+      "when": "Child",
+      "unlocks": "Your starting blade; Mido bars the Deku Tree until you hold a sword and shield."
+    },
+    {
+      "name": "Master Sword",
+      "category": "Sword",
+      "where": "Pedestal of Time, Temple of Time (after the three Spiritual Stones)",
+      "when": "Adult",
+      "unlocks": "Pulls Link seven years forward and back; the adult-era default blade."
+    },
+    {
+      "name": "Giant's Knife",
+      "category": "Sword",
+      "where": "Bought from Medigoron, Goron City (200 R)",
+      "when": "Adult",
+      "unlocks": "Two-handed; shatters after a few hits — a stepping stone to Biggoron's Sword."
+    },
+    {
+      "name": "Biggoron's Sword",
+      "category": "Sword",
+      "where": "End of the adult trading sequence (Biggoron, Death Mountain)",
+      "when": "Adult",
+      "unlocks": "Two-handed, unbreakable, double the Master Sword's damage."
+    },
+    {
+      "name": "Deku Shield",
+      "category": "Shield",
+      "where": "Kokiri Shop (40 R) or found in dungeons",
+      "when": "Child",
+      "unlocks": "Wooden — blocks Deku Scrub nuts, but burns and is eaten by fire."
+    },
+    {
+      "name": "Hylian Shield",
+      "category": "Shield",
+      "where": "Bazaar (Market/Kakariko, 60–80 R) or the Graveyard",
+      "when": "Either",
+      "unlocks": "Iron shield; required as adult and against fire enemies."
+    },
+    {
+      "name": "Mirror Shield",
+      "category": "Shield",
+      "where": "Spirit Temple",
+      "when": "Adult",
+      "unlocks": "Reflects light and magic — aims sunbeams and bounces boss attacks."
+    },
+    {
+      "name": "Fairy Slingshot",
+      "category": "C-Item",
+      "where": "Boss-key chest, Great Deku Tree",
+      "when": "Child",
+      "unlocks": "Fires Deku Seeds at switches, eyes and ropes; the child's ranged tool."
+    },
+    {
+      "name": "Fairy Bow",
+      "category": "C-Item",
+      "where": "Big chest, Forest Temple",
+      "when": "Adult",
+      "unlocks": "The adult's ranged weapon; gains Fire, Ice and Light Arrow upgrades."
+    },
+    {
+      "name": "Boomerang",
+      "category": "C-Item",
+      "where": "Big chest, Inside Jabu-Jabu's Belly",
+      "when": "Child",
+      "unlocks": "Stuns enemies and retrieves distant items and switches."
+    },
+    {
+      "name": "Bombs / Bomb Bag",
+      "category": "C-Item",
+      "where": "Dodongo's Cavern (Bomb Bag from a Goron)",
+      "when": "Either",
+      "unlocks": "Blows open cracked walls and bombable floors throughout Hyrule."
+    },
+    {
+      "name": "Bombchu",
+      "category": "C-Item",
+      "where": "Bought / found; key in Spirit Temple",
+      "when": "Either",
+      "unlocks": "Self-propelled bombs that climb walls and ceilings to far switches."
+    },
+    {
+      "name": "Hookshot",
+      "category": "C-Item",
+      "where": "Win Dampé's race in his grave, Kakariko Graveyard",
+      "when": "Adult",
+      "unlocks": "Grapples to wooden/targets and pulls Link across gaps — opens the Forest Temple."
+    },
+    {
+      "name": "Longshot",
+      "category": "C-Item",
+      "where": "Big chest, Water Temple",
+      "when": "Adult",
+      "unlocks": "Double-range Hookshot; reaches far targets and distant Heart Pieces."
+    },
+    {
+      "name": "Megaton Hammer",
+      "category": "C-Item",
+      "where": "Big chest, Fire Temple",
+      "when": "Adult",
+      "unlocks": "Smashes rusted switches and black blocks; pounds the Dodongo statue path."
+    },
+    {
+      "name": "Lens of Truth",
+      "category": "C-Item",
+      "where": "Bottom of the Well, Kakariko (as child)",
+      "when": "Either",
+      "unlocks": "Reveals invisible platforms, walls, Poes and Wallmasters (drains Magic)."
+    },
+    {
+      "name": "Iron Boots",
+      "category": "Boots",
+      "where": "Ice Cavern, Zora's Fountain",
+      "when": "Adult",
+      "unlocks": "Sink and walk underwater; anchor against wind. Core to the Water Temple."
+    },
+    {
+      "name": "Hover Boots",
+      "category": "Boots",
+      "where": "Shadow Temple",
+      "when": "Adult",
+      "unlocks": "Float briefly over gaps and frictionless floors."
+    },
+    {
+      "name": "Goron Tunic",
+      "category": "Tunic",
+      "where": "Link the Goron (Darunia's son), Goron City — or bought (200 R)",
+      "when": "Adult",
+      "unlocks": "Survive the heat of Death Mountain Crater and the Fire Temple."
+    },
+    {
+      "name": "Zora Tunic",
+      "category": "Tunic",
+      "where": "King Zora, after thawing him with Blue Fire — or bought (300 R)",
+      "when": "Adult",
+      "unlocks": "Breathe underwater indefinitely; required for the Water Temple."
+    },
+    {
+      "name": "Silver Gauntlets",
+      "category": "Upgrade",
+      "where": "Spirit Temple (child era)",
+      "when": "Adult",
+      "unlocks": "Lift the silver boulders blocking Spirit Temple and the Desert Colossus."
+    },
+    {
+      "name": "Golden Gauntlets",
+      "category": "Upgrade",
+      "where": "Ganon's Castle",
+      "when": "Adult",
+      "unlocks": "Lift the giant pillars in Ganon's Castle and Death Mountain."
+    },
+    {
+      "name": "Silver Scale / Gold Scale",
+      "category": "Upgrade",
+      "where": "Zora's Domain diving game / Lake Hylia fishing (Gold)",
+      "when": "Either",
+      "unlocks": "Dive deeper underwater; the Gold Scale reaches the deepest Heart Pieces."
+    },
+    {
+      "name": "Din's Fire",
+      "category": "Magic",
+      "where": "Great Fairy, Hyrule Castle courtyard (child)",
+      "when": "Either",
+      "unlocks": "A ring of flame — lights every torch in a room at once and damages all around you."
+    },
+    {
+      "name": "Farore's Wind",
+      "category": "Magic",
+      "where": "Great Fairy, Zora's Fountain (child)",
+      "when": "Either",
+      "unlocks": "Sets a warp point inside a dungeon to teleport back to."
+    },
+    {
+      "name": "Nayru's Love",
+      "category": "Magic",
+      "where": "Great Fairy, Desert Colossus (adult)",
+      "when": "Either",
+      "unlocks": "A protective shield that blocks all damage for a time."
+    },
+    {
+      "name": "Light Arrows",
+      "category": "C-Item",
+      "where": "Temple of Time (after the five medallions), via Zelda",
+      "when": "Adult",
+      "unlocks": "Holy arrows that stun Ganondorf and clear the dark barriers in Ganon's Castle."
+    }
+  ],
+  "songs": [
+    {
+      "name": "Zelda's Lullaby",
+      "where": "Taught by Impa after meeting Princess Zelda (child)",
+      "use": "Royal-family proof — opens gates, spawns Triforce platforms, soothes Epona's mother and reveals secrets at Triforce marks."
+    },
+    {
+      "name": "Epona's Song",
+      "where": "Taught by Malon at Lon Lon Ranch (child)",
+      "use": "Calls Epona across Hyrule Field (adult); makes ranch cows give milk."
+    },
+    {
+      "name": "Saria's Song",
+      "where": "Saria in the Sacred Forest Meadow (child)",
+      "use": "Call Saria for hints; makes the Lost Woods Skull Kid dance; lifts the Goron's gloom."
+    },
+    {
+      "name": "Sun's Song",
+      "where": "Composer Brothers' grave, Kakariko Graveyard (child)",
+      "use": "Flips day and night instantly; freezes ReDead and Gibdo in place."
+    },
+    {
+      "name": "Song of Time",
+      "where": "Taught by the Ocarina cutscene at Hyrule Castle (child)",
+      "use": "Removes blue Time Blocks; opens the Door of Time with the three Stones."
+    },
+    {
+      "name": "Song of Storms",
+      "where": "Windmill man, Kakariko (adult) — taught to your child self",
+      "use": "Summons rain; spins the windmill; drains the well; grows the Frog Chorus reward."
+    },
+    {
+      "name": "Minuet of Forest",
+      "where": "Sheik, Sacred Forest Meadow",
+      "use": "Warp to the Forest Temple entrance."
+    },
+    {
+      "name": "Bolero of Fire",
+      "where": "Sheik, Death Mountain Crater",
+      "use": "Warp to the Fire Temple / crater."
+    },
+    {
+      "name": "Serenade of Water",
+      "where": "Sheik, frozen Lake Hylia",
+      "use": "Warp to the Water Temple at Lake Hylia."
+    },
+    {
+      "name": "Requiem of Spirit",
+      "where": "Sheik, Desert Colossus (reached as child via the Haunted Wasteland)",
+      "use": "Warp to the Spirit Temple — the trick that lets you do its child-era half."
+    },
+    {
+      "name": "Nocturne of Shadow",
+      "where": "Triggered in Kakariko after the Forest Temple",
+      "use": "Warp to the Shadow Temple / Graveyard."
+    },
+    {
+      "name": "Prelude of Light",
+      "where": "Sheik, Temple of Time",
+      "use": "Warp back to the Temple of Time — your hub for swapping eras."
+    }
+  ],
+  "collectibleCategories": [
+    {
+      "name": "Pieces of Heart",
+      "total": 36,
+      "note": "Four pieces make one Heart Container. Bosses give a full container on top of these. Many are gated behind the Magic Bean leaves you plant as a child and ride as an adult, so plant beans early.",
+      "entries": [
+        {
+          "label": "Death Mountain Crater — wall niche",
+          "location": "Hidden niche in the crater wall; climb down to spot it",
+          "requires": "Goron Tunic (Adult preferred)",
+          "era": "Either"
+        },
+        {
+          "label": "Death Mountain Crater — ash cone",
+          "location": "In plain sight atop the left ash cone",
+          "requires": "Magic Bean leaf",
+          "era": "Adult"
+        },
+        {
+          "label": "Death Mountain Trail",
+          "location": "Above the entrance to Dodongo's Cavern",
+          "requires": "Magic Bean leaf",
+          "era": "Adult"
+        },
+        {
+          "label": "Desert Colossus — arch",
+          "location": "On top of the arch before the Spirit Temple entrance",
+          "requires": "Magic Bean leaf",
+          "era": "Adult"
+        },
+        {
+          "label": "Gerudo Valley — behind the waterfall",
+          "location": "Niche behind the main fall; swim behind it for a ladder",
+          "requires": "Magic Bean leaf",
+          "era": "Either"
+        },
+        {
+          "label": "Gerudo Valley — river crate",
+          "location": "Crate on the ledges over the river",
+          "requires": "Longshot (Child: cucco)",
+          "era": "Adult"
+        },
+        {
+          "label": "Gerudo's Fortress — archery",
+          "location": "Prize in the Horseback Archery range",
+          "requires": "Epona",
+          "era": "Adult"
+        },
+        {
+          "label": "Gerudo's Fortress — rooftop",
+          "location": "Chest on the highest roof of the Thieves' Hideout",
+          "requires": "Hookshot",
+          "era": "Adult"
+        },
+        {
+          "label": "Goron City — spinning vase",
+          "location": "Light the torches, then bomb the spinning vase",
+          "requires": "Bombs",
+          "era": "Child"
+        },
+        {
+          "label": "Graveyard — Dampé race",
+          "location": "Beat Dampé's ghost in a minute or less",
+          "requires": "Longshot",
+          "era": "Adult"
+        },
+        {
+          "label": "Graveyard — gravedigging tour",
+          "location": "Prize in the Heart-Pounding Gravedigging Tour",
+          "requires": "—",
+          "era": "Child"
+        },
+        {
+          "label": "Graveyard — bean crate",
+          "location": "Crate on a shelf above the Magic Bean leaf",
+          "requires": "Magic Bean leaf",
+          "era": "Adult"
+        },
+        {
+          "label": "Graveyard — ReDead grave",
+          "location": "Play Sun's Song in the unmarked grave with the lone ReDead",
+          "requires": "Sun's Song",
+          "era": "Either"
+        },
+        {
+          "label": "Market — Bombchu Bowling",
+          "location": "Prize at the Bombchu Bowling Alley",
+          "requires": "—",
+          "era": "Child"
+        },
+        {
+          "label": "Market — Richard the dog",
+          "location": "Return the Pooch Lady's dog at night",
+          "requires": "Night only",
+          "era": "Child"
+        },
+        {
+          "label": "Market — Treasure Box game",
+          "location": "Win the Treasure Box Shop game",
+          "requires": "Lens of Truth",
+          "era": "Child"
+        },
+        {
+          "label": "Hyrule Field — Lake Hylia fences",
+          "location": "Hidden hole between four fences near Lake Hylia; buy for 10 R",
+          "requires": "Stone of Agony",
+          "era": "Either"
+        },
+        {
+          "label": "Hyrule Field — pond hole",
+          "location": "Deep in a pond hole near the lone tree",
+          "requires": "Iron Boots or Gold Scale",
+          "era": "Adult"
+        },
+        {
+          "label": "Ice Cavern — red ice",
+          "location": "Frozen in red ice in a side room",
+          "requires": "Bottle of Blue Fire",
+          "era": "Adult"
+        },
+        {
+          "label": "Kakariko — Skulltula House",
+          "location": "Reward after collecting 50 Gold Skulltula Tokens",
+          "requires": "50 Skulltulas",
+          "era": "Either"
+        },
+        {
+          "label": "Kakariko — cow stall",
+          "location": "In the cow's stall",
+          "requires": "—",
+          "era": "Either"
+        },
+        {
+          "label": "Kakariko — windmill ledge",
+          "location": "On a ledge inside the Windmill",
+          "requires": "—",
+          "era": "Either"
+        },
+        {
+          "label": "Kakariko — potion shop roof",
+          "location": "Talk to the man at the top of Granny's Potion Shop",
+          "requires": "Longshot",
+          "era": "Adult"
+        },
+        {
+          "label": "Lake Hylia — lab dive",
+          "location": "Dive to the bottom of the Lakeside Lab",
+          "requires": "Gold Scale",
+          "era": "Adult"
+        },
+        {
+          "label": "Lake Hylia — fishing",
+          "location": "Catch a 10-pound fish in the Fishing Pond",
+          "requires": "—",
+          "era": "Either"
+        },
+        {
+          "label": "Lake Hylia — lab balcony",
+          "location": "On the balcony atop the Lakeside Laboratory",
+          "requires": "Magic Bean leaf",
+          "era": "Adult"
+        },
+        {
+          "label": "Lon Lon Ranch — storage shed",
+          "location": "Move the boxes in the shed to find a hidden room",
+          "requires": "—",
+          "era": "Child"
+        },
+        {
+          "label": "Lost Woods — Skull Kid",
+          "location": "Play Saria's Song to the lone Skull Kid",
+          "requires": "Saria's Song",
+          "era": "Child"
+        },
+        {
+          "label": "Lost Woods — jam session",
+          "location": "Match the two Skull Kids' tune",
+          "requires": "Ocarina",
+          "era": "Child"
+        },
+        {
+          "label": "Zora's Domain — torches",
+          "location": "Light the four torches, then look behind the waterfall",
+          "requires": "Deku Stick",
+          "era": "Child"
+        },
+        {
+          "label": "Zora's Fountain — iceberg",
+          "location": "On a lone iceberg",
+          "requires": "—",
+          "era": "Adult"
+        },
+        {
+          "label": "Zora's Fountain — lake bottom",
+          "location": "On the bottom of the fountain lake",
+          "requires": "Iron Boots + Zora Tunic",
+          "era": "Adult"
+        },
+        {
+          "label": "Zora's River — bug game",
+          "location": "Bug-Catching Game after growing the frogs",
+          "requires": "The six 'gray-note' songs",
+          "era": "Child"
+        },
+        {
+          "label": "Zora's River — lofty platform",
+          "location": "High platform in the central river section",
+          "requires": "—",
+          "era": "Either"
+        },
+        {
+          "label": "Zora's River — cucco float",
+          "location": "Use a cucco to glide to a platform near the falls",
+          "requires": "Cucco",
+          "era": "Child"
+        },
+        {
+          "label": "Zora's River — Frog Chorus",
+          "location": "Play Song of Storms to the Frog Chorus",
+          "requires": "Song of Storms",
+          "era": "Child"
+        }
+      ]
+    },
+    {
+      "name": "Gold Skulltulas",
+      "total": 100,
+      "note": "Smash the golden spiders for Tokens and turn them in at the House of Skulltula in Kakariko. Rewards land at 10/20/30/40/50 tokens (the 50-token prize is a Heart Piece). Many need the Boomerang, Hookshot, Bombs or a bean leaf to reach — counts below sum to 100 by region.",
+      "entries": [
+        {
+          "label": "Inside the Great Deku Tree",
+          "location": "Dungeon — webs and walls",
+          "requires": "Slingshot / Deku Stick",
+          "era": "Child"
+        },
+        {
+          "label": "Dodongo's Cavern",
+          "location": "Dungeon — walls and vines",
+          "requires": "Bombs / Slingshot",
+          "era": "Either"
+        },
+        {
+          "label": "Inside Jabu-Jabu's Belly",
+          "location": "Dungeon — high walls",
+          "requires": "Boomerang",
+          "era": "Child"
+        },
+        {
+          "label": "Forest Temple",
+          "location": "Dungeon — courtyards and walls",
+          "requires": "Hookshot / Bow",
+          "era": "Adult"
+        },
+        {
+          "label": "Fire Temple",
+          "location": "Dungeon — pillars and grates",
+          "requires": "Hookshot / Hammer",
+          "era": "Adult"
+        },
+        {
+          "label": "Water Temple",
+          "location": "Dungeon — pillars and walls",
+          "requires": "Longshot",
+          "era": "Adult"
+        },
+        {
+          "label": "Shadow & Spirit Temples, Bottom of the Well",
+          "location": "Dungeons — hidden walls",
+          "requires": "Lens of Truth / Hookshot",
+          "era": "Either"
+        },
+        {
+          "label": "Kokiri Forest, Lost Woods & Sacred Meadow",
+          "location": "Trees, walls and night spawns",
+          "requires": "Boomerang / Hookshot",
+          "era": "Either"
+        },
+        {
+          "label": "Kakariko, Graveyard & Death Mountain",
+          "location": "Walls, soft soil and night spawns",
+          "requires": "Bombs / Hookshot / bean",
+          "era": "Either"
+        },
+        {
+          "label": "Hyrule Field, Lon Lon, Castle & Market",
+          "location": "Soft soil, trees and walls",
+          "requires": "Boomerang / Bombs",
+          "era": "Either"
+        },
+        {
+          "label": "Zora's River, Domain & Fountain",
+          "location": "Walls, vines and ice",
+          "requires": "Hookshot / bean",
+          "era": "Either"
+        },
+        {
+          "label": "Lake Hylia, Gerudo Valley, Fortress, Wasteland & Colossus",
+          "location": "Walls, crates and soft soil",
+          "requires": "Hookshot / bean / Bombs",
+          "era": "Either"
+        }
+      ]
+    },
+    {
+      "name": "Great Fairy upgrades",
+      "total": 6,
+      "note": "Play the matching song at a cracked wall or boulder, then enter. Three give magic spells; three upgrade your magic meter, defence or spin attack.",
+      "entries": [
+        {
+          "label": "Din's Fire",
+          "location": "Hyrule Castle courtyard — bomb the wall behind the vines",
+          "requires": "Bombs, Zelda's Lullaby",
+          "era": "Child"
+        },
+        {
+          "label": "Farore's Wind",
+          "location": "Zora's Fountain — bomb the wall",
+          "requires": "Bombs, Zelda's Lullaby",
+          "era": "Child"
+        },
+        {
+          "label": "Nayru's Love",
+          "location": "Desert Colossus — bomb the wall by the Spirit Temple",
+          "requires": "Bombs, Zelda's Lullaby",
+          "era": "Adult"
+        },
+        {
+          "label": "Magic Meter (double)",
+          "location": "Death Mountain Crater — Bolero of Fire by the cracked wall",
+          "requires": "Bombs / Hammer",
+          "era": "Either"
+        },
+        {
+          "label": "Spin Attack upgrade",
+          "location": "Death Mountain Trail — boulder near the top",
+          "requires": "Magic, Zelda's Lullaby",
+          "era": "Child"
+        },
+        {
+          "label": "Double Defence (half damage)",
+          "location": "Behind the Great Fairy's Fountain near Ganon's Castle",
+          "requires": "Golden Gauntlets-era access",
+          "era": "Adult"
+        }
+      ]
+    }
+  ],
+  "sideQuestChains": [
+    {
+      "id": "biggoron-sword",
+      "name": "The Biggoron's Sword trade",
+      "reward": "Biggoron's Sword — unbreakable, two-handed, double the Master Sword's damage",
+      "era": "Adult",
+      "steps": [
+        {
+          "label": "Pocket Egg",
+          "detail": "From the Cucco Lady in Kakariko; wait for it to hatch into a Cucco.",
+          "requires": "Adult"
+        },
+        {
+          "label": "Wake Talon",
+          "detail": "Use the Cucco to wake the sleeping Talon at Lon Lon Ranch; he gives you Cojiro (the blue cucco).",
+          "requires": "Cucco"
+        },
+        {
+          "label": "Odd Mushroom",
+          "detail": "Show Cojiro to the Lost Woods stump man for the Odd Mushroom — a 3-minute timer starts.",
+          "requires": "Cojiro"
+        },
+        {
+          "label": "Odd Potion",
+          "detail": "Rush the mushroom to Granny at the Kakariko Potion Shop before time runs out.",
+          "requires": "3-min timer"
+        },
+        {
+          "label": "Poacher's Saw",
+          "detail": "Take the potion back to the Lost Woods man, now a Kokiri girl, for the Saw.",
+          "requires": "—"
+        },
+        {
+          "label": "Broken Goron's Sword",
+          "detail": "Give the Saw to Biggoron's brother (Darunia's Goron on the Trail / the carpenter boss) for the broken blade.",
+          "requires": "—"
+        },
+        {
+          "label": "Prescription",
+          "detail": "Show the broken sword to King Zora for a Prescription.",
+          "requires": "—"
+        },
+        {
+          "label": "Eyeball Frog",
+          "detail": "Take the prescription to the Lake Hylia scientist — a 2-minute timer; he hands you the Eyeball Frog.",
+          "requires": "2-min timer"
+        },
+        {
+          "label": "World's Finest Eyedrops",
+          "detail": "Rush the frog to Death Mountain's Biggoron, then carry the Eyedrops back down — a 4-minute timer.",
+          "requires": "4-min timer"
+        },
+        {
+          "label": "Claim Check → Biggoron's Sword",
+          "detail": "Give the eyedrops to Biggoron for a Claim Check; wait three days (play Sun's Song) and trade it back for the sword.",
+          "requires": "—"
+        }
+      ]
+    }
+  ],
+  "shops": [
+    {
+      "name": "Kokiri Shop",
+      "where": "Kokiri Forest",
+      "items": [
+        {
+          "item": "Deku Shield",
+          "price": "40 R"
+        },
+        {
+          "item": "Deku Nuts (5)",
+          "price": "15 R"
+        },
+        {
+          "item": "Deku Stick",
+          "price": "10 R"
+        },
+        {
+          "item": "Arrows (10)",
+          "price": "20 R"
+        },
+        {
+          "item": "Recovery Heart",
+          "price": "10 R"
+        }
+      ]
+    },
+    {
+      "name": "Castle Town Bazaar",
+      "where": "Hyrule Market",
+      "items": [
+        {
+          "item": "Hylian Shield",
+          "price": "80 R"
+        },
+        {
+          "item": "Bombs (5)",
+          "price": "35 R"
+        },
+        {
+          "item": "Deku Nuts (5)",
+          "price": "15 R"
+        },
+        {
+          "item": "Arrows (10)",
+          "price": "20 R"
+        },
+        {
+          "item": "Recovery Heart",
+          "price": "10 R"
+        }
+      ]
+    },
+    {
+      "name": "Kakariko Bazaar / Potion Shop",
+      "where": "Kakariko Village",
+      "items": [
+        {
+          "item": "Hylian Shield",
+          "price": "80 R"
+        },
+        {
+          "item": "Bombs (5)",
+          "price": "35 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "30 R"
+        },
+        {
+          "item": "Green Potion",
+          "price": "30 R"
+        }
+      ]
+    },
+    {
+      "name": "Goron Shop",
+      "where": "Goron City",
+      "items": [
+        {
+          "item": "Bombs (5)",
+          "price": "35 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "40 R"
+        },
+        {
+          "item": "Bomb Bag refill",
+          "price": "—"
+        }
+      ]
+    },
+    {
+      "name": "Zora Shop",
+      "where": "Zora's Domain",
+      "items": [
+        {
+          "item": "Hylian Shield",
+          "price": "80 R"
+        },
+        {
+          "item": "Arrows (10)",
+          "price": "20 R"
+        },
+        {
+          "item": "Red Potion",
+          "price": "30 R"
+        }
+      ]
+    },
+    {
+      "name": "Bombchu Shop",
+      "where": "Hyrule Market (back alley, night)",
+      "items": [
+        {
+          "item": "Bombchu (10)",
+          "price": "99 R"
+        },
+        {
+          "item": "Bombchu (5)",
+          "price": "60 R"
+        }
       ]
     }
   ]

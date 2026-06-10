@@ -49,8 +49,51 @@ Building the reference and branching shapes is the main *new* engineering beyond
 Concise definitions — enough to build from when each is needed. Each leads with its stuck-point thesis.
 
 ### A. Action-Adventure *(baseline — already built)*
-- **Stuck because:** can't find the way forward, a puzzle, or a boss. → route + locations + bosses. (Your current engine.)
+- **Stuck because:** can't find the way forward, can't solve a puzzle, or can't beat a boss — and, uniquely to this genre, can't tell *which* of those it is. The wall is geographic/mechanical (a locked room, an unread switch, an unused new item), not statistical.
 - Guide shape: sequential / hybrid.
+
+> **Gold-standard reference:** the *Legend of Zelda: Ocarina of Time* Prima Official Strategy Guide (1998). Its anatomy — analysed below, not copied — sets the depth bar for this pack and for the Zelda guides already on the site. The lesson it teaches is that a great action-adventure guide is **four interlocking layers**, not just a wall of route prose:
+> 1. **Objectives** — each area/dungeon opens with a short numbered goal list ("what am I trying to do here"), separate from the steps.
+> 2. **The annotated map** — every area and every dungeon floor is a keyed map (1F / B1 / B2 …), and the prose references the keys.
+> 3. **Room-by-room solutions** — dungeons are broken into named rooms, each with its puzzle solution called out as its own beat.
+> 4. **The reference back-matter** — item/equipment tables (what, where, child-or-adult), songs/abilities, collectible enumerations, shops, and side-quest chains.
+
+**Schema extensions (`Adds`):**
+- `Objective` list per section — the 2–6 numbered goals that define an area/dungeon, rendered up front and tickable, distinct from `steps`.
+- `Dungeon`/area **annotated map** with **keyed markers** and **multiple floors/levels** (1F/B1/B2…); markers tag rooms, chests, switches, locked doors, and the boss. Reuses the prerequisite graph (a marker can require an item).
+- `Room` beats — a dungeon is a list of **named rooms**, each carrying its own **puzzle solution** (the explicit "how to solve this" beat), enemies, and chests. Puzzle solutions are first-class, never a clause buried in a sentence.
+- `BossFight` (already core) gains the genre convention: each boss links to **the dungeon item just acquired** ("use the new tool here") plus pattern/weakness/phase.
+- `Item`/`Equipment` reference table — name, **where obtained**, **when obtainable** (e.g. an availability/era flag like child vs adult), and what it unlocks. These are the progression-gating tools that drive backtracking.
+- `Ability`/`Song`/`Key` reference — the non-item toolkit (Ocarina songs, movement tech, dungeon keys) that gates and reopens areas; already partly covered by the core `items` registry, extended with usage notes.
+- `Collectible` enumerations with **exact location + the ability/item each requires** — the genre's optional spine (Gold Skulltulas, Heart Pieces, Great Fairy upgrades). Uses `categoryTotalKnown` against canonical totals.
+- `SideQuestChain` — multi-step optional chains (trading sequence → reward weapon), each step enumerated with its prerequisite, never summarised as one line.
+- **Backtracking callouts** — "you can't reach this until you have X," and revisit prompts when a world-state change (a new item, a time/era switch) reopens an earlier area. Surfaced through the prerequisite graph.
+- `Shop` lists with prices, plus a short **how-to-earn-currency** note.
+- Inline **enemy callouts** (how to beat it + its drop) and **NPC-hint** prompts ("talk to everyone here").
+
+**Research-checklist additions:**
+- Per-area objectives; per-dungeon floor maps and the keyed contents of each room.
+- Every puzzle's solution, stated explicitly; every locked door's key source.
+- Each boss's pattern, weakness, and the dungeon item that beats it.
+- The full progression-item table: where and when each is obtained, and what it unlocks/reopens.
+- Songs/abilities/keys and their uses; shop stock and prices; how currency is earned.
+- Collectible locations with their gating ability/item, against canonical totals; side-quest chains step by step.
+- Which earlier areas must be revisited after gaining an item or a world-state change, and what the revisit yields.
+
+**UI affordances:**
+- A per-section **objectives checklist** rendered above the steps.
+- **Annotated, multi-floor area/dungeon maps** with toggleable marker layers (chests, switches, locked doors, boss, collectibles).
+- A **progression-item reference** ("where/when/unlocks") and a **songs/abilities** panel.
+- **Collectible checklists** per area, each entry showing its required ability/item, with running totals.
+- "Come back later" markers that light up once the gating item or world-state is obtained.
+- Side-quest-chain trackers that step through each handoff.
+
+**QA gates:**
+- Every dungeon has a floor map whose keys are all referenced in the prose, and a boss with pattern + weakness + the item that beats it.
+- Every puzzle beat states its solution; every locked door names its key.
+- Every collectible lists its location **and** its required ability/item; counts match canonical totals.
+- Every progression item states where/when it's obtained and what it reopens; every backtracking-gated reward names its unlock.
+- Every shop lists stock and prices; every side-quest chain enumerates its steps.
 
 ### B. Open-World Action-RPG / Soulslike
 - **Stuck because:** under-levelled, wrong build, or a wall-boss — *not* lost. The fix is usually "improve the character or go elsewhere," not "find the door."
@@ -69,12 +112,53 @@ Concise definitions — enough to build from when each is needed. Each leads wit
 - Shape: branching-narrative + hybrid. *(Composes the `branching-narrative` module.)*
 
 ### D. Creature-Collector RPG
-- **Stuck because:** "my team can't beat this gym/boss," "where do I catch X," "how do I evolve Y." Team composition and collection, on top of a story route.
-- **Adds:** `Creature` type (catch location/method, evolution conditions, version exclusives, trade evolutions); `TeamComposition`/type-matchup advisories per major battle; typed trainer/gym battles; level-curve guidance.
-- **Research:** catch locations & methods, evolution methods, version differences, recommended team per gym, level expectations.
-- **UI:** a type-matchup helper; a catch-location index; a living Pokédex-style checklist.
-- **QA:** every gym/major battle carries a recommended counter-team; every listed creature has a catch method.
-- Shape: hybrid (story route + creature/team reference). *(A `field-research` tag covers the Legends-style catch mechanics that differ from mainline.)*
+- **Stuck because:** "my team can't beat this gym/boss," "where do I catch X," "how do I evolve Y," "where do I go next and what did I miss on the way." Team composition and collection, layered on a story route whose every town and route is dense with trainers, items, and one-time events.
+- Guide shape: hybrid (story route + creature/team reference + standing mechanics reference). *(A `field-research` tag covers the Legends-style catch/agile-strong mechanics that differ from mainline.)*
+
+> **Gold-standard reference:** the *Pokémon FireRed/LeafGreen* Prima Official Game Guide (2004). Its anatomy — analysed below, not copied — sets the depth bar for this pack. It is built on **four pillars**, and a good creature-collector guide needs all four, not just the route:
+> 1. **Game Essentials** — a standing mechanics reference (type chart, catching, evolution paths, status conditions, stats).
+> 2. **The Walkthrough** — the sequential route, but every town/route is an *annotated map* with keyed markers, not just prose.
+> 3. **The Pokédex** — a per-creature reference (locations + rarity, evolution chain, full movelist, TM/HM compatibility).
+> 4. **The Index** — item/move/economy reference (TMs, HMs, Berries: where found, what they do, who can learn them).
+
+**Schema extensions (`Adds`):**
+- `Creature` type — catch location(s) each with **rarity** (common/rare) and **level range**; catch **method**; evolution conditions (level / trade / trade-with-item / special criteria); version exclusives; trade evolutions; **level-up movelist** and **TM/HM learnset compatibility**.
+- `EncounterTable` per route/area — which species appear, at what rarity and level, by method (grass / surf / fishing / gift / static).
+- `Location` (town or route) carries an **annotated map** with **keyed markers**, and three keyed lists tied to those markers:
+  - `Items` — including **hidden items** flagged as their own missable class.
+  - `Trainers` — **every** trainer (not only gym leaders), each with full roster: species + level.
+  - `Events` — numbered, one-time story beats distinct from golden-path steps (rival battles, receiving an HM/key item, cutscene triggers, NPC gates that later clear).
+- `Shop` / Poké-Mart inventory per town — stock list with **prices** (the economy/where-to-buy layer).
+- `MajorBattle` (gym leader / rival / Elite Four / champion) — full roster, type theme, and a **recommended counter-team** with the reasoning.
+- `MechanicsReference` (game-wide, built once per game) — type-effectiveness chart, damage multipliers, status conditions, catch-rate factors, the evolution-method taxonomy.
+- `MoveItemIndex` — TMs/HMs (location + effect + which creatures can learn them), Berries, key items.
+- **Backtracking callouts** — content gated behind a later HM/badge ("return with Surf/Strength/Cut"), surfaced through the existing prerequisite graph as a "come back when you have X" marker rather than buried in prose.
+- **Readiness cautions** at route boundaries — soft-gate warnings ("don't push past here under-levelled"), using the core `readinessNote`.
+
+**Research-checklist additions:**
+- Catch locations, **rarity, and level ranges** per species; encounter tables by method.
+- Evolution methods and exact criteria; version differences; trade-evolution chains.
+- Per-route **complete** trainer rosters (species + levels), not just gyms.
+- **Hidden** item locations alongside visible ones; Poké-Mart stock and prices per town.
+- TM/HM locations and learnset compatibility; Berry locations and effects.
+- Recommended team and level expectations per major battle; the type chart and status mechanics.
+- HM/badge gates that require backtracking, and where the return-trips pay off.
+
+**UI affordances:**
+- An interactive **type-matchup helper**.
+- A **catch-location index** and per-route encounter tables (filter by species/method/rarity).
+- A **living Pokédex-style checklist** (caught / evolved / movelist).
+- **Annotated location maps** with toggleable layers: items (incl. hidden), trainers, events.
+- A **TM/HM + item index** with "who can learn this" and "where to find it."
+- "Come back later" markers that light up once the gating HM/badge is obtained.
+
+**QA gates:**
+- Every gym/major battle carries a recommended counter-team **with reasoning**.
+- Every listed creature has a catch method **and** at least one location with rarity + level range.
+- Every town with a shop lists its stock and prices; every route lists its full trainer roster.
+- Hidden items are flagged distinctly from visible ones; no item marker is unkeyed to the map.
+- Every backtracking-gated area names the HM/badge that unlocks it.
+- The standing mechanics reference (type chart, status, evolution taxonomy) is present and complete.
 
 ### E. Collectathon Platformer
 - **Stuck because:** "where are the last collectibles," "how do I reach that one," "what unlocks the next area." Density and movement tech.
