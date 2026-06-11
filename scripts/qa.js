@@ -81,6 +81,8 @@ async function checkPage(browser, url, label) {
               ? ['Golden path', 'Kokiri Forest', "Ganon's Castle"]
               : url.includes('majoras-mask')
               ? ['Golden path', 'Clock Town', 'Stone Tower']
+              : url.includes('rebirth')
+              ? ['Golden path', 'Grasslands', 'Forgotten Capital']
               : url.includes('legends-za')
               ? ['Golden path', 'Lumiose City', 'Prism Tower']
               : url.includes('legends-arceus')

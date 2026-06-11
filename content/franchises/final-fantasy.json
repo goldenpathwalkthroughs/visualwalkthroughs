@@ -1,0 +1,16 @@
+{
+  "name": "Final Fantasy",
+  "slug": "final-fantasy",
+  "developer": "Square Enix",
+  "description": "Crystals, airships, and spiky-haired heroes since 1987. The remake trilogy reimagines the most beloved entry of all — one sweeping, open-world journey at a time.",
+  "featured": true,
+  "featureRank": 2,
+  "guideCount": 1,
+  "cover": "/assets/covers/final-fantasy-vii-rebirth.webp",
+  "theme": {
+    "bodyClass": "theme-ff7-rebirth",
+    "accent": "#35c6d6",
+    "accentSoft": "rgba(53,198,214,.14)",
+    "cardGradient": "linear-gradient(160deg,#04181f,#02121a 60%,#010a12)"
+  }
+}

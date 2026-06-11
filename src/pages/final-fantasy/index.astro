@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const franchise = (await getCollection('franchises')).find(f => f.data.slug === 'final-fantasy');
+if (!franchise) throw new Error('Final Fantasy franchise not found');
+
+const games = (await getCollection('games'))
+  .filter(g => g.data.franchiseSlug === 'final-fantasy')
+  .sort((a, b) => b.data.year.localeCompare(a.data.year));
+
+const searchIndex = [
+  {
+    t: franchise.data.name,
+    s: `Franchise · ${franchise.data.guideCount} guide${franchise.data.guideCount === 1 ? '' : 's'}`,
+    k: 'franchise',
+    ic: '💠',
+    href: '/final-fantasy/',
+  },
+  ...games.map(g => ({
+    t: g.data.title,
+    s: `${g.data.platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '💠',
+    href: `/final-fantasy/${g.data.slug}/`,
+  })),
+];
+---
+
+<Base
+  title={franchise.data.name}
+  description={franchise.data.description}
+  bodyClass={franchise.data.theme.bodyClass}
+  searchIndex={searchIndex}
+>
+  <div class="fr-hero">
+    <div class="bg" style="background:radial-gradient(120% 90% at 75% -10%,#1f6b5b 0%,transparent 55%),linear-gradient(160deg,#0d3a33,#06140f)"></div>
+    <div class="inner">
+      <div class="crumb">
+        <a href="/">Browse</a>
+        <span>/</span>
+        <span style="color:var(--text)">{franchise.data.name}</span>
+      </div>
+      <h1>{franchise.data.name}</h1>
+      <p>{franchise.data.description}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="game-grid">
+      {games.map(g => (
+        <a
+          href={g.data.status === 'published' ? `/final-fantasy/${g.data.slug}/` : undefined}
+          class={`gtile${g.data.status === 'coming-soon' ? ' soon' : ''}`}
+        >
+          <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}>
+            {g.data.cover && <img src={g.data.cover} alt={g.data.title} class="cover-img" loading="lazy" decoding="async" />}
+          </div>
+          {g.data.status === 'published' && <span class="ready">Guide ready</span>}
+          <div class="meta">
+            <div class="yr">{g.data.year} · {g.data.platforms[1] ?? g.data.platforms[0]}</div>
+            <div class="title">{g.data.title}</div>
+            <div class="console">{g.data.platforms.join(' · ')}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

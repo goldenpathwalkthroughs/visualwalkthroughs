@@ -1,0 +1,1480 @@
+{
+  "franchiseSlug": "final-fantasy",
+  "title": "Final Fantasy VII Rebirth",
+  "slug": "final-fantasy-vii-rebirth",
+  "year": "2024",
+  "platforms": [
+    "PlayStation 5",
+    "Nintendo Switch 2",
+    "Xbox Series X|S",
+    "PC"
+  ],
+  "status": "published",
+  "genre": "open-world-arpg",
+  "lede": "The second chapter of the Final Fantasy VII Remake trilogy takes Cloud and the party out of Midgar and across a vast open world — from the Grasslands to the Forgotten Capital — chasing Sephiroth through fourteen chapters of action combat, Synergy team-ups, sprawling region activities, and a card game you'll lose hours to.",
+  "cover": "/assets/covers/final-fantasy-vii-rebirth.webp",
+  "theme": {
+    "bodyClass": "theme-ff7-rebirth",
+    "accent": "#35c6d6",
+    "accentSoft": "rgba(53,198,214,.14)",
+    "cardGradient": "linear-gradient(160deg,#04181f,#02121a 60%,#010a12)"
+  },
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "ch1-fall-of-a-hero",
+      "ch2-a-new-journey-begins",
+      "ch3-deeper-into-darkness",
+      "ch4-dawn-of-a-new-era",
+      "ch5-blood-in-the-water",
+      "ch6-fools-paradise",
+      "ch7-those-left-behind",
+      "ch8-all-that-glitters",
+      "ch9-the-planet-stirs",
+      "ch10-watcher-of-the-vale",
+      "ch11-the-long-shadow-of-shinra",
+      "ch12-a-golden-key",
+      "ch13-where-angels-fear-to-tread",
+      "ch14-end-of-the-world"
+    ],
+    "criticalPath": [
+      "ch1-fall-of-a-hero",
+      "ch2-a-new-journey-begins",
+      "ch3-deeper-into-darkness",
+      "ch4-dawn-of-a-new-era",
+      "ch5-blood-in-the-water",
+      "ch6-fools-paradise",
+      "ch7-those-left-behind",
+      "ch8-all-that-glitters",
+      "ch9-the-planet-stirs",
+      "ch10-watcher-of-the-vale",
+      "ch11-the-long-shadow-of-shinra",
+      "ch12-a-golden-key",
+      "ch13-where-angels-fear-to-tread",
+      "ch14-end-of-the-world"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "do-now",
+      "title": "Light the Remnawave Tower the moment you enter a new region",
+      "body": "Every open region runs on the same loop: activate the <strong>Remnawave Tower</strong> first to reveal the map and flag Chadley's World Intel, then sweep the activities and catch the region chocobo. Doing towers first saves enormous backtracking.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Synergy is the heart of Rebirth's combat",
+      "body": "<strong>Synergy Skills</strong> are free (no ATB) and charge a gauge; <strong>Synergy Abilities</strong> spend ATB for huge two-character team-ups that can extend a stagger, refund MP, or raise your Limit level. Unlock more of them on each character's <strong>Folio</strong> board with SP.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Assess everything, then exploit the weakness",
+      "body": "Pressure and Stagger win fights. Use <strong>Assess</strong> to read a foe's weakness and elemental affinity, then lean on it — many bosses shift affinity between phases, so re-check.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Save a clear-data file for Hard Mode",
+      "body": "After the credits, <strong>Hard Mode</strong> disables items in battle and ramps the difficulty — your MP-free healing (Chakra, Prayer, Regen) and materia setup matter enormously. Keep a clear-data save for the post-game and the toughest combat challenges.",
+      "completionistOnly": true
+    }
+  ],
+  "itemReference": [
+    {
+      "name": "Magic Materia (green)",
+      "category": "Materia",
+      "where": "Bought and found throughout",
+      "unlocks": "Casts spells — Fire/Blizzard/Thunder/Aero lines, Cure/Raise (Healing), Barrier, and more."
+    },
+    {
+      "name": "Command Materia (yellow)",
+      "category": "Materia",
+      "where": "Found and quest rewards",
+      "unlocks": "Non-magic abilities — Assess, Steal, Chakra, Item Master, Enemy Skill, ATB Boost."
+    },
+    {
+      "name": "Support Materia (blue)",
+      "category": "Materia",
+      "where": "Found and Chadley rewards",
+      "unlocks": "Links to and augments another materia in a paired slot — Magnify, Elemental, Synergy, HP/MP Absorption."
+    },
+    {
+      "name": "Summon Materia (red)",
+      "category": "Materia",
+      "where": "Divine Intel summon shrines & Chadley",
+      "unlocks": "Calls a summon into battle — Ifrit, Titan, Phoenix, Alexander, Bahamut, and others."
+    },
+    {
+      "name": "Independent Materia (purple)",
+      "category": "Materia",
+      "where": "Found and bought",
+      "unlocks": "Passive boosts — HP Up, MP Up, Magic Up, ATB Assist, Auto-Cure, First Strike."
+    },
+    {
+      "name": "Elemental (Support)",
+      "category": "Notable",
+      "where": "Support materia",
+      "unlocks": "Linked to a Magic materia in a weapon adds that element to attacks; in armour, resists it. A cornerstone combo."
+    },
+    {
+      "name": "Magnify (Support)",
+      "category": "Notable",
+      "where": "Support materia",
+      "unlocks": "Spreads a linked spell to all targets at reduced power — superb for staggering groups and healing the party."
+    },
+    {
+      "name": "HP Up / MP Up",
+      "category": "Notable",
+      "where": "Independent materia",
+      "unlocks": "Flat survivability boosts — stack copies on bosses and Hard Mode."
+    },
+    {
+      "name": "Chakra & Prayer",
+      "category": "Notable",
+      "where": "Command materia",
+      "unlocks": "MP-free healing — invaluable on Hard Mode, where items are disabled."
+    }
+  ],
+  "collectibleCategories": [
+    {
+      "name": "Party members",
+      "note": "Seven playable fighters, each with a distinct role. You'll rotate three into your active party; build each one's materia and Folio around their strengths. (Cid and Vincent appear in the story but are not playable in Rebirth.)",
+      "entries": [
+        {
+          "label": "Cloud Strife",
+          "location": "Balanced melee all-rounder — swap between fast Operator stance and heavy Punisher stance",
+          "requires": "Stance-swap; non-MP sword arts like Firebolt Blade and Triple Slash"
+        },
+        {
+          "label": "Barret Wallace",
+          "location": "Ranged tank — highest HP and Defence; hits airborne and distant foes reliably",
+          "requires": "Overcharge (big gun blast, fast ATB); Lifesaver to draw aggro and shield allies"
+        },
+        {
+          "label": "Tifa Lockhart",
+          "location": "Fast close-range bruiser — highest Speed; chains hits to ramp stagger damage",
+          "requires": "Unbridled Strength (upgrades her combo); Whirling Uppercut for air and staggered foes"
+        },
+        {
+          "label": "Aerith Gainsborough",
+          "location": "Premier spellcaster and healer — holds range and zones with wide-area magic",
+          "requires": "Arcane Ward (doubles spells cast from inside it); Radiant/Lustrous Ward protection"
+        },
+        {
+          "label": "Red XIII",
+          "location": "All-rounder — builds a Vengeance gauge by guarding, then enters an empowered mode",
+          "requires": "Vengeance Mode (boosted attack/speed, fast stagger); Sidewinder and self-healing strikes"
+        },
+        {
+          "label": "Yuffie Kisaragi",
+          "location": "Agile ranged-and-melee ninja — imbues her weapon to exploit elemental weaknesses",
+          "requires": "Elemental Ninjutsu (swap fire/ice/lightning/wind); Doppelganger damage-mirroring clone"
+        },
+        {
+          "label": "Cait Sith",
+          "location": "Gimmick/support — fights with a summonable Moogle mount and luck-based dice",
+          "requires": "Moogle Mount (ride/shield/aerial); dice rolls and Moogle Magic for random buffs"
+        }
+      ]
+    },
+    {
+      "name": "Combat systems",
+      "note": "The mechanics behind every fight — learn these and the bosses fall in line.",
+      "entries": [
+        {
+          "label": "ATB gauge",
+          "location": "Real-time action fills an ATB gauge through attacks and blocks; spend segments to slow time and issue abilities, magic, and items. Carried over from Remake."
+        },
+        {
+          "label": "Synergy Skills",
+          "location": "Free paired moves with no ATB cost (boost a partner, build pressure). Using them charges the Synergy gauge toward an Ability."
+        },
+        {
+          "label": "Synergy Abilities",
+          "location": "Big two-character team-ups that cost ATB to trigger — heavy damage plus strong effects (raise Limit level, extend stagger, free MP, extra ATB). Unlocked through the Folio trees."
+        },
+        {
+          "label": "Stagger & Pressure",
+          "location": "Damage fills a stagger gauge; reaching it Staggers the enemy for a big-damage window. Exploiting weaknesses causes Pressure, which makes the gauge climb faster."
+        },
+        {
+          "label": "Limit Breaks",
+          "location": "A Limit gauge fills as you take and deal damage; full, it unleashes a powerful Limit Break. Synergy Abilities can temporarily raise the available Limit level mid-fight."
+        },
+        {
+          "label": "Materia",
+          "location": "Orbs slotted into weapons and armour in five colours: Magic (green) spells, Command (yellow) abilities, Support (blue) to link with other materia, Summon (red) to call summons, Independent (purple) passives. Materia levels up with AP."
+        },
+        {
+          "label": "Folios (skill trees)",
+          "location": "Per-character boards bought with SP from levelling — unlock new weapon abilities, stat boosts, non-MP elemental skills, and each character's Synergy Skills and Abilities. Replaces Remake's weapon-upgrade system."
+        }
+      ]
+    },
+    {
+      "name": "World Intel activities (Chadley)",
+      "note": "The repeatable region activities that fill the map, level your materia, and unlock summons. Towers first, always.",
+      "entries": [
+        {
+          "label": "Remnawave Towers (Activation Intel)",
+          "location": "Activate the old towers to reveal the regional map and flag every other World Intel point — always do these first."
+        },
+        {
+          "label": "Lifesprings (Expedition Intel)",
+          "location": "Follow the cues to hidden magical springs that unlock pieces of the region's lore."
+        },
+        {
+          "label": "Summon Shrines (Divine Intel)",
+          "location": "Find three shrines per region to weaken and unlock that region's summon (Titan, Phoenix, Alexander, and more) for the Combat Simulator."
+        },
+        {
+          "label": "Fiend Intel",
+          "location": "Short skirmishes against special enemy variants, logged for Chadley and fought via the Combat Simulator."
+        },
+        {
+          "label": "Classified / Excavation Intel",
+          "location": "Dig up buried items on chocoboback for crafting recipes and materials, plus rare regional hunts."
+        },
+        {
+          "label": "Protorelic (Phenomenon Intel)",
+          "location": "A multi-part questline per region that culminates in a unique Protorelic reward."
+        },
+        {
+          "label": "Chocobo Intel",
+          "location": "Track and catch each region's unique chocobo through a stealth-pursuit minigame."
+        },
+        {
+          "label": "Moogle Intel",
+          "location": "Find Mogstools and play a moogle-catching minigame to raise Chocobo Emporium stock."
+        }
+      ]
+    },
+    {
+      "name": "Open-world regions",
+      "note": "The explorable regions and the chapter each opens in. Each has its own tower, intel set, summon, and chocobo with a unique traversal trick.",
+      "entries": [
+        {
+          "label": "Grasslands",
+          "location": "The first open region, around Kalm and the Chocobo Ranch — your introduction to Chadley and World Intel.",
+          "requires": "Chapter 2"
+        },
+        {
+          "label": "Junon",
+          "location": "Coastal beaches and marshes leading to Under Junon and the cannon-city, with the parade set-piece.",
+          "requires": "Chapter 3–4"
+        },
+        {
+          "label": "Corel",
+          "location": "The largest span — desert and mountains housing Costa del Sol and the Gold Saucer.",
+          "requires": "Chapter 6"
+        },
+        {
+          "label": "Gongaga",
+          "location": "Dense jungle with mushroom-springboard traversal and Zack/reactor story beats.",
+          "requires": "Chapter 9"
+        },
+        {
+          "label": "Cosmo Canyon",
+          "location": "Red XIII's homeland — canyon terrain tied to planet lore and the Gi.",
+          "requires": "Chapter 10"
+        },
+        {
+          "label": "Nibel",
+          "location": "The mountains around Nibelheim, central to the Sephiroth flashback and Mt. Nibel.",
+          "requires": "Chapter 11"
+        },
+        {
+          "label": "Meridian Ocean",
+          "location": "Open-ocean traversal that connects the regions once the world fully opens.",
+          "requires": "Chapter 13"
+        },
+        {
+          "label": "Costa del Sol (hub)",
+          "location": "Seaside resort in Corel with beach minigames and downtime.",
+          "requires": "Chapter 6"
+        },
+        {
+          "label": "Gold Saucer (hub)",
+          "location": "The amusement-park hub in Corel — the densest cluster of minigames in the game.",
+          "requires": "Chapter 8"
+        }
+      ]
+    },
+    {
+      "name": "Major minigames",
+      "note": "Rebirth is stuffed with minigames — these are the big ones. Many feed side-quest progress and rewards.",
+      "entries": [
+        {
+          "label": "Queen's Blood",
+          "location": "The deep collectible card game played against opponents all over the world — has its own questline."
+        },
+        {
+          "label": "Chocobo content",
+          "location": "Catch each region's chocobo, then use mounts with special traversal (gliding, climbing, water)."
+        },
+        {
+          "label": "Fort Condor",
+          "location": "A tower-defence strategy minigame placing units to defend the fort."
+        },
+        {
+          "label": "Gears & Gambits",
+          "location": "An auto-battler where you program robots' behaviour gambits to clear waves."
+        },
+        {
+          "label": "Piano",
+          "location": "A rhythm minigame matching notes with the sticks to earn ranks and rewards."
+        },
+        {
+          "label": "3D Brawler",
+          "location": "A timing-based boxing minigame (e.g. against Jules), reworked to be fairer than the original."
+        },
+        {
+          "label": "Chocobo Racing",
+          "location": "Gold Saucer racing — pop balloons and use techniques to place first."
+        },
+        {
+          "label": "Cactuar Crush",
+          "location": "A musou-style arena where each party member mows down waves of cactuars."
+        },
+        {
+          "label": "Galactic Saviors",
+          "location": "An arcade-style space shooter in the Gold Saucer."
+        }
+      ]
+    }
+  ],
+  "sideQuestChains": [
+    {
+      "id": "queens-blood",
+      "name": "Queen's Blood — the card game",
+      "reward": "Unique cards, strong combat rewards, and a dedicated cross-country questline",
+      "era": "From Chapter 2",
+      "steps": [
+        {
+          "label": "The board",
+          "detail": "A three-row board. Build a 15-card deck and draw an opening hand of five."
+        },
+        {
+          "label": "Placing cards",
+          "detail": "Each tile holds pawns. You can only play a card where the pawn rank meets its cost — and every card you place adds pawns to adjacent tiles, opening up higher-rank plays."
+        },
+        {
+          "label": "Scoring",
+          "detail": "Each card has a Power value. When the board fills, you win each row where your total Power beats your opponent's, and the higher combined Power across the three rows takes the match."
+        },
+        {
+          "label": "Why bother",
+          "detail": "A deep optional minigame with its own progression — collect stronger cards across the world, beat ranked opponents, and pursue a dedicated questline, earning unique cards and rewards."
+        }
+      ]
+    }
+  ],
+  "bossFights": [
+    {
+      "id": "materia-guardian",
+      "name": "Materia Guardian",
+      "sectionId": "ch1-fall-of-a-hero",
+      "locationRef": "Mt. Nibel reactor",
+      "prep": {
+        "recommendedItems": [
+          "Potion"
+        ],
+        "healthAdvice": "A tutorial-era mechanical boss. Keep your guard up against its heavy slams.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Materia Guardian",
+          "summary": "A four-legged Shinra guardian. Stay mobile, strike its legs and core during openings, and burst it once Pressured. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Heal between phases with Cure or Potions.",
+        "easierTactic": "Target its weak points and punish the recovery after its big telegraphed attacks; Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+      },
+      "reward": "Clears the Nibelheim flashback and opens the present-day journey."
+    },
+    {
+      "id": "midgardsormr",
+      "name": "Midgardsormr",
+      "sectionId": "ch2-a-new-journey-begins",
+      "locationRef": "Grasslands marsh",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down"
+        ],
+        "healthAdvice": "The first real open-region wall. Bring ranged options for when it rears or submerges.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Midgardsormr",
+          "summary": "A colossal serpent. Punish its lunges and tail sweeps, exploit its lightning weakness to build Pressure, and unload during Stagger. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Retreat to the marsh edge and heal; the arena is large.",
+        "easierTactic": "Lightning pressures it well — hit it as it surfaces and after its tail sweeps, then burst on stagger."
+      },
+      "reward": "Marks your arrival as a serious threat in the Grasslands."
+    },
+    {
+      "id": "mythril-golem",
+      "name": "Mythril Golem",
+      "sectionId": "ch3-deeper-into-darkness",
+      "locationRef": "Mythril Mine",
+      "prep": {
+        "recommendedItems": [
+          "Potion"
+        ],
+        "healthAdvice": "A heavy stone construct — durable but slow.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Mythril Golem",
+          "summary": "A lumbering golem with telegraphed slams. Dodge, exploit its weakness, and burst it down while Staggered. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Keep one healer's ATB in reserve for its big swings.",
+        "easierTactic": "Exploit its elemental weakness to Pressure it, then stagger and focus fire; Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+      },
+      "reward": "Clears the path through the Mythril Mine toward Junon."
+    },
+    {
+      "id": "terror-of-the-deep",
+      "name": "Terror of the Deep",
+      "sectionId": "ch4-dawn-of-a-new-era",
+      "locationRef": "Under Junon",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Maiden's Kiss"
+        ],
+        "healthAdvice": "Rebirth's take on the classic Bottomswell. It snatches party members out of the fight.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Terror of the Deep",
+          "summary": "A water beast that grabs and isolates your party. Use Lightning to Pressure it, free trapped allies immediately, and unload when Staggered. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Free grabbed allies fast, then regroup and heal.",
+        "easierTactic": "Lightning hits it hard. Watch for the whirl that traps a character — break them out, then burst during stagger."
+      },
+      "reward": "Opens the way onward from Under Junon."
+    },
+    {
+      "id": "roche",
+      "name": "Roche",
+      "sectionId": "ch4-dawn-of-a-new-era",
+      "locationRef": "Junon area",
+      "prep": {
+        "recommendedItems": [
+          "Potion"
+        ],
+        "healthAdvice": "A SOLDIER rival who fights as a one-on-one motorcycle duel.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Roche",
+          "summary": "A fast, aggressive duellist. Block or evade his dashing strikes, counter the recovery, and ramp Stagger with quick combos. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "It's a duel — manage your own ATB and guard timing.",
+        "easierTactic": "Parry or dodge his charges and punish the overextension; keep the pressure on to stagger him."
+      },
+      "reward": "A flashy duel; he returns for a rematch later."
+    },
+    {
+      "id": "jenova-emergent",
+      "name": "Jenova Emergent",
+      "sectionId": "ch5-blood-in-the-water",
+      "locationRef": "Shinra cargo ship",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down",
+          "Echo Mist"
+        ],
+        "healthAdvice": "A Jenova form that caps the sea voyage and shifts its elemental affinity.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Jenova Emergent",
+          "summary": "A shapeshifting Jenova fight. Its affinity rotates, so re-check the weakness each phase, cleanse status effects, and exploit Stagger windows. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Heal through its area attacks; keep a reviver ready.",
+        "easierTactic": "It changes weakness between phases — re-Assess often and match the element, then burst on stagger."
+      },
+      "reward": "Ends the voyage and lands you at Costa del Sol."
+    },
+    {
+      "id": "dyne",
+      "name": "Dyne",
+      "sectionId": "ch8-all-that-glitters",
+      "locationRef": "Corel Prison",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down"
+        ],
+        "healthAdvice": "A tragic gunner duel tied to Barret's past.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Dyne",
+          "summary": "A ranged duellist who zones with gunfire. Weave through his shots, punish at close range, and finish during Stagger. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Keep moving to avoid his ranged barrages, then close the gap.",
+        "easierTactic": "Dodge his gunfire and grenades, close in during reloads, and stagger him with sustained pressure."
+      },
+      "reward": "A wrenching story beat; advances the Gold Saucer arc."
+    },
+    {
+      "id": "gi-nattak",
+      "name": "Gi Nattak",
+      "sectionId": "ch10-watcher-of-the-vale",
+      "locationRef": "Cave of the Gi, Cosmo Canyon",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down",
+          "Holy Water"
+        ],
+        "healthAdvice": "An undead boss in the cave beneath Cosmo Canyon.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Gi Nattak",
+          "summary": "An undead spirit: turn its own weakness against it by casting healing magic at it, exploit Fire, and stagger to finish. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Heal normally — but remember healing magic damages the undead.",
+        "easierTactic": "As an undead, it takes damage from Cure/Raise — cast healing ON the boss, and lean on Fire to Pressure it."
+      },
+      "reward": "Resolves Red XIII's homecoming arc."
+    },
+    {
+      "id": "galian-beast",
+      "name": "Galian Beast",
+      "sectionId": "ch11-the-long-shadow-of-shinra",
+      "locationRef": "Shinra Manor, Nibelheim",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down"
+        ],
+        "healthAdvice": "A ferocious transformation boss during the Nibelheim sequence.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Galian Beast",
+          "summary": "A fast, hard-hitting beast. Time your guards against its rushes, punish recoveries, and exploit Stagger. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Guard its rushes and counter; keep the party spread.",
+        "easierTactic": "Block its lunges and elemental bursts, counter the openings, and burst it during Stagger."
+      },
+      "reward": "Deepens the Nibelheim and Sephiroth mystery before the finale."
+    },
+    {
+      "id": "rufus-darkstar",
+      "name": "Rufus & Darkstar",
+      "sectionId": "ch12-a-golden-key",
+      "locationRef": "Gold Saucer",
+      "prep": {
+        "recommendedItems": [
+          "Potion"
+        ],
+        "healthAdvice": "Rufus Shinra duels Cloud one-on-one while his hound Darkstar interferes.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Rufus & Darkstar",
+          "summary": "A precision duel: manage the dog, block or sidestep Rufus's shots, and counter in the gaps to build Stagger. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "A solo duel for Cloud — guard timing is everything.",
+        "easierTactic": "Deal with Darkstar's harassment, then parry Rufus's gunshots and punish between his volleys."
+      },
+      "reward": "Secures the keystone for the Temple of the Ancients."
+    },
+    {
+      "id": "demon-gate",
+      "name": "Demon Gate",
+      "sectionId": "ch13-where-angels-fear-to-tread",
+      "locationRef": "Temple of the Ancients",
+      "prep": {
+        "recommendedItems": [
+          "Potion",
+          "Phoenix Down",
+          "Ether"
+        ],
+        "healthAdvice": "A massive stone guardian of the temple with wide area attacks.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Demon Gate",
+          "summary": "A towering gate-guardian with sweeping area attacks. Stay mobile and spread out, exploit its weakness, and burst on Stagger. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Spread the party to avoid its AoE; keep MP for healing.",
+        "easierTactic": "Keep characters apart to dodge its slams and quakes, exploit its weakness, and focus fire during stagger."
+      },
+      "reward": "Clears the temple's gauntlet toward the climax."
+    },
+    {
+      "id": "jenova-lifeclinger",
+      "name": "Jenova Lifeclinger",
+      "sectionId": "ch14-end-of-the-world",
+      "locationRef": "Forgotten Capital",
+      "prep": {
+        "recommendedItems": [
+          "Hi-Potion",
+          "Phoenix Down",
+          "Ether",
+          "Elixir"
+        ],
+        "healthAdvice": "The penultimate Jenova form in the finale.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Jenova Lifeclinger",
+          "summary": "A multi-phase Jenova fight with shifting affinities and heavy AoE. Re-check the weakness each phase, keep a reviver ready, and lean on Synergy Abilities. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Bring full consumables — the finale runs long with no easy resupply.",
+        "easierTactic": "It rotates weaknesses and unleashes wide attacks — re-Assess each phase, cleanse status, and chain Synergy Abilities to extend staggers."
+      },
+      "reward": "Opens the final confrontation."
+    },
+    {
+      "id": "sephiroth-reborn",
+      "name": "Sephiroth Reborn",
+      "sectionId": "ch14-end-of-the-world",
+      "locationRef": "Forgotten Capital",
+      "prep": {
+        "recommendedItems": [
+          "Hi-Potion",
+          "Phoenix Down",
+          "Elixir",
+          "Megalixir"
+        ],
+        "healthAdvice": "The multi-phase final battle, including party splits across groups.",
+        "topUpBefore": "Rest at a bench or use a tent, refresh your materia loadout, and top up Potions/Phoenix Downs before the encounter."
+      },
+      "phases": [
+        {
+          "name": "Sephiroth Reborn",
+          "summary": "An escalating, multi-phase duel with Sephiroth that splits your party across battles. Manage each group's healing and revives, exploit Stagger, and unleash Limits and Synergy Abilities in his final forms. Cast Assess (or check the foe) to read its current weakness, then match it — exploiting a weakness causes Pressure and builds the Stagger gauge far faster."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There's no healing between phases beyond your own kit — stock revives for every group.",
+        "easierTactic": "Keep at least one reviver and one healer in each party split; exploit every Stagger and save Limits/Synergy for his most dangerous forms."
+      },
+      "reward": "The journey's end — and its trilogy-bridging cliffhanger."
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "ch1-fall-of-a-hero",
+      "order": 1,
+      "stage": "Chapter 1",
+      "title": "Fall of a Hero",
+      "subtitle": "The Nibelheim flashback — Cloud, Sephiroth & the reactor",
+      "chips": [
+        "Tutorial combat",
+        "Sephiroth",
+        "Nibelheim"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Relive the mission to Nibelheim with Sephiroth and the SOLDIERs"
+        },
+        {
+          "label": "Learn the basics of ATB, abilities, and Synergy in guided fights"
+        },
+        {
+          "label": "Climb Mt. Nibel to the Mako reactor and witness the truth"
+        },
+        {
+          "label": "Survive the night the town burned"
+        }
+      ],
+      "steps": [
+        {
+          "text": "The game opens on Cloud recounting the <strong>Nibelheim mission</strong> to the party at Kalm. You play the flashback directly — a guided sequence that doubles as the combat tutorial."
+        },
+        {
+          "text": "Fight alongside <strong>Sephiroth</strong> as a temporary ally. Use this chapter to learn <strong>Z-targeting equivalents</strong>: hold to guard, dodge to reposition, and spend ATB on abilities and spells."
+        },
+        {
+          "text": "Climb <strong>Mt. Nibel</strong> to the Mako reactor. The path is linear — follow it, fighting the dragon and the mountain's fiends."
+        },
+        {
+          "text": "Inside the reactor, the story's defining tragedy plays out. <span class=\"spoiler\">Sephiroth reads the truth of Jenova and the SOLDIER program in the reactor's pods, and Nibelheim burns. This flashback frames everything Rebirth is chasing.</span>"
+        },
+        {
+          "text": "Back in the present at Kalm, the party sets out. The real journey — and the open world — begins next chapter."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch2-a-new-journey-begins",
+      "order": 2,
+      "stage": "Chapter 2",
+      "title": "A New Journey Begins",
+      "subtitle": "The Grasslands — Kalm, the Chocobo Ranch & your first open region",
+      "chips": [
+        "First open region",
+        "Chadley / World Intel",
+        "Chocobo catching",
+        "Queen's Blood"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Leave Kalm and enter the open Grasslands"
+        },
+        {
+          "label": "Meet Chadley and unlock the World Intel system"
+        },
+        {
+          "label": "Activate the first Remnawave Tower to reveal the map"
+        },
+        {
+          "label": "Catch the Grasslands chocobo at the Chocobo Ranch"
+        },
+        {
+          "label": "Learn Queen's Blood and start building a deck"
+        }
+      ],
+      "steps": [
+        {
+          "text": "From <strong>Kalm</strong>, head into the <strong>Grasslands</strong> — the first and gentlest of the open regions. <strong>Chadley</strong> contacts you and unlocks the <strong>World Intel</strong> map; this template repeats in every region."
+        },
+        {
+          "text": "Activate the region's <strong>Remnawave Tower</strong> first. Each tower reveals the surrounding map and flags the nearby World Intel activities, so towers always come first when you reach a new region."
+        },
+        {
+          "text": "Visit the <strong>Chocobo Ranch</strong> and complete the catching minigame to tame the <strong>Grasslands chocobo</strong> — your fast traversal mount, with a region-specific gimmick in every later area."
+        },
+        {
+          "text": "Sit down for your first game of <strong>Queen's Blood</strong> at the ranch or in Kalm. Win matches to take opponents' cards and grow your deck — it becomes one of the game's deepest side activities."
+        },
+        {
+          "text": "Push the main story toward the <strong>Mythril Mine</strong> when you're ready. Clear as much Grasslands World Intel as you like first — you can always fast-travel back."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch3-deeper-into-darkness",
+      "order": 3,
+      "stage": "Chapter 3",
+      "title": "Deeper into Darkness",
+      "subtitle": "The Mythril Mine — through the dark toward Junon",
+      "chips": [
+        "Mythril Mine",
+        "Story dungeon",
+        "Approach to Junon"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Cross the Mythril Mine"
+        },
+        {
+          "label": "Deal with the Turks on your trail"
+        },
+        {
+          "label": "Emerge into the Junon region"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enter the <strong>Mythril Mine</strong> — a linear story dungeon after the open Grasslands. Follow the path and clear the fiends blocking the way."
+        },
+        {
+          "text": "The <strong>Turks</strong> complicate the crossing. Handle the encounters and keep moving toward the far exit."
+        },
+        {
+          "text": "Emerge on the far side into the <strong>Junon region</strong>, opening the next stretch of open world in the following chapter."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch4-dawn-of-a-new-era",
+      "order": 4,
+      "stage": "Chapter 4",
+      "title": "Dawn of a New Era",
+      "subtitle": "The Junon region & the city — the parade and the ship",
+      "chips": [
+        "Junon region",
+        "The parade",
+        "Costa del Sol ship"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Explore the open Junon region (towers, intel, chocobo)"
+        },
+        {
+          "label": "Reach Junon and infiltrate the city"
+        },
+        {
+          "label": "Take part in the Shinra parade"
+        },
+        {
+          "label": "Board the ship bound for Costa del Sol"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Drop into the <strong>Junon region</strong>. As always, light the <strong>Remnawave Tower</strong> first, then sweep Chadley's intel and tame the region chocobo (each region's mount has its own traversal trick)."
+        },
+        {
+          "text": "Make your way to <strong>Junon</strong> itself. The lower town and the great cannon-city above hold the chapter's story beats."
+        },
+        {
+          "text": "Take part in the <strong>Shinra parade</strong> — a set-piece march with a rhythm/timing element. Do your best, but the story continues regardless of your score."
+        },
+        {
+          "text": "Board the <strong>ship to Costa del Sol</strong>. Wrap up any Junon World Intel before you sail — you'll return, but it's cleanest to clear regions as you go."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch5-blood-in-the-water",
+      "order": 5,
+      "stage": "Chapter 5",
+      "title": "Blood in the Water",
+      "subtitle": "Aboard the Shinra cargo ship across the Meridian Ocean",
+      "chips": [
+        "Shinra ship",
+        "Story chapter",
+        "Jenova"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Cross the sea aboard the disguised Shinra ship"
+        },
+        {
+          "label": "Deal with the threat that surfaces during the voyage"
+        },
+        {
+          "label": "Arrive at Costa del Sol"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Board the <strong>Shinra cargo ship</strong> in disguise. This is a linear story chapter — explore the decks and play out the shipboard events."
+        },
+        {
+          "text": "Partway across the <strong>Meridian Ocean</strong>, a threat surfaces below decks. <span class=\"spoiler\">A Jenova encounter caps the voyage — treat it as a proper boss and exploit its stagger windows.</span>"
+        },
+        {
+          "text": "The ship docks at <strong>Costa del Sol</strong>, opening the resort and the Corel region next chapter."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch6-fools-paradise",
+      "order": 6,
+      "stage": "Chapter 6",
+      "title": "Fool's Paradise",
+      "subtitle": "Costa del Sol resort & into the Corel region",
+      "chips": [
+        "Costa del Sol",
+        "Corel region",
+        "Resort minigames"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Enjoy (and infiltrate) the Costa del Sol resort"
+        },
+        {
+          "label": "Tackle the resort's minigames and side content"
+        },
+        {
+          "label": "Press on into the Corel region and its desert highlands"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Arrive at <strong>Costa del Sol</strong>, the seaside resort. It's a dense hub of <strong>minigames and side quests</strong> — the swimsuit beach episode, Queen's Blood opponents, and more."
+        },
+        {
+          "text": "When you're ready, move into the <strong>Corel region</strong> — open desert and rocky highlands. Light its <strong>tower</strong>, clear intel, and catch the Corel chocobo (it can climb special walls)."
+        },
+        {
+          "text": "Follow the story toward <strong>Mt. Corel</strong> and the next chapter's events."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch7-those-left-behind",
+      "order": 7,
+      "stage": "Chapter 7",
+      "title": "Those Left Behind",
+      "subtitle": "Mt. Corel, the broken reactor & Barret's past",
+      "chips": [
+        "Mt. Corel",
+        "Barret's story",
+        "Dyne"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Climb through Mt. Corel and the ruined railway"
+        },
+        {
+          "label": "Confront the ghosts of Barret's past at North Corel"
+        },
+        {
+          "label": "Reach the Gold Saucer's gondola"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Traverse <strong>Mt. Corel</strong> and the broken railway. The path is largely linear with platforming and combat beats."
+        },
+        {
+          "text": "At <strong>North Corel</strong>, the story turns to <strong>Barret's history</strong> with the town and the reactor disaster. <span class=\"spoiler\">His confrontation with Dyne is one of the chapter's emotional peaks.</span>"
+        },
+        {
+          "text": "Reach the <strong>ropeway to the Gold Saucer</strong>, setting up the amusement-park chapter."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch8-all-that-glitters",
+      "order": 8,
+      "stage": "Chapter 8",
+      "title": "All That Glitters",
+      "subtitle": "The Gold Saucer — the amusement park and Cait Sith",
+      "chips": [
+        "Gold Saucer",
+        "Cait Sith joins",
+        "Minigame hub"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Explore the Gold Saucer's attractions"
+        },
+        {
+          "label": "Take on the park's signature minigames"
+        },
+        {
+          "label": "Welcome Cait Sith to the party"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enter the <strong>Gold Saucer</strong>, the neon amusement park. It is the densest <strong>minigame hub</strong> in the game — chocobo racing, 3D Brawler, Galactic Saviors, and more."
+        },
+        {
+          "text": "<strong>Cait Sith</strong> joins the party here, adding a unique playstyle built around summoning a giant moogle and dice-roll mechanics."
+        },
+        {
+          "text": "Play the attractions and progress the story. You'll return to the Saucer for a major later chapter, so you needn't 100% it now."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch9-the-planet-stirs",
+      "order": 9,
+      "stage": "Chapter 9",
+      "title": "The Planet Stirs",
+      "subtitle": "The Gongaga region — jungle, reactor & a summon",
+      "chips": [
+        "Gongaga region",
+        "Jungle traversal",
+        "Summon shrine"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Explore the dense Gongaga jungle region"
+        },
+        {
+          "label": "Use the mushroom springboards to traverse the canopy"
+        },
+        {
+          "label": "Investigate the abandoned Gongaga reactor"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enter the <strong>Gongaga region</strong> — a dense, vertical jungle. Traversal uses bouncing <strong>mushroom springboards</strong>; the region's tower and intel are tucked into the canopy."
+        },
+        {
+          "text": "Catch the <strong>Gongaga chocobo</strong> (it uses the mushrooms to reach high ledges) and work Chadley's World Intel."
+        },
+        {
+          "text": "The story leads to the ruined <strong>Gongaga reactor</strong> and the region's summon shrine. <span class=\"spoiler\">The threads of Zack and the SOLDIER program tighten here.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch10-watcher-of-the-vale",
+      "order": 10,
+      "stage": "Chapter 10",
+      "title": "Watcher of the Vale",
+      "subtitle": "Cosmo Canyon — Red XIII's homecoming and the Gi",
+      "chips": [
+        "Cosmo Canyon",
+        "Red XIII's story",
+        "Planetology"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Reach Cosmo Canyon, the canyon observatory town"
+        },
+        {
+          "label": "Learn the planet's lore and Red XIII's history"
+        },
+        {
+          "label": "Descend into the cave of the Gi"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Arrive at <strong>Cosmo Canyon</strong>, the red-rock observatory town. Explore the candlelit terraces and absorb the planet's lore."
+        },
+        {
+          "text": "The chapter centres on <strong>Red XIII's past</strong> and his father's legend. <span class=\"spoiler\">The descent into the cave of the Gi resolves the truth about Seto and Nanaki's courage.</span>"
+        },
+        {
+          "text": "Work the surrounding <strong>Cosmo Canyon region</strong> intel — its chocobo can scale vertical walls — before moving on toward Nibel."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch11-the-long-shadow-of-shinra",
+      "order": 11,
+      "stage": "Chapter 11",
+      "title": "The Long Shadow of Shinra",
+      "subtitle": "The Nibel region & Nibelheim — back to where it began",
+      "chips": [
+        "Nibel region",
+        "Nibelheim",
+        "Shinra Manor"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Explore the mountainous Nibel region"
+        },
+        {
+          "label": "Return to Nibelheim and confront its impossible state"
+        },
+        {
+          "label": "Investigate Shinra Manor"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enter the <strong>Nibel region</strong>, a rugged mountain area that loops back to the game's opening. Light the <strong>tower</strong> and clear intel as usual."
+        },
+        {
+          "text": "Return to <strong>Nibelheim</strong>. <span class=\"spoiler\">The town stands rebuilt and staffed by Shinra actors, twisting the knife of Cloud's unreliable memory.</span>"
+        },
+        {
+          "text": "Investigate <strong>Shinra Manor</strong> and its basement — a story dungeon that deepens the Jenova and Sephiroth mystery before the run to the finale."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch12-a-golden-key",
+      "order": 12,
+      "stage": "Chapter 12",
+      "title": "A Golden Key",
+      "subtitle": "Back to the Gold Saucer — the date and the keystone",
+      "chips": [
+        "Gold Saucer return",
+        "The date event",
+        "Keystone"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Return to the Gold Saucer for the keystone"
+        },
+        {
+          "label": "Experience the famous evening date event"
+        },
+        {
+          "label": "Set up the journey to the Temple of the Ancients"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Return to the <strong>Gold Saucer</strong> in pursuit of the <strong>keystone</strong> needed for the Temple of the Ancients."
+        },
+        {
+          "text": "The chapter contains the celebrated <strong>evening date event</strong>. <span class=\"spoiler\">Your dialogue and side-quest choices across the game decide which companion shares the gondola with you.</span>"
+        },
+        {
+          "text": "With the keystone in hand, the party sets course for the <strong>Temple of the Ancients</strong>."
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch13-where-angels-fear-to-tread",
+      "order": 13,
+      "stage": "Chapter 13",
+      "title": "Where Angels Fear to Tread",
+      "subtitle": "The Temple of the Ancients — the shifting dungeon",
+      "chips": [
+        "Temple of the Ancients",
+        "Story dungeon",
+        "Boss gauntlet"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Navigate the shifting Temple of the Ancients"
+        },
+        {
+          "label": "Solve the temple's spatial puzzles"
+        },
+        {
+          "label": "Survive the temple's boss gauntlet"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enter the <strong>Temple of the Ancients</strong>, a shape-shifting dungeon of spatial puzzles. Take it room by room and watch how the geometry changes around you."
+        },
+        {
+          "text": "The temple stacks several <strong>boss encounters</strong> back to back — manage MP and ATB carefully and lean on staggers."
+        },
+        {
+          "text": "<span class=\"spoiler\">The temple's events set the stage for the journey's most painful turn at the Forgotten Capital. Steel yourself — and stock revives and healing — before the final chapter.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    },
+    {
+      "sectionId": "ch14-end-of-the-world",
+      "order": 14,
+      "stage": "Chapter 14",
+      "title": "End of the World",
+      "subtitle": "The Forgotten Capital — the finale",
+      "chips": [
+        "Forgotten Capital",
+        "Finale",
+        "Multi-phase bosses"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "recommendedDetours": [],
+      "video": {
+        "provider": "youtube",
+        "id": "mOgFRAVB87Q",
+        "creator": "Shirrako",
+        "title": "Final Fantasy VII Rebirth — Full Gameplay Walkthrough (4K, No Commentary)",
+        "durationLabel": "9:00:00",
+        "startSeconds": 0
+      },
+      "objectives": [
+        {
+          "label": "Reach the Forgotten Capital"
+        },
+        {
+          "label": "Survive the climactic multi-phase battles"
+        },
+        {
+          "label": "See the journey's end — and its cliffhanger"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Reach the <strong>Forgotten Capital</strong>. This chapter is almost entirely <strong>story and boss battles</strong> — come fully stocked with Phoenix Downs, Hi-Potions, and a tuned materia loadout."
+        },
+        {
+          "text": "Fight through the <strong>multi-phase finale</strong>. <span class=\"spoiler\">The closing battles escalate through several forms and party splits; keep at least one reviver and one healer per group.</span>"
+        },
+        {
+          "text": "<span class=\"spoiler\">Rebirth ends on a deliberately ambiguous, emotional note that sets up the trilogy's final part. Save a clear-data file for the post-game and hard-mode content.</span>"
+        }
+      ],
+      "advisories": [],
+      "collectibles": []
+    }
+  ],
+  "locations": [
+    {
+      "id": "grasslands",
+      "name": "Grasslands",
+      "ref": "Grasslands",
+      "reachableBy": "The first open region, around Kalm and the Chocobo Ranch — your introduction to Chadley and World Intel.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "junon",
+      "name": "Junon",
+      "ref": "Junon",
+      "reachableBy": "Coastal beaches and marshes leading to Under Junon and the cannon-city, with the parade set-piece.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "corel",
+      "name": "Corel",
+      "ref": "Corel",
+      "reachableBy": "The largest span — desert and mountains housing Costa del Sol and the Gold Saucer.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "gongaga",
+      "name": "Gongaga",
+      "ref": "Gongaga",
+      "reachableBy": "Dense jungle with mushroom-springboard traversal and Zack/reactor story beats.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "cosmo-canyon",
+      "name": "Cosmo Canyon",
+      "ref": "Cosmo Canyon",
+      "reachableBy": "Red XIII's homeland — canyon terrain tied to planet lore and the Gi.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "nibel",
+      "name": "Nibel",
+      "ref": "Nibel",
+      "reachableBy": "The mountains around Nibelheim, central to the Sephiroth flashback and Mt. Nibel.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "meridian-ocean",
+      "name": "Meridian Ocean",
+      "ref": "Meridian Ocean",
+      "reachableBy": "Open-ocean traversal that connects the regions once the world fully opens.",
+      "isHub": false,
+      "contains": []
+    },
+    {
+      "id": "costa-del-sol-hub",
+      "name": "Costa del Sol (hub)",
+      "ref": "Costa del Sol (hub)",
+      "reachableBy": "Seaside resort in Corel with beach minigames and downtime.",
+      "isHub": true,
+      "contains": []
+    },
+    {
+      "id": "gold-saucer-hub",
+      "name": "Gold Saucer (hub)",
+      "ref": "Gold Saucer (hub)",
+      "reachableBy": "The amusement-park hub in Corel — the densest cluster of minigames in the game.",
+      "isHub": true,
+      "contains": []
+    }
+  ]
+}

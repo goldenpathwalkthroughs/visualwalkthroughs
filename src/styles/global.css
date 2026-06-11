@@ -91,6 +91,19 @@ body.theme-oot {
   --muted: #887840;
 }
 
+body.theme-ff7-rebirth {
+  --ink: #04141b;
+  --ink-2: #061a22;
+  --panel: #08222b;
+  --panel-2: #0b2c37;
+  --accent: #35c6d6;
+  --accent-soft: rgba(53,198,214,.14);
+  --gold: #6fd8e0;
+  --signal: #46d0c0;
+  --line: rgba(53,198,214,.14);
+  --muted: #6a9aa4;
+}
+
 body.theme-majoras-mask {
   --ink: #0a0512;
   --ink-2: #0f0818;

@@ -1,0 +1,931 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorldMap from '../../components/WorldMap.astro';
+import { getCollection } from 'astro:content';
+import { applySequencing } from '../../lib/sequencer.js';
+
+const game = (await getCollection('games')).find(g => g.data.slug === 'final-fantasy-vii-rebirth');
+if (!game) throw new Error('Game not found');
+
+const enriched = applySequencing(game.data);
+const seqRoute: Array<any> = (enriched as any)._sequencing.route;
+const seqBySid = new Map(seqRoute.map((r: any) => [r.sectionId, r]));
+const detourById = new Map(
+  ((game.data as any).detours ?? []).map((d: any) => [d.id, d])
+);
+
+const { title, lede, platforms, theme } = game.data;
+const cover = (game.data as any).cover as string | undefined;
+const sections = enriched.sections;
+
+const bossFightBySid = new Map(
+  ((game.data as any).bossFights ?? []).map((b: any) => [b.sectionId, b])
+);
+
+// Ganon's Castle has two boss fights (Ganondorf + Ganon) — build a list keyed by sectionId
+const bossFightListBySid = new Map<string, any[]>();
+for (const b of ((game.data as any).bossFights ?? [])) {
+  const arr = bossFightListBySid.get(b.sectionId) ?? [];
+  arr.push(b);
+  bossFightListBySid.set(b.sectionId, arr);
+}
+
+const locations: any[] = (game.data as any).locations ?? [];
+
+// v4 action-adventure reference back-matter
+const itemReference: any[] = (game.data as any).itemReference ?? [];
+const songs: any[] = (game.data as any).songs ?? [];
+const collectibleCategories: any[] = (game.data as any).collectibleCategories ?? [];
+const sideQuestChains: any[] = (game.data as any).sideQuestChains ?? [];
+const shops: any[] = (game.data as any).shops ?? [];
+// v5 time-loop module
+const timeCycle: any = (game.data as any).timeCycle ?? null;
+const scheduledEvents: any[] = (game.data as any).scheduledEvents ?? [];
+const hasReference = itemReference.length > 0 || songs.length > 0 || collectibleCategories.length > 0 || sideQuestChains.length > 0 || shops.length > 0 || !!timeCycle || scheduledEvents.length > 0;
+
+const advLabel: Record<string, string> = {
+  'do-now': 'Do this now',
+  upgrade: 'Permanent upgrade',
+  missable: 'Missable',
+  warning: 'Heads up',
+  tip: 'Tip',
+};
+const advIcon: Record<string, string> = {
+  'do-now': '★',
+  upgrade: '⬆',
+  missable: '⚠',
+  warning: '⚠',
+  tip: '💡',
+};
+
+const searchIndex = [
+  {
+    t: title,
+    s: `${platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '💠',
+    href: `/final-fantasy/final-fantasy-vii-rebirth/`,
+  },
+  ...sections.map((s: any, i: number) => ({
+    t: s.title,
+    s: `FF7 Rebirth · ${s.stage}`,
+    k: 'section',
+    ic: '📍',
+    href: `/final-fantasy/final-fantasy-vii-rebirth/`,
+    sec: i,
+  })),
+];
+
+const sectionsJson = JSON.stringify(sections.map((s: any, i: number) => ({
+  i,
+  collectCount: s.collectibles.length,
+})));
+
+function formatTs(secs: number): string {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function isStepObj(step: unknown): step is { text: string; videoTimestamp?: number; spoiler?: boolean } {
+  return typeof step === 'object' && step !== null && 'text' in step;
+}
+---
+
+<Base
+  title={title}
+  description={lede}
+  bodyClass={theme?.bodyClass}
+  searchIndex={searchIndex}
+  preloadImage={cover}
+>
+  <div class="oot-hero mm-hero">
+    <div class="hyrule-sky"></div>
+    <div class="inner">
+      <div class="crumb" style="padding-top:6px">
+        <a href="/">Browse</a>
+        <span>/</span>
+        <a href="/final-fantasy/">Final Fantasy</a>
+        <span>/</span>
+        <span style="color:var(--text)">{title}</span>
+      </div>
+      <div class="ww-top">
+        <div class="ww-cover">
+          {cover
+            ? <img src={cover} alt={`${title} box art`} class="ww-cover-img" loading="eager" decoding="async" />
+            : <><div class="tri"></div><small>OCARINA OF TIME</small></>
+          }
+        </div>
+        <div class="ww-info">
+          <div class="badges">
+            <span class="b hot">Fan guide</span>
+            <span class="b">{platforms.join(' / ')}</span>
+            <span class="b">Golden path + boss strategies</span>
+            <span class="b">Spoiler-safe</span>
+          </div>
+          <h1>{title}</h1>
+          <p class="lede">{lede}</p>
+        </div>
+      </div>
+      <div class="ctrls">
+        <div class="progress-wrap">
+          <div class="lab">
+            <span>Golden-path progress</span>
+            <b id="prog-txt">0 / {sections.length} sections</b>
+          </div>
+          <div class="bar"><i id="prog-bar"></i></div>
+        </div>
+        <button class="toggle on" id="spoiler-toggle" onclick="toggleSpoilers()">
+          <span class="dot"></span>
+          <span id="spoiler-label">Spoiler-safe: ON</span>
+        </button>
+        <button class="toggle" id="comp-toggle" onclick="toggleComp()">
+          <span class="dot"></span>
+          <span id="comp-label">Completionist: OFF</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    {(game.data as any).worldMap && (
+      <WorldMap
+        worldMap={(game.data as any).worldMap}
+        locations={locations}
+        sections={sections}
+      />
+    )}
+
+    {hasReference && (
+      <div class="essentials">
+        <div class="essentials-head">
+          <h2>Combat, World Intel &amp; Reference</h2>
+          <p>The systems behind the journey — your seven-strong party and their roles, the combat and Synergy mechanics, Materia, Chadley's World Intel loop, every open-world region, the major minigames, and how Queen's Blood works.</p>
+        </div>
+
+        {timeCycle && (
+          <details class="ref-panel" open>
+            <summary><span class="ref-ic" aria-hidden="true">⏳</span> The three-day cycle <span class="ref-sub">{timeCycle.cycleLength}</span></summary>
+            <div class="ref-panel-body">
+              <p class="cycle-reset"><strong>Reset:</strong> {timeCycle.resetMechanic}</p>
+              <div class="cycle-cols">
+                <div class="cycle-col cycle-keep">
+                  <div class="cycle-col-head">You keep</div>
+                  <ul>{timeCycle.persists.map((x: string) => <li>{x}</li>)}</ul>
+                </div>
+                <div class="cycle-col cycle-lose">
+                  <div class="cycle-col-head">You lose</div>
+                  <ul>{timeCycle.lost.map((x: string) => <li>{x}</li>)}</ul>
+                </div>
+              </div>
+              {timeCycle.controls?.length > 0 && (
+                <div class="cycle-controls">
+                  <div class="cycle-col-head">Bend time</div>
+                  {timeCycle.controls.map((c: any) => (
+                    <div class="cycle-ctrl"><strong>{c.name}</strong><span>{c.effect}</span></div>
+                  ))}
+                </div>
+              )}
+              {timeCycle.note && <p class="ref-note">{timeCycle.note}</p>}
+            </div>
+          </details>
+        )}
+
+        {scheduledEvents.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">📓</span> Bombers' Notebook — who, where &amp; when <span class="ref-sub">{scheduledEvents.length} timed events · masks &amp; Heart Pieces</span></summary>
+            <div class="ref-panel-body">
+              <div class="sched-list">
+                {scheduledEvents.map((e: any) => (
+                  <div class="sched-row">
+                    <div class="sched-when">
+                      <span class="sched-day">{e.days}</span>
+                      {e.time && <span class="sched-time">{e.time}</span>}
+                    </div>
+                    <div class="sched-body">
+                      <div class="sched-name">{e.name}{e.reward && <span class="sched-reward">{e.reward}</span>}</div>
+                      <div class="sched-loc">{e.location}</div>
+                      {e.prereq && <div class="sched-prereq"><span class="sched-lbl">Needs</span> {e.prereq}</div>}
+                      {e.detail && <div class="sched-detail">{e.detail}</div>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        )}
+
+        {itemReference.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">⚔️</span> Items &amp; equipment <span class="ref-sub">{itemReference.length} tools · where, when, what it unlocks</span></summary>
+            <div class="ref-panel-body">
+              <table class="ref-table">
+                <tbody>
+                  {itemReference.map((it: any) => (
+                    <tr>
+                      <td class="ir-name">{it.name}<span class="ir-cat">{it.category}</span></td>
+                      <td class="ir-when">{it.when && <span class={`era era-${(it.when||'').toLowerCase()}`}>{it.when}</span>}</td>
+                      <td class="ir-where">{it.where}{it.unlocks && <span class="ir-unlocks">{it.unlocks}</span>}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        )}
+
+        {songs.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🎵</span> Ocarina songs <span class="ref-sub">{songs.length} songs · where learned and what they do</span></summary>
+            <div class="ref-panel-body">
+              {songs.map((s: any) => (
+                <div class="song-row">
+                  <strong class="song-name">{s.name}</strong>
+                  <span class="song-where">{s.where}</span>
+                  <span class="song-use">{s.use}</span>
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+
+        {collectibleCategories.map((cat: any) => (
+          <details class="ref-panel">
+            <summary>
+              <span class="ref-ic" aria-hidden="true">✦</span> {cat.name}
+              <span class="ref-sub">{cat.total ? `${cat.entries.length} listed of ${cat.total}` : `${cat.entries.length} entries`}</span>
+            </summary>
+            <div class="ref-panel-body">
+              {cat.note && <p class="ref-note">{cat.note}</p>}
+              <table class="ref-table">
+                <tbody>
+                  {cat.entries.map((e: any) => (
+                    <tr>
+                      <td class="cc-label">{e.label}</td>
+                      <td class="cc-loc">{e.location}</td>
+                      <td class="cc-req">
+                        {e.requires && e.requires !== '—' && <span class="req-tag">{e.requires}</span>}
+                        {e.era && <span class={`era era-${(e.era||'').toLowerCase()}`}>{e.era}</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        ))}
+
+        {sideQuestChains.map((q: any) => (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🔗</span> {q.name} <span class="ref-sub">{q.steps.length}-step chain → {q.reward.split('—')[0].trim()}</span></summary>
+            <div class="ref-panel-body">
+              <p class="ref-note"><strong>Reward:</strong> {q.reward}{q.era ? ` · ${q.era} Link` : ''}</p>
+              <ol class="chain-list">
+                {q.steps.map((st: any) => (
+                  <li>
+                    <strong>{st.label}</strong>
+                    {st.requires && <span class="chain-req">{st.requires}</span>}
+                    {st.detail && <span class="chain-detail">{st.detail}</span>}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </details>
+        ))}
+
+        {shops.length > 0 && (
+          <details class="ref-panel">
+            <summary><span class="ref-ic" aria-hidden="true">🛒</span> Shops <span class="ref-sub">{shops.length} shops · stock and prices</span></summary>
+            <div class="ref-panel-body">
+              <div class="shop-grid">
+                {shops.map((sh: any) => (
+                  <div class="shop-card">
+                    <div class="shop-name">{sh.name}<span class="shop-where">{sh.where}</span></div>
+                    <table class="shop-mini">
+                      <tbody>
+                        {sh.items.map((it: any) => (
+                          <tr><td>{it.item}</td><td class="shop-price">{it.price}</td></tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+        )}
+      </div>
+    )}
+
+    <div class="sections">
+      <div class="path-label">The journey · 14 chapters</div>
+
+      {sections.map((sec: any, i: number) => {
+        const sid: string = sec.sectionId ?? String(sec.order);
+        const seqEntry = seqBySid.get(sid);
+        const gateWarnings: any[] = seqEntry?.gateWarnings ?? [];
+        const readinessNote: string | null = seqEntry?.readinessNote ?? null;
+        const recommendedDetourIds: string[] = sec.recommendedDetours ?? [];
+        const bossFights: any[] = bossFightListBySid.get(sid) ?? [];
+
+        return (
+          <div class="sec" id={`sec-${i}`}>
+            <div class="sec-head" onclick={`toggleSec(${i})`}>
+              <div class="num">{i + 1}</div>
+              <button
+                class="check"
+                title="Mark section complete"
+                onclick={`event.stopPropagation();markDone(${i})`}
+                aria-label={`Mark "${sec.title}" complete`}
+              >✓</button>
+              <div class="htext">
+                <div class="stage">{sec.stage}</div>
+                <h2>{sec.title}</h2>
+                <div class="chips">
+                  {sec.chips.map((c: string) => <span class="chip">{c}</span>)}
+                </div>
+              </div>
+              <div class="chev" aria-hidden="true">▾</div>
+            </div>
+
+            <div class="sec-body">
+              <div class="inner">
+                <div class="sec-content">
+                  <!-- Left: prose -->
+                  <div class="prose" id={`prose-${i}`}>
+                    <button class="tts" onclick={`speak(${i},event)`} aria-label="Listen to this section">▶ Listen to this section</button>
+
+                    {gateWarnings.filter((w: any) => w.gatingType === 'hard').map((w: any) => (
+                      <div class="gate-card gate-hard">
+                        <span class="gate-ico" aria-hidden="true">⛔</span>
+                        <div class="gate-body">
+                          <span class="gate-type">Required to proceed</span>
+                          You need <strong>{w.name}</strong> to continue from here.
+                        </div>
+                      </div>
+                    ))}
+
+                    {readinessNote && (
+                      <div class="gate-card gate-soft">
+                        <span class="gate-ico" aria-hidden="true">👆</span>
+                        <div class="gate-body">
+                          <span class="gate-type">Recommended first</span>
+                          {readinessNote}
+                        </div>
+                      </div>
+                    )}
+
+                    {(sec.objectives ?? []).length > 0 && (
+                      <div class="objectives">
+                        <div class="objectives-label">Objectives</div>
+                        <ol class="objectives-list">
+                          {sec.objectives.map((o: any) => (
+                            <li class={o.optional ? 'obj-optional' : ''}>{o.label}{o.optional && <span class="obj-opt-tag">optional</span>}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
+                    <h3>Golden path</h3>
+                    <ol>
+                      {sec.steps.map((step: unknown) => (
+                        <li class={isStepObj(step) && (step as any).spoiler ? 'spoiler-li' : ''}>
+                          {isStepObj(step) ? (
+                            <>
+                              <span set:html={step.text} />
+                              {(step as any).locationRef && (
+                                <span class="loc-ref" title={`Map ref: ${(step as any).locationRef}`} aria-label={`Map: ${(step as any).locationRef}`}>{(step as any).locationRef}</span>
+                              )}
+                              {step.videoTimestamp !== undefined && (
+                                <button
+                                  class="ts-btn"
+                                  onclick={`seekVid(${i},${step.videoTimestamp})`}
+                                  title={`Jump video to ${formatTs(step.videoTimestamp)}`}
+                                  aria-label={`Watch from ${formatTs(step.videoTimestamp)}`}
+                                >▶ {formatTs(step.videoTimestamp)}</button>
+                              )}
+                            </>
+                          ) : (
+                            <Fragment set:html={step as string} />
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+
+                    {sec.dungeonMap?.floors?.length > 0 && (
+                      <details class="dmap">
+                        <summary><span class="dmap-ic" aria-hidden="true">🗺️</span> Dungeon map — keyed contents <span class="dmap-sub">{sec.dungeonMap.floors.length} floors</span></summary>
+                        <div class="dmap-body">
+                          {sec.dungeonMap.floors.map((fl: any) => (
+                            <div class="dmap-floor">
+                              <div class="dmap-floor-label">{fl.label}</div>
+                              <ul class="dmap-markers">
+                                {fl.markers.map((m: any) => (
+                                  <li class={`dmark dmark-${m.kind}`}>
+                                    <span class="dmark-key">{m.key}</span>
+                                    <span class="dmark-kind">{m.kind.replace('-', ' ')}</span>
+                                    <span class="dmark-label">{m.label}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+
+                    {(sec.rooms ?? []).length > 0 && (
+                      <details class="rooms">
+                        <summary><span class="dmap-ic" aria-hidden="true">🧩</span> Room-by-room &amp; puzzle solutions <span class="dmap-sub">{sec.rooms.length} rooms</span></summary>
+                        <div class="rooms-body">
+                          {sec.rooms.map((rm: any) => (
+                            <div class="room-card">
+                              <div class="room-name">{rm.name}</div>
+                              <p class="room-solution"><span class="room-sol-tag">Solve</span> {rm.solution}</p>
+                              {rm.enemies && <div class="room-meta"><span class="room-meta-lbl">Enemies</span> {rm.enemies}</div>}
+                              {rm.treasure && <div class="room-meta"><span class="room-meta-lbl room-treasure">Treasure</span> {rm.treasure}</div>}
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+
+                    {sec.advisories.filter((a: any) => !a.completionistOnly).map((a: any) => (
+                      <div class="adv" data-t={a.type}>
+                        <span class="ico" aria-hidden="true">{advIcon[a.type]}</span>
+                        <span class="at">{advLabel[a.type]}</span>
+                        <strong>{a.title}.</strong> <span set:html={a.body} />
+                      </div>
+                    ))}
+
+                    {sec.advisories.filter((a: any) => a.completionistOnly).map((a: any) => (
+                      <div class="adv comp-only" data-t={a.type}>
+                        <span class="ico" aria-hidden="true">{advIcon[a.type]}</span>
+                        <span class="at">{advLabel[a.type]}</span>
+                        <strong>{a.title}.</strong> <span set:html={a.body} />
+                      </div>
+                    ))}
+
+                    {/* Boss fight block(s) — OoT Ganon's Castle has two consecutive fights */}
+                    {bossFights.map((bossFight: any) => (
+                      <div class="boss-block">
+                        <div class="boss-head">
+                          <span class="boss-badge">Boss</span>
+                          <strong class="boss-name">{bossFight.name}</strong>
+                          {bossFight.locationRef && (
+                            <span class="boss-loc">{bossFight.locationRef}</span>
+                          )}
+                        </div>
+
+                        <div class="boss-prep">
+                          <div class="boss-section-label">Preparation</div>
+                          <p class="boss-prep-text">{bossFight.prep.healthAdvice}</p>
+                          {bossFight.prep.topUpBefore && (
+                            <p class="boss-prep-topup">
+                              <strong>Top up before:</strong> {bossFight.prep.topUpBefore}
+                            </p>
+                          )}
+                        </div>
+
+                        <div class="boss-phases">
+                          <div class="boss-section-label">Fight breakdown</div>
+                          {bossFight.phases.map((phase: any) => (
+                            <div class="boss-phase">
+                              <div class="phase-name">{phase.name}</div>
+                              {phase.tells && <div class="phase-row"><span class="phase-lbl">Tell</span><span class="phase-val">{phase.tells}</span></div>}
+                              {phase.counter && <div class="phase-row"><span class="phase-lbl">Counter</span><span class="phase-val">{phase.counter}</span></div>}
+                              {phase.damageWindow && <div class="phase-row"><span class="phase-lbl">Damage window</span><span class="phase-val">{phase.damageWindow}</span></div>}
+                              {phase.summary && <div class="phase-row"><span class="phase-lbl">Summary</span><span class="phase-val">{phase.summary}</span></div>}
+                            </div>
+                          ))}
+                        </div>
+
+                        <div class="boss-struggle">
+                          <div class="boss-section-label">If you're struggling</div>
+                          <p><strong>Where to heal:</strong> {bossFight.ifYouStruggle.whereToHeal}</p>
+                          <p><strong>Easier tactic:</strong> {bossFight.ifYouStruggle.easierTactic}</p>
+                          {bossFight.ifYouStruggle.retreatOption && (
+                            <p><strong>Retreat:</strong> {bossFight.ifYouStruggle.retreatOption}</p>
+                          )}
+                        </div>
+
+                        <div class="boss-reward">
+                          <span class="boss-reward-lbl">Reward:</span> {bossFight.reward}
+                        </div>
+                      </div>
+                    ))}
+
+                    {recommendedDetourIds.length > 0 && (
+                      <div class="detour-group">
+                        <div class="detour-group-head">Optional · strengthen your character</div>
+                        {recommendedDetourIds.map((dId: string) => {
+                          const d = detourById.get(dId);
+                          if (!d) return null;
+                          return (
+                            <div class={`detour-card detour-${(d as any).type}`}>
+                              <div class="detour-head">
+                                <span class="opt-badge">Optional</span>
+                                <strong class="detour-loc">{(d as any).location}</strong>
+                                <span class="detour-benefit">{(d as any).benefit}</span>
+                              </div>
+                              <p class="detour-method">{(d as any).method}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {sec.collectibles.length > 0 && (
+                      <div class="comp-block comp-only">
+                        <h3>Completionist · this area</h3>
+                        <div class="cc" id={`cc-${i}`}>0 / {sec.collectibles.length} collected</div>
+                        {sec.collectibles.map((c: any, j: number) => (
+                          <div class="coll" id={`coll-${i}-${j}`} onclick={`toggleColl(${i},${j})`} role="checkbox" aria-checked="false" tabindex="0">
+                            <div class="box" aria-hidden="true">✓</div>
+                            <div class="ct">
+                              <b>{c.label}</b>
+                              <span>{c.note}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <!-- Right: video -->
+                  <div class="aside">
+                    <h3>Watch it instead</h3>
+                    <div class="vid" id={`vid-${i}`} data-id={sec.video.id}>
+                      <div
+                        class="thumb"
+                        onclick="playVid(this)"
+                        style={`background-image:url(https://i.ytimg.com/vi/${sec.video.id}/hqdefault.jpg)`}
+                        role="button"
+                        aria-label={`Play: ${sec.video.title}`}
+                        tabindex="0"
+                      >
+                        <span class="dur">{sec.video.durationLabel}</span>
+                        <div class="play" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="vmeta">
+                        <div class="creator">▶ {sec.video.creator}</div>
+                        <div class="vt">{sec.video.title}</div>
+                      </div>
+                    </div>
+                    <p class="lazy-note">▲ thumbnail from YouTube's CDN · the player loads only when you press play</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</Base>
+
+<style>
+.oot-hero {
+  position: relative;
+  background: linear-gradient(160deg, #0c1a06, #060e03 60%, #020600);
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+.hyrule-sky {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(53,198,214,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Per-section objectives ───────────────────────────────────────────────── */
+.objectives {
+  border: 1px solid rgba(53,198,214,.22);
+  border-radius: 10px;
+  background: rgba(53,198,214,.05);
+  padding: .7rem .9rem;
+  margin: .25rem 0 1rem;
+}
+.objectives-label {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--accent, #35c6d6); font-weight: 700; margin-bottom: .35rem;
+}
+.objectives-list { margin: 0; padding-left: 1.2rem; }
+.objectives-list li { color: var(--text, #d8f0f4); font-size: .9rem; line-height: 1.6; }
+.obj-optional { color: var(--muted, #6a9aa4); }
+.obj-opt-tag {
+  font-size: .6rem; text-transform: uppercase; letter-spacing: .05em;
+  background: rgba(53,198,214,.16); color: var(--accent, #35c6d6);
+  padding: 1px 5px; border-radius: 4px; margin-left: .4rem;
+}
+
+/* ── Dungeon map + rooms (per section) ────────────────────────────────────── */
+.dmap, .rooms {
+  border: 1px solid rgba(53,198,214,.18);
+  border-radius: 10px;
+  background: rgba(255,255,255,.015);
+  margin: .8rem 0;
+}
+.dmap > summary, .rooms > summary {
+  list-style: none; cursor: pointer; padding: .7rem .9rem;
+  font-weight: 700; color: var(--text, #d8f0f4); display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+}
+.dmap > summary::-webkit-details-marker, .rooms > summary::-webkit-details-marker { display: none; }
+.dmap > summary::after, .rooms > summary::after { content: '▾'; margin-left: auto; color: var(--accent, #35c6d6); transition: transform .2s; }
+.dmap[open] > summary::after, .rooms[open] > summary::after { transform: rotate(180deg); }
+.dmap-sub { font-weight: 400; color: var(--muted-2, #4a7a84); font-size: .8rem; }
+.dmap-body, .rooms-body { padding: .2rem .9rem .9rem; border-top: 1px solid rgba(53,198,214,.12); }
+.dmap-floor { margin: .7rem 0; }
+.dmap-floor-label {
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--accent, #35c6d6); font-weight: 700; margin-bottom: .35rem;
+}
+.dmap-markers { list-style: none; margin: 0; padding: 0; }
+.dmark { display: flex; align-items: baseline; gap: .5rem; padding: .25rem 0; font-size: .84rem; }
+.dmark-key {
+  flex-shrink: 0; width: 26px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(53,198,214,.16); color: var(--accent, #35c6d6); border-radius: 5px;
+  font-family: var(--font-mono, monospace); font-size: .72rem; font-weight: 700;
+}
+.dmark-kind {
+  flex-shrink: 0; width: 78px; font-size: .62rem; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--muted-2, #4a7a84); padding-top: 2px;
+}
+.dmark-boss .dmark-kind, .dmark-boss .dmark-key { color: #46d0c0; background: rgba(224,106,74,.16); }
+.dmark-chest .dmark-key, .dmark-item .dmark-key { color: #6fd8e0; }
+.dmark-label { color: var(--muted, #88b8c0); }
+.room-card { padding: .6rem 0; border-bottom: 1px solid rgba(53,198,214,.1); }
+.room-card:last-child { border-bottom: 0; }
+.room-name { color: var(--text, #d8f0f4); font-weight: 700; font-size: .92rem; margin-bottom: .25rem; }
+.room-solution { color: var(--muted, #88b8c0); font-size: .85rem; line-height: 1.55; margin: 0; }
+.room-sol-tag, .room-meta-lbl {
+  font-size: .6rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+  background: rgba(53,198,214,.16); color: var(--accent, #35c6d6); padding: 1px 6px; border-radius: 4px; margin-right: .4rem;
+}
+.room-meta { font-size: .78rem; color: var(--muted-2, #5a8a94); margin-top: .3rem; }
+.room-treasure { background: rgba(224,184,74,.18); color: #6fd8e0; }
+
+/* ── Adventurer's Reference accordion ─────────────────────────────────────── */
+.essentials { max-width: 1100px; margin: 0 auto 1.5rem; padding: 0 1.5rem; }
+.essentials-head h2 { font-family: var(--font-display, sans-serif); font-size: 1.3rem; color: var(--accent, #35c6d6); margin: 0 0 .35rem; }
+.essentials-head p { color: var(--muted, #88b8c0); font-size: .9rem; line-height: 1.55; margin: 0 0 1rem; max-width: 72ch; }
+.ref-panel {
+  border: 1px solid rgba(53,198,214,.18); border-radius: 12px;
+  background: rgba(255,255,255,.015); margin-bottom: .6rem; overflow: hidden;
+}
+.ref-panel > summary {
+  list-style: none; cursor: pointer; padding: .85rem 1rem; font-weight: 700;
+  color: var(--text, #d8f0f4); display: flex; align-items: baseline; gap: .55rem; flex-wrap: wrap; font-size: .98rem;
+}
+.ref-panel > summary::-webkit-details-marker { display: none; }
+.ref-panel > summary::after { content: '▾'; margin-left: auto; color: var(--accent, #35c6d6); transition: transform .2s; }
+.ref-panel[open] > summary::after { transform: rotate(180deg); }
+.ref-ic { font-size: 1.05rem; }
+.ref-sub { font-weight: 400; color: var(--muted-2, #4a7a84); font-size: .8rem; }
+.ref-panel-body { padding: .5rem 1rem 1.1rem; border-top: 1px solid rgba(53,198,214,.12); }
+.ref-note { color: var(--muted, #88b8c0); font-size: .82rem; line-height: 1.5; margin: .2rem 0 .8rem; }
+.ref-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+.ref-table td { padding: .4rem .5rem; border-bottom: 1px solid rgba(53,198,214,.1); vertical-align: top; }
+.ir-name { color: var(--text, #d8f0f4); white-space: nowrap; font-weight: 600; }
+.ir-cat { display: block; font-size: .66rem; color: var(--muted-2, #4a7a84); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
+.ir-where { color: var(--muted, #88b8c0); }
+.ir-unlocks { display: block; color: var(--muted-2, #5a8a94); font-size: .78rem; margin-top: .15rem; }
+.era {
+  display: inline-block; font-size: .62rem; font-weight: 700; padding: 1px 6px; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: .03em; white-space: nowrap;
+}
+.era-child { background: rgba(110,170,90,.2); color: #8fcf6f; }
+.era-adult { background: rgba(120,140,232,.2); color: #9aa7e8; }
+.era-either { background: rgba(53,198,214,.18); color: #d8c060; }
+.song-row { display: grid; gap: .15rem; padding: .55rem 0; border-bottom: 1px solid rgba(53,198,214,.1); }
+.song-row:last-child { border-bottom: 0; }
+.song-name { color: var(--accent, #35c6d6); font-size: .92rem; }
+.song-where { color: var(--muted-2, #5a8a94); font-size: .78rem; }
+.song-use { color: var(--muted, #88b8c0); font-size: .84rem; line-height: 1.5; }
+.cc-label { color: var(--text, #d8f0f4); }
+.cc-loc { color: var(--muted, #88b8c0); }
+.cc-req { white-space: nowrap; text-align: right; }
+.req-tag {
+  font-size: .66rem; font-weight: 700; background: rgba(53,198,214,.14); color: var(--accent, #35c6d6);
+  padding: 1px 6px; border-radius: 4px; margin-left: .3rem; white-space: nowrap;
+}
+.chain-list { margin: 0; padding-left: 1.3rem; }
+.chain-list li { padding: .35rem 0; font-size: .85rem; color: var(--muted, #88b8c0); line-height: 1.5; }
+.chain-list li strong { color: var(--text, #d8f0f4); }
+.chain-req {
+  font-size: .62rem; font-weight: 700; background: rgba(224,106,74,.16); color: #46d0c0;
+  padding: 1px 6px; border-radius: 4px; margin-left: .4rem;
+}
+.chain-detail { display: block; color: var(--muted-2, #5a8a94); font-size: .8rem; margin-top: .1rem; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .7rem; }
+.shop-card { border: 1px solid rgba(53,198,214,.12); border-radius: 9px; padding: .6rem .7rem; }
+.shop-name { color: var(--text, #d8f0f4); font-weight: 700; font-size: .88rem; margin-bottom: .35rem; }
+.shop-where { display: block; font-size: .7rem; color: var(--muted-2, #4a7a84); font-weight: 400; }
+.shop-mini { width: 100%; border-collapse: collapse; font-size: .8rem; }
+.shop-mini td { padding: .2rem 0; color: var(--muted, #88b8c0); border-bottom: 1px solid rgba(53,198,214,.07); }
+.shop-price { text-align: right; font-family: var(--font-mono, monospace); color: var(--accent, #35c6d6); white-space: nowrap; }
+
+/* ── Majora's Mask theme overrides ────────────────────────────────────────── */
+.mm-hero {
+  background: linear-gradient(160deg, #04222b, #02141d 60%, #010a12) !important;
+}
+.mm-hero .hyrule-sky {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(53,198,214,.12) 0%, transparent 70%);
+}
+
+/* The three-day cycle panel */
+.cycle-reset { color: var(--muted, #88b8c0); font-size: .86rem; margin: 0 0 .8rem; }
+.cycle-reset strong { color: var(--accent, #35c6d6); }
+.cycle-cols { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.cycle-col { border: 1px solid rgba(53,198,214,.16); border-radius: 9px; padding: .6rem .75rem; }
+.cycle-keep { background: rgba(110,200,140,.05); }
+.cycle-lose { background: rgba(70,208,192,.05); }
+.cycle-col-head { font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; margin-bottom: .4rem; }
+.cycle-keep .cycle-col-head { color: #7fcf8f; }
+.cycle-lose .cycle-col-head { color: #46d0c0; }
+.cycle-col ul { margin: 0; padding-left: 1.1rem; }
+.cycle-col li { font-size: .82rem; color: var(--muted, #88b8c0); line-height: 1.5; }
+.cycle-controls { margin-top: .9rem; }
+.cycle-controls .cycle-col-head { color: var(--accent, #35c6d6); }
+.cycle-ctrl { display: flex; gap: .6rem; padding: .3rem 0; border-bottom: 1px solid rgba(53,198,214,.1); font-size: .84rem; }
+.cycle-ctrl strong { flex-shrink: 0; width: 170px; color: var(--text, #d8f0f4); }
+.cycle-ctrl span { color: var(--muted, #88b8c0); }
+
+/* Bombers' Notebook timetable */
+.sched-list { display: grid; gap: .5rem; }
+.sched-row { display: flex; gap: .8rem; padding: .55rem 0; border-bottom: 1px solid rgba(53,198,214,.12); }
+.sched-when { flex-shrink: 0; width: 130px; display: flex; flex-direction: column; gap: .15rem; }
+.sched-day {
+  font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  background: rgba(53,198,214,.18); color: var(--accent, #35c6d6); padding: 2px 7px; border-radius: 5px; text-align: center;
+}
+.sched-time { font-size: .72rem; color: var(--muted-2, #6a9aa4); font-family: var(--font-mono, monospace); text-align: center; }
+.sched-body { flex: 1; min-width: 0; }
+.sched-name { color: var(--text, #d8f0f4); font-weight: 600; font-size: .9rem; }
+.sched-reward {
+  font-size: .66rem; font-weight: 700; background: rgba(111,216,224,.16); color: #6fd8e0;
+  padding: 1px 7px; border-radius: 4px; margin-left: .45rem;
+}
+.sched-loc { color: var(--accent, #35c6d6); font-size: .78rem; margin-top: .1rem; }
+.sched-prereq { color: var(--muted, #88b8c0); font-size: .8rem; margin-top: .2rem; }
+.sched-lbl {
+  font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--muted-2, #6a9aa4); background: rgba(53,198,214,.12); padding: 1px 5px; border-radius: 4px; margin-right: .3rem;
+}
+.sched-detail { color: var(--muted-2, #6a9aa4); font-size: .78rem; margin-top: .2rem; line-height: 1.5; }
+
+@media (max-width: 600px) {
+  .essentials { padding: 0 1rem; }
+  .dmark-kind { width: 60px; }
+  .cycle-cols { grid-template-columns: 1fr; }
+  .sched-row { flex-direction: column; gap: .3rem; }
+  .sched-when { flex-direction: row; width: auto; }
+}
+</style>
+
+<script define:vars={{ sectionsJson, totalSections: sections.length }}>
+const SECS = JSON.parse(sectionsJson);
+const done = new Set();
+const collGot = {};
+
+window.toggleSec    = toggleSec;
+window.markDone     = markDone;
+window.toggleColl   = toggleColl;
+window.playVid      = playVid;
+window.seekVid      = seekVid;
+window.speak        = speak;
+window.toggleSpoilers = toggleSpoilers;
+window.toggleComp   = toggleComp;
+
+function toggleSec(i) {
+  const el = document.getElementById('sec-' + i);
+  el.classList.toggle('open');
+  el.querySelectorAll('.spoiler').forEach(sp => {
+    if (!sp.dataset.bound) {
+      sp.dataset.bound = '1';
+      sp.addEventListener('click', e => { e.stopPropagation(); sp.classList.add('revealed'); });
+    }
+  });
+}
+
+function markDone(i) {
+  const el = document.getElementById('sec-' + i);
+  if (done.has(i)) { done.delete(i); el.classList.remove('done'); }
+  else { done.add(i); el.classList.add('done'); }
+  const n = done.size;
+  document.getElementById('prog-txt').textContent = `${n} / ${totalSections} sections`;
+  document.getElementById('prog-bar').style.width = (n / totalSections * 100) + '%';
+}
+
+function toggleColl(i, j) {
+  const el = document.getElementById(`coll-${i}-${j}`);
+  el.classList.toggle('got');
+  el.setAttribute('aria-checked', String(el.classList.contains('got')));
+  collGot[i] = collGot[i] || new Set();
+  if (el.classList.contains('got')) collGot[i].add(j); else collGot[i].delete(j);
+  document.getElementById('cc-' + i).textContent =
+    `${collGot[i].size} / ${SECS[i].collectCount} collected`;
+}
+document.querySelectorAll('.coll').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); el.click(); }
+  });
+});
+
+function playVid(thumb) {
+  const card = thumb.closest('.vid'), id = card.dataset.id;
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.setAttribute('allowfullscreen', '');
+  f.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block;border-radius:14px';
+  thumb.replaceWith(f);
+}
+
+function seekVid(secIdx, ts) {
+  const card = document.getElementById('vid-' + secIdx);
+  if (!card) return;
+  const id = card.dataset.id;
+  const existing = card.querySelector('iframe');
+  if (existing) {
+    existing.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&start=${ts}`;
+  } else {
+    const thumb = card.querySelector('.thumb');
+    if (!thumb) return;
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&start=${ts}`;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.setAttribute('allowfullscreen', '');
+    f.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;display:block;border-radius:14px';
+    thumb.replaceWith(f);
+  }
+}
+
+document.querySelectorAll('.thumb').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); playVid(el); }
+  });
+});
+
+let voices = [], speaking = null;
+function loadVoices() { voices = speechSynthesis.getVoices(); }
+if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function pickVoice() {
+  const pref = ['Google UK English Female', 'Google US English', 'Samantha', 'Microsoft Aria', 'Daniel'];
+  for (const p of pref) { const v = voices.find(v => v.name.includes(p)); if (v) return v; }
+  return voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0];
+}
+function speak(i, e) {
+  e.stopPropagation();
+  const btn = e.currentTarget;
+  if (!('speechSynthesis' in window)) { toast('Your browser has no speech engine'); return; }
+  if (speaking === i) { speechSynthesis.cancel(); speaking = null; resetTTS(); return; }
+  speechSynthesis.cancel(); resetTTS();
+  const text = document.getElementById('prose-' + i).innerText
+    .replace('▶ Listen to this section', '')
+    .replace(/\(tap to reveal\)/g, '');
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice(); if (v) u.voice = v;
+  u.rate = 0.97; u.pitch = 1.02;
+  u.onend = () => { speaking = null; resetTTS(); };
+  speaking = i;
+  btn.classList.add('playing');
+  btn.textContent = '■ Stop';
+  speechSynthesis.speak(u);
+}
+function resetTTS() {
+  document.querySelectorAll('.tts').forEach(b => {
+    b.classList.remove('playing');
+    b.textContent = '▶ Listen to this section';
+  });
+}
+
+function toggleSpoilers() {
+  document.body.classList.toggle('spoilers-safe');
+  const on = document.body.classList.contains('spoilers-safe');
+  document.getElementById('spoiler-toggle').classList.toggle('on', on);
+  document.getElementById('spoiler-label').textContent = 'Spoiler-safe: ' + (on ? 'ON' : 'OFF');
+}
+function toggleComp() {
+  document.body.classList.toggle('comp-on');
+  const on = document.body.classList.contains('comp-on');
+  document.getElementById('comp-toggle').classList.toggle('on', on);
+  document.getElementById('comp-label').textContent = 'Completionist: ' + (on ? 'ON' : 'OFF');
+  if (on) toast('Completionist layer on — upgrade timing & 100% checklists now showing');
+}
+
+if (window.location.hash) {
+  const m = window.location.hash.match(/^#sec-(\d+)$/);
+  if (m) {
+    const el = document.getElementById('sec-' + m[1]);
+    if (el) {
+      toggleSec(Number(m[1]));
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+    }
+  }
+}
+</script>
