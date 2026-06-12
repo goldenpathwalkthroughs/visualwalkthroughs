@@ -10,6 +10,7 @@
     "check": "astro check",
     "validate": "node scripts/validate.js && node scripts/test-sequencer.js",
     "qa": "node scripts/qa.js",
+    "dashboard": "node scripts/dashboard.js",
     "deploy:preview": "wrangler pages deploy dist --project-name=visualwalkthroughs",
     "promote": "node scripts/promote.js",
     "rollback": "node scripts/rollback.js",
