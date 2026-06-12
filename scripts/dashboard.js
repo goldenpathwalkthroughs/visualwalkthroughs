@@ -91,9 +91,111 @@ const latestRelease = releases[0];
 const generated = new Date().toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
 const byFranchise = franchises.map((f) => ({ ...f, games: games.filter((g) => g.franchise === f.slug) }));
 
+// ── live web analytics (Cloudflare Web Analytics / RUM) ─────────────────────
+// Optional: fetches audience + behaviour data from the Cloudflare GraphQL API.
+// Reads creds from .env (never printed/committed). Degrades gracefully — if the
+// API is unreachable or the token lacks scope, the dashboard still generates.
+function loadEnv() {
+  const env = { ...process.env };
+  const p = join(ROOT, '.env');
+  if (existsSync(p)) for (const line of readFileSync(p, 'utf8').split('\n')) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m && !(m[1] in process.env)) env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+  }
+  return env;
+}
+function siteTag() {
+  try {
+    const m = readFileSync(join(ROOT, 'src/layouts/Base.astro'), 'utf8')
+      .match(/data-cf-beacon=[^>]*"token":\s*"([a-f0-9]{32})"/);
+    if (m) return m[1];
+  } catch { /* fall through */ }
+  return null;
+}
+const CF_WA_LINK = 'https://dash.cloudflare.com/?to=/:account/web-analytics';
+
+async function fetchAnalytics() {
+  const env = loadEnv();
+  const token = env.CLOUDFLARE_API_TOKEN, account = env.CLOUDFLARE_ACCOUNT_ID, tag = siteTag();
+  if (!token || !account) return { error: 'No CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID found in .env — live analytics skipped.' };
+  if (!tag) return { error: 'No Web Analytics beacon token found in Base.astro — is the beacon enabled?' };
+  const now = new Date();
+  const iso = (d) => d.toISOString().replace(/\.\d+Z$/, 'Z');
+  const ago = (days) => iso(new Date(now.getTime() - days * 864e5));
+  const node = (alias, from, extra = '') =>
+    `${alias}:rumPageloadEventsAdaptiveGroups(limit:${extra ? 12 : 1},filter:{siteTag:$s,datetime_geq:"${from}",datetime_leq:$e}${extra ? ',orderBy:[count_DESC]' : ''}){count ${extra ? extra : 'sum{visits}'}}`;
+  const query = `query($a:String!,$s:String!,$e:Time!){viewer{accounts(filter:{accountTag:$a}){
+    ${node('w1', ago(1))}
+    ${node('w7', ago(7))}
+    ${node('w30', ago(30))}
+    ${node('pages', ago(7), 'dimensions{requestPath}')}
+    ${node('refs', ago(7), 'dimensions{refererHost}')}
+    ${node('countries', ago(7), 'dimensions{countryName}')}
+    ${node('devices', ago(7), 'dimensions{deviceType}')}
+  }}}`;
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 12000);
+    const res = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+      method: 'POST', signal: ctrl.signal,
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, variables: { a: account, s: tag, e: iso(now) } }),
+    });
+    clearTimeout(to);
+    const j = await res.json();
+    if (j.errors && j.errors.length) {
+      const msg = j.errors[0]?.message || 'unknown error';
+      return { error: `Cloudflare API error — the token may lack the "Account Analytics → Read" scope. (${msg})` };
+    }
+    const acc = j.data?.viewer?.accounts?.[0];
+    if (!acc) return { error: 'No analytics account returned — check CLOUDFLARE_ACCOUNT_ID.' };
+    const tot = (n) => ({ views: acc[n]?.[0]?.count ?? 0, visits: acc[n]?.[0]?.sum?.visits ?? 0 });
+    const rows = (n, dim) => (acc[n] || []).map((r) => ({ label: r.dimensions?.[dim] || '—', count: r.count })).filter((r) => r.label);
+    return {
+      window: { from: ago(7).slice(0, 10), to: iso(now).slice(0, 10) },
+      d1: tot('w1'), d7: tot('w7'), d30: tot('w30'),
+      pages: rows('pages', 'requestPath'), refs: rows('refs', 'refererHost'),
+      countries: rows('countries', 'countryName'), devices: rows('devices', 'deviceType'),
+    };
+  } catch (e) {
+    return { error: `Could not reach the Cloudflare API (${e.name === 'AbortError' ? 'timeout' : e.message}). Dashboard generated without live analytics.` };
+  }
+}
+
+const analytics = await fetchAnalytics();
+
 // ── render ──────────────────────────────────────────────────────────────────
 const kpi = (label, value, sub) => `
   <div class="kpi"><div class="kpi-label">${esc(label)}</div><div class="kpi-value">${value}</div>${sub ? `<div class="kpi-sub">${sub}</div>` : ''}</div>`;
+
+const num = (n) => Number(n || 0).toLocaleString();
+function analyticsCard(a) {
+  if (a.error) {
+    return `<div class="card full"><h2>📈 Audience &amp; behaviour</h2>
+      <p class="muted">${esc(a.error)}</p>
+      <p><a class="abtn" href="${CF_WA_LINK}" target="_blank">Open Cloudflare Web Analytics →</a></p></div>`;
+  }
+  const empty = a.d30.views === 0;
+  const miniTable = (title, rows) => `<div class="abox"><div class="abox-h">${esc(title)}</div>${rows.length
+    ? `<table>${rows.slice(0, 8).map((r) => `<tr><td>${esc(r.label)}</td><td class="anum">${num(r.count)}</td></tr>`).join('')}</table>`
+    : '<div class="muted" style="font-size:.82rem;padding:4px 0">no data yet</div>'}</div>`;
+  return `<div class="card full">
+    <h2>📈 Audience &amp; behaviour <span class="muted" style="font-weight:400;font-size:.8rem">· Cloudflare Web Analytics · ${esc(a.window.from)} → ${esc(a.window.to)}</span></h2>
+    ${empty ? '<p class="muted">The beacon is live and collecting — Cloudflare just has no page views recorded yet (it went live very recently, and data can take a few hours to surface). These figures fill in automatically on the next <code>npm run dashboard</code>.</p>' : ''}
+    <div class="astats">
+      <div class="astat"><div class="kpi-label">Views · 24h</div><div class="kpi-value">${num(a.d1.views)}</div><div class="kpi-sub">${num(a.d1.visits)} visits</div></div>
+      <div class="astat"><div class="kpi-label">Views · 7d</div><div class="kpi-value">${num(a.d7.views)}</div><div class="kpi-sub">${num(a.d7.visits)} visits</div></div>
+      <div class="astat"><div class="kpi-label">Views · 30d</div><div class="kpi-value">${num(a.d30.views)}</div><div class="kpi-sub">${num(a.d30.visits)} visits</div></div>
+    </div>
+    <div class="agrid">
+      ${miniTable('Top pages', a.pages)}
+      ${miniTable('Top referrers', a.refs)}
+      ${miniTable('Top countries', a.countries)}
+      ${miniTable('Devices', a.devices)}
+    </div>
+    <div class="src">live from Cloudflare · sample-adjusted estimates · <a href="${CF_WA_LINK}" target="_blank" style="color:var(--blue)">open in Cloudflare →</a></div>
+  </div>`;
+}
 
 const ownerCard = ownerBody && bodyLines(ownerBody).length && !/^nothing|^none\b/i.test(ownerBody.trim())
   ? `<div class="card alert"><h2>⚠ Needs the owner</h2><ul>${bodyLines(ownerBody).map((l) => `<li>${md(l)}</li>`).join('')}</ul><div class="src">from ${esc(latestReport)}</div></div>`
@@ -147,6 +249,15 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
 .cfgrow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .cfgrow:last-child{border-bottom:0}
 .cfgrow b{font-weight:600}
+.astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 16px}
+.astat{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.abox{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.abox-h{color:var(--blue);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:8px}
+.abox table{font-size:.84rem}
+.abox td{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05);word-break:break-all}
+.anum{text-align:right;font-family:var(--mono);color:var(--text);white-space:nowrap;padding-left:10px!important}
+.abtn{display:inline-block;margin-top:6px;color:var(--blue);text-decoration:none;font-weight:600;font-size:.86rem}
 .foot{color:var(--muted2);font-size:.78rem;text-align:center;margin-top:30px}
 </style></head><body>
 <header><div class="wrap">
@@ -164,7 +275,9 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
     ${kpi('Nightly cadence', `${cfg.gamesPerNight}/night`, `${cfg.maxFixAttempts} fix attempts max`)}
   </div>
 
-  <div class="grid">
+  ${analyticsCard(analytics)}
+
+  <div class="grid" style="margin-top:18px">
     ${ownerCard}
     <div class="card">
       <h2>📰 Latest nightly · ${esc(latestReport || '—')}</h2>
@@ -212,7 +325,7 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
     <div class="mono">${reports.map((r) => esc(r)).join(' · ') || '—'}</div>
   </div>
 
-  <div class="foot">Read-only snapshot from repo data · no network calls · regenerate with <code>npm run dashboard</code></div>
+  <div class="foot">Read-only snapshot from repo data + live Cloudflare Web Analytics (optional, graceful fallback) · never writes, never deploys · regenerate with <code>npm run dashboard</code></div>
 </div></body></html>`;
 
 writeFileSync(OUT, html);
