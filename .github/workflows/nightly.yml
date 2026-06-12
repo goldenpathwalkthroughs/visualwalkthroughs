@@ -2,11 +2,14 @@ name: Nightly Pipeline
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # 2 AM UTC every night
+    # 02:00 UTC = 03:00 UK during BST (the requested 3 AM). GitHub cron is
+    # UTC-only, so in GMT winter this fires at 02:00 UK — change to '0 3 * * *'
+    # if you'd rather it stay at 03:00 through the winter months.
+    - cron: '0 2 * * *'
   workflow_dispatch:        # manual trigger from the GitHub Actions tab
     inputs:
       game:
-        description: 'Game title — overrides queue.md (leave blank to use queue)'
+        description: 'Game title — overrides content/queue.json (leave blank to build the next queued item)'
         required: false
       franchise:
         description: 'Franchise slug (e.g. zelda)'

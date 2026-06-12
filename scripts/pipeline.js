@@ -24,7 +24,7 @@
  */
 
 import { execSync, spawnSync } from 'child_process';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -101,52 +101,74 @@ function runOrThrow(cmd, label) {
   return r;
 }
 
-// ── Parse queue.md ────────────────────────────────────────────────────────────
-function parseQueue() {
-  const queuePath = join(ROOT, 'queue.md');
-  if (!existsSync(queuePath)) return null;
-
-  const raw = readFileSync(queuePath, 'utf8');
-
-  // Extract the TONIGHT block
-  const blockMatch = raw.match(/##\s*TONIGHT[\s\S]*?```\n([\s\S]*?)```/);
-  if (!blockMatch) return null;
-
-  const block = blockMatch[1];
-  function field(name) {
-    const m = block.match(new RegExp(`^${name}:[ \\t]*(.*)`, 'm'));
-    return m ? m[1].trim() : '';
-  }
-
-  const game = field('game');
-  if (!game) return null; // empty queue
-
-  return {
-    game,
-    franchise: field('franchise'),
-    slug: field('slug'),
-    year: field('year'),
-    platforms: field('platforms'),
-    allowReplace: /allowReplace:\s*true/i.test(block),
-  };
+// ── Queue helpers ─────────────────────────────────────────────────────────────
+function slugify(s) {
+  return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+// Titles already published — the picker must never re-queue these.
+function builtTitles() {
+  const dir = join(ROOT, 'content/games');
+  if (!existsSync(dir)) return new Set();
+  return new Set(readdirSync(dir).filter((f) => f.endsWith('.json'))
+    .map((f) => { try { return JSON.parse(readFileSync(join(dir, f), 'utf8')).title.toLowerCase(); } catch { return ''; } }));
 }
 
-// ── Append to queue DONE section ──────────────────────────────────────────────
-function markQueueDone(gameTitle) {
-  const queuePath = join(ROOT, 'queue.md');
-  let raw = readFileSync(queuePath, 'utf8');
+// ── Parse queue (content/queue.json — legacy queue.md fallback) ───────────────
+function parseQueue() {
+  const jsonPath = join(ROOT, 'content/queue.json');
+  if (existsSync(jsonPath)) {
+    const q = JSON.parse(readFileSync(jsonPath, 'utf8'));
+    const built = builtTitles();
+    // Highest-ranked item that is 'queued' (skip 'hold'/'building'/'published') and not already built.
+    const next = (q.queue || [])
+      .filter((it) => it.status === 'queued' && !built.has(String(it.title || '').toLowerCase()))
+      .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))[0];
+    if (!next) return null; // empty / all on hold — idle night
+    return {
+      game: next.title,
+      franchise: next.franchise || slugify(next.title),
+      slug: next.slug || slugify(next.title),
+      year: next.year || '',
+      platforms: Array.isArray(next.platforms) ? next.platforms.join(', ') : (next.platforms || ''),
+      allowReplace: next.allowReplace === true,
+    };
+  }
 
-  // Clear tonight's fields
+  // Legacy queue.md fallback
+  const queuePath = join(ROOT, 'queue.md');
+  if (!existsSync(queuePath)) return null;
+  const raw = readFileSync(queuePath, 'utf8');
+  const blockMatch = raw.match(/##\s*TONIGHT[\s\S]*?```\n([\s\S]*?)```/);
+  if (!blockMatch) return null;
+  const block = blockMatch[1];
+  const field = (name) => { const m = block.match(new RegExp(`^${name}:[ \\t]*(.*)`, 'm')); return m ? m[1].trim() : ''; };
+  const game = field('game');
+  if (!game) return null;
+  return { game, franchise: field('franchise'), slug: field('slug'), year: field('year'), platforms: field('platforms'), allowReplace: /allowReplace:\s*true/i.test(block) };
+}
+
+// ── Record a successful publish back into the queue ──────────────────────────
+function markQueueDone(gameTitle) {
+  const jsonPath = join(ROOT, 'content/queue.json');
+  if (existsSync(jsonPath)) {
+    const q = JSON.parse(readFileSync(jsonPath, 'utf8'));
+    const it = (q.queue || []).find((x) => String(x.title || '').toLowerCase() === gameTitle.toLowerCase());
+    if (it) { it.status = 'published'; it.publishedOn = runDate; }
+    if (q._meta) q._meta.updated = runDate;
+    writeFileSync(jsonPath, JSON.stringify(q, null, 2) + '\n', 'utf8');
+    return;
+  }
+
+  // Legacy queue.md fallback
+  const queuePath = join(ROOT, 'queue.md');
+  if (!existsSync(queuePath)) return;
+  let raw = readFileSync(queuePath, 'utf8');
   raw = raw.replace(/(##\s*TONIGHT[\s\S]*?```\n)([\s\S]*?)(```)/,
     (_, open, _block, close) => `${open}game:      \nfranchise: \nslug:      \nyear:      \nplatforms: \n${close}`);
-
-  // Append to DONE
   const doneLine = `- ${gameTitle} — published ${runDate}`;
-  raw = raw.replace(/(## DONE[\s\S]*?)(\n- Wind Waker)/, `$1\n${doneLine}$2`);
   if (!raw.includes(doneLine)) {
     raw = raw.replace(/## DONE[^\n]*\n/, `## DONE (the pipeline appends here after each successful publish)\n\n${doneLine}\n`);
   }
-
   writeFileSync(queuePath, raw, 'utf8');
 }
 

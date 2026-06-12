@@ -44,6 +44,14 @@ const franchises = readdirSync(franDir).filter((f) => f.endsWith('.json')).map((
 
 const cfg = readJSON(join(ROOT, 'pipeline.config.json'));
 
+// build queue (guides-to-do)
+let queue = { queue: [], _meta: {} };
+try { queue = readJSON(join(ROOT, 'content/queue.json')); } catch { /* no queue yet */ }
+const builtSet = new Set(games.map((g) => g.title.toLowerCase()));
+const queued = (queue.queue || []).filter((q) => q.status === 'queued' && !builtSet.has(String(q.title).toLowerCase()));
+const onHold = (queue.queue || []).filter((q) => q.status === 'hold');
+const nextUp = queued.slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))[0];
+
 // releases (annotated/lightweight tags) with their date
 const tags = sh("git tag -l 'release-*'").split('\n').filter(Boolean);
 const releases = tags.map((t) => ({ tag: t, date: sh(`git log -1 --format=%ci ${t}`).slice(0, 10), subject: sh(`git log -1 --format=%s ${t}`) }))
@@ -197,6 +205,16 @@ function analyticsCard(a) {
   </div>`;
 }
 
+const confPill = (c) => `<span class="pill ${c === 'high' ? 'pub' : c === 'low' ? 'draft' : ''}" style="${c === 'medium' ? 'background:rgba(95,182,232,.16);color:var(--blue)' : ''}">${esc(c)}</span>`;
+const queueCard = `<div class="card full"><h2>🎯 Build queue <span class="muted" style="font-weight:400;font-size:.8rem">· ${queued.length} ready · ${onHold.length} on hold · next build picks the top "ready" item</span></h2>
+  ${nextUp ? `<div class="nextup"><span class="nextup-lbl">Next up</span> <b>${esc(nextUp.title)}</b> <span class="muted">${esc(Array.isArray(nextUp.platforms) ? nextUp.platforms.join(' / ') : '')}</span> ${confPill(nextUp.confidence)}</div>` : '<p class="muted">Queue is empty or all items are on hold — an idle night.</p>'}
+  <table><thead><tr><th>#</th><th>Title</th><th>Signal</th><th>Conf.</th></tr></thead><tbody>
+  ${queued.slice(0, 12).map((q) => `<tr><td class="mono">${esc(q.rank)}</td><td><b>${esc(q.title)}</b><div class="muted" style="font-size:.78rem">${esc(Array.isArray(q.platforms) ? q.platforms.join(' / ') : '')}</div></td><td class="muted" style="font-size:.82rem">${esc(q.signal || '')}</td><td>${confPill(q.confidence)}</td></tr>`).join('')}
+  </tbody></table>
+  ${onHold.length ? `<div class="src">On hold (data still settling): ${onHold.map((q) => esc(q.title)).join(' · ')}</div>` : ''}
+  <div class="src">refreshed ${esc(queue._meta?.updated || '—')} · weekly scan replenishes · nightly job builds the top item</div>
+</div>`;
+
 const ownerCard = ownerBody && bodyLines(ownerBody).length && !/^nothing|^none\b/i.test(ownerBody.trim())
   ? `<div class="card alert"><h2>⚠ Needs the owner</h2><ul>${bodyLines(ownerBody).map((l) => `<li>${md(l)}</li>`).join('')}</ul><div class="src">from ${esc(latestReport)}</div></div>`
   : `<div class="card ok"><h2>✓ Needs the owner</h2><p>Nothing flagged in the latest report (${esc(latestReport || '—')}).</p></div>`;
@@ -249,6 +267,8 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
 .cfgrow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .cfgrow:last-child{border-bottom:0}
 .cfgrow b{font-weight:600}
+.nextup{background:var(--panel2);border:1px solid rgba(95,182,232,.3);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.nextup-lbl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-right:8px}
 .astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 16px}
 .astat{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
@@ -285,6 +305,8 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
       ${spendBody ? `<div class="src">Spend: ${md(bodyLines(spendBody, 1)[0] || '—')}</div>` : ''}
     </div>
   </div>
+
+  ${queueCard}
 
   <div class="grid">
     <div class="card">

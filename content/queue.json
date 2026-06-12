@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "purpose": "Guides-to-do backlog. The weekly scan replenishes it; the nightly job builds the top item whose status is 'queued'.",
+    "updated": "2026-06-12",
+    "refreshCadence": "weekly — re-scan SteamDB top sellers / most-played + recent & upcoming story-driven releases, eligibility-filter, and replenish",
+    "buildCadence": "nightly 03:00 — build the highest-ranked item with status 'queued' (skip anything already in content/games)",
+    "eligibilityRule": "Must have a guidable golden path (story/objective-driven). Excludes competitive/multiplayer, sandboxes, sims, and roguelites with no story spine. See docs/visualwalkthroughs-content-advisor.md.",
+    "statusValues": ["queued", "building", "hold", "published", "skipped"],
+    "holdRule": "Brand-new / unreleased titles are 'hold' (low confidence) until reliable community walkthrough sources settle — typically a fortnight after launch. The picker skips 'hold'.",
+    "pickerNote": "Cross-reference content/games/*.json before building so already-published titles are never re-queued.",
+    "sources": [
+      "https://steamdb.info/topsellers/",
+      "https://www.rpgsite.net/feature/16349-the-rpgs-2026-every-rpg-their-release-dates",
+      "https://www.gamesradar.com/best-single-player-games/",
+      "https://www.gamesradar.com/upcoming-rpg-games/"
+    ]
+  },
+
+  "queue": [
+    { "rank": 1,  "title": "Clair Obscur: Expedition 33", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "expedition", "signal": "The Game Awards 2025 Game of the Year (9 awards); breakout hit", "eligibility": "Turn-based story RPG on a fixed narrative path", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 2,  "title": "Kingdom Come: Deliverance 2", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "kingdom-come-deliverance", "signal": "2025 GOTY runner-up; major critical & commercial success", "eligibility": "Choice-driven single-player historical RPG with a main-quest golden path", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 3,  "title": "Resident Evil Requiem", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "resident-evil", "signal": "Major franchise release (27 Feb 2026); top Steam seller", "eligibility": "Linear survival-horror campaign with set story progression", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 4,  "title": "Ghost of Yotei", "platforms": ["PS5"], "franchise": "ghost-of", "signal": "Sony flagship (2 Oct 2025); blockbuster sequel", "eligibility": "Single-player action-adventure with a structured revenge narrative", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 5,  "title": "Death Stranding 2: On the Beach", "platforms": ["PS5", "PC"], "franchise": "death-stranding", "signal": "Kojima tentpole; PC port a 2026 narrative highlight", "eligibility": "Strongly linear cinematic story campaign", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 6,  "title": "Metroid Prime 4: Beyond", "platforms": ["Nintendo Switch 2", "Nintendo Switch"], "franchise": "metroid", "signal": "Long-awaited Nintendo release (4 Dec 2025); open-world confirmed", "eligibility": "Single-player action-adventure with a clear progression path", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 7,  "title": "The Legend of Heroes: Trails in the Sky 1st Chapter", "platforms": ["PS5", "Nintendo Switch 2", "Nintendo Switch", "PC"], "franchise": "trails", "signal": "Full remake launching the Trails saga; long-running fan demand", "eligibility": "Turn-based JRPG with a fixed story golden path", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 8,  "title": "Dragon Quest I & II HD-2D Remake", "platforms": ["Nintendo Switch 2", "Nintendo Switch", "PS5", "Xbox Series X|S", "PC"], "franchise": "dragon-quest", "signal": "Completes the Erdrick trilogy remakes (Oct 2025)", "eligibility": "Classic linear turn-based JRPG story", "confidence": "high", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 9,  "title": "Nioh 3", "platforms": ["PS5", "PC"], "franchise": "nioh", "signal": "Team Ninja soulslike sequel; anticipated 2026 action RPG", "eligibility": "Mission/stage-based single-player campaign with linear story progression", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 10, "title": "Octopath Traveler 0", "platforms": ["Nintendo Switch 2", "Nintendo Switch", "PS5", "Xbox Series X|S", "PC"], "franchise": "octopath-traveler", "signal": "Square Enix HD-2D JRPG; recent late-2025 release", "eligibility": "Turn-based JRPG with structured story chapters", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 11, "title": "Fire Emblem: Fortune's Weave", "platforms": ["Nintendo Switch 2"], "franchise": "fire-emblem", "signal": "Nintendo tactical-RPG release (17 Sep 2026)", "eligibility": "Linear chapter-by-chapter story campaign", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 12, "title": "Digimon Story: Time Stranger", "platforms": ["PS5", "Xbox Series X|S", "PC", "Nintendo Switch"], "franchise": "digimon-story", "signal": "Franchise's most ambitious JRPG; recent release", "eligibility": "Story-driven monster-collecting JRPG with a linear main path", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 13, "title": "Monster Hunter Stories 3: Twisted Reflection", "platforms": ["Nintendo Switch 2", "PS5", "PC"], "franchise": "monster-hunter-stories", "signal": "Turn-based spin-off (13 Mar 2026)", "eligibility": "Story-driven monster-riding JRPG with a main narrative path", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+    { "rank": 14, "title": "Life is Strange: Reunion", "platforms": ["PS5", "Xbox Series X|S", "PC", "Nintendo Switch"], "franchise": "life-is-strange", "signal": "Acclaimed narrative series; 2026 story highlight", "eligibility": "Narrative/choice adventure on a single golden path", "confidence": "medium", "status": "queued", "addedOn": "2026-06-12" },
+
+    { "rank": 15, "title": "Grand Theft Auto VI", "platforms": ["PS5", "Xbox Series X|S"], "franchise": "grand-theft-auto", "signal": "Most-anticipated release of the decade (26 May 2026)", "eligibility": "Linear story-driven open-world campaign with a clear golden path", "confidence": "low", "status": "hold", "holdReason": "Just launched — walkthrough sources still settling; revisit ~2 weeks post-launch", "addedOn": "2026-06-12" },
+    { "rank": 16, "title": "The Witcher 4", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "the-witcher", "signal": "One of the most anticipated RPGs of 2026; CDPR flagship", "eligibility": "Story-driven single-player action RPG with main-quest golden path", "confidence": "low", "status": "hold", "holdReason": "Unreleased / data thin — wait for launch + reliable sources", "addedOn": "2026-06-12" },
+    { "rank": 17, "title": "Fable", "platforms": ["Xbox Series X|S", "PC"], "franchise": "fable", "signal": "Major Xbox franchise reboot (H2 2026)", "eligibility": "Single-player open-world action RPG with a main story arc", "confidence": "low", "status": "hold", "holdReason": "Unreleased / data thin — wait for launch", "addedOn": "2026-06-12" },
+    { "rank": 18, "title": "Crimson Desert", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "crimson-desert", "signal": "High-profile single-player open-world action RPG (2026)", "eligibility": "Narrative campaign with a Witcher-style golden path", "confidence": "low", "status": "hold", "holdReason": "Recent/unsettled — revisit once sources mature", "addedOn": "2026-06-12" },
+    { "rank": 19, "title": "The Blood of Dawnwalker", "platforms": ["PS5", "Xbox Series X|S", "PC"], "franchise": "dawnwalker", "signal": "Buzzed ex-Witcher devs' time-based narrative RPG (2026)", "eligibility": "Story-driven single-player RPG with a central narrative spine", "confidence": "low", "status": "hold", "holdReason": "New IP / data thin — wait for launch", "addedOn": "2026-06-12" },
+    { "rank": 20, "title": "Final Fantasy Resonance", "platforms": ["Nintendo Switch 2", "Nintendo Switch"], "franchise": "final-fantasy", "signal": "First HD-2D Final Fantasy (22 Oct 2026)", "eligibility": "Turn-based JRPG with a cutscene-driven linear narrative", "confidence": "low", "status": "hold", "holdReason": "Unreleased — revisit after launch", "addedOn": "2026-06-12" }
+  ],
+
+  "excluded": [
+    { "title": "Counter-Strike 2", "reason": "Competitive multiplayer shooter — no story golden path" },
+    { "title": "Destiny 2", "reason": "Live-service multiplayer shooter — no fixed single-player walkthrough" },
+    { "title": "Valorant / Apex Legends", "reason": "PvP shooters — no narrative campaign" },
+    { "title": "Dota 2", "reason": "MOBA — no story" },
+    { "title": "Hades 2", "reason": "Roguelite — run-based, no fixed golden path" },
+    { "title": "Marathon", "reason": "Extraction/PvP live-service shooter — no walkthrough path" },
+    { "title": "Cities/Factorio-style sims", "reason": "Sandbox/management — no narrative golden path" }
+  ]
+}
