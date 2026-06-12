@@ -7,6 +7,7 @@ interface Props {
   bodyClass?: string;
   themeVars?: Record<string, string>;
   searchIndex?: Array<{ t: string; s: string; k: string; ic: string; href: string; sec?: number }>;
+  preloadImage?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   bodyClass = '',
   themeVars = {},
   searchIndex = [],
+  preloadImage,
 } = Astro.props;
 
 const cssVars = Object.entries(themeVars)
@@ -31,7 +33,7 @@ const cssVars = Object.entries(themeVars)
   <meta name="description" content={description} />
   {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />}
   <!-- Cloudflare Web Analytics — cookieless, no consent required -->
-  <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b4784eebe0f740bd90589e795aa37f0c"}'></script>
 </head>
 <body class={`spoilers-safe${bodyClass ? ' ' + bodyClass : ''}`} style={cssVars || undefined}>
 
