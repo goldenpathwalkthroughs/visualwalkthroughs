@@ -189,6 +189,72 @@ async function smokeTest(url) {
   }
 }
 
+// ── Replenish the queue when it runs low (folded into the nightly advisor) ────
+// Keeps content/queue.json topped up so the nightly build never goes idle for
+// lack of candidates. Dedups against built / queued / excluded titles; brand-new
+// (low-confidence) picks land as 'hold' until their sources settle.
+async function topUpQueue(claude) {
+  const jsonPath = join(ROOT, 'content/queue.json');
+  if (!existsSync(jsonPath)) return null;
+  let q;
+  try { q = JSON.parse(readFileSync(jsonPath, 'utf8')); } catch { return 'queue top-up skipped — queue.json unreadable'; }
+  const queue = q.queue || [];
+  const built = builtTitles();
+  const buildable = queue.filter((it) => it.status === 'queued' && !built.has(String(it.title).toLowerCase()));
+  const LOW = 6, TARGET = 10;
+  if (buildable.length >= LOW) return `queue healthy — ${buildable.length} ready, no top-up needed`;
+
+  const known = new Set([
+    ...queue.map((it) => String(it.title).toLowerCase()),
+    ...built,
+    ...((q.excluded || []).map((e) => String(e.title).toLowerCase())),
+  ]);
+  const need = TARGET - buildable.length;
+  try {
+    const resp = await claude.messages.create({
+      model: CONFIG.model.advisor,
+      max_tokens: 1000,
+      messages: [{ role: 'user', content:
+`You are the VisualWalkthroughs Content Advisor. Today is ${runDate}.
+Propose ${need + 4} NEW single-player, story-driven games with a clear start-to-finish golden path (action-adventure, RPG/JRPG, story platformer, narrative/horror) that would make strong walkthroughs.
+EXCLUDE competitive/multiplayer, MOBAs, sandboxes/sims, and roguelites with no story spine.
+EXCLUDE these already-known titles: ${[...known].slice(0, 220).join(', ')}.
+Prefer popular or in-demand recent/upcoming titles; flag brand-new or unreleased ones as low confidence (their walkthrough sources won't have settled yet).
+Return ONLY JSON, no prose: {"candidates":[{"title":"...","platforms":["..."],"franchise":"slug-like","signal":"one-line why it's worth building","confidence":"high|medium|low"}]}` }],
+    });
+    const m = (resp.content[0]?.text || '').match(/\{[\s\S]*\}/);
+    if (!m) return 'queue top-up: advisor returned no parseable candidates';
+    const cands = JSON.parse(m[0]).candidates || [];
+    let added = 0;
+    let maxRank = queue.reduce((r, it) => Math.max(r, it.rank || 0), 0);
+    for (const c of cands) {
+      const key = String(c.title || '').toLowerCase();
+      if (!c.title || known.has(key)) continue;
+      known.add(key);
+      const low = c.confidence === 'low';
+      const entry = {
+        rank: ++maxRank, title: c.title,
+        platforms: Array.isArray(c.platforms) ? c.platforms : [c.platforms].filter(Boolean),
+        franchise: c.franchise || slugify(c.title),
+        signal: c.signal || 'advisor pick',
+        eligibility: 'story-driven golden path (advisor)',
+        confidence: ['high', 'medium', 'low'].includes(c.confidence) ? c.confidence : 'medium',
+        status: low ? 'hold' : 'queued',
+        addedOn: runDate, addedBy: 'nightly-advisor',
+      };
+      if (low) entry.holdReason = 'brand-new / data thin — revisit once sources settle';
+      queue.push(entry);
+      added += 1;
+    }
+    q.queue = queue;
+    if (q._meta) q._meta.updated = runDate;
+    writeFileSync(jsonPath, JSON.stringify(q, null, 2) + '\n', 'utf8');
+    return `queue was low (${buildable.length} ready) — advisor added ${added} candidate${added === 1 ? '' : 's'}`;
+  } catch (e) {
+    return `queue top-up skipped: ${e.message}`;
+  }
+}
+
 // ── Content Advisor shortlist (cheap reasoning call) ─────────────────────────
 async function runAdvisor(publishedSlug) {
   if (!process.env.ANTHROPIC_API_KEY) return '(advisor skipped — no API key)';
@@ -224,7 +290,13 @@ Keep it under 300 words.`,
 
     const shortlist = response.content[0].text;
     console.log(shortlist);
-    return shortlist;
+
+    // Fold the weekly "keep the list fresh" job into the nightly run:
+    // top up the queue whenever it's running low.
+    const topup = await topUpQueue(claude);
+    if (topup) console.log(`\n  ${topup}`);
+
+    return shortlist + (topup ? `\n\n_Queue replenishment: ${topup}._` : '');
   } catch (e) {
     return `(advisor error: ${e.message})`;
   }
