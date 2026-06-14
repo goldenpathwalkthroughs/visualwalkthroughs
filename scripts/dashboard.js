@@ -170,7 +170,48 @@ async function fetchAnalytics() {
   }
 }
 
+// ── Deploy-sync / drift check (prod vs git) ──────────────────────────────────
+// Flags the failure mode we hit: local commits not pushed, or the live
+// deployment not matching origin/main (e.g. a direct upload bypassing the build).
+async function gitDrift() {
+  try { sh('git fetch origin --quiet'); } catch { /* offline — use last-known */ }
+  const localHead = sh('git rev-parse --short HEAD');
+  const originHead = sh('git rev-parse --short origin/main');
+  const counts = sh('git rev-list --left-right --count HEAD...origin/main').split(/\s+/);
+  const ahead = Number(counts[0]) || 0, behind = Number(counts[1]) || 0;
+
+  const env = loadEnv();
+  const token = env.CLOUDFLARE_API_TOKEN, account = env.CLOUDFLARE_ACCOUNT_ID;
+  const project = env.CLOUDFLARE_PROJECT_NAME || 'visualwalkthroughs';
+  let live = null, liveErr = null;
+  if (token && account) {
+    try {
+      const ctrl = new AbortController(); const to = setTimeout(() => ctrl.abort(), 12000);
+      const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}/pages/projects/${project}/deployments?env=production&per_page=1`,
+        { headers: { Authorization: `Bearer ${token}` }, signal: ctrl.signal });
+      clearTimeout(to);
+      const d = (await res.json()).result?.[0];
+      if (d) live = {
+        commit: (d.deployment_trigger?.metadata?.commit_hash || '').slice(0, 7),
+        isGit: d.deployment_trigger?.type === 'github:push' || !!d.deployment_trigger?.metadata?.commit_hash,
+        when: (d.created_on || '').slice(0, 16).replace('T', ' '),
+      };
+      else liveErr = 'no deployments returned';
+    } catch (e) { liveErr = e.name === 'AbortError' ? 'timeout' : e.message; }
+  } else liveErr = 'no Cloudflare creds in .env';
+
+  const matches = live && live.commit && originHead && (live.commit.startsWith(originHead) || originHead.startsWith(live.commit));
+  let status, cls, msg;
+  if (ahead > 0) { status = 'DRIFT'; cls = 'drift-bad'; msg = `${ahead} local commit${ahead === 1 ? '' : 's'} not pushed to origin/main — the live site can't include them. Run: git push origin main`; }
+  else if (liveErr) { status = 'UNKNOWN'; cls = 'drift-warn'; msg = `Couldn't read the live deployment (${liveErr}). Showing git state only.`; }
+  else if (live && !live.isGit) { status = 'DRIFT'; cls = 'drift-warn'; msg = 'Live production is a direct upload, not a git build — origin/main is not the source of truth. Push to main to let the git build take over.'; }
+  else if (live && !matches) { status = 'DRIFT'; cls = 'drift-bad'; msg = `Live production is on ${live.commit}, but origin/main is ${originHead}. The live site is stale — redeploy/push to sync.`; }
+  else { status = 'IN SYNC'; cls = 'drift-ok'; msg = 'Live production matches origin/main — pushing to main auto-deploys the full site.'; }
+  return { localHead, originHead, ahead, behind, live, status, cls, msg };
+}
+
 const analytics = await fetchAnalytics();
+const drift = await gitDrift();
 
 // ── render ──────────────────────────────────────────────────────────────────
 const kpi = (label, value, sub) => `
@@ -213,6 +254,18 @@ const queueCard = `<div class="card full"><h2>🎯 Build queue <span class="mute
   </tbody></table>
   ${onHold.length ? `<div class="src">On hold (data still settling): ${onHold.map((q) => esc(q.title)).join(' · ')}</div>` : ''}
   <div class="src">refreshed ${esc(queue._meta?.updated || '—')} · weekly scan replenishes · nightly job builds the top item</div>
+</div>`;
+
+const driftCard = `<div class="card full drift ${drift.cls}">
+  <div class="drift-row">
+    <span class="drift-status ${drift.cls}">${drift.status === 'IN SYNC' ? '✓ ' : '⚠ '}Deploy sync · ${esc(drift.status)}</span>
+    <span class="muted" style="font-size:.82rem">${esc(drift.msg)}</span>
+  </div>
+  <div class="drift-grid">
+    <div><span class="drift-lbl">Live production</span><span class="tag">${drift.live?.commit ? esc(drift.live.commit) : '—'}</span>${drift.live?.when ? `<span class="muted"> · ${esc(drift.live.when)}</span>` : ''}${drift.live && !drift.live.isGit ? ' <span class="muted">(direct upload)</span>' : ''}</div>
+    <div><span class="drift-lbl">origin/main</span><span class="tag">${esc(drift.originHead || '—')}</span></div>
+    <div><span class="drift-lbl">local HEAD</span><span class="tag">${esc(drift.localHead || '—')}</span>${drift.ahead ? ` <span class="pill draft">${drift.ahead} unpushed</span>` : ''}${drift.behind ? ` <span class="pill" style="background:rgba(95,182,232,.16);color:var(--blue)">${drift.behind} behind</span>` : ''}</div>
+  </div>
 </div>`;
 
 const ownerCard = ownerBody && bodyLines(ownerBody).length && !/^nothing|^none\b/i.test(ownerBody.trim())
@@ -267,6 +320,17 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
 .cfgrow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .cfgrow:last-child{border-bottom:0}
 .cfgrow b{font-weight:600}
+.drift{border-left:4px solid var(--muted2)}
+.drift.drift-ok{border-left-color:var(--green)}
+.drift.drift-bad{border-left-color:var(--red)}
+.drift.drift-warn{border-left-color:var(--accent)}
+.drift-row{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.drift-status{font-weight:700;font-size:.95rem}
+.drift-status.drift-ok{color:var(--green)}
+.drift-status.drift-bad{color:var(--red)}
+.drift-status.drift-warn{color:var(--accent)}
+.drift-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;font-size:.86rem}
+.drift-lbl{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted2);font-weight:700;margin-bottom:3px}
 .nextup{background:var(--panel2);border:1px solid rgba(95,182,232,.3);border-radius:10px;padding:10px 14px;margin-bottom:14px}
 .nextup-lbl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-right:8px}
 .astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 16px}
@@ -294,6 +358,8 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
     ${kpi('Spend cap', `£${cfg.spendCapGBP}`, `${cfg.timeCapMinutes} min/run · overflow <span class="pill off">OFF</span>`)}
     ${kpi('Nightly cadence', `${cfg.gamesPerNight}/night`, `${cfg.maxFixAttempts} fix attempts max`)}
   </div>
+
+  ${driftCard}
 
   ${analyticsCard(analytics)}
 
