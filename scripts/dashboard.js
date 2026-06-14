@@ -273,7 +273,7 @@ const ownerCard = ownerBody && bodyLines(ownerBody).length && !/^nothing|^none\b
   : `<div class="card ok"><h2>✓ Needs the owner</h2><p>Nothing flagged in the latest report (${esc(latestReport || '—')}).</p></div>`;
 
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VisualWalkthroughs · LiveOps</title>
+<title>Primo Guides · LiveOps</title>
 <style>
 :root{--bg:#0b0e13;--panel:#141925;--panel2:#1b2230;--line:rgba(255,255,255,.09);--text:#eef0f6;--muted:#9aa1b4;--muted2:#6b7186;--accent:#f2b34b;--green:#5fcf8f;--red:#ff6a5a;--blue:#5fb6e8;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
 *{box-sizing:border-box}
@@ -345,7 +345,7 @@ code{font-family:var(--mono);font-size:.85em;background:rgba(255,255,255,.06);pa
 .foot{color:var(--muted2);font-size:.78rem;text-align:center;margin-top:30px}
 </style></head><body>
 <header><div class="wrap">
-  <div><h1>Visual<span>Walkthroughs</span> · LiveOps</h1><div class="gen">generated ${esc(generated)} · regenerate with <code>npm run dashboard</code></div></div>
+  <div><h1>Primo <span>Guides</span> · LiveOps</h1><div class="gen">generated ${esc(generated)} · regenerate with <code>npm run dashboard</code></div></div>
   <div style="text-align:right"><a class="prod" href="${PROD}" target="_blank">production live</a><div class="gen">latest: ${latestRelease ? esc(latestRelease.tag) : '—'}</div></div>
 </div></header>
 <div class="wrap">
