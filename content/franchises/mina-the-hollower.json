@@ -1,0 +1,16 @@
+{
+  "name": "Mina the Hollower",
+  "slug": "mina-the-hollower",
+  "developer": "Yacht Club Games",
+  "description": "Descend into fog-choked Tenebrous Isle, burrow through its haunted earth, and light six Spark Generators before the darkness claims everything. A gothic action-adventure from the creators of Shovel Knight.",
+  "featured": true,
+  "featureRank": 2,
+  "guideCount": 1,
+  "cover": "/assets/covers/mina-the-hollower.webp",
+  "theme": {
+    "bodyClass": "theme-mina",
+    "accent": "#5ee7df",
+    "accentSoft": "rgba(94,231,223,.14)",
+    "cardGradient": "linear-gradient(160deg,#0d0b1e,#061018 60%,#020508)"
+  }
+}

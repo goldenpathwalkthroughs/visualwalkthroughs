@@ -1,0 +1,16 @@
+{
+  "name": "007",
+  "slug": "007",
+  "developer": "IO Interactive",
+  "description": "Before the tuxedo, before the martini, there was the mission that made him. Follow a young James Bond as he earns his licence to kill across nine countries of IO Interactive's origin story.",
+  "featured": true,
+  "featureRank": 3,
+  "guideCount": 1,
+  "cover": "/assets/covers/007-first-light.webp",
+  "theme": {
+    "bodyClass": "theme-007",
+    "accent": "#c9a84c",
+    "accentSoft": "rgba(201,168,76,.14)",
+    "cardGradient": "linear-gradient(160deg,#080808,#0a0800 60%,#040300)"
+  }
+}

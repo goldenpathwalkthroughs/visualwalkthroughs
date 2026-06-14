@@ -1,0 +1,104 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const franchise = (await getCollection('franchises')).find(f => f.data.slug === 'pokemon');
+if (!franchise) throw new Error('Pokémon franchise not found');
+
+const games = (await getCollection('games'))
+  .filter(g => g.data.franchiseSlug === 'pokemon')
+  .sort((a, b) => b.data.year.localeCompare(a.data.year));
+
+const searchIndex = [
+  {
+    t: franchise.data.name,
+    s: `Franchise · ${franchise.data.guideCount} guide${franchise.data.guideCount === 1 ? '' : 's'}`,
+    k: 'franchise',
+    ic: '🔴',
+    href: '/pokemon/',
+  },
+  ...games.map(g => ({
+    t: g.data.title,
+    s: `${g.data.platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '🔴',
+    href: `/pokemon/${g.data.slug}/`,
+  })),
+];
+---
+
+<Base
+  title={franchise.data.name}
+  description={franchise.data.description}
+  bodyClass={franchise.data.theme.bodyClass}
+  searchIndex={searchIndex}
+>
+  <div class="fr-hero">
+    <div class="bg" style="background:radial-gradient(120% 90% at 75% -10%,#2a0500 0%,transparent 55%),linear-gradient(160deg,#1a0400,#060100)"></div>
+    <div class="inner">
+      <div class="crumb">
+        <a href="/">Browse</a>
+        <span>/</span>
+        <span style="color:var(--text)">{franchise.data.name}</span>
+      </div>
+      <h1>{franchise.data.name}</h1>
+      <p>{franchise.data.description}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="game-grid">
+      {games.map(g => (
+        <a
+          href={g.data.status === 'published' ? `/pokemon/${g.data.slug}/` : undefined}
+          class={`gtile${g.data.status === 'coming-soon' ? ' soon' : ''}`}
+        >
+          <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}>
+            {g.data.cover && <img src={g.data.cover} alt={g.data.title} class="cover-img" loading="lazy" decoding="async" />}
+          </div>
+          {g.data.status === 'published' && <span class="ready">Guide ready</span>}
+          <div class="meta">
+            <div class="yr">{g.data.year} · {g.data.platforms[0]}</div>
+            <div class="title">{g.data.title}</div>
+            <div class="console">{g.data.platforms.join(' · ')}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+.fr-hero {
+  position: relative;
+  padding: 80px 24px 64px;
+  overflow: hidden;
+}
+.fr-hero .bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.fr-hero .inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.fr-hero .crumb {
+  display: flex;
+  gap: 8px;
+  font-size: .8rem;
+  color: var(--muted, #8a5a44);
+  margin-bottom: 16px;
+}
+.fr-hero .crumb a { color: var(--accent, #e8320a); text-decoration: none; }
+.fr-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  color: var(--accent, #e8320a);
+}
+.fr-hero p { color: #c0a090; max-width: 540px; line-height: 1.6; }
+</style>

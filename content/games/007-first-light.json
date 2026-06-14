@@ -1,0 +1,1282 @@
+{
+  "franchiseSlug": "007",
+  "title": "007: First Light",
+  "slug": "007-first-light",
+  "year": "2026",
+  "platforms": [
+    "PC",
+    "PS5",
+    "Xbox Series X|S"
+  ],
+  "status": "published",
+  "lede": "Before the tuxedo, before the martini, there was the mission that made him — IO Interactive's origin story follows a young James Bond from raw MI6 recruit to licenced killer across seventeen chapters and nine countries.",
+  "cover": "/assets/covers/007-first-light.webp",
+  "theme": {
+    "bodyClass": "theme-007",
+    "accent": "#c9a84c",
+    "accentSoft": "rgba(201,168,76,.14)",
+    "cardGradient": "linear-gradient(160deg,#080808,#0a0800 60%,#040300)"
+  },
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "against-the-odds",
+      "the-needles-eye",
+      "a-night-out",
+      "all-the-time-in-the-world",
+      "q-branch-briefings",
+      "the-past-never-dies",
+      "beyond-the-grave",
+      "uninvited",
+      "knightfall",
+      "going-old-school",
+      "time-to-die",
+      "wave-of-the-future"
+    ],
+    "criticalPath": [
+      "against-the-odds",
+      "the-needles-eye",
+      "a-night-out",
+      "all-the-time-in-the-world",
+      "q-branch-briefings",
+      "the-past-never-dies",
+      "beyond-the-grave",
+      "uninvited",
+      "knightfall",
+      "going-old-school",
+      "time-to-die",
+      "wave-of-the-future"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "tip",
+      "title": "Non-lethal run is fully supported",
+      "body": "Every enemy can be neutralised non-lethally. A full non-lethal playthrough is required for the 'Gentleman Spy' trophy. Sleeping Darts, Smoke Pods, the Tranquilizer Pen, and hand-to-hand grapple finishers all count.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Collectibles are mostly missable",
+      "body": "All 92 collectibles are permanently missed after each chapter closes. Chapter Select is available post-credits but requires replaying from a chapter's beginning. Scan every area with the Q-Lens before advancing.",
+      "completionistOnly": true
+    },
+    {
+      "type": "tip",
+      "title": "TacSim Mode unlocks after Chapter 6",
+      "body": "After completing the MI6 briefing chapters, TacSim Mode opens — replayable stealth challenges with leaderboards. Completing all TacSim scenarios earns a Gold trophy.",
+      "completionistOnly": true
+    }
+  ],
+  "items": [
+    {
+      "id": "q-lens",
+      "name": "Q-Lens",
+      "type": "ability",
+      "class": "progression"
+    },
+    {
+      "id": "dart-phone",
+      "name": "Dart Phone",
+      "type": "item",
+      "class": "progression"
+    },
+    {
+      "id": "q-watch",
+      "name": "Q-Watch",
+      "type": "item",
+      "acquiredAtSectionId": "the-needles-eye",
+      "class": "progression"
+    },
+    {
+      "id": "sleeping-dart",
+      "name": "Sleeping Dart",
+      "type": "item",
+      "acquiredAtSectionId": "the-needles-eye",
+      "class": "progression"
+    },
+    {
+      "id": "smoke-pod",
+      "name": "Smoke Pod",
+      "type": "item",
+      "acquiredAtSectionId": "a-night-out",
+      "class": "progression"
+    },
+    {
+      "id": "spy-drone",
+      "name": "Spy Drone",
+      "type": "item",
+      "acquiredAtSectionId": "a-night-out",
+      "class": "progression"
+    },
+    {
+      "id": "hacking-device",
+      "name": "Hacking Device",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    },
+    {
+      "id": "laser-strap",
+      "name": "Laser Strap",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    },
+    {
+      "id": "flash-mine",
+      "name": "Flash Mine",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    },
+    {
+      "id": "emp-watch",
+      "name": "EMP Watch",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    },
+    {
+      "id": "sonic-emitter-coin",
+      "name": "Sonic Emitter Coin",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    },
+    {
+      "id": "tranquilizer-pen",
+      "name": "Tranquilizer Pen",
+      "type": "item",
+      "acquiredAtSectionId": "q-branch-briefings",
+      "class": "progression"
+    }
+  ],
+  "locations": [
+    {
+      "id": "iceland-ice-flats",
+      "name": "Reykjavik Ice Flats",
+      "ref": "Iceland — Ice Flats",
+      "reachableBy": "Prologue starting area — automatic",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Prologue objective",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "against-the-odds"
+        }
+      ]
+    },
+    {
+      "id": "valletta-training-facility",
+      "name": "Valletta Training Facility",
+      "ref": "Malta — Valletta",
+      "reachableBy": "Chapter 1 mission start — automatic",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Combat and stealth training",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "the-needles-eye"
+        },
+        {
+          "label": "Q-Watch and Sleeping Dart issued",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "the-needles-eye"
+        }
+      ]
+    },
+    {
+      "id": "club-mirage-london",
+      "name": "Club Mirage",
+      "ref": "London — Club Mirage",
+      "reachableBy": "Chapter 2 mission start — automatic",
+      "whereWithin": "Ground floor dance floor, mezzanine, server room, kitchen exit",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Eavesdropping targets",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "a-night-out"
+        },
+        {
+          "label": "Server room terminal hack",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "a-night-out"
+        }
+      ]
+    },
+    {
+      "id": "mi6-hq",
+      "name": "MI6 Headquarters",
+      "ref": "London — MI6 HQ",
+      "reachableBy": "Automatic between mission chapters",
+      "isHub": true,
+      "contains": [
+        {
+          "label": "M's office briefings",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "q-branch-briefings"
+        },
+        {
+          "label": "Q Branch armoury",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "q-branch-briefings"
+        },
+        {
+          "label": "Evidence board review (Chapter 11)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "going-old-school"
+        }
+      ]
+    },
+    {
+      "id": "chateau-miremonde",
+      "name": "Château Miremonde",
+      "ref": "Château Miremonde",
+      "reachableBy": "Chapter 3 — infiltrate via cellar, east trellis, or delivery van cover",
+      "whereWithin": "Grounds, estate rooms (incl. Room 206), wine cellar, hidden chamber",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Chimera puzzle (Lion → Goat → Snake)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "all-the-time-in-the-world"
+        },
+        {
+          "label": "Dual Blonde Men boss arena",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "all-the-time-in-the-world"
+        }
+      ]
+    },
+    {
+      "id": "atar-black-market",
+      "name": "Atar Black Market",
+      "ref": "Mauritania — Atar",
+      "reachableBy": "Chapter 7 mission start — automatic",
+      "whereWithin": "Market stalls, supply tent, east wall water trough",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Pirate captain target",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "the-past-never-dies"
+        },
+        {
+          "label": "Card game stall (collectible)",
+          "kind": "other",
+          "requires": [],
+          "completionistOnly": true,
+          "sectionId": "the-past-never-dies"
+        },
+        {
+          "label": "Shooting gallery (collectible)",
+          "kind": "other",
+          "requires": [],
+          "completionistOnly": true,
+          "sectionId": "the-past-never-dies"
+        }
+      ]
+    },
+    {
+      "id": "mv-stormwall",
+      "name": "MV Stormwall",
+      "ref": "Mauritania — MV Stormwall",
+      "reachableBy": "Chapter 8 — approach by inflatable, automatic",
+      "whereWithin": "Bow hull, cargo hold, crew quarters, captain's cabin",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Cargo hold ambush",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "beyond-the-grave"
+        },
+        {
+          "label": "Captain's safe — documents",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "beyond-the-grave"
+        }
+      ]
+    },
+    {
+      "id": "hotel-hermitage-monaco",
+      "name": "Hotel Hermitage",
+      "ref": "Monaco — Hotel Hermitage",
+      "reachableBy": "Chapter 9 — arrive under cover as an art consultant",
+      "whereWithin": "Ballroom, outdoor terrace, private gallery, underground garage",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "009's body — gallery investigation",
+          "kind": "secret",
+          "requires": [],
+          "sectionId": "uninvited"
+        },
+        {
+          "label": "Vehicle pursuit exit",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "uninvited"
+        }
+      ]
+    },
+    {
+      "id": "webb-industries-hq",
+      "name": "Webb Industries HQ",
+      "ref": "Webb Industries HQ",
+      "reachableBy": "Chapter 10 — infiltrate from ground level",
+      "whereWithin": "Ground floor lobby, server room (floor 3), executive office (floor 4), rooftop helipad",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "CHIMERA server download",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "knightfall"
+        },
+        {
+          "label": "Nicholas Webb boss fight",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "knightfall"
+        }
+      ]
+    },
+    {
+      "id": "hoi-an-spa",
+      "name": "Hoi An Spa Complex",
+      "ref": "Vietnam — Hoi An Spa",
+      "reachableBy": "Chapter 13 — infiltrate through main entrance under cover",
+      "whereWithin": "Lobby, steam treatment rooms, private office, rooftop pool",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Surveillance target follow",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "time-to-die"
+        },
+        {
+          "label": "Bawma boss fight — rooftop pool",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "time-to-die"
+        }
+      ]
+    },
+    {
+      "id": "aurora-station",
+      "name": "Aurora Station",
+      "ref": "Antarctica — Aurora Station",
+      "reachableBy": "Chapter 15 — covert snowcat insertion, automatic",
+      "whereWithin": "Surface airlock, mid-level laboratories, deep-core control chamber, personal quarters",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "CHIMERA activation console",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "wave-of-the-future"
+        },
+        {
+          "label": "Damien Webb final boss arena",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "wave-of-the-future"
+        }
+      ]
+    }
+  ],
+  "bossFights": [
+    {
+      "id": "dual-blonde-men",
+      "name": "The Blonde Men (×2)",
+      "sectionId": "all-the-time-in-the-world",
+      "locationRef": "Château Miremonde",
+      "prep": {
+        "recommendedItems": [
+          "sleeping-dart",
+          "smoke-pod"
+        ],
+        "healthAdvice": "Enter at full health. Two Sleeping Darts are sufficient for a non-lethal finish.",
+        "topUpBefore": "First-aid cabinet in the ground-floor bathroom — use it before pressing the Chimera wall panels."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — First Blonde Man",
+          "tells": "He advances with wide haymaker swings. Every wind-up shows a yellow glint.",
+          "counter": "Parry each strike with precise timing. Three successful parries stagger him.",
+          "damageWindow": "A grapple prompt appears after the third parry — execute it to take him out of the fight cleanly."
+        },
+        {
+          "name": "Phase 2 — Both Men Together",
+          "tells": "The second man enters as the first partially recovers. They alternate — one attacks while the other circles. The second man's lunges carry red glints that cannot be blocked.",
+          "counter": "Keep both men in view. Dodge the red-glint strikes sideways and immediately parry the follow-up yellow-glint from the first man.",
+          "damageWindow": "Focus all damage on the second man — he is more aggressive. A single Sleeping Dart drops him instantly, leaving the first man alone."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Break off to the wine racks along the east wall — the men do not immediately pursue, giving two or three seconds to use a healing item.",
+        "easierTactic": "Use a Sleeping Dart on the second man the moment he enters Phase 2. This converts the fight back into a straightforward one-on-one.",
+        "retreatOption": "No mid-fight checkpoint — failure restarts from the Chimera wall panels."
+      },
+      "reward": "Cipher drive recovered. Chapter completes."
+    },
+    {
+      "id": "nicholas-webb",
+      "name": "Nicholas Webb",
+      "sectionId": "knightfall",
+      "locationRef": "Webb Industries HQ",
+      "prep": {
+        "recommendedItems": [
+          "tranquilizer-pen",
+          "flash-mine",
+          "emp-watch"
+        ],
+        "healthAdvice": "Full health recommended. Webb summons two armoured guards mid-fight — the Tranquilizer Pen is essential for them.",
+        "topUpBefore": "First-aid kit mounted on the server room wall, two floors below the executive office."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Armed Escort",
+          "tells": "Webb hangs back behind two standard guards who advance in formation.",
+          "counter": "Deploy the Flash Mine to blind both guards simultaneously, then neutralise them with Sleeping Darts before they recover.",
+          "damageWindow": "With the guards down, Webb is briefly exposed — land two or three strikes before he retreats behind the desk."
+        },
+        {
+          "name": "Phase 2 — Webb Armed",
+          "tells": "Webb draws a concealed pistol and moves laterally behind office furniture, firing two-shot bursts with a reload pause between.",
+          "counter": "Use the cover pillars to absorb shots. Advance during the reload pause and close to melee range.",
+          "damageWindow": "At close range Webb cannot use the pistol — engage with a parry sequence. All his melee strikes show yellow glints only."
+        },
+        {
+          "name": "Phase 3 — Armoured Reinforcements",
+          "tells": "At roughly 30% health Webb triggers a security alarm, calling two heavily armoured guards.",
+          "counter": "Use the Tranquilizer Pen on each armoured guard (one shot each penetrates their suits). Keep moving to avoid Webb's pistol while dealing with them.",
+          "damageWindow": "Once the guards are down, Webb has no further defensive options. A final parry sequence ends the encounter."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "A first-aid pack sits behind the door of the glass-walled meeting room adjacent to the executive office.",
+        "easierTactic": "Use the EMP Watch immediately on entering the office — it disables Webb's pistol and stuns the escorts simultaneously for 8 seconds.",
+        "retreatOption": "Retreat into the meeting room if health is critical — the door provides a brief barrier to reset."
+      },
+      "reward": "Biometric key recovered. Rooftop exfiltration unlocked."
+    },
+    {
+      "id": "the-assassin",
+      "name": "The Assassin",
+      "sectionId": "going-old-school",
+      "locationRef": "London — Warehouse District",
+      "prep": {
+        "recommendedItems": [],
+        "healthAdvice": "All gadgets are locked at fight start. No gadget prep is possible — enter the warehouse at full health.",
+        "topUpBefore": "First-aid station bolted to the wall just inside the warehouse entrance, before the fight triggers."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Knife Attacks",
+          "tells": "The Assassin feints before committing — yellow glints on all knife swipes.",
+          "counter": "Parry every strike. After two successful parries, Bond counter-attacks automatically with an elbow strike.",
+          "damageWindow": "The elbow counter deals significant damage. Chain three such sequences to end Phase 1."
+        },
+        {
+          "name": "Phase 2 — Environmental Hazards",
+          "tells": "The Assassin retreats to higher ground and hurls crates and pallets. Thrown objects carry a brief red-glint warning.",
+          "counter": "Dodge all thrown objects sideways — no parry option exists. Close the gap by climbing the nearest pallet stack.",
+          "damageWindow": "Once at the same height, the fight returns to knife parries. Timing is tighter in Phase 2 — do not rush."
+        },
+        {
+          "name": "Phase 3 — Final Stand",
+          "tells": "Below 25% health the Assassin alternates rapidly between yellow and red glints with no discernible pattern.",
+          "counter": "Default to dodging rather than parrying in Phase 3. Wait for the brief pause after a missed red-glint lunge and land one heavy strike.",
+          "damageWindow": "One heavy strike per opening is enough. Do not attempt to parry red-glint attacks — a mistimed parry causes a stagger."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Break off to the warehouse entrance — the first-aid kit is still there. The Assassin does not pursue immediately after Phase 1.",
+        "easierTactic": "In Phase 2, rather than climbing to match the Assassin's height, shoot the rope holding the suspended crane hook — dropping it deals a large chunk of Phase 2 damage instantly.",
+        "retreatOption": "Failing the fight restarts from a checkpoint just inside the warehouse door."
+      },
+      "reward": "Assassin incapacitated. Story revelation cutscene unlocked."
+    },
+    {
+      "id": "bawma",
+      "name": "Bawma",
+      "sectionId": "time-to-die",
+      "locationRef": "Vietnam — Hoi An Spa",
+      "prep": {
+        "recommendedItems": [
+          "sleeping-dart",
+          "laser-strap",
+          "tranquilizer-pen"
+        ],
+        "healthAdvice": "Full health is important — Bawma hits hard and the rooftop pool arena has no mid-fight healing. Use the spa office station first.",
+        "topUpBefore": "Healing station in the private spa office, one room before the rooftop pool."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Direct Assault",
+          "tells": "Bawma charges with heavy overhand blows. Red-glint attacks extend further than expected given his reach.",
+          "counter": "Stay at mid-range and dodge all red-glint attacks sideways. When he commits to a yellow-glint strike, parry and counter immediately.",
+          "damageWindow": "Three successful parry-counters end Phase 1 and trigger a brief cutscene."
+        },
+        {
+          "name": "Phase 2 — Improvised Weapon",
+          "tells": "Bawma picks up a sun lounger and swings it in a wide arc — yellow glint but with a longer telegraph than standard attacks.",
+          "counter": "The extended telegraph gives more time to prepare the parry. A successful parry staggers him for longer than normal.",
+          "damageWindow": "Land two heavy strikes during each stagger window. Three stagger-and-strike sequences deplete Phase 2."
+        },
+        {
+          "name": "Phase 3 — Into the Pool",
+          "tells": "The fight moves to the shallows of the rooftop pool. Both parties move more slowly. Bawma's strikes become slower but deal considerably more damage per hit.",
+          "counter": "Do not attempt lateral dodges — water resistance makes them too slow. Parry everything instead. Phase 3 is pure parry-counter rhythm.",
+          "damageWindow": "Each successful parry-counter in the water triggers a scripted bonus-damage mechanic. Five parry-counters end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-fight healing. If health is low entering Phase 3, focus entirely on defence — successful parries in the water restore a small amount of health per hit.",
+        "easierTactic": "Open Phase 1 by placing the Laser Strap at Bawma's feet — it deals immediate damage and briefly slows him, reducing the required parry sequences.",
+        "retreatOption": "The arena is fully enclosed with no exit. Death restarts from just before the rooftop pool."
+      },
+      "reward": "CHIMERA activation codes recovered. Final act unlocked."
+    },
+    {
+      "id": "damien-webb",
+      "name": "Damien Webb",
+      "sectionId": "wave-of-the-future",
+      "locationRef": "Antarctica — Aurora Station",
+      "prep": {
+        "recommendedItems": [
+          "emp-watch",
+          "tranquilizer-pen",
+          "flash-mine",
+          "laser-strap"
+        ],
+        "healthAdvice": "Full health is essential — this is a three-phase fight with no safe healing windows beyond Phase 1. Use the station's personal quarters before triggering the confrontation.",
+        "topUpBefore": "Healing station in Damien Webb's personal quarters, adjacent to the control chamber."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Gauntlet Assault",
+          "tells": "Webb uses an exo-augmented gauntlet firing concussive blasts. All blasts carry red glints — none can be parried.",
+          "counter": "Dodge every blast sideways and immediately close the distance. At close range Webb cannot fire the gauntlet — all his melee strikes then show yellow glints.",
+          "damageWindow": "Three successful parry sequences at close range force Webb to retreat and recharge his gauntlet. Use this window to reset position and top up gadgets."
+        },
+        {
+          "name": "Phase 2 — Drone Reinforcements",
+          "tells": "Webb releases two autonomous security drones firing stun rounds. Stun rounds build a disorientation bar — if filled, Bond is stunned for three seconds.",
+          "counter": "Activate the EMP Watch immediately to disable both drones for 45 seconds. During the EMP window, focus entirely on Webb. If the watch is depleted, destroy each drone with three shots from the Walther PPK.",
+          "damageWindow": "With drones disabled, engage Webb directly. His gauntlet recharge is slower in Phase 2 — close-range windows are longer than in Phase 1."
+        },
+        {
+          "name": "Phase 3 — CHIMERA Overload",
+          "tells": "Webb connects the gauntlet directly to the station's power grid, becoming temporarily invincible. Room hazards activate: electrical arcs and freezing vents sweep the floor.",
+          "counter": "Avoid environmental hazards and watch for the power coupling on the east wall to glow red — this marks Webb's connection as vulnerable. Shoot the coupling to sever the link.",
+          "damageWindow": "Once the coupling is destroyed Webb's invincibility drops and the gauntlet is permanently disabled. Engage in hand-to-hand — all strikes show yellow glints. Finish with the prompted execution sequence."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-fight healing available. If you reach Phase 3 at low health, prioritise dodging environmental hazards over attacking — wait patiently for the coupling to glow.",
+        "easierTactic": "Enter with a full EMP Watch charge and activate it the instant Phase 2 begins. Neutralising both drones immediately makes Phase 2 straightforward. Reserve the Flash Mine for Phase 3 to create a free window to shoot the coupling.",
+        "retreatOption": "Death in any phase restarts from the beginning of Phase 1."
+      },
+      "reward": "CHIMERA disabled. Damien Webb incapacitated. Ending cinematic and post-credits sequence play."
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "against-the-odds",
+      "stage": "Prologue",
+      "title": "Against the Odds",
+      "order": 1,
+      "chips": [
+        "Iceland",
+        "Stealth",
+        "Introduction"
+      ],
+      "steps": [
+        "Follow the on-screen prompts to learn movement. Walk forward across the ice shelf and crouch behind the first crate when the guard's torchlight sweeps your way.",
+        "Activate the <strong>Q-Lens</strong> (hold LB / L1 / Q) to scan the two guards ahead — yellow outlines mark their vision cones. Wait for the nearer guard to turn away before advancing.",
+        "Climb the iced-over ladder and shimmy along the ledge. Drop into the shadow below and use the <strong>Dart Phone</strong> to put the final sentry to sleep before collecting the objective item.",
+        "A cutscene triggers. During the escape sequence, follow the waypoint markers and vault obstacles as prompted — you cannot fail this scripted chase.",
+        "The chapter closes on a flashback establishing Bond's motivation for joining MI6."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Scan the snowdrift early",
+          "body": "The Q-Lens reveals a hidden <strong>Legacy Item</strong> in the snowdrift to the left of the opening crate. Easy to miss on a first run.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Legacy Item — Field Agent's Compass",
+          "note": "Scan the snowdrift to the left of the opening crate with the Q-Lens to reveal a buried compass.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Legacy Items",
+          "categoryTotalKnown": 9
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "18:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "the-needles-eye",
+      "stage": "Chapter 1",
+      "title": "The Needle's Eye",
+      "order": 2,
+      "chips": [
+        "Malta",
+        "Training",
+        "Gadgets"
+      ],
+      "steps": [
+        "Report to the training facility in Valletta. Follow John Greenway's instructions and complete the hand-to-hand combat tutorial — <strong>yellow glints</strong> on an enemy indicate a parriable strike; <strong>red glints</strong> mean dodge sideways instead.",
+        "Complete the stealth segment: crouch-walking stays silent within 8 metres of an enemy. Sprinting creates a 15-metre noise radius — use it only when no guards are nearby.",
+        "Q issues the <strong>Q-Watch</strong> and the <strong>Sleeping Dart</strong>. The Q-Watch cycles between a laser cutter, a looped-camera feed, and a rappel line. Open the radial menu now and familiarise yourself with each mode.",
+        "Drive the Aston Martin through the circuit course. Handbrake turns use the right trigger (hold then release); cornering physics are forgiving at this stage.",
+        "The chapter ends when Greenway signs off your assessment. The <strong>Q-Lens</strong> is permanently upgraded to reveal collectibles as a blue glow when scanning."
+      ],
+      "advisories": [
+        {
+          "type": "upgrade",
+          "title": "Build your parry timing here",
+          "body": "The training dummies are the safest place to nail parry timing before the real missions begin. Spend a few minutes until the yellow-glint window feels instinctive — it tightens noticeably in later chapters.",
+          "completionistOnly": false
+        },
+        {
+          "type": "missable",
+          "title": "Playing Card — Queen of Spades",
+          "body": "On the rooftop of the obstacle course, scan the washing line with the Q-Lens. The card drops down; collect it before the chapter's final cutscene triggers.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Playing Card — Queen of Spades",
+          "note": "Scan the rooftop washing line during the obstacle course segment.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        },
+        {
+          "label": "MI6 Intel File — Project CHIMERA (Partial)",
+          "note": "On Greenway's desk in the briefing room. Interact with it before leaving the building.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "22:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "a-night-out",
+      "stage": "Chapter 2",
+      "title": "A Night Out",
+      "order": 3,
+      "chips": [
+        "London",
+        "Undercover",
+        "Hacking"
+      ],
+      "steps": [
+        "Enter Club Mirage in your cover identity. Do not break cover — if an NPC addresses you directly, select the <strong>Instinct: Bluff</strong> option (costs one Focus bar). Stand near the target groups and hold the eavesdrop prompt to collect three separate conversations.",
+        "Q delivers the <strong>Smoke Pod</strong> and <strong>Spy Drone</strong> via a coat-check tag. Deploy the drone from any quiet corner — it flies through ventilation grilles and tags enemies through walls.",
+        "Locate your informant on the mezzanine. She hands you a hotel keycard. Pickpocket the secondary target on the dance floor by bumping into him in the crowd — the busy floor makes this safe.",
+        "Use the Q-Watch camera-loop mode on the server room door, then interact with the terminal inside. The hacking mini-game requires matching rotating dials to a target sequence — start from the outermost ring and work inward.",
+        "Exit through the kitchen loading bay before the alarm window expires. A Smoke Pod dropped at the stairwell bottom buys the time needed to reach the van cutscene."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Cover integrity",
+          "body": "Running inside the club or using any gadget in an NPC's line of sight breaks cover, shifting the mission to alert combat. The 'Silent Exit' trophy requires leaving without being compromised.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Postcard — London by Night",
+          "note": "On the bar counter at the far end of the ground floor. Interact during the eavesdropping phase.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Postcards",
+          "categoryTotalKnown": 10
+        },
+        {
+          "label": "Playing Card — Jack of Clubs",
+          "note": "On a shelf behind the terminal rack inside the server room.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "20:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "all-the-time-in-the-world",
+      "stage": "Chapter 3",
+      "title": "All the Time in the World",
+      "order": 4,
+      "chips": [
+        "Slovakia",
+        "Estate",
+        "Boss Fight"
+      ],
+      "steps": [
+        "Infiltrate Château Miremonde. Three approaches are available: the cellar (requires the Cellar Key from a guard), the east-wing trellis (scale the wall), or a delivery van cover identity. The cellar route avoids the most guards.",
+        "Reach Room 206. Use a <strong>Sleeping Dart</strong> on the guard in the laundry corridor, hide him in the linen cupboard, then ascend the service stairs.",
+        "Search Room 206 for clues about the Blonde Man. Interact with the case on the bed and the photograph on the nightstand — both trigger the next cutscene.",
+        "Pursue the Blonde Man across the estate. Take the roundabout path through the orangery rather than the open courtyard, which is covered by two guards who cannot be distracted simultaneously.",
+        "In the wine cellar, find the Chimera note. Press the wall panels in order: <strong>Lion → Goat → Snake</strong> to open the hidden chamber below.",
+        "BOSS: Dual Blonde Men — see fight notes below. After the fight, collect the cipher drive from the console and exfiltrate via the vehicle that arrives in the courtyard."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Ignite the brazier for a distraction",
+          "body": "Shoot the brazier near the east terrace with the Dart Phone to set the nearby leaves alight. Both guards on that path investigate, leaving the route clear for roughly 20 seconds.",
+          "completionistOnly": false
+        },
+        {
+          "type": "missable",
+          "title": "Memento — Château wine label",
+          "body": "In the wine cellar, collect the 1962 label from the rack on the right-hand wall <em>before</em> pressing the Chimera panels. The panel interaction locks this collectible permanently.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Memento — Château Miremonde Wine Label, 1962",
+          "note": "On the wine rack to the right of the Chimera panels — collect before pressing them.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Mementos",
+          "categoryTotalKnown": 14
+        },
+        {
+          "label": "MI6 Intel File — CHIMERA Project Origins",
+          "note": "On the desk in Room 206, visible while you search the clues.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "q-branch-briefings",
+      "stage": "Chapters 4–6",
+      "title": "Q Branch",
+      "order": 5,
+      "chips": [
+        "MI6",
+        "Gadgets",
+        "Story"
+      ],
+      "steps": [
+        "<strong>Chapter 4 — The Heart of the Matter:</strong> Report to M's office. A series of briefings introduces the Webb conspiracy. No combat — follow dialogue prompts and interact with the mission dossier on M's desk when prompted.",
+        "Q issues the <strong>Hacking Device</strong> — a handheld unit that bypasses electronic locks and terminals without the Q-Watch's time pressure. Test it on the demonstration cabinet in the Q Branch lab.",
+        "<strong>Chapter 5 — A New Home:</strong> Tour MI6 HQ with Moneypenny. Visit the armoury to receive the <strong>Laser Strap</strong>, <strong>Flash Mine</strong>, and <strong>EMP Watch</strong>. The EMP Watch loops camera feeds for 45 seconds and disables electronics — invaluable from here on.",
+        "The <strong>Sonic Emitter Coin</strong> is issued in the same armoury visit. Throw it near a guard to draw them to an exact position; combine with a Sleeping Dart for a reliable silent takedown at range.",
+        "<strong>Chapter 6 — A Matter of Considerable Delicacy:</strong> Bond receives the <strong>Tranquilizer Pen</strong> — the only gadget that penetrates armoured guards' suits without direct combat.",
+        "Before the chapter ends, Greenway gives Bond a personal briefing. Pay close attention to the information revealed — it is directly relevant to decisions in Chapters 11 and 12."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Reorganise your gadget slots",
+          "body": "You now have your full loadout. In the armoury, reorder your quick-select slots — put the EMP Watch and Sonic Emitter Coin in your first two positions for the missions ahead.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "MI6 Intel File — Webb Industries Dossier",
+          "note": "On M's desk during Chapter 4. Interact before leaving the office.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        },
+        {
+          "label": "Legacy Item — Q's First Prototype Watch",
+          "note": "In a glass case in the Q Branch lab. Scan with the Q-Lens to register it.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Legacy Items",
+          "categoryTotalKnown": 9
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "15:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "the-past-never-dies",
+      "stage": "Chapter 7",
+      "title": "The Past Never Dies",
+      "order": 6,
+      "chips": [
+        "Mauritania",
+        "Black Market",
+        "Tail"
+      ],
+      "steps": [
+        "Arrive at the Atar black market. This is the most open chapter so far — optional side activities are available but none are required for the golden path. Scan the area with the Q-Lens to locate your target among the stalls.",
+        "Use the Spy Drone to scout the compound. The pirate captain moves between three stalls on a circuit; the best window is when he visits the east wall water trough, which has only one guard.",
+        "Tail the captain without closing to within 8 metres. Use market crowd movement as cover. When he enters the supply tent, use the <strong>Hacking Device</strong> on the radio transmitter inside — this cuts communications and prevents him calling reinforcements.",
+        "Pickpocket the encrypted drive from the captain's coat whilst he examines the shipment. Exit to the north. If spotted, the side alley leads to a roof exit — do not engage in open combat.",
+        "Exfiltrate to the extraction point. A short driving section follows — the route is linear; avoid two roadblocks using the alleys shown by the waypoint."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Side activities give missable Playing Cards",
+          "body": "Two Playing Cards are obtainable only from the market's optional activities — a card game in the south tent and the shooting gallery. Both are missed permanently once the chapter closes.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Playing Card — Seven of Diamonds",
+          "note": "Win the card game in the south tent (requires 200 in-game currency purchased from a nearby vendor).",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        },
+        {
+          "label": "Playing Card — Three of Hearts",
+          "note": "Achieve top score at the shooting gallery stall in the centre of the market.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        },
+        {
+          "label": "Postcard — Mauritanian Sunset",
+          "note": "On the ledge of the east wall water trough, near the pirate captain's patrol circuit.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Postcards",
+          "categoryTotalKnown": 10
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "25:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "beyond-the-grave",
+      "stage": "Chapter 8",
+      "title": "Beyond the Grave",
+      "order": 7,
+      "chips": [
+        "Mauritania",
+        "Shipwreck",
+        "Ambush"
+      ],
+      "steps": [
+        "Board the MV Stormwall. The rusted hull creates multiple vertical paths — always prefer upper routes, as guards below cannot look upward without turning away from their primary patrol.",
+        "Reach the cargo hold. An ambush triggers here without warning — sprint immediately behind the shipping containers on the left and use a <strong>Smoke Pod</strong> to obscure your position before retaliating.",
+        "The hold's second level is accessible via a crane ladder on the port side. Cut the suspension cable with the Q-Watch laser to drop a container, creating a distraction that clears four guards at once.",
+        "Recover the documents from the sealed safe in the captain's cabin. The combination is in a torn logbook two rooms prior — read it before approaching the safe.",
+        "Exfiltrate through the bow opening. The closing cutscene contains a serious story development — the intelligence recovered here recontextualises Greenway's earlier briefings."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Pre-equip for the cargo hold ambush",
+          "body": "The ambush cannot be avoided and occurs without warning. Enter the hold with a Smoke Pod and Flash Mine pre-selected in your quick-select slots.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "MI6 Intel File — Webb Shipping Manifest",
+          "note": "In the captain's cabin on the chart table, before opening the safe.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        },
+        {
+          "label": "Memento — Torn Sailor's Photograph",
+          "note": "Pinned to the wall of the crew quarters on the starboard side, mid-ship.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Mementos",
+          "categoryTotalKnown": 14
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "22:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "uninvited",
+      "stage": "Chapter 9",
+      "title": "Uninvited",
+      "order": 8,
+      "chips": [
+        "Monaco",
+        "Gala",
+        "Investigation"
+      ],
+      "steps": [
+        "Infiltrate the Hotel Hermitage gala in Monaco under your art consultant cover. Blend in by interacting with two paintings before approaching any primary targets.",
+        "Eavesdrop on three separate conversations across the ballroom and the outdoor terrace. The second conversation is between two guards outdoors — wait for a passing couple to create cover noise before moving close.",
+        "Access the private gallery on the second floor via the service lift. Use the <strong>EMP Watch</strong> on the security panel to disable motion sensors for 45 seconds — enough time to collect the curator's keycard from the desk inside.",
+        "<span class='spoiler'>Discover the body of agent 009 hidden behind a false wall in the gallery's back room. Scan the scene with the Q-Lens before reporting to M — evidence gathered here is required in Chapter 12.</span>",
+        "Exit through the underground garage. A vehicle pursuit follows — stay close to the target car until the cutscene triggers rather than attempting to disable it."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "Postcard — Côte d'Azur",
+          "body": "On the terrace balcony railing during the outdoor eavesdrop phase. Permanently locked after you enter the service lift.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Postcard — Côte d'Azur",
+          "note": "On the terrace balcony railing during the outdoor eavesdropping phase.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Postcards",
+          "categoryTotalKnown": 10
+        },
+        {
+          "label": "Playing Card — Ace of Hearts",
+          "note": "Inside the private gallery on a side table near the false wall.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "28:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "knightfall",
+      "stage": "Chapter 10",
+      "title": "Knightfall",
+      "order": 9,
+      "chips": [
+        "Webb Industries",
+        "Hacking",
+        "Boss Fight"
+      ],
+      "steps": [
+        "Infiltrate Webb Industries HQ. The building has four floors — the ground floor is accessible openly; floors above require either a biometric pass or a hacked terminal.",
+        "Hack the ground-floor security terminal with the <strong>Hacking Device</strong> to unlock staff-only lifts. The logic puzzle shows a pattern for two full cycles — observe both before interacting.",
+        "Ascend to the server room on floor three. Avoid security drones by moving only when they sweep away — their turn radius is slow. Use the Spy Drone first to mark all three drone paths before entering.",
+        "Download the CHIMERA project files. The 45-second transfer runs while two guards patrol the room — stay crouched behind server racks and use the <strong>Sonic Emitter Coin</strong> to draw them to the far end.",
+        "BOSS: Nicholas Webb confronts Bond in his executive office on floor four — see fight notes below. After the fight, collect the biometric key from Webb's wrist and proceed to the rooftop helipad for exfiltration."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Drone paths are fixed and learnable",
+          "body": "Each security drone follows a fixed 20-second loop. Activate the Q-Lens to display their path as a dotted overlay — this makes the server room safe to cross methodically.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "MI6 Intel File — CHIMERA Project Files",
+          "note": "Automatically registered when the server room download completes.",
+          "type": "other",
+          "completionistOnly": false,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        },
+        {
+          "label": "Legacy Item — Early Webb Industries Prototype",
+          "note": "In a display case on the floor-two atrium. Scan with the Q-Lens to register.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Legacy Items",
+          "categoryTotalKnown": 9
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "going-old-school",
+      "stage": "Chapters 11–12",
+      "title": "Going Old School",
+      "order": 10,
+      "chips": [
+        "London",
+        "Boss Fight",
+        "Story Turn"
+      ],
+      "steps": [
+        "<strong>Chapter 11 — Out of the Ashes:</strong> Return to MI6. Interact with the evidence board when prompted — the connections you gathered at the Monaco gallery in Chapter 9 determine a dialogue option that affects Bond's approach in Chapter 12.",
+        "<strong>Chapter 12 — Going Old School:</strong> Bond operates without gadgets for the opening section — the Walther PPK only. Treat every engagement as a last resort; cover is plentiful throughout.",
+        "Navigate the wet London streets to the rendezvous point. Two guards block the alley shortcut — backtrack to the scaffolding on the building opposite and shimmy above them.",
+        "BOSS: The Assassin ambushes Bond in the warehouse — see fight notes below. This is a melee fight; all firearms jam on entry (scripted). Rely on parries and the environment.",
+        "<span class='spoiler'>A story cutscene reveals the full scope of the CHIMERA conspiracy and confirms Damien Webb's location. Greenway's fate is also confirmed here — this scene reframes the events of the entire game.</span>"
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Gadgets locked at Chapter 12 start",
+          "body": "The gadget wheel is disabled at the start of Going Old School. The no-gadget section lasts until you reach the warehouse district.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Memento — Greenway's Service Medal",
+          "note": "On Greenway's desk in the MI6 briefing room during Chapter 11. Interact before leaving.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Mementos",
+          "categoryTotalKnown": 14
+        },
+        {
+          "label": "Playing Card — King of Diamonds",
+          "note": "On a crate inside the warehouse where the Assassin fight takes place.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "25:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "time-to-die",
+      "stage": "Chapter 13",
+      "title": "Time to Die",
+      "order": 11,
+      "chips": [
+        "Vietnam",
+        "Surveillance",
+        "Boss Fight"
+      ],
+      "steps": [
+        "Infiltrate the Hoi An Spa complex. The open-plan layout gives every guard multiple sightlines — the Q-Lens is essential. Scan before moving and plan a route through steam-filled treatment rooms where guard vision drops to roughly 4 metres.",
+        "Tag your surveillance target with the Spy Drone and follow them through two location changes without closing the distance. When they enter the massage suite, plant a listening device on the wall partition using the Q-Watch.",
+        "Retrieve the recording remotely via the Hacking Device. Three guards converge on your position during the extraction — use the <strong>Flash Mine</strong> at the corridor junction to stun all three and move past.",
+        "Proceed to the rooftop pool. Bawma's presence is revealed via a cutscene — he is not the target you surveilled but the one giving orders. The boss fight begins immediately.",
+        "BOSS: Bawma — see fight notes below. After the fight, recover the CHIMERA activation codes from his personal device and signal extraction."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Use steam as cover throughout",
+          "body": "Move only through steam-filled corridors and treatment rooms. Guards' vision drops to around 4 metres inside steam — you can walk past them at that distance without triggering detection.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Postcard — Hội An Lanterns",
+          "note": "On the reception desk as you enter the spa complex.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Postcards",
+          "categoryTotalKnown": 10
+        },
+        {
+          "label": "MI6 Intel File — Bawma Organisation Profile",
+          "note": "In the private office adjacent to the rooftop pool, before the boss fight triggers.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "wave-of-the-future",
+      "stage": "Chapters 14–16",
+      "title": "Wave of the Future & For England",
+      "order": 12,
+      "chips": [
+        "Antarctica",
+        "Final Boss",
+        "Finale"
+      ],
+      "steps": [
+        "<strong>Chapter 14 — Man of the Hour:</strong> Final MI6 briefing. M formally confirms Bond's 00 designation ahead of the Antarctica operation. No combat — collect the final gadget loadout from Q and study the Aurora Station schematics on the mission board.",
+        "<strong>Chapter 15 — Wave of the Future:</strong> Infiltrate Aurora Station. The facility is heavily guarded. Use the <strong>EMP Watch</strong> on the exterior CCTV ring first — loop all four cameras before entering the airlock.",
+        "Navigate three zones in sequence: the surface airlock, the mid-level laboratories, and the deep-core control chamber. The lab section has the highest enemy density — use the Tranquilizer Pen for armoured guards and Sleeping Darts for standard ones.",
+        "Disable the CHIMERA activation console by inserting Bawma's stolen codes. A countdown begins — do not spend time on non-essential guards from this moment.",
+        "<strong>Chapter 16 — For England:</strong> Final confrontation with Damien Webb — see fight notes below.",
+        "<span class='spoiler'>The ending cinematic and post-credits sequence play immediately after Damien Webb is defeated. Bond receives his 007 designation from M, completing the origin arc.</span>"
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Top up everything before Antarctica",
+          "body": "Chapter 14 is your last safe resupply. Visit the Q Branch armoury before triggering the Antarctica mission start — there is no mid-mission resupply in Chapters 15 or 16.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Four Playing Cards are Antarctica-exclusive",
+          "body": "Four Playing Cards and two MI6 Intel Files are only found in the Aurora Station facility and are all missed once Chapter 16 begins. Scan thoroughly in Chapter 15 before triggering the countdown.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Legacy Item — Bond's First Walther PPK Box",
+          "note": "In a display case in Q's armoury during Chapter 14. Scan with the Q-Lens.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Legacy Items",
+          "categoryTotalKnown": 9
+        },
+        {
+          "label": "MI6 Intel File — CHIMERA Final Protocol",
+          "note": "On the main console in the deep-core control chamber, before inserting the activation codes.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "MI6 Intel Files",
+          "categoryTotalKnown": 23
+        },
+        {
+          "label": "Playing Card — Joker",
+          "note": "In Damien Webb's personal quarters adjacent to the control chamber.",
+          "type": "other",
+          "completionistOnly": true,
+          "requires": [],
+          "category": "Playing Cards",
+          "categoryTotalKnown": 36
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "H9E6lL3fsT4",
+        "creator": "Shirrako",
+        "title": "007 FIRST LIGHT Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    }
+  ]
+}

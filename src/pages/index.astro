@@ -76,6 +76,7 @@ const searchIndex = [
       <div class="rail">
         {games.map(g => {
           const franchise = franchises.find(f => f.data.slug === g.data.franchiseSlug);
+          const shortTitle = g.data.title.includes(': ') ? g.data.title.split(': ').slice(1).join(': ') : g.data.title;
           return (
             <a href={`/${g.data.franchiseSlug}/${g.data.slug}/`} class="ncard">
               <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}>
@@ -83,8 +84,7 @@ const searchIndex = [
               </div>
               <div class="body">
                 <div class="tag">New · {franchise?.data.name ?? g.data.franchiseSlug}</div>
-                <h3>{g.data.title} — full golden-path guide</h3>
-                <p>{g.data.lede.split('.')[0]}.</p>
+                <h3>{shortTitle} — Golden Path Guide</h3>
               </div>
             </a>
           );

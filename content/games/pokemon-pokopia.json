@@ -1,0 +1,616 @@
+{
+  "franchiseSlug": "pokemon",
+  "title": "Pokémon Pokopia",
+  "slug": "pokemon-pokopia",
+  "year": "2026",
+  "platforms": [
+    "Nintendo Switch 2"
+  ],
+  "status": "published",
+  "lede": "You are a Ditto in a world that forgot how to grow. Transform, build, befriend, and coax four ruined regions of Kanto back to life — one habitat at a time — in Game Freak and Omega Force's first Pokémon slow-life sandbox.",
+  "cover": "/assets/covers/pokemon-pokopia.webp",
+  "theme": {
+    "bodyClass": "theme-pokopia",
+    "accent": "#4db87a",
+    "accentSoft": "rgba(77,184,122,.14)",
+    "cardGradient": "linear-gradient(160deg,#0a1a0e,#091510 60%,#040b06)"
+  },
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "withered-wasteland-arrival",
+      "withered-wasteland-restoration",
+      "rocky-ridges-arrival",
+      "rocky-ridges-the-party",
+      "bleak-beach-arrival",
+      "bleak-beach-restoration",
+      "sparkling-skylands-arrival",
+      "sparkling-skylands-finale"
+    ],
+    "criticalPath": [
+      "withered-wasteland-arrival",
+      "withered-wasteland-restoration",
+      "rocky-ridges-arrival",
+      "rocky-ridges-the-party",
+      "bleak-beach-arrival",
+      "bleak-beach-restoration",
+      "sparkling-skylands-arrival",
+      "sparkling-skylands-finale"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "tip",
+      "title": "Environment Level is everything",
+      "body": "Every region requires Environment Level 3 to unlock the next area and Level 5 to complete the credits sequence. Attract more Pokémon, build more structures, and tend to habitats regularly — it all contributes to the level.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Abilities are permanent once learned",
+      "body": "Befriending a Pokémon and completing its initial request permanently unlocks Ditto's copy of its ability. You cannot miss an ability, but some Pokémon require specific habitats to appear — build those habitats as soon as a new region opens.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Pokémon Center rebuild is required for credits",
+      "body": "Each region's Pokémon Center must be rebuilt to progress. It is not optional. Gather the required materials early and prioritise the centre before raising Environment Level to 5.",
+      "completionistOnly": false
+    }
+  ],
+  "items": [
+    {
+      "id": "stockpile",
+      "name": "Stockpile / Spit Out",
+      "type": "ability",
+      "class": "progression"
+    },
+    {
+      "id": "inhale",
+      "name": "Inhale",
+      "type": "ability",
+      "class": "progression"
+    },
+    {
+      "id": "headbutt",
+      "name": "Headbutt",
+      "type": "ability",
+      "class": "progression"
+    },
+    {
+      "id": "jump-splash",
+      "name": "Jump / Splash",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-arrival",
+      "class": "progression"
+    },
+    {
+      "id": "water-gun",
+      "name": "Water Gun",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-arrival",
+      "class": "progression"
+    },
+    {
+      "id": "leafage",
+      "name": "Leafage",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-arrival",
+      "class": "progression"
+    },
+    {
+      "id": "rock-smash",
+      "name": "Rock Smash",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-restoration",
+      "class": "progression"
+    },
+    {
+      "id": "cut",
+      "name": "Cut",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-restoration",
+      "class": "progression"
+    },
+    {
+      "id": "rototiller",
+      "name": "Rototiller",
+      "type": "ability",
+      "acquiredAtSectionId": "withered-wasteland-restoration",
+      "class": "progression"
+    },
+    {
+      "id": "strength",
+      "name": "Strength",
+      "type": "ability",
+      "acquiredAtSectionId": "rocky-ridges-arrival",
+      "class": "progression"
+    },
+    {
+      "id": "rollout",
+      "name": "Rollout",
+      "type": "ability",
+      "acquiredAtSectionId": "rocky-ridges-the-party",
+      "class": "progression"
+    },
+    {
+      "id": "surf",
+      "name": "Surf",
+      "type": "ability",
+      "acquiredAtSectionId": "bleak-beach-restoration",
+      "class": "progression"
+    },
+    {
+      "id": "glide",
+      "name": "Glide",
+      "type": "ability",
+      "acquiredAtSectionId": "sparkling-skylands-arrival",
+      "class": "progression"
+    },
+    {
+      "id": "magnet-rise",
+      "name": "Magnet Rise",
+      "type": "ability",
+      "acquiredAtSectionId": "sparkling-skylands-finale",
+      "class": "optional"
+    }
+  ],
+  "locations": [
+    {
+      "id": "withered-wasteland",
+      "name": "Withered Wasteland",
+      "ref": "Withered Wasteland",
+      "reachableBy": "Starting area — automatic from the beginning of the game",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Professor Tangrowth's starting point",
+          "kind": "npc",
+          "requires": [],
+          "sectionId": "withered-wasteland-arrival"
+        },
+        {
+          "label": "Kanto starters — Bulbasaur, Squirtle, Charmander",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "withered-wasteland-arrival"
+        },
+        {
+          "label": "Pokémon Center (must rebuild)",
+          "kind": "beat",
+          "requires": [
+            "rock-smash"
+          ],
+          "sectionId": "withered-wasteland-restoration"
+        }
+      ]
+    },
+    {
+      "id": "rocky-ridges",
+      "name": "Rocky Ridges",
+      "ref": "Rocky Ridges",
+      "reachableBy": "Unlocked after reaching Environment Level 3 in Withered Wasteland",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Chef Dente — rescue quest",
+          "kind": "npc",
+          "requires": [
+            "rock-smash",
+            "cut"
+          ],
+          "sectionId": "rocky-ridges-arrival"
+        },
+        {
+          "label": "DJ Rotom — party quest",
+          "kind": "npc",
+          "requires": [
+            "strength"
+          ],
+          "sectionId": "rocky-ridges-the-party"
+        },
+        {
+          "label": "Pokémon Center (must rebuild)",
+          "kind": "beat",
+          "requires": [
+            "rollout"
+          ],
+          "sectionId": "rocky-ridges-the-party"
+        }
+      ]
+    },
+    {
+      "id": "bleak-beach",
+      "name": "Bleak Beach",
+      "ref": "Bleak Beach",
+      "reachableBy": "Unlocked after completing the Rocky Ridges main story and Team Initiation Challenge",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Meowth — hub NPC and quest giver",
+          "kind": "npc",
+          "requires": [],
+          "sectionId": "bleak-beach-arrival"
+        },
+        {
+          "label": "Mosslax — darkness quest",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "bleak-beach-arrival"
+        },
+        {
+          "label": "Peakychu — power restoration",
+          "kind": "npc",
+          "requires": [],
+          "sectionId": "bleak-beach-restoration"
+        },
+        {
+          "label": "Lapras — Surf unlock",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "bleak-beach-restoration"
+        },
+        {
+          "label": "Pokémon Center (must rebuild)",
+          "kind": "beat",
+          "requires": [
+            "surf"
+          ],
+          "sectionId": "bleak-beach-restoration"
+        }
+      ]
+    },
+    {
+      "id": "sparkling-skylands",
+      "name": "Sparkling Skylands",
+      "ref": "Sparkling Skylands",
+      "reachableBy": "Unlocked after completing the Bleak Beach main story and Team Initiation Challenge",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Dragonite — Glide unlock",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "sparkling-skylands-arrival"
+        },
+        {
+          "label": "Tinkmaster — rebuild project lead",
+          "kind": "npc",
+          "requires": [
+            "glide"
+          ],
+          "sectionId": "sparkling-skylands-arrival"
+        },
+        {
+          "label": "The Huge Building — four floors",
+          "kind": "beat",
+          "requires": [
+            "glide",
+            "strength"
+          ],
+          "sectionId": "sparkling-skylands-finale"
+        },
+        {
+          "label": "Pokémon Center (must rebuild)",
+          "kind": "beat",
+          "requires": [
+            "glide"
+          ],
+          "sectionId": "sparkling-skylands-finale"
+        },
+        {
+          "label": "Mewtwo — story culmination, rooftop",
+          "kind": "secret",
+          "requires": [],
+          "sectionId": "sparkling-skylands-finale",
+          "completionistOnly": false
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "withered-wasteland-arrival",
+      "stage": "Withered Wasteland",
+      "title": "First Steps in the Wasteland",
+      "order": 1,
+      "chips": [
+        "Tutorial",
+        "Kanto Starters",
+        "First Abilities"
+      ],
+      "steps": [
+        "Watch the opening scenes — Ditto wakes in the Withered Wasteland, a dried-out Kanto with almost no Pokémon left. Professor Tangrowth greets you and explains the restoration mission. Follow the on-screen prompt to practise <strong>Stockpile</strong> by swallowing the pile of sticks near the starting tree.",
+        "Walk east to the dry riverbank where Squirtle lies unconscious. Use <strong>Water Gun</strong> — the very first ability you copy — to revive the soil around it. Squirtle joins your group; Water Gun is now permanently in your skill wheel.",
+        "Return west and befriend <strong>Bulbasaur</strong> by completing its short request: place a patch of tall grass using <strong>Leafage</strong> near the three brown soil blocks. Bulbasaur joins you; Leafage is unlocked.",
+        "Find <strong>Charmander</strong> sitting by a cold campfire further south. Craft a Campfire using Sturdy Sticks (collected with Headbutt from the nearby tree) and place it adjacent to Charmander. Charmander joins; its flame adds a warmth aura that helps grass spread faster.",
+        "Befriend <strong>Magikarp</strong> in the shallow pond at the map's north edge. Completing its trivial request — splashing water on the bank three times — unlocks <strong>Jump / Splash</strong>, which lets Ditto clear low ledges.",
+        "Build your first home, the <strong>Leaf Den</strong>. Open the build menu (press +), select Structures, and place it on any flat soil tile. This completes Day 1 and advances the story."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Gather materials as you walk",
+          "body": "Use Headbutt and Inhale constantly while exploring. Sturdy Sticks, Leaves, and Leppa Berries respawn daily — keep your bag full to avoid backtracking when crafting recipes unlock.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "withered-wasteland-restoration",
+      "stage": "Withered Wasteland",
+      "title": "Raising the Wasteland",
+      "order": 2,
+      "chips": [
+        "Rock Smash",
+        "Pokémon Center",
+        "Env Level 3"
+      ],
+      "steps": [
+        "Accept the 'Yawn Up a Storm!' request from Professor Tangrowth. Recruit <strong>Slowpoke</strong> by placing a body of water (three Water Gun splashes on adjacent soil tiles creates a small pond) near the eastern clearing. Slowpoke's yawn attracts two additional Pokémon species, boosting the Environment Level.",
+        "Break the boulder blocking the north path by befriending <strong>Hitmonchan</strong> — its request requires you to build a Straw Bed near the rocky outcrop. Complete this to permanently unlock <strong>Rock Smash</strong>.",
+        "Clear the fallen log in the central path by befriending <strong>Scyther</strong>. Its request is to create an area of tall grass three tiles wide nearby. Complete it to unlock <strong>Cut</strong>.",
+        "Recruit <strong>Drilbur</strong> by enriching a soil patch with Water Gun and planting a Leppa Berry — it appears within one in-game day. Its request unlocks <strong>Rototiller</strong>, which is essential for efficient planting going forward.",
+        "Break through the exposed rocks on the east side with Rock Smash to free <strong>Onix</strong>. Onix's presence raises the rocky terrain Environment Level contribution significantly.",
+        "Gather the Pokémon Center materials: ten Sturdy Sticks, eight Leaves, and four Stones (found via Rock Smash on small boulders). Place the Pokémon Center frame when the waypoint appears — it builds overnight.",
+        "Tend habitats each in-game day until the Wasteland reaches <strong>Environment Level 3</strong>. Water plants with Water Gun, scatter Leafage on bare soil, and ensure a warm and a water habitat are both present. The path to Rocky Ridges opens automatically when Level 3 is reached."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Build the Pokémon Center before Level 3",
+          "body": "The Pokémon Center materials are easier to find in the Wasteland before you start visiting Rocky Ridges. Gather them now — the Center must exist (not just be started) before the credits sequence will trigger later.",
+          "completionistOnly": false
+        },
+        {
+          "type": "tip",
+          "title": "Hoothoot needs darkness",
+          "body": "Some species won't appear without the right habitat. Hoothoot, for example, requires a darkened area — place solid structures or large rocks to block sunlight on two adjacent tiles. Building specific habitats will also increase your Environment Level faster than general planting.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "40:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "rocky-ridges-arrival",
+      "stage": "Rocky Ridges",
+      "title": "The Ash-Covered City",
+      "order": 3,
+      "chips": [
+        "Rocky Ridges",
+        "Chef Dente",
+        "Strength"
+      ],
+      "steps": [
+        "Enter Rocky Ridges through the north path from the Wasteland. The region is blanketed in volcanic ash — Water Gun clears ash from soil tiles to make them workable. Begin by clearing the entrance courtyard.",
+        "Follow the waypoint to find <strong>Chef Dente</strong> trapped beneath a collapsed market stall. Use Rock Smash on the three marked boulders blocking the stall, then interact with Dente to free her. She tasks you with restoring the kitchen area.",
+        "Befriend <strong>Machoke</strong> — it is blocking the north road with a large boulder it refuses to move alone. Place a Perch (build menu: Furniture → Perch) adjacent to Machoke to give it a place to rest. After a short wait, Machoke's request triggers; complete it to unlock <strong>Strength</strong>.",
+        "Use Strength to push the large boulder off the road, opening the route to the city's interior. Strength also lets you relocate structural boulders to build protective walls for Pokémon habitats.",
+        "Help Chef Dente gather cooking ingredients: Leppa Berries, Stone Salt (found via Rock Smash on pale grey rocks), and Warm Berries (grow near Charmander's warmth aura if you brought it from the Wasteland, or near Torkoal). Deliver all three to Dente to complete her first request.",
+        "Build a rudimentary cooking area — Cutting Board and Frying Pan — using materials from Rocky Ridges. This raises the region's Environment Level and attracts food-loving Pokémon such as <strong>Scorbunny</strong> and <strong>Ludicolo</strong>."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Bring materials from the Wasteland",
+          "body": "Leppa Berries from the Wasteland are needed early in Rocky Ridges before its own plants grow. Carry at least ten in your bag when you first arrive.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "rocky-ridges-the-party",
+      "stage": "Rocky Ridges",
+      "title": "Time to Party",
+      "order": 4,
+      "chips": [
+        "DJ Rotom",
+        "Rollout",
+        "Team Initiation"
+      ],
+      "steps": [
+        "Locate <strong>DJ Rotom</strong> in the old concert hall — it requires electricity to power its sound system. Recruit <strong>Magmar</strong> by building a lava-effect habitat (place five Stone tiles adjacent to each other and use Charmander's warmth nearby). Magmar's heat generates enough electrical interference for Rotom to activate.",
+        "Accept the 'Time to Party!' request. Gather the party items: Simple Bread recipe (Bread Oven + ingredients), Party Platter, and Party Cooking Pot. The Bread Oven requires Stone blocks — use Rock Smash on the central pillar to obtain them.",
+        "Befriend <strong>Graveler</strong> by clearing the rocky debris in the concert hall's back room with Rock Smash. Graveler's request — to roll freely down the main road — unlocks <strong>Rollout</strong> once complete. In Rollout form, Ditto moves rapidly and smashes through multiple obstacles.",
+        "Set up the party venue: place the Party Cooking Pot in the central square, arrange the Party Platters around it, and use DJ Rotom's turntable item. The party event triggers automatically when the venue is complete — various Pokémon appear, boosting the Environment Level substantially.",
+        "Gather the Pokémon Center materials: Stone blocks, Sturdy Sticks, and Iron Shards (found in Rocky Ridges' deep mine section, accessible with Rollout). Build and complete the Pokémon Center.",
+        "Raise Rocky Ridges to <strong>Environment Level 3</strong>, then complete the <strong>Team Initiation Challenge</strong> (first set of materials delivered to the beach depot at the south edge of Rocky Ridges). The path to Bleak Beach opens when both conditions are met."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Complete the Team Initiation Challenge early",
+          "body": "The Team Initiation Challenge runs across all four regions — eight deliveries total. The Rocky Ridges delivery requires Stone blocks and Bread. Deliver them the moment the depot marker appears rather than waiting until the end of the region.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "40:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "bleak-beach-arrival",
+      "stage": "Bleak Beach",
+      "title": "Arriving in the Dark",
+      "order": 5,
+      "chips": [
+        "Bleak Beach",
+        "Mosslax",
+        "Bricks"
+      ],
+      "steps": [
+        "Enter Bleak Beach. The entire region is shrouded in a supernatural darkness — your character's default vision is limited. <strong>Meowth</strong> greets you on the sand and explains the situation: a large sleeping Pokémon called <strong>Mosslax</strong> is blocking sunlight with its body.",
+        "Collect Bridge Plank materials (found by using Cut on the driftwood piles along the shoreline) to repair the broken pier. The pier is required for Lapras to dock later.",
+        "Craft <strong>Shell Lamps</strong> using the shells scattered along the beach — these are the primary light source until Mosslax is dealt with. Place at least six Shell Lamps along pathways to make the region workable at night.",
+        "Accept Meowth's first request: bake a batch of bricks using the Bread Oven mechanic from Rocky Ridges (the recipe transfers). Baked bricks are the primary building material for Bleak Beach's stronger structures, including the Pokémon Center.",
+        "Follow the waypoint to find <strong>Mosslax</strong> sleeping in the central basin. The marker reveals what Mosslax needs to wake: a specific arrangement of food items placed around its body. Gather the initial ingredients but do not yet complete the arrangement — Peakychu's help is needed first.",
+        "Begin building habitats along the beach's east side. Water-adjacent habitats attract marine Pokémon (including Piplup, whose request unlocks a Surf precursor ability from Lapras). Start with three water tiles and a Utility Pole structure."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Dark vision makes exploration slow",
+          "body": "Do not rush through Bleak Beach's darkness. Equip Shell Lamps around your building area before attempting Mosslax or the Pokémon Center — you will miss materials in the dark otherwise.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "bleak-beach-restoration",
+      "stage": "Bleak Beach",
+      "title": "Light Returns",
+      "order": 6,
+      "chips": [
+        "Peakychu",
+        "Surf",
+        "Pokémon Center"
+      ],
+      "steps": [
+        "Find <strong>Peakychu</strong> sheltering under the overturned boat at the beach's north end. Its request is to restore electricity to the region's Utility Poles — place three Utility Poles in a connected line and interact with Peakychu to trigger the sequence. The poles light up and Peakychu joins you.",
+        "With Peakychu's electricity, complete the food arrangement around Mosslax. The arrangement requires five specific items placed on coloured tiles — the Party Cooking Pot from Rocky Ridges counts as one item. Place everything as marked and interact with Mosslax. A cutscene plays: Mosslax stirs, stretches, and the darkness lifts.",
+        "Build the pier extension with Bridge Planks to allow <strong>Lapras</strong> to dock. Lapras arrives automatically once the pier is complete — befriend it by placing a deep-water habitat (four adjacent water tiles). Completing Lapras's request unlocks <strong>Surf</strong>, allowing Ditto to swim open water.",
+        "Gather Pokémon Center materials: Baked Bricks, Harbor Streetlights (craft from Utility Pole parts and Glass), and Shell Lamps (four). The center is larger than the Wasteland version — it takes two in-game days to complete once started.",
+        "Complete the 'Brighten Things Up' request by raising the Environment Level to 3. Light-based habitats (Shell Lamps, open water, flowering plants) contribute the most. With Surf, you can now reach the offshore sand bar to gather Coral and Sea Grass for additional habitat types.",
+        "Raise Bleak Beach to <strong>Environment Level 3</strong> and complete the second set of <strong>Team Initiation Challenge</strong> deliveries (materials: Baked Bricks and Sea Grass, delivered to the Bleak Beach depot). The path to Sparkling Skylands opens when both are done."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Surf reaches the offshore sandbar",
+          "body": "Once Surf is unlocked, swim to the sandbar east of the pier immediately. It contains three unique recipes — including the Mushroom Lamp — and a Pokémon (Raikou) that gives a large Environment Level boost.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "sparkling-skylands-arrival",
+      "stage": "Sparkling Skylands",
+      "title": "High Above Kanto",
+      "order": 7,
+      "chips": [
+        "Sparkling Skylands",
+        "Glide",
+        "Tinkmaster"
+      ],
+      "steps": [
+        "Enter Sparkling Skylands. The region consists of raised platforms and floating islands connected by narrow rope bridges — movement without Glide is very limited. The starting platform has a clear view of the main landmark: a massive half-collapsed skyscraper.",
+        "Befriend <strong>Rookidee</strong> on the first platform by placing a roosting habitat (two raised perches placed on stone tile platforms). Rookidee's request is simple; completing it introduces the flying habitat type.",
+        "Locate <strong>Dragonite</strong> on the large central cloud platform. Dragonite is the largest Pokémon you've befriended — its request requires placing a Canoe (materials: three Wood Planks plus one Iron Ingot) nearby as a toy. Complete the request to unlock <strong>Glide</strong>: Ditto can now double-jump and coast across gaps.",
+        "With Glide, cross to the skyscraper's base platform and meet <strong>Tinkmaster</strong> — a Conkeldurr with an engineer's cap who leads the rebuild project. Accept the 'Rebuild the Huge Building!' request. Tinkmaster provides the blueprint and lists the floor-by-floor materials.",
+        "Gather Floor 1 materials: Pokemetal (harvested by Rock Smash on the skyscraper's exposed girders), Iron Ingots (smelt Iron Shards found on the ash-covered platforms using a Campfire), and Glass (combine Shiny Stones — found by Rollout through the glass debris — with heat from Torkoal or Charmander).",
+        "Build Floor 1 by placing Pokemetal frames per the blueprint overlay, then interacting with Tinkmaster to lock them in. This is the most material-intensive floor; subsequent floors reuse earlier recipes."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Stock up on Iron Shards before Floor 2",
+          "body": "Iron Ingots are needed in bulk from Floor 2 onwards. Use Rollout on the metal debris piles in the skyscraper's lower levels to gather Iron Shards in quantity now — do not wait until the blueprint calls for them.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "sparkling-skylands-finale",
+      "stage": "Sparkling Skylands",
+      "title": "To the Rooftop",
+      "order": 8,
+      "chips": [
+        "Skyscraper",
+        "Mewtwo",
+        "End Credits"
+      ],
+      "steps": [
+        "Complete the skyscraper's four floors. Floor 2 adds Lift Platforms (Pokemetal + Iron Ingots); Floor 3 requires the <strong>Fighting Dojo</strong> side-room — place a Perch and a Training Bag near the third-floor landing to attract and befriend <strong>Conkeldurr</strong>, whose help reduces material cost. Floor 4 requires <strong>Gardevoir</strong>'s assistance: find Gardevoir on the eastern island by placing a Duckweed habitat (shallow water with aquatic grass). Gardevoir joins, contributing its psychic construction ability that places Pokemetal frames remotely.",
+        "Complete the <strong>Sparkling Skylands Pokémon Center</strong>. Materials: Pokemetal, Copper Ingots (Rock Smash on copper-coloured boulders near the skyscraper base), and Glass. Once built, all four Pokémon Centers are operational.",
+        "Raise Sparkling Skylands to <strong>Environment Level 3</strong>. Floating garden habitats (Water Gun on cloud tiles creates mist-gardens that attract high-altitude species) contribute heavily here. Level 3 triggers Tinkmaster's congratulations and unlocks the rooftop.",
+        "Deliver the final two sets of <strong>Team Initiation Challenge</strong> materials to the rooftop depot: Copper Ingots and Paper (crafted from Duckweed reeds). With all eight deliveries complete across all four regions, the challenge concludes.",
+        "<span class='spoiler'>Climb to the rooftop. Mewtwo is waiting, silently watching the restored Kanto skyline. This is not a battle — Mewtwo observes Ditto's restored world in a long wordless cutscene, then extends a paw. Accept to invite Mewtwo to live in the Wasteland. Mewtwo departs; the rocket structure hidden inside the skyscraper activates.</span>",
+        "<span class='spoiler'>The rocket launches. In space, a trainer drifting in a capsule stirs — it is implied this is Ditto's original trainer, searching for it across the stars. The credits roll as Ditto and the restored Pokémon of Kanto watch from the rooftop.</span>",
+        "After the credits, the save resumes with all regions accessible and <strong>Magnet Rise</strong> (Magnemite) now available — the final ability, which makes building on high platforms significantly easier. All 300 Pokémon can now be recruited and the Environment Level can be raised to 5 in each region."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Raise all four regions to Level 5 for 100%",
+          "body": "Reaching Level 5 in all four regions is required for the Platinum Trophy / 100% completion marker. Do this after the credits — the post-game is entirely peaceful. Magnet Rise makes the building grind in Sparkling Skylands significantly easier.",
+          "completionistOnly": true
+        },
+        {
+          "type": "tip",
+          "title": "Mewtwo can be invited after credits",
+          "body": "If you skipped Mewtwo's invite during the credits sequence, return to the Sparkling Skylands rooftop in the post-game. Mewtwo reappears once all four Environment Levels are at 4 or above.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "9gojb6ewyRU",
+        "creator": "Shirrako",
+        "title": "POKEMON POKOPIA Gameplay Walkthrough FULL GAME (4K 60FPS) No Commentary",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      }
+    }
+  ]
+}

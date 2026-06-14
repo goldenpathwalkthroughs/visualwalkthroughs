@@ -1,0 +1,1401 @@
+{
+  "franchiseSlug": "zelda",
+  "title": "The Legend of Zelda: Twilight Princess HD",
+  "slug": "twilight-princess-hd",
+  "year": "2016",
+  "platforms": ["Wii U"],
+  "status": "published",
+  "lede": "Descend from the sunlit fields of Ordon into a Hyrule swallowed by twilight — a complete golden-path and 100% guide for the HD remaster on Wii U, covering all 45 Heart Pieces, 24 Golden Bugs, and 60 Poe Souls.",
+  "genre": "action-adventure",
+  "cover": "/assets/covers/twilight-princess-hd.webp",
+  "theme": {
+    "bodyClass": "tp-theme",
+    "ink": "#08080d",
+    "ink2": "#0e0e18",
+    "panel": "#121220",
+    "panel2": "#16162a",
+    "accent": "#c8a44a",
+    "accentSoft": "rgba(200,164,74,.16)",
+    "gold": "#c8a44a",
+    "signal": "#8b1a1a",
+    "line": "rgba(200,164,74,.12)",
+    "muted": "#8888aa",
+    "cardGradient": "linear-gradient(160deg,#2a1808,#0e0a18 60%,#05050f)"
+  },
+  "coverGradient": "linear-gradient(160deg,#2a1808,#0e0a18 60%,#05050f)",
+
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "prologue-ordon-faron",
+      "dungeon-1-forest-temple",
+      "eldin-kakariko-death-mountain",
+      "dungeon-2-goron-mines",
+      "lanayru-zoras-domain",
+      "dungeon-3-lakebed-temple",
+      "midna-fall-sacred-grove",
+      "dungeon-4-arbiters-grounds",
+      "dungeon-5-snowpeak-ruins",
+      "dungeon-6-temple-of-time",
+      "dungeon-7-city-in-the-sky",
+      "palace-of-twilight-and-hyrule-castle"
+    ],
+    "criticalPath": [
+      "prologue-ordon-faron",
+      "dungeon-1-forest-temple",
+      "eldin-kakariko-death-mountain",
+      "dungeon-2-goron-mines",
+      "lanayru-zoras-domain",
+      "dungeon-3-lakebed-temple",
+      "midna-fall-sacred-grove",
+      "dungeon-4-arbiters-grounds",
+      "dungeon-5-snowpeak-ruins",
+      "dungeon-6-temple-of-time",
+      "dungeon-7-city-in-the-sky",
+      "palace-of-twilight-and-hyrule-castle"
+    ],
+    "anyOrderGroups": []
+  },
+
+  "items": [
+    { "id": "wooden-sword",    "name": "Wooden Sword",      "type": "item", "class": "progression", "acquiredAtSectionId": "prologue-ordon-faron" },
+    { "id": "slingshot",       "name": "Slingshot",         "type": "item", "class": "progression", "acquiredAtSectionId": "prologue-ordon-faron" },
+    { "id": "lantern",         "name": "Lantern",           "type": "item", "class": "progression", "acquiredAtSectionId": "prologue-ordon-faron" },
+    { "id": "heros-clothes",   "name": "Hero's Clothes",    "type": "item", "class": "progression", "acquiredAtSectionId": "prologue-ordon-faron" },
+    { "id": "gale-boomerang",  "name": "Gale Boomerang",    "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-1-forest-temple" },
+    { "id": "iron-boots",      "name": "Iron Boots",        "type": "item", "class": "progression", "acquiredAtSectionId": "eldin-kakariko-death-mountain" },
+    { "id": "hylian-shield",   "name": "Hylian Shield",     "type": "item", "class": "optional",    "acquiredAtSectionId": "eldin-kakariko-death-mountain" },
+    { "id": "heros-bow",       "name": "Hero's Bow",        "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-2-goron-mines" },
+    { "id": "zora-armor",      "name": "Zora Armor",        "type": "item", "class": "progression", "acquiredAtSectionId": "lanayru-zoras-domain" },
+    { "id": "water-bombs",     "name": "Water Bombs",       "type": "item", "class": "progression", "acquiredAtSectionId": "lanayru-zoras-domain" },
+    { "id": "clawshot",        "name": "Clawshot",          "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-3-lakebed-temple" },
+    { "id": "master-sword",    "name": "Master Sword",      "type": "item", "class": "progression", "acquiredAtSectionId": "midna-fall-sacred-grove" },
+    { "id": "spinner",         "name": "Spinner",           "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-4-arbiters-grounds" },
+    { "id": "ball-and-chain",  "name": "Ball and Chain",    "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-5-snowpeak-ruins" },
+    { "id": "dominion-rod",    "name": "Dominion Rod",      "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-6-temple-of-time" },
+    { "id": "double-clawshots","name": "Double Clawshots",  "type": "item", "class": "progression", "acquiredAtSectionId": "dungeon-7-city-in-the-sky" },
+    { "id": "light-arrows",    "name": "Light Arrows",      "type": "item", "class": "progression", "acquiredAtSectionId": "palace-of-twilight-and-hyrule-castle" }
+  ],
+
+  "locations": [
+    {
+      "id": "ordon-village",
+      "name": "Ordon Village",
+      "ref": "Ordon",
+      "reachableBy": "Starting area — Link's home village in Ordona Province, south of Hyrule.",
+      "isHub": true,
+      "contains": [
+        { "label": "Uli's cradle — fetch from the monkey and return to Uli beside the spring", "kind": "beat", "sectionId": "prologue-ordon-faron" },
+        { "label": "Slingshot — purchase from Sera's Sundries shop after returning the cat", "kind": "beat", "sectionId": "prologue-ordon-faron" },
+        { "label": "Wooden Sword — from Link's house chest after obtaining Slingshot", "kind": "beat", "sectionId": "prologue-ordon-faron" }
+      ]
+    },
+    {
+      "id": "faron-woods",
+      "name": "Faron Woods",
+      "ref": "Faron Woods",
+      "reachableBy": "North of Ordon Village via the bridge. Enter as wolf during Twilight phase.",
+      "isHub": false,
+      "contains": [
+        { "label": "16 Tears of Light — collect all to restore Faron Light Spirit", "kind": "beat", "sectionId": "prologue-ordon-faron" },
+        { "label": "Lantern — purchase from Coro the gate-keeper at the south entrance to the woods", "kind": "beat", "sectionId": "prologue-ordon-faron" }
+      ]
+    },
+    {
+      "id": "forest-temple",
+      "name": "Forest Temple",
+      "ref": "Forest Temple",
+      "reachableBy": "Enter from the south end of Faron Woods after burning the cobweb with the Lantern.",
+      "isHub": false,
+      "contains": [
+        { "label": "Gale Boomerang — chest behind Ook (monkey midboss)", "kind": "beat", "sectionId": "dungeon-1-forest-temple" },
+        { "label": "Diababa boss fight — northern boss room after collecting all four small keys", "kind": "beat", "sectionId": "dungeon-1-forest-temple" }
+      ]
+    },
+    {
+      "id": "kakariko-village",
+      "name": "Kakariko Village",
+      "ref": "Kakariko",
+      "reachableBy": "North of Hyrule Field, east of Death Mountain. Warp point unlocked after wolf phase here.",
+      "isHub": true,
+      "contains": [
+        { "label": "Mayor Bo — sumo match in his house rewards Iron Boots", "kind": "beat", "sectionId": "eldin-kakariko-death-mountain" },
+        { "label": "Hylian Shield — purchase from Malo Mart for 200 rupees (50 after shop takeover)", "kind": "shop", "sectionId": "eldin-kakariko-death-mountain" },
+        { "label": "Zora Armor — spirit of Queen Rutela appears in graveyard after thawing Zora's Domain", "kind": "beat", "sectionId": "lanayru-zoras-domain" },
+        { "label": "Ashei — found near Death Mountain entrance, gives Ashei's Sketch", "kind": "npc", "sectionId": "dungeon-5-snowpeak-ruins" },
+        { "label": "Prince Ralis — in graveyard; show Ashei's Sketch to receive Coral Earring", "kind": "npc", "sectionId": "dungeon-5-snowpeak-ruins" }
+      ]
+    },
+    {
+      "id": "goron-mines",
+      "name": "Goron Mines",
+      "ref": "Goron Mines",
+      "reachableBy": "Reached via Death Mountain — sumo-wrestle the blocking Goron to clear the path.",
+      "isHub": false,
+      "contains": [
+        { "label": "Hero's Bow — chest after defeating Dangoro (midboss) in the central magnet room", "kind": "beat", "sectionId": "dungeon-2-goron-mines" },
+        { "label": "Fyrus boss fight — boss room at the top of the mines", "kind": "beat", "sectionId": "dungeon-2-goron-mines" }
+      ]
+    },
+    {
+      "id": "zoras-domain",
+      "name": "Zora's Domain",
+      "ref": "Zora's Domain",
+      "reachableBy": "North of Lake Hylia and Hyrule Field — frozen solid until you pour hot spring water.",
+      "isHub": false,
+      "contains": [
+        { "label": "Thaw the domain — carry hot spring water in a pot from the vents near Kakariko", "kind": "beat", "sectionId": "lanayru-zoras-domain" },
+        { "label": "Reekfish — catch with Coral Earring bait on the fishing rod near the waterfall", "kind": "beat", "sectionId": "dungeon-5-snowpeak-ruins" }
+      ]
+    },
+    {
+      "id": "lake-hylia",
+      "name": "Lake Hylia",
+      "ref": "Lake Hylia",
+      "reachableBy": "South of Hyrule Field. Drain restored after Lanayru Tears collected. Fyer's cannon here.",
+      "isHub": true,
+      "contains": [
+        { "label": "Lakebed Temple entrance — dive with Zora Armor and Water Bombs to clear the entrance boulder", "kind": "beat", "sectionId": "dungeon-3-lakebed-temple", "requires": ["zora-armor", "water-bombs"] },
+        { "label": "Auru's Memo — Auru atop the ruined tower south of the lake; present to Fyer for cannon access", "kind": "npc", "sectionId": "dungeon-4-arbiters-grounds" },
+        { "label": "City in the Sky launch — Fyer's cannon, after activating owl statues with recharged Dominion Rod", "kind": "beat", "sectionId": "dungeon-7-city-in-the-sky", "requires": ["dominion-rod"] }
+      ]
+    },
+    {
+      "id": "lakebed-temple",
+      "name": "Lakebed Temple",
+      "ref": "Lakebed Temple",
+      "reachableBy": "Submerged in Lake Hylia — dive with Zora Armor and bomb the underwater boulder sealing the entrance.",
+      "isHub": false,
+      "contains": [
+        { "label": "Clawshot — chest after defeating Deku Toad (midboss) in the giant water chamber", "kind": "beat", "sectionId": "dungeon-3-lakebed-temple" },
+        { "label": "Morpheel boss fight — deepest flooded chamber", "kind": "beat", "sectionId": "dungeon-3-lakebed-temple" }
+      ]
+    },
+    {
+      "id": "sacred-grove",
+      "name": "Sacred Grove",
+      "ref": "Sacred Grove",
+      "reachableBy": "Hidden in Faron Woods — follow Skull Kid's horn into the woods at night.",
+      "isHub": false,
+      "contains": [
+        { "label": "Master Sword — pedestal in the circular clearing after the Skull Kid chase", "kind": "beat", "sectionId": "midna-fall-sacred-grove" },
+        { "label": "Sacred Grove revisit — push the two stone guardians to match shadow silhouettes to open Temple of Time", "kind": "beat", "sectionId": "dungeon-6-temple-of-time" }
+      ]
+    },
+    {
+      "id": "gerudo-desert",
+      "name": "Gerudo Desert",
+      "ref": "Gerudo Desert",
+      "reachableBy": "Show Auru's Memo to Fyer at Lake Hylia — he launches you by cannon to the desert.",
+      "isHub": false,
+      "contains": [
+        { "label": "Bulblin encampment — cross on Epona, defeat the archer camps along the road", "kind": "beat", "sectionId": "dungeon-4-arbiters-grounds" },
+        { "label": "Arbiter's Grounds entrance — far end of the desert after clearing the camps", "kind": "beat", "sectionId": "dungeon-4-arbiters-grounds" }
+      ]
+    },
+    {
+      "id": "arbiters-grounds",
+      "name": "Arbiter's Grounds",
+      "ref": "Arbiter's Grounds",
+      "reachableBy": "Far end of Gerudo Desert, reached via Fyer's cannon from Lake Hylia.",
+      "isHub": false,
+      "contains": [
+        { "label": "Spinner — chest after defeating Death Sword (midboss)", "kind": "beat", "sectionId": "dungeon-4-arbiters-grounds" },
+        { "label": "Stallord boss fight — the Spinner track arena in the deepest chamber", "kind": "beat", "sectionId": "dungeon-4-arbiters-grounds" }
+      ]
+    },
+    {
+      "id": "snowpeak-ruins",
+      "name": "Snowpeak Ruins",
+      "ref": "Snowpeak Ruins",
+      "reachableBy": "Follow wolf Reekfish scent trail up Snowpeak Mountain — Yeto greets you at the mansion gates.",
+      "isHub": false,
+      "contains": [
+        { "label": "Ball and Chain — chest after defeating Darkhammer (midboss)", "kind": "beat", "sectionId": "dungeon-5-snowpeak-ruins" },
+        { "label": "Blizzeta boss fight — bedroom at the end of the mansion", "kind": "beat", "sectionId": "dungeon-5-snowpeak-ruins" }
+      ]
+    },
+    {
+      "id": "temple-of-time",
+      "name": "Temple of Time",
+      "ref": "Temple of Time",
+      "reachableBy": "Enter from Sacred Grove after solving the guardian statue puzzle with the Dominion Rod.",
+      "isHub": false,
+      "contains": [
+        { "label": "Dominion Rod — chest in the upper floors of the time-frozen sanctuary", "kind": "beat", "sectionId": "dungeon-6-temple-of-time" },
+        { "label": "Armogohma boss fight — roof chamber above the giant time-shifted statue", "kind": "beat", "sectionId": "dungeon-6-temple-of-time" }
+      ]
+    },
+    {
+      "id": "city-in-the-sky",
+      "name": "City in the Sky",
+      "ref": "City in the Sky",
+      "reachableBy": "Launched by Fyer's cannon at Lake Hylia after activating the ancient owl statues with a recharged Dominion Rod.",
+      "isHub": false,
+      "contains": [
+        { "label": "Double Clawshots — chest after defeating Aeralfos (midboss)", "kind": "beat", "sectionId": "dungeon-7-city-in-the-sky" },
+        { "label": "Argorok boss fight — roof of the floating city", "kind": "beat", "sectionId": "dungeon-7-city-in-the-sky" }
+      ]
+    },
+    {
+      "id": "palace-of-twilight",
+      "name": "Palace of Twilight",
+      "ref": "Palace of Twilight",
+      "reachableBy": "Enter via the restored Mirror of Twilight at Arbiter's Grounds — all four Mirror Shards required.",
+      "isHub": false,
+      "contains": [
+        { "label": "Two Sols — collect both energy spheres to power up the Master Sword with light", "kind": "beat", "sectionId": "palace-of-twilight-and-hyrule-castle" },
+        { "label": "Zant boss fight — throne room at the palace heart", "kind": "beat", "sectionId": "palace-of-twilight-and-hyrule-castle" }
+      ]
+    },
+    {
+      "id": "hyrule-castle-final",
+      "name": "Hyrule Castle",
+      "ref": "Hyrule Castle",
+      "reachableBy": "March on the castle after Zant's defeat — the Twilight lifting reveals the route through Hyrule Field.",
+      "isHub": false,
+      "contains": [
+        { "label": "Puppet Zelda encounter — Ganondorf has possessed Zelda; deflect Light Arrows back", "kind": "beat", "sectionId": "palace-of-twilight-and-hyrule-castle" },
+        { "label": "Ganondorf multi-phase finale — Beast Ganon, horseback fight, final sword duel", "kind": "beat", "sectionId": "palace-of-twilight-and-hyrule-castle" }
+      ]
+    }
+  ],
+
+  "bossFights": [
+    {
+      "id": "diababa",
+      "name": "Diababa",
+      "sectionId": "dungeon-1-forest-temple",
+      "locationRef": "Forest Temple",
+      "prep": {
+        "recommendedItems": ["gale-boomerang", "lantern"],
+        "healthAdvice": "Enter with at least four hearts — Diababa's tentacle bites deal one full heart each. Stock a Red Potion from the shop near Kakariko if needed.",
+        "topUpBefore": "Break all pots in the corridor before the boss door for red and green fairies."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Twin Tentacles",
+          "tells": "Two large plant tentacles rise from the murk and rear back before lunging.",
+          "counter": "Aim the Gale Boomerang at the Bomblings (bomb-carrying insects) that Ook releases from above, then curve the boomerang's path so it picks up a Bombling and delivers it to a tentacle's open mouth.",
+          "damageWindow": "After the tentacle is stunned by the explosion, sword-strike the exposed head rapidly until it submerges."
+        },
+        {
+          "name": "Phase 2 — Central Head",
+          "tells": "A giant mouth rises from the centre of the pit after both tentacles are destroyed; it inhales deeply before lunging across the arena.",
+          "counter": "Repeat the Bombling trick — grab one with the Gale Boomerang and deliver it directly into the central mouth while it is open and stationary.",
+          "damageWindow": "Once stunned by the explosion, Z-target the eye and unleash sword combos. Three rounds defeats her."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Pots in the boss corridor respawn on re-entry — exit via the door that appeared, collect fairies from pots, re-enter.",
+        "easierTactic": "Stand near the arena edge opposite a tentacle. Draw a Bombling with the boomerang and let it fly straight — no curve needed from this angle.",
+        "retreatOption": "You can leave via the boss door to collect dropped pickups but cannot re-enter until you restart the fight from the last save."
+      },
+      "reward": "Heart Container #1 and Fused Shadow fragment #1 — Midna explains their significance."
+    },
+    {
+      "id": "fyrus",
+      "name": "Fyrus",
+      "sectionId": "dungeon-2-goron-mines",
+      "locationRef": "Goron Mines",
+      "prep": {
+        "recommendedItems": ["heros-bow", "iron-boots"],
+        "healthAdvice": "Come in with six or more hearts. Fyrus's fire breath deals two hearts per second of contact. Bring one Red Potion.",
+        "topUpBefore": "The antechamber before the boss door has a Goron Elder who restores your health for free."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Crystal Shot",
+          "tells": "The crystal on Fyrus's forehead pulses red. He stumbles in your direction trying to trample you.",
+          "counter": "Fire a Hero's Bow arrow into the glowing crystal on his forehead. He collapses to one knee.",
+          "damageWindow": "Quickly equip the Iron Boots, run to one of the chains trailing from his ankles, grab it, and back away (Iron Boots create the mass to pull). Fyrus tips forward and falls. Sword-attack the crystal while it glows on the ground."
+        },
+        {
+          "name": "Phase 2 — Fire Wall",
+          "tells": "Fyrus stands, the crystal re-seals, and he begins spinning slowly with arms outstretched, creating a ring of fire.",
+          "counter": "Equip Iron Boots to resist the spin's knockback, wait for him to slow, arrow the crystal again.",
+          "damageWindow": "Repeat chain pull and ground crystal attack. Three full repetitions end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Pots on the arena perimeter contain hearts. Hug the wall when not attacking.",
+        "easierTactic": "Stay at mid-range — too close risks the trample, too far risks the fire breath arcs. Arrow the crystal from roughly three Epona-lengths away.",
+        "retreatOption": "None — the boss arena seals on entry. Dying returns you to the last save point."
+      },
+      "reward": "Heart Container #2 and Fused Shadow fragment #2."
+    },
+    {
+      "id": "morpheel",
+      "name": "Morpheel",
+      "sectionId": "dungeon-3-lakebed-temple",
+      "locationRef": "Lakebed Temple",
+      "prep": {
+        "recommendedItems": ["clawshot", "zora-armor", "iron-boots"],
+        "healthAdvice": "Eight or more hearts recommended — this is the first fight conducted entirely underwater. Morpheel's tail whip costs two hearts.",
+        "topUpBefore": "Fairies are hidden in pots on the Lakebed Temple's final floor before the boss door."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Eel Pit",
+          "tells": "Morpheel's body coils across the chamber floor. The exposed single eye at the base of her mass drifts slowly.",
+          "counter": "Equip Iron Boots to sink to the floor. Lock on to Morpheel's eye and fire the Clawshot — Link is pulled through the water directly to it.",
+          "damageWindow": "Sword-slash the eye rapidly while attached. She thrashes and releases you — repeat three times."
+        },
+        {
+          "name": "Phase 2 — Open Water",
+          "tells": "Morpheel extends her full serpentine form and cruises around the chamber. She will open her mouth wide before charging.",
+          "counter": "Remove Iron Boots to swim freely. When Morpheel loops past, Clawshot onto her neck (the central eye). She pulls Link along; aim a sword strike at the eye while riding.",
+          "damageWindow": "Multiple hits while latched. She shakes Link off — repeat four or five loops to finish."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Clams on the chamber floor drop hearts when opened with the Clawshot while wearing Iron Boots.",
+        "easierTactic": "In Phase 2, Clawshot from below — aim upward at her underside as she passes overhead. It is an easier angle than latching from the side."
+      },
+      "reward": "Heart Container #3 and Fused Shadow fragment #3 — all three Fused Shadows collected."
+    },
+    {
+      "id": "stallord",
+      "name": "Stallord",
+      "sectionId": "dungeon-4-arbiters-grounds",
+      "locationRef": "Arbiter's Grounds",
+      "prep": {
+        "recommendedItems": ["spinner", "master-sword"],
+        "healthAdvice": "Ten or more hearts strongly advised — Stallord's spine minions deal one heart each and the pillar obstacles in Phase 2 can chain-damage you.",
+        "topUpBefore": "Pots in the Arbiter's Grounds corridor before the arena door contain hearts. Stock up on recovery items in Kakariko before tackling the desert."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Spine Field",
+          "tells": "Stallord's skeletal ribcage rises from the sand as smaller bone soldiers advance. The glowing gem at the base of the central pillar pulses.",
+          "counter": "Ride the Spinner on the rail that circles the outside of the arena. Slam into the emerging spine soldiers to destroy them, then drive the Spinner into the glowing base of the central pillar.",
+          "damageWindow": "Each successful pillar hit shatters one layer of the gem casing. Three hits shatter it entirely and the first phase ends."
+        },
+        {
+          "name": "Phase 2 — Skull Flight",
+          "tells": "Stallord's skull detaches and launches into the air, breathing fire and swooping across the arena. Rotating stone pillars rise from the floor.",
+          "counter": "Stay on the Spinner rail to weave between the pillars. When Stallord's skull hovers low above the rail, launch off a ramp to collide with it mid-air.",
+          "damageWindow": "Each aerial collision deals damage. Avoid the fire breath by keeping to the opposite rail segment. Four to five solid hits end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Sand pots around the arena perimeter contain hearts — hit them with the Spinner while passing.",
+        "easierTactic": "In Phase 2, use both rails — switch when fire pillars block one side. The skull follows a predictable oval loop; position yourself one ramp ahead of its current arc.",
+        "retreatOption": "Dying from the arena returns you to the last save; there is no mid-boss checkpoint."
+      },
+      "reward": "Heart Container #4 and Mirror Shard #1 — the Mirror of Twilight's history is revealed in a cutscene."
+    },
+    {
+      "id": "blizzeta",
+      "name": "Blizzeta (Yeta)",
+      "sectionId": "dungeon-5-snowpeak-ruins",
+      "locationRef": "Snowpeak Ruins",
+      "prep": {
+        "recommendedItems": ["ball-and-chain", "heros-bow"],
+        "healthAdvice": "Twelve or more hearts — Blizzeta's ice-block crash deals two hearts and her final phase shards can hit repeatedly. Bring a Rare Chu Jelly if available.",
+        "topUpBefore": "Speak with Yeto in the dining room before the boss door — the Superb Soup he offers restores eight hearts."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Ice Block Descent",
+          "tells": "Yeta, encased in a giant ice block, floats to the ceiling then positions directly above Link before dropping.",
+          "counter": "Watch her shadow on the floor — roll away a moment before impact. The Mirror Shard embedded in the ice glows briefly after the crash.",
+          "damageWindow": "Throw the Ball and Chain at the Mirror Shard's reflection in the ice immediately after the crash while Yeta is momentarily dazed. Multiple hits needed."
+        },
+        {
+          "name": "Phase 2 — Ice Ball Orbit",
+          "tells": "The block shatters and Yeta reforms around a smaller ice sphere. Six spiked ice shards orbit the sphere and she pursues Link across the arena.",
+          "counter": "Dodge the orbit and wait for a gap in the revolving shards. Throw the Ball and Chain into the orbit — it will shatter a shard on impact.",
+          "damageWindow": "Once enough shards are cleared the Mirror Shard is exposed. Throw directly at it to land a hit. She rebuilds her orbit — repeat."
+        },
+        {
+          "name": "Phase 3 — Frenzied Pursuit",
+          "tells": "Yeta's eyes glow red and she charges at high speed. A ring of ice spikes now revolves much faster.",
+          "counter": "Circle-strafe continuously to avoid the charge. Target the glowing Mirror Shard embedded in her core when the shard gaps align.",
+          "damageWindow": "One direct Ball and Chain hit to the core ends the fight. Yeto bursts in to comfort her."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Ice pots around the arena contain hearts. Speak with Yeto (dining room) between attempts — Superb Soup restores hearts.",
+        "easierTactic": "In Phase 2, throw the Ball and Chain at the floor in front of Yeta rather than directly at her — it bounces up into the orbit and clears a shard safely."
+      },
+      "reward": "Heart Container #5 and Mirror Shard #2."
+    },
+    {
+      "id": "armogohma",
+      "name": "Armogohma",
+      "sectionId": "dungeon-6-temple-of-time",
+      "locationRef": "Temple of Time",
+      "prep": {
+        "recommendedItems": ["heros-bow", "dominion-rod"],
+        "healthAdvice": "Ten or more hearts. Armogohma's laser eye attack deals two hearts — the small spiderlings each deal a quarter heart on contact.",
+        "topUpBefore": "Pots on the Temple of Time's final floor before the boss door contain fairies."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Eye on the Ceiling",
+          "tells": "Armogohma clings to the ceiling, her giant eye tracking Link and charging a red laser beam.",
+          "counter": "The moment the eye opens fully to fire, aim the Hero's Bow and shoot directly into it. She crashes to the floor.",
+          "damageWindow": "Use the Dominion Rod on the stone statue in the room — it raises its hammer. Guide the statue to smash the dazed spider's eye on the floor with the hammer. Repeat."
+        },
+        {
+          "name": "Phase 2 — Spiderling Swarm",
+          "tells": "Armogohma splits into dozens of tiny spiderlings. One spiderling is slightly larger and darker — that is the real Armogohma.",
+          "counter": "Fire an arrow at the darkened spiderling to identify and stun it. Do not waste time on fakes.",
+          "damageWindow": "Sword strikes to the stunned true spiderling. Two or three hits end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Spiderlings drop hearts when defeated — clearing fakes does have some upside.",
+        "easierTactic": "In Phase 1, the statue's hammer range is generous — you don't need to be precise. Activate the statue and let it slowly walk toward Armogohma's crash point."
+      },
+      "reward": "Heart Container #6 and Mirror Shard #3."
+    },
+    {
+      "id": "argorok",
+      "name": "Argorok",
+      "sectionId": "dungeon-7-city-in-the-sky",
+      "locationRef": "City in the Sky",
+      "prep": {
+        "recommendedItems": ["double-clawshots", "iron-boots"],
+        "healthAdvice": "Fourteen or more hearts — Argorok's fire breath is a persistent hazard and the arena has no floor. Bring a Fairy in a bottle.",
+        "topUpBefore": "Pots on the City in the Sky's upper platform before the boss door. A fairy is often found in a pot just before the bridge to the boss area."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Armoured Dragon",
+          "tells": "Argorok circles the arena then hovers in place, spreading his wings before diving.",
+          "counter": "Clawshot onto one of the circling Peahats (plant-like propeller creatures). Swing to a second Peahat to gain altitude. When Argorok hovers, Clawshot to the glowing jewel on his tail.",
+          "damageWindow": "Link is dragged along the tail — Iron Boots on to hold, then sword-strike the tail jewel. He breaks free and repeats his circuit. Three tail hits crack the armour."
+        },
+        {
+          "name": "Phase 2 — Fire Breath from Above",
+          "tells": "Argorok rises higher — the Peahats now circle at different heights. He dives with a wide fire breath arc before ascending again.",
+          "counter": "Clawshot from low Peahat to high Peahat to match Argorok's new altitude. When he hovers, the jewel on his back is now exposed — Clawshot directly to his back.",
+          "damageWindow": "Sword-strike his back jewel. He bucks Link off — repeat. Four back hits end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no healing in the arena — bring a Fairy in a bottle as insurance before entering.",
+        "easierTactic": "In Phase 2, Clawshot to the highest Peahat first, hang, then immediately Clawshot to Argorok's back as he crests. Eliminates the need to chain multiple swings under fire breath pressure."
+      },
+      "reward": "Heart Container #7 and Mirror Shard #4 — the Mirror of Twilight is restored."
+    },
+    {
+      "id": "zant",
+      "name": "Zant, Usurper King",
+      "sectionId": "palace-of-twilight-and-hyrule-castle",
+      "locationRef": "Palace of Twilight",
+      "prep": {
+        "recommendedItems": ["gale-boomerang", "clawshot", "ball-and-chain", "heros-bow", "master-sword"],
+        "healthAdvice": "Full health and a minimum of two recovery bottles — Zant's six phases each borrow an earlier boss mechanic and together form the longest fight in the game.",
+        "topUpBefore": "Pots line the Palace of Twilight corridor before the arena. A Great Fairy can be found to the left before entering the final room."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Helmet Spin",
+          "tells": "Zant dons a huge Zant Helmet and hops across platforms in a tiny arena. He charges his spin attack.",
+          "counter": "Block his spin attack with your shield — the reflected force stuns him momentarily.",
+          "damageWindow": "Sword combo during the stun window."
+        },
+        {
+          "name": "Phase 2 — Lakebed Echo",
+          "tells": "Zant stands atop a giant mushroom platform above rising water. He fires a barrage of energy shots.",
+          "counter": "Use the Clawshot on the platforms he stands on to reach his level. Dodge his fire before closing in.",
+          "damageWindow": "Sword strikes when adjacent."
+        },
+        {
+          "name": "Phase 3 — Forest Echo",
+          "tells": "Zant enlarges himself in a Forest Temple styled arena — gigantic versions of his arms slam the floor.",
+          "counter": "Dodge the ground slam. After each slam, use the Gale Boomerang on Zant's head to stun him and flip him prone.",
+          "damageWindow": "Sword attack his head while he is dazed on the ground."
+        },
+        {
+          "name": "Phase 4 — Snowpeak Echo",
+          "tells": "Zant appears in a snow arena and begins throwing spinning spiked balls in a pattern reminiscent of Blizzeta.",
+          "counter": "Use the Ball and Chain to deflect the spikes back at him.",
+          "damageWindow": "Reflected spiked balls deal damage. Follow up with sword strikes when he staggers."
+        },
+        {
+          "name": "Phase 5 — Goron Mines Echo",
+          "tells": "Zant grows to giant scale in a magma arena and fires a pillar of energy from above.",
+          "counter": "Use the Hero's Bow to shoot his face when he pauses between energy columns.",
+          "damageWindow": "Arrow hit staggers him — additional arrows while staggered."
+        },
+        {
+          "name": "Phase 6 — Final Duel",
+          "tells": "Zant fights at full speed across the large courtyard. He dashes in unpredictable arcs between sword swings.",
+          "counter": "Block his strikes with a shield, then counter with a jump attack when he over-extends.",
+          "damageWindow": "Three complete counter-cycles end the fight."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Pots around each phase's arena contain hearts — break them between his attacks.",
+        "easierTactic": "In Phase 6, use the back-slice (lock on, sidestep, press A) — it consistently lands behind Zant and avoids his retaliatory arc.",
+        "retreatOption": "None — the six phases run continuously. Dying returns you to the save before entering the Palace of Twilight."
+      },
+      "reward": "Ganondorf's true identity revealed — the path to Hyrule Castle opens."
+    },
+    {
+      "id": "ganondorf",
+      "name": "Ganondorf — The Final Battle",
+      "sectionId": "palace-of-twilight-and-hyrule-castle",
+      "locationRef": "Hyrule Castle",
+      "prep": {
+        "recommendedItems": ["heros-bow", "light-arrows", "clawshot", "master-sword"],
+        "healthAdvice": "Maximum hearts and two or more Recovery Hearts in bottles — four consecutive phases with no save between them. Use any remaining Great Fairy bottles here.",
+        "topUpBefore": "Pots throughout Hyrule Castle corridors. A Fairy Fountain is accessible partway through the castle."
+      },
+      "phases": [
+        {
+          "name": "Phase 1 — Puppet Zelda",
+          "tells": "Possessed Zelda fires Light Arrows in long arcs. She is airborne and fast.",
+          "counter": "Deflect an incoming Light Arrow back at Zelda by raising your shield at the moment of impact — she falls momentarily.",
+          "damageWindow": "Clawshot Zelda toward you then sword-strike rapidly before she recovers. Three to four cycles free Zelda from Ganondorf's control."
+        },
+        {
+          "name": "Phase 2 — Beast Ganon",
+          "tells": "Ganondorf transforms into the titanic boar beast. He stampedes across the darkened arena and fires blue orbs.",
+          "counter": "Avoid the charge. Midna launches a Fused Shadow attack that staggers him — shoot a Light Arrow into his glowing forehead the moment the stagger begins.",
+          "damageWindow": "Sword strikes to the forehead while he is down. Repeat until the beast collapses."
+        },
+        {
+          "name": "Phase 3 — Horseback Chase",
+          "tells": "Ganondorf on horseback charges across Hyrule Field. Zelda rides alongside Link and passes him Light Arrows.",
+          "counter": "Ride Epona in parallel — steer so Link has a clear angle on Ganondorf. Accept Light Arrows from Zelda and aim carefully; Epona's gait makes timing essential.",
+          "damageWindow": "Each Light Arrow hit is a damage tick. Three to four hits knock him from his horse."
+        },
+        {
+          "name": "Phase 4 — Final Sword Duel",
+          "tells": "Ganondorf stands alone in the field and challenges Link to a one-on-one sword fight. He telegraphs heavy overhead strikes.",
+          "counter": "Shield-bash to interrupt his charge, then counter. Alternatively — back-slice to get behind him cleanly.",
+          "damageWindow": "Persistent sword exchanges — the duel ends when Ganondorf's remaining power is drained. The Triforce of Power fades."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "During Phase 2, the arena edge has pots. During the horseback chase, Zelda occasionally drops recovery items if her Arrow count is full.",
+        "easierTactic": "In Phase 4, use the Mortal Draw (sheathe sword, press A right before Ganondorf's strike lands) — it deals enormous damage and bypasses his guard entirely."
+      },
+      "reward": "Credits roll. Post-credits: save file gains a star to mark 100% completion. All Heart Containers: 20 hearts total."
+    }
+  ],
+
+  "sections": [
+    {
+      "sectionId": "prologue-ordon-faron",
+      "stage": "Prologue",
+      "title": "Ordon Village & Faron Province",
+      "order": 1,
+      "chips": ["Wolf tutorial", "Tears of Light", "Lantern"],
+      "unlocks": ["wooden-sword", "slingshot", "lantern", "heros-clothes"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "Complete Rusl's sword-training lesson on the ranch in the morning — follow the on-screen prompts. After training, herd all the goats into the pen using the <strong>C-stick</strong> on the Wii U GamePad: chase each goat in a wide arc and funnel them through the gate.",
+          "locationRef": "Ordon"
+        },
+        {
+          "text": "Fetch the <strong>cradle</strong> Uli dropped by the water: toss a piece of grass to summon the hawk, target the monkey across the bridge with the hawk to retrieve the cradle, then return it to Uli beside the spring.",
+          "locationRef": "Ordon"
+        },
+        {
+          "text": "Enter Sera's Sundries shop — the cat Sera's been moaning about is fishing at the pond. Catch a fish with your <strong>Fishing Rod</strong> and the cat will take it; Sera opens the shop and sells you the <strong>Slingshot</strong> for 30 rupees. Collect the slingshot.",
+          "locationRef": "Ordon"
+        },
+        {
+          "text": "Climb up to Link's treehouse and open the chest inside to receive the <strong>Wooden Sword</strong>. This unlocks after you have the Slingshot.",
+          "locationRef": "Ordon"
+        },
+        {
+          "text": "Shadow wolves raid Ordon — Link is dragged into the Twilight and transformed into a <strong>wolf</strong>. As a wolf, press <strong>X</strong> to activate Sense View and locate the glowing <em>Tears of Light</em> sources. Collect all <strong>16 Tears of Light</strong> scattered across Faron Province to restore the Light Spirit Ordona.",
+          "locationRef": "Faron Woods"
+        },
+        {
+          "text": "After restoring Ordona, Link receives the <strong>Hero's Clothes</strong> and returns to human form. The fairy Midna joins as a guide. Speak with Coro the gate-keeper in Faron Woods and purchase the <strong>Lantern</strong> from him for 20 rupees — buy an extra bottle of Lantern Oil while you're there.",
+          "locationRef": "Faron Woods"
+        },
+        {
+          "text": "Use the Lantern to burn the large <strong>spider web</strong> blocking the southern path through Faron Woods. Follow the path north to reach the Forest Temple entrance.",
+          "locationRef": "Faron Woods"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Buy extra Lantern Oil from Coro",
+          "body": "Do this <strong>now, before pushing south</strong> — the spider web consumes nearly a full bottle and you won't find more oil until Kakariko Village. One extra bottle from Coro is enough."
+        },
+        {
+          "type": "tip",
+          "title": "Sense View reveals Poe Souls",
+          "body": "As a wolf, hold <strong>X</strong> to activate Sense View. You will spot your first <strong>Poe Soul</strong> near the ruins in Faron Woods — defeat it to begin the 60-soul collection. Press <strong>A</strong> while locked on to bite and finish the glowing figure."
+        },
+        {
+          "type": "upgrade",
+          "title": "Wii U GamePad second screen",
+          "body": "Twilight Princess HD uses the Wii U GamePad's touch screen as a permanent map and quick-item palette. Drag items directly to the D-pad slots for instant equipping without pausing. Open the <strong>Item screen</strong> with <strong>+</strong> to configure your loadout.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Poe Soul #1 — Faron Woods ruins",
+          "note": "In the ruins area just inside Faron Woods. Use wolf Sense View to see it glowing. Defeat and absorb it.",
+          "type": "other",
+          "category": "Poe Souls",
+          "categoryTotalKnown": 60
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "25:40",
+        "startSeconds": 0
+      }
+    },
+
+    {
+      "sectionId": "dungeon-1-forest-temple",
+      "stage": "Dungeon 1",
+      "title": "Forest Temple",
+      "order": 2,
+      "chips": ["Gale Boomerang", "Diababa", "Fused Shadow #1"],
+      "unlocks": ["gale-boomerang"],
+      "gates": ["lantern"],
+      "gatingType": "hard",
+      "steps": [
+        {
+          "text": "Enter the Forest Temple from the northern end of Faron Woods. Follow the monkey that escapes from its cage — it leads you through the correct sequence of rooms. Use the <strong>Lantern</strong> to burn cobwebs that block doorways.",
+          "locationRef": "Forest Temple"
+        },
+        {
+          "text": "Free the caged monkeys as you progress — each freed monkey helps you cross gaps and reach new areas. There are eight monkeys in total; you don't need them all to proceed, but freeing each one makes traversal easier.",
+          "locationRef": "Forest Temple"
+        },
+        {
+          "text": "Reach the large room with the <strong>Ook midboss</strong> — an ape wielding a Bombling. Dodge his throws and use your Slingshot to stun him when he pauses on a post. When stunned, move in and sword-attack. Repeat until he drops. Chest appears: collect the <strong>Gale Boomerang</strong>.",
+          "locationRef": "Forest Temple"
+        },
+        {
+          "text": "The Gale Boomerang can strike multiple targets in sequence. Use it to spin the large <strong>windmill propellers</strong> in subsequent rooms, triggering platforms and unlocking doors. Collect the <strong>four Small Keys</strong> required for the boss door by exploring all blocked rooms — the Gale Boomerang reaches switches and items across gaps.",
+          "locationRef": "Forest Temple"
+        },
+        {
+          "text": "Unlock and enter the boss chamber. Defeat <strong>Diababa</strong> — see Boss breakdown below.",
+          "locationRef": "Forest Temple"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Gale Boomerang targets up to five objects",
+          "body": "Lock on up to five targets in sequence with the Gale Boomerang before releasing — the boomerang strikes them in order and returns. Use this to activate multiple switches in one throw and to collect items across water."
+        },
+        {
+          "type": "warning",
+          "title": "Don't burn the web near Ook",
+          "body": "There is one cobweb in the upper chamber that conceals a <strong>chest behind it</strong> — burn it with the Lantern to claim a Small Key before engaging Ook. You cannot easily return once the midboss fight starts."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Forest Temple monkey room",
+          "note": "In a chest in the room where all eight freed monkeys line up to form a bridge. Can only be reached by freeing all eight monkeys before the boss fight.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "54:00",
+        "startSeconds": 8170
+      }
+    },
+
+    {
+      "sectionId": "eldin-kakariko-death-mountain",
+      "stage": "Eldin Province",
+      "title": "Eldin Province & Kakariko Village",
+      "order": 3,
+      "chips": ["Iron Boots", "Hylian Shield", "Death Mountain"],
+      "unlocks": ["iron-boots", "hylian-shield"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "The Twilight spreads to <strong>Eldin Province</strong>. Link transforms to wolf again and must collect <strong>16 Tears of Light</strong> across the province (Hyrule Field east, Castle Town, the Bridge of Eldin area). Use Sense View to locate each glowing tear.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Restore Eldin's Light Spirit. Human form returns and Link enters <strong>Kakariko Village</strong>. King Bulblin's forces have kidnapped the children; a cutscene shows Colin held captive. Speak with healer <strong>Renado</strong> at the sanctuary.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Visit <strong>Malo Mart</strong> — the shop run by the stern infant in Kakariko. Purchase the <strong>Hylian Shield</strong> here for 200 rupees; it is far more durable than the Wooden Shield and does not burn. This is optional but highly recommended before the Goron Mines.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Speak with <strong>Mayor Bo</strong> at the largest house in Kakariko. He proposes a sumo-wrestling match. Use the <strong>left analogue stick</strong> to push and grab — force Bo out of the ring twice to win the <strong>Iron Boots</strong>. These magnetically attach Link to iron surfaces.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Scale <strong>Death Mountain</strong> with the Gorons — the path requires the Iron Boots to resist the volcanic updrafts. Climb past the Goron rolling obstacles to reach the Goron Mines entrance at the summit.",
+          "locationRef": "Kakariko"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Buy the Hylian Shield before entering the Goron Mines",
+          "body": "Do this <strong>now, while you're in Kakariko</strong> — Fyrus deals fire damage that <strong>destroys the Wooden Shield</strong> permanently mid-fight. The Hylian Shield is metal and immune to fire. 200 rupees from Malo Mart; collect them from grass, pots, and the Goron village chests."
+        },
+        {
+          "type": "tip",
+          "title": "Sumo with Bo — grip-break technique",
+          "body": "In the sumo match, let Bo charge first. The moment he grabs you, tap the <strong>A button rapidly</strong> to break his grip, then go on the offensive. Pushing from behind with the control stick at full deflection is the fastest way to eject him."
+        },
+        {
+          "type": "missable",
+          "title": "Golden Bug — Male Ant in Kakariko",
+          "body": "A <strong>Male Ant</strong> (Golden Bug #1) is found on the south wall of Kakariko near Renado's sanctuary. Check now — later visits can miss it before a story cutscene triggers. Deliver bugs to Agitha in Castle Town for rewards (1 of 24 total).",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Golden Bug — Male Ant (Kakariko south wall)",
+          "note": "On the south stone wall near Renado's sanctuary entrance. Grab with the <strong>A button</strong> while standing adjacent.",
+          "type": "other",
+          "category": "Golden Bugs",
+          "categoryTotalKnown": 24
+        },
+        {
+          "label": "Heart Piece — Kakariko Watchtower",
+          "note": "Climb the watchtower in north Kakariko using the ladder — Heart Piece is on the roof platform.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "1:39:00",
+        "startSeconds": 12421
+      }
+    },
+
+    {
+      "sectionId": "dungeon-2-goron-mines",
+      "stage": "Dungeon 2",
+      "title": "Goron Mines",
+      "order": 4,
+      "chips": ["Hero's Bow", "Magnetic floor", "Fyrus"],
+      "unlocks": ["heros-bow"],
+      "gates": ["iron-boots"],
+      "gatingType": "hard",
+      "steps": [
+        {
+          "text": "Enter the Goron Mines from Death Mountain's summit. The first rooms use <strong>magnetic iron floors</strong> — equip the <strong>Iron Boots</strong> to walk on the ceiling. Alternate between boots on and off to navigate the magnetic sections efficiently.",
+          "locationRef": "Goron Mines"
+        },
+        {
+          "text": "Seek out the three <strong>Goron Elders</strong> sealed in separate wings of the mine — each holds one <strong>Key Shard</strong>. Defeat the Goron guards (Z-target and use a well-timed shield bash to stagger, then sword combo) to free each elder and collect the three Key Shards that combine into the Boss Key.",
+          "locationRef": "Goron Mines"
+        },
+        {
+          "text": "Find <strong>Dangoro</strong>, the Goron midboss, in the central magnetic chamber. Equip Iron Boots and fight on the ceiling: Dangoro charges — sidestep, then attack his glowing back crystal before he rolls. Defeat him to open the chest and receive the <strong>Hero's Bow</strong>.",
+          "locationRef": "Goron Mines"
+        },
+        {
+          "text": "Use the <strong>Hero's Bow</strong> to shoot rope-bridge anchors to lower crossings, and to hit <strong>eye switches</strong> on far walls that open doors in the mine's deeper sections. Switches glow orange — one arrow hit activates them.",
+          "locationRef": "Goron Mines"
+        },
+        {
+          "text": "Use the assembled Boss Key to unlock the boss chamber. Defeat <strong>Fyrus</strong> — see Boss breakdown below.",
+          "locationRef": "Goron Mines"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Iron Boots switching on the GamePad",
+          "body": "Assign Iron Boots to a <strong>D-pad slot</strong> via the GamePad touch screen — you will equip and unequip them dozens of times in this dungeon. Instant swapping without pausing is the main advantage TPHD has over the original."
+        },
+        {
+          "type": "warning",
+          "title": "Magnetic ceilings can trap you",
+          "body": "Equipping the Iron Boots while on the ceiling is safe; removing them causes Link to drop. Remove them only when directly above a platform or the floor below — a fall from the ceiling in the lava rooms is lethal."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Goron Mines upper lava room",
+          "note": "In a chest on a platform only reachable via magnetic ceiling traversal in the upper lava room. Walk the ceiling with Iron Boots equipped to the platform directly above, then drop.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "1:39:00",
+        "startSeconds": 18387
+      }
+    },
+
+    {
+      "sectionId": "lanayru-zoras-domain",
+      "stage": "Lanayru Province",
+      "title": "Lanayru Province & Zora's Domain",
+      "order": 5,
+      "chips": ["Zora Armor", "Water Bombs", "Thaw the Domain"],
+      "unlocks": ["zora-armor", "water-bombs"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "The Twilight swallows <strong>Lanayru Province</strong> — wolf form again. Collect <strong>16 Tears of Light</strong> across Lanayru Province (Hyrule Field central and west, Lake Hylia area) to restore the Light Spirit Lanayru. The visions Lanayru shows after restoration reveal Ganondorf's history.",
+          "locationRef": "Zora's Domain"
+        },
+        {
+          "text": "<strong>Zora's Domain</strong> is frozen solid. Fill a pot from the <strong>hot spring</strong> near Death Mountain (carry it across Hyrule Field to Zora's Domain). Pour it into the frozen domain entrance to thaw the waterfall and restore the Zoras.",
+          "locationRef": "Zora's Domain"
+        },
+        {
+          "text": "At night in <strong>Kakariko graveyard</strong>, the spirit of Queen <strong>Rutela</strong> appears — she gives Link the <strong>Zora Armor</strong> as thanks for saving Prince Ralis. The Zora Armor allows unlimited underwater breathing and swimming.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Purchase <strong>Water Bombs</strong> from the Zoras or from the merchant near Lake Hylia — these explode underwater. Dive into Lake Hylia (Zora Armor equipped) and bomb the large <strong>boulder sealing the Lakebed Temple entrance</strong> to open the dungeon.",
+          "locationRef": "Lake Hylia"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Bring two pots of hot spring water",
+          "body": "Do this <strong>before leaving Kakariko</strong> — carry a backup pot because it breaks if Link is knocked over by Bulblin riders on Hyrule Field. Fighting on horseback while carrying the pot will break it instantly."
+        },
+        {
+          "type": "tip",
+          "title": "Lake Hylia restoration — drain resets after wolf phase",
+          "body": "Lake Hylia is drained during the Lanayru Twilight wolf phase. After restoring Lanayru, Fyer (the cannon operator) launches Link back to the lake surface — speak to him to trigger the lake-refill cutscene."
+        },
+        {
+          "type": "upgrade",
+          "title": "Empty Bottle from Sera's cat reward",
+          "body": "If you returned Sera's cat to her shop in the prologue, speak to Sera now — she rewards you with an <strong>Empty Bottle</strong>. This is the easiest first bottle to obtain and essential for carrying Lantern Oil, potions, and fairies going forward.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Zora's Domain upper ledge",
+          "note": "On a ledge above the waterfall in the restored Zora's Domain. Dive in, swim up the waterfall current with Zora Armor, and climb the ledge.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        },
+        {
+          "label": "Golden Bug — Female Zora (Lanayru Province)",
+          "note": "Near the riverbank in Lanayru Province, south of Zora's Domain. Grab it as wolf during the tears collection phase.",
+          "type": "other",
+          "category": "Golden Bugs",
+          "categoryTotalKnown": 24
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "2:39:00",
+        "startSeconds": 24346
+      }
+    },
+
+    {
+      "sectionId": "dungeon-3-lakebed-temple",
+      "stage": "Dungeon 3",
+      "title": "Lakebed Temple",
+      "order": 6,
+      "chips": ["Clawshot", "Water navigation", "Morpheel"],
+      "unlocks": ["clawshot"],
+      "gates": ["zora-armor", "water-bombs"],
+      "gatingType": "hard",
+      "steps": [
+        {
+          "text": "Dive through the Lakebed Temple entrance with <strong>Zora Armor</strong> equipped. The dungeon is submerged — swimming is the primary mode of travel. Use the <strong>Iron Boots</strong> to sink to the floor in air-filled chambers to open doors and chests.",
+          "locationRef": "Lakebed Temple"
+        },
+        {
+          "text": "Navigate to the large central chamber with the <strong>Deku Toad midboss</strong>. It clings to the ceiling and drops tadpoles. Stun it with the Slingshot when it opens its mouth to roar, then sword attack from below. After three cycles the Deku Toad falls — collect the <strong>Clawshot</strong> from the chest.",
+          "locationRef": "Lakebed Temple"
+        },
+        {
+          "text": "The Clawshot can latch onto <strong>vines and grated ceilings</strong> throughout the temple. Use it to cross large water-filled rooms and to open water-wheel valves high on the walls — rotating these valves floods or drains sections of the dungeon, opening new routes.",
+          "locationRef": "Lakebed Temple"
+        },
+        {
+          "text": "Collect all <strong>Small Keys</strong> by solving the water-routing puzzles: rotate each room's central wheel-valve with the Clawshot to direct water flow. The correct rotation order for each room is: rotate until the staircase to the next door is submerged, cross, then rotate back.",
+          "locationRef": "Lakebed Temple"
+        },
+        {
+          "text": "Unlock and enter the flooded boss chamber. Defeat <strong>Morpheel</strong> — see Boss breakdown below.",
+          "locationRef": "Lakebed Temple"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Map the water wheel directions",
+          "body": "Each valve rotates the room's water flow 90 degrees per hit. The dungeon map (check the GamePad) shows which doors are currently open. If you're lost, rotate the nearest valve twice to reverse the last change."
+        },
+        {
+          "type": "warning",
+          "title": "Oxygen timer in some chambers",
+          "body": "A few sealed chambers have no air pockets and the <strong>Zora Armor does not protect against current damage</strong> in fast-moving water channels. Swim quickly through fast-water sections — being caught in the current deals persistent damage."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Lakebed Temple side room",
+          "note": "In a chest in a small side chamber accessible via a grated ceiling near the Clawshot chest room. Use the Clawshot to latch the ceiling grate and cross.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "1:13:00",
+        "startSeconds": 33885
+      }
+    },
+
+    {
+      "sectionId": "midna-fall-sacred-grove",
+      "stage": "Story Interlude",
+      "title": "Midna's Fall, Sacred Grove & the Master Sword",
+      "order": 7,
+      "chips": ["Master Sword", "Skull Kid chase", "Zant confrontation"],
+      "unlocks": ["master-sword"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "<strong>Zant</strong> appears at the three Light Spirit springs simultaneously. He shatters Midna's Fused Shadow helmet and curses her with a fragment of Twilight that is slowly killing her. He also transforms Link back into a wolf permanently — you cannot return to human form until Zelda intervenes.",
+          "locationRef": "Hyrule Castle"
+        },
+        {
+          "text": "As wolf, carry the dying Midna to <strong>Hyrule Castle</strong>. Sneak through the courtyard using Sense View to avoid guards — there are no combat requirements, just navigation. Reach Zelda's tower and enter her chamber.",
+          "locationRef": "Hyrule Castle"
+        },
+        {
+          "text": "<strong>Princess Zelda</strong> uses the power of the Triforce of Wisdom to restore Midna — but the effort leaves Zelda catatonic. Midna, now healed, explains that the <strong>Master Sword</strong> can break Zant's curse on Link and restore human form permanently.",
+          "locationRef": "Hyrule Castle"
+        },
+        {
+          "text": "Travel to the <strong>Sacred Grove</strong> in Faron Woods. Follow the sound of <strong>Skull Kid's horn</strong> — he will appear in small clearings and teleport away; pursue him through three separate clearing sequences. Each chase ends with Skull Kid calling in two Shadow Beasts — defeat them to proceed.",
+          "locationRef": "Sacred Grove"
+        },
+        {
+          "text": "Solve the <strong>stone guardian puzzle</strong> in the large circular clearing: push each of the two stone guardian statues into the correct position so their shadows match the outlined silhouettes on the ground. The door to the Pedestal of Time opens. Pull the <strong>Master Sword</strong> from its pedestal — Link returns to human form.",
+          "locationRef": "Sacred Grove"
+        },
+        {
+          "text": "Zant confronts the party at the three Light Spirit springs and reveals the <strong>Mirror of Twilight</strong> at Arbiter's Grounds in the Gerudo Desert — the only crossing between the light and dark worlds. The mirror is shattered. Recover the shards to proceed.",
+          "locationRef": "Gerudo Desert"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Skull Kid chase — listen for the horn",
+          "body": "Skull Kid plays his horn to taunt you from each hiding spot. Stop moving and listen for the direction of the sound — it tells you which path in the clearing to take. His hiding spots rotate in a fixed pattern per clearing."
+        },
+        {
+          "type": "warning",
+          "title": "Save before the guardian puzzle",
+          "body": "There is no save point inside the Sacred Grove. Save in a nearby clearing before attempting the guardian puzzle — if you push a statue into the wrong position, you must leave the area and return to reset them."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Sacred Grove (post-Master Sword)",
+          "note": "After drawing the Master Sword, a new chest appears in the upper Sacred Grove near the ruins. Reach it by climbing the vine-covered walls with the Clawshot.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "3:07:00",
+        "startSeconds": 38263
+      }
+    },
+
+    {
+      "sectionId": "dungeon-4-arbiters-grounds",
+      "stage": "Dungeon 4",
+      "title": "Gerudo Desert & Arbiter's Grounds",
+      "order": 8,
+      "chips": ["Spinner", "Mirror Shard #1", "Stallord"],
+      "unlocks": ["spinner"],
+      "gates": ["master-sword"],
+      "gatingType": "soft",
+      "readinessNote": "You technically enter the desert before having the Master Sword if you skip ahead, but the dungeon cannot be completed without the full human-form Link. Complete the Sacred Grove section first.",
+      "steps": [
+        {
+          "text": "Collect <strong>Auru's Memo</strong> from the old man sitting atop the ruined watchtower at the south end of <strong>Lake Hylia</strong>. Ride or warp to Lake Hylia, climb the tower, and speak with him. Present the memo to <strong>Fyer</strong> at his cannon booth on the lakeshore — he launches Link to the <strong>Gerudo Desert</strong>.",
+          "locationRef": "Lake Hylia"
+        },
+        {
+          "text": "Cross the desert on <strong>Epona</strong>. Bulblin archer camps line the road — you can ride through them while striking with the sword, or clear them on foot. The Bulblin commander <strong>King Bulblin</strong> challenges Link on a narrow bridge; defeat him to proceed to Arbiter's Grounds.",
+          "locationRef": "Gerudo Desert"
+        },
+        {
+          "text": "Inside Arbiter's Grounds, defeat <strong>Death Sword</strong> (midboss) — a floating sword possessed by dark magic. Attack while it is visible; when it turns invisible, watch for footprints in the sand and strike as it rears. Collect the <strong>Spinner</strong> from the chest — a top-like device that rides special wall rails.",
+          "locationRef": "Arbiter's Grounds"
+        },
+        {
+          "text": "Use the <strong>Spinner</strong> to ride the wall rails that loop through the dungeon's deeper chambers. Launch from ramps to hit switches above the floor. The Spinner also destroys the <strong>spike-roller traps</strong> blocking corridors — ride into them to shatter them safely.",
+          "locationRef": "Arbiter's Grounds"
+        },
+        {
+          "text": "Collect the Boss Key and enter the large Spinner-rail arena. Defeat <strong>Stallord</strong> — see Boss breakdown below. A cutscene reveals the <strong>Mirror of Twilight</strong> and the role of the four Mirror Shards — the first shard is granted automatically.",
+          "locationRef": "Arbiter's Grounds"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Stock up before entering the desert",
+          "body": "Do this <strong>now, before speaking to Fyer</strong> — once launched to the Gerudo Desert there is no way back to a shop. Fill all potion bottles, equip the Hylian Shield, and top up your bomb supply. Arbiter's Grounds is the longest dungeon to this point."
+        },
+        {
+          "type": "tip",
+          "title": "Spinner momentum — keep it spinning",
+          "body": "The Spinner has a momentum mechanic — it slows down on rails if Link doesn't continue pressing forward. Keep the control stick pushed forward constantly while rail-riding or you'll stop mid-section above a fatal drop."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Poe Soul — Arbiter's Grounds (entry room)",
+          "note": "Near the entrance of Arbiter's Grounds, only visible as wolf via Sense View. You must re-enter as wolf (use a shadow-world passage) to collect this.",
+          "type": "other",
+          "category": "Poe Souls",
+          "categoryTotalKnown": 60,
+          "completionistOnly": true
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "2:07:00",
+        "startSeconds": 49502
+      }
+    },
+
+    {
+      "sectionId": "dungeon-5-snowpeak-ruins",
+      "stage": "Dungeon 5",
+      "title": "Snowpeak & Snowpeak Ruins",
+      "order": 9,
+      "chips": ["Ball and Chain", "Reekfish trail", "Blizzeta"],
+      "unlocks": ["ball-and-chain"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "Find <strong>Ashei</strong> at the entrance to Snowpeak (north Zora's Domain area) — she sketches a drawing of a Yeti carrying a Reekfish. Accept <strong>Ashei's Sketch</strong>. Travel to <strong>Kakariko Village graveyard</strong> and show the sketch to <strong>Prince Ralis</strong> (the ill Zora child) — he gives you the <strong>Coral Earring</strong> bait.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Return to the waterfall pool in <strong>Zora's Domain</strong>. Equip the Coral Earring to your Fishing Rod (swap it in the fishing interface). Cast into the large pool by the waterfall to catch a <strong>Reekfish</strong>. Return to wolf form to <strong>sniff the Reekfish</strong> and lock in its unique scent.",
+          "locationRef": "Zora's Domain"
+        },
+        {
+          "text": "Follow the wolf's <strong>Reekfish scent trail</strong> (yellow particles in Sense View) up the mountain behind Zora's Domain. The trail leads through the cave north of Zora's Domain and up the treacherous snow slopes of <strong>Snowpeak Mountain</strong>. Dodge Freezards and snowballs as you climb.",
+          "locationRef": "Snowpeak Ruins"
+        },
+        {
+          "text": "Reach <strong>Snowpeak Ruins</strong> — a crumbling mansion owned by the Yeti couple <strong>Yeto and Yeta</strong>. Yeto gives you a bowl of Yeta's soup (restores health). The dungeon structure is a mansion: find ingredients to improve the soup and find the <strong>Bedroom Key</strong>.",
+          "locationRef": "Snowpeak Ruins"
+        },
+        {
+          "text": "Defeat <strong>Darkhammer</strong> (midboss) — a heavy armoured enemy using a spiked ball. Wait for its attack swing, dodge, then run to grab the <strong>Ball and Chain</strong> from the chest that appears. Equip it immediately — it destroys the ice blocks that obstruct the mansion's rooms.",
+          "locationRef": "Snowpeak Ruins"
+        },
+        {
+          "text": "Find the <strong>Ordon Pumpkin</strong> (improves soup slightly) and the <strong>Ordon Goat Cheese</strong> (improves soup to Superb quality — restores eight hearts). Collect the <strong>Bedroom Key</strong> from the chest after clearing the main hall's ice puzzle. Unlock the boss bedroom and defeat <strong>Blizzeta</strong> — see Boss breakdown below.",
+          "locationRef": "Snowpeak Ruins"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Collect the Ordon Goat Cheese before the boss fight",
+          "body": "The Superb Soup (made with Goat Cheese) restores <strong>eight hearts</strong> when you speak with Yeto in the dining room. Collect the cheese chest in the north wing of the mansion before fighting Blizzeta — it is the best in-dungeon heal available."
+        },
+        {
+          "type": "tip",
+          "title": "Ball and Chain destroys ice blocks — and enemies",
+          "body": "The Ball and Chain can be flung in any direction and destroys Ice Keese (frozen bats) in one hit. Swing it in a circle (hold Z + spin the control stick) for a wide-area attack in crowded rooms."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Snowpeak Ruins, ice-covered room",
+          "note": "In a chest behind an ice block in the north wing of the mansion. Destroy the block with the Ball and Chain.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        },
+        {
+          "label": "Golden Bug — Female Beetle (Faron Woods)",
+          "note": "Accessible now that you have the Ball and Chain — a Female Beetle is near a boulder in Faron Woods. Smash the boulder, collect the bug.",
+          "type": "other",
+          "category": "Golden Bugs",
+          "categoryTotalKnown": 24,
+          "completionistOnly": true
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "1:55:00",
+        "startSeconds": 57547
+      }
+    },
+
+    {
+      "sectionId": "dungeon-6-temple-of-time",
+      "stage": "Dungeon 6",
+      "title": "Sacred Grove & Temple of Time",
+      "order": 10,
+      "chips": ["Dominion Rod", "Time-shifted rooms", "Armogohma"],
+      "unlocks": ["dominion-rod"],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        {
+          "text": "Return to the <strong>Sacred Grove</strong>. Skull Kid reappears — defeat him in the chase sequence again (same pattern as before). In the lower clearing, two large stone guardian statues stand before a sealed door. Solve the <strong>guardian statue puzzle</strong>: push each statue to align with the shadow silhouettes on the floor, then enter the newly opened passage.",
+          "locationRef": "Sacred Grove"
+        },
+        {
+          "text": "The passage leads to the <strong>Temple of Time</strong>. The temple is a sprawling multi-level structure where ancient statues of the Goddess of Time dot every room. Navigate upward through the temple's ground, upper, and roof levels.",
+          "locationRef": "Temple of Time"
+        },
+        {
+          "text": "Defeat the <strong>Darknut</strong> guardian (mini-boss) — a heavily armoured knight. Use the Clawshot to pull off its cape (which slows it), then fight with the Master Sword in tight exchanges. Dodge its two-handed overhead swing, counter with a jump attack. Defeat to receive the <strong>Dominion Rod</strong> from the chest.",
+          "locationRef": "Temple of Time"
+        },
+        {
+          "text": "The <strong>Dominion Rod</strong> animates stone statues. Aim at any Goddess Statue and press B to take control — the statue mimics Link's movements. Use controlled statues to stand on floor switches, hold buttons, and reach chests that Link cannot access directly.",
+          "locationRef": "Temple of Time"
+        },
+        {
+          "text": "Collect the Boss Key by animating the large statue in the main hall and guiding it through the sealed gate to a pressure pad. Unlock and enter the boss chamber. Defeat <strong>Armogohma</strong> — see Boss breakdown below.",
+          "locationRef": "Temple of Time"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "The Darknut — strip armour first",
+          "body": "The Darknut's heavy armour makes most attacks bounce off. Clawshot its cape to slow it, then target individual armour pieces with the Master Sword's back-slice. Once stripped to its tunic, it becomes much faster but takes full damage."
+        },
+        {
+          "type": "do-now",
+          "title": "Statue puzzle shadow positions",
+          "body": "The Sacred Grove statue puzzle changes between visits. When you enter the clearing, stop and observe the <strong>shadows on the floor</strong> — they show the target positions. The statues can only be pushed forward; plan your angle before each push."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Temple of Time roof platform",
+          "note": "On a stone platform accessible from the exterior roof walkway. After reaching the roof during dungeon progression, look for a side ledge to the east.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "2:28:00",
+        "startSeconds": 64460
+      }
+    },
+
+    {
+      "sectionId": "dungeon-7-city-in-the-sky",
+      "stage": "Dungeon 7",
+      "title": "City in the Sky",
+      "order": 11,
+      "chips": ["Double Clawshots", "Ancient sky book", "Argorok"],
+      "unlocks": ["double-clawshots"],
+      "gates": ["dominion-rod"],
+      "gatingType": "hard",
+      "steps": [
+        {
+          "text": "Seek <strong>Shad</strong> in the Kakariko library (ground floor of the left building). Show him the <strong>Dominion Rod</strong> — he reveals it activates the owl statues using the <strong>Ancient Sky Book</strong>. Copy the sky inscription. You must now recharge the Dominion Rod (its power faded after the Temple of Time) by collecting <strong>sky characters</strong> inscribed on owl statues across Hyrule.",
+          "locationRef": "Kakariko"
+        },
+        {
+          "text": "Locate and activate <strong>six owl statues</strong> hidden across Hyrule (one each in: Kakariko, Eldin Province, Lanayru Province, Lake Hylia, Castle Town, and Hyrule Field). Each one is a stone owl figure — use the recharged Dominion Rod on each to copy its sky character inscription. Return to Shad when all six are collected.",
+          "locationRef": "Lake Hylia"
+        },
+        {
+          "text": "With the completed <strong>Ancient Sky Book</strong>, return to <strong>Lake Hylia</strong> and activate the owl statue beside Fyer's cannon. This unlocks a new cannon setting. Speak with Fyer — he launches Link into the sky toward the <strong>City in the Sky</strong>.",
+          "locationRef": "Lake Hylia"
+        },
+        {
+          "text": "The City in the Sky is a ruined floating metropolis. Cross gaps using the <strong>Clawshot</strong> to latch vine-covered walls and grated surfaces. Navigate to the central tower via a series of crumbling aqueducts.",
+          "locationRef": "City in the Sky"
+        },
+        {
+          "text": "Defeat <strong>Aeralfos</strong> (flying lizard midboss) — it dives and retreats, becoming invulnerable when airborne. Clawshot it while it glides low to pull it to the ground, then sword-combo while it's grounded. Repeat until defeated. Collect the <strong>Double Clawshots</strong> — you can now chain between two grapple points mid-air.",
+          "locationRef": "City in the Sky"
+        },
+        {
+          "text": "Use the <strong>Double Clawshots</strong> to chain between the Peahats (propeller plants) circling the outer platforms and reach the roof of the city's central tower. Unlock the boss chamber and defeat <strong>Argorok</strong> — see Boss breakdown below.",
+          "locationRef": "City in the Sky"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Track all six owl statues before heading to Lake Hylia",
+          "body": "Do this <strong>now, while exploring with the Dominion Rod</strong> — return to Lake Hylia only after all six characters are collected. Mark each statue on the GamePad map as you go. The Kakariko statue is inside the building where Shad stands and is easy to miss."
+        },
+        {
+          "type": "tip",
+          "title": "Double Clawshots — infinite traversal",
+          "body": "With Double Clawshots equipped in both B slots on the GamePad, press and hold B to latch, release to drop (then immediately press B again to re-latch). Chaining between Peahats mid-air requires this rhythm. Practice on the lower Peahats before the boss encounter."
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — City in the Sky western aqueduct",
+          "note": "On a ledge off the western aqueduct path. Clawshot to the vine-covered wall to the left of the main path and shimmy along to the ledge.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "1:26:00",
+        "startSeconds": 73339
+      }
+    },
+
+    {
+      "sectionId": "palace-of-twilight-and-hyrule-castle",
+      "stage": "Finale",
+      "title": "Palace of Twilight & Hyrule Castle",
+      "order": 12,
+      "chips": ["Light Arrows", "Zant", "Ganondorf", "Credits"],
+      "unlocks": ["light-arrows"],
+      "gates": ["double-clawshots", "master-sword"],
+      "gatingType": "hard",
+      "steps": [
+        {
+          "text": "With all four Mirror Shards collected, the <strong>Mirror of Twilight</strong> is restored at Arbiter's Grounds. Step through the mirror — you enter the <strong>Twilight Realm</strong>. The Palace of Twilight rises before you: a vast, oppressive fortress suffused with Twilight energy.",
+          "locationRef": "Palace of Twilight"
+        },
+        {
+          "text": "Fight through the Palace of Twilight's two wings. Each wing contains a <strong>Sol</strong> — a glowing sphere of pure Light energy. The Sols are guarded by Phantom Zant enemies that teleport and shoot energy blasts. Destroy the Phantom Zants (sword or bow), collect both Sols, and slot them into the pedestals at the palace entrance.",
+          "locationRef": "Palace of Twilight"
+        },
+        {
+          "text": "With both Sols restored, the <strong>Master Sword absorbs their light</strong> — it now glows with Twilight-dispelling energy. Link can burn away Shadow Crystals blocking the palace's inner sanctum. Force through the sanctum to reach Zant's throne room.",
+          "locationRef": "Palace of Twilight"
+        },
+        {
+          "text": "Defeat <strong>Zant</strong> across six phases — see Boss breakdown below. Zant's defeat frees the Twilight Realm and restores Midna's true Twili form. A final revelation links Zant's power to Ganondorf — the true final enemy awaits in Hyrule.",
+          "locationRef": "Palace of Twilight"
+        },
+        {
+          "text": "Midna uses the power of the Fused Shadows to destroy the barrier around <strong>Hyrule Castle</strong>. March in. Fight through the castle tower: defeat re-animated Twilight creatures, solve an ascending puzzle to reach the castle roof, and collect <strong>Light Arrows</strong> from Zelda's spirit on the rooftop.",
+          "locationRef": "Hyrule Castle"
+        },
+        {
+          "text": "Defeat the four phases of <strong>Ganondorf</strong>: Puppet Zelda, Beast Ganon, the horseback chase across Hyrule Field, and the final sword duel — see Boss breakdown below. The credits roll after the final sword falls.",
+          "locationRef": "Hyrule Castle"
+        }
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Fully stock before stepping through the Mirror of Twilight",
+          "body": "Do this <strong>now, before activating the mirror</strong> — the Palace of Twilight and Hyrule Castle run back-to-back with no opportunity to return. Enter with maximum health, at least two bottles of potions or Great Fairies, and 30+ arrows for Light Arrow use against Ganondorf."
+        },
+        {
+          "type": "warning",
+          "title": "Shadow Crystals — Master Sword required",
+          "body": "The Shadow Crystals blocking the palace inner sanctum can only be destroyed by the <strong>light-charged Master Sword</strong> (after collecting both Sols). There is no bypass. If Link loses the light charge (it depletes in darkness over time), return to the Sols and recharge."
+        },
+        {
+          "type": "tip",
+          "title": "Ganondorf's horseback phase — Zelda's aim",
+          "body": "During the horseback chase, Zelda fires Light Arrows to support you — but <strong>you</strong> must steer Epona into position. Ride alongside Ganondorf at the same speed. When Zelda fires, the arrow's trajectory shows where to aim. The window opens for about three seconds each loop."
+        },
+        {
+          "type": "upgrade",
+          "title": "100% completion — post-credits star",
+          "body": "Completing the game with all 45 Heart Pieces, all 24 Golden Bugs delivered to Agitha, all 60 Poe Souls collected, and the Cave of Shadows cleared (Wolf Link + Wolf amiibo) marks the save file with a <strong>star (★)</strong> on the file select screen. The amiibo is required for the Cave of Shadows — this is the only missable content gated by physical purchase.",
+          "completionistOnly": true
+        }
+      ],
+      "collectibles": [
+        {
+          "label": "Heart Piece — Hyrule Castle tower mid-level chest",
+          "note": "In a chest behind a large Twilight crystal barricade partway up the castle tower. Destroy the barricade with the light-charged Master Sword.",
+          "type": "heart",
+          "category": "Pieces of Heart",
+          "categoryTotalKnown": 45
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "E4xKEuTSGmo",
+        "creator": "SourceSpy91",
+        "title": "The Legend Of Zelda: Twilight Princess HD - 100% FULL GAME Walkthrough - No Commentary",
+        "durationLabel": "3:52:00",
+        "startSeconds": 78528
+      }
+    }
+  ]
+}

@@ -1,0 +1,1347 @@
+{
+  "franchiseSlug": "mina-the-hollower",
+  "title": "Mina the Hollower",
+  "slug": "mina-the-hollower",
+  "year": "2026",
+  "platforms": [
+    "PC",
+    "Nintendo Switch",
+    "PS5",
+    "Xbox Series X/S"
+  ],
+  "status": "published",
+  "lede": "Descend into Tenebrous Isle's gothic streets and haunted earth — a complete golden-path and 100% guide covering all six Spark Generators, 60 trinkets, five weapons with every upgrade, and all 26 bosses.",
+  "genre": "action-adventure",
+  "cover": "/assets/covers/mina-the-hollower.webp",
+  "theme": {
+    "bodyClass": "mina-theme",
+    "ink": "#07070f",
+    "ink2": "#0d0b1c",
+    "panel": "#110e21",
+    "panel2": "#151228",
+    "accent": "#5ee7df",
+    "accentSoft": "rgba(94,231,223,.15)",
+    "gold": "#5ee7df",
+    "signal": "#c0392b",
+    "line": "rgba(94,231,223,.12)",
+    "muted": "#7a7a9a",
+    "cardGradient": "linear-gradient(160deg,#0d0b1e,#061018 60%,#020508)"
+  },
+  "coverGradient": "linear-gradient(160deg,#0d0b1e,#061018 60%,#020508)",
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "tenebrous-sea-and-loners-landing",
+      "ossex",
+      "southern-outskirts",
+      "eastern-heath-and-mourners-mile",
+      "queensbury-crypt",
+      "nox-bayou",
+      "kindlewood-and-septemburg",
+      "sandfalls-and-bone-beach",
+      "coltrane-peak",
+      "astral-orrery",
+      "radiant-manor-finale"
+    ],
+    "criticalPath": [
+      "tenebrous-sea-and-loners-landing",
+      "ossex",
+      "southern-outskirts",
+      "eastern-heath-and-mourners-mile",
+      "queensbury-crypt",
+      "nox-bayou",
+      "kindlewood-and-septemburg",
+      "sandfalls-and-bone-beach",
+      "coltrane-peak",
+      "astral-orrery",
+      "radiant-manor-finale"
+    ],
+    "anyOrderGroups": [
+      {
+        "groupId": "mid-game-generators",
+        "label": "Mid-game Generators (any order)",
+        "sectionIds": [
+          "nox-bayou",
+          "kindlewood-and-septemburg",
+          "sandfalls-and-bone-beach",
+          "coltrane-peak"
+        ]
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "nightstar",
+      "name": "Nightstar",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "tenebrous-sea-and-loners-landing"
+    },
+    {
+      "id": "uranium-bracelet",
+      "name": "Uranium Bracelet",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "tenebrous-sea-and-loners-landing"
+    },
+    {
+      "id": "volt-hatchet",
+      "name": "Volt Hatchet",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "tenebrous-sea-and-loners-landing"
+    },
+    {
+      "id": "gyro-dagger",
+      "name": "Gyro Dagger",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "tenebrous-sea-and-loners-landing"
+    },
+    {
+      "id": "deflector-parasol",
+      "name": "Deflector Parasol",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "southern-outskirts"
+    },
+    {
+      "id": "steady-soles",
+      "name": "Steady Soles",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "ossex"
+    },
+    {
+      "id": "fused-bonestone",
+      "name": "Fused Bonestone",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "queensbury-crypt"
+    },
+    {
+      "id": "battery-buster",
+      "name": "Battery Buster",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "sandfalls-and-bone-beach"
+    },
+    {
+      "id": "guardian-casket",
+      "name": "Guardian Casket",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "coltrane-peak"
+    },
+    {
+      "id": "train-ticket",
+      "name": "Train Ticket",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "coltrane-peak"
+    },
+    {
+      "id": "all-seeing-skull",
+      "name": "All-Seeing Skull",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "astral-orrery"
+    }
+  ],
+  "locations": [
+    {
+      "id": "tenebrous-isle",
+      "name": "Tenebrous Isle",
+      "ref": "Tenebrous Isle",
+      "reachableBy": "The main island — all areas are part of Tenebrous Isle."
+    },
+    {
+      "id": "tenebrous-sea",
+      "name": "Tenebrous Sea",
+      "ref": "Tenebrous Sea",
+      "reachableBy": "The opening ship sequence — reached automatically in the prologue."
+    },
+    {
+      "id": "loners-landing",
+      "name": "Loner's Landing",
+      "ref": "Loner's Landing",
+      "reachableBy": "Head south then east from the shipwreck shore after the opening sequence."
+    },
+    {
+      "id": "underlab",
+      "name": "Underlab",
+      "ref": "Underlab",
+      "reachableBy": "Burrow into X markings on the floor throughout the world."
+    },
+    {
+      "id": "ossex",
+      "name": "Ossex",
+      "ref": "Ossex",
+      "reachableBy": "Head north-east from Loner's Landing after defeating Hulk Trooper."
+    },
+    {
+      "id": "radiant-manor",
+      "name": "Radiant Manor",
+      "ref": "Radiant Manor",
+      "reachableBy": "North end of Ossex city — enter through the main gate."
+    },
+    {
+      "id": "hollowers-guild",
+      "name": "Hollower's Guild",
+      "ref": "Hollower's Guild",
+      "reachableBy": "South of the Ossex fountain — enter through the front door."
+    },
+    {
+      "id": "southern-outskirts",
+      "name": "Southern Outskirts",
+      "ref": "Southern Outskirts",
+      "reachableBy": "Exit Ossex southward through the southern gate."
+    },
+    {
+      "id": "rebel-barracks",
+      "name": "Rebel Barracks",
+      "ref": "Rebel Barracks",
+      "reachableBy": "South from the Southern Outskirts Commons via a Kear-locked door."
+    },
+    {
+      "id": "eastern-heath",
+      "name": "Eastern Heath",
+      "ref": "Eastern Heath",
+      "reachableBy": "Exit Ossex eastward and head right from Loonard NPC."
+    },
+    {
+      "id": "mourners-mile",
+      "name": "Mourner's Mile",
+      "ref": "Mourner's Mile",
+      "reachableBy": "Continue east through Eastern Heath past the spike-bridge switch."
+    },
+    {
+      "id": "spike-vault",
+      "name": "Spike Vault",
+      "ref": "Spike Vault",
+      "reachableBy": "Enter the top-left hole in the Mourner's Mile cemetery."
+    },
+    {
+      "id": "queensbury-crypt",
+      "name": "Queensbury Crypt",
+      "ref": "Queensbury Crypt",
+      "reachableBy": "Proceed east from Mourner's Mile down the stairs into the crypt entrance."
+    },
+    {
+      "id": "western-wilds",
+      "name": "Western Wilds",
+      "ref": "Western Wilds",
+      "reachableBy": "Exit Ossex westward through the guard gate."
+    },
+    {
+      "id": "nox-bayou",
+      "name": "Nox's Bayou",
+      "ref": "Nox's Bayou",
+      "reachableBy": "Head west then south-west through the Western Wilds past the Occupied Bridge."
+    },
+    {
+      "id": "kindlewood",
+      "name": "Kindlewood",
+      "ref": "Kindlewood",
+      "reachableBy": "Climb the Occupied Bridge stairs, go left and climb the wooden stairs."
+    },
+    {
+      "id": "septemburg",
+      "name": "Septemburg",
+      "ref": "Septemburg",
+      "reachableBy": "Continue north-east through Kindlewood along the leaf-covered path."
+    },
+    {
+      "id": "sandfalls",
+      "name": "Sandfalls",
+      "ref": "Sandfalls",
+      "reachableBy": "From Ossex south exit, find the purple bounce pads and descend through the mining shaft."
+    },
+    {
+      "id": "bone-beach",
+      "name": "Bone Beach",
+      "ref": "Bone Beach",
+      "reachableBy": "Descend through Sandfalls and pass Major Miner to reach the coastal dungeon."
+    },
+    {
+      "id": "coltrane-peak",
+      "name": "Coltrane Peak",
+      "ref": "Coltrane Peak",
+      "reachableBy": "Take the train from Ossex train station using a Train Ticket."
+    },
+    {
+      "id": "astral-orrery",
+      "name": "Astral Orrery",
+      "ref": "Astral Orrery",
+      "reachableBy": "Step through a large mirror — hold the walk button toward any mirror for a few seconds."
+    }
+  ],
+  "bossFights": [
+    {
+      "sectionId": "tenebrous-sea-and-loners-landing",
+      "locationRef": "Tenebrous Sea",
+      "prep": {
+        "healthAdvice": "You begin this fight at full health with no options to prepare. Simply engage.",
+        "topUpBefore": "No healing opportunity before the Nether Kraken — this is the opening encounter of the game.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Nether Kraken — Tentacle Assault",
+          "tells": "Tentacles rise from the water around the ship's deck. Each one slams down with a brief winding animation.",
+          "counter": "Sidestep laterally along the deck when a tentacle winds up. Never stand directly between two raised tentacles.",
+          "damageWindow": "Attack the Kraken's exposed central body after each tentacle slam. Two to three hits per opening."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Use any Plasma Vials you have — you enter this fight at full health so any vials carried from below deck apply.",
+        "easierTactic": "Focus on the body, not the tentacles. The tentacles deal chip damage but the body is the only vulnerable target.",
+        "retreatOption": "None — the deck is the full arena. Keep moving laterally and you will avoid most hits."
+      },
+      "reward": "Uranium Bracelet — the core traversal item enabling burrowing underground throughout the game.",
+      "id": "nether-kraken",
+      "name": "Nether Kraken"
+    },
+    {
+      "sectionId": "tenebrous-sea-and-loners-landing",
+      "locationRef": "Loner's Landing",
+      "prep": {
+        "healthAdvice": "Reach full health before ascending the Commons stairs. Candles and grass in Loner's Landing drop bones — spend them at the Underlab save point below.",
+        "topUpBefore": "Smash every candle in the Commons before climbing the final staircase to the boss arena.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Hulk Trooper — Single Swipe",
+          "tells": "The trooper rears its arm back and draws a slow horizontal arc across the arena.",
+          "counter": "Step back to the edge of your weapon's range and attack immediately after the swipe passes.",
+          "damageWindow": "One to two hits while the follow-through animation plays."
+        },
+        {
+          "name": "Hulk Trooper — Triple Swipe with Homing",
+          "tells": "The trooper performs three rapid swipes in sequence, adjusting its angle toward your position between each one.",
+          "counter": "Burrow underground during the second swipe and surface on the opposite side of the arena.",
+          "damageWindow": "Attack from behind after all three swipes land."
+        },
+        {
+          "name": "Hulk Trooper — Jump Crash-Smash",
+          "tells": "The trooper leaps into the air and hangs briefly before crashing straight down onto your last position.",
+          "counter": "Move horizontally the instant it leaves the ground. Do not roll backward — you will be caught by the shockwave.",
+          "damageWindow": "Three to four hits while it recovers from the landing."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Break candles in the Commons below the boss stairs. There is no mid-fight healing unless you have Plasma Vials.",
+        "easierTactic": "Burrowing sidesteps all three attack patterns. Disappear underground on any attack, surface on the flank, land a few hits, repeat.",
+        "retreatOption": "There is no retreat from the boss arena. Save before climbing the final staircase."
+      },
+      "reward": "Story progression — access to Ossex opens after defeating Hulk Trooper.",
+      "id": "hulk-trooper",
+      "name": "Hulk Trooper"
+    },
+    {
+      "sectionId": "ossex",
+      "locationRef": "Radiant Manor",
+      "prep": {
+        "healthAdvice": "Aim for full health and at least one Plasma Vial before entering Radiant Manor's foyer. The fight begins without warning after the Orphanage cutscene.",
+        "topUpBefore": "Buy a Health Rose at the Emporium (600 bones) before entering Radiant Manor if you can afford it.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Thorne — Explosive Dash",
+          "tells": "Thorne crouches and bolts across the arena in a straight line. Explosive dots appear in the trail left behind.",
+          "counter": "Jump perpendicular to the dash direction. Avoid walking back through the trail — the dots linger.",
+          "damageWindow": "Strike Thorne at the end of the dash before he resets his position."
+        },
+        {
+          "name": "Thorne — Triple Hop and Crash",
+          "tells": "Thorne bounces three times in quick succession, tracking your position, then leaps high and crashes straight down.",
+          "counter": "Sidestep the final crash by moving horizontally at the peak of his jump arc.",
+          "damageWindow": "Two to three hits immediately after the crash landing."
+        },
+        {
+          "name": "Thorne — Hop and Tornado Summon",
+          "tells": "Thorne performs a single high hop and summons two tornadoes on landing. Tornadoes travel slowly toward you.",
+          "counter": "Burrow underground as soon as the tornadoes appear. They cannot reach you below the surface.",
+          "damageWindow": "Surface and strike Thorne while the tornadoes wander away from the landing point."
+        },
+        {
+          "name": "Thorne — Slide Triple Swing",
+          "tells": "Thorne slides directly at Mina and launches three sequential melee swings in a combo.",
+          "counter": "Sidestep or burrow on the first swing. The combo locks his position — attack his back.",
+          "damageWindow": "Two to three hits on his flank during the second or third swing."
+        },
+        {
+          "name": "Thorne — Super Jump and Tornado Combo",
+          "tells": "Thorne executes a very high super jump and lands with a crash that simultaneously summons tornadoes.",
+          "counter": "Burrow before he lands. Surface briefly to hit him, then burrow again if tornadoes are still active.",
+          "damageWindow": "Hit Thorne as soon as you resurface — tornadoes take a moment to turn toward you."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no way to heal mid-fight. Save your Plasma Vials for when you drop below half health.",
+        "easierTactic": "Burrowing is the answer to every attack pattern. If in doubt, go underground — Thorne cannot harm you there.",
+        "retreatOption": "None — you must defeat Thorne to advance. Revisit the Emporium first if your health total feels too low."
+      },
+      "reward": "Story progression — the city of Ossex opens fully, the six-generator quest begins, and the world map becomes accessible from the fountain.",
+      "id": "thorne",
+      "name": "Thorne"
+    },
+    {
+      "sectionId": "queensbury-crypt",
+      "locationRef": "Queensbury Crypt",
+      "prep": {
+        "healthAdvice": "Reach full health before descending to the Ancestral Chamber. Two Plasma Vials minimum recommended.",
+        "topUpBefore": "Purchase from Belvedere (merchant in the Statue Head Hall) and smash all jars in the hall before the sacrifice door.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Midden — Single Phase",
+          "tells": "Midden drifts toward Mina in slow, erratic arcs. Its hitbox is deceptively wide.",
+          "counter": "Retreat to the top-left corner of the Ancestral Chamber and hold your position. Midden cannot reach that corner effectively.",
+          "damageWindow": "Spam your primary weapon from the corner. Midden has no ranged attacks — sustained close-range pressure defeats it quickly."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Smash candles in the Ancestral Chamber before triggering the fight. Collect all loot before the sacrifice door.",
+        "easierTactic": "The top-left corner is a safe spot. Plant yourself there and attack repeatedly without dodging.",
+        "retreatOption": "None. Sacrifice two Plasma Vials at the door to enter — ensure you have at least two before opening it."
+      },
+      "reward": "Fly Bait trinket and story progression — the Duke becomes available to rescue.",
+      "id": "midden",
+      "name": "Midden"
+    },
+    {
+      "sectionId": "queensbury-crypt",
+      "locationRef": "Queensbury Crypt",
+      "prep": {
+        "healthAdvice": "Full health strongly recommended. The Duchess drains you over a long fight. Bring two Plasma Vials minimum.",
+        "topUpBefore": "After rescuing the Duke, collect all loot on the path back through the crypt. There are candles and jars throughout the corridors.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Duchess Phase 1 — Swings and Arrow Traps",
+          "tells": "The Duchess swings her weapon in wide arcs. Floor runes trigger arrow volleys from the walls when stepped on.",
+          "counter": "Memorise the rune positions immediately and avoid them throughout the fight. Let the arrows fire — they deal damage to the Duchess as well.",
+          "damageWindow": "Attack between her swing combos. The arrows chip her health passively, taking her to roughly half before you need many direct hits."
+        },
+        {
+          "name": "Duchess Phase 2 — Tentacle Slams",
+          "tells": "The Duchess summons a ring of tentacles beneath Mina, then slams all of them down simultaneously.",
+          "counter": "Move away from where the tentacles emerge, then move back toward the Duchess after the slam.",
+          "damageWindow": "Strike twice after each tentacle slam while she resets. The fight plays out the same — keep using the arrow runes to your advantage."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no way to heal mid-fight. Plasma Vials are your only option. Return to Belvedere in the Statue Head Hall if you need to restock supplies first.",
+        "easierTactic": "Let the arena fight for you. The arrow runes deal significant damage to the Duchess — trigger them intentionally by walking near them, then stepping aside before the volley fires.",
+        "retreatOption": "None. Clear the route back to Belvedere for supplies before triggering the final encounter."
+      },
+      "reward": "Health Rose upgrade and the Solemn Generator — the first Spark Generator restored, Fused Bonestone earned, and the four mid-game regions unlock.",
+      "id": "duchess",
+      "name": "The Duchess of Queensbury"
+    },
+    {
+      "sectionId": "nox-bayou",
+      "locationRef": "Nox's Bayou",
+      "prep": {
+        "healthAdvice": "Full health and at least two Plasma Vials. Nox's Beast hits hard and the arena has water hazards on the edges.",
+        "topUpBefore": "Clear the area outside the generator building. There are candles and breakables immediately before the boss room entrance.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Nox's Beast — Charge and Swipe",
+          "tells": "The Beast lowers its head and paws the ground before launching a diagonal charge across the arena.",
+          "counter": "Burrow sideways — not backward. Burrowing backward keeps you in the charge path. Surface on the flank after the charge passes.",
+          "damageWindow": "Two quick hits after surfacing before the Beast turns to face you again."
+        },
+        {
+          "name": "Nox's Beast — Poison Bubble Spray",
+          "tells": "The Beast rears back and sprays a spread of slow-moving poison bubbles in a cone pattern.",
+          "counter": "Step laterally out of the cone. The arena is wide enough that a single side-step clears the spread entirely.",
+          "damageWindow": "Move in and strike two to three times while the spray animation completes."
+        },
+        {
+          "name": "Nox's Beast — Swimming Charge (Low Health)",
+          "tells": "At roughly one-third health the Beast dives into the water at the arena edges and swims diagonally, creating deep-water pits as it resurfaces.",
+          "counter": "Track its movement through the water and burrow in the opposite direction of the diagonal swim line.",
+          "damageWindow": "Strike immediately on resurface before it re-enters the water."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no mid-fight healing. Use Plasma Vials when you drop below half health — do not save them.",
+        "easierTactic": "Equip the Iron Lung trinket if you have it (extends burrow time) or Pit Preserver (protection from water edges). Burrow on every charge — consistency with this pattern wins the fight.",
+        "retreatOption": "None. Ensure you have collected the Fused Bonestone from Queensbury Crypt before this fight — it provides a significant stat boost."
+      },
+      "reward": "Windy Generator — second Spark Generator restored and Nox's Bayou cleared.",
+      "id": "nox-beast",
+      "name": "Nox's Beast"
+    },
+    {
+      "sectionId": "kindlewood-and-septemburg",
+      "locationRef": "Septemburg",
+      "prep": {
+        "healthAdvice": "Full health essential. The Carving Man chase sequence deals constant damage if you fail to dodge its reach. Bring two Plasma Vials.",
+        "topUpBefore": "After the chase sequence ends and you reach the boss arena, collect the bone piles on the arena edges before engaging.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Carving Man — Punches and Charges",
+          "tells": "The Carving Man winds up a wide punch telegraphed by its shoulder rotating back. Charges are indicated by it lowering its carved head.",
+          "counter": "Burrow underground during the punch wind-up. Step sideways to avoid charges — the hitbox is narrower than it appears.",
+          "damageWindow": "Two to three hits after dodging a punch. After a charge, the Carving Man has a longer recovery window — use it."
+        },
+        {
+          "name": "Carving Man — Hand Throw",
+          "tells": "The Carving Man detaches its fist and hurls it across the arena in a slow arc.",
+          "counter": "The fist moves predictably — sidestep in the direction it launched from to walk behind its trajectory.",
+          "damageWindow": "While the Carving Man is one-handed it attacks less frequently. Strike two to three times before the hand returns."
+        },
+        {
+          "name": "Carving Man — Electric Slam",
+          "tells": "Lightning begins arcing around the Carving Man's body, then it slams both hands down creating an electric shockwave.",
+          "counter": "Burrow immediately when you see the lightning arcing. The shockwave does not penetrate underground.",
+          "damageWindow": "Surface and attack aggressively while the electric discharge animation plays out."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "The arena has no mid-fight restores. Use a Recall Disc sidearm for maximum mobility and repositioning if you have one.",
+        "easierTactic": "Equip the Beckoning Collar sidearm for a consistent additional damage source. Burrowing on every major attack is the safest approach — this boss rewards patience.",
+        "retreatOption": "None in the boss arena. During the preceding chase sequence, the goal is to rescue three schoolchildren — do so for a bonus trinket reward."
+      },
+      "reward": "Septemburg Generator — third Spark Generator restored.",
+      "id": "carving-man",
+      "name": "The Carving Man"
+    },
+    {
+      "sectionId": "sandfalls-and-bone-beach",
+      "locationRef": "Bone Beach",
+      "prep": {
+        "healthAdvice": "Full health and at least two Plasma Vials. The Major Miner fight involves arena hazards that deal ongoing damage.",
+        "topUpBefore": "Before descending into the Dreadworm's Maw dungeon, collect all bones in the Sandfalls area and top up at the Underlab.",
+        "recommendedItems": []
+      },
+      "phases": [
+        {
+          "name": "Major Miner — Rock Cone",
+          "tells": "Major Miner raises his hammer, then swings it into the ground flinging three to four rocks in a forward cone toward Mina.",
+          "counter": "Sidestep at an angle to the left or right — the cone is too wide to dodge straight back.",
+          "damageWindow": "Close in and strike two to three times while Major Miner recovers his hammer from the ground."
+        },
+        {
+          "name": "Major Miner — Ground Smash and Flame Cracks",
+          "tells": "Major Miner smashes the arena floor creating a crack pattern. After a brief pause, flames erupt from all cracks simultaneously.",
+          "counter": "Identify a gap in the crack pattern immediately after the smash. Stand in a gap and wait — do not move erratically.",
+          "damageWindow": "There is a two-second window between the crack appearing and the flames erupting. Strike Major Miner once during this window."
+        },
+        {
+          "name": "Major Miner — Pickaxe Lines and Helper Enemies",
+          "tells": "Major Miner drags his pickaxe along the floor in horizontal lines, then summons helper workers from the arena edges.",
+          "counter": "Burrow to cross pickaxe lines safely. Grab and throw helpers at Major Miner for damage — it interrupts his next attack.",
+          "damageWindow": "After throwing a helper into Major Miner, he staggers briefly. Land three to four hits during the stagger."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Bone piles in the Dreadworm's Maw corridors before the arena. No mid-fight healing available.",
+        "easierTactic": "Throwing the helper workers at Major Miner is the most efficient damage source in this fight. Prioritise grabbing and throwing over direct attacks.",
+        "retreatOption": "None. Acquire the Battery Buster weapon in the Dreadworm's Maw before this fight if available — its ranged mode is highly effective."
+      },
+      "reward": "Story progression — access to the Dreadworm's Maw dungeon and the Mined Mind boss beyond.",
+      "id": "major-miner",
+      "name": "Major Miner"
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "tenebrous-sea-and-loners-landing",
+      "stage": "Prologue",
+      "title": "Tenebrous Sea & Loner's Landing",
+      "order": 1,
+      "chips": [
+        "Weapon Select",
+        "Uranium Bracelet",
+        "Nether Kraken",
+        "Hulk Trooper"
+      ],
+      "unlocks": [
+        "nightstar",
+        "uranium-bracelet",
+        "volt-hatchet",
+        "gyro-dagger"
+      ],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        "Watch the opening sequence and read the Marshal's letter aboard ship — this establishes Mina's reason for travelling to Tenebrous Isle.",
+        "Below deck, collect bones from the floor. Bones are the game's primary currency; smash every breakable object you see throughout the entire game.",
+        "Speak to the Boatswain and choose your starting weapon. <strong>Nightstar</strong> (flail) offers the most range and suits newcomers. <strong>Whisper and Vesper</strong> (twin daggers) suit aggressive players who prefer speed. <strong>Blaststrike Maul</strong> (hammer) deals burst damage with its chargeable strike.",
+        "Fight through the debris-strewn decks, smashing every crate and barrel for bones as you ascend.",
+        "Face the <strong>Nether Kraken</strong> on the top deck. Circle around the tentacle slams and hit the exposed body — stay to the side at all times.",
+        "Collect the <strong>Uranium Bracelet</strong> from the defeated Kraken. This item unlocks the burrow ability: press and hold the burrow button to dig underground, avoiding most enemy attacks. Mastering the burrow is the core skill of the entire game.",
+        "Receive two <strong>Plasma Vials</strong> from the captain. Vials are your healing resource — use them when you drop below half health, not as a last resort.",
+        "Head south then east from the crash site to reach <strong>Loner's Landing</strong>.",
+        "At Loner's Landing, find the <strong>X marking on the floor</strong> and burrow into it to access your first <strong>Underlab</strong>. Underlabs are save points and fast-travel hubs — activate every one you find.",
+        "Meet the Lady NPC in the Underlab for context on the island.",
+        "Exit and explore Loner's Landing. Break every candle and whip tall grass — they consistently drop bones. Clear both sides of each screen before moving on.",
+        "Find the <strong>Volt Hatchet</strong> sidearm in a chest. Sidearms consume <strong>Joules</strong> — a secondary resource — and deal high damage. Reserve them for elite enemies and mini-bosses.",
+        "Pick up the <strong>Gyro Dagger</strong> sidearm by hitting the leftmost pillar to dislodge its chest.",
+        "Collect all three <strong>Bonestones</strong> from blue chests throughout Loner's Landing. Bonestones are weapon upgrade materials — find every blue chest.",
+        "Use <strong>purple balloon flowers</strong> to reach raised platforms. Throw rocks at shield-carrying enemies to break their guard before attacking.",
+        "Navigate the Boardwalk section — watch fire patterns on moving platforms before stepping onto them.",
+        "Collect a <strong>Kear</strong> from the Trooper encounter. Kears are finite keys; spend them only on blue-chest locks containing guaranteed valuable rewards.",
+        "Ascend the final staircase of the Commons to face <strong>Hulk Trooper</strong>."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before confirming your weapon choice. All three starting weapons are viable throughout the entire game. Nightstar is recommended for your first run — its range keeps you safe while you learn the burrow mechanic. You can purchase the other two weapons later in Ossex.",
+          "title": "Choose your weapon thoughtfully — do this now, before speaking to the Boatswain"
+        },
+        {
+          "type": "tip",
+          "body": "The Uranium Bracelet enables burrowing underground at almost any time. Most enemy attacks and hazards cannot reach you underground. When in doubt, burrow. This single technique makes the vast majority of encounters — including every boss — substantially easier.",
+          "title": "Burrowing is your most important skill"
+        },
+        {
+          "type": "tip",
+          "body": "Bones fund your Health Rose upgrades, map purchases, and weapons in Ossex. Smash candles, break crates, and whip grass on every screen — even if you think you've already explored it. The habit of clearing every screen pays off significantly over the full game.",
+          "title": "Collect every bone"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Volt Hatchet sidearm — Loner's Landing chest",
+          "spoiler": false,
+          "categoryId": "sidearm",
+          "note": "Sidearm; uses Joules. High single-hit damage against elite enemies."
+        },
+        {
+          "type": "other",
+          "label": "Gyro Dagger sidearm — hit the leftmost pillar to dislodge the chest",
+          "spoiler": false,
+          "categoryId": "sidearm",
+          "note": "Sidearm; homes weakly. Useful against fast-moving targets."
+        },
+        {
+          "type": "other",
+          "label": "Bonestones ×3 — blue chests scattered through Loner's Landing",
+          "spoiler": false,
+          "categoryId": "bonestone",
+          "note": "Weapon upgrade material. Required for all weapon upgrade purchases."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "ossex",
+      "stage": "Hub",
+      "title": "Ossex — The City and Radiant Manor",
+      "order": 2,
+      "chips": [
+        "Thorne Boss",
+        "Steady Soles",
+        "Map Purchase",
+        "Hollower's Guild"
+      ],
+      "unlocks": [
+        "steady-soles"
+      ],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        "Enter <strong>Ossex</strong> from Loner's Landing. Activate the Underlab to save. This city is your hub throughout the entire game — you will return many times.",
+        "Head north into <strong>Radiant Manor</strong>. Speak to Mr. Furgus in the Grand Hall, then take the left door to the Orphanage.",
+        "In the Orphanage, listen to Lionel's speech. Break all gift boxes for bones. Return to the foyer and speak with Lionel, then exit through the bottom door to face <strong>Thorne</strong>.",
+        "After defeating Thorne, head to the <strong>city fountain</strong> — interact with it to see a map marking the six Spark Generator locations. Your goal for the rest of the game is to restore all six.",
+        "Speak to <strong>Klumpy</strong> north of the fountain. Talk to the <strong>Newsie</strong> to learn that <strong>Rhene</strong> is missing — this leads to the Southern Outskirts quest.",
+        "Visit the <strong>Hollower's Guild</strong> south of the fountain. Speak to the desk attendant, burrow to the back area, and talk to Muriel about Rhene. Collect all loot.",
+        "Head to the <strong>Emporium</strong>. If you have 600+ bones, buy the <strong>Health Rose</strong> upgrade — each one permanently adds to Mina's maximum health. Prioritise health over hoarding.",
+        "Visit the <strong>Kear Institute</strong>. Speak to Freeton and purchase a Kear if you can afford one.",
+        "On <strong>High Street</strong>, find the man in purple named <strong>Furl</strong>. Hit him to extend his nose, climb across, pick up the flower bouquet from the second roof, drop down and return it. Push Furl across the park using the flowers to earn the <strong>Valor Medallion</strong> trinket.",
+        "Find the <strong>telescope</strong> further north. Use it to spot the hidden planet — you receive a Kear as a reward.",
+        "Spend a <strong>Kear</strong> to unlock the northern blocked path.",
+        "In the northern Residence area, climb to the balcony and collect the <strong>Steady Soles</strong> trinket. Equip it immediately — it prevents knockback from all enemies and allows free movement on ice, water, and stairs. It is one of the best trinkets in the game.",
+        "Use a vacuum tube to return to the city centre when finished.",
+        "Return to the <strong>Hollower's Guild</strong> after completing the Southern Outskirts section (see next section). Speak to <strong>Drillhardt</strong> and spend <strong>500 bones</strong> to purchase the basic map. This shows your position and discovered areas — essential for navigation.",
+        "Spend a further <strong>500 bones</strong> for the enhanced map (available after completing Septemburg) — it marks undiscovered collectible locations."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before leaving Ossex's northern district. Steady Soles prevents knockback from every enemy in the game and allows free movement on all terrain types. Equip it the moment you pick it up and do not unequip it for the rest of the game unless you have a specific reason.",
+          "title": "Buy Steady Soles immediately — do this now, before leaving the northern Residence"
+        },
+        {
+          "type": "tip",
+          "body": "The Emporium sells Health Rose upgrades for 600 bones each. More maximum health is nearly always more valuable than anything else you could spend bones on. Buy every Health Rose available before you invest in weapons or sidearms.",
+          "title": "Buy Health Roses before saving bones"
+        },
+        {
+          "type": "tip",
+          "body": "The basic map (500 bones from Drillhardt) is essential. Without it you will waste significant time doubling back through already-cleared areas. Buy it as soon as you return from the Southern Outskirts.",
+          "title": "Purchase the map early"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Valor Medallion — complete Furl's nose puzzle on High Street",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Exact effect varies; obtained as a puzzle reward in Ossex."
+        },
+        {
+          "type": "other",
+          "label": "Steady Soles — north Residence balcony, requires Kear to unlock the path",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Eliminates knockback and enables free movement on all terrain — equip and keep equipped."
+        },
+        {
+          "type": "other",
+          "label": "Bonedust Flakes — secret area reached via Furl's extended nose into the barrel channel",
+          "spoiler": true,
+          "categoryId": "bonestone",
+          "note": "Weapon upgrade dust. Used alongside Bonestones to purchase weapon upgrades."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "southern-outskirts",
+      "stage": "Overworld I",
+      "title": "Southern Outskirts & Rebel Barracks",
+      "order": 3,
+      "chips": [
+        "Rescue Rhene",
+        "Deflector Parasol",
+        "Cave Network"
+      ],
+      "unlocks": [
+        "deflector-parasol"
+      ],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        "Exit Ossex southward to enter the <strong>Southern Outskirts</strong>. From the entrance, head right to the Commons.",
+        "In the <strong>Commons</strong>, defeat the laser-shooting knights. Dig under the purple balloon to the north and push it toward the blue chest. Use it to jump left and open the chest for a <strong>Bonestone</strong>.",
+        "Cross the chasm using a second purple balloon and continue into the <strong>Cave Network</strong>.",
+        "In the Cave Network, time your jumps across the rotating purple balloons — watch the full rotation cycle before jumping.",
+        "Face the shield-wielding knight mini-boss: dodge its thrown swords by sidestepping, sidestep its dashes, and attack when the shield is down. Push the spawned balloon south into the gap to claim the <strong>Joule Box</strong> upgrade.",
+        "Return to the Commons. Clear the candles in the next area to collect the <strong>Deflector Parasol</strong> sidearm — it reflects projectiles back at enemies.",
+        "Use a <strong>Kear</strong> to unlock the door marked with a lock icon. Descend via rope and step on the pressure switch to lower the spikes.",
+        "Open the door marked '1' — it costs one Plasma Vial. Proceed into the <strong>Rebel Barracks</strong>.",
+        "In the Rebel Barracks, go left immediately without engaging the four knights — locate the button and head up to meet <strong>Rhene</strong>.",
+        "Return and defeat all four guards. If needed, exit and re-enter the screen to reset them and fight in smaller groups.",
+        "Press the buttons to unlock Rhene's cell and navigate through the remaining hazards — swinging barriers and moving platforms. Collect bones throughout.",
+        "Give Rhene a Plasma Vial when prompted to have her join as a companion. Navigate the final traps and exit through the top-left door.",
+        "Return to <strong>Ossex</strong> via the moving platform. Rhene and Muriel will be at the Hollower's Guild — speak to Drillhardt here to purchase the map."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before opening the door marked '1'. Entry costs a vial, and recruiting Rhene inside also requires giving her a vial. Ensure you have two Plasma Vials minimum before entering the Barracks — one for the door and one for Rhene.",
+          "title": "Keep at least one Plasma Vial for Rhene — do this now, before entering the Rebel Barracks"
+        },
+        {
+          "type": "tip",
+          "body": "When facing the four guards inside the Barracks, lure them one at a time by retreating toward the door before they cluster. Resetting the screen by exiting and re-entering is always an option if the fight goes badly.",
+          "title": "Kite the four guards individually"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Deflector Parasol sidearm — break candles in the upper Commons area",
+          "spoiler": false,
+          "categoryId": "sidearm",
+          "note": "Sidearm; reflects projectiles back at enemies."
+        },
+        {
+          "type": "other",
+          "label": "Bonestone — blue chest in the Commons, accessible via purple balloon",
+          "spoiler": false,
+          "categoryId": "bonestone",
+          "note": "Weapon upgrade material."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "eastern-heath-and-mourners-mile",
+      "stage": "Overworld II",
+      "title": "Eastern Heath & Mourner's Mile",
+      "order": 4,
+      "chips": [
+        "Spike Vault",
+        "Vial Pouch Upgrade",
+        "Spike Spurs"
+      ],
+      "unlocks": [],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        "Exit Ossex eastward and immediately right from Loonard NPC to enter <strong>Eastern Heath: Grassland</strong>.",
+        "Clear enemies on screen one — watch for projectiles from the right. Advance north through the screens, defeating owls and avoiding traps.",
+        "On the third screen, dig left to find three bones buried in the ground. Collect the chest below by jumping right.",
+        "Ride the moving platform and jump north at its midpoint to reach a chest on the right.",
+        "Find the small opening on the right side of a wall and burrow into it to access a secret area. Defeat the owl and collect the chest. Meet <strong>Poppit</strong>, a merchant selling the <strong>Willow the Wisp</strong> trinket and a Kear.",
+        "Continue north and press the switch near the bridge — this lowers the spike barrier and creates a shortcut back to Ossex.",
+        "Break candles to access the Underlab gateway, then head east into <strong>Mourner's Mile</strong>.",
+        "In Mourner's Mile's <strong>Knight's Rest</strong>, move right and defeat the three red goblins. Ride the moving platform south and defeat the shield knight. Crack the bottom-right stone to access the <strong>Shallow Tomb</strong>.",
+        "In the Shallow Tomb, pick up the Kear and the 100-bone stack. Time your movement around the candles in the top-right corner to find another 100-bone stack.",
+        "Return to Knight's Rest, push the rope down and descend. Speak to <strong>Jackdaw</strong> and <strong>Jub the Pariah</strong>.",
+        "Head north and right. Defeat the shield knight and light the brazier — this opens the path ahead.",
+        "Crack the stone on the left for second-visit Shallow Tomb access. Inside, time the spike jumps and claim the <strong>Spike Spurs</strong> trinket and all skulls.",
+        "Continue right through Knight's Rest. Burrow under the steel gate, crack stones, and collect the chest. Fight the two red goblins, throw the rope down, and proceed north to the spike switch.",
+        "Navigate the <strong>Tower Tunnels</strong> — two chests inside, accessed by going north through the spike corridor and digging south to re-emerge at Knight's Rest.",
+        "Enter the cemetery and speak to the Lady NPC. Clear all tombstones to reveal four holes. Enter the top-left hole first.",
+        "In the <strong>Spike Vault</strong>, go left for the <strong>Vial Pouch Upgrade</strong> chest — this permanently increases your maximum Plasma Vials. Drop the rope, go left, time the spike jumps for a Kear and bones. Exit right.",
+        "Press the button and head right down the stairs toward <strong>Queensbury Crypt</strong>."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before exiting the Spike Vault area. The Vial Pouch Upgrade permanently increases your maximum Plasma Vials — more healing capacity for every boss fight ahead. It is inside the Spike Vault: go left from the entrance and open the chest.",
+          "title": "Buy the Vial Pouch Upgrade — do this now, before leaving the Spike Vault"
+        },
+        {
+          "type": "tip",
+          "body": "The secret-area merchant Poppit sells Willow the Wisp, which reveals nearby hidden items on your map. Combined with the enhanced map from Drillhardt, it dramatically accelerates 100% completion runs. The Kear Poppit sells is also worth buying if you have the bones.",
+          "title": "Buy Willow the Wisp from Poppit"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Willow the Wisp trinket — Poppit's secret shop in the burrowed opening on the third screen",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Reveals nearby hidden items on the map — pairs well with the enhanced map from Drillhardt."
+        },
+        {
+          "type": "other",
+          "label": "Spike Spurs trinket — Shallow Tomb second visit, timed spike-jump sequence",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Grants benefits when taking spike damage; useful in spike-heavy areas."
+        },
+        {
+          "type": "other",
+          "label": "Vial Pouch Upgrade — Spike Vault left chest, increases maximum Plasma Vials",
+          "spoiler": false,
+          "categoryId": "upgrade",
+          "note": "Permanently increases maximum Plasma Vials carried — more healing capacity for all future fights."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "queensbury-crypt",
+      "stage": "Generator 1",
+      "title": "Queensbury Crypt",
+      "order": 5,
+      "chips": [
+        "Midden",
+        "The Duchess",
+        "Fused Bonestone",
+        "Proto Spark"
+      ],
+      "unlocks": [
+        "fused-bonestone"
+      ],
+      "gates": [],
+      "gatingType": "none",
+      "steps": [
+        "Enter the <strong>Old Graveyard</strong> from the Mourner's Mile stairs. Break the cracked rock on the left in the Underlab, defeat slimes and birds moving right.",
+        "Hit the pressure switch in the far corner to open the path north. Defeat ghouls and help Mrs. Sodsby dig graves — she rewards you with a Kear.",
+        "Collect the <strong>Bonestone</strong> to the right. Take the bottom-right path, defeat the jumping skeleton, obtain the <strong>Mist Jar</strong> sidearm.",
+        "Clear debris from the stairs, find the pressure switch, and use a Kear to unlock the vault for the <strong>Desperation Bonnet</strong> trinket.",
+        "Ride the moving platform north, speak to <strong>Belvedere</strong> (the in-dungeon merchant — his shop is your main supply point inside the crypt).",
+        "Enter the crypt through the doorway. In the <strong>Foyer</strong>, blow up both walls (left and right) to collect bones from each side. Exit to the balcony for the red chest containing <strong>Whisper and Vesper</strong> items.",
+        "In the <strong>Entryway</strong>, avoid arrow traps and defeat enemies while heading upward. Hit the switch at the path end, navigate around floor runes, and proceed up.",
+        "Find the small crawl-space opening on the right at the top of the screen — inside are skulls and Bonestone fragments.",
+        "Dig to the next room, defeat slime and the tall enemy. Pick up the <strong>statue head</strong> and place it on the left statue to retract the spikes. Speak to Ophidio.",
+        "In the <strong>Statue Head Hall</strong>, collect the Bonestone Flakes chest. Drill through the wall openings: right for Stolenoid trinket from Belvedere, opposite for a blue chest. Enter the mirror to briefly access the Astral Orrery (hit the middle switch, collect the chest, return).",
+        "Return to the Statue Head Hall main corridor. Head north through two sets of stairs and mobs. Pick up a second statue head and carry it back to place on the right statue — this retracts the final spike gate.",
+        "Navigate to <strong>Midden</strong>. After the encounter ends, collect the Bonestone and proceed north.",
+        "Carry a third statue head through the tough four-enemy room. Tip: press the switch in the bottom-right corner to skip the fight and rush through the door.",
+        "Descend to the <strong>Ancestral Chamber</strong>. Sacrifice two Plasma Vials at the door — ensure you have at least two before opening it.",
+        "Face and defeat <strong>Midden</strong> in the Ancestral Chamber. Collect the <strong>Fly Bait</strong> trinket and all loot.",
+        "Head north. Walk over the planks, break the cracked stone on the left and the stone in the bottom-left corner. Find the <strong>Duke</strong> on the left — sacrifice two more vials to open the path to him and defeat the tall zombie at the top.",
+        "The Duke follows you. Navigate all traps heading south together, then go around and north back to the central hall. Climb the stairs, use the fast-travel pipe to unlock an outside shortcut.",
+        "Destroy the wall on the left hallway to find a statue head. Carry it north, drop into the arena and place it on the pedestal — this summons the <strong>Duchess</strong>.",
+        "Defeat the <strong>Duchess</strong>. Collect the <strong>Health Rose</strong> upgrade.",
+        "Follow the Duke north to the Royal Tomb. Break all candles and place the lid on the tomb — receive the <strong>Proto Spark</strong> trinket, one of the best in the game (auto-revives once per save-point cycle).",
+        "Head north to the <strong>Solemn Generator</strong>. Speak to the trooper, inspect the generator, and climb the vertical shaft — reset fuses as you ascend, avoiding enemies and hazards.",
+        "Collect the <strong>Fused Bonestone</strong> at the top. Mina rests and writes her letter. Use the opened channel to descend, then head south out of the crypt into Mourner's Mile. The four mid-game regions now open simultaneously."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before triggering the Duchess fight. Return to Belvedere in the Statue Head Hall and spend any remaining bones on Kears or healing supplies. Once you drop the statue head, the fight begins immediately. Bring two Plasma Vials minimum into this arena.",
+          "title": "Stock up from Belvedere before the Duchess — do this now, before carrying the statue head to the summon pedestal"
+        },
+        {
+          "type": "do-now",
+          "body": "Do this now, before exiting the Royal Tomb area. The Proto Spark auto-revives Mina once per checkpoint cycle with most health restored — it is a safety net for every boss fight in the rest of the game. Break all candles in the Royal Tomb room and place the tomb lid to receive it.",
+          "title": "Secure the Proto Spark trinket — do this now, before leaving the Royal Tomb"
+        },
+        {
+          "type": "tip",
+          "body": "Completing Queensbury Crypt opens Nox's Bayou, Kindlewood/Septemburg, Sandfalls/Bone Beach, and Coltrane Peak simultaneously. The recommended order is Nox's Bayou first (most approachable), then Septemburg, Bone Beach, and Coltrane Peak last (gated behind the others). You can do them in any order.",
+          "title": "Four regions open after this section — plan your route"
+        },
+        {
+          "type": "warning",
+          "body": "Two locked doors in the crypt require sacrificing Plasma Vials to open — they consume the vials permanently. Ensure you have enough before approaching the Ancestral Chamber door and the Duke's passage.",
+          "title": "Sacrificing vials at sealed doors is permanent"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Desperation Bonnet — Old Graveyard Kear vault",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Provides defensive benefit when at low health."
+        },
+        {
+          "type": "other",
+          "label": "Stolenoid — Belvedere's shop inside the Statue Head Hall, accessed via right drill-hole",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Purchased from Belvedere inside Queensbury Crypt."
+        },
+        {
+          "type": "other",
+          "label": "Fly Bait — Midden boss reward, Ancestral Chamber",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Reward for defeating Midden in the Ancestral Chamber."
+        },
+        {
+          "type": "other",
+          "label": "Proto Spark — Royal Tomb, break all candles and place the tomb lid",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Auto-revives Mina once per save-point cycle — one of the best trinkets in the game."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "1:20:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "nox-bayou",
+      "stage": "Generator 2",
+      "title": "Nox's Bayou",
+      "order": 6,
+      "chips": [
+        "Toxic Terrain",
+        "Nox's Beast",
+        "Windy Generator"
+      ],
+      "unlocks": [],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "soft",
+      "steps": [
+        "Exit Ossex westward through the guard gate into the <strong>Western Wilds: Occupied Bridge</strong>. Head left past the bridge entrance.",
+        "Continue north through the Western Wilds, breaking red crystals as you go — they block paths and drop bones when destroyed.",
+        "Head southwest through the crow-filled water area into <strong>Backwaters: Shanty Swamp</strong>.",
+        "Nox's Bayou introduces <strong>toxic puddles</strong> — shallow pools that deal constant damage while standing in them. Do not walk through them; burrow underneath instead.",
+        "Equip <strong>Steady Soles</strong> if you have not already — it makes movement through shallow water significantly less punishing.",
+        "Navigate through the Shanty Swamp, using burrow to cross toxic patches and staying on higher ground where possible.",
+        "Locate the Underlab checkpoint within the Bayou and activate it before pushing deeper.",
+        "Break all destructible objects on each screen — the Bayou has numerous hidden bone caches.",
+        "Reach the <strong>Windy Generator</strong> area. Clear the enemies outside the building, then enter the generator building.",
+        "Face <strong>Nox's Beast</strong>. Burrow sideways on every charge. Attack the body after dodges — two quick hits per opening. At low health, track its diagonal swimming path and burrow the opposite way.",
+        "Restore the <strong>Windy Generator</strong> — the second Spark Generator is now lit.",
+        "Explore the Bayou thoroughly before leaving — optional bosses <strong>Dark Deluxy</strong> (locked behind a Windy Generator door) and <strong>Thalassion</strong> (a hidden super-boss in the Backwaters) can be challenged here."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before descending into Nox's Bayou proper. If you have the Pit Preserver trinket (protects from water-edge hazards) or Iron Lung (extends burrow duration), equip one of them. The Bayou's toxic pools are manageable but burrow duration is your primary defence — extra time underground is directly valuable.",
+          "title": "Equip Pit Preserver or Iron Lung before entering — do this now, before crossing into the Bayou"
+        },
+        {
+          "type": "warning",
+          "body": "Standing in a toxic puddle drains health far faster than a single enemy hit. Always burrow to cross them — never attempt to walk through. If you find yourself taking unexpected damage, look down for the pale-green shimmer of a toxic pool.",
+          "title": "Toxic puddles deal rapid damage"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Dark Deluxy optional boss — accessible from door requiring restored Windy Generator",
+          "spoiler": true,
+          "categoryId": "boss",
+          "note": "Optional boss. Rewards a trinket on defeat."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "kindlewood-and-septemburg",
+      "stage": "Generator 3",
+      "title": "Kindlewood & Septemburg",
+      "order": 7,
+      "chips": [
+        "Madd House",
+        "Carving Man Chase",
+        "Carving Man Boss",
+        "Rescue 3 Kids"
+      ],
+      "unlocks": [],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "soft",
+      "steps": [
+        "Return to the <strong>Western Wilds: Occupied Bridge</strong>. Ascend the central bridge stairs and walk left to the end.",
+        "Climb the nearby wooden stairs and follow the leaf-covered path into <strong>Kindlewood: Overgrowth</strong>.",
+        "Kindlewood introduces strong wind currents — they push Mina in their direction and affect projectiles. Time your movements with the wind direction to maintain control.",
+        "Face <strong>Madd House</strong>, the mini-boss approach enemy. Stay mobile and use the wind currents to your advantage — they affect its attack trajectories too.",
+        "Continue through Kindlewood into <strong>Septemburg</strong>, a harvest-themed city occupied by aggressive plant-wildlife hybrids.",
+        "Explore Septemburg's opening screens. Collect bones and locate the Underlab checkpoint — activate it before advancing toward the chase sequence.",
+        "The <strong>Carving Man chase sequence</strong> begins when you reach the city's central district. The Carving Man is completely invulnerable during this sequence — do not attempt to fight it.",
+        "During the chase, watch for three <strong>lost schoolchildren</strong>. Rescuing all three by reaching them before the Carving Man does rewards a bonus trinket at the end of the sequence.",
+        "Focus on movement: burrow under obstacles, use purple balloons to jump gaps, and keep moving forward. The Carving Man accelerates if you pause too long.",
+        "After surviving the chase, collect bones in the arena edges before the boss fight begins.",
+        "Face the <strong>Carving Man</strong>. Burrow on every punch wind-up. Sidestep its charges — the hitbox is narrower than it appears. When it throws its fist, strike while it is one-handed. Burrow underground during the electric slam.",
+        "Restore the <strong>Septemburg Generator</strong> — the third Spark Generator is now lit."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, during the chase sequence. The three schoolchildren are located in side-paths off the main chase route. Detour briefly to reach each one — the Carving Man can be outpaced. Missing even one costs you the bonus trinket. Study the layout on the first attempt and prioritise the children on your next if you miss one.",
+          "title": "Save all three schoolchildren during the chase — do this now, during the Carving Man chase"
+        },
+        {
+          "type": "tip",
+          "body": "The wind currents in Kindlewood push Mina, enemies, and projectiles in the direction they blow. Use this to your advantage: wind-pushed sidearms travel further and hit harder. Enemy projectiles moving against the wind are slower and easier to dodge.",
+          "title": "Wind in Kindlewood affects everything"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Bonus trinket — rescue all three schoolchildren during the Carving Man chase sequence",
+          "spoiler": false,
+          "categoryId": "trinket",
+          "categoryTotalKnown": 60,
+          "note": "Trinket. Reward for rescuing all three schoolchildren during the Carving Man chase."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "50:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "sandfalls-and-bone-beach",
+      "stage": "Generator 4",
+      "title": "Sandfalls & Bone Beach",
+      "order": 8,
+      "chips": [
+        "Underground Mining",
+        "Major Miner",
+        "Mined Mind",
+        "Battery Buster"
+      ],
+      "unlocks": [
+        "battery-buster"
+      ],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "soft",
+      "steps": [
+        "From Ossex, head south and find the <strong>purple bounce pads</strong> near the raised southern area. Burrow under the pink pad, push it left against the wall, and hop up the resulting staircase.",
+        "Pass through the monster-mouth door with the blue ocean-wave design and descend into the <strong>mining shaft</strong>.",
+        "The mining shaft leads into <strong>Sandfalls: Shifting Sands</strong> — a subterranean desert region where sand constantly falls from ceiling grates and fills lower areas. Use burrow to pass through sand-filled corridors.",
+        "Navigate the bomb and dynamite puzzles in the Sandfalls area. Pick up explosives and throw them at cracked walls to open new paths — listen for the hollow sound of a weak wall.",
+        "Locate the <strong>Underlab</strong> checkpoint in Sandfalls and activate it. This dungeon is long — mid-point saves matter.",
+        "Find and unlock the <strong>Battery Buster</strong> weapon in the Dreadworm's Maw sub-area. It accumulates charge during melee and releases it as a powerful ranged shot — effective at range during the upcoming Major Miner fight.",
+        "Face <strong>Major Miner</strong> in the Dreadworm's Maw approach. Dodge the rock-cone attack by stepping diagonally. Stand in crack gaps after his ground smash before flames erupt. Throw his helper workers at him for stagger damage.",
+        "Descend into <strong>Bone Beach</strong> after defeating Major Miner. Bone Beach is a vertical coastal dungeon — navigate the multi-level area exploring thoroughly for collectibles.",
+        "Locate the <strong>Mined Mind</strong> at the end of the Dreadworm's Maw dungeon. Mined Mind is the generator boss — fight it using the full toolkit acquired so far.",
+        "Restore the <strong>Bone Beach Generator</strong> — the fourth Spark Generator is now lit.",
+        "Note: the optional boss <strong>Armand</strong> is accessible in Ossex's Molten Foundry once you have enough progression items from this region."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before engaging Major Miner. The Battery Buster weapon is located in the Dreadworm's Maw sub-area before the boss room. Its ranged charged shot deals exceptional damage to Major Miner and makes the fight significantly more manageable. Do not skip past it.",
+          "title": "Find the Battery Buster before Major Miner — do this now, before the boss encounter"
+        },
+        {
+          "type": "warning",
+          "body": "In the Sandfalls area, corridors can fill with sand over time if you stand still. Sand does not hurt you, but it impedes movement and can trap you in a corner. Keep moving or burrow through it — do not wait for it to stop.",
+          "title": "Sand-filled corridors are a soft trap"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Battery Buster weapon — Dreadworm's Maw sub-area, before Major Miner",
+          "spoiler": false,
+          "categoryId": "weapon",
+          "categoryTotalKnown": 5,
+          "note": "Fifth weapon. Accumulates charge during melee and releases it as a ranged shot."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "55:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "coltrane-peak",
+      "stage": "Generator 5",
+      "title": "Coltrane Peak",
+      "order": 9,
+      "chips": [
+        "Train Ticket",
+        "Icebound Cavern",
+        "Frozen Horror",
+        "Guardian Casket"
+      ],
+      "unlocks": [
+        "guardian-casket",
+        "train-ticket"
+      ],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "soft",
+      "steps": [
+        "Return to Ossex and locate the <strong>train station</strong>. Purchase a <strong>Train Ticket</strong> from the station and board the train to <strong>Coltrane Peak</strong> — this is the most straightforward journey of the four mid-game regions.",
+        "Coltrane Peak is a snow-covered mountain region. Activate the Underlab at the base of the mountain before ascending.",
+        "Equip <strong>Steady Soles</strong> (if not already equipped) — ice terrain causes sliding without it. Steady Soles makes navigation on the icy paths completely reliable.",
+        "Navigate the <strong>Icebound Cavern</strong> — the cavern's interior has vertical ice shafts, frozen enemies, and falling icicle traps. Burrow through the floor when icicles fall.",
+        "Face the <strong>Frozen Horror</strong>, the mid-region boss. Stay aggressive and strike during its recovery windows. The cold arena slows movement slightly — account for this when dodging.",
+        "Find and unlock the <strong>Guardian Casket</strong> weapon after the Frozen Horror. This shield weapon enables bash, block, and perfect parry mechanics. A successful perfect parry opens a significant damage window — practice the timing.",
+        "Continue to the mountain summit generator building. Clear the enemies guarding the approach.",
+        "Restore the <strong>Coltrane Peak Generator</strong> — the fifth Spark Generator is lit. Only the Astral Orrery remains.",
+        "Optional: <strong>Mirren</strong>, a secret boss, is accessible in the Frostbite Woods sub-area of Coltrane Peak. Mirren is one of the harder optional fights — approach only when fully equipped."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before climbing the mountain's ice sections. Steady Soles eliminates all slide mechanics on ice completely. Without it, the icy paths become a frustrating movement puzzle. With it, Coltrane Peak's traversal is straightforward.",
+          "title": "Equip Steady Soles before ascending the icy paths — do this now, on arrival at Coltrane Peak"
+        },
+        {
+          "type": "tip",
+          "body": "The Guardian Casket's Grave Counter upgrade (first upgrade, found later) enhances the perfect parry. A perfect parry — blocking at the exact moment of impact — staggers enemies and opens a three-to-four hit damage window. It is especially effective against projectile-heavy bosses in the Astral Orrery.",
+          "title": "Learn the Guardian Casket's perfect parry"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "Guardian Casket weapon — found after the Frozen Horror in Icebound Cavern",
+          "spoiler": false,
+          "categoryId": "weapon",
+          "categoryTotalKnown": 5,
+          "note": "Fifth weapon (or fourth unlockable). Shield weapon with bash, block, and perfect-parry mechanics."
+        },
+        {
+          "type": "other",
+          "label": "Mirren optional boss — Frostbite Woods sub-area of Coltrane Peak",
+          "spoiler": true,
+          "categoryId": "boss",
+          "note": "Optional secret boss. One of the harder optional encounters in the game."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "50:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "astral-orrery",
+      "stage": "Generator 6",
+      "title": "Astral Orrery",
+      "order": 10,
+      "chips": [
+        "Mirror Realm",
+        "Four Pipes",
+        "Orrery Warden",
+        "All-Seeing Skull"
+      ],
+      "unlocks": [
+        "all-seeing-skull"
+      ],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "soft",
+      "steps": [
+        "With all five Generators restored, locate a large <strong>mirror</strong>. The main mirror is in Ossex's Radiant Manor. Hold the walk button toward the mirror for a few seconds to step through into the <strong>Astral Orrery</strong>.",
+        "The Astral Orrery is a cosmically-themed mirror realm — the physics and visuals differ significantly from Tenebrous Isle. Activate the Underlab immediately on entry.",
+        "The Orrery requires you to travel to <strong>four different pipes</strong> and complete the mini-areas each one covers. Completing all four opens the north exit to the main boss.",
+        "Each pipe-area contains enemies, hazards, and collectibles. Clear each one thoroughly — the Orrery holds several of the game's rarer trinkets.",
+        "Smaller mirrors located throughout the other five regions (one in Nox's Bayou, one in Septemburg) act as shortcuts back to the Orrery. Use them if you want to revisit earlier pipe areas.",
+        "After completing all four pipes, the north exit unlocks. Collect the <strong>All-Seeing Skull</strong> item before leaving — it reveals the location of all remaining undiscovered collectibles across Tenebrous Isle. Essential for 100% completion.",
+        "Face the <strong>Orrery Warden</strong>, the generator's guardian boss. Use the full toolkit: burrow on heavy attacks, use sidearms and charged moves during openings, and use the Proto Spark's auto-revive as your safety buffer.",
+        "Restore the <strong>Astral Orrery Generator</strong> — all six Spark Generators are now lit. Return to Ossex.",
+        "Optional: <strong>Evra</strong>, a secret boss, is accessible in Septemburg's Courtyard. Approach once you have the Orrery cleared."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before engaging the Orrery Warden. The All-Seeing Skull reveals every undiscovered collectible location on your map — without it, hunting the remaining trinkets requires thorough manual exploration. It is inside the Orrery before the boss room.",
+          "title": "Collect the All-Seeing Skull before leaving — do this now, before the Orrery Warden fight"
+        },
+        {
+          "type": "tip",
+          "body": "Smaller mirrors in Nox's Bayou and Septemburg are shortcuts into the Orrery's pipe areas. If you missed collectibles in any pipe section, return via these mirrors without having to re-enter from the Radiant Manor.",
+          "title": "Check smaller mirrors throughout the world"
+        }
+      ],
+      "collectibles": [
+        {
+          "type": "other",
+          "label": "All-Seeing Skull — inside the Astral Orrery before the Warden boss room, reveals all remaining collectibles on the map",
+          "spoiler": false,
+          "categoryId": "upgrade",
+          "note": "Key item. Reveals all remaining undiscovered collectibles on the map — essential for 100% completion."
+        }
+      ],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      }
+    },
+    {
+      "sectionId": "radiant-manor-finale",
+      "stage": "Finale",
+      "title": "Radiant Manor — Endgame",
+      "order": 11,
+      "chips": [
+        "All Generators Lit",
+        "Patchling",
+        "Final Boss",
+        "True Ending"
+      ],
+      "unlocks": [],
+      "gates": [
+        "fused-bonestone"
+      ],
+      "gatingType": "hard",
+      "steps": [
+        "Return to Ossex with all six Generators restored. The <strong>Radiant Manor</strong> reacts to the restored power — new areas of the manor become accessible.",
+        "Before entering the endgame sequence, spend all remaining bones. The Emporium's stock resets and additional Health Roses become available — buy every one you can afford.",
+        "Ensure you have at least three Plasma Vials and the Proto Spark trinket equipped — the endgame runs two boss fights back-to-back with limited opportunity to heal between them.",
+        "Return to the Radiant Manor and advance to the newly opened sections. Clear enemies and collect any remaining loot.",
+        "Face <strong>Patchling</strong>, the manor's guardian. Patchling is an animated construct — its attacks come in unpredictable stitched-together sequences. Burrow on any multi-hit combo and strike during single-attack recoveries.",
+        "After Patchling, advance to the final chamber. The <strong>Final Boss</strong> begins immediately — there is no heal point between them.",
+        "The Final Boss has multiple phases. Each phase introduces a new attack pattern; the tells and counters from every previous boss fight apply here in combination. Burrow remains your primary defensive tool throughout.",
+        "Use your highest-damage weapon for the Final Boss — if you have upgrades on Nightstar (Dread Mace tip damage) or Blaststrike Maul (Spin Rush), this is the time to use them.",
+        "After the Final Boss, watch the ending sequence for the game's conclusion.",
+        "Post-game: with the All-Seeing Skull, hunt any remaining trinkets across Tenebrous Isle. The game supports <strong>New Game Plus</strong> with increased challenge and retained items."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "body": "Do this now, before triggering the endgame sequence. Buy every Health Rose available at the Emporium (costs bones). Ensure the Proto Spark is equipped in a trinket slot — its auto-revive will save you in the multi-phase finale. You cannot return to Ossex once the endgame sequence begins.",
+          "title": "Spend all bones and top up before entering — do this now, before returning to Radiant Manor"
+        },
+        {
+          "type": "warning",
+          "body": "Once you advance past a certain point in the restored Radiant Manor, you cannot return to Ossex to shop or heal. This is your final preparation window. Spend every bone on Health Roses, ensure all trinket slots are filled with your best equipment, and save at the Underlab before proceeding.",
+          "title": "No return after the endgame sequence triggers"
+        },
+        {
+          "type": "tip",
+          "body": "After completing the game, New Game Plus starts with all your weapons and upgrades intact but increases enemy health and damage. It is the intended way to use late-game weapon upgrades at full power from the beginning.",
+          "title": "New Game Plus is available immediately"
+        }
+      ],
+      "collectibles": [],
+      "video": {
+        "provider": "youtube",
+        "id": "UcumKfQxy3U",
+        "creator": "BeardBear",
+        "title": "Mina the Hollower - Full Game 100% Walkthrough",
+        "durationLabel": "1:00:00",
+        "startSeconds": 0
+      }
+    }
+  ]
+}

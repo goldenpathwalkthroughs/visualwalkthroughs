@@ -1,0 +1,5690 @@
+{
+  "franchiseSlug": "pokemon",
+  "title": "Pokémon FireRed & LeafGreen",
+  "slug": "pokemon-firered-leafgreen",
+  "year": "2026",
+  "platforms": [
+    "Nintendo Switch",
+    "Nintendo Switch 2"
+  ],
+  "status": "published",
+  "lede": "Return to Kanto in Game Freak's definitive remakes of the original Pokémon adventures — now on Nintendo Switch. Choose your starter, build your team of six, and earn eight Gym Badges before facing the Elite Four and your lifelong rival in the Pokémon League.",
+  "cover": "/assets/covers/pokemon-firered-leafgreen.webp",
+  "theme": {
+    "bodyClass": "theme-firered",
+    "accent": "#e8320a",
+    "accentSoft": "rgba(232,50,10,.14)",
+    "cardGradient": "linear-gradient(160deg,#1a0400,#0f0200 60%,#060100)"
+  },
+  "structure": {
+    "structureType": "linear",
+    "recommendedRoute": [
+      "pallet-to-pewter",
+      "cerulean-city",
+      "vermilion-city",
+      "celadon-city",
+      "lavender-tower-fuchsia",
+      "saffron-silph-co",
+      "cinnabar-island",
+      "viridian-gym",
+      "elite-four"
+    ],
+    "criticalPath": [
+      "pallet-to-pewter",
+      "cerulean-city",
+      "vermilion-city",
+      "celadon-city",
+      "lavender-tower-fuchsia",
+      "saffron-silph-co",
+      "cinnabar-island",
+      "viridian-gym",
+      "elite-four"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "tip",
+      "title": "Starter choice shapes the early game",
+      "body": "Bulbasaur is the easiest choice for newcomers — it handles Brock and Misty with minimal grinding. Charmander is the hardest start but strongest mid-game. Squirtle sits between the two. All three complete the game comfortably.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Version-exclusive Pokémon require trading",
+      "body": "FireRed includes Ekans, Arcanine, Electabuzz, Scyther, and Jynx. LeafGreen includes Sandshrew, Ninetales, Magmar, Pinsir, and Slowbro (earlier). To complete the Pokédex you must trade between both versions. Local wireless trading is supported on Switch; online trading requires Pokémon HOME (arriving post-launch).",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "HMs are permanent field moves — plan ahead",
+      "body": "HM moves cannot be deleted once taught without a Move Deleter in Fuchsia City. Designate one or two team members as your HM carriers so your battle team stays clean. Cut, Surf, and Strength are required for progress; Fly is a strong convenience.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Koga's Pokémon use evasion and self-destruct",
+      "body": "Koffing and Weezing know SelfDestruct and Koga's team stacks Minimise repeatedly. Bring Pokémon that know Swift (never misses) or high-accuracy moves, and do not let the battle drag — a minimised Weezing is difficult to finish cleanly.",
+      "completionistOnly": false
+    }
+  ],
+  "items": [
+    {
+      "id": "pokedex",
+      "name": "Pokédex",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "pallet-to-pewter"
+    },
+    {
+      "id": "town-map",
+      "name": "Town Map",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "pallet-to-pewter"
+    },
+    {
+      "id": "hm01-cut",
+      "name": "HM01 Cut",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "vermilion-city"
+    },
+    {
+      "id": "bicycle",
+      "name": "Bicycle",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "vermilion-city"
+    },
+    {
+      "id": "silph-scope",
+      "name": "Silph Scope",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "celadon-city"
+    },
+    {
+      "id": "hm02-fly",
+      "name": "HM02 Fly",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "lavender-tower-fuchsia"
+    },
+    {
+      "id": "pokeflute",
+      "name": "Poké Flute",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "lavender-tower-fuchsia"
+    },
+    {
+      "id": "hm03-surf",
+      "name": "HM03 Surf",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "lavender-tower-fuchsia"
+    },
+    {
+      "id": "hm04-strength",
+      "name": "HM04 Strength",
+      "type": "ability",
+      "class": "progression",
+      "acquiredAtSectionId": "lavender-tower-fuchsia"
+    },
+    {
+      "id": "card-key",
+      "name": "Card Key",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "saffron-silph-co"
+    },
+    {
+      "id": "master-ball",
+      "name": "Master Ball",
+      "type": "item",
+      "class": "optional",
+      "acquiredAtSectionId": "saffron-silph-co"
+    },
+    {
+      "id": "secret-key",
+      "name": "Secret Key",
+      "type": "item",
+      "class": "progression",
+      "acquiredAtSectionId": "cinnabar-island"
+    }
+  ],
+  "locations": [
+    {
+      "id": "pallet-town",
+      "name": "Pallet Town",
+      "ref": "Pallet Town",
+      "reachableBy": "Starting area — automatic from the beginning of the game",
+      "isHub": true,
+      "contains": [
+        {
+          "label": "Professor Oak's Laboratory — starter Pokémon choice",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "pallet-to-pewter"
+        },
+        {
+          "label": "Blue's sister — Town Map",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "pallet-to-pewter"
+        }
+      ]
+    },
+    {
+      "id": "pewter-city",
+      "name": "Pewter City",
+      "ref": "Pewter City",
+      "reachableBy": "North from Pallet Town via Route 1, Viridian City, Route 2, and Viridian Forest",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Pewter Gym — Brock (Rock/Ground specialist)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "pallet-to-pewter"
+        },
+        {
+          "label": "Boulider Badge",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "pallet-to-pewter"
+        }
+      ]
+    },
+    {
+      "id": "cerulean-city",
+      "name": "Cerulean City",
+      "ref": "Cerulean City",
+      "reachableBy": "East from Pewter City via Route 3 and Mt Moon",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Cerulean Gym — Misty (Water specialist)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "cerulean-city"
+        },
+        {
+          "label": "Bill's Sea Cottage — S.S. Anne ticket",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "cerulean-city"
+        }
+      ]
+    },
+    {
+      "id": "vermilion-city",
+      "name": "Vermilion City",
+      "ref": "Vermilion City",
+      "reachableBy": "South from Cerulean City via Routes 5, 6, and the Underground Path",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "S.S. Anne — HM01 Cut from the Captain",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "vermilion-city"
+        },
+        {
+          "label": "Vermilion Gym — Lt. Surge (Electric specialist)",
+          "kind": "beat",
+          "requires": [
+            "hm01-cut"
+          ],
+          "sectionId": "vermilion-city"
+        },
+        {
+          "label": "Vermilion Fan Club — Bicycle Voucher",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "vermilion-city"
+        }
+      ]
+    },
+    {
+      "id": "lavender-town",
+      "name": "Lavender Town",
+      "ref": "Lavender Town",
+      "reachableBy": "East from Cerulean City via Rock Tunnel (Routes 9 and 10), or east from Celadon City via Route 8",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Pokémon Tower — Team Rocket occupation",
+          "kind": "beat",
+          "requires": [
+            "silph-scope"
+          ],
+          "sectionId": "lavender-tower-fuchsia"
+        },
+        {
+          "label": "Mr. Fuji's House — Poké Flute (after rescue)",
+          "kind": "beat",
+          "requires": [
+            "silph-scope"
+          ],
+          "sectionId": "lavender-tower-fuchsia"
+        }
+      ]
+    },
+    {
+      "id": "celadon-city",
+      "name": "Celadon City",
+      "ref": "Celadon City",
+      "reachableBy": "West from Lavender Town via Route 8, or south from Cerulean City via Routes 5 and 7",
+      "whereWithin": "Department Store, Game Corner, hidden Rocket Hideout beneath the Game Corner",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Rocket Game Corner and hidden Hideout",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "celadon-city"
+        },
+        {
+          "label": "Giovanni (Rocket Hideout) — Silph Scope reward",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "celadon-city"
+        },
+        {
+          "label": "Celadon Gym — Erika (Grass specialist)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "celadon-city"
+        }
+      ]
+    },
+    {
+      "id": "fuchsia-city",
+      "name": "Fuchsia City",
+      "ref": "Fuchsia City",
+      "reachableBy": "South from Celadon City via Route 16 (needs HM02 Fly first from girl on Route 16), or east via Route 15, or north from Cinnabar Island by sea",
+      "whereWithin": "Safari Zone, Pokémon Gym, Safari Zone Warden's house",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Safari Zone — Gold Teeth and HM04 Strength",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "lavender-tower-fuchsia"
+        },
+        {
+          "label": "Safari Zone Warden's house — HM03 Surf (Gold Teeth trade)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "lavender-tower-fuchsia"
+        },
+        {
+          "label": "Fuchsia Gym — Koga (Poison specialist)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "lavender-tower-fuchsia"
+        }
+      ]
+    },
+    {
+      "id": "saffron-city",
+      "name": "Saffron City",
+      "ref": "Saffron City",
+      "reachableBy": "Central Kanto — reached from Celadon (east), Cerulean (south), or Vermilion (north) once the thirsty guards are given a drink bought at Celadon Department Store",
+      "whereWithin": "Silph Co. headquarters (seven floors of Rocket operatives), Saffron Gym",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Silph Co. — Team Rocket occupation, Card Key, Master Ball",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "saffron-silph-co"
+        },
+        {
+          "label": "Giovanni (Silph Co.) — clears Rocket presence",
+          "kind": "beat",
+          "requires": [
+            "card-key"
+          ],
+          "sectionId": "saffron-silph-co"
+        },
+        {
+          "label": "Saffron Gym — Sabrina (Psychic specialist)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "saffron-silph-co"
+        }
+      ]
+    },
+    {
+      "id": "cinnabar-island",
+      "name": "Cinnabar Island",
+      "ref": "Cinnabar Island",
+      "reachableBy": "South-west from Pallet Town by sea (requires HM03 Surf), or east from Fuchsia City via Routes 19 and 20",
+      "whereWithin": "Pokémon Mansion (four floors of wild Pokémon and item balls), Cinnabar Gym (locked without Secret Key)",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Pokémon Mansion — Secret Key",
+          "kind": "beat",
+          "requires": [
+            "hm03-surf"
+          ],
+          "sectionId": "cinnabar-island"
+        },
+        {
+          "label": "Cinnabar Gym — Blaine (Fire specialist)",
+          "kind": "beat",
+          "requires": [
+            "secret-key"
+          ],
+          "sectionId": "cinnabar-island"
+        }
+      ]
+    },
+    {
+      "id": "viridian-city",
+      "name": "Viridian City",
+      "ref": "Viridian City",
+      "reachableBy": "North of Pallet Town — visited early in the game; Gym is only accessible after collecting all seven other Badges",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Viridian Gym — Giovanni (Ground specialist, final Badge)",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "viridian-gym"
+        },
+        {
+          "label": "Move Deleter — removes unwanted HM moves",
+          "kind": "npc",
+          "requires": [],
+          "sectionId": "viridian-gym"
+        }
+      ]
+    },
+    {
+      "id": "indigo-plateau",
+      "name": "Indigo Plateau",
+      "ref": "Indigo Plateau",
+      "reachableBy": "North-west of Viridian City via Route 22, Route 23, and Victory Road (requires all eight Badges to pass the Badge Check Gates)",
+      "whereWithin": "Victory Road dungeon, Pokémon League reception desk, four Elite Four chambers, Champion's arena",
+      "isHub": false,
+      "contains": [
+        {
+          "label": "Victory Road — Boulder puzzles (requires Strength)",
+          "kind": "beat",
+          "requires": [
+            "hm04-strength"
+          ],
+          "sectionId": "elite-four"
+        },
+        {
+          "label": "Elite Four — Lorelei, Bruno, Agatha, Lance",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "elite-four"
+        },
+        {
+          "label": "Champion Blue — your rival",
+          "kind": "beat",
+          "requires": [],
+          "sectionId": "elite-four",
+          "spoiler": true
+        }
+      ]
+    }
+  ],
+  "bossFights": [
+    {
+      "id": "brock",
+      "name": "Brock",
+      "sectionId": "pallet-to-pewter",
+      "locationRef": "Pewter City",
+      "prep": {
+        "recommendedItems": [
+          "Potions",
+          "Antidotes"
+        ],
+        "healthAdvice": "Keep your lead Pokémon above 12 HP — Onix's Bide charges and releases for double the damage it received.",
+        "topUpBefore": "Pewter City Pokémon Centre, directly opposite the Gym"
+      },
+      "phases": [
+        {
+          "name": "Geodude (Lv 12)",
+          "summary": "Uses Tackle and Defence Curl. Rock/Ground — weak to Water and Grass. Does not hit very hard; use this phase to set up if needed."
+        },
+        {
+          "name": "Onix (Lv 14)",
+          "summary": "Screech lowers your Defence by two stages, then Bide charges for two turns and releases double the damage received. Do not use Normal or Poison moves — they deal reduced damage. One or two Water or Grass attacks end the fight quickly."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Pewter City Pokémon Centre",
+        "easierTactic": "Catch a Caterpie or Weedle in Viridian Forest and evolve it to Butterfree or Beedrill — Bug moves bypass the Rock/Ground resistance and String Shot slows Onix before it can Screech.",
+        "retreatOption": "You can leave the Gym mid-battle and return after healing."
+      },
+      "reward": "Boulder Badge (raises the Attack stat of all your Pokémon) and TM39 Rock Tomb"
+    },
+    {
+      "id": "misty",
+      "name": "Misty",
+      "sectionId": "cerulean-city",
+      "locationRef": "Cerulean City",
+      "prep": {
+        "recommendedItems": [
+          "Super Potions",
+          "Paralyze Heals"
+        ],
+        "healthAdvice": "Starmie's BubbleBeam hits all Pokémon for Water damage and has a chance to lower Speed. Keep everyone above 25 HP.",
+        "topUpBefore": "Cerulean City Pokémon Centre, just south of the Gym"
+      },
+      "phases": [
+        {
+          "name": "Staryu (Lv 18)",
+          "summary": "Uses Water Gun, Rapid Spin, and Harden. Water-type only. Relatively straightforward — Electric or Grass moves two-shot it before Harden stacks up."
+        },
+        {
+          "name": "Starmie (Lv 21)",
+          "summary": "Water/Psychic type. Knows BubbleBeam (strong Water move with Speed-drop chance), Water Pulse (may confuse), Swift (never misses), and Recover (restores half HP). If Recover fires, commit to attacking every turn — do not let it heal twice."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Cerulean City Pokémon Centre",
+        "easierTactic": "A Pikachu caught in Viridian Forest OHKOs Starmie with Thundershock. Alternatively, a Grass-type from Route 2 (Oddish or Bellsprout — version dependent) resists Water and hits for double damage.",
+        "retreatOption": "Leave the Gym and heal freely between attempts."
+      },
+      "reward": "Cascade Badge (lets you use HM01 Cut outside of battle, raises your Pokémon's Speed stat) and TM03 Water Pulse"
+    },
+    {
+      "id": "lt-surge",
+      "name": "Lt. Surge",
+      "sectionId": "vermilion-city",
+      "locationRef": "Vermilion City",
+      "prep": {
+        "recommendedItems": [
+          "Super Potions",
+          "Paralyze Heals"
+        ],
+        "healthAdvice": "Raichu's Thunderbolt hits hard. Enter with your whole party above 60% HP — the Voltorb and Pikachu phases are manageable but Raichu can swing the fight quickly.",
+        "topUpBefore": "Vermilion City Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Voltorb (Lv 21)",
+          "summary": "Opens with Sonicboom (always deals exactly 20 HP damage, ignoring stats) and Growl. Ground-type moves are your best option. Sonicboom hurts early-game teams that lack bulk."
+        },
+        {
+          "name": "Pikachu (Lv 18)",
+          "summary": "Quick Attack goes first regardless of Speed. Ground-type moves deal no damage to Electric types — do not use them on Pikachu (it cannot hit you with Electric if you use a Ground-type Pokémon, but Pikachu also resists Ground in Gen III). Use Water, Ice, or high-Attack normal moves."
+        },
+        {
+          "name": "Raichu (Lv 24)",
+          "summary": "Thunderbolt is Lt. Surge's big threat — paralysis chance and high damage. Mega Kick and Mega Punch cover Ground weakness. Bring a Diglett or Dugtrio (immune to Electric) from Diglett's Cave north of Vermilion — it is your safest option to shut Raichu down entirely."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Vermilion City Pokémon Centre",
+        "easierTactic": "Diglett's Cave is directly north of Vermilion City. Catch a Diglett (Ground-type, immune to all Electric moves) and level it to around 20 — it solos the entire Surge fight.",
+        "retreatOption": "The Gym trash-can puzzle resets each time you leave. Take note of which can gave you the switch clue before exiting."
+      },
+      "reward": "Thunder Badge (raises Speed of all your Pokémon, lets you use HM02 Fly outside battle) and TM34 Shock Wave"
+    },
+    {
+      "id": "erika",
+      "name": "Erika",
+      "sectionId": "celadon-city",
+      "locationRef": "Celadon City",
+      "prep": {
+        "recommendedItems": [
+          "Super Potions",
+          "Awakening × 4",
+          "Antidotes"
+        ],
+        "healthAdvice": "Sleep Powder is Erika's main disruption — Vileplume and Tangela both carry it. Keep Awakenings in your bag and use them immediately.",
+        "topUpBefore": "Celadon City Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Victreebel (Lv 29)",
+          "summary": "Grass/Poison. Opens with Wrap (traps and deals damage each turn) and Razor Leaf (high critical-hit ratio). Fire, Ice, Flying, or Psychic moves are super-effective. Burn through it before Wrap locks you in."
+        },
+        {
+          "name": "Tangela (Lv 24)",
+          "summary": "Pure Grass. Knows Sleep Powder, Constrict (Wrap variant), Vine Whip, and Absorb. Lower level than Victreebel — straightforward with any Fire or Flying move."
+        },
+        {
+          "name": "Vileplume (Lv 29)",
+          "summary": "Grass/Poison. Petal Dance is powerful but confuses Vileplume after a few turns — exploit the self-confusion window. Sleep Powder can put you to sleep at the worst moment. A Growlithe (FireRed) or Vulpix (LeafGreen) handles this phase without breaking a sweat."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Celadon City Pokémon Centre",
+        "easierTactic": "Charmander's evolutionary line and the wild Vulpix (LeafGreen) or Growlithe (FireRed) found on Routes 7 and 8 make short work of all three Grass-types. Pidgeot's Gust is also super-effective.",
+        "retreatOption": "Leave from any point and heal between attempts. Erika rarely retaliates on the turn you switch in."
+      },
+      "reward": "Rainbow Badge (lets Pokémon up to Lv 50 obey traded Pokémon, lets you use HM04 Strength outside battle) and TM19 Giga Drain"
+    },
+    {
+      "id": "koga",
+      "name": "Koga",
+      "sectionId": "lavender-tower-fuchsia",
+      "locationRef": "Fuchsia City",
+      "prep": {
+        "recommendedItems": [
+          "Full Heals × 6",
+          "Antidotes × 4",
+          "Super Potions"
+        ],
+        "healthAdvice": "Koga's Pokémon poison freely and stack Minimise until they are nearly impossible to hit. Bring Pokémon with Swift (always hits regardless of evasion) or very high base accuracy moves.",
+        "topUpBefore": "Fuchsia City Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Koffing (Lv 37)",
+          "summary": "Poison-type. Starts with Smokescreen (lowers your accuracy) then alternates Minimise and Smog (poisons). May SelfDestruct if the fight drags. Ground and Psychic moves are super-effective. Knock it out quickly before evasion stacks."
+        },
+        {
+          "name": "Muk (Lv 39)",
+          "summary": "Poison-type. Same strategy as Koffing but tankier. Knows Minimise, Smog, and SelfDestruct. A Psychic-type move from a mid-level Kadabra or Haunter clears it in one or two hits."
+        },
+        {
+          "name": "Koffing (Lv 37)",
+          "summary": "Second Koffing — identical to the first. Maintain momentum and do not let it Minimise while you waste turns missing."
+        },
+        {
+          "name": "Weezing (Lv 43)",
+          "summary": "His strongest Pokémon. Weezing knows Smokescreen, Minimise, Smog, and SelfDestruct. If you let evasion stack more than twice, consider switching to a Pokémon with Swift or Faint Attack (never misses). Do not use Explosion-inducing moves yourself — Weezing's SelfDestruct hits hard enough to faint mid-level attackers."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Fuchsia City Pokémon Centre",
+        "easierTactic": "Kadabra from the Route 8 area (trade Abra for Kadabra via the in-game trade in Cerulean) one-shots every Pokémon on Koga's team with Psychic and outspeeds them all. A Dugtrio also works for the Poison-types.",
+        "retreatOption": "Koga does not pursue after the battle; heal freely and retry."
+      },
+      "reward": "Soul Badge (lets Pokémon up to Lv 70 obey traded Pokémon, raises your Pokémon's Defence stat, lets you use HM03 Surf outside battle) and TM27 Return"
+    },
+    {
+      "id": "sabrina",
+      "name": "Sabrina",
+      "sectionId": "saffron-silph-co",
+      "locationRef": "Saffron City",
+      "prep": {
+        "recommendedItems": [
+          "Hyper Potions × 4",
+          "Revives × 2",
+          "Full Heals"
+        ],
+        "healthAdvice": "Alakazam's Psychic move can take out most Pokémon in one hit at this stage. Bring Pokémon at Lv 45+ and accept that you may lose one to Recover stalling.",
+        "topUpBefore": "Saffron City Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Kadabra (Lv 38)",
+          "summary": "Pure Psychic. Opens with Kinesis (lowers accuracy) then alternates Psychic and Recover. Hit it hard with a Bug or Dark-type move, or a very strong physical attacker, before it can Recover twice. Ghost moves also deal 2× damage in Generation III."
+        },
+        {
+          "name": "Mr. Mime (Lv 37)",
+          "summary": "Psychic-type. Barrier raises its Defence sharply — do not use physical attacks after two Barriers. Special moves or Bug-type moves bypass the Defence boost."
+        },
+        {
+          "name": "Venomoth (Lv 38)",
+          "summary": "Bug/Poison. The odd one out — Flying and Fire moves deal double damage here. Psychic and Ground moves are also effective on Poison. Its own Psychic moves are less threatening than Sabrina's other Pokémon."
+        },
+        {
+          "name": "Alakazam (Lv 43)",
+          "summary": "Sabrina's ace — highest Speed in the Gym, powerful Psychic move, Calm Mind to boost Special Attack and Special Defence, and Recover. You need a Bug-type move (Scyther in FireRed, Pinsir in LeafGreen from the Safari Zone) or a Haunter/Gengar to handle this phase. Calm Mind + Recover is dangerous — interrupt with a one-hit KO before it sets up."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Saffron City Pokémon Centre",
+        "easierTactic": "A Haunter caught in Pokémon Tower in Lavender Town is immune to Psychic and Normal moves — Sabrina's team cannot touch it with most of their moves. Haunter's Lick and Night Shade chip everything down safely.",
+        "retreatOption": "Saffron Gym uses a warp tile puzzle — you exit automatically when your last Pokémon faints."
+      },
+      "reward": "Marsh Badge (lets all Pokémon up to Lv 70 obey without special conditions, lets you use HM05 Flash outside battle) and TM04 Calm Mind"
+    },
+    {
+      "id": "blaine",
+      "name": "Blaine",
+      "sectionId": "cinnabar-island",
+      "locationRef": "Cinnabar Island",
+      "prep": {
+        "recommendedItems": [
+          "Hyper Potions × 4",
+          "Burn Heals × 4",
+          "Revives"
+        ],
+        "healthAdvice": "Arcanine hits extremely hard with Extreme Speed and Fire Blast. Never enter with a Pokémon below 30% HP.",
+        "topUpBefore": "Cinnabar Island Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Growlithe (Lv 42)",
+          "summary": "Fire-type. Flamethrower and Agility (raises Speed sharply). Faster than it looks after an Agility. Water moves eliminate it before it can double its Speed."
+        },
+        {
+          "name": "Ponyta (Lv 40)",
+          "summary": "Fire-type. Ember and Stomp. The weakest Pokémon on Blaine's team — straightforward fodder for a Rock or Water attacker."
+        },
+        {
+          "name": "Rapidash (Lv 42)",
+          "summary": "Fire-type. Agility and Fire Spin (traps the opponent for several turns). Rock Slide or Surf finishes it quickly. If Fire Spin locks in your Water-type, switch out."
+        },
+        {
+          "name": "Arcanine (Lv 47)",
+          "summary": "Blaine's ace and the biggest threat in the Gym. Extreme Speed hits first regardless of Speed and deals normal-type damage. Fire Blast is devastating. Water, Rock, or Ground moves deal 2× damage. Keep your primary attacker fresh specifically for this phase."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Cinnabar Island Pokémon Centre",
+        "easierTactic": "A Vaporeon or Gyarados with Surf overwhelms the entire team. If you chose Squirtle as your starter, your Blastoise simply sweeps the Gym.",
+        "retreatOption": "Blaine's Gym uses quiz machine doors — no warp tile puzzle. You can walk out and back in freely."
+      },
+      "reward": "Volcano Badge (raises the Special Attack stat of all your Pokémon) and TM38 Fire Blast"
+    },
+    {
+      "id": "giovanni-viridian",
+      "name": "Giovanni",
+      "sectionId": "viridian-gym",
+      "locationRef": "Viridian City",
+      "prep": {
+        "recommendedItems": [
+          "Hyper Potions × 6",
+          "Revives × 3",
+          "Max Repels for Victory Road afterwards"
+        ],
+        "healthAdvice": "Giovanni's Nidoking and Nidoqueen both carry Ice Beam — your Water and Grass attackers are not safe here. Use a mixed team.",
+        "topUpBefore": "Viridian City Pokémon Centre"
+      },
+      "phases": [
+        {
+          "name": "Rhyhorn (Lv 45)",
+          "summary": "Rock/Ground. Horn Attack and Stomp — mostly physical. Surf or Grass move deletes it in one or two hits. Avoid Fire and Normal types."
+        },
+        {
+          "name": "Dugtrio (Lv 42)",
+          "summary": "Ground-type. Arena Trap prevents you from switching. Earthquake is very strong. Immediately use a Surf or Grass move — Dugtrio has very low Defence."
+        },
+        {
+          "name": "Nidoqueen (Lv 44)",
+          "summary": "Poison/Ground. Double Kick (Fighting, 2 hits), Ice Beam, Earthquake, Body Slam. The mixed coverage is dangerous — avoid Grass-types (Ice Beam) and Poison or Ghost types (Earthquake has no effect on Ghost in Gen III). Water is the cleanest response."
+        },
+        {
+          "name": "Nidoking (Lv 45)",
+          "summary": "Poison/Ground. Poison Sting, Thrash (goes berserk for 2–3 turns then gets confused), Ice Beam, Earthquake. Identical coverage to Nidoqueen — same Water or Ice approach works cleanly."
+        },
+        {
+          "name": "Rhyhorn (Lv 50)",
+          "summary": "Giovanni's strongest Pokémon. Same typing as the first Rhyhorn but significantly bulkier. Surf one-shots it regardless. This is effectively a victory lap if you reached this phase with a Pokémon above 50% HP."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Viridian City Pokémon Centre",
+        "easierTactic": "A Lapras or Gyarados with Surf sweeps the entire Gym. Vaporeon also works. Any Water move user at Lv 45+ should not lose here.",
+        "retreatOption": "Viridian Gym is straightforward — walk out the entrance to heal."
+      },
+      "reward": "Earth Badge (all Pokémon obey regardless of level, raises Defence stat, lets you use HM06 Rock Smash outside battle) and TM26 Earthquake"
+    },
+    {
+      "id": "lorelei",
+      "name": "Lorelei",
+      "sectionId": "elite-four",
+      "locationRef": "Indigo Plateau",
+      "prep": {
+        "recommendedItems": [
+          "Max Potions × 6",
+          "Full Heals × 4",
+          "Revives × 3",
+          "Max Repels (for Victory Road)"
+        ],
+        "healthAdvice": "Every Pokémon in the Elite Four uses status moves, trap moves, or recovery. Enter Lorelei's chamber with a full party above 70% HP.",
+        "topUpBefore": "Indigo Plateau Pokémon Centre — the only chance to heal between the Plateau gate and the Champion"
+      },
+      "phases": [
+        {
+          "name": "Dewgong (Lv 54)",
+          "summary": "Water/Ice. Rest (fully heals and puts itself to sleep for two turns), Ice Beam, Aurora Beam. Electric and Rock moves deal 2× damage. Hit it during the two-turn Rest sleep window."
+        },
+        {
+          "name": "Cloyster (Lv 53)",
+          "summary": "Water/Ice. Spikes (irrelevant in a trainer battle), Clamp (traps for several turns), Surf, Ice Beam. High Defence — special moves or Electric attacks are far more effective than physical hits."
+        },
+        {
+          "name": "Slowbro (Lv 54)",
+          "summary": "Water/Psychic. Amnesia (doubles Special Defence), Psychic, Surf. If Amnesia fires, switch to a physical attacker — its Special Defence becomes nearly unbreakable. Electric or Bug moves on the physical side."
+        },
+        {
+          "name": "Jynx (Lv 56)",
+          "summary": "Ice/Psychic. Lovely Kiss (100% sleep) is her opener — switch immediately to a Pokémon you do not mind losing a turn with. Then switch back and hit with Fire, Bug, Rock, or Dark moves."
+        },
+        {
+          "name": "Lapras (Lv 60)",
+          "summary": "Lorelei's ace. Water/Ice. Blizzard (high damage, chance to freeze), Confuse Ray, Body Slam, Psychic. Electric moves deal 2× damage and ignore Water resistance — a Jolteon or Raichu with Thunderbolt solves this phase cleanly. Do not bring a Grass-type; it loses to Blizzard and Psychic."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "The Pokémon Centre outside the Plateau — you must defeat all four Elite Four members and the Champion consecutively. If you faint, you restart from Lorelei.",
+        "easierTactic": "Bring a Jolteon or Electrode with Thunderbolt for the Water/Ice dual-types. Machamp or Primeape handles Jynx with physical moves."
+      },
+      "reward": "No Badge — the chamber door to Bruno opens"
+    },
+    {
+      "id": "bruno",
+      "name": "Bruno",
+      "sectionId": "elite-four",
+      "locationRef": "Indigo Plateau",
+      "prep": {
+        "recommendedItems": [
+          "Max Potions",
+          "Revives"
+        ],
+        "healthAdvice": "Bruno's Machamp has No Guard with DynamicPunch — every Confusion hit lands and confuses. Keep your Full Heals ready.",
+        "topUpBefore": "No healing between chambers — use items mid-battle"
+      },
+      "phases": [
+        {
+          "name": "Onix (Lv 53)",
+          "summary": "Rock/Ground. Very high Defence but very low Special Defence. Surf, Water Gun, or Grass moves end it in one hit."
+        },
+        {
+          "name": "Hitmonchan (Lv 55)",
+          "summary": "Fighting-type. Thunder Punch, Fire Punch, Ice Punch cover most Pokémon. Psychic moves are 2× effective. Hitmonchan's punches can chip through many defensive Pokémon quickly."
+        },
+        {
+          "name": "Hitmonlee (Lv 55)",
+          "summary": "Fighting-type. Jump Kick (very high power, damages Hitmonlee if it misses), Hi Jump Kick. Psychic or Flying moves end it fast. A Pidgeot with Aerial Ace never misses."
+        },
+        {
+          "name": "Onix (Lv 56)",
+          "summary": "Second Onix — same Surf strategy. Save one of your Water moves for this phase."
+        },
+        {
+          "name": "Machamp (Lv 58)",
+          "summary": "Fighting/Normal. The strongest of Bruno's team. Submission (Fighting, 25% recoil on Machamp), DynamicPunch (always confuses on hit), Rock Slide. Psychic moves are twice as effective. A Kadabra or Alakazam clears this phase in a single Psychic."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-run healing. Use Revives in battle if needed.",
+        "easierTactic": "Any Psychic-type at Lv 55+ sweeps Bruno's entire team. This is the easiest Elite Four member."
+      },
+      "reward": "The chamber door to Agatha opens"
+    },
+    {
+      "id": "agatha",
+      "name": "Agatha",
+      "sectionId": "elite-four",
+      "locationRef": "Indigo Plateau",
+      "prep": {
+        "recommendedItems": [
+          "Max Potions",
+          "Full Heals × 4",
+          "Revives"
+        ],
+        "healthAdvice": "Agatha's Gengar team uses Confuse Ray, Hypnosis, and Destiny Bond. Status-clear items are more important here than raw healing.",
+        "topUpBefore": "No mid-run healing"
+      },
+      "phases": [
+        {
+          "name": "Gengar (Lv 54)",
+          "summary": "Ghost/Poison. Hypnosis puts you to sleep, then Confuse Ray compounds it. Dark moves (unavailable on most Kanto Pokémon — Umbreon is post-game), Ground moves (hits the Poison half), or a hard-hitting Normal move from a non-Ghost Pokémon will not land. Use Psychic or Ground-type moves."
+        },
+        {
+          "name": "Haunter (Lv 53)",
+          "summary": "Ghost/Poison. Lick (paralysis), Night Shade (fixed damage equal to level), Confuse Ray. Lower level than the Gengars — maintain pressure and clear it quickly to conserve HP."
+        },
+        {
+          "name": "Gengar (Lv 58)",
+          "summary": "Higher-level second Gengar. Same moves. Do not use Normal or Fighting moves — Ghost is immune. Ground or Psychic moves work cleanly."
+        },
+        {
+          "name": "Arbok (Lv 54)",
+          "summary": "Poison-type. Wrap, Screech, Bite, Glare (paralysis). Ground or Psychic moves are super-effective. The Screech-then-Earthquake pattern can down one of your Pokémon if you let Screech lower Defence twice."
+        },
+        {
+          "name": "Gengar (Lv 60)",
+          "summary": "Agatha's ace. Nightshade, Confuse Ray, Hypnosis, Destiny Bond. If your Pokémon's HP is below 60, be careful — Destiny Bond will take your attacker with it when it faints. Save a full-HP Pokémon for this phase if possible."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-run healing. Stock up on Revives before entering the Plateau.",
+        "easierTactic": "A Ground-type Pokémon at Lv 55+ (Dugtrio, Rhydon) handles the Ghost/Poison Gengars well. Carry at least two Antidotes or Awakenings per battle."
+      },
+      "reward": "The chamber door to Lance opens"
+    },
+    {
+      "id": "lance",
+      "name": "Lance",
+      "sectionId": "elite-four",
+      "locationRef": "Indigo Plateau",
+      "prep": {
+        "recommendedItems": [
+          "Max Potions × 4",
+          "Hyper Potions",
+          "Revives × 2"
+        ],
+        "healthAdvice": "Lance uses Hyper Beam on a low-HP target to finish it off. Never leave a Pokémon below 30% HP in — switch it out immediately.",
+        "topUpBefore": "No mid-run healing"
+      },
+      "phases": [
+        {
+          "name": "Gyarados (Lv 58)",
+          "summary": "Water/Flying. Thrash, Bite, Dragon Rage. Electric moves are 2× effective. Bring Jolteon or Raichu for this phase."
+        },
+        {
+          "name": "Dragonair (Lv 56)",
+          "summary": "Dragon-type. Agility, Slam, Dragon Rage, Thunder Wave. In Generation III, Dragon moves are only resisted by Steel. Ice moves deal 2× damage. Lapras or a Pokémon with Ice Beam shuts down both Dragonairs."
+        },
+        {
+          "name": "Dragonair (Lv 56)",
+          "summary": "Identical to the first. Maintain pressure and do not let Agility stack a Speed advantage."
+        },
+        {
+          "name": "Aerodactyl (Lv 60)",
+          "summary": "Rock/Flying. Hyper Beam (massive damage, then it rests a turn), Bite, Wing Attack. Drown it in a Water move before it fires Hyper Beam. Electric moves are also 2× effective."
+        },
+        {
+          "name": "Dragonite (Lv 62)",
+          "summary": "Dragon/Flying. Lance's ace and the strongest Pokémon in the Elite Four. Outrage (alternates for 2–3 turns then confuses Dragonite — do NOT kill it early on or Lance will switch), Safeguard, Hyper Beam, Blizzard. Ice Beam from any Pokémon that can survive a Hyper Beam deals 2× damage. Hit it hard, hit it fast."
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "No mid-run healing.",
+        "easierTactic": "Lapras with Ice Beam handles the entire Dragon side of Lance's team. Pair it with a dedicated Electric Pokémon for Gyarados and Aerodactyl."
+      },
+      "reward": "The Champion's chamber opens",
+      "spoilerWrap": false
+    },
+    {
+      "id": "champion-blue",
+      "name": "Champion Blue",
+      "sectionId": "elite-four",
+      "locationRef": "Indigo Plateau",
+      "prep": {
+        "recommendedItems": [
+          "Max Potions × 6",
+          "Revives × 4",
+          "Full Restores if available"
+        ],
+        "healthAdvice": "Blue's team counters whichever starter you chose — his lead is designed to put immediate pressure on your strongest Pokémon. Enter with your entire party at full HP.",
+        "topUpBefore": "Use all remaining Hyper Potions and Revives before opening the Champion's door"
+      },
+      "phases": [
+        {
+          "name": "Pidgeot (Lv 59)",
+          "summary": "Normal/Flying. Hurricane, Mirror Move, Quick Attack, Aerial Ace. Blue's opener — Electric or Rock moves are super-effective. Clear it quickly to conserve resources."
+        },
+        {
+          "name": "Alakazam (Lv 59)",
+          "summary": "Psychic. Psychic, Recover, Reflect, Calm Mind. Same strategy as Sabrina's — hit hard with a Bug or Dark move before Recover activates. A Haunter or Gengar walls it entirely."
+        },
+        {
+          "name": "Rhydon (Lv 61)",
+          "summary": "Rock/Ground. Earthquake, Rock Blast, Surf (yes — Blue's Rhydon knows Surf to cover its Water weakness), Horn Drill. Water and Grass moves are still 2× effective despite the Surf bluff. Physical attackers like Machamp handle it from the Fighting side."
+        },
+        {
+          "name": "Gyarados (Lv 59)",
+          "summary": "Water/Flying. Hydro Pump, Dragon Rage, Bite, Thrash. Electric moves. Pull your Jolteon or Raichu out of reserve for this phase."
+        },
+        {
+          "name": "Starter counter (Arcanine / Exeggutor / Blastoise / Charizard / Venusaur — depends on your starter)",
+          "summary": "If you chose Bulbasaur, Blue has Charizard (Fire, weak to Water and Rock). If you chose Charmander, Blue has Blastoise (Water, weak to Electric and Grass). If you chose Squirtle, Blue has Venusaur (Grass/Poison, weak to Fire, Ice, Flying). This Pokémon is Blue's reply to whichever starter you picked — prepare the counter in advance.",
+          "spoiler": true
+        },
+        {
+          "name": "Blue's starter Pokémon (Lv 65)",
+          "summary": "Blue's ace — his own starter, the one that counters yours, at level 65. It carries the full moveset of its type plus coverage moves. Use your highest-level Pokémon here. If you brought enough Revives and Max Potions this far, you have the resources to win even if the fight is close.",
+          "spoiler": true
+        }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "You must start the entire Elite Four run again from Lorelei if Blue defeats you. Grind any underlevelled Pokémon on Victory Road (Lv 40–50 wild Pokémon) before re-entering.",
+        "easierTactic": "A balanced team of six Pokémon at Lv 55–60 with diverse type coverage is more effective than a single over-levelled sweeper. Ensure you have at least one Electric, one Water, one Ice, and one Psychic move distributed across your party.",
+        "retreatOption": "Grind on Victory Road and return — wild Pokémon there give excellent EXP."
+      },
+      "reward": "Pokémon League Champion — Hall of Fame entry, end credits, and a return to Pallet Town for the post-game",
+      "spoilerWrap": true
+    }
+  ],
+  "sections": [
+    {
+      "id": "pallet-to-pewter",
+      "title": "A New Adventure Begins",
+      "subtitle": "Pallet Town → Viridian City → Viridian Forest → Pewter City",
+      "locationRef": "Pallet Town",
+      "durationLabel": "30:00",
+      "steps": [
+        {
+          "id": "s1-01",
+          "text": "Speak to Professor Oak in his laboratory in Pallet Town. He offers you a choice of three starter Pokémon: Bulbasaur (Grass/Poison — easiest early game), Charmander (Fire — hardest early game, strongest mid-game), or Squirtle (Water — well-balanced throughout). Your rival Blue will choose the one that has a type advantage over yours."
+        },
+        {
+          "id": "s1-02",
+          "text": "After receiving your starter and Pokédex, head north towards Viridian City. Route 1 has only Rattata and Pidgey — do not waste Poké Balls here unless you need to; better options appear very soon."
+        },
+        {
+          "id": "s1-03",
+          "text": "In Viridian City, pick up the parcel from the Poké Mart counter and return it to Professor Oak. He then allows you to proceed north. Pick up the Town Map from Blue's sister in Pallet Town while you are passing through — it is free.",
+          "itemRef": "town-map"
+        },
+        {
+          "id": "s1-04",
+          "text": "Route 2 leads into Viridian Forest. Catch a Pikachu (Electric) in the Forest if you want a strong option for Misty later. Caterpie (FireRed) or Weedle (LeafGreen) are available here and evolve quickly — Butterfree's Confusion or Beedrill's Fury Attack are useful against Brock."
+        },
+        {
+          "id": "s1-05",
+          "text": "Exit Viridian Forest to reach Pewter City. Heal at the Pokémon Centre, then visit the Museum to the north — a scientist inside will give you an Old Amber, the fossil for Aerodactyl, once you have HM01 Cut. For now, proceed to the Gym."
+        },
+        {
+          "id": "s1-06",
+          "text": "Challenge Brock at Pewter Gym. His two Pokémon are Rock/Ground — Normal and Fire moves are less than effective. Water and Grass moves are your best tools. See the Brock fight card for full details.",
+          "bossRef": "brock"
+        },
+        {
+          "id": "s1-07",
+          "text": "After earning the Boulder Badge, head east on Route 3 towards Mt Moon. Stock up on Potions at the Pewter Mart before leaving — the cave ahead is long."
+        }
+      ],
+      "order": 1,
+      "stage": "Badge 1",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      },
+      "sectionId": "pallet-to-pewter",
+      "areas": [
+        {
+          "name": "Route 1",
+          "kind": "route",
+          "summary": "The first stretch of grass north of Pallet Town, holding only low-level Pidgey and Rattata and no trainers.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 2-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 2-4",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Potion ×2 (from a Poké Mart clerk and a route sign)",
+              "hidden": false
+            }
+          ]
+        },
+        {
+          "name": "Viridian City",
+          "kind": "town",
+          "summary": "The first city with a Mart and Center; its Gym stays sealed until the other seven badges are earned, and you must deliver Oak's Parcel here.",
+          "shop": [
+            {
+              "item": "Poké Ball",
+              "price": "₽200"
+            },
+            {
+              "item": "Potion",
+              "price": "₽300"
+            },
+            {
+              "item": "Antidote",
+              "price": "₽100"
+            },
+            {
+              "item": "Paralyze Heal",
+              "price": "₽200"
+            }
+          ],
+          "items": [
+            {
+              "label": "Oak's Parcel (collect at the Mart, return to Oak)",
+              "hidden": false
+            },
+            {
+              "label": "Potion (by the cuttable tree, NW)",
+              "hidden": false,
+              "requires": [
+                "hm01-cut"
+              ]
+            },
+            {
+              "label": "Teachy TV (from the old man after the Parcel)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Deliver Oak's Parcel",
+              "detail": "An old man blocks Route 2 north until you pick up Oak's Parcel at the Mart and return it; he then teaches catching.",
+              "spoiler": false
+            },
+            {
+              "label": "Gym sealed",
+              "detail": "Viridian Gym (Giovanni) does not open until the other seven badges are won.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Potion by the cuttable tree",
+              "needs": "HM01 Cut",
+              "reward": "Potion"
+            }
+          ]
+        },
+        {
+          "name": "Route 2",
+          "kind": "route",
+          "summary": "A short route linking Viridian City to Viridian Forest and Pewter City, with Cut-gated items reachable on the return trip.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 2-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 2-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Caterpie",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 4-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Weedle",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 4-5",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Ether (behind ledges; needs Cut)",
+              "hidden": false,
+              "requires": [
+                "hm01-cut"
+              ]
+            },
+            {
+              "label": "Paralyze Heal (behind ledges; needs Cut)",
+              "hidden": false,
+              "requires": [
+                "hm01-cut"
+              ]
+            },
+            {
+              "label": "HM05 Flash (from Oak's aide in the gate, 10 species registered)",
+              "hidden": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Ether and Paralyze Heal behind ledges/trees",
+              "needs": "HM01 Cut",
+              "reward": "items"
+            }
+          ]
+        },
+        {
+          "name": "Viridian Forest",
+          "kind": "dungeon",
+          "summary": "A maze-like wood of Bug Catchers and bug Pokémon, and the only early place to catch the rare wild Pikachu.",
+          "encounters": [
+            {
+              "species": "Caterpie",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 3-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Weedle",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 3-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Metapod",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 4-6",
+              "versionExclusive": "firered",
+              "note": "higher rate in FR"
+            },
+            {
+              "species": "Kakuna",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 4-6",
+              "versionExclusive": "firered",
+              "note": "higher rate in FR"
+            },
+            {
+              "species": "Pikachu",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 3-5",
+              "versionExclusive": "both",
+              "note": "~5%"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Bug Catcher Rick",
+              "team": "Weedle Lv6, Caterpie Lv6"
+            },
+            {
+              "trainer": "Bug Catcher Doug",
+              "team": "Weedle Lv7, Kakuna Lv7, Weedle Lv7"
+            },
+            {
+              "trainer": "Bug Catcher Charlie",
+              "team": "Metapod Lv7, Caterpie Lv7, Metapod Lv7"
+            },
+            {
+              "trainer": "Bug Catcher Sammy",
+              "team": "Weedle Lv9"
+            }
+          ],
+          "items": [
+            {
+              "label": "Poké Ball (grassy dead-end)",
+              "hidden": false
+            },
+            {
+              "label": "Potion",
+              "hidden": false
+            },
+            {
+              "label": "Antidote (near the lone tree)",
+              "hidden": true
+            }
+          ]
+        },
+        {
+          "name": "Pewter City",
+          "kind": "town",
+          "summary": "A rocky city home to Brock's Rock Gym, the Museum (which holds the Old Amber), and the first badge.",
+          "shop": [
+            {
+              "item": "Poké Ball",
+              "price": "₽200"
+            },
+            {
+              "item": "Potion",
+              "price": "₽300"
+            },
+            {
+              "item": "Antidote",
+              "price": "₽100"
+            },
+            {
+              "item": "Paralyze Heal",
+              "price": "₽200"
+            },
+            {
+              "item": "Awakening",
+              "price": "₽250"
+            },
+            {
+              "item": "Burn Heal",
+              "price": "₽250"
+            },
+            {
+              "item": "Escape Rope",
+              "price": "₽550"
+            },
+            {
+              "item": "Repel",
+              "price": "₽350"
+            }
+          ],
+          "items": [
+            {
+              "label": "Old Amber (Museum back room; revives Aerodactyl)",
+              "hidden": false,
+              "requires": [
+                "hm01-cut"
+              ]
+            },
+            {
+              "label": "Running Shoes (Oak's aide near Route 3)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Seismic Toss tutor",
+              "detail": "A Move Tutor in Pewter teaches Seismic Toss once.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Old Amber in the Museum",
+              "needs": "HM01 Cut",
+              "reward": "Old Amber (Aerodactyl fossil)"
+            }
+          ]
+        },
+        {
+          "name": "Route 3",
+          "kind": "route",
+          "summary": "A winding trainer-dense route from Pewter City up to Mt. Moon, with the first version-balanced Nidoran encounters.",
+          "encounters": [
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 6-8",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 6-7",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Jigglypuff",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 3-7",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Mankey",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 7",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Nidoran♂",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 6-7",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Nidoran♀",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 6",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Lass Janice",
+              "team": "Pidgey Lv9, Pidgey Lv9"
+            },
+            {
+              "trainer": "Bug Catcher Colton",
+              "team": "Caterpie Lv10, Weedle Lv10, Caterpie Lv10"
+            },
+            {
+              "trainer": "Youngster Ben",
+              "team": "Rattata Lv11, Ekans Lv11"
+            },
+            {
+              "trainer": "Bug Catcher Greg",
+              "team": "Weedle Lv9, Kakuna Lv9, Caterpie Lv9, Metapod Lv9"
+            },
+            {
+              "trainer": "Youngster Calvin",
+              "team": "Spearow Lv14"
+            },
+            {
+              "trainer": "Lass Sally",
+              "team": "Rattata Lv10, Nidoran♀ Lv10"
+            },
+            {
+              "trainer": "Bug Catcher James",
+              "team": "Caterpie Lv11, Metapod Lv11"
+            },
+            {
+              "trainer": "Lass Robin",
+              "team": "Jigglypuff Lv14"
+            }
+          ],
+          "items": [
+            {
+              "label": "Potion, Poké Ball ×3, Lure (between/below the ledges)",
+              "hidden": false
+            },
+            {
+              "label": "Oran Berry (between ledges)",
+              "hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cerulean-city",
+      "title": "The Water Gym",
+      "subtitle": "Mt Moon → Cerulean City → Nugget Bridge → Bill's Sea Cottage",
+      "locationRef": "Cerulean City",
+      "durationLabel": "35:00",
+      "steps": [
+        {
+          "id": "s2-01",
+          "text": "Mt Moon is a two-floor cave filled with Team Rocket grunts looking for fossils. A scientist near the exit offers you a choice of one fossil — Dome Fossil (Kabuto) or Helix Fossil (Omanyte). Both lead to level 40 fossil Pokémon when revived at the Cinnabar Island laboratory much later."
+        },
+        {
+          "id": "s2-02",
+          "text": "Clefairy are exclusive to Mt Moon — rare, but worth catching. They are strong Normal-type Pokémon that learn Metronome (a random move from every move in the game) and later evolve into Clefable with a Moon Stone."
+        },
+        {
+          "id": "s2-03",
+          "text": "Exit Mt Moon to Route 4 and continue to Cerulean City. Heal at the Pokémon Centre before doing anything else — the Gym lies just north."
+        },
+        {
+          "id": "s2-04",
+          "text": "Before challenging Misty, walk north from the Gym onto Nugget Bridge. Five trainers on the bridge must be defeated in sequence, then a Team Rocket grunt at the far end offers a bribe to join — refuse, defeat him, and collect the Nugget (worth ₽5,000 at any Poké Mart)."
+        },
+        {
+          "id": "s2-05",
+          "text": "Continue east along Route 25 to Bill's Sea Cottage. Bill is stuck inside a Pokémon pod — interact with the machine to restore him to human form. He rewards you with an S.S. Anne ticket, which you need for the next major step in Vermilion City."
+        },
+        {
+          "id": "s2-06",
+          "text": "Return to Cerulean City and challenge Misty at the Cerulean Gym. Her Starmie hits hard and uses Recover — see the Misty fight card for strategies.",
+          "bossRef": "misty"
+        },
+        {
+          "id": "s2-07",
+          "text": "With the Cascade Badge collected, head south on Route 5 towards Vermilion City via the Underground Path."
+        }
+      ],
+      "order": 2,
+      "stage": "Badge 2",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "35:00",
+        "startSeconds": 0
+      },
+      "sectionId": "cerulean-city",
+      "areas": [
+        {
+          "name": "Mt. Moon",
+          "kind": "cave",
+          "summary": "A multi-floor cave where Team Rocket hunts fossils; you find a Moon Stone and choose one of two fossils after the Super Nerd fight.",
+          "encounters": [
+            {
+              "species": "Zubat",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 7-11",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Geodude",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 7-10",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Paras",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Clefairy",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both",
+              "note": "Mt. Moon exclusive"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Bug Catcher Kent",
+              "team": "Weedle Lv13, Kakuna Lv13"
+            },
+            {
+              "trainer": "Super Nerd Jovan",
+              "team": "Magnemite Lv13, Voltorb Lv13"
+            },
+            {
+              "trainer": "Youngster Josh",
+              "team": "Rattata Lv11, Zubat Lv11"
+            },
+            {
+              "trainer": "Team Rocket Grunt",
+              "team": "Sandshrew Lv11, Rattata Lv11, Zubat Lv11"
+            },
+            {
+              "trainer": "Team Rocket Grunt",
+              "team": "Zubat Lv12, Ekans Lv12"
+            }
+          ],
+          "items": [
+            {
+              "label": "Moon Stone (1F)",
+              "hidden": false
+            },
+            {
+              "label": "Potion, Escape Rope, Paralyze Heal, Ether, Rare Candy",
+              "hidden": false
+            },
+            {
+              "label": "TM09 Bullet Seed",
+              "hidden": false
+            },
+            {
+              "label": "Fossil — Dome (Kabuto) or Helix (Omanyte), your choice",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Choose a fossil",
+              "detail": "After beating the Super Nerd, pick the Dome Fossil (Kabuto) or Helix Fossil (Omanyte); he keeps the other.",
+              "spoiler": true
+            }
+          ]
+        },
+        {
+          "name": "Route 4",
+          "kind": "route",
+          "summary": "The route out of Mt. Moon to Cerulean City, with a clean Ekans/Sandshrew version split and the Magikarp salesman in its Pokémon Center.",
+          "encounters": [
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Ekans",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 6-12",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Sandshrew",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 6-12",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Mankey",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM05 Roar (on the plateau)",
+              "hidden": false
+            },
+            {
+              "label": "Great Ball, Persim Berry, Razz Berry",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Magikarp salesman",
+              "detail": "A shady man in the Route 4 Center sells a Magikarp for ₽500 — no refunds, but it becomes Gyarados.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Lass and items across the water (west Route 4)",
+              "needs": "HM03 Surf",
+              "reward": "trainer + item"
+            }
+          ]
+        },
+        {
+          "name": "Cerulean City",
+          "kind": "town",
+          "summary": "The city around Misty's Water Gym; you fight the rival by Route 24, foil a Rocket burglary for TM28, and later collect the Bicycle here.",
+          "shop": [
+            {
+              "item": "Poké Ball",
+              "price": "₽200"
+            },
+            {
+              "item": "Potion",
+              "price": "₽300"
+            },
+            {
+              "item": "Super Potion",
+              "price": "₽700"
+            },
+            {
+              "item": "Antidote",
+              "price": "₽100"
+            },
+            {
+              "item": "Paralyze Heal",
+              "price": "₽200"
+            },
+            {
+              "item": "Awakening",
+              "price": "₽250"
+            },
+            {
+              "item": "Burn Heal",
+              "price": "₽250"
+            },
+            {
+              "item": "Escape Rope",
+              "price": "₽550"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM28 Dig (from the Rocket Grunt in the robbed house)",
+              "hidden": false
+            },
+            {
+              "label": "Bicycle (redeem the Bike Voucher at the Bike Shop)",
+              "hidden": false
+            },
+            {
+              "label": "Rare Candy (behind a house)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Burglarized house",
+              "detail": "A Rocket thief robs a house; Officer Jenny blocks the back exit until you visit Bill on Route 25, after which the Grunt can be beaten for TM28 Dig.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Hidden item across the water near the badge house",
+              "needs": "HM03 Surf",
+              "reward": "item"
+            }
+          ]
+        },
+        {
+          "name": "Route 24",
+          "kind": "route",
+          "summary": "Home to Nugget Bridge — five trainers in a row, a Nugget reward, and a disguised Team Rocket recruiter at the end.",
+          "encounters": [
+            {
+              "species": "Caterpie",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 7",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Weedle",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 7",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Abra",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 8-12",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 12-14",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 12-14",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Nugget Bridge #1 — Bug Catcher Cale",
+              "team": "Caterpie Lv10, Weedle Lv10, Metapod Lv10, Kakuna Lv10"
+            },
+            {
+              "trainer": "Nugget Bridge #2 — Lass Ali",
+              "team": "Pidgey Lv12, Oddish/Bellsprout Lv12"
+            },
+            {
+              "trainer": "Nugget Bridge #3 — Jr. Trainer Liam",
+              "team": "Rattata Lv12, Ekans Lv12"
+            },
+            {
+              "trainer": "Nugget Bridge #4 — Jr. Trainer Bridget",
+              "team": "Nidoran♀ Lv12, Clefairy Lv12"
+            },
+            {
+              "trainer": "Nugget Bridge #5 — Hiker Marc",
+              "team": "Geodude Lv14, Onix Lv14, Mankey Lv14"
+            },
+            {
+              "trainer": "Team Rocket Recruiter",
+              "team": "Grimer Lv15, Koffing Lv15",
+              "note": "Refuse the job offer, then battle"
+            }
+          ],
+          "items": [
+            {
+              "label": "Nugget (clear all five bridge trainers)",
+              "hidden": false
+            },
+            {
+              "label": "TM45 Attract (NW plateau)",
+              "hidden": false
+            }
+          ]
+        },
+        {
+          "name": "Route 25",
+          "kind": "route",
+          "summary": "A trainer-dense route ending at Bill's Sea Cottage, where freeing Bill earns the S.S. Ticket for the S.S. Anne.",
+          "encounters": [
+            {
+              "species": "Caterpie",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 8",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Weedle",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 8",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Abra",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 9-13",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 12-14",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 12-14",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Hiker Franklin",
+              "team": "Machop Lv15, Geodude Lv15"
+            },
+            {
+              "trainer": "Hiker Wayne",
+              "team": "Onix Lv17"
+            },
+            {
+              "trainer": "Youngster Joey",
+              "team": "Rattata Lv15, Spearow Lv15"
+            },
+            {
+              "trainer": "Youngster Dan",
+              "team": "Slowpoke Lv17"
+            },
+            {
+              "trainer": "Picnicker Kelsey",
+              "team": "Nidoran♂ Lv15, Nidoran♀ Lv15"
+            },
+            {
+              "trainer": "Hiker Nob",
+              "team": "Geodude Lv13 ×3, Machop Lv13"
+            },
+            {
+              "trainer": "Lass Haley",
+              "team": "Oddish Lv13, Pidgey Lv13, Oddish Lv13"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM43 Secret Power, berries, Ether (marked/hidden squares)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Bill's Sea Cottage",
+              "detail": "Use the PC and battle to separate Bill from a Pokémon he fused with; he gives the S.S. Ticket for the S.S. Anne.",
+              "spoiler": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vermilion-city",
+      "title": "Thunder Badge",
+      "subtitle": "Routes 5–6 → Vermilion City → S.S. Anne → Vermilion Gym",
+      "locationRef": "Vermilion City",
+      "durationLabel": "25:00",
+      "steps": [
+        {
+          "id": "s3-01",
+          "text": "Travel south from Cerulean City through Routes 5 and 6. The Underground Path connects the two routes beneath Saffron City — you pass through it automatically. Saffron's guards block entry into the city itself for now."
+        },
+        {
+          "id": "s3-02",
+          "text": "In Vermilion City, visit the Pokémon Fan Club near the Gym. Speak to the Club Chairman — he talks at length about his Rapidash. Listen patiently and he gives you a Bicycle Voucher. Redeem it at the Bike Shop in Cerulean City (via Fly or backtracking) for a free Bicycle.",
+          "itemRef": "bicycle"
+        },
+        {
+          "id": "s3-03",
+          "text": "Board the S.S. Anne at the south dock using your ticket from Bill. Defeat Blue aboard the ship and then speak to the Captain in his cabin — he is seasick. Rub his back and he gives you HM01 Cut, the field move needed to clear small trees blocking paths.",
+          "itemRef": "hm01-cut"
+        },
+        {
+          "id": "s3-04",
+          "text": "The S.S. Anne leaves port permanently once you exit after meeting the Captain — do not re-enter. Teach HM01 Cut to a Pokémon you are happy to dedicate a move slot to (a Rattata or Oddish works well as your designated HM carrier)."
+        },
+        {
+          "id": "s3-05",
+          "text": "Cut the small tree north of the Gym entrance to reach the Gym doors. Inside, Lt. Surge's puzzle involves checking two rubbish bins in sequence to find a hidden switch — the correct pair is random each attempt. See the Lt. Surge fight card for battle strategy.",
+          "bossRef": "lt-surge"
+        },
+        {
+          "id": "s3-06",
+          "text": "With the Thunder Badge in hand, head east from Vermilion on Route 11. Diglett's Cave (north of Vermilion on Route 2) is worth a detour if you need a Ground-type for future fights — Diglett evolves into Dugtrio at level 26."
+        }
+      ],
+      "order": 3,
+      "stage": "Badge 3",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "25:00",
+        "startSeconds": 0
+      },
+      "sectionId": "vermilion-city",
+      "areas": [
+        {
+          "name": "Route 5",
+          "kind": "route",
+          "summary": "A short connector between Cerulean and Saffron, home to the Pokémon Day Care and the north end of the Underground Path to Route 6.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Meowth",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 10-16",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "events": [
+            {
+              "label": "Pokémon Day Care",
+              "detail": "An NPC raises a deposited Pokémon, gaining experience as you walk.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Underground Path (Routes 5–6)",
+          "kind": "dungeon",
+          "summary": "A straight tunnel linking Routes 5 and 6, holding only hidden items and an in-game Nidoran trade — no wild Pokémon or trainers.",
+          "items": [
+            {
+              "label": "Hidden Antidote, Paralyze Heal, Awakening, Potion, Ether, Ice Heal, Burn Heal",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Nidoran in-game trade",
+              "detail": "FireRed trades Nidoran♂ for Nidoran♀; LeafGreen trades Nidoran♀ for Nidoran♂ (the received one holds a Tiny Mushroom).",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Route 6",
+          "kind": "route",
+          "summary": "A grassy route south of the Underground Path leading down to Vermilion City, with water reachable later by Surf.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Meowth",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 10-16",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 13-16",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Psyduck",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 20-40",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Slowpoke",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 20-40",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Bug Catcher Keigo",
+              "team": "Weedle Lv16, Caterpie Lv16, Weedle Lv16"
+            },
+            {
+              "trainer": "Camper Ricky",
+              "team": "Squirtle Lv20"
+            },
+            {
+              "trainer": "Picnicker Nancy",
+              "team": "Rattata Lv16, Pikachu Lv16"
+            },
+            {
+              "trainer": "Bug Catcher Elijah",
+              "team": "Butterfree Lv20"
+            },
+            {
+              "trainer": "Picnicker Isabelle",
+              "team": "Pidgey Lv16 ×3"
+            },
+            {
+              "trainer": "Camper Jeff",
+              "team": "Spearow Lv16, Raticate Lv16"
+            }
+          ],
+          "items": [
+            {
+              "label": "Hidden Rare Candy and Sitrus Berry (near the Saffron gate)",
+              "hidden": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Water surface",
+              "needs": "HM03 Surf",
+              "reward": "Surf/fishing encounters"
+            }
+          ]
+        },
+        {
+          "name": "Vermilion City",
+          "kind": "town",
+          "summary": "A port city with the S.S. Anne dock, Diglett's Cave, the Pokémon Fan Club (Bike Voucher), and Lt. Surge's Electric Gym.",
+          "shop": [
+            {
+              "item": "Poké Ball",
+              "price": "₽200"
+            },
+            {
+              "item": "Super Potion",
+              "price": "₽700"
+            },
+            {
+              "item": "Antidote",
+              "price": "₽100"
+            },
+            {
+              "item": "Paralyze Heal",
+              "price": "₽200"
+            },
+            {
+              "item": "Awakening",
+              "price": "₽250"
+            },
+            {
+              "item": "Ice Heal",
+              "price": "₽250"
+            },
+            {
+              "item": "Repel",
+              "price": "₽350"
+            }
+          ],
+          "items": [
+            {
+              "label": "Bike Voucher (Fan Club Chairman)",
+              "hidden": false
+            },
+            {
+              "label": "Old Rod (Fishing Guru)",
+              "hidden": false
+            },
+            {
+              "label": "Max Ether (SW of the Center)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Trash-can switch puzzle",
+              "detail": "Surge's Gym hides two switches among the bins; flip the correct pair to open the path to the Leader.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "S.S. Anne dock after the ship departs",
+              "needs": "HM03 Surf",
+              "reward": "Re-enter the dock area"
+            }
+          ]
+        },
+        {
+          "name": "S.S. Anne",
+          "kind": "building",
+          "summary": "A luxury liner where you battle the rival, cure the seasick Captain for HM01 Cut, and which then sails away permanently.",
+          "trainers": [
+            {
+              "trainer": "Rival (2F)",
+              "team": "Pidgeotto Lv19, Raticate Lv16, Kadabra Lv18, starter evolution Lv20",
+              "note": "Roster varies with your starter; includes the type-advantaged starter"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM44 Rest, Great Ball, Ether, Max Ether, Hyper Potion",
+              "hidden": false
+            },
+            {
+              "label": "Stardust, X Attack, Chesto Berry",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "HM01 Cut",
+              "detail": "The Captain gives HM01 Cut after you cure his seasickness.",
+              "spoiler": false
+            },
+            {
+              "label": "Ship departs",
+              "detail": "Once you have HM01 and leave, the S.S. Anne sails — any missed items become inaccessible.",
+              "spoiler": true
+            }
+          ]
+        },
+        {
+          "name": "Diglett's Cave",
+          "kind": "cave",
+          "summary": "A long Diglett-dug tunnel from Route 11 (near Vermilion) to Route 2 (near Pewter) — the spot to catch a Ground-type for Lt. Surge.",
+          "encounters": [
+            {
+              "species": "Diglett",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 15-22",
+              "versionExclusive": "both",
+              "note": "~95%"
+            },
+            {
+              "species": "Dugtrio",
+              "method": "grass",
+              "rarity": "very-rare",
+              "levelRange": "Lv 29-31",
+              "versionExclusive": "both",
+              "note": "~5%"
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "North exit to Route 2 (and HM05 Flash from Oak's aide)",
+              "needs": "HM01 Cut",
+              "reward": "Shortcut to Pewter; Flash"
+            }
+          ]
+        },
+        {
+          "name": "Route 11",
+          "kind": "route",
+          "summary": "A wide grassy route east of Vermilion with the southern entrance to Diglett's Cave and the Itemfinder reward.",
+          "encounters": [
+            {
+              "species": "Ekans",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 12-15",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Sandshrew",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 12-15",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 13-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Drowzee",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 11-15",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Awakening, Great Ball, X Defend",
+              "hidden": false
+            },
+            {
+              "label": "Hidden Escape Rope (near the east gate)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Itemfinder",
+              "detail": "Oak's aide in the Route 11 gate gives the Itemfinder once you own 30+ species.",
+              "spoiler": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "celadon-city",
+      "title": "Rocket Hideout and the Rainbow Badge",
+      "subtitle": "Rock Tunnel → Lavender Town → Celadon City → Rocket Hideout → Celadon Gym",
+      "locationRef": "Celadon City",
+      "durationLabel": "45:00",
+      "steps": [
+        {
+          "id": "s4-01",
+          "text": "From Cerulean City, head east on Route 9 then south on Route 10 into Rock Tunnel. HM05 Flash (obtained from Professor Oak's aide in the Route 2 building south of Pewter City — needs 10 Pokémon caught) reduces wild Pokémon accuracy inside and makes navigation easier, but is not required."
+        },
+        {
+          "id": "s4-02",
+          "text": "Rock Tunnel is dark — you navigate by feel or use Flash. It has two floors and multiple exits. Wild Onix and Machop appear here. Exit south into Route 10 and follow it to Lavender Town."
+        },
+        {
+          "id": "s4-03",
+          "text": "In Lavender Town, try to enter Pokémon Tower — the upper floors are filled with Ghost-type Pokémon that cannot be identified without the Silph Scope. Note the building's location and move on west via Route 8 to Celadon City. Return here later."
+        },
+        {
+          "id": "s4-04",
+          "text": "In Celadon City, visit the Department Store and buy a Fresh Water, Lemonade, or Soda Pop from the vending machines on the rooftop. Give one of these drinks to the thirsty guard at Saffron City's eastern entrance — this unlocks all four entry points into Saffron City for later."
+        },
+        {
+          "id": "s4-05",
+          "text": "Find the Game Corner on the east side of Celadon. A hidden switch behind a poster on the north wall opens the basement staircase into Team Rocket's Hideout. Defeat the Rocket grunts across four underground floors to reach Giovanni."
+        },
+        {
+          "id": "s4-06",
+          "text": "Defeat Giovanni at the bottom of the Rocket Hideout. He drops the Silph Scope — a device that reveals the true identity of Ghost-type Pokémon in Pokémon Tower. This item is critical for progressing in Lavender Town.",
+          "itemRef": "silph-scope"
+        },
+        {
+          "id": "s4-07",
+          "text": "With the Silph Scope secured, challenge Erika at Celadon Gym. Her Grass-type team uses Sleep Powder and status moves — carry Awakenings. See the Erika fight card for full strategy.",
+          "bossRef": "erika"
+        },
+        {
+          "id": "s4-08",
+          "text": "The Celadon Department Store has the widest item selection in Kanto. If you have spare funds, buy TM29 Psychic from the third floor — it is one of the strongest moves in Generation III and immediately useful against Koga, the next Gym Leader."
+        }
+      ],
+      "order": 4,
+      "stage": "Badges 3–4",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "45:00",
+        "startSeconds": 0
+      },
+      "sectionId": "celadon-city",
+      "areas": [
+        {
+          "name": "Route 9",
+          "kind": "route",
+          "summary": "A rocky route east of Cerulean linking toward Route 10 and Rock Tunnel.",
+          "encounters": [
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 14-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 13-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Ekans",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 11-17",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Sandshrew",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 11-17",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Hiker Jeremy",
+              "team": "Machop Lv20, Onix Lv20"
+            },
+            {
+              "trainer": "Camper Chris",
+              "team": "Growlithe Lv21, Charmander Lv21"
+            },
+            {
+              "trainer": "Picnicker Alicia",
+              "team": "Oddish Lv18, Bellsprout Lv18"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM40 Aerial Ace, Burn Heal",
+              "hidden": false
+            },
+            {
+              "label": "Hidden Ether",
+              "hidden": true
+            }
+          ]
+        },
+        {
+          "name": "Route 10",
+          "kind": "route",
+          "summary": "A north–south route past the Power Plant and the Rock Tunnel entrance, descending toward Lavender Town.",
+          "encounters": [
+            {
+              "species": "Voltorb",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 14-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 13-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Ekans",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 11-17",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Sandshrew",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 11-17",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "items": [
+            {
+              "label": "Everstone (Center reward for 20 species)",
+              "hidden": false
+            },
+            {
+              "label": "Hidden Super Potion (needs Cut), Cheri Berry, Persim Berry",
+              "hidden": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Cut tree blocking a Super Potion",
+              "needs": "HM01 Cut",
+              "reward": "Super Potion"
+            },
+            {
+              "what": "Power Plant access",
+              "needs": "HM03 Surf",
+              "reward": "Power Plant (Zapdos, Electric Pokémon)"
+            }
+          ]
+        },
+        {
+          "name": "Rock Tunnel",
+          "kind": "cave",
+          "summary": "A pitch-dark two-level cave between Route 10 and Lavender; bring Flash to see.",
+          "encounters": [
+            {
+              "species": "Geodude",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 15-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Zubat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 15-16",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Machop",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 16-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Mankey",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 16-17",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Onix",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 13-17",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Repel, Escape Rope, Pearl, Revive",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Flash required",
+              "detail": "The cave is dark; a Pokémon must know HM05 Flash to light the way.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Lavender Town",
+          "kind": "town",
+          "summary": "A solemn town around Pokémon Tower, with a Name Rater and Mr. Fuji's Volunteer House.",
+          "shop": [
+            {
+              "item": "Great Ball",
+              "price": "₽600"
+            },
+            {
+              "item": "Super Potion",
+              "price": "₽700"
+            },
+            {
+              "item": "Revive",
+              "price": "₽1,500"
+            },
+            {
+              "item": "Antidote",
+              "price": "₽100"
+            },
+            {
+              "item": "Paralyze Heal",
+              "price": "₽200"
+            },
+            {
+              "item": "Burn Heal",
+              "price": "₽250"
+            },
+            {
+              "item": "Ice Heal",
+              "price": "₽250"
+            },
+            {
+              "item": "Super Repel",
+              "price": "₽500"
+            },
+            {
+              "item": "Escape Rope",
+              "price": "₽550"
+            }
+          ],
+          "events": [
+            {
+              "label": "Name Rater",
+              "detail": "An NPC at the south end can rename your Pokémon.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Pokémon Tower upper floors",
+              "needs": "Silph Scope",
+              "reward": "Battle the Marowak ghost, free Mr. Fuji, receive the Poké Flute"
+            }
+          ]
+        },
+        {
+          "name": "Route 8",
+          "kind": "route",
+          "summary": "A route west of Saffron toward Lavender, with a Cut-gated grass patch hiding Abra and Kadabra.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 18-20",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Meowth",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 18-20",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Ekans",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 17-19",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Vulpix",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-18",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Growlithe",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-18",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Abra",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-19",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Kadabra",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 20-27",
+              "versionExclusive": "both"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Super Nerd Glenn",
+              "team": "Grimer, Muk, Grimer"
+            },
+            {
+              "trainer": "Twins Eli & Anne",
+              "team": "Clefairy, Jigglypuff"
+            },
+            {
+              "trainer": "Lass Paige",
+              "team": "Nidoran♀, Nidorina"
+            },
+            {
+              "trainer": "Lass Andrea",
+              "team": "Meowth ×3"
+            }
+          ],
+          "items": [
+            {
+              "label": "Hidden Leppa, Lum, and Rawst Berries",
+              "hidden": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Fenced grass patch",
+              "needs": "HM01 Cut",
+              "reward": "Abra/Kadabra and version-exclusive encounters"
+            }
+          ]
+        },
+        {
+          "name": "Route 7",
+          "kind": "route",
+          "summary": "A short route between Celadon and Saffron; the Saffron gate is blocked until you bring the guards a drink.",
+          "encounters": [
+            {
+              "species": "Meowth",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 17-20",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 19-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 19-22",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 19-22",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Growlithe",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 18-20",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Vulpix",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 18-20",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "events": [
+            {
+              "label": "Saffron gate guards",
+              "detail": "The guards block Saffron City until you bring them a drink from the Celadon Department Store rooftop.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Celadon City",
+          "kind": "town",
+          "summary": "Kanto's biggest city — the Department Store, the Rocket-run Game Corner, Erika's Grass Gym, and the free Eevee.",
+          "items": [
+            {
+              "label": "Eevee (gift, Celadon Condominiums)",
+              "hidden": false
+            },
+            {
+              "label": "Tea (opens the Saffron route guards)",
+              "hidden": false
+            },
+            {
+              "label": "Hidden PP Up (by the Cut tree near the Game Corner)",
+              "hidden": true
+            }
+          ],
+          "shop": [
+            {
+              "item": "Dept. Store 2F",
+              "price": "Poké Balls, Potions, status heals"
+            },
+            {
+              "item": "Dept. Store 4F",
+              "price": "Fire/Water/Thunder/Leaf Stone — ₽2,100 each"
+            },
+            {
+              "item": "Dept. Store 5F",
+              "price": "X items and vitamins (HP Up, Protein, etc.)"
+            },
+            {
+              "item": "Rooftop vending",
+              "price": "Fresh Water ₽200, Soda Pop ₽300, Lemonade ₽350 — trade for rooftop TMs"
+            }
+          ],
+          "events": [
+            {
+              "label": "Game Corner / Rocket Hideout",
+              "detail": "A poster in the Rocket Game Corner hides the switch that opens the staircase to the Team Rocket Hideout.",
+              "spoiler": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Cut tree by the Game Corner",
+              "needs": "HM01 Cut",
+              "reward": "Hidden PP Up"
+            }
+          ]
+        },
+        {
+          "name": "Team Rocket Hideout",
+          "kind": "dungeon",
+          "summary": "A four-floor basement beneath the Game Corner where you beat Giovanni and take the Silph Scope.",
+          "trainers": [
+            {
+              "trainer": "Boss Giovanni (B4F)",
+              "team": "Onix Lv25, Rhyhorn Lv24, Kangaskhan Lv29",
+              "reward": "Silph Scope"
+            }
+          ],
+          "items": [
+            {
+              "label": "Lift Key, Moon Stone, Rare Candy, Nugget",
+              "hidden": false
+            },
+            {
+              "label": "TM12 Taunt, TM21 Frustration, TM49 Snatch",
+              "hidden": false
+            },
+            {
+              "label": "Hidden PP Up, Net Ball, Nest Ball (Itemfinder)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Lift Key",
+              "detail": "A grunt on B4F drops the Lift Key, enabling the elevator to reach Giovanni.",
+              "spoiler": true
+            },
+            {
+              "label": "Silph Scope",
+              "detail": "Giovanni drops the Silph Scope, which identifies the Marowak ghost in Pokémon Tower.",
+              "spoiler": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lavender-tower-fuchsia",
+      "title": "The Tower, the Flute, and the Soul Badge",
+      "subtitle": "Lavender Town (Pokémon Tower) → Route 16 → Fuchsia City (Safari Zone, Koga)",
+      "locationRef": "Lavender Town",
+      "durationLabel": "50:00",
+      "steps": [
+        {
+          "id": "s5-01",
+          "text": "Return to Lavender Town and enter Pokémon Tower. With the Silph Scope equipped in your bag, Ghost-type Pokémon can be properly identified and engaged. Gastly and Haunter appear on the upper floors — Haunter is an excellent Pokémon for Sabrina's Gym later (it is immune to Psychic moves)."
+        },
+        {
+          "id": "s5-02",
+          "text": "Climb to the top floor of Pokémon Tower and confront Team Rocket. After defeating the grunts, speak to the ghost of Marowak — you cannot capture it, only battle it and let it rest in peace. Continue up to rescue Mr. Fuji from the Rocket executives."
+        },
+        {
+          "id": "s5-03",
+          "text": "Mr. Fuji returns to his house on the ground floor of Lavender Town. Speak to him there and he gives you the Poké Flute — a key item that wakes Snorlax. Two Snorlax block routes in Kanto: one on Route 12 (south of Lavender Town) and one on Route 16 (west of Celadon City).",
+          "itemRef": "pokeflute"
+        },
+        {
+          "id": "s5-04",
+          "text": "Use the Poké Flute to battle and optionally catch the Snorlax on Route 12 (south of Lavender Town). Snorlax is an exceptionally bulky Normal-type Pokémon — well worth adding to your team. Save before interacting; you only get one attempt per Snorlax."
+        },
+        {
+          "id": "s5-05",
+          "text": "Head west through Celadon City and use the Poké Flute on the second Snorlax on Route 16. A girl on Route 16 gives you HM02 Fly once you enter the gatehouse on the western side of the route.",
+          "itemRef": "hm02-fly"
+        },
+        {
+          "id": "s5-06",
+          "text": "Continue south on Route 17 (the Cycling Road) and Route 18 to reach Fuchsia City. The Bicycle is ideal here — the Cycling Road is long and fast on a Bike."
+        },
+        {
+          "id": "s5-07",
+          "text": "Visit the Safari Zone north of Fuchsia City. You have 500 steps and 30 Safari Balls per visit. The key objective is to find the Gold Teeth in the northern area and collect HM04 Strength from the Warden's house inside the zone.",
+          "itemRef": "hm04-strength"
+        },
+        {
+          "id": "s5-08",
+          "text": "Return the Gold Teeth to the Safari Zone Warden's house in Fuchsia City (south of the Safari Zone entrance). He gives you HM03 Surf — one of the most important HMs in the game. Teach Surf to a Water-type Pokémon immediately.",
+          "itemRef": "hm03-surf"
+        },
+        {
+          "id": "s5-09",
+          "text": "Challenge Koga at Fuchsia Gym. His team stacks Minimise and uses SelfDestruct — bring Swift-users and status healers. See the Koga fight card for detailed strategy.",
+          "bossRef": "koga"
+        }
+      ],
+      "order": 5,
+      "stage": "Badges 4–5",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "50:00",
+        "startSeconds": 0
+      },
+      "sectionId": "lavender-tower-fuchsia",
+      "areas": [
+        {
+          "name": "Pokémon Tower",
+          "kind": "dungeon",
+          "summary": "A seven-storey haunted tower in Lavender Town where Team Rocket holds Mr. Fuji captive and a restless Marowak ghost blocks the way.",
+          "encounters": [
+            {
+              "species": "Gastly",
+              "method": "other",
+              "rarity": "very-common",
+              "levelRange": "Lv 13-19",
+              "versionExclusive": "both",
+              "note": "floors 3F-7F"
+            },
+            {
+              "species": "Haunter",
+              "method": "other",
+              "rarity": "uncommon",
+              "levelRange": "Lv 20-25",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Cubone",
+              "method": "other",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-19",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Marowak",
+              "method": "static",
+              "rarity": "one-time",
+              "levelRange": "Lv 30",
+              "versionExclusive": "both",
+              "note": "the ghost on 6F — battled, not caught"
+            }
+          ],
+          "items": [
+            {
+              "label": "Escape Rope, Awakening, Elixir, HP Up, Nugget, Rare Candy",
+              "hidden": false
+            },
+            {
+              "label": "TM05 Roar",
+              "hidden": false
+            },
+            {
+              "label": "Poké Flute (gift from Mr. Fuji)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Ghost Marowak",
+              "detail": "The Silph Scope reveals the restless Marowak blocking 6F; defeat it (Lv 30) to proceed.",
+              "spoiler": true
+            },
+            {
+              "label": "Rescue Mr. Fuji",
+              "detail": "Beat the Team Rocket Grunts on 7F to free Mr. Fuji, who gives you the Poké Flute.",
+              "spoiler": true
+            }
+          ]
+        },
+        {
+          "name": "Route 12",
+          "kind": "route",
+          "summary": "A long north–south route east of Lavender where a sleeping Snorlax blocks the road and the Super Rod is given out.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 23-27",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Venonat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-26",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Snorlax",
+              "method": "static",
+              "rarity": "one-time",
+              "levelRange": "Lv 30",
+              "versionExclusive": "both",
+              "note": "wake with the Poké Flute"
+            },
+            {
+              "species": "Gyarados",
+              "method": "super-rod",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-25",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Iron, TM16 Light Screen",
+              "hidden": false
+            },
+            {
+              "label": "Hidden Hyper Potion, Rare Candy",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Super Rod",
+              "detail": "The Fishing Guru's brother in the route house gives the Super Rod.",
+              "spoiler": false
+            },
+            {
+              "label": "Snorlax",
+              "detail": "A Lv 30 Snorlax sleeps on the road; use the Poké Flute to wake and battle it (one per game).",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Snorlax blocking the road",
+              "needs": "Poké Flute",
+              "reward": "Clears the path south; catchable Lv 30 Snorlax"
+            }
+          ]
+        },
+        {
+          "name": "Route 13",
+          "kind": "route",
+          "summary": "An open grassy route of ledges southwest of Route 12, patrolled by Bird Keepers and Beauties.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 25-27",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Pidgeotto",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Venonat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-26",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Ditto",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 25",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "items": [
+            {
+              "label": "Hidden PP Up, Calcium",
+              "hidden": true
+            }
+          ]
+        },
+        {
+          "name": "Route 14",
+          "kind": "route",
+          "summary": "A ledge-lined route south of Route 13, dense with Bird Keepers and Bikers.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 27",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Pidgeotto",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Venonat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-26",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Bird Keeper Carter",
+              "team": "Pidgey Lv28, Doduo Lv28, Pidgeotto Lv28"
+            },
+            {
+              "trainer": "Bird Keeper Mitch",
+              "team": "Pidgey Lv26, Spearow Lv26, Pidgey Lv26, Fearow Lv26"
+            },
+            {
+              "trainer": "Bird Keeper Donald",
+              "team": "Farfetch'd Lv33"
+            },
+            {
+              "trainer": "Twins Kiri & Jan",
+              "team": "Charmander Lv29, Squirtle Lv29"
+            }
+          ],
+          "items": [
+            {
+              "label": "Hidden Pinap Berry, Zinc (needs Cut)",
+              "hidden": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Tall grass with hidden Zinc",
+              "needs": "HM01 Cut",
+              "reward": "Hidden Zinc"
+            }
+          ]
+        },
+        {
+          "name": "Route 15",
+          "kind": "route",
+          "summary": "An east–west route to Fuchsia City, with the gate where Oak's aide gives the Exp. Share.",
+          "encounters": [
+            {
+              "species": "Pidgey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 25-27",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Pidgeotto",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Venonat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-26",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Oddish",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Bellsprout",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Picnicker Becky",
+              "team": "Pikachu Lv29, Raichu Lv29"
+            },
+            {
+              "trainer": "Crush Kin Ron & Mya",
+              "team": "Hitmonchan Lv29 / Hitmonlee Lv29"
+            },
+            {
+              "trainer": "Picnicker Celia",
+              "team": "Clefairy Lv33"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM18 Rain Dance (north section; needs Cut)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Exp. Share",
+              "detail": "Oak's aide in the Route 15 gate gives the Exp. Share once you have caught 50 species.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "TM18 in the north section",
+              "needs": "HM01 Cut",
+              "reward": "TM18 Rain Dance"
+            },
+            {
+              "what": "Exp. Share",
+              "needs": "50 species caught",
+              "reward": "Exp. Share"
+            }
+          ]
+        },
+        {
+          "name": "Route 16",
+          "kind": "route",
+          "summary": "The route west of Celadon at the head of Cycling Road, blocked by a sleeping Snorlax and gated to bicycle riders. HM02 Fly is hidden here.",
+          "encounters": [
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 18-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Raticate",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 23-25",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 20-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Doduo",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 18-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Snorlax",
+              "method": "static",
+              "rarity": "one-time",
+              "levelRange": "Lv 30",
+              "versionExclusive": "both",
+              "note": "wake with the Poké Flute"
+            }
+          ],
+          "items": [
+            {
+              "label": "HM02 Fly (from a girl in the north house; needs Cut to reach)",
+              "hidden": false
+            },
+            {
+              "label": "Hidden Leftovers (at Snorlax's spot, via Itemfinder)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Snorlax",
+              "detail": "A Lv 30 Snorlax blocks Cycling Road; use the Poké Flute to wake and battle it.",
+              "spoiler": false
+            },
+            {
+              "label": "Amulet Coin",
+              "detail": "Oak's aide at the gate gives the Amulet Coin once 40 species are caught.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Snorlax blocking Cycling Road",
+              "needs": "Poké Flute",
+              "reward": "Opens Cycling Road; later hidden Leftovers"
+            },
+            {
+              "what": "HM02 Fly house (north)",
+              "needs": "HM01 Cut",
+              "reward": "HM02 Fly"
+            }
+          ]
+        },
+        {
+          "name": "Route 17 (Cycling Road)",
+          "kind": "route",
+          "summary": "The main downhill stretch of Cycling Road, bike-only and lined with Bikers and Cue Balls.",
+          "encounters": [
+            {
+              "species": "Raticate",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 25-29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 20-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Fearow",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 25-27",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Doduo",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-28",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Hidden Full Restore, PP Up, Rare Candy, Max Revive, Max Elixir",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Bike required",
+              "detail": "Cycling Road is a downhill bike-only route; the Bicycle is required to enter.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Route 18",
+          "kind": "route",
+          "summary": "A short route between the foot of Cycling Road and Fuchsia City, with a version-dependent Lickitung trade in the gate.",
+          "encounters": [
+            {
+              "species": "Raticate",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 25-29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 20-22",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Fearow",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 25-29",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Doduo",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-28",
+              "versionExclusive": "both"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Bird Keeper Wilton",
+              "team": "Spearow Lv29, Fearow Lv29"
+            },
+            {
+              "trainer": "Bird Keeper Ramiro",
+              "team": "Dodrio Lv34"
+            }
+          ],
+          "events": [
+            {
+              "label": "In-game trade",
+              "detail": "In the Route 18 gate: trade for a Lickitung — give Golduck in FireRed, Slowbro in LeafGreen.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Fuchsia City",
+          "kind": "town",
+          "summary": "A southern city with the Safari Zone, Koga's Poison Gym, the Warden's house, and a free Move Deleter.",
+          "shop": [
+            {
+              "item": "Ultra Ball",
+              "price": "₽1,200"
+            },
+            {
+              "item": "Great Ball",
+              "price": "₽600"
+            },
+            {
+              "item": "Super Potion",
+              "price": "₽700"
+            },
+            {
+              "item": "Revive",
+              "price": "₽1,500"
+            },
+            {
+              "item": "Full Heal",
+              "price": "₽600"
+            },
+            {
+              "item": "Max Repel",
+              "price": "₽700"
+            }
+          ],
+          "items": [
+            {
+              "label": "Good Rod (Fishing Guru's brother)",
+              "hidden": false
+            },
+            {
+              "label": "HM04 Strength (Warden, after returning the Gold Teeth)",
+              "hidden": false
+            },
+            {
+              "label": "Rare Candy (Warden's house; needs Strength)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Return the Gold Teeth",
+              "detail": "Bring the Gold Teeth from the Safari Zone to the Warden for HM04 Strength.",
+              "spoiler": false
+            },
+            {
+              "label": "Move Deleter",
+              "detail": "A forgetful man beside the Center deletes moves (including HMs) for free.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Warden's house Rare Candy",
+              "needs": "HM04 Strength",
+              "reward": "Rare Candy"
+            }
+          ]
+        },
+        {
+          "name": "Safari Zone",
+          "kind": "dungeon",
+          "summary": "A four-area preserve where you pay to enter, get Safari Balls and a limited step count, and catch rare Pokémon found nowhere else — including HM03 Surf and the Gold Teeth.",
+          "encounters": [
+            {
+              "species": "Nidoran♂ / Nidoran♀",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 24-31",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Exeggcute",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 24-30",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Rhyhorn",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 25-30",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Chansey",
+              "method": "grass",
+              "rarity": "very-rare",
+              "levelRange": "Lv 23-25",
+              "versionExclusive": "both",
+              "note": "approximate rate"
+            },
+            {
+              "species": "Tauros",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 25-28",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Kangaskhan",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 25-33",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Scyther",
+              "method": "grass",
+              "rarity": "very-rare",
+              "levelRange": "Lv 23-26",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Pinsir",
+              "method": "grass",
+              "rarity": "very-rare",
+              "levelRange": "Lv 23-26",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Dratini",
+              "method": "super-rod",
+              "rarity": "rare",
+              "levelRange": "Lv 15-25",
+              "versionExclusive": "both",
+              "note": "fishing"
+            }
+          ],
+          "items": [
+            {
+              "label": "Gold Teeth (return to the Fuchsia Warden for HM04 Strength)",
+              "hidden": false
+            },
+            {
+              "label": "HM03 Surf (Secret House, deepest area)",
+              "hidden": false
+            },
+            {
+              "label": "TM11 Sunny Day, TM47 Steel Wing",
+              "hidden": false
+            },
+            {
+              "label": "Various hidden items in the grass",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Entry fee & step limit",
+              "detail": "Pay ₽500 to enter; you get 30 Safari Balls and a limited step count before being shown out.",
+              "spoiler": false
+            },
+            {
+              "label": "Secret House / Surf",
+              "detail": "Reach the Secret House in the deepest area to receive HM03 Surf.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Surf-only ledges in the zone",
+              "needs": "HM03 Surf (obtained here)",
+              "reward": "Deeper grass and fishing spots"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saffron-silph-co",
+      "title": "Silph Co. and the Marsh Badge",
+      "subtitle": "Saffron City → Silph Co. headquarters → Sabrina's Gym",
+      "locationRef": "Saffron City",
+      "durationLabel": "40:00",
+      "steps": [
+        {
+          "id": "s6-01",
+          "text": "Fly to Saffron City (now accessible after giving the guards a drink earlier). Team Rocket has taken over the entire Silph Co. building. You must navigate eleven floors of Rocket grunts and warp tiles to reach the top."
+        },
+        {
+          "id": "s6-02",
+          "text": "On the fifth floor of Silph Co., find a Rocket grunt guarding a Lapras. After defeating the grunt, speak to the Silph employee who gives you the Lapras for free. Lapras is exceptional — high HP, Water/Ice typing, and it learns both Surf and Ice Beam."
+        },
+        {
+          "id": "s6-03",
+          "text": "Collect the Card Key from the fifth floor (room accessible via a warp tile on the third floor). The Card Key unlocks every locked door throughout the entire building.",
+          "itemRef": "card-key"
+        },
+        {
+          "id": "s6-04",
+          "text": "Blue appears mid-way through Silph Co. for another rival battle. His team is now in its mid-evolution forms and noticeably stronger than your last encounter. Heal thoroughly before engaging him."
+        },
+        {
+          "id": "s6-05",
+          "text": "Reach the eleventh floor and confront Giovanni at the top of Silph Co. After defeating him, Giovanni disbands Team Rocket's Silph operation. The Silph Co. president gives you a Master Ball as thanks — the only Poké Ball that never fails to catch any Pokémon. Save it for the post-game legendary birds or for a Pokémon that proves difficult to catch normally.",
+          "itemRef": "master-ball"
+        },
+        {
+          "id": "s6-06",
+          "text": "With Silph Co. liberated, Sabrina's Gym in Saffron City opens. The Gym uses warp tiles that shuffle your position — memorise the path or explore systematically. See the Sabrina fight card for battle strategy.",
+          "bossRef": "sabrina"
+        },
+        {
+          "id": "s6-07",
+          "text": "After earning the Marsh Badge, fly to Pallet Town and Surf south to Cinnabar Island. Pallet Town → south by sea is the fastest route."
+        }
+      ],
+      "order": 6,
+      "stage": "Badge 6",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "40:00",
+        "startSeconds": 0
+      },
+      "sectionId": "saffron-silph-co",
+      "areas": [
+        {
+          "name": "Saffron City",
+          "kind": "town",
+          "summary": "Central Kanto's hub, sealed by thirsty guards until Team Rocket seizes Silph Co.; home to Sabrina's Psychic Gym and the Fighting Dojo.",
+          "shop": [
+            {
+              "item": "Great Ball",
+              "price": "₽600"
+            },
+            {
+              "item": "Hyper Potion",
+              "price": "₽1,200"
+            },
+            {
+              "item": "Revive",
+              "price": "₽1,500"
+            },
+            {
+              "item": "Full Heal",
+              "price": "₽600"
+            },
+            {
+              "item": "Escape Rope",
+              "price": "₽550"
+            },
+            {
+              "item": "Max Repel",
+              "price": "₽700"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM29 Psychic (from Mr. Psychic)",
+              "hidden": false
+            },
+            {
+              "label": "Hitmonlee or Hitmonchan (Fighting Dojo gift, choose one)",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Thirsty guards",
+              "detail": "Gate guards block entry until you bring drinks bought from the Celadon Department Store rooftop.",
+              "spoiler": false
+            },
+            {
+              "label": "Fighting Dojo gift",
+              "detail": "Beat the Karate Master to choose either Hitmonlee or Hitmonchan.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "City entry",
+              "needs": "A drink from Celadon Dept. Store",
+              "reward": "Gate guards stand aside"
+            }
+          ]
+        },
+        {
+          "name": "Silph Co.",
+          "kind": "building",
+          "summary": "An eleven-floor Saffron skyscraper occupied by Team Rocket, full of warp-panel mazes, ending in a Giovanni showdown for the Master Ball.",
+          "trainers": [
+            {
+              "trainer": "Rival (7F)",
+              "team": "Pidgeot Lv37, Alakazam Lv35, starter-counter Lv40",
+              "note": "Roster varies with your starter"
+            },
+            {
+              "trainer": "Boss Giovanni (11F)",
+              "team": "Nidorino Lv37, Rhyhorn Lv37, Kangaskhan Lv35, Nidoqueen Lv41",
+              "reward": "Liberates Silph Co."
+            }
+          ],
+          "items": [
+            {
+              "label": "Card Key (5F — unlocks the building's doors)",
+              "hidden": false
+            },
+            {
+              "label": "Lapras (gift, Lv 25, from a 7F employee)",
+              "hidden": false
+            },
+            {
+              "label": "TM08 Bulk Up; vitamins and Rare Candy across floors",
+              "hidden": false
+            },
+            {
+              "label": "Master Ball (from the President, 11F)",
+              "hidden": false
+            },
+            {
+              "label": "Hidden TM01 Focus Punch, TM41 Torment",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Card Key",
+              "detail": "Pick up the Card Key on 5F to unlock the locked doors throughout the tower.",
+              "spoiler": true
+            },
+            {
+              "label": "Lapras gift",
+              "detail": "An employee on 7F gives a Lv 25 Lapras.",
+              "spoiler": false
+            },
+            {
+              "label": "Master Ball",
+              "detail": "After Giovanni falls on 11F, the Silph president rewards you with the Master Ball.",
+              "spoiler": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Locked doors throughout the tower",
+              "needs": "Card Key (5F)",
+              "reward": "Access to the remaining floors, items, and Giovanni"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cinnabar-island",
+      "title": "Volcano Badge",
+      "subtitle": "Routes 19–20 → Cinnabar Island → Pokémon Mansion → Cinnabar Gym",
+      "locationRef": "Cinnabar Island",
+      "durationLabel": "30:00",
+      "steps": [
+        {
+          "id": "s7-01",
+          "text": "Fly to Fuchsia City and Surf west on Route 19, then south on Route 20 through the sea route. Alternatively, fly to Pallet Town and Surf directly south — it is faster. Both routes bring you to Cinnabar Island."
+        },
+        {
+          "id": "s7-02",
+          "text": "Visit the Pokémon Lab on the east side of Cinnabar Island. The scientists there can revive your fossil (Dome → Kabuto, Helix → Omanyte, Old Amber → Aerodactyl). Hand over whichever fossil you collected in Mt Moon for a fossil Pokémon at level 40."
+        },
+        {
+          "id": "s7-03",
+          "text": "The Cinnabar Gym door is locked — you need the Secret Key hidden inside the Pokémon Mansion, the ruined building directly north of the Gym. The Mansion has four floors of wild Pokémon and item balls."
+        },
+        {
+          "id": "s7-04",
+          "text": "Navigate the Pokémon Mansion by pressing switches hidden on statues throughout the building — each switch toggles certain doors open or closed. The Secret Key is on the basement level. Finding it takes around 10–15 minutes on a first playthrough.",
+          "itemRef": "secret-key"
+        },
+        {
+          "id": "s7-05",
+          "text": "With the Secret Key, the Cinnabar Gym doors unlock. Inside, trainers pose quizzes — answer correctly to skip the battle, answer incorrectly (or choose to ignore) to fight. See the Blaine fight card for strategy.",
+          "bossRef": "blaine"
+        },
+        {
+          "id": "s7-06",
+          "text": "Collect the Volcano Badge and Fly back towards Viridian City for the final Gym badge. You have earned seven of the eight required badges."
+        }
+      ],
+      "order": 7,
+      "stage": "Badge 7",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "30:00",
+        "startSeconds": 0
+      },
+      "sectionId": "cinnabar-island",
+      "areas": [
+        {
+          "name": "Route 19",
+          "kind": "sea",
+          "summary": "A water route running south from Fuchsia City, crossable only by Surf and lined with Swimmer trainers.",
+          "encounters": [
+            {
+              "species": "Tentacool",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 5-40",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Magikarp",
+              "method": "old-rod",
+              "rarity": "very-common",
+              "levelRange": "Lv 5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Krabby",
+              "method": "good-rod",
+              "rarity": "common",
+              "levelRange": "Lv 5-15",
+              "versionExclusive": "both",
+              "note": "20% FR / 60% LG"
+            },
+            {
+              "species": "Horsea",
+              "method": "good-rod",
+              "rarity": "common",
+              "levelRange": "Lv 5-15",
+              "versionExclusive": "both",
+              "note": "60% FR / 20% LG"
+            },
+            {
+              "species": "Gyarados",
+              "method": "super-rod",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-25",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Kingler",
+              "method": "super-rod",
+              "rarity": "rare",
+              "levelRange": "Lv 25-35",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Seadra",
+              "method": "super-rod",
+              "rarity": "rare",
+              "levelRange": "Lv 25-35",
+              "versionExclusive": "both"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Swimmer Richard",
+              "team": "Tentacool Lv30, Shellder Lv30"
+            },
+            {
+              "trainer": "Sis and Bro Lia & Luc",
+              "team": "Goldeen Lv30, Seaking Lv30"
+            }
+          ]
+        },
+        {
+          "name": "Route 20",
+          "kind": "sea",
+          "summary": "An ocean route split down the middle by the Seafoam Islands, connecting Fuchsia City to Cinnabar Island.",
+          "encounters": [
+            {
+              "species": "Tentacool",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 5-40",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Krabby",
+              "method": "good-rod",
+              "rarity": "common",
+              "levelRange": "Lv 5-15",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Horsea",
+              "method": "good-rod",
+              "rarity": "common",
+              "levelRange": "Lv 5-15",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Gyarados",
+              "method": "super-rod",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-25",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Kingler",
+              "method": "super-rod",
+              "rarity": "rare",
+              "levelRange": "Lv 25-35",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Seadra",
+              "method": "super-rod",
+              "rarity": "rare",
+              "levelRange": "Lv 25-35",
+              "versionExclusive": "leafgreen"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Swimmer Barry",
+              "team": "Shellder Lv31, Cloyster Lv31"
+            },
+            {
+              "trainer": "Bird Keeper Roger",
+              "team": "Fearow Lv30, Fearow Lv30, Pidgeotto Lv30"
+            }
+          ],
+          "items": [
+            {
+              "label": "Stardust",
+              "hidden": true
+            }
+          ]
+        },
+        {
+          "name": "Seafoam Islands",
+          "kind": "cave",
+          "summary": "A five-floor sea cave between Routes 19 and 20 whose water currents are navigated with Strength to reach the legendary Articuno.",
+          "encounters": [
+            {
+              "species": "Zubat",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 22-26",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Golbat",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 26-30",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Psyduck",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 26-33",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Slowpoke",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 26-33",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Seel",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 28",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Articuno",
+              "method": "static",
+              "rarity": "one-time",
+              "levelRange": "Lv 50",
+              "versionExclusive": "both",
+              "note": "B4F"
+            }
+          ],
+          "items": [
+            {
+              "label": "Water Stone",
+              "hidden": false
+            },
+            {
+              "label": "Revive",
+              "hidden": false
+            }
+          ],
+          "events": [
+            {
+              "label": "Articuno",
+              "detail": "Legendary Ice/Flying-type waits on B4F at Lv 50.",
+              "spoiler": true
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Boulder current puzzle",
+              "needs": "HM04 Strength",
+              "reward": "Access to the lower floors and Articuno"
+            }
+          ]
+        },
+        {
+          "name": "Cinnabar Island",
+          "kind": "town",
+          "summary": "A volcanic island home to the Pokémon Lab (fossil revival and trades) and Blaine's Fire-type Gym, which stays locked until the Secret Key is recovered from the Pokémon Mansion.",
+          "events": [
+            {
+              "label": "Gym locked",
+              "detail": "The Cinnabar Gym door cannot be opened without the Secret Key found in the Pokémon Mansion.",
+              "spoiler": false
+            },
+            {
+              "label": "Fossil revival",
+              "detail": "The Pokémon Lab revives Helix/Dome/Old Amber fossils and hosts in-game trades.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Pokémon Mansion",
+          "kind": "building",
+          "summary": "A burnt-out research mansion on Cinnabar Island whose hidden statue switches open the path to the Secret Key in the basement.",
+          "encounters": [
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 26-28",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Raticate",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 32-38",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Grimer",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 28-30",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Koffing",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 28-30",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Muk",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 32-34",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Vulpix",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 30-32",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Growlithe",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 30-32",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Ditto",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 30",
+              "versionExclusive": "both",
+              "note": "B1F"
+            }
+          ],
+          "items": [
+            {
+              "label": "Secret Key",
+              "hidden": false
+            },
+            {
+              "label": "TM22 SolarBeam",
+              "hidden": false
+            },
+            {
+              "label": "TM14 Blizzard",
+              "hidden": false
+            },
+            {
+              "label": "Escape Rope",
+              "hidden": false
+            },
+            {
+              "label": "Calcium",
+              "hidden": false
+            },
+            {
+              "label": "Moon Stone (1F)",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Secret Key",
+              "detail": "The Secret Key sits in the basement (B1F); collecting it unlocks the Cinnabar Gym.",
+              "spoiler": false
+            },
+            {
+              "label": "Statue switch puzzle",
+              "detail": "Hidden switches inside statues open and close locked doors, gating the route to the basement.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Route 21",
+          "kind": "sea",
+          "summary": "A coastal route between Cinnabar Island and Pallet Town, crossed by Surf with a small grassy island midway.",
+          "encounters": [
+            {
+              "species": "Tangela",
+              "method": "grass",
+              "rarity": "very-common",
+              "levelRange": "Lv 17-28",
+              "versionExclusive": "firered",
+              "note": "grass island; LeafGreen has no grass here"
+            },
+            {
+              "species": "Tentacool",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 5-40",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Gyarados",
+              "method": "super-rod",
+              "rarity": "uncommon",
+              "levelRange": "Lv 15-25",
+              "versionExclusive": "both"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Fisherman Wade",
+              "team": "Magikarp ×6 Lv27"
+            },
+            {
+              "trainer": "Swimmer Spencer",
+              "team": "Staryu Lv33, Wartortle Lv33, Seadra Lv32"
+            }
+          ],
+          "items": [
+            {
+              "label": "Pearl",
+              "hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "viridian-gym",
+      "title": "Earth Badge",
+      "subtitle": "Viridian City → Viridian Gym → Giovanni (final Gym Leader)",
+      "locationRef": "Viridian City",
+      "durationLabel": "20:00",
+      "steps": [
+        {
+          "id": "s8-01",
+          "text": "Fly to Viridian City. The previously locked Viridian Gym is now open — the Earth Badge requires all seven other Badges before entry is permitted."
+        },
+        {
+          "id": "s8-02",
+          "text": "Viridian Gym uses a spinner tile floor that sends you skidding in a fixed direction. Work your way to the two Cooltrainer battles in the upper section to reach Giovanni. The Cooltrainers are strong — heal before each if needed."
+        },
+        {
+          "id": "s8-03",
+          "text": "Challenge Giovanni for the final time. He reveals himself as the Gym Leader you have been pursuing throughout Kanto — the head of Team Rocket. His Ground-type team is his strongest yet. See the Giovanni fight card for full strategy.",
+          "bossRef": "giovanni-viridian",
+          "spoiler": true
+        },
+        {
+          "id": "s8-04",
+          "text": "Collect the Earth Badge — the eighth and final Gym Badge. All Pokémon now obey you regardless of level. Fly to Viridian City and visit the Move Deleter (the building west of the Pokémon Centre) to remove any HM moves you no longer want.",
+          "spoiler": true
+        },
+        {
+          "id": "s8-05",
+          "text": "Stock up thoroughly at the Viridian Pokémon Centre and Mart. Buy at least 10 Max Potions or Hyper Potions, 6 Revives, 4 Full Heals, and several Max Repels for Victory Road. Once you enter the Pokémon League route, there is no easy return."
+        }
+      ],
+      "order": 8,
+      "stage": "Badge 8",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "20:00",
+        "startSeconds": 0
+      },
+      "sectionId": "viridian-gym",
+      "areas": [
+        {
+          "name": "Viridian City Gym",
+          "kind": "building",
+          "summary": "Viridian City's Ground-type Gym, finally openable late-game, where Giovanni is fought across a spinner-tile maze for the eighth badge.",
+          "events": [
+            {
+              "label": "Spinner-tile maze",
+              "detail": "The floor uses the same warp/transport tiles as the Team Rocket Hideout, which must be navigated to reach Giovanni.",
+              "spoiler": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "title": "Pokémon League",
+      "subtitle": "Route 22 → Victory Road → Elite Four → Champion Blue",
+      "locationRef": "Indigo Plateau",
+      "durationLabel": "50:00",
+      "steps": [
+        {
+          "id": "s9-01",
+          "text": "Head west from Viridian City on Route 22, then north on Route 23. Badge Check Gates line the route — each gate verifies one of your eight Badges before letting you pass. You must carry all eight to proceed."
+        },
+        {
+          "id": "s9-02",
+          "text": "Enter Victory Road — a three-floor cave filled with the strongest wild Pokémon in Kanto (Sandslash, Machoke, Graveler, Onix). Use HM04 Strength to push boulders onto switches, opening the path through. Max Repels prevent unwanted encounters during the traverse.",
+          "itemRef": "hm04-strength"
+        },
+        {
+          "id": "s9-03",
+          "text": "Blue appears in Victory Road for a final rival encounter. His team will be close to or at the level of the Elite Four — treat this as a warm-up battle. Heal after defeating him."
+        },
+        {
+          "id": "s9-04",
+          "text": "Arrive at the Indigo Plateau. Use the Pokémon Centre here to fully heal your entire party and stock up on any remaining supplies. This is the last chance to heal before the Elite Four gauntlet — after entering the first chamber, you continue until either you win or your last Pokémon faints."
+        },
+        {
+          "id": "s9-05",
+          "text": "Challenge Lorelei first. Her Ice/Water team targets Physical attackers and sets up status. See the Lorelei fight card for strategy.",
+          "bossRef": "lorelei"
+        },
+        {
+          "id": "s9-06",
+          "text": "Challenge Bruno. His Fighting-type team is the most straightforward Elite Four battle — a single Psychic-type Pokémon sweeps the room. See the Bruno fight card for strategy.",
+          "bossRef": "bruno"
+        },
+        {
+          "id": "s9-07",
+          "text": "Challenge Agatha. Ghost and Poison types, heavy status use, Destiny Bond on her final Gengar. See the Agatha fight card for strategy.",
+          "bossRef": "agatha"
+        },
+        {
+          "id": "s9-08",
+          "text": "Challenge Lance. Dragon and Flying types — Ice moves are your most important asset here. See the Lance fight card for strategy.",
+          "bossRef": "lance"
+        },
+        {
+          "id": "s9-09",
+          "text": "Enter the Champion's chamber. Your rival Blue has been waiting — he is the Champion. His team directly counters your starter choice and covers a wide range of types. Use all remaining items before this battle. See the Champion Blue fight card for full strategy.",
+          "bossRef": "champion-blue",
+          "spoiler": true
+        },
+        {
+          "id": "s9-10",
+          "text": "After defeating Blue, Professor Oak arrives. Blue's poor manners are noted and you are officially inducted into the Hall of Fame. Your team's data is recorded and the credits roll. Congratulations — you are the Pokémon League Champion.",
+          "spoiler": true
+        }
+      ],
+      "order": 9,
+      "stage": "Pokémon League",
+      "video": {
+        "provider": "youtube",
+        "id": "5kKyLWhYuwI",
+        "creator": "YoyoYoshi",
+        "title": "Pokémon Fire Red & Leaf Green (Switch) - Full Game 100% Walkthrough",
+        "durationLabel": "50:00",
+        "startSeconds": 0
+      },
+      "sectionId": "elite-four",
+      "areas": [
+        {
+          "name": "Route 22",
+          "kind": "route",
+          "summary": "A short route west of Viridian City leading to the Pokémon League gate, site of two rival battles.",
+          "encounters": [
+            {
+              "species": "Rattata",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 2-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Mankey",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 2-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Spearow",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 3-5",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Nidoran♀",
+              "method": "grass",
+              "rarity": "uncommon",
+              "levelRange": "Lv 2-4",
+              "versionExclusive": "both"
+            }
+          ],
+          "trainers": [
+            {
+              "trainer": "Rival (final, before Victory Road)",
+              "team": "Pidgeot Lv47, Rhyhorn Lv45, Exeggcute/Gyarados/Arcanine Lv45-47, Alakazam Lv50, starter Lv53",
+              "note": "Team varies with your starter choice"
+            }
+          ],
+          "items": [
+            {
+              "label": "Antidote",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Early rival battle",
+              "detail": "An optional early-game rival battle occurs here just after leaving Pallet Town.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Route 23",
+          "kind": "route",
+          "summary": "A long mountain path north of Route 22 with badge checkpoints that bar all but the strongest trainers from reaching the Pokémon League.",
+          "encounters": [
+            {
+              "species": "Psyduck",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 20-40",
+              "versionExclusive": "firered"
+            },
+            {
+              "species": "Slowpoke",
+              "method": "surf",
+              "rarity": "very-common",
+              "levelRange": "Lv 20-40",
+              "versionExclusive": "leafgreen"
+            },
+            {
+              "species": "Poliwag",
+              "method": "good-rod",
+              "rarity": "common",
+              "levelRange": "Lv 5-15",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "Ultra Ball",
+              "hidden": true
+            },
+            {
+              "label": "Full Restore",
+              "hidden": true
+            },
+            {
+              "label": "Max Elixir",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Badge checkpoints",
+              "detail": "Checkpoint guards verify your collected Gym Badges before allowing passage north toward the League.",
+              "spoiler": false
+            }
+          ]
+        },
+        {
+          "name": "Victory Road",
+          "kind": "cave",
+          "summary": "A three-floor cavern requiring all eight badges and a chain of Strength boulder puzzles to reach the Indigo Plateau.",
+          "encounters": [
+            {
+              "species": "Golbat",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 44-46",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Machop",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 32-34",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Machoke",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 44-48",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Geodude",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 32-34",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Onix",
+              "method": "grass",
+              "rarity": "common",
+              "levelRange": "Lv 40-48",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Marowak",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 44-46",
+              "versionExclusive": "both"
+            },
+            {
+              "species": "Sandslash",
+              "method": "grass",
+              "rarity": "rare",
+              "levelRange": "Lv 44-46",
+              "versionExclusive": "both"
+            }
+          ],
+          "items": [
+            {
+              "label": "TM02 Dragon Claw",
+              "hidden": false
+            },
+            {
+              "label": "TM37 Sandstorm",
+              "hidden": false
+            },
+            {
+              "label": "TM07 Hail",
+              "hidden": false
+            },
+            {
+              "label": "TM50 Overheat",
+              "hidden": false
+            },
+            {
+              "label": "Ultra Ball",
+              "hidden": true
+            }
+          ],
+          "events": [
+            {
+              "label": "Move Tutor",
+              "detail": "A tutor near Victory Road's exit teaches Double-Edge.",
+              "spoiler": false
+            }
+          ],
+          "backtrack": [
+            {
+              "what": "Boulder puzzle (1F)",
+              "needs": "HM04 Strength",
+              "reward": "Pushes boulders onto switches to open gates between floors"
+            },
+            {
+              "what": "Boulder puzzle (2F-3F)",
+              "needs": "HM04 Strength",
+              "reward": "Advances toward the TM shelves and the exit to Indigo Plateau"
+            }
+          ]
+        },
+        {
+          "name": "Indigo Plateau",
+          "kind": "town",
+          "summary": "The Pokémon League headquarters, with a combined Poké Mart and Pokémon Center on the ground floor leading up to the Elite Four and Champion chambers.",
+          "shop": [
+            {
+              "item": "Ultra Ball",
+              "price": "₽1,200"
+            },
+            {
+              "item": "Great Ball",
+              "price": "₽600"
+            },
+            {
+              "item": "Full Restore",
+              "price": "₽3,000"
+            },
+            {
+              "item": "Max Potion",
+              "price": "₽2,500"
+            },
+            {
+              "item": "Revive",
+              "price": "₽1,500"
+            },
+            {
+              "item": "Full Heal",
+              "price": "₽600"
+            },
+            {
+              "item": "Max Repel",
+              "price": "₽700"
+            }
+          ],
+          "events": [
+            {
+              "label": "Last chance to heal",
+              "detail": "The ground floor combines a Poké Mart and Pokémon Center — stock up fully before the five-chamber Elite Four gauntlet.",
+              "spoiler": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mechanicsReference": {
+    "typeChart": [
+      {
+        "type": "Normal",
+        "strongVs": [],
+        "weakVs": [
+          "Rock",
+          "Steel"
+        ],
+        "noEffectVs": [
+          "Ghost"
+        ]
+      },
+      {
+        "type": "Fire",
+        "strongVs": [
+          "Grass",
+          "Ice",
+          "Bug",
+          "Steel"
+        ],
+        "weakVs": [
+          "Fire",
+          "Water",
+          "Rock",
+          "Dragon"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Water",
+        "strongVs": [
+          "Fire",
+          "Ground",
+          "Rock"
+        ],
+        "weakVs": [
+          "Water",
+          "Grass",
+          "Dragon"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Electric",
+        "strongVs": [
+          "Water",
+          "Flying"
+        ],
+        "weakVs": [
+          "Electric",
+          "Grass",
+          "Dragon"
+        ],
+        "noEffectVs": [
+          "Ground"
+        ]
+      },
+      {
+        "type": "Grass",
+        "strongVs": [
+          "Water",
+          "Ground",
+          "Rock"
+        ],
+        "weakVs": [
+          "Fire",
+          "Grass",
+          "Poison",
+          "Flying",
+          "Bug",
+          "Dragon",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Ice",
+        "strongVs": [
+          "Grass",
+          "Ground",
+          "Flying",
+          "Dragon"
+        ],
+        "weakVs": [
+          "Fire",
+          "Water",
+          "Ice",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Fighting",
+        "strongVs": [
+          "Normal",
+          "Ice",
+          "Rock",
+          "Dark",
+          "Steel"
+        ],
+        "weakVs": [
+          "Poison",
+          "Flying",
+          "Psychic",
+          "Bug"
+        ],
+        "noEffectVs": [
+          "Ghost"
+        ]
+      },
+      {
+        "type": "Poison",
+        "strongVs": [
+          "Grass"
+        ],
+        "weakVs": [
+          "Poison",
+          "Ground",
+          "Rock",
+          "Ghost"
+        ],
+        "noEffectVs": [
+          "Steel"
+        ]
+      },
+      {
+        "type": "Ground",
+        "strongVs": [
+          "Fire",
+          "Electric",
+          "Poison",
+          "Rock",
+          "Steel"
+        ],
+        "weakVs": [
+          "Grass",
+          "Bug"
+        ],
+        "noEffectVs": [
+          "Flying"
+        ]
+      },
+      {
+        "type": "Flying",
+        "strongVs": [
+          "Grass",
+          "Fighting",
+          "Bug"
+        ],
+        "weakVs": [
+          "Electric",
+          "Rock",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Psychic",
+        "strongVs": [
+          "Fighting",
+          "Poison"
+        ],
+        "weakVs": [
+          "Psychic",
+          "Steel"
+        ],
+        "noEffectVs": [
+          "Dark"
+        ]
+      },
+      {
+        "type": "Bug",
+        "strongVs": [
+          "Grass",
+          "Psychic",
+          "Dark"
+        ],
+        "weakVs": [
+          "Fire",
+          "Fighting",
+          "Poison",
+          "Flying",
+          "Ghost",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Rock",
+        "strongVs": [
+          "Fire",
+          "Ice",
+          "Flying",
+          "Bug"
+        ],
+        "weakVs": [
+          "Fighting",
+          "Ground",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Ghost",
+        "strongVs": [
+          "Psychic",
+          "Ghost"
+        ],
+        "weakVs": [
+          "Dark",
+          "Steel"
+        ],
+        "noEffectVs": [
+          "Normal"
+        ]
+      },
+      {
+        "type": "Dragon",
+        "strongVs": [
+          "Dragon"
+        ],
+        "weakVs": [
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Dark",
+        "strongVs": [
+          "Psychic",
+          "Ghost"
+        ],
+        "weakVs": [
+          "Fighting",
+          "Dark",
+          "Steel"
+        ],
+        "noEffectVs": []
+      },
+      {
+        "type": "Steel",
+        "strongVs": [
+          "Ice",
+          "Rock"
+        ],
+        "weakVs": [
+          "Fire",
+          "Water",
+          "Electric",
+          "Steel"
+        ],
+        "noEffectVs": []
+      }
+    ],
+    "statusConditions": [
+      {
+        "name": "Burn",
+        "effect": "Halves the victim's Attack stat and chips away 1/8 of its maximum HP each turn. Fire-types cannot be burned.",
+        "cure": "Burn Heal, or any Full Heal / Full Restore"
+      },
+      {
+        "name": "Poison",
+        "effect": "Removes 1/8 of maximum HP each turn. Badly Poisoned (Toxic) deals escalating damage that worsens every turn. Poison- and Steel-types cannot be poisoned.",
+        "cure": "Antidote, or Full Heal / Full Restore"
+      },
+      {
+        "name": "Paralysis",
+        "effect": "Quarters the victim's Speed and gives a 25% chance it cannot move on any given turn. Electric-types can still be paralysed in Gen III.",
+        "cure": "Paralyze Heal, or Full Heal / Full Restore"
+      },
+      {
+        "name": "Sleep",
+        "effect": "The victim cannot act for 1–3 turns. Moves like Sleep Powder, Hypnosis, and Lovely Kiss inflict it; Rest self-inflicts it for two turns in exchange for full healing.",
+        "cure": "Awakening, Blue Flute, or Full Heal / Full Restore"
+      },
+      {
+        "name": "Freeze",
+        "effect": "The victim cannot act until it thaws (random each turn). Being hit by a Fire move thaws it instantly. The most dangerous status because it can last indefinitely.",
+        "cure": "Ice Heal, or Full Heal / Full Restore"
+      },
+      {
+        "name": "Confusion",
+        "effect": "A volatile status (clears on switch out). Each turn there is a chance the victim hurts itself instead of acting. Stacks on top of any other status.",
+        "cure": "Switch out, or a Persim Berry / Yellow Flute"
+      }
+    ],
+    "evolutionMethods": [
+      {
+        "method": "Level up",
+        "detail": "Most Pokémon evolve simply by reaching a set level in battle.",
+        "examples": "Charmander → Charmeleon (Lv 16) → Charizard (Lv 36)"
+      },
+      {
+        "method": "Evolution stone",
+        "detail": "Use a stone from the bag: Fire, Water, Thunder, Leaf, or Moon Stone. Stops the Pokémon learning further level-up moves, so time it deliberately.",
+        "examples": "Eevee → Vaporeon/Jolteon/Flareon; Pikachu → Raichu (Thunder Stone)"
+      },
+      {
+        "method": "Trade",
+        "detail": "Some Pokémon only evolve the instant they are traded to another game. Local wireless trading covers all four Kanto trade evolutions.",
+        "examples": "Kadabra → Alakazam; Machoke → Machamp; Graveler → Golem; Haunter → Gengar"
+      },
+      {
+        "method": "Trade holding an item",
+        "detail": "A few Pokémon evolve when traded while holding a specific item (e.g. a King's Rock).",
+        "examples": "Poliwhirl → Politoed; Slowpoke → Slowking (King's Rock)"
+      },
+      {
+        "method": "High friendship",
+        "detail": "A handful evolve after reaching high friendship rather than a level. Walk with them, win battles, and avoid letting them faint.",
+        "examples": "Golbat → Crobat; Eevee → Espeon (day) / Umbreon (night)"
+      }
+    ],
+    "notes": [
+      "Generation III predates the Fairy type — Dragon is resisted only by Steel, and Ghost/Psychic interactions follow the Gen III chart above.",
+      "Dual-type Pokémon multiply the two matchups: a Water/Flying Gyarados takes 4× from Electric, while a Bug/Steel Forretress takes 4× from Fire.",
+      "STAB (Same-Type Attack Bonus): a move that matches the user's own type deals 1.5× damage — factor it in when comparing attackers."
+    ]
+  },
+  "creatures": [
+    {
+      "id": "bulbasaur",
+      "name": "Bulbasaur",
+      "dexNo": 1,
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "catchLocations": [
+        {
+          "where": "Professor Oak's Lab, Pallet Town",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 5",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Bulbasaur → Ivysaur (Lv 16) → Venusaur (Lv 32)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Razor Leaf"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Sleep Powder"
+        },
+        {
+          "level": "TM",
+          "move": "Sludge Bomb"
+        }
+      ],
+      "role": "The forgiving starter — resists Water and Grass, and walls Brock and Misty with Grass moves. Easiest early game."
+    },
+    {
+      "id": "charmander",
+      "name": "Charmander",
+      "dexNo": 4,
+      "types": [
+        "Fire"
+      ],
+      "catchLocations": [
+        {
+          "where": "Professor Oak's Lab, Pallet Town",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 5",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Charmander → Charmeleon (Lv 16) → Charizard (Lv 36, gains Flying)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Flamethrower"
+        },
+        {
+          "level": "TM",
+          "move": "Fly"
+        },
+        {
+          "level": "TM",
+          "move": "Aerial Ace"
+        }
+      ],
+      "role": "The hard-start, high-payoff pick — struggles against Brock and Misty, then dominates the mid-game once it becomes Charizard."
+    },
+    {
+      "id": "squirtle",
+      "name": "Squirtle",
+      "dexNo": 7,
+      "types": [
+        "Water"
+      ],
+      "catchLocations": [
+        {
+          "where": "Professor Oak's Lab, Pallet Town",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 5",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Squirtle → Wartortle (Lv 16) → Blastoise (Lv 36)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Water Gun"
+        },
+        {
+          "level": "HM",
+          "move": "Surf"
+        },
+        {
+          "level": "TM",
+          "move": "Ice Beam"
+        }
+      ],
+      "role": "The balanced pick — handles Brock and Blaine effortlessly and carries Surf for the whole game. Safest all-rounder."
+    },
+    {
+      "id": "pikachu",
+      "name": "Pikachu",
+      "dexNo": 25,
+      "types": [
+        "Electric"
+      ],
+      "catchLocations": [
+        {
+          "where": "Viridian Forest",
+          "method": "grass",
+          "rarity": "rare",
+          "levelRange": "Lv 3-5",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Pikachu → Raichu (Thunder Stone)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Thunderbolt"
+        },
+        {
+          "level": "TM",
+          "move": "Brick Break"
+        }
+      ],
+      "role": "An early Electric answer to Misty's Water Gym and a fast special attacker. Hold the Thunder Stone until it learns Thunderbolt."
+    },
+    {
+      "id": "nidoran-m",
+      "name": "Nidoran♂",
+      "dexNo": 32,
+      "types": [
+        "Poison"
+      ],
+      "catchLocations": [
+        {
+          "where": "Routes 3 and 22",
+          "method": "grass",
+          "rarity": "uncommon",
+          "levelRange": "Lv 3-6",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Nidoran♂ → Nidorino (Lv 16) → Nidoking (Moon Stone)",
+      "notableMoves": [
+        {
+          "level": "TM",
+          "move": "Earthquake"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Horn Attack"
+        },
+        {
+          "level": "TM",
+          "move": "Ice Beam"
+        }
+      ],
+      "role": "A workhorse Ground/Poison sweeper after a Moon Stone — huge movepool coverage carries it from Surge to the Elite Four."
+    },
+    {
+      "id": "mankey",
+      "name": "Mankey",
+      "dexNo": 56,
+      "types": [
+        "Fighting"
+      ],
+      "catchLocations": [
+        {
+          "where": "Routes 3, 4, and 22",
+          "method": "grass",
+          "rarity": "uncommon",
+          "levelRange": "Lv 3-7",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Mankey → Primeape (Lv 28)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Karate Chop"
+        },
+        {
+          "level": "TM",
+          "move": "Brick Break"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Cross Chop"
+        }
+      ],
+      "role": "An early Fighting-type with a strong physical Attack — useful against Normal-types and the Elite Four's Lorelei (Ice) and Bruno's Onix."
+    },
+    {
+      "id": "abra",
+      "name": "Abra",
+      "dexNo": 63,
+      "types": [
+        "Psychic"
+      ],
+      "catchLocations": [
+        {
+          "where": "Routes 24 and 25 (and Saffron via in-game trade)",
+          "method": "grass",
+          "rarity": "uncommon",
+          "levelRange": "Lv 8-12",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Abra → Kadabra (Lv 16) → Alakazam (trade)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Psychic"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Recover"
+        },
+        {
+          "level": "TM",
+          "move": "Shadow Ball"
+        }
+      ],
+      "role": "The strongest special attacker in Kanto. Only knows Teleport until it evolves, so grind it carefully — Psychic sweeps Koga and Bruno."
+    },
+    {
+      "id": "growlithe",
+      "name": "Growlithe",
+      "dexNo": 58,
+      "types": [
+        "Fire"
+      ],
+      "catchLocations": [
+        {
+          "where": "Routes 7 and 8 (and Pokémon Mansion)",
+          "method": "grass",
+          "rarity": "uncommon",
+          "levelRange": "Lv 14-18",
+          "versionExclusive": "firered"
+        }
+      ],
+      "evolution": "Growlithe → Arcanine (Fire Stone)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Flamethrower"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Extreme Speed"
+        },
+        {
+          "level": "TM",
+          "move": "Aerial Ace"
+        }
+      ],
+      "role": "FireRed's premier Fire-type. Hard-hitting and fast — the cleanest answer to Erika's Grass Gym. (LeafGreen gets Vulpix instead.)"
+    },
+    {
+      "id": "vulpix",
+      "name": "Vulpix",
+      "dexNo": 37,
+      "types": [
+        "Fire"
+      ],
+      "catchLocations": [
+        {
+          "where": "Routes 7 and 8 (and Pokémon Mansion)",
+          "method": "grass",
+          "rarity": "uncommon",
+          "levelRange": "Lv 14-18",
+          "versionExclusive": "leafgreen"
+        }
+      ],
+      "evolution": "Vulpix → Ninetales (Fire Stone)",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Flamethrower"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Confuse Ray"
+        },
+        {
+          "level": "TM",
+          "move": "Will-O-Wisp"
+        }
+      ],
+      "role": "LeafGreen's Fire option. Ninetales is fast and bulky special-side — strong against Erika and any Grass or Bug threat."
+    },
+    {
+      "id": "gastly",
+      "name": "Gastly",
+      "dexNo": 92,
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
+      "catchLocations": [
+        {
+          "where": "Pokémon Tower, Lavender Town (needs Silph Scope)",
+          "method": "grass",
+          "rarity": "common",
+          "levelRange": "Lv 13-19",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Gastly → Haunter (Lv 25) → Gengar (trade)",
+      "notableMoves": [
+        {
+          "level": "TM",
+          "move": "Thunderbolt"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Shadow Ball"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Hypnosis"
+        }
+      ],
+      "role": "Immune to Normal and Fighting; resists Psychic-side pressure. Haunter hard-walls Sabrina and is invaluable against Agatha's mirror Ghosts."
+    },
+    {
+      "id": "magikarp",
+      "name": "Magikarp",
+      "dexNo": 129,
+      "types": [
+        "Water"
+      ],
+      "catchLocations": [
+        {
+          "where": "Any water with the Old Rod, or bought for ₽500 at the Route 4 Pokémon Centre",
+          "method": "old-rod",
+          "rarity": "very-common",
+          "levelRange": "Lv 5-10",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Magikarp → Gyarados (Lv 20)",
+      "notableMoves": [
+        {
+          "level": "HM",
+          "move": "Surf"
+        },
+        {
+          "level": "TM",
+          "move": "Ice Beam"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Dragon Rage"
+        }
+      ],
+      "role": "Useless until Lv 20, then becomes Gyarados — a Water/Flying powerhouse that carries Surf and threatens most of the late game."
+    },
+    {
+      "id": "eevee",
+      "name": "Eevee",
+      "dexNo": 133,
+      "types": [
+        "Normal"
+      ],
+      "catchLocations": [
+        {
+          "where": "Celadon City (upstairs in a building near the Game Corner)",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 25",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Eevee → Vaporeon (Water Stone) / Jolteon (Thunder Stone) / Flareon (Fire Stone)",
+      "notableMoves": [
+        {
+          "level": "TM",
+          "move": "Shadow Ball"
+        },
+        {
+          "level": "TM",
+          "move": "Return"
+        }
+      ],
+      "role": "A free pick-your-element team member. Jolteon (Electric) is the best battler — fast Thunderbolt deletes the Water/Ice Elite Four threats."
+    },
+    {
+      "id": "snorlax",
+      "name": "Snorlax",
+      "dexNo": 143,
+      "types": [
+        "Normal"
+      ],
+      "catchLocations": [
+        {
+          "where": "Route 12 and Route 16 (asleep — needs the Poké Flute)",
+          "method": "static",
+          "rarity": "one-time",
+          "levelRange": "Lv 30",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Does not evolve",
+      "notableMoves": [
+        {
+          "level": "TM",
+          "move": "Body Slam"
+        },
+        {
+          "level": "TM",
+          "move": "Earthquake"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Rest"
+        }
+      ],
+      "role": "An enormous HP tank with high Attack. Save before each of the two encounters — you only get one shot at catching each."
+    },
+    {
+      "id": "lapras",
+      "name": "Lapras",
+      "dexNo": 131,
+      "types": [
+        "Water",
+        "Ice"
+      ],
+      "catchLocations": [
+        {
+          "where": "Silph Co. (gift from an employee on 5F)",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 25",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Does not evolve",
+      "notableMoves": [
+        {
+          "level": "HM",
+          "move": "Surf"
+        },
+        {
+          "level": "TM",
+          "move": "Ice Beam"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Body Slam"
+        }
+      ],
+      "role": "A free bulky Water/Ice carrier. Ice Beam shuts down Lance's entire Dragon team — arguably the single best Elite Four answer in the game."
+    },
+    {
+      "id": "dratini",
+      "name": "Dratini",
+      "dexNo": 147,
+      "types": [
+        "Dragon"
+      ],
+      "catchLocations": [
+        {
+          "where": "Safari Zone (Super Rod), or won at the Celadon Game Corner prize counter",
+          "method": "game-corner",
+          "rarity": "rare",
+          "levelRange": "Lv 15-25",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Dratini → Dragonair (Lv 30) → Dragonite (Lv 55)",
+      "notableMoves": [
+        {
+          "level": "TM",
+          "move": "Ice Beam"
+        },
+        {
+          "level": "TM",
+          "move": "Thunderbolt"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Outrage"
+        }
+      ],
+      "role": "A long-term project — Dragonite is the strongest non-legendary in Kanto, but it evolves late at Lv 55, so commit early if you want it."
+    },
+    {
+      "id": "hitmonlee-chan",
+      "name": "Hitmonlee / Hitmonchan",
+      "dexNo": 106,
+      "types": [
+        "Fighting"
+      ],
+      "catchLocations": [
+        {
+          "where": "Saffron City Fighting Dojo (choose one after beating the Dojo)",
+          "method": "gift",
+          "rarity": "one-time",
+          "levelRange": "Lv 25",
+          "versionExclusive": "both"
+        }
+      ],
+      "evolution": "Do not evolve",
+      "notableMoves": [
+        {
+          "level": "Lv-up",
+          "move": "Hi Jump Kick"
+        },
+        {
+          "level": "TM",
+          "move": "Brick Break"
+        },
+        {
+          "level": "Lv-up",
+          "move": "Mega Kick"
+        }
+      ],
+      "role": "A one-time Fighting reward from the Saffron Dojo. Hitmonlee hits harder; Hitmonchan is bulkier with elemental punches. Strong vs Lorelei and Normal-types."
+    }
+  ],
+  "moveItemIndex": {
+    "tms": [
+      {
+        "id": "TM01",
+        "move": "Focus Punch",
+        "typeLabel": "Fighting",
+        "location": "Silph Co. (5F)",
+        "notes": ""
+      },
+      {
+        "id": "TM02",
+        "move": "Dragon Claw",
+        "typeLabel": "Dragon",
+        "location": "Victory Road (1F)",
+        "notes": ""
+      },
+      {
+        "id": "TM03",
+        "move": "Water Pulse",
+        "typeLabel": "Water",
+        "location": "Cerulean City Gym (defeat Misty)",
+        "notes": ""
+      },
+      {
+        "id": "TM04",
+        "move": "Calm Mind",
+        "typeLabel": "Psychic",
+        "location": "Saffron City Gym (defeat Sabrina)",
+        "notes": ""
+      },
+      {
+        "id": "TM05",
+        "move": "Roar",
+        "typeLabel": "Normal",
+        "location": "Route 4 (near Mt. Moon exit)",
+        "notes": "Also Celadon Dept. Store for ₽1,000"
+      },
+      {
+        "id": "TM06",
+        "move": "Toxic",
+        "typeLabel": "Poison",
+        "location": "Fuchsia City Gym (defeat Koga)",
+        "notes": ""
+      },
+      {
+        "id": "TM07",
+        "move": "Hail",
+        "typeLabel": "Ice",
+        "location": "Victory Road (2F)",
+        "notes": ""
+      },
+      {
+        "id": "TM08",
+        "move": "Bulk Up",
+        "typeLabel": "Fighting",
+        "location": "Silph Co. (7F)",
+        "notes": ""
+      },
+      {
+        "id": "TM09",
+        "move": "Bullet Seed",
+        "typeLabel": "Grass",
+        "location": "Mt. Moon (1F)",
+        "notes": ""
+      },
+      {
+        "id": "TM10",
+        "move": "Hidden Power",
+        "typeLabel": "Normal",
+        "location": "Pickup ability (held Pokémon)",
+        "notes": "No fixed pickup; obtained via Pickup"
+      },
+      {
+        "id": "TM11",
+        "move": "Sunny Day",
+        "typeLabel": "Fire",
+        "location": "Safari Zone (Area 1)",
+        "notes": ""
+      },
+      {
+        "id": "TM12",
+        "move": "Taunt",
+        "typeLabel": "Dark",
+        "location": "Rocket Hideout (B2F)",
+        "notes": ""
+      },
+      {
+        "id": "TM13",
+        "move": "Ice Beam",
+        "typeLabel": "Ice",
+        "location": "Celadon Game Corner prize (4,000 coins)",
+        "notes": ""
+      },
+      {
+        "id": "TM14",
+        "move": "Blizzard",
+        "typeLabel": "Ice",
+        "location": "Pokémon Mansion (B1F)",
+        "notes": ""
+      },
+      {
+        "id": "TM15",
+        "move": "Hyper Beam",
+        "typeLabel": "Normal",
+        "location": "Celadon Dept. Store (₽7,500)",
+        "notes": ""
+      },
+      {
+        "id": "TM16",
+        "move": "Light Screen",
+        "typeLabel": "Psychic",
+        "location": "Celadon Dept. Store (₽1,000)",
+        "notes": "Also free on rooftop after giving a vending drink"
+      },
+      {
+        "id": "TM17",
+        "move": "Protect",
+        "typeLabel": "Normal",
+        "location": "Power Plant",
+        "notes": ""
+      },
+      {
+        "id": "TM18",
+        "move": "Rain Dance",
+        "typeLabel": "Water",
+        "location": "Route 15",
+        "notes": ""
+      },
+      {
+        "id": "TM19",
+        "move": "Giga Drain",
+        "typeLabel": "Grass",
+        "location": "Celadon City Gym (defeat Erika)",
+        "notes": ""
+      },
+      {
+        "id": "TM20",
+        "move": "Safeguard",
+        "typeLabel": "Normal",
+        "location": "Celadon Dept. Store rooftop (give Soda Pop)",
+        "notes": ""
+      },
+      {
+        "id": "TM21",
+        "move": "Frustration",
+        "typeLabel": "Normal",
+        "location": "Rocket Hideout (B3F)",
+        "notes": ""
+      },
+      {
+        "id": "TM22",
+        "move": "SolarBeam",
+        "typeLabel": "Grass",
+        "location": "Pokémon Mansion (B1F)",
+        "notes": ""
+      },
+      {
+        "id": "TM23",
+        "move": "Iron Tail",
+        "typeLabel": "Steel",
+        "location": "Celadon Game Corner prize (3,500 coins)",
+        "notes": ""
+      },
+      {
+        "id": "TM24",
+        "move": "Thunderbolt",
+        "typeLabel": "Electric",
+        "location": "Celadon Game Corner prize (4,000 coins)",
+        "notes": ""
+      },
+      {
+        "id": "TM25",
+        "move": "Thunder",
+        "typeLabel": "Electric",
+        "location": "Power Plant",
+        "notes": ""
+      },
+      {
+        "id": "TM26",
+        "move": "Earthquake",
+        "typeLabel": "Ground",
+        "location": "Viridian City Gym (defeat Giovanni)",
+        "notes": ""
+      },
+      {
+        "id": "TM27",
+        "move": "Return",
+        "typeLabel": "Normal",
+        "location": "Route 12 (from girl in Lavender gate)",
+        "notes": ""
+      },
+      {
+        "id": "TM28",
+        "move": "Dig",
+        "typeLabel": "Ground",
+        "location": "Cerulean City (defeat Rocket Grunt behind house)",
+        "notes": "Also Celadon Dept. Store for ₽2,000"
+      },
+      {
+        "id": "TM29",
+        "move": "Psychic",
+        "typeLabel": "Psychic",
+        "location": "Saffron City (from Mr. Psychic)",
+        "notes": ""
+      },
+      {
+        "id": "TM30",
+        "move": "Shadow Ball",
+        "typeLabel": "Ghost",
+        "location": "Celadon Game Corner prize (4,500 coins)",
+        "notes": ""
+      },
+      {
+        "id": "TM31",
+        "move": "Brick Break",
+        "typeLabel": "Fighting",
+        "location": "S.S. Anne",
+        "notes": "Also Celadon Dept. Store for ₽3,000"
+      },
+      {
+        "id": "TM32",
+        "move": "Double Team",
+        "typeLabel": "Normal",
+        "location": "Safari Zone (Area 3)",
+        "notes": ""
+      },
+      {
+        "id": "TM33",
+        "move": "Reflect",
+        "typeLabel": "Psychic",
+        "location": "Celadon Dept. Store (₽1,000)",
+        "notes": "Also free on rooftop after giving a vending drink"
+      },
+      {
+        "id": "TM34",
+        "move": "Shock Wave",
+        "typeLabel": "Electric",
+        "location": "Vermilion City Gym (defeat Lt. Surge)",
+        "notes": ""
+      },
+      {
+        "id": "TM35",
+        "move": "Flamethrower",
+        "typeLabel": "Fire",
+        "location": "Celadon Game Corner prize (4,000 coins)",
+        "notes": ""
+      },
+      {
+        "id": "TM36",
+        "move": "Sludge Bomb",
+        "typeLabel": "Poison",
+        "location": "Rocket Warehouse, Five Island",
+        "notes": "Post-game (Sevii Islands)"
+      },
+      {
+        "id": "TM37",
+        "move": "Sandstorm",
+        "typeLabel": "Rock",
+        "location": "Victory Road (2F)",
+        "notes": ""
+      },
+      {
+        "id": "TM38",
+        "move": "Fire Blast",
+        "typeLabel": "Fire",
+        "location": "Cinnabar Island Gym (defeat Blaine)",
+        "notes": ""
+      },
+      {
+        "id": "TM39",
+        "move": "Rock Tomb",
+        "typeLabel": "Rock",
+        "location": "Pewter City Gym (defeat Brock)",
+        "notes": ""
+      },
+      {
+        "id": "TM40",
+        "move": "Aerial Ace",
+        "typeLabel": "Flying",
+        "location": "Route 9",
+        "notes": ""
+      },
+      {
+        "id": "TM41",
+        "move": "Torment",
+        "typeLabel": "Dark",
+        "location": "Silph Co. (4F)",
+        "notes": ""
+      },
+      {
+        "id": "TM42",
+        "move": "Facade",
+        "typeLabel": "Normal",
+        "location": "Memorial Pillar, Six Island",
+        "notes": "Post-game (Sevii Islands)"
+      },
+      {
+        "id": "TM43",
+        "move": "Secret Power",
+        "typeLabel": "Normal",
+        "location": "Route 25",
+        "notes": "Also Celadon Dept. Store for ₽3,000"
+      },
+      {
+        "id": "TM44",
+        "move": "Rest",
+        "typeLabel": "Psychic",
+        "location": "S.S. Anne (from a passenger)",
+        "notes": ""
+      },
+      {
+        "id": "TM45",
+        "move": "Attract",
+        "typeLabel": "Normal",
+        "location": "Route 24",
+        "notes": "Also Celadon Dept. Store for ₽3,000"
+      },
+      {
+        "id": "TM46",
+        "move": "Thief",
+        "typeLabel": "Dark",
+        "location": "Mt. Moon (B2F, from Rocket Grunt)",
+        "notes": ""
+      },
+      {
+        "id": "TM47",
+        "move": "Steel Wing",
+        "typeLabel": "Steel",
+        "location": "Safari Zone (Area 2)",
+        "notes": ""
+      },
+      {
+        "id": "TM48",
+        "move": "Skill Swap",
+        "typeLabel": "Psychic",
+        "location": "Route 12 (requires Surf)",
+        "notes": ""
+      },
+      {
+        "id": "TM49",
+        "move": "Snatch",
+        "typeLabel": "Dark",
+        "location": "Rocket Hideout (B4F)",
+        "notes": ""
+      },
+      {
+        "id": "TM50",
+        "move": "Overheat",
+        "typeLabel": "Fire",
+        "location": "Victory Road (3F)",
+        "notes": ""
+      }
+    ],
+    "hms": [
+      {
+        "id": "HM01",
+        "move": "Cut",
+        "typeLabel": "Normal",
+        "location": "S.S. Anne — Captain's cabin",
+        "notes": "Cascade Badge to use in the field"
+      },
+      {
+        "id": "HM02",
+        "move": "Fly",
+        "typeLabel": "Flying",
+        "location": "Route 16 (hidden in grass)",
+        "notes": "Thunder Badge to use in the field"
+      },
+      {
+        "id": "HM03",
+        "move": "Surf",
+        "typeLabel": "Water",
+        "location": "Safari Zone Secret House (return the Gold Teeth)",
+        "notes": "Soul Badge to use in the field"
+      },
+      {
+        "id": "HM04",
+        "move": "Strength",
+        "typeLabel": "Normal",
+        "location": "Fuchsia City — Safari Zone Warden",
+        "notes": "Rainbow Badge to use in the field"
+      },
+      {
+        "id": "HM05",
+        "move": "Flash",
+        "typeLabel": "Normal",
+        "location": "Route 2 (Oak's Aide, after 10 caught)",
+        "notes": "Boulder Badge to use in the field"
+      },
+      {
+        "id": "HM06",
+        "move": "Rock Smash",
+        "typeLabel": "Fighting",
+        "location": "One Island Pokémon Center",
+        "notes": "Post-game (Sevii Islands)"
+      },
+      {
+        "id": "HM07",
+        "move": "Waterfall",
+        "typeLabel": "Water",
+        "location": "Four Island (cave near Icefall Cave)",
+        "notes": "Post-game (Sevii Islands)"
+      }
+    ]
+  }
+}
