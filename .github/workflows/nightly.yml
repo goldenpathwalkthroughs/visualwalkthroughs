@@ -86,8 +86,10 @@ jobs:
       - name: Commit nightly report
         if: always()
         run: |
-          # Pull any commits the pipeline itself pushed (game file + queue.md)
-          git pull --rebase origin main
+          # --autostash: tuck away any partial working-tree changes a failed
+          # authoring run left behind, so the rebase doesn't abort with
+          # "cannot pull with rebase: you have unstaged changes".
+          git pull --rebase --autostash origin main
 
           git add reports/
           # Only commit if the report file is new or changed

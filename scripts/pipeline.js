@@ -262,7 +262,7 @@ async function runAdvisor(publishedSlug) {
   logSection('Content Advisor shortlist');
   try {
     const { default: Anthropic } = await import('@anthropic-ai/sdk');
-    const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, maxRetries: 6 });
 
     const alreadyCovered = [];
     const gamesDir = join(ROOT, 'content/games');

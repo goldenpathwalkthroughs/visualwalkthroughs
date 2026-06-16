@@ -74,7 +74,10 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const claude = new Anthropic({ apiKey });
+// maxRetries: the SDK retries transient errors (429 / 500 / 502 / 503 / 529 /
+// connection resets) with exponential backoff. A long authoring run makes many
+// calls, so one upstream blip shouldn't kill the whole build.
+const claude = new Anthropic({ apiKey, maxRetries: 6 });
 
 // Model-per-step (spec §3.b): research+draft → sonnet, schemaFill → haiku
 const RESEARCH_MODEL  = CONFIG.model.research;
