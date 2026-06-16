@@ -1,11 +1,14 @@
 name: Nightly Pipeline
 
 on:
-  schedule:
-    # 02:00 UTC = 03:00 UK during BST (the requested 3 AM). GitHub cron is
-    # UTC-only, so in GMT winter this fires at 02:00 UK — change to '0 3 * * *'
-    # if you'd rather it stay at 03:00 through the winter months.
-    - cron: '0 2 * * *'
+  # ── NIGHTLY SCHEDULE PAUSED ────────────────────────────────────────────────
+  # Autonomous authoring (scripts/author.js) isn't reliable yet: the drafting
+  # step can't parse the research fact sheet into sections (research is capped at
+  # 4096 tokens and the `--- Section N ---` markers get truncated), so every real
+  # build fails. The model-404 fix unblocked research but exposed this deeper bug.
+  # Re-enable the schedule once author.js is fixed. Manual runs still work below.
+  #   schedule:
+  #     - cron: '0 2 * * *'   # 02:00 UTC = 03:00 UK (BST)
   workflow_dispatch:        # manual trigger from the GitHub Actions tab
     inputs:
       game:
