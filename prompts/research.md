@@ -72,6 +72,7 @@ FRANCHISE: <franchise>
 SLUG: <slug>
 YEAR: <release year>
 PLATFORMS: <comma-separated>
+LEDE: <one sentence, ~25–40 words, that sells the game and frames the guide — the intro line readers see first>
 SOURCES:
   1. <source name + URL or descriptor>
   2. <source name + URL or descriptor>

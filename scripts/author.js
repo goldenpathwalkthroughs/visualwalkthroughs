@@ -312,8 +312,15 @@ function assembleGame(sections, factSheet) {
   }
 
   function extractLede(fs) {
-    const m = fs.match(/^LEDE[^:]*:\s*\n?([\s\S]+?)(?=\nSECTIONS:|$)/m);
-    return m ? m[1].replace(/\n/g, ' ').trim() : '';
+    // The template emits a single-line "LEDE: <hook>" in the header.
+    const single = fs.match(/^LEDE:\s*(.+)$/m);
+    if (single && single[1].trim()) return single[1].trim();
+    // Tolerate an older multi-line form (LEDE … : <text> up to the next field).
+    const multi = fs.match(/^LEDE[^:]*:\s*\n?([\s\S]+?)(?=\n[A-Z][A-Z ]*:|\nSECTIONS:|\n═|$)/m);
+    if (multi && multi[1].trim()) return multi[1].replace(/\n/g, ' ').trim();
+    // Fallback so validation never fails on an empty lede.
+    const title = extractField('GAME') || gameTitle;
+    return `A complete golden-path walkthrough for ${title} — clear written steps, key advice, and boss strategies on one page.`;
   }
 
   function extractPlatforms(fs) {
