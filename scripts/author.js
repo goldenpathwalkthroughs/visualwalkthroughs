@@ -187,7 +187,7 @@ Output only the completed fact sheet — no preamble.`;
 
   const response = await claude.messages.create({
     model: RESEARCH_MODEL,
-    max_tokens: 4096,
+    max_tokens: 16384,   // a full fact sheet (10–14 sections + bosses/items/collectibles) far exceeds 4096
     system: [
       // Mark the fixed system prompt as cacheable (spec §3.a)
       { type: 'text', text: researchPrompt, cache_control: { type: 'ephemeral' } },
@@ -233,7 +233,7 @@ Output only the JSON object — no markdown fences, no commentary.`;
 
   const response = await claude.messages.create({
     model: DRAFT_MODEL,
-    max_tokens: 2048,
+    max_tokens: 4096,   // a section's JSON (steps + advisories + collectibles) can exceed 2048
     system: [
       // Fixed draft rules cached after first section
       { type: 'text', text: draftSystemPrompt, cache_control: { type: 'ephemeral' } },
@@ -270,8 +270,12 @@ Output only the JSON object — no markdown fences, no commentary.`;
 
 // ── Parse section stubs from fact sheet ──────────────────────────────────────
 
+// The research template emits "--- Section: <slug> ---"; tolerate a numeric
+// form "--- Section 1 ---" too. (research.md §Output template / SECTIONS)
+const SECTION_MARKER = /^---\s*Section[:\s]\s*(.+?)\s*---\s*$/;
+
 function parseSectionCount(factSheet) {
-  const matches = factSheet.match(/^--- Section \d+ ---/gm);
+  const matches = factSheet.match(new RegExp(SECTION_MARKER.source, 'gm'));
   return matches ? matches.length : null;
 }
 
@@ -281,9 +285,10 @@ function parseSectionStubs(factSheet) {
   let current = null;
 
   for (const line of lines) {
-    if (/^--- Section \d+ ---/.test(line)) {
+    const m = SECTION_MARKER.exec(line);
+    if (m) {
       if (current) stubs.push(current);
-      current = { stage: '', title: '' };
+      current = { stage: '', title: '', slug: (m[1] || '').trim() };
     } else if (current && /^STAGE:/.test(line)) {
       current.stage = line.replace('STAGE:', '').trim();
     } else if (current && /^TITLE:/.test(line)) {
