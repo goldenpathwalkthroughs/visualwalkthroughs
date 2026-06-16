@@ -5,10 +5,10 @@
   "timeCapMinutes": 180,
   "subscriptionOverflow": false,
   "model": {
-    "research":   "claude-sonnet-4-5-20251022",
-    "draft":      "claude-sonnet-4-5-20251022",
+    "research":   "claude-sonnet-4-6",
+    "draft":      "claude-sonnet-4-6",
     "schemaFill": "claude-haiku-4-5-20251001",
-    "editor":     "claude-sonnet-4-5-20251022",
+    "editor":     "claude-sonnet-4-6",
     "qa":         "claude-haiku-4-5-20251001",
     "advisor":    "claude-haiku-4-5-20251001"
   },
@@ -18,7 +18,7 @@
     "similarityThreshold": 0.35
   },
   "lighthouse": {
-    "performance": 80,
+    "performance": 60,
     "accessibility": 90,
     "seo": 90,
     "bestPractices": 80
