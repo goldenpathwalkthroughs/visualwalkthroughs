@@ -440,7 +440,27 @@ if (process.env.IGDB_CLIENT_ID && process.env.IGDB_CLIENT_SECRET) {
 }
 
 // Stage 5: write file (after cover path is potentially injected)
-const jsonFinal = JSON.stringify(game, null, 2);
+// Strip null / undefined values recursively. The drafting model emits `null`
+// for optional fields it has nothing to say about (readinessNote, video, etc.),
+// but the Astro content schema treats those as `<type>.optional()` — present-or-
+// absent, NOT nullable. An explicit null fails the build. Omitting the key is
+// the correct representation of "no value", so we drop nulls everywhere.
+function stripNulls(value) {
+  if (Array.isArray(value)) {
+    return value.map(stripNulls).filter((v) => v !== null && v !== undefined);
+  }
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      const cleaned = stripNulls(v);
+      if (cleaned !== null && cleaned !== undefined) out[k] = cleaned;
+    }
+    return out;
+  }
+  return value;
+}
+
+const jsonFinal = JSON.stringify(stripNulls(game), null, 2);
 writeFileSync(outPath, jsonFinal, 'utf8');
 log(`Written to ${outPath}`);
 
