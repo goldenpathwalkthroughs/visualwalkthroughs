@@ -23,13 +23,14 @@
  *   node scripts/author.js --game "Hollow Knight" --franchise hollow-knight --slug hollow-knight [--genre action-adventure]
  *
  * Required env:
- *   ANTHROPIC_API_KEY=sk-ant-...
+ *   CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat01-...  (from `claude setup-token`, Pro/Max)
+ *   — authoring runs via the Claude Code CLI and bills the subscription, not API credits
  *
  * Exit 0 = game JSON written to content/games/<slug>.json
  * Exit 1 = failure (no file written)
  */
 
-import Anthropic from '@anthropic-ai/sdk';
+import ClaudeCli from './lib/claude-cli.js';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -68,16 +69,18 @@ if (existsSync(outPath)) {
 }
 
 // ── Claude client ─────────────────────────────────────────────────────────────
-const apiKey = process.env.ANTHROPIC_API_KEY;
-if (!apiKey) {
-  console.error('❌  ANTHROPIC_API_KEY not set in environment');
+// Runs through the Claude Code CLI (`claude -p`) so authoring bills the owner's
+// Pro/Max subscription via CLAUDE_CODE_OAUTH_TOKEN — NOT pay-as-you-go API
+// credits. See scripts/lib/claude-cli.js.
+if (!process.env.CLAUDE_CODE_OAUTH_TOKEN) {
+  console.error('❌  CLAUDE_CODE_OAUTH_TOKEN not set — generate one with `claude setup-token` (Pro/Max) and add it as a repo secret');
   process.exit(1);
 }
 
-// maxRetries: the SDK retries transient errors (429 / 500 / 502 / 503 / 529 /
-// connection resets) with exponential backoff. A long authoring run makes many
-// calls, so one upstream blip shouldn't kill the whole build.
-const claude = new Anthropic({ apiKey, maxRetries: 6 });
+// maxRetries: re-run the CLI on a transient blip (overload / network) with
+// backoff. A long authoring run makes many calls, so one hiccup shouldn't kill
+// the whole build.
+const claude = new ClaudeCli({ maxRetries: 6 });
 
 // Model-per-step (spec §3.b): research+draft → sonnet, schemaFill → haiku
 const RESEARCH_MODEL  = CONFIG.model.research;

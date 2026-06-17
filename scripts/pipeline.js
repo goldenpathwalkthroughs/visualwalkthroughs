@@ -15,7 +15,7 @@
  *   node scripts/pipeline.js --dry-run            — stop after Gate #1, no deploy
  *
  * Required env:
- *   ANTHROPIC_API_KEY
+ *   CLAUDE_CODE_OAUTH_TOKEN   (Pro/Max subscription auth for `claude -p`)
  *   CLOUDFLARE_API_TOKEN
  *   CLOUDFLARE_ACCOUNT_ID
  *
@@ -313,12 +313,12 @@ Return ONLY JSON, no prose: {"candidates":[{"title":"...","platforms":["..."],"f
 
 // ── Content Advisor shortlist (cheap reasoning call) ─────────────────────────
 async function runAdvisor(publishedSlug) {
-  if (!process.env.ANTHROPIC_API_KEY) return '(advisor skipped — no API key)';
+  if (!process.env.CLAUDE_CODE_OAUTH_TOKEN) return '(advisor skipped — no CLAUDE_CODE_OAUTH_TOKEN)';
 
   logSection('Content Advisor shortlist');
   try {
-    const { default: Anthropic } = await import('@anthropic-ai/sdk');
-    const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, maxRetries: 6 });
+    const { default: ClaudeCli } = await import('./lib/claude-cli.js');
+    const claude = new ClaudeCli({ maxRetries: 6 });
 
     const alreadyCovered = [];
     const gamesDir = join(ROOT, 'content/games');

@@ -54,6 +54,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # ── 3b. Claude Code CLI ───────────────────────────────────────────────────
+      # The pipeline authors via `claude -p` (scripts/lib/claude-cli.js) so it
+      # bills the owner's Pro/Max subscription (CLAUDE_CODE_OAUTH_TOKEN), not API
+      # credits. The CLI must be on PATH.
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
       # ── 4. Playwright browsers ────────────────────────────────────────────────
       - name: Install Playwright (Chromium only)
         run: npx playwright install chromium --with-deps
@@ -67,7 +74,9 @@ jobs:
       # ── 6. Run the pipeline ───────────────────────────────────────────────────
       - name: Run nightly pipeline
         env:
-          ANTHROPIC_API_KEY:      ${{ secrets.ANTHROPIC_API_KEY }}
+          # Subscription auth for `claude -p` (NOT ANTHROPIC_API_KEY — that would
+          # bill credits and takes precedence if both are set, so it's omitted).
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID:  ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
