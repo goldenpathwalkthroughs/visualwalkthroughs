@@ -172,6 +172,62 @@ function markQueueDone(gameTitle) {
   writeFileSync(queuePath, raw, 'utf8');
 }
 
+// ── Make a validated draft publishable ───────────────────────────────────────
+// After Gate #1 passes, flip the game JSON to `published` so the generic
+// renderer (src/pages/[franchise]/[game].astro) emits its page, and ensure the
+// franchise file exists so the franchise index + breadcrumb resolve. New
+// franchises are created from the game's own theme. Runs BEFORE the build, so
+// QA tests the real public page; nothing is committed until promote (so a QA
+// failure leaves production untouched).
+function titleCase(s) {
+  return String(s).replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()).trim();
+}
+function ensurePublishable(gameSlug, franchiseSlug, gameTitle) {
+  // 1. Flip game status → published
+  const gamePath = join(ROOT, 'content/games', `${gameSlug}.json`);
+  const game = JSON.parse(readFileSync(gamePath, 'utf8'));
+  if (game.status !== 'published') {
+    game.status = 'published';
+    writeFileSync(gamePath, JSON.stringify(game, null, 2) + '\n', 'utf8');
+    console.log(`  ✅  ${gameSlug} flipped draft → published`);
+  }
+
+  // 2. Recompute the franchise's published game count
+  const gamesDir = join(ROOT, 'content/games');
+  const guideCount = readdirSync(gamesDir).filter((f) => f.endsWith('.json'))
+    .map((f) => { try { return JSON.parse(readFileSync(join(gamesDir, f), 'utf8')); } catch { return null; } })
+    .filter((g) => g && g.franchiseSlug === franchiseSlug && g.status === 'published').length;
+
+  // 3. Ensure the franchise file exists
+  const frDir = join(ROOT, 'content/franchises');
+  if (!existsSync(frDir)) mkdirSync(frDir, { recursive: true });
+  const frPath = join(frDir, `${franchiseSlug}.json`);
+  if (existsSync(frPath)) {
+    const fr = JSON.parse(readFileSync(frPath, 'utf8'));
+    if (fr.guideCount !== guideCount) {
+      fr.guideCount = guideCount;
+      writeFileSync(frPath, JSON.stringify(fr, null, 2) + '\n', 'utf8');
+    }
+  } else {
+    // Derive a human franchise name: prefer the part before a colon in the game
+    // title ("Clair Obscur: Expedition 33" → "Clair Obscur"); else title-case slug.
+    const name = gameTitle.includes(':') ? gameTitle.split(':')[0].trim() : titleCase(franchiseSlug);
+    const fr = {
+      name,
+      slug: franchiseSlug,
+      developer: 'TBC',
+      description: `Guides and complete walkthroughs for ${name}.`,
+      featured: false,
+      featureRank: 99,
+      guideCount,
+      theme: game.theme ?? {},
+    };
+    writeFileSync(frPath, JSON.stringify(fr, null, 2) + '\n', 'utf8');
+    console.log(`  ✅  created franchise content/franchises/${franchiseSlug}.json ("${name}") — flagged for owner review (developer/description)`);
+    flag(`New franchise "${name}" (${franchiseSlug}) was auto-created — review developer + description in content/franchises/${franchiseSlug}.json`);
+  }
+}
+
 // ── Smoke test (basic HTTP check against production) ─────────────────────────
 async function smokeTest(url) {
   logSection('Production smoke test');
@@ -489,6 +545,10 @@ if (!validateOk) {
 
 console.log('  ✅  Gate #1 passed');
 
+// Gate #1 passed — make the draft publishable (flip status, ensure franchise)
+// so the build renders the real public page for QA to test.
+ensurePublishable(slug, franchiseSlug, gameTitle);
+
 if (dryRun) {
   console.log('\n  --dry-run: stopping before deploy');
   report.skipped.push(`${gameTitle} (dry-run — not deployed)`);
@@ -599,19 +659,25 @@ if (!smokeOk) {
 
 console.log('  ✅  Production smoke test passed');
 
-// 10. Commit the new game file
+// 10. Mark queue done (before commit, so the queue update is part of the commit)
+markQueueDone(gameTitle);
+
+// 11. Commit the new game file (+ franchise, + queue) so Cloudflare's git build
+// publishes it. promote.js only pushes tags; the public site builds from main.
 logSection('Commit');
 try {
-  execSync(`git add content/games/${slug}.json queue.md`, { cwd: ROOT });
+  const paths = [`content/games/${slug}.json`];
+  const frPath = join(ROOT, 'content/franchises', `${franchiseSlug}.json`);
+  if (existsSync(frPath)) paths.push(`content/franchises/${franchiseSlug}.json`);
+  if (existsSync(join(ROOT, 'content/queue.json'))) paths.push('content/queue.json');
+  if (existsSync(join(ROOT, 'queue.md'))) paths.push('queue.md');
+  execSync(`git add ${paths.join(' ')}`, { cwd: ROOT });
   execSync(`git commit -m "content: add ${gameTitle}"`, { cwd: ROOT });
   execSync('git push', { cwd: ROOT });
   console.log(`  ✅  Committed and pushed: ${slug}.json`);
 } catch (e) {
   flag(`Git commit/push failed: ${e.message} — content is live but not in repo`);
 }
-
-// 11. Mark queue done
-markQueueDone(gameTitle);
 
 // 12. Content Advisor shortlist for tomorrow
 report.advisorShortlist = await runAdvisor(slug);

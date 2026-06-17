@@ -132,8 +132,8 @@ function validateGame(filePath) {
     const sec = game.sections[i];
     const loc = `Section ${i + 1} "${sec.title || '(unnamed)'}"`;
 
-    // Required section fields
-    for (const f of ['stage', 'title', 'order', 'steps', 'video']) {
+    // Required section fields (video is optional — guarded below if present)
+    for (const f of ['stage', 'title', 'order', 'steps']) {
       if (!sec[f]) errors.push(`${loc}: missing required field "${f}"`);
     }
 

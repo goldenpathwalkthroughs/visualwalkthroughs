@@ -255,6 +255,13 @@ Output only the JSON object — no markdown fences, no commentary.`;
 
   parsed.order = sectionIndex + 1;
 
+  // Drop placeholder/empty video stubs — there's no autonomous video-sourcing
+  // step yet, so a section with no valid YouTube ID ships text-first and the
+  // page renderer simply omits the video panel (video is optional in the schema).
+  if (parsed.video && !/^[\w-]{8,12}$/.test(String(parsed.video.id ?? ''))) {
+    delete parsed.video;
+  }
+
   const allText = [
     ...(parsed.steps || []),
     ...(parsed.advisories || []).map(a => a.body || ''),

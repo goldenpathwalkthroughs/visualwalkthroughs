@@ -520,7 +520,7 @@ const section = z.object({
   steps: z.array(step),   // now accepts v1 plain strings AND v2 {text, videoTimestamp?}
   advisories: z.array(advisory).default([]),
   collectibles: z.array(collectible).default([]),
-  video,
+  video: video.optional(),   // optional: autonomous guides ship text-first; a video can be added later
 
   // v2 additions — all optional/defaulted so existing content stays valid
   sectionId: z.string().optional(),     // stable ID for cross-references and route arrays

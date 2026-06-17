@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+// Generic franchise index. Renders any franchise's guide grid from its JSON —
+// used by autonomously-built franchises. Hand-written bespoke indexes take
+// precedence: any franchise with src/pages/<slug>/index.astro is EXCLUDED here,
+// so the existing bespoke franchise pages are untouched (zero regression).
+export async function getStaticPaths() {
+  const srcPages = fileURLToPath(new URL('../', import.meta.url)); // → src/pages/
+  return (await getCollection('franchises'))
+    .filter((f) => !existsSync(`${srcPages}${f.data.slug}/index.astro`))
+    .map((f) => ({ params: { franchise: f.data.slug }, props: { franchise: f } }));
+}
+
+const { franchise } = Astro.props as { franchise: any };
+const fr = franchise.data;
+
+const games = (await getCollection('games'))
+  .filter((g) => g.data.franchiseSlug === fr.slug)
+  .sort((a, b) => String(b.data.year).localeCompare(String(a.data.year)));
+
+const heroBg = fr.theme?.cardGradient
+  ?? 'radial-gradient(120% 90% at 75% -10%,#3a3f6b 0%,transparent 55%),linear-gradient(160deg,#161a33,#06070f)';
+
+const searchIndex = [
+  {
+    t: fr.name,
+    s: `Franchise · ${games.length} guide${games.length === 1 ? '' : 's'}`,
+    k: 'franchise',
+    ic: '🎮',
+    href: `/${fr.slug}/`,
+  },
+  ...games.map((g) => ({
+    t: g.data.title,
+    s: `${g.data.platforms.join(' / ')} · full guide`,
+    k: 'game',
+    ic: '💠',
+    href: `/${fr.slug}/${g.data.slug}/`,
+  })),
+];
+---
+
+<Base
+  title={fr.name}
+  description={fr.description}
+  bodyClass={fr.theme?.bodyClass}
+  searchIndex={searchIndex}
+>
+  <div class="fr-hero">
+    <div class="bg" style={`background:${heroBg}`}></div>
+    <div class="inner">
+      <div class="crumb">
+        <a href="/">Browse</a>
+        <span>/</span>
+        <span style="color:var(--text)">{fr.name}</span>
+      </div>
+      <h1>{fr.name}</h1>
+      <p>{fr.description}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="game-grid">
+      {games.map((g) => (
+        <a
+          href={g.data.status === 'published' ? `/${fr.slug}/${g.data.slug}/` : undefined}
+          class={`gtile${g.data.status === 'coming-soon' ? ' soon' : ''}`}
+        >
+          <div class="art" style={`background:${g.data.theme?.cardGradient ?? g.data.coverGradient}`}>
+            {g.data.cover && <img src={g.data.cover} alt={g.data.title} class="cover-img" loading="lazy" decoding="async" />}
+          </div>
+          {g.data.status === 'published' && <span class="ready">Guide ready</span>}
+          <div class="meta">
+            <div class="yr">{g.data.year} · {g.data.platforms[1] ?? g.data.platforms[0]}</div>
+            <div class="title">{g.data.title}</div>
+            <div class="console">{g.data.platforms.join(' · ')}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>
