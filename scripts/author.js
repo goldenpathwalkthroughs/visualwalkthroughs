@@ -272,12 +272,14 @@ Output only the completed fact sheet — no preamble.`;
 // context is loaded from cache on sections 2+.
 
 async function draftSection(factSheet, sectionIndex, sectionFacts, draftSystemPrompt) {
+  // Send only the shared registries + this section's own block (not all sections).
+  const context = buildSectionContext(factSheet, sectionIndex);
   const userMessage = `GAME: ${gameTitle}
 SECTION ${sectionIndex + 1}: ${sectionFacts.stage || ''} — ${sectionFacts.title || ''}
 
-Here is the full research fact sheet for context:
+Here is the relevant research (shared reference + this section's facts):
 ---
-${factSheet}
+${context}
 ---
 
 Now draft ONLY section ${sectionIndex + 1} (${sectionFacts.title || `Section ${sectionIndex + 1}`}) as a single JSON object.
@@ -360,6 +362,28 @@ function parseSectionStubs(factSheet) {
   }
   if (current) stubs.push(current);
   return stubs;
+}
+
+// Build a trimmed research context for ONE section: the global reference blocks
+// (structure, items, hubs, detours, world map, counts, locations, boss fights —
+// everything before the first "--- Section: ---" marker) PLUS only this
+// section's own block. The full fact sheet re-sends all ~11 sections' golden
+// paths to every draft call; a section only needs the shared registries + its
+// own facts, which roughly halves drafting input tokens with no quality loss.
+// Falls back to the full sheet if the markers can't be located.
+function buildSectionContext(factSheet, sectionIndex) {
+  const lines = factSheet.split('\n');
+  const markerLines = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (SECTION_MARKER.test(lines[i])) markerLines.push(i);
+  }
+  if (markerLines.length === 0 || sectionIndex >= markerLines.length) return factSheet;
+
+  const header = lines.slice(0, markerLines[0]).join('\n');
+  const start = markerLines[sectionIndex];
+  const end = sectionIndex + 1 < markerLines.length ? markerLines[sectionIndex + 1] : lines.length;
+  const block = lines.slice(start, end).join('\n');
+  return `${header}\n\n${block}`.trim();
 }
 
 // ── Stage 3: Assemble game JSON ───────────────────────────────────────────────

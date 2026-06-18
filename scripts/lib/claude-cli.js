@@ -23,7 +23,9 @@
  */
 import { spawn } from 'node:child_process';
 
-const TOOLS_OFF = 'Bash Edit Write Read Glob Grep WebSearch WebFetch Task NotebookEdit TodoWrite MultiEdit';
+// Long-standing, universally-valid tool names only — the CLI hard-errors on any
+// unknown name (e.g. "MultiEdit" was merged into Edit), so keep this conservative.
+const TOOLS_OFF = 'Bash Edit Write Read Glob Grep WebSearch WebFetch Task';
 
 function flattenSystem(system) {
   if (!system) return '';
