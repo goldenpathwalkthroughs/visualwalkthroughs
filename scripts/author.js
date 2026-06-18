@@ -34,7 +34,7 @@ import ClaudeCli from './lib/claude-cli.js';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dir, '..');
@@ -70,11 +70,16 @@ if (existsSync(outPath)) {
 
 // ── Claude client ─────────────────────────────────────────────────────────────
 // Runs through the Claude Code CLI (`claude -p`) so authoring bills the owner's
-// Pro/Max subscription via CLAUDE_CODE_OAUTH_TOKEN — NOT pay-as-you-go API
-// credits. See scripts/lib/claude-cli.js.
-if (!process.env.CLAUDE_CODE_OAUTH_TOKEN) {
-  console.error('❌  CLAUDE_CODE_OAUTH_TOKEN not set — generate one with `claude setup-token` (Pro/Max) and add it as a repo secret');
-  process.exit(1);
+// Pro/Max subscription — NOT pay-as-you-go API credits. See lib/claude-cli.js.
+// Auth is handled by the CLI itself: locally via the interactive `/login`
+// keychain session (Pro/Max), which is the only path that works for headless
+// `claude -p` — Anthropic blocks long-lived setup-token bearer tokens (401).
+// The adapter strips ANTHROPIC_API_KEY so it can never fall back to credits;
+// if you're not logged in, the CLI errors rather than billing anything.
+if (process.env.CLAUDE_CODE_OAUTH_TOKEN) {
+  console.log('  Auth: CLAUDE_CODE_OAUTH_TOKEN present');
+} else {
+  console.log('  Auth: using local Claude Code login (run `claude` → /login if this fails)');
 }
 
 // maxRetries: re-run the CLI on a transient blip (overload / network) with
@@ -495,9 +500,11 @@ let coverPath = null;
 if (process.env.IGDB_CLIENT_ID && process.env.IGDB_CLIENT_SECRET) {
   section('Fetching IGDB cover art');
   try {
-    const { execSync: execSyncCover } = await import('child_process');
-    const coverResult = execSyncCover(
-      `node ${join(ROOT, 'scripts/fetch-cover.js')} --title "${gameTitle}" --slug "${slug}"`,
+    const { execFileSync: execFileSyncCover } = await import('child_process');
+    // argv array, no shell — title/slug can't inject shell commands
+    const coverResult = execFileSyncCover(
+      'node',
+      [join(ROOT, 'scripts/fetch-cover.js'), '--title', gameTitle, '--slug', slug],
       { cwd: ROOT, env: process.env, stdio: ['ignore', 'pipe', 'inherit'] },
     );
     coverPath = coverResult.toString().trim();
@@ -544,7 +551,7 @@ log(`Written to ${outPath}`);
 // Stage 5: validate
 section('Running validation gate');
 try {
-  execSync(`node ${join(ROOT, 'scripts/validate.js')} --game ${slug}`, { stdio: 'inherit' });
+  execFileSync('node', [join(ROOT, 'scripts/validate.js'), '--game', slug], { stdio: 'inherit' });
 } catch {
   console.error('\n⚠   Validation found issues — review and fix before promoting.');
   console.error('    File written to draft status. Run: npm run validate -- --game ' + slug);

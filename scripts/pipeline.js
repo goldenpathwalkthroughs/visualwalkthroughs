@@ -23,7 +23,7 @@
  * Exit 1 = failure (report written, production untouched)
  */
 
-import { execSync, spawnSync } from 'child_process';
+import { execSync, execFileSync, spawnSync } from 'child_process';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -87,6 +87,19 @@ function assertNotProtected(filePath) {
 // ── Run a command, capture output ─────────────────────────────────────────────
 function run(cmd, opts = {}) {
   const result = spawnSync(cmd, { shell: true, cwd: ROOT, env: process.env, ...opts });
+  return {
+    ok: result.status === 0,
+    stdout: result.stdout?.toString() || '',
+    stderr: result.stderr?.toString() || '',
+    status: result.status,
+  };
+}
+
+// Run a binary with an explicit argv array and NO shell — untrusted values
+// (game titles, slugs) are passed as discrete arguments, so shell metacharacters
+// can't inject commands. Use this for anything that interpolates queue input.
+function runFile(file, args, opts = {}) {
+  const result = spawnSync(file, args, { shell: false, cwd: ROOT, env: process.env, ...opts });
   return {
     ok: result.status === 0,
     stdout: result.stdout?.toString() || '',
@@ -313,8 +326,8 @@ Return ONLY JSON, no prose: {"candidates":[{"title":"...","platforms":["..."],"f
 
 // ── Content Advisor shortlist (cheap reasoning call) ─────────────────────────
 async function runAdvisor(publishedSlug) {
-  if (!process.env.CLAUDE_CODE_OAUTH_TOKEN) return '(advisor skipped — no CLAUDE_CODE_OAUTH_TOKEN)';
-
+  // Auth handled by the CLI (local /login keychain, or CLAUDE_CODE_OAUTH_TOKEN
+  // if set). The call is wrapped in try/catch, so an auth failure just skips.
   logSection('Content Advisor shortlist');
   try {
     const { default: ClaudeCli } = await import('./lib/claude-cli.js');
@@ -489,17 +502,12 @@ if (existsSync(outPath) && !allowReplace) {
 logSection('AI authoring');
 checkTimeCap('authoring');
 
-const authorCmd = [
-  'node scripts/author.js',
-  `--game "${gameTitle}"`,
-  `--franchise "${franchiseSlug}"`,
-  `--slug "${slug}"`,
-  year ? `--year "${year}"` : '',
-  platforms ? `--platforms "${platforms}"` : '',
-  allowReplace ? '--allow-replace' : '',
-].filter(Boolean).join(' ');
+const authorArgs = ['scripts/author.js', '--game', gameTitle, '--franchise', franchiseSlug, '--slug', slug];
+if (year) authorArgs.push('--year', year);
+if (platforms) authorArgs.push('--platforms', platforms);
+if (allowReplace) authorArgs.push('--allow-replace');
 
-const authorResult = run(authorCmd, { stdio: 'inherit' });
+const authorResult = runFile('node', authorArgs, { stdio: 'inherit' });
 
 // Load token sidecar written by author.js (spec §3.b)
 const tokenSidecarPath = join(ROOT, 'content/games', `.${slug}.tokens.json`);
@@ -523,7 +531,7 @@ let fixAttempts = 0;
 let validateOk = false;
 
 while (fixAttempts <= CONFIG.maxFixAttempts) {
-  const r = run(`node scripts/validate.js --game ${slug}`, { stdio: 'inherit' });
+  const r = runFile('node', ['scripts/validate.js', '--game', slug], { stdio: 'inherit' });
   if (r.ok) { validateOk = true; break; }
 
   fixAttempts++;
@@ -599,8 +607,9 @@ if (!skipQa) {
   logSection('Gate #2 — QA harness');
   checkTimeCap('QA');
 
-  const qaResult = run(
-    `node scripts/qa.js --url ${previewUrl} --game ${franchiseSlug}/${slug}`,
+  const qaResult = runFile(
+    'node',
+    ['scripts/qa.js', '--url', previewUrl, '--game', `${franchiseSlug}/${slug}`],
     { stdio: 'inherit' },
   );
 
@@ -671,9 +680,11 @@ try {
   if (existsSync(frPath)) paths.push(`content/franchises/${franchiseSlug}.json`);
   if (existsSync(join(ROOT, 'content/queue.json'))) paths.push('content/queue.json');
   if (existsSync(join(ROOT, 'queue.md'))) paths.push('queue.md');
-  execSync(`git add ${paths.join(' ')}`, { cwd: ROOT });
-  execSync(`git commit -m "content: add ${gameTitle}"`, { cwd: ROOT });
-  execSync('git push', { cwd: ROOT });
+  // execFileSync with argv arrays — gameTitle/paths are passed as discrete args,
+  // so a title with shell metacharacters can't inject into the commit command.
+  execFileSync('git', ['add', ...paths], { cwd: ROOT });
+  execFileSync('git', ['commit', '-m', `content: add ${gameTitle}`], { cwd: ROOT });
+  execFileSync('git', ['push'], { cwd: ROOT });
   console.log(`  ✅  Committed and pushed: ${slug}.json`);
 } catch (e) {
   flag(`Git commit/push failed: ${e.message} — content is live but not in repo`);

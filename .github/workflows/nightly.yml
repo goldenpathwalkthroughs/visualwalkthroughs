@@ -79,17 +79,24 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           CLOUDFLARE_API_TOKEN:   ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID:  ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Dispatch inputs are passed as ENV VARS, never interpolated into the
+          # script body — this is the documented defence against workflow script
+          # injection (a malicious input value can't break out of an env value).
+          IN_GAME:      ${{ inputs.game }}
+          IN_FRANCHISE: ${{ inputs.franchise }}
+          IN_SLUG:      ${{ inputs.slug }}
+          IN_YEAR:      ${{ inputs.year }}
+          IN_PLATFORMS: ${{ inputs.platforms }}
         run: |
-          # Build CLI args from manual-trigger inputs (empty strings are ignored)
-          ARGS=""
-          if [ -n "${{ inputs.game }}" ]; then
-            ARGS="--game \"${{ inputs.game }}\""
-            ARGS="$ARGS --franchise \"${{ inputs.franchise }}\""
-            ARGS="$ARGS --slug \"${{ inputs.slug }}\""
-            [ -n "${{ inputs.year }}"      ] && ARGS="$ARGS --year \"${{ inputs.year }}\""
-            [ -n "${{ inputs.platforms }}" ] && ARGS="$ARGS --platforms \"${{ inputs.platforms }}\""
+          # Build an argv array from the env vars (no eval, proper quoting) so
+          # the input values reach node as discrete arguments.
+          args=()
+          if [ -n "$IN_GAME" ]; then
+            args+=(--game "$IN_GAME" --franchise "$IN_FRANCHISE" --slug "$IN_SLUG")
+            [ -n "$IN_YEAR" ]      && args+=(--year "$IN_YEAR")
+            [ -n "$IN_PLATFORMS" ] && args+=(--platforms "$IN_PLATFORMS")
           fi
-          eval node scripts/pipeline.js $ARGS
+          node scripts/pipeline.js "${args[@]}"
 
       # ── 7. Commit the nightly report (always, even on failure) ───────────────
       - name: Commit nightly report
