@@ -81,6 +81,13 @@ export class ClaudeCli {
       const env = { ...process.env };
       delete env.ANTHROPIC_API_KEY;
       delete env.ANTHROPIC_AUTH_TOKEN;
+      // Defend against a corrupted token: copying from a wrapped terminal can
+      // inject a newline into the middle of the token (seen during setup),
+      // which the API rejects as an "invalid bearer token" (401). OAuth tokens
+      // contain no whitespace, so stripping all of it is safe and repairs that.
+      if (env.CLAUDE_CODE_OAUTH_TOKEN) {
+        env.CLAUDE_CODE_OAUTH_TOKEN = env.CLAUDE_CODE_OAUTH_TOKEN.replace(/\s+/g, '');
+      }
 
       const child = spawn(this.bin, args, { stdio: ['pipe', 'pipe', 'pipe'], env });
       let out = '';
