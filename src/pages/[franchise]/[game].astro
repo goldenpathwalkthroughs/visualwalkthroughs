@@ -120,7 +120,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
   searchIndex={searchIndex}
   preloadImage={cover}
 >
-  <div class="oot-hero mm-hero">
+  <div class="oot-hero mm-hero gen-hero">
     <div class="hyrule-sky"></div>
     <div class="inner">
       <div class="crumb" style="padding-top:6px">
@@ -134,7 +134,7 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
         <div class="ww-cover">
           {cover
             ? <img src={cover} alt={`${title} box art`} class="ww-cover-img" loading="eager" decoding="async" />
-            : <><div class="tri"></div><small>OCARINA OF TIME</small></>
+            : <><div class="tri"></div><small>{title}</small></>
           }
         </div>
         <div class="ww-info">

@@ -388,6 +388,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ww-hero .sea { position: absolute; inset: 0; z-index: -2; background: radial-gradient(120% 80% at 70% -10%, #1d4f5e 0%, transparent 55%), linear-gradient(180deg, #0c2b34, #071117 92%); }
 .ww-hero .sea::after { content: ""; position: absolute; inset: 0; opacity: .5; background: repeating-linear-gradient(115deg, transparent 0 22px, rgba(120,220,215,.04) 22px 23px); }
 .ww-hero .inner { max-width: var(--maxw); margin: 0 auto; padding: 8px clamp(18px,4vw,46px) 0; }
+/* Generic-renderer hero (src/pages/[franchise]/[game].astro): constrain the
+   hero content to the same centred column as the body so the title and
+   golden-path bar align with the reference cards below, rather than running
+   edge-to-edge. Scoped to .gen-hero so bespoke pages are untouched. */
+.gen-hero .inner { max-width: var(--maxw); margin: 0 auto; padding: 8px clamp(18px,4vw,46px) 0; }
 .ww-top { display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-end; padding: 14px 0 26px; }
 .ww-cover {
   width: 150px;
