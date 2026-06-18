@@ -17,7 +17,6 @@
     "pipeline": "node scripts/pipeline.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.101.0",
     "astro": "^4.16.0"
   },
   "devDependencies": {
