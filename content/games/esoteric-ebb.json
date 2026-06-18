@@ -1,0 +1,262 @@
+{
+  "franchiseSlug": "esoteric-ebb",
+  "title": "Esoteric Ebb",
+  "slug": "esoteric-ebb",
+  "year": "2026",
+  "platforms": ["PC"],
+  "status": "published",
+  "genre": "crpg",
+  "cover": "/assets/covers/esoteric-ebb.webp",
+  "lede": "A post-arcanepunk Disco Elysium-like where you play a Cleric-detective investigating a tea-shop explosion in Tolstad during election week. This golden-path guide covers character creation, the four-day investigation, the key skill-checks and faction choices, and how to avoid the bad-ending Frays.",
+  "theme": {
+    "bodyClass": "theme-esoteric-ebb",
+    "accent": "#a99adf",
+    "accentSoft": "rgba(169,154,223,.16)",
+    "cardGradient": "linear-gradient(160deg,#181426,#0d0a18 60%,#06040c)"
+  },
+  "coverGradient": "linear-gradient(160deg,#181426,#0d0a18 60%,#06040c)",
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": ["character-creation", "day-1", "day-2", "day-3", "day-4", "the-vote"],
+    "criticalPath": ["character-creation", "day-1", "day-2", "day-3", "day-4", "the-vote"],
+    "anyOrderGroups": []
+  },
+  "voicesTitle": "The Six Voices",
+  "voicesIntro": "You are always a Cleric — but who that Cleric is comes from how you spend 27 points across six abilities. Each is a sentient voice in your head that interrupts conversations and gates skill-checks. Commit hard to one primary and one secondary; spreading points evenly makes a Cleric who is mediocre at everything and locked out of the best Feats.",
+  "voices": [
+    { "ability": "STR", "name": "Strength", "theme": "The search for meaning, religion, and masculinity.", "governs": "Faith and conviction checks, and forcing physical outcomes in dialogue.", "buildNote": "A strong primary for a zealot Cleric who leans on doctrine and force." },
+    { "ability": "DEX", "name": "Dexterity", "theme": "Avoiding consequences, self-interest, and freedom.", "governs": "Evasion, sleight, and slipping blame or obligation.", "buildNote": "Pairs well with a self-serving, slippery investigator." },
+    { "ability": "CON", "name": "Constitution", "theme": "Gut feeling, bodily truth, and stubbornness.", "governs": "Endurance, resisting fatigue, and trusting instinct over evidence.", "buildNote": "Underrated — it softens the fatigue that triggers the Exhaustion Fray." },
+    { "ability": "INT", "name": "Intelligence", "theme": "The search for power, ego, and memorisation.", "governs": "How many spells you can prepare at once, plus deduction and lore.", "buildNote": "Sets your spell count — but on its own your spells will fumble. Support it with Wisdom." },
+    { "ability": "WIS", "name": "Wisdom", "theme": "Esoteric understanding, empathy, and femininity.", "governs": "Whether your prepared spells actually succeed, plus perception and insight.", "buildNote": "The success stat for casting. A caster build wants high Intelligence and high Wisdom together." },
+    { "ability": "CHA", "name": "Charisma", "theme": "Social manipulation, force of personality, and the need for love.", "governs": "Persuasion and the diplomatic faction routes through the story.", "buildNote": "The smoothest path through the political branches if you would rather talk than fight." }
+  ],
+  "advisories": [
+    {
+      "type": "do-now",
+      "title": "Commit to one voice before you spend a point",
+      "body": "At creation you have 27 points (base cap 15) plus two proficiency points. Pour them into one primary ability and one secondary now, and align your dialogue with that identity — an even spread leaves you failing checks everywhere and locked out of the best Feat rewards.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Intelligence prepares spells; Wisdom lands them",
+      "body": "Casters live and die by this pairing — <strong>Intelligence</strong> sets how many spells you can ready, but <strong>Wisdom</strong> decides whether they succeed. High Intelligence with neglected Wisdom means fumbling your own spells at the worst moments.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Failure is content — don't reload every roll",
+      "body": "A failed skill-check usually opens a more interesting, comedic, or complicated branch rather than a dead end. Let some rolls fail; the story is often better for it, and constant reloading robs you of the best writing.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Rest before fatigue collapses you — the Exhaustion Fray",
+      "body": "Ignoring fatigue across the days leads to the Cleric's collapse and an <strong>Exhaustion Fray</strong> (a bad ending). Rest when the game flags you are tiring, especially before the Day 4 descent.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Refuse the Ever-Glad oath — the Eldritch Fray",
+      "body": "Late in the story you can swear allegiance to <strong>Ever-Glad</strong>. Taking the oath corrupts your soul and ends in the Eldritch Fray, with dark consequences. Walk away from it unless you are deliberately chasing a bad ending.",
+      "completionistOnly": false
+    }
+  ],
+  "itemReference": [
+    { "name": "Speak with Dead", "category": "Key spell", "where": "Obtained from Bondavol (Day 2)", "unlocks": "Questions the victim's spirit on Day 3 — the single most important step for uncovering the conspiracy." },
+    { "name": "Prepared spells", "category": "System", "where": "Managed at rest", "unlocks": "Intelligence sets how many you can ready; Wisdom decides whether each one succeeds." },
+    { "name": "Chimes", "category": "System", "where": "Throughout dialogue", "unlocks": "Personality growth — choices ring Chimes that shape who your Cleric becomes." },
+    { "name": "Take Root", "category": "System", "where": "On completing a Major Quest Branch", "unlocks": "Grants a Feat tied to the personality you have been playing." },
+    { "name": "Skill-checks (dice)", "category": "System", "where": "Every interaction", "unlocks": "Modified D&D 5e rolls — roughly +1 per 2 ability points above 10; failure branches the story." },
+    { "name": "Fatigue & rest", "category": "System", "where": "Across the four days", "unlocks": "Manage tiredness by resting; ignore it and you risk the Exhaustion Fray." }
+  ],
+  "bossFights": [
+    {
+      "id": "lord-gorm",
+      "name": "Lord Gorm",
+      "sectionId": "day-4",
+      "locationRef": "The Void — beyond the Gate of Jor",
+      "prep": {
+        "recommendedItems": ["speak-with-dead"],
+        "healthAdvice": "Go in rested and un-fatigued, with your strongest spells prepared and your primary ability checks in mind — this is the climax of the investigation.",
+        "topUpBefore": "Rest before stepping through the Gate of Jor; you do not want to enter the Void already tired."
+      },
+      "phases": [
+        { "name": "The confrontation", "summary": "Gorm tests your build directly — fights here lean on the ability you committed to, so play to your primary voice rather than fighting on his terms." },
+        { "name": "The oath", "summary": "The encounter offers the Ever-Glad oath as an out. Refuse it: swearing corrupts your soul and forces the Eldritch Fray. Hold your line and finish the confrontation cleanly." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "There is no easy retreat inside the Void — the real preparation is arriving rested with the right spells prepared.",
+        "easierTactic": "Lean entirely on your primary ability's checks and your best-supported spells (Intelligence count, Wisdom success), rather than attempting approaches your build is weak at.",
+        "retreatOption": "Reload from before the Gate of Jor if the run goes wrong, and rest first."
+      },
+      "reward": "Resolves the truth behind the explosion and sends you back to Tolstad for the final vote."
+    }
+  ],
+  "sections": [
+    {
+      "stage": "Before you begin",
+      "title": "Character creation — the Six Voices",
+      "order": 1,
+      "sectionId": "character-creation",
+      "chips": ["build", "skills", "essential"],
+      "gatingType": "none",
+      "steps": [
+        "Spend your <strong>27 points</strong> across the six abilities, respecting the base cap of 15, then assign your two <strong>proficiency points</strong> for a little extra reach.",
+        "Pick one <strong>primary</strong> ability and one <strong>secondary</strong> — these are the voices that will dominate your run — and resist spreading points evenly.",
+        "If you want to cast, raise <strong>Intelligence</strong> and <strong>Wisdom</strong> together, because Intelligence prepares spells and Wisdom lands them.",
+        "Track your modifiers — roughly <strong>+1 per 2 points above 10</strong> — so you know which checks you are likely to pass.",
+        "Plan to play your dialogue in character; aligning choices with your build unlocks the strongest <strong>Take Root</strong> Feats later."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "There are no classes — your stats are your class",
+          "body": "The game assigns a virtual class from whichever ability you invest in most. The voice you raise highest will interrupt conversations and colour how you see Tolstad, so choose the Cleric you actually want to be.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Read every ability description first", "note": "Skim all six voices before committing points — each reframes how the same scene will play out.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Day 1",
+      "title": "Arrival in Tolstad",
+      "order": 2,
+      "sectionId": "day-1",
+      "chips": ["Day 1", "Tolstad", "setup"],
+      "gatingType": "none",
+      "steps": [
+        "Open with your contact <strong>Jor</strong>, then explore <strong>Tolstad</strong> freely to establish your Cleric through dialogue.",
+        "Visit the early landmarks — the <strong>Goblin Garden</strong>, the <strong>Temple of Urth</strong>, the <strong>Drunk Sphinx</strong>, <strong>Waterlane</strong> and <strong>Darrow Manor</strong> — to meet the cast.",
+        "Answer <strong>Lady Sageleaf's</strong> summons to the Goblin Garden at the Southern Tip of Tolstad.",
+        "Secure authorisation from the Magistrate, <strong>Coinlord Darrow</strong>, so you can enter the Tea Shop on Day 2.",
+        "Watch your <strong>Chimes</strong> as choices land, and take any <strong>Take Root</strong> Feats that match how you are playing.",
+        "Rest before the day ends so you start Day 2 without fatigue."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Decide your faction lean early",
+          "body": "From the first day the <strong>Freestriders</strong> (lower-class and goblin revolution) and <strong>Azgalists</strong> (authoritarian order) pull at you. Leaning one way now colours dialogue all the way to the ending, so play it deliberately.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Tolstad side conversations", "note": "Talk to the corner-shop creatures and minor NPCs on Day 1 for cheap Chimes and early flavour.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Day 2",
+      "title": "The tea-shop investigation",
+      "order": 3,
+      "sectionId": "day-2",
+      "chips": ["Day 2", "investigation", "Speak with Dead"],
+      "gatingType": "none",
+      "steps": [
+        "Enter the <strong>Tea Shop</strong> with Darrow's authorisation and examine the blast site — the victim is an elf and the magic involved is high-level.",
+        "Work the connected locations: the <strong>Tower</strong>, <strong>Urth's Crypts</strong> and the <strong>Guild Warehouse</strong>.",
+        "Obtain <strong>Speak with Dead</strong> from <strong>Bondavol</strong> — this is the key you will use on Day 3.",
+        "Read the rising tension between the <strong>Freestriders</strong> and <strong>Azgalists</strong> as the election looms.",
+        "Recruit allies such as <strong>Snell</strong> where the chance appears."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "Don't leave Day 2 without Speak with Dead",
+          "body": "The spell from <strong>Bondavol</strong> is what cracks the case open on Day 3. If you skip it now, the conspiracy stays hidden and your investigation outcome suffers, so secure it before you rest.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Guild Warehouse finds", "note": "Sweep the Tower and Warehouse for gear and clues that feed the later quest branches.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": ["speak-with-dead"]
+    },
+    {
+      "stage": "Day 3",
+      "title": "The reveals",
+      "order": 4,
+      "sectionId": "day-3",
+      "chips": ["Day 3", "reveal", "Ettir"],
+      "gatingType": "soft",
+      "readinessNote": "You need Speak with Dead from Day 2 to get the most out of this day — without it, the conspiracy stays hidden.",
+      "steps": [
+        "Cast <strong>Speak with Dead</strong> on the victim to confirm her identity as <strong>Pinja'Athena</strong> and expose the conspiracy details.",
+        "Follow the new leads through the <strong>Lich House</strong> and <strong>Waterlane View</strong>.",
+        "Complete the <strong>Valkyrie</strong> quest to bring <strong>Ettir</strong> into your party.",
+        "Keep juggling the factions — the support, sabotage or diplomatic route you favour here shapes the finale."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "One spell, many quests",
+          "body": "Questioning Pinja'Athena's spirit advances several quest branches at once. Follow each thread it opens before the day ends, while the leads are fresh.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Lich House secrets", "note": "The Lich House rewards a thorough search — useful gear and lore sit off the main thread.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": ["ettir"]
+    },
+    {
+      "stage": "Day 4",
+      "title": "The Roots to the Gate of Jor",
+      "order": 5,
+      "sectionId": "day-4",
+      "chips": ["Day 4", "boss", "the Void"],
+      "gatingType": "soft",
+      "readinessNote": "Tie off lingering quests and gear up in the deeper areas before the Gate of Jor — and go in rested, or you risk the Exhaustion Fray.",
+      "steps": [
+        "Explore the <strong>Roots</strong>, the <strong>Undercoast</strong> and the <strong>Old Prison</strong> for powerful gear and the last of your lingering quests.",
+        "Piece together the truth — the resurrection ritual and the real cause of the explosion.",
+        "Rest and prepare your strongest spells, then step through the <strong>Gate of Jor</strong> into the Void.",
+        "Confront <strong>Lord Gorm</strong>, leaning on your primary ability rather than fighting on his terms.",
+        "Refuse the <strong>Ever-Glad</strong> oath when it is offered — taking it forces the Eldritch Fray."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Go in rested",
+          "body": "Day 4 is long and ends in the Void. Clear your side business first, then rest before the Gate of Jor so fatigue does not tip you into the Exhaustion Fray at the worst moment.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Old Prison & Undercoast gear", "note": "The deeper Day 4 areas hold the strongest gear in the game — grab it before the point of no return.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Finale",
+      "title": "The vote & endings",
+      "order": 6,
+      "sectionId": "the-vote",
+      "chips": ["finale", "factions", "endings"],
+      "gatingType": "none",
+      "steps": [
+        "Return to <strong>Tolstad</strong> and cast the final vote that decides the town's direction.",
+        "Choose your faction outcome — back the <strong>Freestriders</strong> for revolution, the <strong>Azgalists</strong> for authoritarian order, or a neutral path for an uneasy status quo.",
+        "Decide whether to expose the full conspiracy or accept a cover-up — your depth of investigation determines which is even on the table.",
+        "Let your choices resolve into one of the main endings, having steered clear of the Frays."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "The ending is the sum of your whole run",
+          "body": "Factions, side quests, and even objectives you ignored all feed the finale. There is no single 'good' ending — back the world you want, and make a manual save beforehand if you would like to see more than one.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "See a second ending", "note": "Keep a pre-finale save to revisit the vote and view an alternate faction outcome without a full replay.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": []
+    }
+  ]
+}

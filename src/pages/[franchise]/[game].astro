@@ -62,6 +62,10 @@ const shops: any[] = (game.data as any).shops ?? [];
 // v5 time-loop module
 const timeCycle: any = (game.data as any).timeCycle ?? null;
 const scheduledEvents: any[] = (game.data as any).scheduledEvents ?? [];
+// v6 ability-driven "voices" reference (CRPG character spine)
+const voices: any[] = (game.data as any).voices ?? [];
+const voicesTitle: string = (game.data as any).voicesTitle ?? 'Abilities';
+const voicesIntro: string = (game.data as any).voicesIntro ?? '';
 const hasReference = itemReference.length > 0 || songs.length > 0 || collectibleCategories.length > 0 || sideQuestChains.length > 0 || shops.length > 0 || !!timeCycle || scheduledEvents.length > 0;
 
 const advLabel: Record<string, string> = {
@@ -169,6 +173,28 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
   </div>
 
   <div class="wrap">
+    {voices.length > 0 && (
+      <section class="voices">
+        <div class="voices-head">
+          <h2>{voicesTitle}</h2>
+          {voicesIntro && <p>{voicesIntro}</p>}
+        </div>
+        <div class="voices-grid">
+          {voices.map((v: any) => (
+            <div class="voice-card">
+              <div class="voice-top">
+                <span class="voice-ab">{v.ability}</span>
+                <span class="voice-name">{v.name}</span>
+              </div>
+              <p class="voice-theme">{v.theme}</p>
+              <p class="voice-governs"><strong>Governs:</strong> {v.governs}</p>
+              {v.buildNote && <p class="voice-build">{v.buildNote}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
     {(game.data as any).worldMap && (
       <WorldMap
         worldMap={(game.data as any).worldMap}
@@ -696,6 +722,17 @@ function isStepObj(step: unknown): step is { text: string; videoTimestamp?: numb
 .essentials { max-width: 1100px; margin: 0 auto 1.5rem; padding: 0 1.5rem; }
 .essentials-head h2 { font-family: var(--font-display, sans-serif); font-size: 1.3rem; color: var(--accent, #35c6d6); margin: 0 0 .35rem; }
 .essentials-head p { color: var(--muted, #88b8c0); font-size: .9rem; line-height: 1.55; margin: 0 0 1rem; max-width: 72ch; }
+.voices { max-width: 1100px; margin: 0 auto 1.75rem; padding: 0 1.5rem; }
+.voices-head h2 { font-family: var(--font-display, sans-serif); font-size: 1.3rem; color: var(--accent, #35c6d6); margin: 0 0 .35rem; }
+.voices-head p { color: var(--muted, #88b8c0); font-size: .9rem; line-height: 1.55; margin: 0 0 1rem; max-width: 72ch; }
+.voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.voice-card { background: var(--panel, #141420); border: 1px solid var(--line, rgba(180,170,255,.12)); border-radius: 12px; padding: 14px 16px; }
+.voice-top { display: flex; align-items: baseline; gap: 10px; margin: 0 0 .5rem; }
+.voice-ab { font-family: var(--font-display, sans-serif); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, #35c6d6); border: 1px solid var(--accentSoft, rgba(53,198,214,.3)); border-radius: 6px; padding: 2px 7px; }
+.voice-name { font-weight: 600; color: var(--text, #e8e6f0); }
+.voice-theme { color: var(--muted, #88b8c0); font-size: .88rem; line-height: 1.5; margin: 0 0 .5rem; font-style: italic; }
+.voice-governs { font-size: .88rem; line-height: 1.5; margin: 0 0 .4rem; color: var(--text, #d8d6e6); }
+.voice-build { font-size: .84rem; line-height: 1.5; margin: 0; color: var(--muted, #88b8c0); }
 .ref-panel {
   border: 1px solid rgba(53,198,214,.18); border-radius: 12px;
   background: rgba(255,255,255,.015); margin-bottom: .6rem; overflow: hidden;

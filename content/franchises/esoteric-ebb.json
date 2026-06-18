@@ -1,0 +1,15 @@
+{
+  "name": "Esoteric Ebb",
+  "slug": "esoteric-ebb",
+  "developer": "Christoffer Bodegård",
+  "description": "A post-arcanepunk Disco Elysium-like where a Cleric-detective cracks a case through dice, dialogue, and the six voices in their head. Pick a guide — it opens as one living page.",
+  "featured": false,
+  "featureRank": 9,
+  "guideCount": 1,
+  "theme": {
+    "bodyClass": "theme-esoteric-ebb",
+    "accent": "#a99adf",
+    "accentSoft": "rgba(169,154,223,.16)",
+    "cardGradient": "linear-gradient(160deg,#181426,#0d0a18 60%,#06040c)"
+  }
+}

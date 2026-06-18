@@ -448,6 +448,20 @@ const songEntry = z.object({
   use: z.string(),
 });
 
+// ── v6: Voices / ability-driven character reference ───────────────────────────
+//
+// For CRPGs where the character's abilities are the spine of the experience —
+// e.g. the "internal voices" of Disco-Elysium-likes. Each entry is one ability:
+// its name, the voice/theme it embodies, what it governs mechanically, and an
+// optional build note. Rendered as a dedicated panel, NOT mislabelled as items.
+const voice = z.object({
+  ability: z.string(),                  // short label, e.g. "STR", "Wisdom"
+  name: z.string(),                     // display name of the voice
+  theme: z.string(),                    // what it embodies thematically
+  governs: z.string(),                  // what it controls mechanically
+  buildNote: z.string().optional(),     // when/why to invest
+});
+
 const collectibleEntry = z.object({
   label: z.string(),
   location: z.string(),
@@ -619,6 +633,11 @@ const games = defineCollection({
     // v5: time-loop / scheduled-world module (all optional)
     timeCycle: timeCycle.optional(),                             // the loop's rules
     scheduledEvents: z.array(scheduledEvent).default([]),        // Bombers'-Notebook timetable
+
+    // v6: ability-driven character reference (CRPG "voices") — optional
+    voices: z.array(voice).default([]),
+    voicesTitle: z.string().optional(),                          // panel heading, e.g. "The Six Voices"
+    voicesIntro: z.string().optional(),                          // one-line intro under the heading
   }),
 });
 

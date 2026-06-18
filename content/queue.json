@@ -48,10 +48,11 @@
       "signal": "2026 GOTY contender; first true Disco Elysium successor (96% Very Positive, Steam)",
       "eligibility": "Story CRPG, 21 main-story quests — golden path covers the main investigation + key checks (branching, Disco Elysium-style)",
       "confidence": "high",
-      "status": "queued",
+      "status": "published",
       "addedOn": "2026-06-18",
       "note": "User-requested: play next",
-      "rank": 2
+      "rank": 2,
+      "publishedOn": "2026-06-18"
     },
     {
       "rank": 3,
