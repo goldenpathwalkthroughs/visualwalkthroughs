@@ -1,0 +1,15 @@
+{
+  "name": "Clair Obscur",
+  "slug": "expedition",
+  "developer": "Sandfall Interactive",
+  "description": "A Belle Époque world under the Paintress's curse, told through turn-based battles with real-time dodges and parries. Pick a guide — it opens as one living page.",
+  "featured": false,
+  "featureRank": 8,
+  "guideCount": 1,
+  "theme": {
+    "bodyClass": "theme-expedition",
+    "accent": "#c9a24a",
+    "accentSoft": "rgba(201,162,74,.15)",
+    "cardGradient": "linear-gradient(160deg,#1a1426,#0d0a16 60%,#060409)"
+  }
+}

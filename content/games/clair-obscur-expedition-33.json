@@ -1,0 +1,602 @@
+{
+  "franchiseSlug": "expedition",
+  "title": "Clair Obscur: Expedition 33",
+  "slug": "clair-obscur-expedition-33",
+  "year": "2025",
+  "platforms": [
+    "PlayStation 5",
+    "Xbox Series X|S",
+    "PC"
+  ],
+  "status": "published",
+  "genre": "crpg",
+  "lede": "Sandfall's Belle Époque turn-based RPG sends Expedition 33 across the sea to end the Paintress before she paints the next cursed number. This golden-path walkthrough takes you from the Gommage in Lumière, through every act and major boss, to the ending choice — with reactive-combat tactics throughout.",
+  "theme": {
+    "bodyClass": "theme-expedition",
+    "accent": "#c9a24a",
+    "accentSoft": "rgba(201,162,74,.15)",
+    "cardGradient": "linear-gradient(160deg,#1a1426,#0d0a16 60%,#060409)"
+  },
+  "coverGradient": "linear-gradient(160deg,#1a1426,#0d0a16 60%,#060409)",
+  "structure": {
+    "structureType": "semi-linear",
+    "recommendedRoute": [
+      "prologue-lumiere",
+      "spring-meadows",
+      "flying-waters",
+      "ancient-sanctuary",
+      "gestral-village",
+      "esquies-nest",
+      "stone-wave-cliffs",
+      "forgotten-battlefield",
+      "monocos-station",
+      "old-lumiere",
+      "the-monolith",
+      "epilogue-the-manor",
+      "act3-renoir"
+    ],
+    "criticalPath": [
+      "prologue-lumiere",
+      "spring-meadows",
+      "flying-waters",
+      "ancient-sanctuary",
+      "gestral-village",
+      "esquies-nest",
+      "stone-wave-cliffs",
+      "forgotten-battlefield",
+      "monocos-station",
+      "old-lumiere",
+      "the-monolith",
+      "act3-renoir"
+    ],
+    "anyOrderGroups": []
+  },
+  "advisories": [
+    {
+      "type": "do-now",
+      "title": "Learn to dodge first, then add parry once you read the tells",
+      "body": "Every enemy attack can be avoided with a timed <strong>dodge</strong> (a generous window) or a <strong>parry</strong> (a tight window that lets you counter and build toward a Break). When you first meet a foe, dodge until you have learnt its rhythm, then start parrying the predictable strikes. A perfect dodge with the right Picto equipped refunds <strong>AP</strong>, so defence is also your economy.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Master Pictos to unlock Luminas you can share across the party",
+      "body": "Each character equips up to three <strong>Pictos</strong> — each grants a stat and a passive. Win four battles with a Picto equipped and you permanently learn its <strong>Lumina</strong>, which you can then switch on for any character using your shared Lumina points. Always have a fresh Picto mastering in the background so your whole roster keeps gaining passives.",
+      "completionistOnly": false
+    },
+    {
+      "type": "tip",
+      "title": "Break the enemy, then unload",
+      "body": "Hitting weaknesses, landing parries and using the right skills fills a foe's <strong>Break</strong> gauge. A Broken enemy takes vastly more damage and loses its turn, so line up your biggest hits for that window rather than spending them piecemeal.",
+      "completionistOnly": false
+    },
+    {
+      "type": "warning",
+      "title": "Clear side content before each act finale",
+      "body": "Difficulty steps up sharply at the end of every act. Before you commit to a finale, sweep the optional areas you have unlocked, master a few more Pictos, and upgrade weapons — under-levelled parties hit a wall at the act bosses, especially in Act III.",
+      "completionistOnly": false
+    },
+    {
+      "type": "missable",
+      "title": "The ending is a permanent choice — there is no wrong answer",
+      "body": "The finale asks you to side with one of two characters, and each path closes the other. Neither is the canonical 'good' ending; they are two readings of the same story. Make a manual save before the final sequence if you want to view both.",
+      "completionistOnly": false
+    }
+  ],
+  "itemReference": [
+    {
+      "name": "Action Points (AP)",
+      "category": "Combat system",
+      "where": "Every battle",
+      "unlocks": "The core resource for skills. Basic attacks and successful parries generate AP; stronger skills spend it. Some Pictos refund AP on a perfect dodge."
+    },
+    {
+      "name": "Dodge",
+      "category": "Defence",
+      "where": "From the start",
+      "unlocks": "The safe defensive option with a wide timing window. Avoids damage; with the right Picto a perfect dodge also returns AP."
+    },
+    {
+      "name": "Parry",
+      "category": "Defence",
+      "where": "From the start",
+      "unlocks": "A tight-window counter that negates damage and feeds the enemy's Break gauge. High risk, high reward; learn each attack's audiovisual tell."
+    },
+    {
+      "name": "Jump",
+      "category": "Defence",
+      "where": "From the start",
+      "unlocks": "Clears low sweeps and some ground attacks that a dodge cannot. Watch for the attacks the game flags as jumpable."
+    },
+    {
+      "name": "Free Aim",
+      "category": "Offence",
+      "where": "From the start",
+      "unlocks": "A ranged shot you can place manually on weak points and breakable parts — handy for chipping flyers and triggering Break."
+    },
+    {
+      "name": "Pictos",
+      "category": "Equipment",
+      "where": "Found, bought and earned throughout",
+      "unlocks": "Up to three per character; each gives a stat boost and a passive effect. Win four battles to master one and learn its Lumina."
+    },
+    {
+      "name": "Luminas",
+      "category": "Equipment",
+      "where": "Mastered from Pictos",
+      "unlocks": "Passive effects, learned from mastered Pictos, that any character can equip from a shared point pool — the heart of build crafting."
+    },
+    {
+      "name": "Gradient Attacks",
+      "category": "Combat system",
+      "where": "Unlocked partway through the story",
+      "unlocks": "Powerful party gauge attacks added to the Battle Wheel. Also enables Gradient Counter, a defensive option against heavy enemy turns."
+    }
+  ],
+  "items": [
+    { "id": "lune", "name": "Lune (party member)", "type": "ability", "acquiredAtSectionId": "spring-meadows", "class": "progression" },
+    { "id": "maelle", "name": "Maelle (party member)", "type": "ability", "acquiredAtSectionId": "flying-waters", "class": "progression" },
+    { "id": "sciel", "name": "Sciel (party member)", "type": "ability", "acquiredAtSectionId": "gestral-village", "class": "progression" },
+    { "id": "esquie", "name": "Esquie (world traversal)", "type": "ability", "acquiredAtSectionId": "esquies-nest", "class": "progression" },
+    { "id": "verso", "name": "Verso (party member)", "type": "ability", "acquiredAtSectionId": "forgotten-battlefield", "class": "progression" },
+    { "id": "monoco", "name": "Monoco (party member)", "type": "ability", "acquiredAtSectionId": "monocos-station", "class": "progression" },
+    { "id": "gradient-attacks", "name": "Gradient Attacks", "type": "ability", "acquiredAtSectionId": "flying-waters", "class": "optional" }
+  ],
+  "bossFights": [
+    {
+      "id": "eveque",
+      "name": "Évêque",
+      "sectionId": "spring-meadows",
+      "locationRef": "Spring Meadows",
+      "prep": {
+        "recommendedItems": ["lune"],
+        "healthAdvice": "Carry a full stock of healing tints; this is the first real test of your defence, so expect to take a few hits while you learn the rhythm.",
+        "topUpBefore": "Rest at the Expedition flag in Spring Meadows to refill tints and heal before approaching."
+      },
+      "phases": [
+        { "name": "Opening pattern", "summary": "Évêque opens with slow, well-telegraphed melee swings. Dodge or parry each, then answer with Gustave's basic attacks to build AP." },
+        { "name": "Pressed phase", "summary": "As its health drops it chains faster combos. Lean on dodging the unfamiliar strings, parry the single heavy overhead, and spend banked AP on Lune's elemental skills to push the Break gauge." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Use healing tints freely in-battle, and retreat to the nearby Expedition flag to reset and re-equip.",
+        "easierTactic": "Forget parrying and just dodge everything — slower but far safer. Focus fire to Break Évêque, then unload your strongest skills during the Break window.",
+        "retreatOption": "You can reload from the last flag if the fight goes badly; nothing is lost."
+      },
+      "reward": "Clears the path deeper into Act I and confirms your handle on the dodge-parry-Break loop."
+    },
+    {
+      "id": "bourgeon",
+      "name": "Bourgeon",
+      "sectionId": "flying-waters",
+      "locationRef": "Flying Waters",
+      "prep": {
+        "recommendedItems": ["lune", "maelle"],
+        "healthAdvice": "Top up tints and bring a reviving item if you have one; Bourgeon hits harder than anything in Spring Meadows.",
+        "topUpBefore": "Rest at the flag near Noco's Hut before the approach."
+      },
+      "phases": [
+        { "name": "Grasping vines", "summary": "Bourgeon telegraphs wide sweeping vine attacks. Parry the rhythmic two-hit strings to feed Break; dodge the erratic lunges." },
+        { "name": "Bloom", "summary": "When it blooms it gains an area attack that is easier to jump than dodge. Keep one character on healing duty and burst it down once Broken." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Heal with tints between its combos; reset at the Flying Waters flag.",
+        "easierTactic": "Equip Pictos that boost defence and AP-on-dodge, dodge everything, and win the attrition battle through Break windows.",
+        "retreatOption": "Reload from the last flag without penalty."
+      },
+      "reward": "Opens the route onward through Flying Waters and rounds out your early party."
+    },
+    {
+      "id": "monoco-duel",
+      "name": "Monoco",
+      "sectionId": "monocos-station",
+      "locationRef": "Monoco's Station",
+      "prep": {
+        "recommendedItems": ["verso"],
+        "healthAdvice": "Come in with full tints and a mastered defensive Picto or two; this is a multi-stage fight.",
+        "topUpBefore": "Rest before entering Monoco's Station — there is no top-up mid-fight."
+      },
+      "phases": [
+        { "name": "First duel", "summary": "Monoco fights with quick, animal-like strings. Read the wind-ups, parry the repeated patterns, and dodge anything new." },
+        { "name": "Second bout", "summary": "After the first defeat a follow-up fight begins immediately. Keep AP in reserve from the first phase so you can open the second aggressively, then Break and finish." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Use tints throughout; there is no safe retreat once the duel starts, so manage HP proactively.",
+        "easierTactic": "Prioritise survival over damage in phase one, bank AP, and spend it all during a Break in phase two.",
+        "retreatOption": "If you fall, reload from before Monoco's Station and adjust your Pictos."
+      },
+      "reward": "Monoco joins the party as its final member, bringing his Bestial wheel of enemy-derived skills."
+    },
+    {
+      "id": "the-paintress",
+      "name": "The Paintress",
+      "sectionId": "the-monolith",
+      "locationRef": "The Monolith",
+      "prep": {
+        "recommendedItems": ["gradient-attacks"],
+        "healthAdvice": "Arrive fully stocked and well levelled. Master your best Luminas across the whole party and upgrade your lead weapons first.",
+        "topUpBefore": "Clear the optional Act II areas and rest before the Monolith ascent; this is the act climax."
+      },
+      "phases": [
+        { "name": "Ascent", "summary": "The approach throws tougher standard encounters at you. Conserve tints and keep a Picto mastering as you climb." },
+        { "name": "The Paintress", "summary": "She layers elemental barrages with long, readable channels. Parry the rhythmic sequences, save Gradient Attacks for openings, and exploit each Break to land your heaviest skills." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Rotate a dedicated healer and use tints on cooldown; reset at the last flag before the ascent.",
+        "easierTactic": "Build for sustain — defensive Pictos, AP-on-dodge, and a revive in the bag — and win slowly through repeated Break windows.",
+        "retreatOption": "Reload from before the Monolith to re-spec if needed."
+      },
+      "reward": "Ends Act II and turns the story toward Lumière for the finale."
+    },
+    {
+      "id": "renoir",
+      "name": "Renoir (final boss)",
+      "sectionId": "act3-renoir",
+      "locationRef": "Lumière — city centre",
+      "prep": {
+        "recommendedItems": ["gradient-attacks"],
+        "healthAdvice": "Only approach when your party is near the level cap with mastered Luminas and fully upgraded weapons. This is the hardest required fight in the game.",
+        "topUpBefore": "Do the Act III side content and any postponed expeditions first — the screen-rant 'mistake' is rushing Renoir under-prepared."
+      },
+      "phases": [
+        { "name": "Opening forms", "summary": "Renoir cycles through fast, hard-hitting patterns with long combo strings. Dodge the unfamiliar sequences, parry the ones you recognise, and keep everyone topped up." },
+        { "name": "Escalation", "summary": "He adds wide arena attacks and pressure that punishes greed. Use Gradient Counters on his heaviest turns and only commit big damage during Break." },
+        { "name": "Final stand", "summary": "Near the end he stops taking damage and takes to the sky; play out his next turn and the story resolves the blow for you, closing the fight." }
+      ],
+      "ifYouStruggle": {
+        "whereToHeal": "Keep a permanent healer in the rotation and never let HP coast; reset at the last rest point to re-equip.",
+        "easierTactic": "Step back and grind a few levels, master more Luminas, and refine your build — preparation matters more here than execution.",
+        "retreatOption": "Reload from before the city-centre approach to adjust and try again."
+      },
+      "reward": "Triggers the ending sequence and the choice between the two finales."
+    }
+  ],
+  "sections": [
+    {
+      "stage": "Prologue",
+      "title": "Lumière — The Final Festival",
+      "order": 1,
+      "sectionId": "prologue-lumiere",
+      "chips": ["tutorial", "story", "Lumière"],
+      "gatingType": "none",
+      "steps": [
+        "Explore Lumière during the <strong>Expedition Festival</strong> and speak to the townsfolk to take in the world and meet the cast before departure.",
+        "Follow the story to the <strong>Gommage</strong>, where the Paintress wakes and paints the next number, erasing everyone of that age.",
+        "Work through the opening <strong>combat tutorial</strong> as Gustave — practise basic attacks, the timed <strong>dodge</strong>, and your first <strong>parry</strong>.",
+        "Settle the tutorial duel against Maelle to learn parry timing against a real opponent.",
+        "Board the ship and set sail with <strong>Expedition 33</strong> toward the Continent."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Spend the festival learning the tells",
+          "body": "The prologue is the safest place to practise. Watch each attack's wind-up and sound cue now so parrying feels natural once real fights begin.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Festival journal entries", "note": "Talk to every named NPC in Lumière before leaving to fill in early lore and flavour you cannot return for.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Spring Meadows",
+      "order": 2,
+      "sectionId": "spring-meadows",
+      "chips": ["Act I", "Lune", "boss"],
+      "gatingType": "none",
+      "steps": [
+        "Regroup after the disastrous landing and search for survivors, heading for the <strong>Indigo Tree</strong> as your first waypoint.",
+        "Fight through the meadow's encounters to keep building your dodge-and-parry instincts against varied foes.",
+        "Recruit <strong>Lune</strong> after meeting her in a cave — she brings elemental Stain magic that powers up your offence.",
+        "Equip your first <strong>Pictos</strong> on both characters and begin mastering one so you start banking Luminas early.",
+        "Defeat <strong>Évêque</strong> to clear the meadow and push deeper into Act I."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Start a Picto mastering now",
+          "body": "Equip a Picto on each character before the next fights so you are already working toward your first Luminas as you travel.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Meadow Pictos", "note": "Sweep the side paths off the main route for early Pictos that shape your first builds.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": ["lune"]
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Flying Waters & The Manor",
+      "order": 3,
+      "sectionId": "flying-waters",
+      "chips": ["Act I", "Maelle", "boss"],
+      "gatingType": "none",
+      "steps": [
+        "Travel the <strong>Flying Waters</strong> toward the great anchor, using <strong>Noco's Hut</strong> as your rest and resupply point.",
+        "Press into <strong>The Manor</strong> and rescue <strong>Maelle</strong>, who joins with her flexible combat stances.",
+        "Defeat <strong>Bourgeon</strong> on the approach, parrying its rhythmic vine strings to Break it.",
+        "Take on the <strong>Chromatic Troubadour</strong> as an optional but rewarding fight if your party is ready.",
+        "Continue toward the Ancient Sanctuary once the region is clear."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Maelle's stances reward aggression",
+          "body": "Maelle shifts between stances that trade defence for damage. Once you trust your parries, her offensive stance pushes Break gauges fast.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Manor secrets", "note": "Check the side rooms of The Manor for Pictos and consumables before you leave.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": ["maelle"]
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Ancient Sanctuary",
+      "order": 4,
+      "sectionId": "ancient-sanctuary",
+      "chips": ["Act I", "exploration"],
+      "gatingType": "none",
+      "steps": [
+        "Navigate the <strong>Ancient Sanctuary</strong>, solving its light-and-shadow traversal and clearing tougher encounters.",
+        "Rotate a fresh <strong>Picto</strong> onto each character so you keep mastering Luminas as you fight.",
+        "Pick up the Pictos and tints tucked along the Sanctuary's branching paths.",
+        "Push through to the road toward Gestral Village."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Re-check your Lumina loadout",
+          "body": "By now you should have several Luminas learned. Spend a moment redistributing them — defence and AP passives early, damage once you can survive comfortably.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Sanctuary Pictos", "note": "Explore the optional shrines for Pictos that round out your build options.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Gestral Village",
+      "order": 5,
+      "sectionId": "gestral-village",
+      "chips": ["Act I", "Sciel", "hub"],
+      "gatingType": "none",
+      "steps": [
+        "Arrive at <strong>Gestral Village</strong> and meet its cheerful inhabitants, your friendliest hub of the act.",
+        "Bring <strong>Sciel</strong> into the active party and learn her Foretell cards, which set up huge delayed payoffs.",
+        "Try the village's minigames and challenges for rewards and a breather from combat.",
+        "Stock up on tints and upgrades from the village before moving on.",
+        "Head for Esquie's Nest when you are ready to continue."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Sciel rewards planning",
+          "body": "Sciel's strength is setting up Foretell now to detonate later. Pair her with characters that can stall a turn while her payoff builds.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Gestral challenges", "note": "Complete the optional village minigames for Pictos and consumable rewards.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": ["sciel"]
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Esquie's Nest",
+      "order": 6,
+      "sectionId": "esquies-nest",
+      "chips": ["Act I", "traversal", "world map"],
+      "gatingType": "none",
+      "steps": [
+        "Reach <strong>Esquie's Nest</strong> and befriend <strong>Esquie</strong>, the gentle creature who carries you across the world map.",
+        "Use Esquie to swim and travel between regions, opening up backtracking to spots you could not reach before.",
+        "Return to earlier areas for Pictos and chests that needed world-map access.",
+        "Set course for the Stone Wave Cliffs to close out the act."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Backtrack now while it is convenient",
+          "body": "The moment you gain Esquie's traversal, revisit earlier regions for the upgrades you had to leave behind — it is quicker to do this before the act finale than after.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "World-map chests", "note": "With Esquie's traversal, collect the offshore and out-of-reach Pictos you passed earlier.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": ["esquie"]
+    },
+    {
+      "stage": "Act I — Gustave",
+      "title": "Stone Wave Cliffs (Act I finale)",
+      "order": 7,
+      "sectionId": "stone-wave-cliffs",
+      "chips": ["Act I", "finale", "story"],
+      "gatingType": "soft",
+      "readinessNote": "Difficulty spikes here. Master a few more Luminas and upgrade your weapons before committing, because the act ends on a tough sequence.",
+      "steps": [
+        "Scale the <strong>Stone Wave Cliffs</strong>, fighting through the act's hardest standard encounters.",
+        "Keep your party topped up and your Pictos mastered as the road narrows toward the summit.",
+        "Push through the climactic story sequence that closes Act I and reshapes the Expedition.",
+        "Let the act's events carry you into the change of leadership that opens Act II."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Finish your Act I errands first",
+          "body": "Once the finale begins the act turns a corner you cannot walk back. Tidy up Gestral Village rewards and world-map chests before you climb.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Cliffside Pictos", "note": "Grab the Pictos along the ascent before the point of no return.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Act II — Verso",
+      "title": "Forgotten Battlefield",
+      "order": 8,
+      "sectionId": "forgotten-battlefield",
+      "chips": ["Act II", "Verso", "story"],
+      "gatingType": "none",
+      "steps": [
+        "Begin Act II under new leadership and bring <strong>Verso</strong> into the party, whose Perfection rank rewards clean, escalating combos.",
+        "Cross the <strong>Forgotten Battlefield</strong>, adjusting to the tougher Act II encounter design.",
+        "Rebuild your Lumina loadout around your new line-up now that the roster has shifted.",
+        "Follow Verso's lead toward his old acquaintance at Monoco's Station."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Verso scales with clean play",
+          "body": "Verso's Perfection rank climbs as he lands hits and avoids damage, unlocking stronger finishers. Reward good defence by keeping him in the fight.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Battlefield relics", "note": "Search the ruined field for Pictos and lore pickups.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": ["verso"]
+    },
+    {
+      "stage": "Act II — Verso",
+      "title": "Monoco's Station",
+      "order": 9,
+      "sectionId": "monocos-station",
+      "chips": ["Act II", "Monoco", "boss"],
+      "gatingType": "none",
+      "steps": [
+        "Reach <strong>Monoco's Station</strong> and meet Verso's friend <strong>Monoco</strong>.",
+        "Win the two-stage duel against Monoco, banking AP through the first bout for the second.",
+        "Welcome Monoco as the party's final member and try his <strong>Bestial</strong> wheel of enemy-derived skills.",
+        "Continue toward Old Lumière with your full roster in hand."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Monoco learns from monsters",
+          "body": "Monoco's kit draws on skills harvested from enemies you meet, so his options grow as you explore. Check his wheel after new regions for fresh tools.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Station Pictos", "note": "Clear the side rooms around the station before leaving.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": ["monoco"]
+    },
+    {
+      "stage": "Act II — Verso",
+      "title": "Old Lumière & Visages",
+      "order": 10,
+      "sectionId": "old-lumiere",
+      "chips": ["Act II", "exploration", "story"],
+      "gatingType": "none",
+      "steps": [
+        "Explore <strong>Old Lumière</strong>, a haunting echo of the home city, and press on through the <strong>Visages</strong>.",
+        "Handle the stronger Act II foes with your full party and a refined Lumina build.",
+        "Take the optional detours through Sirène's surrounding area for Pictos and tougher optional fights.",
+        "Master a final round of Luminas before you commit to the Monolith.",
+        "Approach <strong>The Monolith</strong> when your party is ready for the act climax."
+      ],
+      "advisories": [
+        {
+          "type": "warning",
+          "title": "Gear up before the Monolith",
+          "body": "The act climax is a real test. Upgrade your lead weapons, master your best Luminas across the party, and stock tints before you start the ascent.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Old Lumière Pictos", "note": "The ruined city hides several Pictos along its vertical routes — sweep it thoroughly.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Act II — Verso",
+      "title": "The Monolith (Act II climax)",
+      "order": 11,
+      "sectionId": "the-monolith",
+      "chips": ["Act II", "boss", "finale"],
+      "gatingType": "soft",
+      "readinessNote": "Only ascend with a well-levelled party, mastered Luminas and upgraded weapons. The Paintress is the toughest fight so far.",
+      "steps": [
+        "Ascend <strong>The Monolith</strong>, conserving resources through its escalating encounters.",
+        "Face the <strong>Paintress</strong>, parrying her rhythmic channels and saving Gradient Attacks for her openings.",
+        "Exploit every <strong>Break</strong> window to land your heaviest skills and end the act.",
+        "Let the climax carry the story into its epilogue."
+      ],
+      "advisories": [
+        {
+          "type": "tip",
+          "title": "Save Gradient Attacks for openings",
+          "body": "Hold your party Gradient Attacks for the moment the Paintress is Broken or recovering, rather than firing them on cooldown — the burst lands far harder.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Monolith Pictos", "note": "Grab the Pictos on the ascent before the boss arena.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Epilogue — Alicia",
+      "title": "The Manor",
+      "order": 12,
+      "sectionId": "epilogue-the-manor",
+      "chips": ["epilogue", "story"],
+      "gatingType": "none",
+      "steps": [
+        "Play through the quieter <strong>Manor</strong> epilogue, which recontextualises much of what came before.",
+        "Take your time with the story beats and explore what the Manor opens up.",
+        "Prepare your party and saves for the final act, which raises the difficulty sharply.",
+        "Proceed when you are ready to return to Lumière for the finale."
+      ],
+      "advisories": [
+        {
+          "type": "do-now",
+          "title": "Make a manual save before Act III",
+          "body": "Keep a separate manual save now, before the finale, so you can revisit the build-up and view the alternate ending later without a full replay.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Manor discoveries", "note": "Examine the Manor's rooms for story pickups that pay off the epilogue's reveals.", "type": "other", "completionistOnly": true }
+      ],
+      "unlocks": []
+    },
+    {
+      "stage": "Act III — Maëlle",
+      "title": "Return to Lumière & Renoir",
+      "order": 13,
+      "sectionId": "act3-renoir",
+      "chips": ["Act III", "final boss", "ending"],
+      "gatingType": "soft",
+      "readinessNote": "Do the Act III side content and any postponed expeditions first. Rushing Renoir under-levelled is the most common way to hit a wall at the very end.",
+      "steps": [
+        "Return to <strong>Lumière</strong> for Act III and work toward the city centre and its crooked tower.",
+        "Clear the act's optional content and level your party near the cap before the final approach.",
+        "Confront <strong>Renoir</strong>, the final boss — dodge his unfamiliar strings, parry the patterns you know, and use Gradient Counters on his heaviest turns.",
+        "Play out the final sequence when his health bottoms out and the story resolves the last blow.",
+        "Make your <strong>ending choice</strong> between the two characters the finale offers — each closes the other, and neither is the 'wrong' one."
+      ],
+      "advisories": [
+        {
+          "type": "missable",
+          "title": "Both endings, one save",
+          "body": "The finale forks permanently. If you want to see both resolutions, reload your pre-finale manual save after the first; otherwise pick the one that speaks to you and let it stand.",
+          "completionistOnly": false
+        }
+      ],
+      "collectibles": [
+        { "label": "Act III expeditions", "note": "The final act's optional expeditions give the levels and Luminas that make Renoir manageable — clear them before the tower.", "type": "upgrade", "completionistOnly": true }
+      ],
+      "unlocks": []
+    }
+  ]
+}
