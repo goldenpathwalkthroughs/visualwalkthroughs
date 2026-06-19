@@ -24,3 +24,7 @@ Thumbs.db
 # Cloudflare / Wrangler
 .wrangler/
 ops-dashboard.html
+
+# Separate project living in this folder (the "tube ripper" app) — keep it out
+# of the VisualWalkthroughs repo so a stray `git add -A` can't pull it in.
+YouTube Downloader/
